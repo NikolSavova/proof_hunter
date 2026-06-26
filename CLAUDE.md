@@ -17,6 +17,16 @@ Every result ships a **verification artifact**. Phase I (problem-identification 
 - **Assume the other person has worked since you last saw the repo.** Always `git pull` before
   starting, and leave a clean handoff + commit when you stop.
 
+## Git auth (per machine — `/load` pulls and `/handoff` pushes automatically)
+Auth is via **SSH** (`origin` = `git@github.com:NikolSavova/proof_hunter.git`). Each collaborator
+configures this **once per machine** (keys are per-machine; they do NOT sync via the repo):
+1. `ssh-keygen -t ed25519 -C "you@email" -f ~/.ssh/id_ed25519 -N ""`
+2. Add `~/.ssh/id_ed25519.pub` to GitHub → Settings → SSH and GPG keys → New SSH key.
+3. `git remote set-url origin git@github.com:NikolSavova/proof_hunter.git`
+4. Test: `ssh -T git@github.com` (expect "Hi <user>! You've successfully authenticated").
+Once set, `/load` runs `git pull --rebase` and `/handoff` runs `git pull --rebase` + `git push`
+with no password prompts. If a push fails on auth, this machine's key isn't on the account yet.
+
 ## The secret — NEVER commit
 The OpenAI key lives **outside the repo** at `~/.config/proof_hunter/openai_key.txt` (perms 600).
 `.gitignore` blocks `*key*.txt` as a backstop. Never print, paste, or commit it. On a fresh clone

@@ -7,7 +7,9 @@ Run the **Session START protocol** from `CLAUDE.md` now:
 1. **Remind me (the human) to set up the session** — print the setup reminder: switch on
    **auto-accept edits** (Shift+Tab), bump **reasoning effort to high** (`/config`), and add
    **"ultracode"** to prompts for heavy multi-agent work (pipeline runs, prior-art sweeps, deep-passes).
-2. **`git pull`** — sync the other collaborator's work before touching anything.
+2. **`git pull --rebase origin main`** — sync the other collaborator's work before touching anything.
+   (Auth is via SSH. If it fails on auth, this machine's SSH key isn't on the user's GitHub account —
+   tell them; see `CLAUDE.md` → "Git auth (per machine)".)
 3. **Load context:** read `HANDOFF.md` (live state + next steps; the single source of truth), then
    skim `META_GUIDE.md` §8 (recent working-log entries). Read `PROBLEM_ID_PIPELINE.md` and
    `problem-id/README.md` too if this session will touch the pipeline.
