@@ -449,6 +449,27 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-06-26 (PM) — GitHub collaboration setup + Erdős-bias diagnosis (Nikol session)
+- **Repo went to GitHub** (`github.com/NikolSavova/proof_hunter`) for Nikol + Sihao to share. **API key
+  secured:** moved `gay_and_evil_key.txt` → `~/.config/proof_hunter/openai_key.txt` (outside repo, 600),
+  repointed `problem-id/common.py` + `~/maths/openevolve/env.sh`, added `.gitignore` (`*key*.txt`,
+  `.venv`, `__pycache__`, `.DS_Store`), and **scrubbed the key from git history** (it was in commit
+  4720658, amended). Verified: real key string is in zero commits; nothing had been pushed yet, so the
+  key was never exposed (no rotation needed). venv turned out to survive the move — DB still reads 900.
+- **Session protocol added** (so two people on two machines stay in sync): `CLAUDE.md` (auto-loaded —
+  START reminds to set auto-accept/high-effort/ultracode + pull + read HANDOFF; CLOSE writes the handoff
+  + commits/pushes), plus `/load` and `/handoff` slash commands in `.claude/commands/`.
+- **⭐ Erdős-bias diagnosis (Nikol's instinct, quantified).** The 23 finalists are 18 Erdős — but the
+  rubric does NOT prefer Erdős, it penalizes it. Per-source avg composite: COLT 3.765 > IQOQI 3.619 >
+  arXiv 3.282 > **Erdős 3.237 (lowest)**; `llm_saturation_inv` Erdős 2.27 (correctly lowest). The bias is
+  (1) **volume** — corpus 67% Erdős, so the global top-50 to kill-search was 34 Erdős/9 arXiv/4 IQOQI/4
+  COLT; and (2) **attrition** — all 4 COLT at Stage-3 were RED-killed (incl. `awasthi23a`, comp 4.679, the
+  run's highest, already-resolved). COLT → 0 finalists despite the best mean. #1 finalist overall is
+  non-Erdős (arXiv 1712.01960 diversity→ℓ1).
+- **Decision:** gpt-5.5-pro deep pass ON HOLD (would entrench the bias). Instead — **Lever B** (cheap:
+  source-diversity quota in `review/report.py`, not yet built) then **Lever A** (compilation-expansion +
+  more Tier-A ingesters → re-run), THEN deep-pass a diversified list. See HANDOFF §6/§7. Spend this session ≈ $0.
+
 ### 2026-06-26 — FIRST FULL END-TO-END RUN COMPLETE: 900 → 23 vetted finalists
 - Stage-3 kill-search (gpt-5.5 + web, top-50 single-problems) done: **28 RED killed, 23 AMBER survive, 0 GREEN**
   (kill-search is conservative — every survivor has a flagged residual risk, usually "need a scalable

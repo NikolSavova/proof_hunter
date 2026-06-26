@@ -4,24 +4,30 @@
 > session after the folder was moved. Read this, then `META_GUIDE.md` (strategy + full working
 > log) and `PROBLEM_ID_PIPELINE.md` (pipeline design). Written 2026-06-26 by the prior session.
 >
-> ⚠️ **Memory note:** the prior session's file-memory lives under the OLD project path
-> (`~/.claude/projects/-Users-nikolsavova-Desktop-AI-math/memory/`). After the move it will NOT
-> auto-load. THIS file + `META_GUIDE.md` are the source of truth. (Optionally copy those memory
-> files into the new project's memory dir.)
+> ⚠️ **Memory note:** Claude Code's file-memory is per-machine + per-project-path and is NOT in the
+> repo, so it does NOT sync between Nikol and Sihao via GitHub. **`CLAUDE.md` + `HANDOFF.md` +
+> `META_GUIDE.md` are the shared source of truth** — anything both collaborators must know goes in
+> those committed files, not in file-memory.
 
 ---
 
-## 0. ⚙️ POST-MOVE CHECKLIST (do this first — the move breaks two things)
-1. **Recreate the Python venv** (venvs hard-code absolute paths and do not survive a move):
+## 0. ⚙️ POST-MOVE CHECKLIST — ✅ DONE (2026-06-26), kept for reference
+> The folder is now a GitHub repo (`github.com/NikolSavova/proof_hunter`), shared by Nikol + Sihao.
+> Session protocol now lives in `CLAUDE.md` (auto-loaded) + the `/handoff` command. The items below
+> were the original post-move risks; both are resolved.
+1. **Python venv** — turned out to survive the move intact (`./.venv` works; DB reads 900). If it ever
+   breaks on a fresh clone, recreate it:
    ```bash
    cd <NEW>/problem-id
    rm -rf .venv && python3 -m venv .venv
    ./.venv/bin/python -m pip install requests beautifulsoup4 lxml pyyaml openai feedparser
    ```
 2. **OpenAI key now lives OUTSIDE the repo** at `~/.config/proof_hunter/openai_key.txt` (moved there
-   2026-06-26 so it is never committed to GitHub). Both consumers already point to it:
-   `problem-id/common.py` (`KEY_PATH`, overridable via `$OPENAI_API_KEY` / `$OPENAI_KEY_FILE`) and
-   `~/maths/openevolve/env.sh`. On a fresh machine/clone, recreate that file with the key (ask Nikol).
+   2026-06-26 so it is never committed to GitHub; scrubbed from git history too). Both consumers point
+   to it: `problem-id/common.py` (`KEY_PATH`, overridable via `$OPENAI_API_KEY` / `$OPENAI_KEY_FILE`)
+   and `~/maths/openevolve/env.sh`. `.gitignore` blocks `*key*.txt`. **Sihao (fresh clone):** the key
+   is NOT in the repo — create `~/.config/proof_hunter/openai_key.txt` (perms 600) with the key, or
+   `export OPENAI_API_KEY=...`, before running the pipeline. Ask Nikol for the key over a secure channel.
 3. Everything else in `problem-id/` (the SQLite DB, all code) uses paths relative to `__file__`, so
    it travels fine. Sanity check: `cd problem-id && ./.venv/bin/python -c "import common; print(common.db().execute('SELECT COUNT(*) FROM problems').fetchone())"` → should print `(900,)`.
 4. `OPENEVOLVE.md` documents the OpenEvolve rig (Engine B) at `~/maths/openevolve` (separate dir,
@@ -82,7 +88,13 @@ killsearch/killsearch.py (Stage3) → review/report.py (Stage4)      [orchestrat
   Erdős catalogue (avg 2.27) vs curated COLT/IQOQI (2.8/2.5); pass rates 52% Erdős vs 85% COLT.
 - **Total spend so far ≈ $20.**
 
-**Top candidates from the run (for Phase II):**
+**Collaboration infra (2026-06-26).** Repo now on GitHub, shared Nikol + Sihao. Added `CLAUDE.md`
+(auto-loaded session protocol: START = remind to set auto-accept/high-effort/ultracode + pull + read
+this file; CLOSE = write the handoff + commit/push), plus `/load` (run the opening protocol) and
+`/handoff` (run the close protocol) slash commands in `.claude/commands/`. API key relocated out of the
+repo (§0). **Run `/handoff` at the end of every working session so the other person can pull current state.**
+
+**Top candidates from the run (for Phase II) — ON HOLD pending the §6/§7 corpus-broadening decision:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
    Kohonen 2017 upper `85/294`, Yu 2015 lower. **Concrete attack:** SAT/MILP search for a better
    *segment-placement certificate* beating Kohonen's `85/294` — scalable & Lean-checkable. Strongest
@@ -129,9 +141,26 @@ guard) — growing the corpus never re-spends. Use `--rescore` only to force re-
 rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-derives composites with no API.
 
 ## 6. WHAT'S ON MY MIND (prior session's read — opinions, not gospel)
-- **The corpus is Erdős-heavy (600/900), which biases survivors toward Erdős.** To actually exploit the
-  low-saturation alpha thesis, the next ingest should prioritize **more curated Tier-A lists +
-  compilation-expansion**, not more Erdős. Right now we're somewhat fighting our own thesis by volume.
+- **⭐ THE ERDŐS-BIAS DIAGNOSIS (2026-06-26, quantified — Nikol flagged it, data confirmed it).** The 23
+  finalists are 18 Erdős / 4 arXiv / 1 IQOQI, which looks like the funnel loves Erdős. **It does not — the
+  rubric actively PENALIZES Erdős; the bias is structural (volume + kill-search attrition):**
+  - Per-source avg composite: **COLT 3.765 (highest) · IQOQI 3.619 · arXiv 3.282 · Erdős 3.237 (lowest).**
+    `llm_saturation_inv`: COLT 2.80 · arXiv 2.78 · IQOQI 2.50 · **Erdős 2.27 (correctly penalized).** The
+    curated low-saturation lists score *higher per problem*, exactly as designed.
+  - **Cause 1 — volume:** corpus is 67% Erdős (548/866 scored). The global top-50 that reach kill-search
+    were **34 Erdős / 9 arXiv / 4 IQOQI / 4 COLT** — Erdős wins on sheer count despite the lowest mean.
+  - **Cause 2 — attrition:** all 4 COLT that reached Stage-3 were RED-killed (ML-theory resolves fast).
+    The single highest-scoring problem in the whole run (`awasthi23a`, composite 4.679 — above EVERY Erdős
+    finalist) was RED-killed as already-resolved. So COLT → **0 finalists** despite the best average.
+  - **Note:** the #1 finalist overall is NOT Erdős — arXiv `1712.01960` diversity→ℓ1 (comp 4.936, sparse
+    literature, no AI attention found). 5 non-Erdős survivors total (4 arXiv + 1 IQOQI).
+  - **TWO LEVERS TO FIX (decided this session — do NOT deep-pass the current Erdős-heavy set first):**
+    - **Lever A (real fix): broaden the corpus, then re-run** — compilation-expansion (highest ROI) +
+      more Tier-A low-saturation ingesters (§4). This is the alpha thesis; the funnel can only surface
+      what's in the barrel, and the barrel is 67% Erdős.
+    - **Lever B (cheap, immediate, ~20 min): source-diversity quota at Stage-4** — change `review/report.py`
+      to take top-N *per source* (or cap Erdős's share) instead of a global top-50, so the best
+      COLT/IQOQI/arXiv problems surface with zero new ingest or spend. NOT YET IMPLEMENTED.
 - **"0 GREEN, all AMBER" is the real finding.** The bar — genuinely-open AND tractable-in-a-week AND
   self-certifying AND novel — is high. The recurring amber risk is *"a one-off small-n example won't be
   publishable; you need a scalable/parametric certificate."* **Phase II should therefore target problems
@@ -149,6 +178,13 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - Light tech debt: Stage-1 dedup is lexical (fine for now); arXiv ingester treats plural-title papers as
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
-## 7. IMMEDIATE NEXT ACTION (suggested first thing in the new session)
-Run the post-move checklist (§0), confirm the DB reads 900, skim `review/finalists_detailed.md`, then ask
-Nikol: **gpt-5.5-pro deep pass on the top ~8 → then pick problems for Phase II?** (My recommendation.)
+## 7. IMMEDIATE NEXT ACTION (updated 2026-06-26)
+**Decision this session:** the gpt-5.5-pro deep pass is now ON HOLD — running it on the current
+Erdős-heavy finalist list would double down on exactly the volume bias Nikol flagged (§6). New plan:
+1. **Lever B first (cheap, ~20 min):** add a source-diversity quota to `review/report.py` (top-N per
+   source / cap Erdős share) and regenerate `finalists.md` — re-balances what we already have, $0 spend.
+2. **Lever A (real fix):** build the **compilation-expansion pass** (highest ROI — 13 top arXiv survey
+   papers → ~150–250 new low-saturation problems) + 2–3 more Tier-A ingesters (West, Barbados,
+   Brass–Moser–Pach, Hannover QI). Then re-run the funnel.
+3. **THEN** the gpt-5.5-pro deep pass on a genuinely diversified finalist list → pick 1–3 for Phase II.
+Awaiting Nikol's go-ahead on sequencing (Lever B now vs. straight to compilation-expansion).
