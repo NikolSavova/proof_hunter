@@ -1,0 +1,14 @@
+# Secrets — NEVER commit. Key now lives at ~/.config/proof_hunter/openai_key.txt
+gay_and_evil_key.txt
+*key*.txt
+*.key
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store

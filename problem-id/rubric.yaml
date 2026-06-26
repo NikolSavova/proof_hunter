@@ -1,0 +1,37 @@
+# Problem-triage rubric — v1 (LOCKED 2026-06-25, PROBLEM_ID_PIPELINE.md §6/§12).
+# Edit deliberately; the DB is durable so re-scoring is cheap.
+version: 1
+
+# Each axis scored 1-5 by the triage model. composite = (Σ w·score)/(Σ w), 0-5, + boosts.
+weights:
+  self_certifying:      3.0   # success = object/certificate/Lean stmt anyone can check  (dominant)
+  llm_saturation_inv:   2.5   # inverse of how mechanically-swept the problem/source is   (dominant)
+  ai_tractability:      2.5   # Engine A (cross-domain lemma / quant-extension) or B (search) could crack it
+  verifiability:        2.0   # Lean-formalizable / certificate / re-runnable evaluator
+  crowdedness_inv:      2.0   # inverse of citation-velocity + recent activity + hot-seminar presence
+  meaningfulness:       1.5   # named / curated-by-a-leader / people would care
+  novelty_checkability: 1.5   # can we be SURE in a day it's genuinely open
+  one_week_shaped:      1.5   # a single nameable win-condition artifact
+  statability:          1.0   # one sentence to an undergrad
+
+detector_boosts:        # added to composite (capped at 5) when the flag is set
+  quantitative_extension: 0.30   # known qualitative theorem lacking an explicit rate/constant
+  construction_target:    0.20   # success = exhibit an object beating a public record (Engine B)
+  default_method_stalled: 0.15   # long-open under one dominant technique (Liam Price pattern); low-confidence
+
+# Hard gates (auto-reject regardless of composite):
+gates:
+  require_win_condition: true    # win_condition == "none" -> reject
+  reject_if_famous_impossible: true  # RH / P!=NP / Millennium-class -> reject
+
+thresholds:
+  stage2_composite_cutoff: 3.2   # auto-tuned in practice to land ~50 finalists (floor 40)
+  finalist_target: 50
+  finalist_floor: 40
+
+# Scope (spec §2, locked Q2): "moderate-wide". The model uses this to set field-fit.
+scope:
+  core: [combinatorics, graph-theory, probability, measure-theory, number-theory, quantum-information]
+  adjacent: [discrete-geometry, theoretical-cs, complexity, coding-theory, information-theory,
+             optimization, convex-analysis, machine-learning-theory, mathematical-physics, statistical-mechanics]
+  exclude_unless_self_certifying: [algebraic-geometry, geometric-topology, set-theory-forcing, pde]
