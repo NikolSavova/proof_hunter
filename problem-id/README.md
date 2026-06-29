@@ -25,7 +25,14 @@ or `$OPENAI_KEY_FILE`). Kept outside the repo; never printed/committed.
 # Stage 0 — ingest (Tier-A first). --limit for smoke tests.
 ./.venv/bin/python corpus/iqoqi.py            # IQOQI Open Quantum Problems (30)
 ./.venv/bin/python corpus/colt_pmlr.py        # COLT open-problem track (41, 2019-2025)
-# ... next: west_graphtheory.py, arxiv_openproblems.py, erdos.py, oeis.py
+./.venv/bin/python corpus/west_graphtheory.py # Douglas West graph-theory conjectures (~33, Tier-A)
+./.venv/bin/python corpus/arxiv_openproblems.py  # arXiv "open problem(s)" papers
+
+# Stage 0.5 — compilation-expansion: split survey / "open problems in X" papers into
+# individual child problems (LLM, scope-aware, idempotent). Surveys score low AS A UNIT
+# but hide our best low-saturation single problems, so we do NOT gate on parent composite.
+./.venv/bin/python corpus/expand_compilations.py --dry --limit 3   # preview extraction
+./.venv/bin/python corpus/expand_compilations.py --workers 3       # expand all un-expanded compilations
 
 # Stage 1 — cheap LLM-free filter + dedup (ingested -> prefiltered|rejected|duplicate)
 ./.venv/bin/python triage/filter.py
@@ -33,6 +40,12 @@ or `$OPENAI_KEY_FILE`). Kept outside the repo; never printed/committed.
 # Stage 2 — batch triage (gpt-5-mini, structured output, your key)
 ./.venv/bin/python triage/score.py            # scores all prefiltered/ingested
 ./.venv/bin/python triage/score.py --recompute  # re-derive composites after editing rubric.yaml (no API)
+
+# Stage 2.5 — research-grade gate (for expansion children): reject children of recreational/
+# benchmark/applied-engineering/deep-machinery survey papers per ../PROBLEM_CRITERIA.md. Run
+# AFTER expansion (idempotent). --dry to preview the drop list before applying.
+./.venv/bin/python triage/research_grade_gate.py --dry   # preview which parents/children get dropped
+./.venv/bin/python triage/research_grade_gate.py         # apply (rejects junk children)
 
 # Stage 3 — kill-search top finalists (gpt-5.5-pro + web search; EXPENSIVE, throttled)
 ./.venv/bin/python killsearch/killsearch.py --top 50

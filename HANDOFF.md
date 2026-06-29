@@ -92,9 +92,31 @@ killsearch/killsearch.py (Stage3) → review/report.py (Stage4)      [orchestrat
 (auto-loaded session protocol: START = remind to set auto-accept/high-effort/ultracode + pull + read
 this file; CLOSE = write the handoff + commit/push), plus `/load` (run the opening protocol) and
 `/handoff` (run the close protocol) slash commands in `.claude/commands/`. API key relocated out of the
-repo (§0). **Run `/handoff` at the end of every working session so the other person can pull current state.**
+repo (§0). SSH auth configured per-machine. **Run `/handoff` at the end of every working session.**
 
-**Top candidates from the run (for Phase II) — ON HOLD pending the §6/§7 corpus-broadening decision:**
+**⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
+- **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good
+  problem."** Nikol owns/edits it; the automated gates approximate it. **Key principle (Nikol, this
+  session): never penalize elementary/olympiad-style problems — exclude only CLOSED ones** (Erdős #1196
+  is the model). All selection prompts now key on openness + research-grade, not statement difficulty.
+- **Compilation-expansion built** (`corpus/expand_compilations.py`): fetches survey papers' full text
+  (ar5iv/arXiv-HTML), LLM-extracts individual in-scope open problems as child records (`<parent>#<n>`),
+  marks parents `expanded`. Scope-aware, idempotent, retry/backoff. **→ +1301 children** from ~150
+  in-scope surveys (20 old-style pre-2007 arXiv ids unexpanded = ar5iv can't resolve; low priority).
+- **Research-grade gate built + APPLIED** (`triage/research_grade_gate.py`): re-judges each expansion
+  PARENT against `PROBLEM_CRITERIA.md` §3 and rejects children of recreational/benchmark/applied-eng/
+  deep-machinery papers. **Dropped 34 parents → rejected 403 junk children** (wireless/RL/federated-
+  learning/II₁-factors/alg-geom/Ibn-al-Khawwām historical).
+- **West graph-theory ingester built** (`corpus/west_graphtheory.py`): 32 curated named conjectures
+  (Tier-A, Nikol's domain). (Hannover OpenQIProblemsWiki was unreachable — skipped.)
+- **Result: clean top-50 (stage=triaged) spans combinatorics 32 / number-theory 14 / graph-theory 13 /
+  probability 12 / optimization 9 / discrete-geometry 8 / TCS 6** + group theory, coding, order theory.
+  Genuinely diverse across home fields (NOT an Erdős monoculture). Corpus now: 1136 triaged, 565
+  filtered, 411 rejected, 23 old-finalist, 28 deep-rejected. **Session spend ≈ $5-8** (gpt-5-mini bulk).
+- **NOTE:** the new diversified top is stage=`triaged` (NOT yet kill-searched). The 23 Erdős AMBER
+  finalists from run-1 are stage=`finalist` (already kill-searched). Final Phase-II pool = both.
+
+**Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
    Kohonen 2017 upper `85/294`, Yu 2015 lower. **Concrete attack:** SAT/MILP search for a better
    *segment-placement certificate* beating Kohonen's `85/294` — scalable & Lean-checkable. Strongest
@@ -105,21 +127,21 @@ repo (§0). **Run `/handoff` at the end of every working session so the other pe
    duality attack with rational certificates.
 
 ## 4. WHAT STILL NEEDS TO BE BUILT
-**Pipeline scale-up (the "bigger intake" we discussed — currently ~900, goal tens-of-thousands):**
-- [ ] **Compilation-expansion pass** (HIGH PRIORITY). 13/50 top arXiv hits are *survey papers listing
-  ~10-20 problems each*, ingested as one record. Build an LLM step that splits each compilation into
-  individual problem records, then triages those. The surveys likely hide great single problems.
-- [ ] **More high-volume ingesters:** DeepMind `formal-conjectures` Lean repo (git clone + parse .lean
-  — pre-formalized = verifiability solved); **OEIS** (unknown-next-term / conjectured-property = Engine-B
-  targets); **full-text arXiv mining** (grep "we conjecture / remains open" in PDFs — the real
-  tens-of-thousands, noisy, biggest build); automated-conjecture DBs (Graffiti/TxGraffiti, House of Graphs).
-- [ ] **More Tier-A curated lists** (the alpha): more COLT years, Douglas West's graph-theory page,
-  Barbados workshop PDFs, Brass–Moser–Pach discrete-geometry, MathOverflow `open-problem` tag,
-  IQOQI sibling lists (Hannover OpenQIProblemsWiki). Pattern: copy `corpus/iqoqi.py` or `colt_pmlr.py`.
-- [ ] **gpt-5.5-pro deep pass** on the top ~8 finalists (higher-confidence novelty read before
-  committing a week). NOTE: org TPM=200k makes gpt-5.5-pro slow/fragile — throttle hard (it's wired in
-  `killsearch.py` via background-mode + 70s backoff; pass `--model gpt-5.5-pro`).
-- [ ] Optional: embeddings-based dedup (Stage-1 currently uses lexical Jaccard ≥0.80 on titles).
+**Pipeline scale-up (the "bigger intake" — now at 2206, goal tens-of-thousands):**
+- [x] ✅ **Compilation-expansion pass** — DONE (`corpus/expand_compilations.py`, +1301 children) + the
+  **research-grade gate** (`triage/research_grade_gate.py`) to de-noise it. See §3.
+- [x] ✅ **One more Tier-A ingester** — Douglas West graph theory DONE (`corpus/west_graphtheory.py`, 32).
+- [ ] **Kill-search the new diversified top** (IMMEDIATE NEXT — see §7). The new arXiv-children + West
+  problems are stage=`triaged`, NOT yet kill-searched. Run Stage-3 on the top ~50 to find genuinely-open
+  ones: `./.venv/bin/python killsearch/killsearch.py --top 50 --model gpt-5.5`. ~$10-25.
+- [ ] **More high-volume ingesters:** DeepMind `formal-conjectures` Lean repo; **OEIS**; **full-text
+  arXiv mining**; automated-conjecture DBs (Graffiti/TxGraffiti, House of Graphs).
+- [ ] **More Tier-A curated lists:** more COLT years, Barbados PDFs, Brass–Moser–Pach, MathOverflow
+  `open-problem` tag. (Hannover OpenQIProblemsWiki was UNREACHABLE 2026-06-29 — retry later.)
+- [ ] **gpt-5.5-pro deep pass** on the top ~8 finalists once the diversified set is kill-searched (org
+  TPM=200k → throttle; `--model gpt-5.5-pro`).
+- [ ] Light: old-style pre-2007 arXiv ids (20 compilations) don't expand (ar5iv can't resolve the
+  archive-prefixed id); embeddings dedup; a couple applied stragglers survived the gate (kill-search catches).
 
 **Phase II — the solve sprint (NOT STARTED):** pick 1–3 finalists from the dossier and actually attack
 them with Engines A/B + Lean. The 7-day plan is in `META_GUIDE.md` §5.
@@ -154,13 +176,12 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
     finalist) was RED-killed as already-resolved. So COLT → **0 finalists** despite the best average.
   - **Note:** the #1 finalist overall is NOT Erdős — arXiv `1712.01960` diversity→ℓ1 (comp 4.936, sparse
     literature, no AI attention found). 5 non-Erdős survivors total (4 arXiv + 1 IQOQI).
-  - **TWO LEVERS TO FIX (decided this session — do NOT deep-pass the current Erdős-heavy set first):**
-    - **Lever A (real fix): broaden the corpus, then re-run** — compilation-expansion (highest ROI) +
-      more Tier-A low-saturation ingesters (§4). This is the alpha thesis; the funnel can only surface
-      what's in the barrel, and the barrel is 67% Erdős.
-    - **Lever B (cheap, immediate, ~20 min): source-diversity quota at Stage-4** — change `review/report.py`
-      to take top-N *per source* (or cap Erdős's share) instead of a global top-50, so the best
-      COLT/IQOQI/arXiv problems surface with zero new ingest or spend. NOT YET IMPLEMENTED.
+  - **TWO LEVERS TO FIX (decided 2026-06-26):**
+    - **Lever A (real fix): broaden the corpus** — ✅ **DONE 2026-06-29** (compilation-expansion +1301,
+      West +32, research-grade gate −403 junk; corpus 900→2206, top-50 now field-diverse). See §3.
+    - **Lever B (cheap source-diversity quota in `review/report.py`)** — NOT done, and **likely now
+      unnecessary**: Lever A diversified the corpus directly, so a quota may be moot. Reassess after the
+      diversified kill-search. (If still wanted: take top-N per source instead of a global top-50.)
 - **"0 GREEN, all AMBER" is the real finding.** The bar — genuinely-open AND tractable-in-a-week AND
   self-certifying AND novel — is high. The recurring amber risk is *"a one-off small-n example won't be
   publishable; you need a scalable/parametric certificate."* **Phase II should therefore target problems
@@ -178,13 +199,14 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - Light tech debt: Stage-1 dedup is lexical (fine for now); arXiv ingester treats plural-title papers as
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
-## 7. IMMEDIATE NEXT ACTION (updated 2026-06-26)
-**Decision this session:** the gpt-5.5-pro deep pass is now ON HOLD — running it on the current
-Erdős-heavy finalist list would double down on exactly the volume bias Nikol flagged (§6). New plan:
-1. **Lever B first (cheap, ~20 min):** add a source-diversity quota to `review/report.py` (top-N per
-   source / cap Erdős share) and regenerate `finalists.md` — re-balances what we already have, $0 spend.
-2. **Lever A (real fix):** build the **compilation-expansion pass** (highest ROI — 13 top arXiv survey
-   papers → ~150–250 new low-saturation problems) + 2–3 more Tier-A ingesters (West, Barbados,
-   Brass–Moser–Pach, Hannover QI). Then re-run the funnel.
-3. **THEN** the gpt-5.5-pro deep pass on a genuinely diversified finalist list → pick 1–3 for Phase II.
-Awaiting Nikol's go-ahead on sequencing (Lever B now vs. straight to compilation-expansion).
+## 7. IMMEDIATE NEXT ACTION (updated 2026-06-29)
+**Lever A is DONE** — corpus broadened (900→2206) and de-noised (−403 junk via the research-grade gate);
+the top-50 is now field-diverse, not an Erdős monoculture. Next:
+1. **Kill-search the new diversified top** (the actual hunt): the new arXiv-children + West problems are
+   stage=`triaged`, NOT yet kill-searched. Run Stage-3 to find which are *genuinely open*:
+   `cd problem-id && ./.venv/bin/python killsearch/killsearch.py --top 50 --model gpt-5.5` (~$10-25).
+   Then `review/report.py --stage finalist --top 50` for the new dossier.
+2. **THEN** gpt-5.5-pro deep pass on the top survivors (old 23 Erdős AMBER + new finalists) → pick 1–3
+   for Phase II. Lead Erdős candidate remains **#791** (scalable certificate); now with non-Erdős company.
+3. Optional follow-on ingesters / Lever B reassessment (§4, §6).
+**No blocking decision pending** — Nikol green-lit Lever A + the gate cleanup; kill-search is the next run.

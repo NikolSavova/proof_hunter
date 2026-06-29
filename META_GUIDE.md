@@ -449,6 +449,32 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-06-29 — LEVER A executed: corpus 900→2206, Erdős bias broken, then de-noised (Nikol session)
+- **Built compilation-expansion** (`corpus/expand_compilations.py`): fetches survey-paper full text
+  (ar5iv/arXiv-HTML), LLM-extracts individual in-scope open problems as child records, idempotent +
+  retry/backoff. First pass hit widespread OpenAI connection errors (only 160 children); after adding
+  retries a re-run recovered the rest → **+1301 children** from ~150 in-scope surveys.
+- **Built West graph-theory ingester** (`corpus/west_graphtheory.py`, +32 named conjectures, Tier-A).
+  Hannover OpenQIProblemsWiki was unreachable (skipped).
+- Triaged the 1313 new (gpt-5-mini, 0 failures). **Top-50 flipped from 18/23 Erdős to mostly arXiv
+  children — the structural Erdős-volume bias broke.** But the raw top had NOISE (13th-c. recreational
+  arithmetic, AI-benchmark/meta, applied wireless/RL) that scored high on self-certifying + low-saturation.
+- **⭐ Wrote `PROBLEM_CRITERIA.md`** (repo root) — the human-owned strict spec of a "good problem."
+  **Nikol's key correction: NEVER penalize elementary/olympiad-style problems; exclude only CLOSED ones**
+  (Erdős #1196 is the model — elementary statement = a PLUS). All selection prompts re-keyed on openness +
+  research-grade, not statement difficulty. (Saved as a file-memory.)
+- **Built + applied the research-grade gate** (`triage/research_grade_gate.py`): re-judges each expansion
+  parent vs the criteria, rejects children of recreational/benchmark/applied-eng/deep-machinery papers.
+  **Dropped 34 parents → rejected 403 junk children.** Borderline drops (greedy-algos = Banach approx,
+  Caristi = fixed-point) confirmed out; Ibn al-Khawwām dropped as historical.
+- **Result:** clean top-50 spans combinatorics 32 / number-theory 14 / graph-theory 13 / probability 12 /
+  optimization 9 / discrete-geometry 8 / TCS 6 + group theory, coding, order theory. Genuinely diverse.
+  Corpus: 1136 triaged, 565 filtered, 411 rejected, 23 old-finalist, 28 deep-rejected. **Spend ≈ $5-8.**
+- **Decisions:** Lever B (source-diversity quota) likely now moot — Lever A diversified directly.
+  **Next: kill-search the new diversified top** (stage=triaged, not yet Stage-3) → then deep pass +
+  Phase II pick. Final candidate pool = 23 Erdős AMBER (run-1) + new diversified finalists.
+- Infra earlier this session: SSH auth wired so `/load` pulls and `/handoff` pulls+pushes automatically.
+
 ### 2026-06-26 (PM) — GitHub collaboration setup + Erdős-bias diagnosis (Nikol session)
 - **Repo went to GitHub** (`github.com/NikolSavova/proof_hunter`) for Nikol + Sihao to share. **API key
   secured:** moved `gay_and_evil_key.txt` → `~/.config/proof_hunter/openai_key.txt` (outside repo, 600),
