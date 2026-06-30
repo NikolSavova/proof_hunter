@@ -449,6 +449,42 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-06-30 — Deep pass COLLECTED + deeppass.py made durable/resumable (Sihao session, first machine setup)
+- **Machine setup:** fresh clone on Sihao's Mac. Installed GitHub CLI + authed (SihaoHuang, HTTPS); set
+  git identity; recreated `problem-id/.venv` (post-clone, as expected — see §0); placed the OpenAI key at
+  `~/.config/proof_hunter/openai_key.txt` (perms 600, outside repo). DB sanity = 2233 problems. All good.
+- **Diagnosis of the stuck deep pass:** Nikol's pro deep pass (prior session) ran hours with no synced
+  progress. Root cause was the code, not the model: `deeppass.py` wrote ONLY to a local, uncommitted
+  `review/deeppass_run2.md` AND truncated it (`OUT.write_text`) at the start of every run → no resume, and
+  nothing reached the repo. Selection also keyed on a hardcoded path to Nikol's machine.
+- **Fix — rewrote `killsearch/deeppass.py` to be durable + resumable** (still NON-DESTRUCTIVE):
+  adds a `deeppass` DB column and writes each verdict the instant it completes (syncs via the DB across
+  handoffs); restarts SKIP already-verdicted finalists (`--force` to redo); run-2 ids parsed from the
+  committed dossier (machine-independent); the .md is now a rendered view of the DB. `killsearch`/`stage`
+  untouched. Validated parse/column/selection/resume with zero API spend before launching.
+- **Ran the deep pass on the top-8 run-2 finalists.** Started on gpt-5.5-**pro** but it was ~40+ min/problem
+  (0/8 after 42 min wall, 3s CPU — alive but waiting on the slow background response). Switched to
+  **`gpt-5.5`** (Sihao's call; pro never landed a verdict) → all 8 done in ~15 min, streamed to DB.
+- **Sihao's read: 1 GO / 4 MAYBE / 3 NO-GO** (GO = `2410.09897v1#13` Bruhat; MAYBE = `2406.00790v2#2`
+  R(e,m), `2511.18217v1#2` R-stadium, `2511.18217v1#7` rational-pt networks, `1705.04055v1#3` pattern;
+  NO-GO = `1805.10452v3`, `2509.25446v3#17`, `2505.15351v1#17`). Preserved in `review/deeppass_run2_sihao.md`.
+- **🔬 CROSS-EXAMINATION (the important part).** Turned out **Nikol ran the same top-8 deep pass in parallel**
+  (git collision on push). Her read = **0 GO / 2 MAYBE / 6 NO-GO** — stricter and better-sourced. The key
+  delta: Sihao rated **Bruhat a GO**; Nikol's read surfaced **Brenti Conj 2.11** + the exact missing large
+  Weyl cases (A₆₊, B₅-short, B₆₊, D₆₊, E₆) and correctly downgraded it to **MAYBE** (open, but the
+  publishable bar needs the big groups). This is the "never ship a single-model read — cross-examine" rule
+  paying off: the disagreement is the finding. **Reconciliation (decided with Sihao): defer to the
+  conservative, more-sourced read.** Consensus = **R-stadium `2511.18217v1#2` (Engine B) is the one robust
+  survivor both rate MAYBE**; Bruhat is a real-but-harder MAYBE; the rest NO-GO. Both read files kept
+  (Nikol's `deeppass_run2.md` canonical; Sihao's `deeppass_run2_sihao.md`); HANDOFF §3/§7 reflect the synthesis.
+- **Model lesson (both sessions hit it independently):** gpt-5.5-**pro** is unusable for a batch on this
+  org's 200k TPM (Sihao saw ~40+ min/problem then switched; Nikol saw every Pro call exhaust retries).
+  `deeppass.py` default is now **gpt-5.5**; Pro only for 1-2 hand-picked `--ids`.
+- **Open question / next:** deep pass is INCOMPLETE — only top-8-of-22 vetted; the run-1 Erdős anchors
+  (#791, diversity→ℓ1, #653) + the other 14 run-2 finalists are NOT deep-passed. Finish those (now cheap:
+  durable + resumable), THEN Nikol picks 1–3 Phase II targets. **Spend this session ≈ $1-3** (gpt-5.5, 8
+  problems; the pro attempt produced no billable completion).
+
 ### 2026-06-30 — RUN-2 kill-search on the diversified corpus + deep pass launched (Nikol session)
 - **Kill-searched the new diversified top-50** (gpt-5.5 + web, `killsearch.py --top 50 --model gpt-5.5`):
   **22 AMBER finalists, 28 RED-killed, 0 failures.** All AMBER (0 GREEN) — same conservative pattern as

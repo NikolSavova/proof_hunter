@@ -132,6 +132,22 @@ rule "erase nothing, new file only"):
   **2 MAYBE survivors, both Engine-B:** (1) **Bruhat-interval log-concavity** (Weyl groups; Brenti Conj 2.11
   — counterexample OR exhaustive verification = clean self-certifying search target; the stronger one);
   (2) **R-stadium distance minimizers** (discrete geometry; fuzzier win condition).
+- **🔬 CROSS-EXAMINED — two independent gpt-5.5 reads, consensus on the survivor (2026-06-30, Sihao).** Sihao
+  ran the same top-8 deep pass independently (collision: both sessions ran it at once). His read = 1 GO /
+  4 MAYBE / 3 NO-GO; Nikol's = 0 GO / 2 MAYBE / 6 NO-GO. **The disagreement is itself the finding** (the
+  "never ship a single-model read — cross-examine" rule working): Sihao rated **Bruhat a GO**, but Nikol's
+  read found the **Brenti Conj 2.11** framing + the exact missing large cases (A₆₊, B₅-short, B₆₊, D₆₊, E₆),
+  correctly downgrading it to **MAYBE** (open, but the publishable bar needs the big Weyl groups — not a
+  clean week-win). **Consensus = defer to the more-sourced conservative read:** the **R-stadium problem
+  `2511.18217v1#2` (Engine B) is the one robust survivor both rate MAYBE**; Bruhat `2410.09897v1#13` is a
+  real-but-harder MAYBE; everything else is NO-GO. Sihao's full read is preserved in
+  `review/deeppass_run2_sihao.md` (Nikol's stays canonical in `deeppass_run2.md`).
+- **⚙️ `deeppass.py` REWRITTEN durable + resumable (Sihao).** Each verdict now writes to a new DB `deeppass`
+  column the instant it completes (syncs via the DB across handoffs — the old version wrote only to an
+  uncommitted local .md and truncated it every run, so a stopped run lost everything and couldn't resume).
+  Re-runs SKIP already-verdicted finalists (`--force` to redo); run-2 ids parsed from the committed dossier
+  (no per-machine path). NON-DESTRUCTIVE: only the new column is written; `killsearch`/`stage` untouched.
+  This makes "finish the deep pass" (below) cheap and interruptible. Default model = gpt-5.5 (both agreed).
 - **⚠️ DEEP PASS IS INCOMPLETE:** only the top-8-by-composite of the 22 were deep-passed; **the 23 run-1
   Erdős anchors (esp. #791 scalable-SAT-certificate, diversity→ℓ1 #1-overall, #653) and the other 14 run-2
   finalists were NOT deep-passed.** Those were our original strongest Engine-B bets. NEXT: deep-pass them
@@ -221,12 +237,15 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - Light tech debt: Stage-1 dedup is lexical (fine for now); arXiv ingester treats plural-title papers as
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
-## 7. IMMEDIATE NEXT ACTION (updated 2026-06-30)
-**Lever A done; run-2 kill-search done; deep pass done on top-8 (0 GO, 2 MAYBE) but INCOMPLETE.** Next:
+## 7. IMMEDIATE NEXT ACTION (updated 2026-06-30, post-cross-examination)
+**Lever A done; run-2 kill-search done; top-8 deep pass done AND cross-examined (two gpt-5.5 reads; consensus
+survivor = R-stadium `2511.18217v1#2`, Engine B) — but INCOMPLETE (only top-8 of 22; run-1 anchors un-vetted).** Next:
 1. **Finish the deep pass** — it only covered the top-8-by-composite, which yielded no GO. Deep-pass the
    un-vetted strong bets: run-1 anchors **#791, diversity→ℓ1, #653** + the other 14 run-2 finalists:
    `cd problem-id && ./.venv/bin/python killsearch/deeppass.py --ids <id1> <id2> ...` (gpt-5.5; ~2 min each).
    (run-1 ids are stage=finalist; `deeppass.py select()` excludes them by default, so pass them via `--ids`.)
+   **deeppass.py is now durable + resumable** — verdicts persist to the DB `deeppass` column per problem and
+   re-runs skip done ones, so this can be stopped/resumed freely and survives a handoff.
 2. **Nikol picks 1–3 Phase II targets** from the full GO/MAYBE shortlist + his read of the dossiers
    (`finalists_run2_detailed.md`, `finalists_detailed.md`, `deeppass_run2.md`). Human call.
 3. **Start Phase II — the solve sprint** (§5 / META_GUIDE §5): Engine A (lemma/quant-extension) + Engine B
