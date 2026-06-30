@@ -113,8 +113,22 @@ repo (§0). SSH auth configured per-machine. **Run `/handoff` at the end of ever
   probability 12 / optimization 9 / discrete-geometry 8 / TCS 6** + group theory, coding, order theory.
   Genuinely diverse across home fields (NOT an Erdős monoculture). Corpus now: 1136 triaged, 565
   filtered, 411 rejected, 23 old-finalist, 28 deep-rejected. **Session spend ≈ $5-8** (gpt-5-mini bulk).
-- **NOTE:** the new diversified top is stage=`triaged` (NOT yet kill-searched). The 23 Erdős AMBER
-  finalists from run-1 are stage=`finalist` (already kill-searched). Final Phase-II pool = both.
+**RUN-2 kill-search DONE (2026-06-30): diversified top-50 → 22 AMBER finalists, 28 RED-killed** (gpt-5.5
++ web). All 22 AMBER (0 GREEN — same conservative pattern as run-1). NON-DESTRUCTIVE outputs (Nikol's
+rule "erase nothing, new file only"):
+- `review/finalists_run2.md` (table) + `review/finalists_run2_detailed.md` (full dossier — **the 22
+  problems for Nikol to examine individually**). Run-1 files UNTOUCHED + backed up to
+  `review/finalists_run1.md` / `finalists_run1_detailed.md`. New reporter: `review/report_run2.py`
+  (reads the snapshot of run-1 ks-ids at scratchpad `prior_ks_ids.txt`; never touches run-1 files).
+- Strong NEW non-Erdős targets (didn't exist before Lever A): spectral-radius extremal R(e,m)/W(w),
+  Weil sums over finite fields, Bruhat-interval/Weyl-group conjecture, stadium-boundary + rational-point
+  discrete geometry, numerical-semigroup cluster, pattern-avoidability, list-packing graphs, zero-sum.
+  (2 stragglers to ignore: #11 "release a dataset" ML-benchmark, #22 multiple-access channel.)
+- **⏳ IN FLIGHT at handoff:** **deep pass running** (bg, `killsearch/deeppass.py`, gpt-5.5-pro + web,
+  high effort, top-8 run-2 finalists) → writes ONLY to `review/deeppass_run2.md` (incremental append,
+  NO DB writes). Gives GO/MAYBE/NO-GO + first concrete step per problem. **To resume: check that file /
+  re-run `./.venv/bin/python killsearch/deeppass.py --top 8` for any that failed (gpt-5.5-pro is
+  TPM-flaky).** Final Phase-II pool = 22 run-2 AMBER + 23 run-1 Erdős AMBER (45 total, diversified).
 
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
@@ -199,14 +213,14 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - Light tech debt: Stage-1 dedup is lexical (fine for now); arXiv ingester treats plural-title papers as
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
-## 7. IMMEDIATE NEXT ACTION (updated 2026-06-29)
-**Lever A is DONE** — corpus broadened (900→2206) and de-noised (−403 junk via the research-grade gate);
-the top-50 is now field-diverse, not an Erdős monoculture. Next:
-1. **Kill-search the new diversified top** (the actual hunt): the new arXiv-children + West problems are
-   stage=`triaged`, NOT yet kill-searched. Run Stage-3 to find which are *genuinely open*:
-   `cd problem-id && ./.venv/bin/python killsearch/killsearch.py --top 50 --model gpt-5.5` (~$10-25).
-   Then `review/report.py --stage finalist --top 50` for the new dossier.
-2. **THEN** gpt-5.5-pro deep pass on the top survivors (old 23 Erdős AMBER + new finalists) → pick 1–3
-   for Phase II. Lead Erdős candidate remains **#791** (scalable certificate); now with non-Erdős company.
-3. Optional follow-on ingesters / Lever B reassessment (§4, §6).
-**No blocking decision pending** — Nikol green-lit Lever A + the gate cleanup; kill-search is the next run.
+## 7. IMMEDIATE NEXT ACTION (updated 2026-06-30)
+**Lever A done; run-2 kill-search done; deep pass IN FLIGHT.** Next:
+1. **Collect the deep pass** (running at handoff, bg `killsearch/deeppass.py`): when done, read
+   `review/deeppass_run2.md` for the GO/MAYBE/NO-GO calls on the top-8 run-2 finalists. Re-run for any
+   that failed (gpt-5.5-pro TPM-flaky): `./.venv/bin/python killsearch/deeppass.py --top 8`.
+   Optionally also deep-pass the run-1 anchors (Erdős #791, diversity→ℓ1) via `--ids` for a head-to-head.
+2. **Nikol picks 1–3 Phase II targets** from the combined diversified pool (22 run-2 + 23 run-1 AMBER),
+   using the deep-pass GO calls + his own read of `finalists_run2_detailed.md`. This is the human call.
+3. **Start Phase II — the solve sprint** (§5 / META_GUIDE §5): stand up Engine A (lemma/quant-extension)
+   and Engine B (OpenEvolve/SAT) on the chosen targets, always shipping a Lean/certificate artifact.
+**Decision awaiting Nikol:** which 1–3 targets to commit to (after the deep pass lands).

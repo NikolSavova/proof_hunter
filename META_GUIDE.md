@@ -449,6 +449,23 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-06-30 — RUN-2 kill-search on the diversified corpus + deep pass launched (Nikol session)
+- **Kill-searched the new diversified top-50** (gpt-5.5 + web, `killsearch.py --top 50 --model gpt-5.5`):
+  **22 AMBER finalists, 28 RED-killed, 0 failures.** All AMBER (0 GREEN) — same conservative pattern as
+  run-1. The 22 span number theory / combinatorics / discrete geometry / graph theory / algebraic
+  combinatorics / coding — genuinely diverse, Nikol's wheelhouse. Strong new non-Erdős targets: spectral
+  radius R(e,m)/W(w), Weil sums, Bruhat intervals, stadium-boundary + rational-point geometry, numerical
+  semigroups, pattern avoidability, list-packing. **Spend this run ≈ $10-20.**
+- **Nikol's constraint (logged as a working rule): NEVER erase/alter existing outputs — new files only.**
+  Built `review/report_run2.py` (writes `finalists_run2.md` + `finalists_run2_detailed.md`, the 22-problem
+  dossier, excluding run-1 via a ks-id snapshot). Run-1 files untouched + backed up to `finalists_run1*.md`.
+- **Deep pass built + launched** (`killsearch/deeppass.py`, gpt-5.5-pro + web, high effort, top-8): gives
+  GO/MAYBE/NO-GO + first-concrete-step per problem; writes ONLY to `review/deeppass_run2.md`, **no DB
+  writes** (honors the erase-nothing rule). **IN FLIGHT at handoff — collect on next session** (re-run for
+  any TPM-flaky failures). This de-risks the Phase-II commitment.
+- **Next:** read the deep pass → Nikol picks 1–3 Phase II targets from the 45-problem diversified pool →
+  start the solve sprint (Engines A/B + Lean). The deep-pass GO calls + Nikol's read decide.
+
 ### 2026-06-29 — LEVER A executed: corpus 900→2206, Erdős bias broken, then de-noised (Nikol session)
 - **Built compilation-expansion** (`corpus/expand_compilations.py`): fetches survey-paper full text
   (ar5iv/arXiv-HTML), LLM-extracts individual in-scope open problems as child records, idempotent +
