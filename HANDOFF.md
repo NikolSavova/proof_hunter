@@ -124,11 +124,19 @@ rule "erase nothing, new file only"):
   Weil sums over finite fields, Bruhat-interval/Weyl-group conjecture, stadium-boundary + rational-point
   discrete geometry, numerical-semigroup cluster, pattern-avoidability, list-packing graphs, zero-sum.
   (2 stragglers to ignore: #11 "release a dataset" ML-benchmark, #22 multiple-access channel.)
-- **⏳ IN FLIGHT at handoff:** **deep pass running** (bg, `killsearch/deeppass.py`, gpt-5.5-pro + web,
-  high effort, top-8 run-2 finalists) → writes ONLY to `review/deeppass_run2.md` (incremental append,
-  NO DB writes). Gives GO/MAYBE/NO-GO + first concrete step per problem. **To resume: check that file /
-  re-run `./.venv/bin/python killsearch/deeppass.py --top 8` for any that failed (gpt-5.5-pro is
-  TPM-flaky).** Final Phase-II pool = 22 run-2 AMBER + 23 run-1 Erdős AMBER (45 total, diversified).
+- **DEEP PASS DONE (2026-06-30, `review/deeppass_run2.md`):** top-8 run-2 finalists, high effort, GO/
+  MAYBE/NO-GO. **gpt-5.5-pro UNUSABLE for batch** (org 200k TPM → every call exhausted retries and failed;
+  killed it) — re-ran with **gpt-5.5** cleanly. `deeppass.py` default now gpt-5.5 (Pro only for 1-2 hand-
+  picked). **Result: 0 GO, 2 MAYBE, 6 NO-GO** — the stronger read is far more skeptical than the cheap
+  kill-search and downgraded 6/8 (composite over-rates tractability; the "0 GREEN/GO" high-bar finding holds).
+  **2 MAYBE survivors, both Engine-B:** (1) **Bruhat-interval log-concavity** (Weyl groups; Brenti Conj 2.11
+  — counterexample OR exhaustive verification = clean self-certifying search target; the stronger one);
+  (2) **R-stadium distance minimizers** (discrete geometry; fuzzier win condition).
+- **⚠️ DEEP PASS IS INCOMPLETE:** only the top-8-by-composite of the 22 were deep-passed; **the 23 run-1
+  Erdős anchors (esp. #791 scalable-SAT-certificate, diversity→ℓ1 #1-overall, #653) and the other 14 run-2
+  finalists were NOT deep-passed.** Those were our original strongest Engine-B bets. NEXT: deep-pass them
+  (`./.venv/bin/python killsearch/deeppass.py --ids <id> ...` or extend) before Nikol commits Phase II.
+  Final Phase-II pool = 22 run-2 AMBER + 23 run-1 Erdős AMBER (45 total, diversified).
 
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
@@ -214,13 +222,14 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION (updated 2026-06-30)
-**Lever A done; run-2 kill-search done; deep pass IN FLIGHT.** Next:
-1. **Collect the deep pass** (running at handoff, bg `killsearch/deeppass.py`): when done, read
-   `review/deeppass_run2.md` for the GO/MAYBE/NO-GO calls on the top-8 run-2 finalists. Re-run for any
-   that failed (gpt-5.5-pro TPM-flaky): `./.venv/bin/python killsearch/deeppass.py --top 8`.
-   Optionally also deep-pass the run-1 anchors (Erdős #791, diversity→ℓ1) via `--ids` for a head-to-head.
-2. **Nikol picks 1–3 Phase II targets** from the combined diversified pool (22 run-2 + 23 run-1 AMBER),
-   using the deep-pass GO calls + his own read of `finalists_run2_detailed.md`. This is the human call.
-3. **Start Phase II — the solve sprint** (§5 / META_GUIDE §5): stand up Engine A (lemma/quant-extension)
-   and Engine B (OpenEvolve/SAT) on the chosen targets, always shipping a Lean/certificate artifact.
-**Decision awaiting Nikol:** which 1–3 targets to commit to (after the deep pass lands).
+**Lever A done; run-2 kill-search done; deep pass done on top-8 (0 GO, 2 MAYBE) but INCOMPLETE.** Next:
+1. **Finish the deep pass** — it only covered the top-8-by-composite, which yielded no GO. Deep-pass the
+   un-vetted strong bets: run-1 anchors **#791, diversity→ℓ1, #653** + the other 14 run-2 finalists:
+   `cd problem-id && ./.venv/bin/python killsearch/deeppass.py --ids <id1> <id2> ...` (gpt-5.5; ~2 min each).
+   (run-1 ids are stage=finalist; `deeppass.py select()` excludes them by default, so pass them via `--ids`.)
+2. **Nikol picks 1–3 Phase II targets** from the full GO/MAYBE shortlist + his read of the dossiers
+   (`finalists_run2_detailed.md`, `finalists_detailed.md`, `deeppass_run2.md`). Human call.
+3. **Start Phase II — the solve sprint** (§5 / META_GUIDE §5): Engine A (lemma/quant-extension) + Engine B
+   (OpenEvolve/SAT, Sihao's lane — the 2 MAYBE survivors are both Engine-B), always shipping a Lean/cert.
+**Decision awaiting Nikol:** finish the deep pass first, then pick targets. (Current GO/MAYBE list = just
+the 2 Engine-B MAYBEs above — too thin to commit on yet.)

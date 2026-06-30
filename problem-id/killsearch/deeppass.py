@@ -19,7 +19,10 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 import common  # noqa: E402
 import killsearch  # reuse the robust background-response poller  # noqa: E402
 
-MODEL = "gpt-5.5-pro"
+# Default to gpt-5.5 (non-pro): gpt-5.5-pro on this org's 200k TPM cannot sustain an 8-problem
+# batch (one Pro+web call saturates the minute → every call exhausts retries and fails). Use
+# `--model gpt-5.5-pro` only for 1-2 hand-picked problems, never a batch.
+MODEL = "gpt-5.5"
 OUT = pathlib.Path(__file__).resolve().parents[1] / "review" / "deeppass_run2.md"
 SNAP = ("/private/tmp/claude-501/-Users-nikolsavova-Documents-GitHub-proof-hunter/"
         "f79ab8cf-7c64-4abf-bc11-548592adad3a/scratchpad/prior_ks_ids.txt")
