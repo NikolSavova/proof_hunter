@@ -147,12 +147,23 @@ rule "erase nothing, new file only"):
   uncommitted local .md and truncated it every run, so a stopped run lost everything and couldn't resume).
   Re-runs SKIP already-verdicted finalists (`--force` to redo); run-2 ids parsed from the committed dossier
   (no per-machine path). NON-DESTRUCTIVE: only the new column is written; `killsearch`/`stage` untouched.
-  This makes "finish the deep pass" (below) cheap and interruptible. Default model = gpt-5.5 (both agreed).
-- **⚠️ DEEP PASS IS INCOMPLETE:** only the top-8-by-composite of the 22 were deep-passed; **the 23 run-1
-  Erdős anchors (esp. #791 scalable-SAT-certificate, diversity→ℓ1 #1-overall, #653) and the other 14 run-2
-  finalists were NOT deep-passed.** Those were our original strongest Engine-B bets. NEXT: deep-pass them
-  (`./.venv/bin/python killsearch/deeppass.py --ids <id> ...` or extend) before Nikol commits Phase II.
-  Final Phase-II pool = 22 run-2 AMBER + 23 run-1 Erdős AMBER (45 total, diversified).
+  This makes finishing the deep pass cheap and interruptible. Default model = gpt-5.5 (both agreed).
+- **✅ DEEP PASS EXTENDED — Sihao read now covers all 22 run-2 + 3 run-1 anchors (25 total, 2026-06-30).**
+  Ran the remaining 14 run-2 finalists + the 3 named anchors (`erdos:791`, `erdos:653`,
+  `arxiv-openproblem:1712.01960v1`). **Sihao-read tally across the 25: 4 GO / 13 MAYBE / 8 NO-GO**
+  (in `review/deeppass_run2_sihao.md` + DB `deeppass` column). Notable:
+  - **GO (4, single-model):** `1712.01960v1` diversity→ℓ1 (comp **4.94, the #1-overall problem**),
+    `2410.09897v1#13` Bruhat (⚠ Nikol's read = MAYBE via Brenti — treat as MAYBE), `2307.06787v1#4`,
+    `2406.00790v2#7` (numerical-semigroup sibling). The two new GOs came from the run-2 remainder the
+    top-8 cut had skipped — Nikol's "top-8 leaves real candidates unvetted" worry was right.
+  - **Anchors:** `erdos:791` (additive 2-basis, the Phase-II lead) = **MAYBE** (confirmed live);
+    `erdos:653` = **NO-GO** (open-ish but not a 1-week win → drop as a pick).
+  - **⚠️ CAVEAT — these 25 are Sihao's single-model read.** On the one problem both reads overlapped
+    (Bruhat), Nikol's was stricter and better-sourced. So the 4 GO / 13 MAYBE are likely OPTIMISTIC; the
+    real signal is consensus. **NEXT (see §7): cross-examine the GOs + top MAYBEs before committing.**
+  - Still un-deep-passed: the other 20 run-1 finalists (beyond the 3 anchors). Lower priority — anchors
+    were the strongest Engine-B bets; do them only if the cross-examined shortlist comes up thin.
+  - Final Phase-II pool = 22 run-2 AMBER + 23 run-1 Erdős AMBER (45 total, diversified).
 
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
@@ -237,18 +248,23 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - Light tech debt: Stage-1 dedup is lexical (fine for now); arXiv ingester treats plural-title papers as
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
-## 7. IMMEDIATE NEXT ACTION (updated 2026-06-30, post-cross-examination)
-**Lever A done; run-2 kill-search done; top-8 deep pass done AND cross-examined (two gpt-5.5 reads; consensus
-survivor = R-stadium `2511.18217v1#2`, Engine B) — but INCOMPLETE (only top-8 of 22; run-1 anchors un-vetted).** Next:
-1. **Finish the deep pass** — it only covered the top-8-by-composite, which yielded no GO. Deep-pass the
-   un-vetted strong bets: run-1 anchors **#791, diversity→ℓ1, #653** + the other 14 run-2 finalists:
-   `cd problem-id && ./.venv/bin/python killsearch/deeppass.py --ids <id1> <id2> ...` (gpt-5.5; ~2 min each).
-   (run-1 ids are stage=finalist; `deeppass.py select()` excludes them by default, so pass them via `--ids`.)
-   **deeppass.py is now durable + resumable** — verdicts persist to the DB `deeppass` column per problem and
-   re-runs skip done ones, so this can be stopped/resumed freely and survives a handoff.
-2. **Nikol picks 1–3 Phase II targets** from the full GO/MAYBE shortlist + his read of the dossiers
-   (`finalists_run2_detailed.md`, `finalists_detailed.md`, `deeppass_run2.md`). Human call.
+## 7. IMMEDIATE NEXT ACTION (updated 2026-06-30, deep pass complete on 22 run-2 + 3 anchors)
+**Lever A done; run-2 kill-search done; deep pass run on all 22 run-2 + 3 run-1 anchors (Sihao read = 4 GO /
+13 MAYBE / 8 NO-GO). The top-8 overlap was cross-examined vs Nikol's read; the broader set is single-model.** Next:
+1. **CROSS-EXAMINE the shortlist before committing (the bottleneck now is confidence, not breadth).** Sihao's
+   25-problem read is single-model and runs optimistic (Nikol's stricter read turned the Bruhat GO into a
+   MAYBE via Brenti). Run a SECOND independent read on just the **4 GO + the strongest MAYBEs** (incl. the
+   consensus R-stadium `2511.18217v1#2` + the anchor `erdos:791`) and keep only what survives BOTH:
+   `./.venv/bin/python killsearch/deeppass.py --ids <go+top-maybe ids> --force` (a fresh gpt-5.5 read), or
+   `--model gpt-5.5-pro` on ~2-3 hand-picked for max confidence. **deeppass.py is durable + resumable**, so
+   this is cheap/interruptible. (NOTE: `--force` overwrites the Sihao DB verdict for those ids — if you want
+   to keep both reads side-by-side, capture the current `deeppass_run2_sihao.md` first.)
+2. **Nikol picks 1–3 Phase II targets** from the consensus-filtered shortlist + his read of the dossiers
+   (`finalists_run2_detailed.md`, `finalists_detailed.md`, `deeppass_run2.md` = Nikol read,
+   `deeppass_run2_sihao.md` = Sihao read). Human call. Lead candidates to weigh: consensus **R-stadium**
+   (both MAYBE, Engine B); anchor **#791** (MAYBE, scalable SAT-certificate); **diversity→ℓ1 `1712.01960`**
+   (Sihao GO, comp 4.94 #1-overall — but verify with a 2nd read, no cross-exam yet).
 3. **Start Phase II — the solve sprint** (§5 / META_GUIDE §5): Engine A (lemma/quant-extension) + Engine B
-   (OpenEvolve/SAT, Sihao's lane — the 2 MAYBE survivors are both Engine-B), always shipping a Lean/cert.
-**Decision awaiting Nikol:** finish the deep pass first, then pick targets. (Current GO/MAYBE list = just
-the 2 Engine-B MAYBEs above — too thin to commit on yet.)
+   (OpenEvolve/SAT, Sihao's lane), always shipping a Lean/certificate artifact.
+**Decision awaiting Nikol:** cross-examine the GO/top-MAYBE shortlist, then pick 1–3 targets. Breadth is done;
+the open question is which survive a second independent read.

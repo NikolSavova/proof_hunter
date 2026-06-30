@@ -480,10 +480,17 @@ prior-art kill-search**; has a writeable-down win condition.
 - **Model lesson (both sessions hit it independently):** gpt-5.5-**pro** is unusable for a batch on this
   org's 200k TPM (Sihao saw ~40+ min/problem then switched; Nikol saw every Pro call exhaust retries).
   `deeppass.py` default is now **gpt-5.5**; Pro only for 1-2 hand-picked `--ids`.
-- **Open question / next:** deep pass is INCOMPLETE — only top-8-of-22 vetted; the run-1 Erdős anchors
-  (#791, diversity→ℓ1, #653) + the other 14 run-2 finalists are NOT deep-passed. Finish those (now cheap:
-  durable + resumable), THEN Nikol picks 1–3 Phase II targets. **Spend this session ≈ $1-3** (gpt-5.5, 8
-  problems; the pro attempt produced no billable completion).
+- **Extended the deep pass (same session):** ran the remaining 14 run-2 finalists + the 3 anchors
+  (`erdos:791`, `erdos:653`, `arxiv-openproblem:1712.01960v1`). **Sihao read now covers 25 problems: 4 GO /
+  13 MAYBE / 8 NO-GO.** New GOs from the run-2 remainder: `1712.01960v1` (diversity→ℓ1, comp 4.94 #1-overall),
+  `2307.06787v1#4`, `2406.00790v2#7` (+ the earlier Bruhat GO, which Nikol's read downgraded to MAYBE).
+  Anchors: `#791` = MAYBE (Phase-II lead, confirmed live), `#653` = NO-GO. The two new GOs vindicate Nikol's
+  "top-8-by-composite leaves real candidates unvetted" worry.
+- **Open question / next:** the bottleneck is now CONFIDENCE, not breadth. The 25-problem Sihao read is
+  single-model and runs optimistic (cf. the Bruhat GO→MAYBE correction). NEXT = cross-examine the 4 GO + top
+  MAYBEs (incl. consensus R-stadium `2511.18217v1#2` + anchor `#791`) with a 2nd independent read, keep only
+  what survives both, THEN Nikol picks 1–3 Phase II targets. **Spend this session ≈ $3-6 total** (gpt-5.5,
+  25 problems across two runs; the gpt-5.5-pro attempt produced no billable completion).
 
 ### 2026-06-30 — RUN-2 kill-search on the diversified corpus + deep pass launched (Nikol session)
 - **Kill-searched the new diversified top-50** (gpt-5.5 + web, `killsearch.py --top 50 --model gpt-5.5`):
