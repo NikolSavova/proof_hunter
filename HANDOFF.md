@@ -269,7 +269,28 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - Light tech debt: Stage-1 dedup is lexical (fine for now); arXiv ingester treats plural-title papers as
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
-## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE (updated 2026-06-30 EOD, Sihao)
+## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
+
+### ✅ DECISION (2026-07-01, Nikol + Claude): ENTER PHASE II. Attack **Bruhat-interval log-concavity** first.
+- **Both deep passes independently merged → 45 finalists vetted, 7 GO** (DB `deeppass` column; combined view
+  `review/deeppass_shortlist.md`; source dossiers deeppass_run2.md / _sihao.md / _remaining.md all preserved).
+- **Chose Bruhat log-concavity** (`arxiv-openproblem:2410.09897v1#13`) as the first target: rated **GO in BOTH
+  independent deep passes** (strongest cross-validation), clean self-certifying Engine-B search, low machinery.
+- **Resolved the A-vs-A′ fork:** they're the SAME first step for one problem — building the minimal
+  verifier+search for Bruhat IS both "attack it" (A) and "build the reusable loop" (A′). Do NOT build a general
+  prover-verifier framework first (that drifts toward reinventing AlphaProof). Minimal-loop-per-problem instead.
+- **FIRST CONCRETE STEP (Claude to do, awaiting Nikol's "go"):** write the exact **verifier** (~50 lines:
+  enumerate Bruhat interval [u,v] in a Weyl group → rank sequence by Coxeter length → check log-concavity
+  aₖ² ≥ aₖ₋₁·aₖ₊₁; a FAIL = a counterexample = the result) + a **brute-force baseline** over small Weyl groups
+  (A₂,A₃,B₃…). Run the dumb baseline FIRST (META §2.5). If small cases all pass → scale via OpenEvolve/search
+  (Sihao's lane). If a counterexample appears → 5-min prior-art recheck (Erdősgate) → write up with code as proof.
+- **Division of labor:** Nikol = maths (define checks, judge correctness/significance). Claude = write/run code.
+  Sihao = scale the Engine-B search. **Coordination: tell Sihao you're on Bruhat so he doesn't duplicate** (we
+  just duplicated the deep pass by working in parallel unaware).
+- **Backups (Phase II) if Bruhat dies:** R-stadium `2511.18217v1#2` (only consensus MAYBE across both reads,
+  discrete-geom Engine-B) and Erdős #791 (additive 2-basis, scalable SAT/MILP cert vs Kohonen 85/294).
+
+### Sihao's original option menu (2026-06-30 EOD) — kept for reference; the decision above chose A/A′-merged:
 **State at day-end:** deep pass done on 25 (4 GO / 13 MAYBE / 8 NO-GO, Sihao read); broad-ingest Wave 1
 (TOPP+OPG, +313 triaged); kill-search of the new top **PAUSED at 8/50 → 50 finalists** (see §3). Everything is
 committed + pushed. **You have three independent options tomorrow — pick by what you feel like doing:**

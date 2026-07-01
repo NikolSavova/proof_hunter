@@ -449,6 +449,20 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-07-01 — PHASE II DECISION: attack Bruhat log-concavity; verifier-first plan (Nikol session)
+- **Decision:** enter Phase II (solve sprint), first target = **Bruhat-interval log-concavity**
+  (`arxiv-openproblem:2410.09897v1#13`) — the only GO rated GO in BOTH independent deep passes; clean
+  self-certifying Engine-B counterexample/verification search, low machinery.
+- **Resolved Sihao's A-vs-A′ fork:** for a single problem they're the SAME first step. Building the minimal
+  verifier+search for Bruhat IS both attacking it (A) and building a reusable loop (A′). **Do NOT build a
+  general prover-verifier framework first** (drifts toward reinventing AlphaProof) — minimal-loop-per-problem.
+- **Prover-verifier loop demystified for Nikol:** the "verifier" = a tiny exact checker (for Bruhat, ~4 lines:
+  the log-concavity inequality typed out) that a search feeds candidates to; brute-force baseline FIRST (§2.5),
+  smarter search only if it stalls. Verifier is small enough to trust by inspection — that's the point.
+- **Next concrete step (Claude, awaiting Nikol's go):** write the Bruhat verifier (~50 lines) + brute-force
+  baseline over small Weyl groups; run baseline first. Division of labor: Nikol=maths, Claude=code, Sihao=scale
+  the search. **Nikol to tell Sihao he's on Bruhat** (avoid re-duplicating like the parallel deep passes). Spend ≈ $0.
+
 ### 2026-07-01 — Merged the two deep-pass runs: 45 finalists vetted, 7 GO (Nikol session)
 - **Reconciled Nikol's + Sihao's parallel deep passes without losing either.** Sihao's `deeppass.py`
   rewrite (durable DB `deeppass` column + rendered view to `deeppass_run2_sihao.md`, resumable) SUPERSEDES
