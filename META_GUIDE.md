@@ -449,6 +449,23 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-07-01 — Merged the two deep-pass runs: 45 finalists vetted, 7 GO (Nikol session)
+- **Reconciled Nikol's + Sihao's parallel deep passes without losing either.** Sihao's `deeppass.py`
+  rewrite (durable DB `deeppass` column + rendered view to `deeppass_run2_sihao.md`, resumable) SUPERSEDES
+  Nikol's `--out` approach — it already writes to a separate file AND is durable, so Nikol's local `--out`
+  edit was discarded (redundant) and Sihao's version adopted. Nikol's independent run of the other 37
+  finalists (`deeppass_remaining.md`, 36 verdicts incl. 16 Erdős-run1 anchors Sihao hadn't covered) was
+  **backfilled into the DB `deeppass` column** — gaps only, zero overwrite of Sihao's 25.
+- **DB now holds all 45 deep-pass verdicts. Combined tally: 7 GO · 18 MAYBE · 20 NO-GO.** New rendered
+  view: `review/deeppass_shortlist.md` (all GO+MAYBE; source dossiers deeppass_run2.md / _sihao.md /
+  _remaining.md all preserved). **7 GO:** 1712.01960 (diversity→ℓ1, comp 4.94), 2410.09897#13 (Bruhat-
+  interval log-concavity — GO in BOTH independent runs, strongest cross-validation), 2307.06787#4 (univariate
+  integration optimality), 2406.00790#7 (numerical semigroups W(w)), erdos:838 (planar convex subsets —
+  ⚠️ run-1 flagged mis-stated win-cond, scrutinize), erdos:112 (k(n,m) tournaments), 2511.01306 (ternary
+  cyclic codes). All Engine-B or both.
+- **Next: Nikol picks 1–3 Phase II targets from the 7 GO** (Bruhat log-concavity is the cross-validated
+  standout, clean Engine-B search). Also open: Sihao's Option A' (build a prover-verifier loop first).
+
 ### 2026-06-30 — BROAD INGEST Wave 1 (TOPP + Open Problem Garden) + sharpened source thesis (Sihao session)
 - **Strategic refinement (Sihao flagged it):** the alpha is NOT "any un-swept source" — it's the
   **intersection of low-LLM-saturation AND human-vouched-important**. Machine-generated conjecture DBs
