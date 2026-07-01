@@ -20,7 +20,7 @@
    ```bash
    cd <NEW>/problem-id
    rm -rf .venv && python3 -m venv .venv
-   ./.venv/bin/python -m pip install requests beautifulsoup4 lxml pyyaml openai feedparser
+   ./.venv/bin/python -m pip install requests beautifulsoup4 lxml pyyaml openai feedparser pymupdf
    ```
 2. **OpenAI key now lives OUTSIDE the repo** at `~/.config/proof_hunter/openai_key.txt` (moved there
    2026-06-26 so it is never committed to GitHub; scrubbed from git history too). Both consumers point
@@ -186,6 +186,45 @@ rule "erase nothing, new file only"):
   so it continues from #9 with no re-spend. Kill-search is slow (~1-3 min/problem, gpt-5.5+web); the stopped
   run was a clean day-end checkpoint (each verdict is committed per-problem, so nothing was lost).
 
+**🌱 BROAD INGEST Wave 2 — Kourovka Notebook + Dagstuhl Reports (2026-07-01, Sihao). Corpus 2677 → 3284.**
+Widened the pipeline with two NEW Tier-A ingesters (both fully filtered + triaged into the funnel):
+- **`corpus/kourovka.py`** — the Kourovka Notebook (Unsolved Problems in Group Theory), from the arXiv
+  LaTeX e-print of `1401.0300` (ar5iv can't render the ~250pp doc). Splits `\bmp…\emp` problem blocks,
+  **cuts at the "Archive of solved" boundary so only currently-OPEN problems ingest**, defaults to recent
+  issues (≥18, i.e. 2014–2026, ~422 problems; `--since-issue`/`--all` to widen). Two correctness catches:
+  (1) the `\otv` star = an editorial ANSWER added post-2022 → 6 answered-but-unarchived problems split off +
+  flagged `status_claimed=partially-solved` (the Erdősgate trap); (2) first title `"Kourovka N.M (Author)"`
+  collapsed under Stage-1 lexical dedup (norm_tokens drops the number → same-author problems became
+  identical → 182 false dupes) → switched titles to the problem's first sentence → 13 genuine dupes.
+  **Result: 422 ingested → 254 triaged / 155 filtered / 13 dup. Avg composite 3.326; top `kourovka:21.115` 4.84.**
+- **`corpus/dagstuhl.py`** — Dagstuhl Reports open-problem sessions (open-access, CC-BY, on DROPS). Enumerates
+  DagRep volumes→issues→per-seminar PDFs, **field-filters by seminar title** (theory/math), downloads the PDF,
+  isolates the "Open Problems" section (pymupdf — NEW venv dep), and LLM-extracts each posed problem (reuses
+  `expand_compilations.extract`). Ran bounded on volumes **13–15 (2023–2025)**. **Result: 185 ingested → 154
+  triaged / 29 filtered. Avg composite 3.761 — the HIGHEST of any source** (fresh expert workshop problems);
+  top `dagstuhl:23121#2` 4.85 (perm-pattern Wilf equivalences). Minor noise (1 systems seminar slipped the
+  scope filter) — downstream triage/kill-search gates it, as designed.
+- **Two Wave-2 sources BLOCKED / deferred:** (a) **Guy 'Unsolved Problems in Number Theory' + Brass–Moser–Pach
+  'Research Problems in Discrete Geometry'** — copyrighted Springer books, no lawful machine-readable text
+  (only borrow-scans / infringing PDFs), and their famous problems are high-saturation. Legit substitutes to
+  revisit: OEIS (open-conjecture entries) + Eppstein 'Geometry Junkyard', or Pach arXiv surveys via
+  `expand_compilations.py`. (b) **Hannover OpenQIProblemsWiki** — unreachable from our environment on ALL paths
+  (Python SSL / curl rc=28 / WebFetch ECONNRESET), same as 2026-06-29; also largely redundant with the existing
+  `iqoqi-oqp` source. Retry later, low priority.
+- **📊 NEW: pipeline dashboard + skill.** `review/pipeline_report.py` + `/pipeline-report` slash command
+  (`.claude/commands/pipeline-report.md`). Shows SOURCES (done vs backlog/blocked), a **SCREENING & SPEND**
+  table (per-gate coverage bar + model + cost tier + rough $ + done/waiting — makes the expensive $$$ stages
+  and their backlog visible), OUTCOMES, a source×stage matrix (**on by default**; `--brief` to hide), and a
+  Phase-II proof-engines block (planned, lights up when solve attempts are tagged). Editable registries at top.
+- **📄 NEW: public-facing `README.md`** at repo root — plain, professional, framed around problem-discovery as
+  the durable value as models improve at solving. (Nikol: check the Authors line — Sihao is listed "Independent",
+  Nikol "Oxford"; and it's currently unlicensed. Approach section names the curated sources — trim if you'd
+  rather not signal them publicly.)
+- **⏹ Wave-1 kill-search FINISHED this session** (was paused at 8/50). Ran the full top-50 → **finalists 50 → 73
+  (+23), deep-rejected 59 → 86 (+27).** ⚠️ **The new Kourovka/Dagstuhl problems are NOT yet kill-searched** — this
+  run fixed its top-50 at launch, before they finished triaging. They now sit in the **1,750-triaged backlog**
+  (incl. the high-composite ones), so a FRESH `killsearch --top 50` round is what screens them (see §7).
+
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
    Kohonen 2017 upper `85/294`, Yu 2015 lower. **Concrete attack:** SAT/MILP search for a better
@@ -197,17 +236,20 @@ rule "erase nothing, new file only"):
    duality attack with rational certificates.
 
 ## 4. WHAT STILL NEEDS TO BE BUILT
-**Pipeline scale-up (the "bigger intake" — now at 2206, goal tens-of-thousands):**
+**Pipeline scale-up (the "bigger intake" — now at 3284, goal tens-of-thousands):**
 - [x] ✅ **Compilation-expansion pass** — DONE (`corpus/expand_compilations.py`, +1301 children) + the
   **research-grade gate** (`triage/research_grade_gate.py`) to de-noise it. See §3.
-- [x] ✅ **One more Tier-A ingester** — Douglas West graph theory DONE (`corpus/west_graphtheory.py`, 32).
-- [ ] **Kill-search the new diversified top** (IMMEDIATE NEXT — see §7). The new arXiv-children + West
-  problems are stage=`triaged`, NOT yet kill-searched. Run Stage-3 on the top ~50 to find genuinely-open
-  ones: `./.venv/bin/python killsearch/killsearch.py --top 50 --model gpt-5.5`. ~$10-25.
-- [ ] **More high-volume ingesters:** DeepMind `formal-conjectures` Lean repo; **OEIS**; **full-text
-  arXiv mining**; automated-conjecture DBs (Graffiti/TxGraffiti, House of Graphs).
-- [ ] **More Tier-A curated lists:** more COLT years, Barbados PDFs, Brass–Moser–Pach, MathOverflow
-  `open-problem` tag. (Hannover OpenQIProblemsWiki was UNREACHABLE 2026-06-29 — retry later.)
+- [x] ✅ **Tier-A ingesters** — West graph theory (`corpus/west_graphtheory.py`, 32); Wave-1 TOPP + Open
+  Problem Garden; **Wave-2 Kourovka Notebook (`corpus/kourovka.py`, 254 triaged) + Dagstuhl Reports
+  (`corpus/dagstuhl.py`, 154 triaged) — DONE 2026-07-01.** See §3.
+- [ ] **Kill-search Kourovka + Dagstuhl (IMMEDIATE NEXT — see §7).** Their ~408 triaged problems are NOT yet
+  kill-searched (Wave-1 run finished before they triaged). Run a fresh top-50 to screen the high-composite ones:
+  `./.venv/bin/python killsearch/killsearch.py --top 50 --model gpt-5.5 --exclude-compilations`. ~$15.
+- [ ] **More high-volume ingesters:** DeepMind `formal-conjectures` Lean repo; **OEIS** (open-conjecture
+  entries); **full-text arXiv mining**. (Automated-conjecture DBs dropped — obscure but not durable, see META §8.)
+- [ ] **More Tier-A curated lists:** OEIS + Eppstein 'Geometry Junkyard' (the lawful stand-ins for the
+  copyright-blocked Guy/Brass–Moser–Pach books); Kirby's list (low-dim topology); more COLT years; Barbados PDFs;
+  MathOverflow `open-problem` tag. (Hannover OpenQIProblemsWiki still UNREACHABLE 2026-07-01 + redundant w/ iqoqi.)
 - [ ] **gpt-5.5-pro deep pass** on the top ~8 finalists once the diversified set is kill-searched (org
   TPM=200k → throttle; `--model gpt-5.5-pro`).
 - [ ] Light: old-style pre-2007 arXiv ids (20 compilations) don't expand (ar5iv can't resolve the
@@ -270,6 +312,13 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
+
+> **PIPELINE STATE after Sihao's 2026-07-01 widen (Wave 2):** corpus 2677 → **3284**; two new ingesters
+> (Kourovka +254 triaged, Dagstuhl +154 triaged); Wave-1 kill-search **finished → 73 finalists / 86 red**.
+> **Cheap warm-up if the solve side stalls:** one `killsearch --top 50 --model gpt-5.5 --exclude-compilations`
+> now screens the fresh high-composite Kourovka/Dagstuhl problems (they're in the 1,750-triaged backlog; ~$15,
+> likely +5–10 finalists). Use `/pipeline-report` for live funnel/coverage/spend. But the PRIMARY next action is
+> still Phase II ↓ — the pipeline already has plenty of vetted finalists; the scarce resource is a human solving one.
 
 ### ✅ DECISION (2026-07-01, Nikol + Claude): ENTER PHASE II. Attack **Bruhat-interval log-concavity** first.
 - **Both deep passes independently merged → 45 finalists vetted, 7 GO** (DB `deeppass` column; combined view

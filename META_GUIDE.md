@@ -449,6 +449,40 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-07-01 (later, Sihao session) — WAVE-2 WIDEN: Kourovka + Dagstuhl ingesters; pipeline dashboard; README
+- **Corpus 2677 → 3284** via two new Tier-A ingesters (both filtered + triaged into the funnel):
+  - **`corpus/kourovka.py`** — Kourovka Notebook (group theory) from the arXiv LaTeX e-print of `1401.0300`
+    (ar5iv fails on the ~250pp doc). Splits `\bmp…\emp` blocks, **cuts at the "Archive of solved" boundary so
+    only OPEN problems ingest**, defaults to issues ≥18 (2014–2026, ~422). Two catches worth remembering:
+    (i) the `\otv` star marks an editorial ANSWER added post-2022 → 6 answered-but-unarchived problems flagged
+    `partially-solved` (Erdősgate trap); (ii) a `"Kourovka N.M (Author)"` title collapsed under Stage-1 lexical
+    dedup (norm_tokens drops the number → 182 false same-author dupes) → titles now = the problem's first
+    sentence → 13 real dupes. → **254 triaged, avg composite 3.326.**
+  - **`corpus/dagstuhl.py`** — Dagstuhl Reports open-problem sessions (open-access CC-BY on DROPS). Enumerates
+    volumes→issues→per-seminar PDFs, title-filters to theory/math, pdf-extracts (pymupdf, NEW venv dep) the
+    "Open Problems" section, LLM-extracts via `expand_compilations.extract`. Bounded to volumes 13–15. → **154
+    triaged, avg composite 3.761 — HIGHEST of any source** (fresh expert workshop problems validate the thesis).
+- **Two Wave-2 sources BLOCKED (honest negatives):** Guy 'Unsolved Problems in NT' + Brass–Moser–Pach 'Research
+  Problems in Discrete Geometry' = copyrighted books, no lawful machine-readable text; famous parts are high-
+  saturation anyway → deferred (lawful stand-ins: OEIS + Eppstein 'Geometry Junkyard', or Pach arXiv surveys via
+  expand_compilations). Hannover OpenQIProblemsWiki = unreachable on all fetch paths (same as 2026-06-29) +
+  redundant with `iqoqi-oqp` → deferred. **Lesson reinforced: copyright + reachability are real source gates;
+  don't scrape infringing PDFs, don't fabricate an unreachable source's data.**
+- **Wave-1 kill-search finished** (was paused 8/50): full top-50 → **finalists 50→73 (+23), red 59→86 (+27).**
+  The new Kourovka/Dagstuhl problems are NOT in it (triaged after the run fixed its top-50) → they sit in the
+  1,750-triaged backlog; a fresh `--top 50` round screens them.
+- **Built `review/pipeline_report.py` + `/pipeline-report` skill** (`.claude/commands/pipeline-report.md`).
+  Iterated on the visual per Sihao: v1 dense matrix → v2 vertical funnel → v3 **SCREENING & SPEND** hero (per-gate
+  coverage bar + model + cost tier $/$$$ + rough $ + done/waiting) — the ask was "show clearly what we've
+  screened and where the GPT credits went." Full source×stage matrix is **on by default** (`--brief` to hide).
+  Editable SOURCE_REGISTRY / PROOF_METHODS registries at top; Phase-II engine counts light up when solve attempts
+  are tagged. Rough-spend estimate so far ~$55 on GPT (triage $6 / kill-search $44 / deep-pass $4).
+- **Wrote public-facing `README.md`** — plain/professional, framed around problem-DISCOVERY as the durable
+  value as models improve at solving (rewrote twice: first draft was hype-y "AI slop"; final is understated,
+  no time-boxing). Authors: Nikol (Oxford) / Sihao (Independent). Unlicensed placeholder.
+- **Session spend ≈ $15–20** (kill-search top-50 ~$15 + triage of 606 new problems on gpt-5-mini + Dagstuhl
+  extraction). **Open question for Nikol:** README approach section names the curated sources — keep public or trim?
+
 ### 2026-07-01 — PHASE II DECISION: attack Bruhat log-concavity; verifier-first plan (Nikol session)
 - **Decision:** enter Phase II (solve sprint), first target = **Bruhat-interval log-concavity**
   (`arxiv-openproblem:2410.09897v1#13`) — the only GO rated GO in BOTH independent deep passes; clean
