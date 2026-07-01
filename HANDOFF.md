@@ -174,6 +174,17 @@ rule "erase nothing, new file only"):
   45 finalists. Widening follow-up = kill-search the new diversified top. **Wave 2 backlog:** Kourovka
   Notebook (group theory), Kirby's list (low-dim topology), problem books (Guy, Brass–Moser–Pach),
   conference problem-session PDFs (BIRS/Oberwolfach/Dagstuhl), retry Hannover QI wiki + a source-discovery agent.
+- **⏸️ KILL-SEARCH of the new top — STARTED, PAUSED at 8/50 (2026-06-30, Sihao). RESUMABLE.** Ran
+  `killsearch/killsearch.py --top 50 --model gpt-5.5 --exclude-compilations` on the top-50 un-kill-searched
+  triaged (34 new TOPP+OPG + 16 old). **Stopped at 8/50 done → +5 new finalists (finalists 45 → 50), all
+  AMBER, all Wave-1 sources:** `topp:p34` (pseudosegment arrangements) + `topp:p48` (bounded-degree Euclidean
+  MST) [discrete geom]; `opg:ramsey_properties_of_cayley_graphs`, `opg:covering_designs` [combinatorics];
+  `opg:shannon_capacity_of_the_seven_cycle` [info theory — but FAMOUS = high-saturation, weak alpha].
+  **3 RED-killed incl. the #1-composite `opg:covering_powers_of_cycles` (4.99): prior art exists** (known 2k
+  upper bound + k+1 exact construction) → the recurring "high composite ≠ genuinely open" lesson, again.
+  **TO RESUME (42 of the 50 left):** just re-run the same command — done ones are now finalist/deep-rejected,
+  so it continues from #9 with no re-spend. Kill-search is slow (~1-3 min/problem, gpt-5.5+web); the stopped
+  run was a clean day-end checkpoint (each verdict is committed per-problem, so nothing was lost).
 
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
@@ -258,23 +269,32 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - Light tech debt: Stage-1 dedup is lexical (fine for now); arXiv ingester treats plural-title papers as
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
-## 7. IMMEDIATE NEXT ACTION (updated 2026-06-30, deep pass complete on 22 run-2 + 3 anchors)
-**Lever A done; run-2 kill-search done; deep pass run on all 22 run-2 + 3 run-1 anchors (Sihao read = 4 GO /
-13 MAYBE / 8 NO-GO). The top-8 overlap was cross-examined vs Nikol's read; the broader set is single-model.** Next:
-1. **CROSS-EXAMINE the shortlist before committing (the bottleneck now is confidence, not breadth).** Sihao's
-   25-problem read is single-model and runs optimistic (Nikol's stricter read turned the Bruhat GO into a
-   MAYBE via Brenti). Run a SECOND independent read on just the **4 GO + the strongest MAYBEs** (incl. the
-   consensus R-stadium `2511.18217v1#2` + the anchor `erdos:791`) and keep only what survives BOTH:
-   `./.venv/bin/python killsearch/deeppass.py --ids <go+top-maybe ids> --force` (a fresh gpt-5.5 read), or
-   `--model gpt-5.5-pro` on ~2-3 hand-picked for max confidence. **deeppass.py is durable + resumable**, so
-   this is cheap/interruptible. (NOTE: `--force` overwrites the Sihao DB verdict for those ids — if you want
-   to keep both reads side-by-side, capture the current `deeppass_run2_sihao.md` first.)
-2. **Nikol picks 1–3 Phase II targets** from the consensus-filtered shortlist + his read of the dossiers
-   (`finalists_run2_detailed.md`, `finalists_detailed.md`, `deeppass_run2.md` = Nikol read,
-   `deeppass_run2_sihao.md` = Sihao read). Human call. Lead candidates to weigh: consensus **R-stadium**
-   (both MAYBE, Engine B); anchor **#791** (MAYBE, scalable SAT-certificate); **diversity→ℓ1 `1712.01960`**
-   (Sihao GO, comp 4.94 #1-overall — but verify with a 2nd read, no cross-exam yet).
-3. **Start Phase II — the solve sprint** (§5 / META_GUIDE §5): Engine A (lemma/quant-extension) + Engine B
-   (OpenEvolve/SAT, Sihao's lane), always shipping a Lean/certificate artifact.
-**Decision awaiting Nikol:** cross-examine the GO/top-MAYBE shortlist, then pick 1–3 targets. Breadth is done;
-the open question is which survive a second independent read.
+## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE (updated 2026-06-30 EOD, Sihao)
+**State at day-end:** deep pass done on 25 (4 GO / 13 MAYBE / 8 NO-GO, Sihao read); broad-ingest Wave 1
+(TOPP+OPG, +313 triaged); kill-search of the new top **PAUSED at 8/50 → 50 finalists** (see §3). Everything is
+committed + pushed. **You have three independent options tomorrow — pick by what you feel like doing:**
+
+**OPTION A — 🎯 Start attacking a problem (Phase II proofs; you have Fable access tomorrow).** This is the
+whole point of the project — you don't have to run more pipeline first. Take a strong finalist and actually
+try to solve it with Fable + Lean/certificate. **Best-vetted candidates to attack:**
+  - **R-stadium `arxiv-openproblem:2511.18217v1#2`** (discrete geom, Engine B) — the ONLY problem both Sihao's
+    and Nikol's reads rate MAYBE (consensus survivor); Day-1 = periodic-strip Steiner evaluator to beat 1.75.
+  - **Erdős #791** (additive 2-basis) — MAYBE, the classic scalable SAT/MILP certificate vs Kohonen's 85/294.
+  - **diversity→ℓ1 `arxiv-openproblem:1712.01960`** — Sihao GO, comp 4.94; LP/cut-cone duality w/ rational certs.
+  - Full per-problem Day-1 step + key risk: `review/deeppass_run2.md` (Nikol read) + `deeppass_run2_sihao.md`.
+  - ⚠️ If attacking, still do a 5-min prior-art re-check first (Erdősgate rule) — the deep pass is a guide, not proof.
+
+**OPTION B — Cross-examine the shortlist first, THEN pick (higher confidence before committing a week).**
+Sihao's 25-problem read is single-model and optimistic (his Bruhat GO → Nikol MAYBE via Brenti). Second read
+on the 4 GO + top MAYBEs; keep only what survives both:
+  `./.venv/bin/python killsearch/deeppass.py --ids <go+top-maybe ids> --force` (fresh gpt-5.5), or `--model
+  gpt-5.5-pro` on 2-3 picks. (`--force` overwrites the Sihao DB verdict for those ids; copy `deeppass_run2_sihao.md`
+  first if you want both reads side-by-side.)
+
+**OPTION C — Resume the pipeline (more breadth).** The Wave-1 kill-search is paused at 8/50. Continue it:
+  `cd problem-id && ./.venv/bin/python killsearch/killsearch.py --top 50 --model gpt-5.5 --exclude-compilations`
+  → picks up at #9, no re-spend (~42 left, ~1-2 hr). Then `review/report.py`. Optional: build a Wave-2 ingester (§4).
+
+**Sihao's recommendation:** you have Fable tomorrow — spend it on **Option A** (attack R-stadium or #791), not
+more pipeline. The funnel already has 50 finalists + a vetted shortlist; the scarce resource now is a human
+actually trying to solve one. Resume the kill-search (Option C) only as a warm-up / if Option A stalls.

@@ -472,11 +472,20 @@ prior-art kill-search**; has a writeable-down win condition.
   pseudosegment arrangements 4.96, Ramsey/Cayley 4.74, sums-of-independent-RVs 4.74.** Validates the source
   choice. Caveats: composite is imperfect (kill-search still gates); "Shannon capacity of C7" surfaced high
   but is famous/higher-saturation. Triage throughput ≈ 0.7s/problem (8 concurrent gpt-5-mini workers).
-- **NOT yet done:** the new TOPP/OPG problems are stage=`triaged`, NOT kill-searched — they are NOT yet
-  comparable to the 45 finalists. Kill-searching the new diversified top is the widening follow-up (Wave 1
-  of that). **Wave 2 ingest backlog (higher-alpha, harder):** Kourovka Notebook (group theory), Kirby's
+- **Kill-search of the new top — STARTED, PAUSED at 8/50 (day-end checkpoint).** Ran `killsearch.py --top 50
+  --exclude-compilations` on the top-50 un-kill-searched triaged (34 new + 16 old). Stopped at 8 done →
+  **+5 finalists (45→50), all AMBER, all Wave-1 sources:** `topp:p34`, `topp:p48` (discrete geom),
+  `opg:ramsey_properties_of_cayley_graphs`, `opg:covering_designs`, `opg:shannon_capacity_of_the_seven_cycle`
+  (open but FAMOUS = high-saturation). **3 RED-killed incl. the #1-composite 4.99 `opg:covering_powers_of_
+  cycles`** (prior art: known 2k upper bound + k+1 construction) → composite-≠-open lesson again, and the
+  ~5/8 top-band survival rate is healthy. Resumable: re-run the same command to continue from #9 (~42 left).
+- **Wave 2 ingest backlog (higher-alpha, harder):** Kourovka Notebook (group theory), Kirby's
   list (low-dim topology), problem *books* (Guy, Brass–Moser–Pach), conference problem-session PDFs
   (BIRS/Oberwolfach/Dagstuhl), + retry Hannover QI wiki. Also brainstormed a source-discovery agent.
+- **Handoff to Nikol (has Fable access tomorrow):** three options in HANDOFF §7 — (A) start attacking a
+  finalist with Fable+Lean [recommended: R-stadium or Erdős #791], (B) cross-examine the shortlist first,
+  (C) resume the paused kill-search. Sihao's rec: use Fable for Option A — the scarce resource now is a human
+  actually trying to solve one, not more pipeline.
 
 ### 2026-06-30 — Deep pass COLLECTED + deeppass.py made durable/resumable (Sihao session, first machine setup)
 - **Machine setup:** fresh clone on Sihao's Mac. Installed GitHub CLI + authed (SihaoHuang, HTTPS); set
