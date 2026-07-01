@@ -284,6 +284,19 @@ try to solve it with Fable + Lean/certificate. **Best-vetted candidates to attac
   - Full per-problem Day-1 step + key risk: `review/deeppass_run2.md` (Nikol read) + `deeppass_run2_sihao.md`.
   - ⚠️ If attacking, still do a 5-min prior-art re-check first (Erdősgate rule) — the deep pass is a guide, not proof.
 
+**OPTION A′ — 🔁 Build a PROVER–VERIFIER LOOP first, before hand-proving with Fable (infrastructure-first).**
+Rather than manually attacking one problem, we could build a reusable automated loop — a **prover** (LLM:
+Fable/Opus proposes a proof, lemma, or explicit construction) feeding a **verifier** (Lean for proofs; SAT/MILP
+or a re-runnable certificate checker for constructions/bounds) that checks it and returns failed goals /
+counterexamples, which the prover then revises — iterating to a verified artifact. This IS the project's
+"always ship a verification artifact" rule made into a reusable engine, and it can be pointed at ANY finalist
+(esp. the Engine-B ones: R-stadium, #791). **Step 1 (do this first): have Claude research the SOTA** — e.g.
+AlphaProof, DeepSeek-Prover / Goedel-Prover, LeanDojo + Lean Copilot, Draft-Sketch-Prove, the "Aristotle"
+Lean pipeline (Erdős #728), and AlphaEvolve/OpenEvolve for the construction side — then design + build the
+loop on top of the best existing pieces (don't reinvent). THEN run it on a finalist. Trade-off: a day or two
+of build before any proof lands, but it compounds across every problem after. Weigh vs. just hand-attacking
+one with Fable (Option A).
+
 **OPTION B — Cross-examine the shortlist first, THEN pick (higher confidence before committing a week).**
 Sihao's 25-problem read is single-model and optimistic (his Bruhat GO → Nikol MAYBE via Brenti). Second read
 on the 4 GO + top MAYBEs; keep only what survives both:
@@ -295,6 +308,9 @@ on the 4 GO + top MAYBEs; keep only what survives both:
   `cd problem-id && ./.venv/bin/python killsearch/killsearch.py --top 50 --model gpt-5.5 --exclude-compilations`
   → picks up at #9, no re-spend (~42 left, ~1-2 hr). Then `review/report.py`. Optional: build a Wave-2 ingester (§4).
 
-**Sihao's recommendation:** you have Fable tomorrow — spend it on **Option A** (attack R-stadium or #791), not
-more pipeline. The funnel already has 50 finalists + a vetted shortlist; the scarce resource now is a human
-actually trying to solve one. Resume the kill-search (Option C) only as a warm-up / if Option A stalls.
+**Sihao's recommendation:** you have Fable tomorrow — spend it on the SOLVE side (**Option A** attack, or
+**Option A′** build the prover–verifier loop first), not more pipeline. The funnel already has 50 finalists +
+a vetted shortlist; the scarce resource now is turning one into a verified result. If you want a result THIS
+week, hand-attack R-stadium or #791 (A); if you're up for infra that compounds, do the SOTA research + build
+the prover–verifier loop first (A′) — likely the higher-leverage play. Resume the kill-search (C) only as a
+warm-up / if the solve side stalls.
