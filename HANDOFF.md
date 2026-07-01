@@ -164,6 +164,16 @@ rule "erase nothing, new file only"):
   - Still un-deep-passed: the other 20 run-1 finalists (beyond the 3 anchors). Lower priority — anchors
     were the strongest Engine-B bets; do them only if the cross-examined shortlist comes up thin.
   - Final Phase-II pool = 22 run-2 AMBER + 23 run-1 Erdős AMBER (45 total, diversified).
+- **🌱 BROAD INGEST Wave 1 — TOPP + Open Problem Garden (2026-06-30, Sihao). Corpus ~2233 → ~2677.**
+  New ingesters `corpus/topp.py` (78, computational/discrete geometry) + `corpus/open_problem_garden.py`
+  (366 after purging 40 wiki spam; multi-field). **313 triaged into the funnel** (TOPP 62, OPG 251).
+  Thesis sharpened (META §8): alpha = low-saturation ∩ **human-vouched-important** → **dropped machine-
+  generated conjecture DBs** (obscure but not important/durable); target human-curated, format-siloed
+  sources. Top new by composite: `opg:covering_powers_of_cycles...` **4.99** (beats the whole finalist
+  pool), `topp:p34` 4.96. **⚠️ These are stage=`triaged`, NOT kill-searched** — not yet comparable to the
+  45 finalists. Widening follow-up = kill-search the new diversified top. **Wave 2 backlog:** Kourovka
+  Notebook (group theory), Kirby's list (low-dim topology), problem books (Guy, Brass–Moser–Pach),
+  conference problem-session PDFs (BIRS/Oberwolfach/Dagstuhl), retry Hannover QI wiki + a source-discovery agent.
 
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:

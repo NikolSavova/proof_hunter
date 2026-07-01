@@ -449,6 +449,35 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-06-30 — BROAD INGEST Wave 1 (TOPP + Open Problem Garden) + sharpened source thesis (Sihao session)
+- **Strategic refinement (Sihao flagged it):** the alpha is NOT "any un-swept source" — it's the
+  **intersection of low-LLM-saturation AND human-vouched-important**. Machine-generated conjecture DBs
+  (TxGraffiti/Graffiti, House of Graphs) have the obscurity but FAIL on importance/durability: resolving an
+  arbitrary auto-generated invariant inequality isn't publishable, and they're explicit/finite → the
+  *easiest* thing for a compute-heavy lab to brute-sweep (low attention but low barrier = no durable alpha).
+  **Decision: dropped automated-conjecture DBs.** The scarce signal is *a domain expert cared enough to
+  write the problem down* — which is exactly what doesn't scale to a lab's mechanical sweep. So target
+  human-curated, format-siloed sources.
+- **Wave 1 built (2 new ingesters, house pattern → funnel-native):**
+  - `corpus/topp.py` — The Open Problems Project (Demaine/Mitchell/O'Rourke, curated since ~2001).
+    **78 ingested** computational/discrete-geometry problems (`/pN` pages, Statement+Status).
+  - `corpus/open_problem_garden.py` — openproblemgarden.org community wiki, crawls 22 topic categories.
+    **406 ingested → 40 game-cheat SPAM purged → 366 clean** (multi-field: graph theory, combinatorics,
+    algebra, geometry, logic, topology, TCS, probability). Added a high-precision spam filter (brand/cheat
+    tokens; deliberately NOT "free"/"generator"/"spins" to protect triangle-FREE, group GENERATOR, quantum
+    SPIN problems).
+- **Triaged into the funnel: 313 new problems scored** (TOPP 62 triaged/16 filtered; OPG 251 triaged/99
+  filtered/11 dup/5 gate-rejected). Corpus now ~2677. **Top new by composite: `opg:covering_powers_of_
+  cycles_with_equivalence_subgraphs` 4.99 (out-scores the entire existing finalist pool), `topp:p34`
+  pseudosegment arrangements 4.96, Ramsey/Cayley 4.74, sums-of-independent-RVs 4.74.** Validates the source
+  choice. Caveats: composite is imperfect (kill-search still gates); "Shannon capacity of C7" surfaced high
+  but is famous/higher-saturation. Triage throughput ≈ 0.7s/problem (8 concurrent gpt-5-mini workers).
+- **NOT yet done:** the new TOPP/OPG problems are stage=`triaged`, NOT kill-searched — they are NOT yet
+  comparable to the 45 finalists. Kill-searching the new diversified top is the widening follow-up (Wave 1
+  of that). **Wave 2 ingest backlog (higher-alpha, harder):** Kourovka Notebook (group theory), Kirby's
+  list (low-dim topology), problem *books* (Guy, Brass–Moser–Pach), conference problem-session PDFs
+  (BIRS/Oberwolfach/Dagstuhl), + retry Hannover QI wiki. Also brainstormed a source-discovery agent.
+
 ### 2026-06-30 — Deep pass COLLECTED + deeppass.py made durable/resumable (Sihao session, first machine setup)
 - **Machine setup:** fresh clone on Sihao's Mac. Installed GitHub CLI + authed (SihaoHuang, HTTPS); set
   git identity; recreated `problem-id/.venv` (post-clone, as expected — see §0); placed the OpenAI key at
