@@ -449,6 +449,25 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-07-03 — PHASE II DAY 1: Bruhat verifier built; frontier EXTENDED (A₆, B₅-full, D₆ all pass); prior-art re-confirmed open (Nikol session)
+- **Built `phase2/bruhat/`**: `weyl.py` (generic Weyl group from Cartan matrix, 4 independent internal
+  cross-checks) + `verify.py` (all-interval log-concavity check via up/down bitsets; min-margin +
+  min-ratio near-miss tracking). Pure Python turned out fast enough for everything up to |W|≈50k
+  (D₆'s 84.3M intervals in ~12 min) — no C port needed for the exhaustive tier.
+- **Results: every known case reproduced, then the frontier extended — A₆ (3.55M intervals), B₅
+  complete (literature only had ℓ≥20), D₆ (84.3M): ALL PASS, no counterexample.** A₇/B₆/E₆ running.
+- **Fresh prior-art check (the Erdősgate rule), 2 independent reads (Claude+web; gpt-5.5+web high,
+  ~$2):** both confirm open as of 2026-07-03, frontier exactly Brenti's OPAC list, nobody has claimed
+  our new cases. Two scare-papers (2606.11776 "Brenti's Conjecture" = the 2003 R-polynomial one;
+  2507.14033 = affine geometry) checked and cleared. Dossier: `phase2/bruhat/results/priorart_gpt55_63405.md`.
+- **Mathematical finding — the near-miss profile:** non-simply-laced = exact equality (1,2,2,2,1
+  dihedral m≥4 pattern, ratio 1.0); simply-laced min-ratio decays geometrically to 1 in rank
+  (A: 1.39/1.21/1.12/1.08; D: 1.14/1.07/1.04), witnesses always lower intervals [e,v]. H₃'s known
+  counterexample fails by only −1 ⇒ hairline failures are the live threat/hope. Open question for
+  Nikol: prove ratio ≥ 1+cλⁿ (theorem) vs find the rank where it crosses (counterexample).
+- **Division of labor set:** Nikol = structural section + judge; Claude = exhaustive tier + writeup;
+  Sihao = scaled search in A₈–A₁₂/D₇–D₉/E₇ (see HANDOFF §7 note). Session spend ≈ $2.
+
 ### 2026-07-01 (later, Sihao session) — WAVE-2 WIDEN: Kourovka + Dagstuhl ingesters; pipeline dashboard; README
 - **Corpus 2677 → 3284** via two new Tier-A ingesters (both filtered + triaged into the funnel):
   - **`corpus/kourovka.py`** — Kourovka Notebook (group theory) from the arXiv LaTeX e-print of `1401.0300`

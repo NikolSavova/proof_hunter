@@ -313,6 +313,37 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
 
+### 🚀 PHASE II IS LIVE — Bruhat attack started 2026-07-03 (Nikol session). SIHAO READ THIS:
+**We are actively working Bruhat-interval log-concavity (Brenti Conj 2.11) in `phase2/bruhat/`.
+Do NOT duplicate the verifier or the exhaustive runs — your lane is the scaled search (below).**
+- **Built:** `phase2/bruhat/weyl.py` (generic Weyl group from Cartan matrix — one implementation for
+  all types; 4 independent internal cross-checks: known |W|, BFS-length ≡ inversion-count per element,
+  Poincaré polynomial ≡ degree product, known #roots) + `verify.py` (enumerates ALL Bruhat intervals
+  via up/down bitsets, checks aₖ² ≥ aₖ₋₁aₖ₊₁, tracks min-margin AND min-ratio near-misses).
+  Results in `phase2/bruhat/results/` (append-only, new file per run).
+- **Verified ALL-PASS so far:** every previously-known case reproduced (A₂–A₅, B₂–B₄, D₄–D₅, F₄, G₂)
+  **plus NEW, past the public frontier: A₆ (3.55M intervals), B₅ complete (closes the ℓ<20 gap),
+  D₆ (84.3M intervals).** Running now (bg, ETA hrs): **A₇, B₆, E₆** — that completes every Weyl group
+  exhaustively checkable on a laptop.
+- **Prior-art KILLED-SEARCH FRESH (2026-07-03, two independent reads: Claude+web, gpt-5.5+web high):**
+  conjecture confirmed open; public frontier = exactly Brenti's OPAC list (Aₙ/Dₙ n≤5, Bₙ n≤4, B₅ only
+  ℓ≥20, F₄, dihedral); NO ONE has claimed A₆/B₅-short/B₆/D₆/E₆; Brenti's own updates page silent on 2.11.
+  Full dossier: `phase2/bruhat/results/priorart_gpt55_63405.md`. Note: conjecture is FALSE for general
+  finite Coxeter — Brenti's explicit H₃ interval fails by margin −1 (ranks 1,3,5,7,10,10,5,1; 49<50).
+- **⭐ THE FINDING SO FAR (near-miss profile):** non-simply-laced groups (B/F/G) achieve EXACT equality
+  (ratio 1.0) via the (1,2,2,2,1) dihedral-parabolic pattern (m≥4); simply-laced min ratio decays
+  geometrically toward 1 with rank: A-series 1.39→1.21→1.12→1.08, D-series 1.14→1.07→1.04 — witnesses
+  are always lower intervals [e,v], staircase-shaped v. Either this decay never crosses 1 (then a
+  quantitative bound is a real theorem) or it dips below at finite rank (then there's a counterexample
+  just past exhaustive reach).
+- **SIHAO'S LANE — scaled counterexample hunt where exhaustion can't go:** sample/search lower
+  intervals [e,v] with staircase-shaped v in **A₈–A₁₂, D₇–D₉, E₇**, minimizing the log-concavity ratio
+  (fitness = min ratio; a ratio <1 = the result). E₇ (2.9M elements) can't use global bitsets — needs
+  per-interval enumeration. Optionally port `verify.py`'s hot loop to C/Rust. OpenEvolve fits here.
+- **Publishable unit if all pass:** complete package A₆–A₇ + B₅–B₆ + D₆ + E₆, code + certificates
+  (+ the equality-case characterization & the min-ratio data as a structural section). Venues per the
+  prior-art dossier: Electronic J. Combinatorics / Sém. Lotharingien / Experimental Math. Spend so far ≈ $2.
+
 > **PIPELINE STATE after Sihao's 2026-07-01 widen (Wave 2):** corpus 2677 → **3284**; two new ingesters
 > (Kourovka +254 triaged, Dagstuhl +154 triaged); Wave-1 kill-search **finished → 73 finalists / 86 red**.
 > **Cheap warm-up if the solve side stalls:** one `killsearch --top 50 --model gpt-5.5 --exclude-compilations`
