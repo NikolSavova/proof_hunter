@@ -17,7 +17,10 @@
 - witness: [e, 86756845673456823456712345681234567123456123451234123121] = [e, w0]
 - NOTHING in the cogap<=3 slab beats the full group (F1 holds in D8).
 
-## A9  (PARTIAL: 200/209 cogap<=3 candidates checked before kill)
-- best seen: 1.028950 at [e, w0] (k=22), no candidate beat it in the 200
-- INCOMPLETE — 9 candidates unchecked; rerun `fast.py --scan A9 --cogap 3`
-  (use --procs 2: suspected OOM with 4 workers on S10 complements).
+## A9  — ✅ NOW COMPLETE (2026-07-05, two runs stitched)
+- run 1 (killed): candidates 1-200 of the deterministic sorted slab, all pass,
+  best 1.028950 at [e, w0] (k=22).
+- tail run (`fast.py --scan A9 --cogap 3 --skip 200`, results/fastscan_A9_51808.md):
+  candidates 201-209, all pass, best among tail 1.031382 (k=21).
+- verdict: **all 209 cogap<=3 candidates pass; nothing beats [e, w0] = 1.028950.
+  F1 holds in A9.**
