@@ -400,6 +400,9 @@ def main():
     ap.add_argument("--scan", action="store_true")
     ap.add_argument("--sample", action="store_true")
     ap.add_argument("--cogap", type=int, default=3)
+    ap.add_argument("--skip", type=int, default=0,
+                    help="skip the first N sorted slab candidates (resume "
+                         "a partial --scan; order is deterministic)")
     ap.add_argument("--num", type=int, default=10000)
     ap.add_argument("--dmin", type=int, default=4)
     ap.add_argument("--dmax", type=int, default=12)
@@ -446,12 +449,13 @@ def main():
 
         t0 = time.time()
         if args.scan:
-            cands = slab(F, args.cogap)
+            cands = sorted(slab(F, args.cogap),
+                           key=lambda w: -length(w[0]))[args.skip:]
             print(f"{name}: |W|={sum(F.poincare)}, ell(w0)={F.L}, "
-                  f"slab cogap<={args.cogap}: {len(cands)} candidates, "
+                  f"slab cogap<={args.cogap}: {len(cands)} candidates"
+                  f"{f' (skipped first {args.skip})' if args.skip else ''}, "
                   f"procs={args.procs}", flush=True)
-            run_pool(args.procs, typ, n, _eval_candidate,
-                     sorted(cands, key=lambda w: -length(w[0])),
+            run_pool(args.procs, typ, n, _eval_candidate, cands,
                      progress_every=25, log=lambda m: print(m, flush=True),
                      on_result=on_result)
         else:
