@@ -310,19 +310,27 @@ def _eval_sample(job):
 
 def run_pool(procs, typ, n, fn, jobs, progress_every, log, on_result):
     t0 = time.time()
+
+    def beat(i):
+        if (i + 1) % progress_every and (i + 1) != len(jobs):
+            return
+        el = time.time() - t0
+        eta = el / (i + 1) * (len(jobs) - i - 1)
+        log(f"  ... {i + 1}/{len(jobs)} "
+            f"({100 * (i + 1) / len(jobs):.0f}%) elapsed {el / 60:.1f}m, "
+            f"ETA {eta / 60:.1f}m")
+
     if procs <= 1:
         _init_worker(typ, n)
         for i, job in enumerate(jobs):
             on_result(fn(job))
-            if (i + 1) % progress_every == 0:
-                log(f"  ... {i + 1}/{len(jobs)} [{time.time() - t0:.0f}s]")
+            beat(i)
     else:
         with mp.Pool(procs, initializer=_init_worker,
                      initargs=(typ, n)) as pool:
             for i, res in enumerate(pool.imap_unordered(fn, jobs, chunksize=1)):
                 on_result(res)
-                if (i + 1) % progress_every == 0:
-                    log(f"  ... {i + 1}/{len(jobs)} [{time.time() - t0:.0f}s]")
+                beat(i)
 
 
 # ------------------------------------------------------------------ selftest
@@ -456,7 +464,7 @@ def main():
                   f"{f' (skipped first {args.skip})' if args.skip else ''}, "
                   f"procs={args.procs}", flush=True)
             run_pool(args.procs, typ, n, _eval_candidate, cands,
-                     progress_every=25, log=lambda m: print(m, flush=True),
+                     progress_every=1, log=lambda m: print(m, flush=True),
                      on_result=on_result)
         else:
             jobs = [(args.seed * 10_000_000 + i, args.dmin, args.dmax,
