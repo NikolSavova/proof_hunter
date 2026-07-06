@@ -449,6 +449,36 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-07-03→06 — PHASE II SCALED TIER: ~320k intervals, 0 violations; F1/F2/F3 structural findings vetted; CI harness (Sihao sessions)
+- **Sihao's lane executed** (per Nikol's 07-03 handoff): built `phase2/bruhat/{scaled,scaled_general,
+  fast}.py` — per-interval engines with NO global enumeration (complement-BFS from w₀ for near-top
+  lower intervals; lifting-property ≤; root-action representation ~1000× w/ multiprocessing). Each
+  validated against weyl.py + each other (all lower intervals A₃–A₅, all B₃/D₄ pairwise Bruhat +
+  general intervals, known minima). Plus `sampler.py` (random short [u,v]) + `seeded_probe.py`
+  (perturbed dihedral cores) + `theory_probe.py` (gpt-5.5+web finding-vetting).
+- **Results (all pass):** near-top slabs A₇ 1.054250 / A₈ 1.038942 / A₉ 1.028950 / D₇ 1.025574 /
+  D₈ 1.017122 / **E₇ 1.011829 (first-ever E₇ data)**; A₁₀ partial ([e,w₀]=1.022102 + exact tie by a
+  proper interval; parked — S₁₁ complements need a C port or CI chunks). 60k random short intervals
+  (B₇/D₇/E₇) + 200k seeded equality-wall perturbations (B₇/B₈): wall is STRICT, extremal perturbed
+  shapes rank-independent, closest margins 4–8 (H₃-lookalikes).
+- **⭐ Findings (double-vetted: gpt-5.5+web probe + independent Claude-agent cross-exam):** F1 min over
+  ALL intervals = [e,w₀] Poincaré central ratio (simply-laced; apparently NEW); F2 Mahonian
+  1+~36/m³ decay, fits A₄–A₁₀ (MUST cite Canfield–Janson–Zeilberger Thm 4.6 — cross-exam caught
+  they already have 1+σ⁻² for the central Gaussian binomial); F3 equality only via dihedral
+  (1,2,…,2,1) m≥4 patterns (apparently NEW) + the m=5-core argument for why Weyl groups escape H₃.
+- **Decisions:** killed the matrix-engine deep sweeps when sized wrong (pure-Python infeasible) →
+  root-action rewrite instead; A₁₀ deep slab deliberately parked (marginal vs cost); long runs must be
+  nohup-detached or on CI (Sihao's Mac killed session-owned jobs repeatedly — sleep + unknown signals).
+- **Infra:** `.github/workflows/bruhat-scan.yml` (manual-dispatch, 6h runners, selftest-first; proven
+  on E₇ in 204s; minutes bill to repo owner — Nikol FYI). `fast.py --skip` deterministic resume;
+  per-candidate ETA logging; `phase2/bruhat/live.log` (gitignored) for local tails.
+- **Pipeline (parallel):** Kourovka/Dagstuhl kill-search top-50 DONE → 96 finalists (+23) incl. the
+  project's FIRST GREEN `arxiv-openproblem:1003.3127v1#2` — awaiting Nikol's review.
+- **Bug caught:** `word_of` reduced-word order (only bit non-involutions — selftests now cover it).
+- **Open questions:** F1 provable for lower intervals via Björner–Ekedahl? Does any non-dihedral
+  equality exist (F3 scope)? Is the 0.91× offset in F2 a second-order Edgeworth term?
+- **Spend ≈ $17 OpenAI** (kill-search $15, theory probe $2) + ~10 GitHub Actions minutes.
+
 ### 2026-07-03 — PHASE II DAY 1: Bruhat verifier built; frontier EXTENDED (A₆, B₅-full, D₆ all pass); prior-art re-confirmed open (Nikol session)
 - **Built `phase2/bruhat/`**: `weyl.py` (generic Weyl group from Cartan matrix, 4 independent internal
   cross-checks) + `verify.py` (all-interval log-concavity check via up/down bitsets; min-margin +

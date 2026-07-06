@@ -225,6 +225,43 @@ Widened the pipeline with two NEW Tier-A ingesters (both fully filtered + triage
   run fixed its top-50 at launch, before they finished triaging. They now sit in the **1,750-triaged backlog**
   (incl. the high-composite ones), so a FRESH `killsearch --top 50` round is what screens them (see §7).
 
+**⚡ PHASE II — SIHAO'S SCALED TIER DONE (2026-07-03→06, Sihao sessions). ~320k intervals, ZERO violations.**
+Built the scaled search for the groups exhaustion can't reach (all in `phase2/bruhat/`, all selftested
+against Nikol's `weyl.py` + each other; every run's dossier in `results/`, append-only):
+- **Engines (3, independently cross-checking):** `scaled.py` (type-A permutations; rank_seq([e,v]) =
+  Poincaré − complement-BFS-from-w₀ — the complement is tiny for v near w₀, so |W|=6.2B is reachable);
+  `scaled_general.py` (any type, matrix pairs, lifting-property ≤); `fast.py` (root-action rewrite,
+  ~1000× with multiprocessing; per-candidate ETA logging; `--skip` deterministic resume). Plus
+  `sampler.py` / `fast.py --sample` (random short intervals [u,v]) and `seeded_probe.py` (perturbed
+  dihedral equality cores).
+- **Near-top slab sweeps ALL PASS: A₇ 1.054250, A₈ 1.038942, A₉ 1.028950, D₇ 1.025574, D₈ 1.017122,
+  E₇ 1.011829 (first-ever E₇ verification, ran on CI in 204s) — every minimum at [e,w₀].** A₁₀ partial
+  (deliberately stopped: S₁₁ complements out of pure-Python scope; [e,w₀]=1.022102 + an EXACT TIE by a
+  proper interval; resume path documented in `results/fastscan_A10_partial_20260705.md`).
+- **Sampling: 60k random short intervals (B₇/D₇/E₇) + 200k seeded equality-wall perturbations (B₇/B₈)
+  — all pass.** The wall is STRICT: every perturbation of an equality interval raises the ratio; extremal
+  perturbed shapes are rank-independent; closest non-equality margins are 4–8 (H₃-lookalike shapes).
+- **⭐ STRUCTURAL FINDINGS (vetted by TWO independent literature reads — gpt-5.5+web probe + Claude-agent
+  cross-exam; dossiers `results/theory_probe_gpt55_39009.md` + `theory_probe_crossexam_claude_20260704.md`):**
+  - **F1 (apparently NEW):** in simply-laced Weyl groups the min log-concavity ratio over ALL Bruhat
+    intervals = the min central ratio of the full Poincaré polynomial, attained at [e,w₀]; proper
+    intervals tie (A₆, D₆, A₁₀) but never beat. Verified by completed sweeps in A₇–A₉, D₇–D₈, E₇.
+  - **F2:** type-A [e,w₀] = Mahonian distribution ⇒ min ratio ≈ 1 + 1/σ² ~ 1 + 36/m³ (fits A₄–A₁₀ at
+    ~0.91×). Log-concavity itself classical (Bóna; Hoggar/Kook); **must cite Canfield–Janson–Zeilberger
+    Thm 4.6/eq. 4.11** (they have the 1+σ⁻² central ratio for the Gaussian binomial; our contribution =
+    S_m case + global min + explicit constant).
+  - **F3 (apparently NEW):** equality only via rank-2 dihedral parabolic patterns (1,2,…,2,1), m≥4.
+    Candidate mechanism for WHY Weyl groups dodge H₃'s failure: H₃'s counterexample sits on an m=5 core,
+    and m=5 is non-crystallographic — the only embeddable cores are m=4, which our 200k probes show
+    strictly floored at ratio 1.
+- **Infra:** `.github/workflows/bruhat-scan.yml` — manual-dispatch CI (6h runners, selftest gauntlet
+  first, results as artifacts; minutes bill to repo owner). Proven on E₇. Local long runs: `nohup …
+  & disown` + `sudo pmset -a disablesleep 1` (Sihao's Mac killed session-owned runs repeatedly).
+- **Pipeline (parallel):** kill-search of the Kourovka/Dagstuhl backlog DONE → **96 finalists (+23),
+  incl. the project's FIRST GREEN: `arxiv-openproblem:1003.3127v1#2` (conf high) — Nikol should review.**
+- Session spend ≈ $17 OpenAI (theory probe ~$2, kill-search ~$15). Bug fixed along the way: `word_of`
+  reduced-word order (crashed only on non-involutions; both engines fixed + selftest coverage added).
+
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
    Kohonen 2017 upper `85/294`, Yu 2015 lower. **Concrete attack:** SAT/MILP search for a better
@@ -252,6 +289,10 @@ Widened the pipeline with two NEW Tier-A ingesters (both fully filtered + triage
   MathOverflow `open-problem` tag. (Hannover OpenQIProblemsWiki still UNREACHABLE 2026-07-01 + redundant w/ iqoqi.)
 - [ ] **gpt-5.5-pro deep pass** on the top ~8 finalists once the diversified set is kill-searched (org
   TPM=200k → throttle; `--model gpt-5.5-pro`).
+- [ ] **(Bruhat, optional) A₁₀ deep slab**: port the complement-BFS hot loop (`fast.py`) to C/Rust, or
+  run in 6h `--skip` chunks on the `bruhat-scan` CI workflow. Resume: `--scan A10 --cogap 2 --skip 4`.
+- [ ] **(Bruhat, optional) OpenEvolve / local search** minimizing MARGIN over the perturbed-braid family
+  (`seeded_probe.py` found margin-4 H₃-lookalikes — the counterexample-adjacent zone if one exists).
 - [ ] Light: old-style pre-2007 arXiv ids (20 compilations) don't expand (ar5iv can't resolve the
   archive-prefixed id); embeddings dedup; a couple applied stragglers survived the gate (kill-search catches).
 
@@ -313,6 +354,21 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
 
+### 📌 STATE AS OF 2026-07-06 (Sihao session close) — what's next, in priority order:
+1. **Nikol: finish/collect your exhaustive A₇, B₆, E₆ runs** (they were running on your machine
+   2026-07-03). With them, the verification tables are complete on both tiers.
+2. **Nikol: judge the structural findings F1/F2/F3 (§3)** — they're the difference between a
+   verification note and a real paper. F1 needs a precise statement (and ideally a proof attempt for
+   lower intervals via Björner–Ekedahl tools); F3 needs exact wording ((1,2,…,2,1), m≥4, and "only
+   mechanism" scope); F2 needs the CJZ-citing derivation. Then start the writeup skeleton.
+3. **Nikol: review the pipeline's FIRST GREEN** — `arxiv-openproblem:1003.3127v1#2` (kill-search, conf
+   high). If it's real, it's a candidate second target.
+4. **Sihao (optional, parked):** A₁₀ deep slab via C port or CI chunks; OpenEvolve margin-minimization
+   on the perturbed-braid family. Neither blocks the writeup.
+- **NOTHING IS RUNNING anywhere** (local + CI both idle; A₁₀ deliberately parked). All results pushed.
+- **In-flight/awaiting human:** (a) Nikol's three exhaustive runs (her machine); (b) GREEN finalist
+  review; (c) README open question from 2026-07-01 (license + whether to name sources publicly).
+
 ### 🚀 PHASE II IS LIVE — Bruhat attack started 2026-07-03 (Nikol session). SIHAO READ THIS:
 **We are actively working Bruhat-interval log-concavity (Brenti Conj 2.11) in `phase2/bruhat/`.
 Do NOT duplicate the verifier or the exhaustive runs — your lane is the scaled search (below).**
@@ -336,13 +392,17 @@ Do NOT duplicate the verifier or the exhaustive runs — your lane is the scaled
   are always lower intervals [e,v], staircase-shaped v. Either this decay never crosses 1 (then a
   quantitative bound is a real theorem) or it dips below at finite rank (then there's a counterexample
   just past exhaustive reach).
-- **SIHAO'S LANE — scaled counterexample hunt where exhaustion can't go:** sample/search lower
-  intervals [e,v] with staircase-shaped v in **A₈–A₁₂, D₇–D₉, E₇**, minimizing the log-concavity ratio
-  (fitness = min ratio; a ratio <1 = the result). E₇ (2.9M elements) can't use global bitsets — needs
-  per-interval enumeration. Optionally port `verify.py`'s hot loop to C/Rust. OpenEvolve fits here.
-- **Publishable unit if all pass:** complete package A₆–A₇ + B₅–B₆ + D₆ + E₆, code + certificates
-  (+ the equality-case characterization & the min-ratio data as a structural section). Venues per the
-  prior-art dossier: Electronic J. Combinatorics / Sém. Lotharingien / Experimental Math. Spend so far ≈ $2.
+- **✅ SIHAO'S LANE — DONE (2026-07-03→06, see §3 "SIHAO'S SCALED TIER"):** near-top sweeps A₇–A₉ +
+  D₇–D₈ + E₇ all pass (every min at [e,w₀]); 260k sampled/seeded intervals all pass; A₁₀ parked with
+  resume path. Engines + CI harness in `phase2/bruhat/`. THE finding: F1/F2/F3 (§3) — double-vetted,
+  F1 & F3 apparently new.
+- **Publishable unit — now BIGGER than the verification note:** Nikol's exhaustive tier (A₆–A₇, B₅–B₆,
+  D₆, E₆) + Sihao's scaled tier (near-top A₇–A₁₀/D₇–D₈/E₇ + 260k-interval hunt) + structural sections:
+  F1 as the headline new conjecture (with verified instances + the three exact ties), F2 asymptotics
+  (cite CJZ Thm 4.6), F3 equality classification + the m=5-core "why Weyl escapes H₃" argument + the
+  strict-wall perturbation data. Venues per the prior-art dossier: Electronic J. Combinatorics /
+  Sém. Lotharingien / Experimental Math. ⚠️ Pre-submission: fresh arXiv sweep on equality-cases work
+  (active area: Stanley–Yan / Kahn–Saks lines). Spend so far ≈ $19 total.
 
 > **PIPELINE STATE after Sihao's 2026-07-01 widen (Wave 2):** corpus 2677 → **3284**; two new ingesters
 > (Kourovka +254 triaged, Dagstuhl +154 triaged); Wave-1 kill-search **finished → 73 finalists / 86 red**.
