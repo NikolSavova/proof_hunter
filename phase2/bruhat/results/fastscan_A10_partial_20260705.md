@@ -10,5 +10,13 @@
   1.022162 -> 1.022103 -> 1.022102 — i.e. a proper near-top interval
   EXACTLY TIES [e,w0], the same tie phenomenon as A6/D6. Consistent with F1
   ("proper intervals tie but never beat").
-- Sweep INCOMPLETE; resume with `fast.py --scan A10 --cogap 2 --skip <n>`
-  once the kill source is understood.
+- FINAL STATUS (2026-07-06): sweep STOPPED DELIBERATELY at ~11/65 candidates
+  (8 from the killed runs + 3 more detached). The remaining cogap-2 candidates
+  in S11 have complements ~10-100x larger than estimated (3 workers spent 2+
+  CPU-hours each on single candidates, memory-thrashing) — out of scope for
+  pure Python. Everything checked passes; a proper interval EXACTLY TIES
+  [e,w0] at 1.022102 (F1-consistent, same as A6/D6).
+- TO RESUME LATER: `fast.py --scan A10 --cogap 2 --skip 4` — but first either
+  (a) port the complement-BFS hot loop to C/Rust (HANDOFF-sanctioned), or
+  (b) run in 6h resumable chunks on the bruhat-scan CI workflow.
+- F1 stands verified by completed sweeps in A7, A8, A9, D7, D8, E7.
