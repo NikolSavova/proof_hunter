@@ -1,0 +1,57 @@
+name: bruhat-scan
+# Manual-dispatch CPU runs for phase2/bruhat on GitHub-hosted runners —
+# laptops sleep, runners don't. Jobs are capped at ~6h by GitHub; use the
+# deterministic --skip resume (fast.py) to chain longer sweeps across runs.
+# NOTE: Actions minutes bill to the repo owner's account on private repos
+# (free tier: 2000 min/month). Dispatch from the GitHub UI: Actions ->
+# bruhat-scan -> Run workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "scan | sample | seeded | selftest"
+        required: true
+        default: "scan"
+      groups:
+        description: "groups, space-separated (e.g. 'A10' or 'B7 D7 E7')"
+        required: true
+        default: "A10"
+      args:
+        description: "extra CLI args (e.g. '--cogap 2 --skip 6 --procs 3')"
+        required: false
+        default: ""
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: selftest gauntlet (always, ~2 min)
+        working-directory: phase2/bruhat
+        run: |
+          python -u scaled.py --selftest
+          python -u fast.py --selftest
+      - name: run
+        if: inputs.mode != 'selftest'
+        working-directory: phase2/bruhat
+        run: |
+          case "${{ inputs.mode }}" in
+            scan)   python -u fast.py --scan   ${{ inputs.groups }} ${{ inputs.args }} | tee ci_run.log ;;
+            sample) python -u fast.py --sample ${{ inputs.groups }} ${{ inputs.args }} | tee ci_run.log ;;
+            seeded) python -u seeded_probe.py  ${{ inputs.groups }} ${{ inputs.args }} | tee ci_run.log ;;
+          esac
+          tail -5 ci_run.log >> "$GITHUB_STEP_SUMMARY"
+      - name: upload results + log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bruhat-results-${{ github.run_id }}
+          path: |
+            phase2/bruhat/results/
+            phase2/bruhat/ci_run.log
+          if-no-files-found: ignore
