@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "scan | sample | seeded | selftest"
+        description: "verify (exhaustive, weyl.py tier) | scan | sample | seeded | selftest"
         required: true
         default: "scan"
       groups:
@@ -41,6 +41,7 @@ jobs:
         working-directory: phase2/bruhat
         run: |
           case "${{ inputs.mode }}" in
+            verify) python -u verify.py        ${{ inputs.groups }} ${{ inputs.args }} | tee ci_run.log ;;
             scan)   python -u fast.py --scan   ${{ inputs.groups }} ${{ inputs.args }} | tee ci_run.log ;;
             sample) python -u fast.py --sample ${{ inputs.groups }} ${{ inputs.args }} | tee ci_run.log ;;
             seeded) python -u seeded_probe.py  ${{ inputs.groups }} ${{ inputs.args }} | tee ci_run.log ;;
