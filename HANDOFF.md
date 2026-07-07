@@ -262,6 +262,41 @@ against Nikol's `weyl.py` + each other; every run's dossier in `results/`, appen
 - Session spend ≈ $17 OpenAI (theory probe ~$2, kill-search ~$15). Bug fixed along the way: `word_of`
   reduced-word order (crashed only on non-involutions; both engines fixed + selftest coverage added).
 
+**⚡ PHASE II — ENGINE-A PROOF PHASE OPENED (2026-07-06, Sihao sessions; committed 2026-07-07).**
+Compute is done; the work is now mathematics + writeup. All in `phase2/bruhat/`:
+- **`PROOF_PLAN.md` (repo: `phase2/bruhat/PROOF_PLAN.md`)** — the Engine-A plan, priority order:
+  (1) prove F2 anchor theorem, (2) F1 for rationally smooth subclass, (3) F3 short intervals,
+  (4) the 0.91× second-order term, (5) paper skeleton NOW. Skeleton at `phase2/bruhat/paper/skeleton.md`.
+- **A₇ + B₆ EXHAUSTIVE COMPLETE (CI, 2026-07-06):** A₇ = 170,288,585 intervals ALL PASS, global min
+  1.054250 = the scaled tier's [e,w₀]-slab prediction EXACTLY (**F1 exhaustively confirmed in A₇**);
+  B₆ all pass (another Brenti-list gap closed). CI `verify` mode added to `bruhat-scan.yml`.
+  **E₆ exhaustive = the ONE remaining verification gap** (Nikol's original run never landed).
+- **F2 THEOREM CAMPAIGN (ultracode: 4 blind drafts + 4 adversarial referees + merge) →
+  `f2_drafts/F2_PROOF_DRAFT.md`.** Status: major-gaps ledger G1–G5; part (a) proved modulo G1+G2;
+  **sharp second-order constant 27/25 found** (σ²(r_c−1) = 1 − (27/25)/m + O(m⁻²), verified to 6
+  digits); the guessed c=7/8 constant REFUTED → corrected target **187/216**; finite checks exact
+  to m=150. Blind-draft protocol: drafts must not read each other's `g1_*`/`g2_*`/`f1smooth_*` files.
+- **G1 CLOSED (draft, ⚠️ UNREFEREED): `f2_drafts/g1_draft_b.md` + `g1b_scripts/` (6 scripts).**
+  Both halves of ledger item G1 (Prop 2.1 constant C₁; kernel transfer to |E₁| ≤ C₂/m²) proved with
+  explicit constants by direct Fourier-integral bounding (no Edgeworth package), from merged-draft
+  Lemmas 1.1–1.5 only. Also identifies the EXACT m⁻²-order term N(y)/P(y)². Caveats (§8, honest):
+  proved for m ≥ m₁(y₀) ≥ 180 vs harness exact to 150 → the band needs a harness extension (= G4's
+  plan, minutes); wide-window C₂(3)=3940 inflated but downstream only needs y₀ ≤ 1 (within 3.4× of
+  truth). **G2 (tilted frame) untouched — the natural next pass, same B.0–B.9 skeleton.**
+  ⚠️ House rule pending: needs its adversarial referee before the ledger row flips to closed.
+- **F1-SMOOTH SIDE-BET RESOLVED (refereed, verdict MINOR REPAIRS): `f2_drafts/f1smooth_draft.md` +
+  `f1smooth_referee.md`.** **F1-smooth AS FROZEN IS FALSE** — two sharp counterexamples: (i) B₃/B₄
+  rationally smooth (1,2,2,2,1) interval has r=1 < r(w₀) (simply-laced hypothesis necessary);
+  (ii) **A₁×D₄, v smooth, violates** (irreducibility necessary — NEW). Corrected statement (§7):
+  irreducible + simply-laced. Unconditional content: exhaustive verification through rank 6 (incl.
+  E₆ smooth intervals), a proved type-A structural theorem (staircase + domination, Thm 4.4), type A
+  through m=17 exact. Its analytic core (Conj SD/SD′) is ≥ as hard as F2 Thm A — it CONSUMES F2
+  machinery, closes no F2 ledger gap. Referee re-ran every numeric check: all PASS (one off-by-one
+  in NC-3's stated counts; conclusion unaffected).
+- **⚠️ F1/F3 statements need re-wording for the paper:** F1's "simply-laced" must now ALSO say
+  irreducible (the A₁×D₄ counterexample bites any version quantifying over reducible W); F3's
+  dihedral-equality classification is consistent with the B₃ witness (it IS the (1,2,2,2,1) pattern).
+
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
    Kohonen 2017 upper `85/294`, Yu 2015 lower. **Concrete attack:** SAT/MILP search for a better
@@ -289,6 +324,14 @@ against Nikol's `weyl.py` + each other; every run's dossier in `results/`, appen
   MathOverflow `open-problem` tag. (Hannover OpenQIProblemsWiki still UNREACHABLE 2026-07-01 + redundant w/ iqoqi.)
 - [ ] **gpt-5.5-pro deep pass** on the top ~8 finalists once the diversified set is kill-searched (org
   TPM=200k → throttle; `--model gpt-5.5-pro`).
+- [ ] **(Bruhat, PROOF-CRITICAL) Referee `g1_draft_b.md`** — adversarial pass per house rule (re-run
+  every script in `f2_drafts/g1b_scripts/`, attack B.0–B.9); only then flip the F2 ledger's G1 row.
+- [ ] **(Bruhat, PROOF-CRITICAL) G2 (tilted frame)** — same skeleton as g1_draft_b (B.0–B.9 for
+  truncated geometrics + the tilted-cf identity in the G2 ledger row). G1+G2 ⇒ Theorem A = F2(a).
+- [ ] **(Bruhat) E₆ exhaustive** — the last verification gap; CI `verify` mode exists
+  (`bruhat-scan.yml`, proven on A₇/B₆). One manual dispatch.
+- [ ] **(Bruhat) Harness extension m→200** (`mahonian.py` exact run, ~minutes) — covers the
+  150<m<m₁ band g1_draft_b needs (= G4's plan).
 - [ ] **(Bruhat, optional) A₁₀ deep slab**: port the complement-BFS hot loop (`fast.py`) to C/Rust, or
   run in 6h `--skip` chunks on the `bruhat-scan` CI workflow. Resume: `--scan A10 --cogap 2 --skip 4`.
 - [ ] **(Bruhat, optional) OpenEvolve / local search** minimizing MARGIN over the perturbed-braid family
@@ -354,20 +397,27 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
 
-### 📌 STATE AS OF 2026-07-06 (Sihao session close) — what's next, in priority order:
-1. **Nikol: finish/collect your exhaustive A₇, B₆, E₆ runs** (they were running on your machine
-   2026-07-03). With them, the verification tables are complete on both tiers.
-2. **Nikol: judge the structural findings F1/F2/F3 (§3)** — they're the difference between a
-   verification note and a real paper. F1 needs a precise statement (and ideally a proof attempt for
-   lower intervals via Björner–Ekedahl tools); F3 needs exact wording ((1,2,…,2,1), m≥4, and "only
-   mechanism" scope); F2 needs the CJZ-citing derivation. Then start the writeup skeleton.
-3. **Nikol: review the pipeline's FIRST GREEN** — `arxiv-openproblem:1003.3127v1#2` (kill-search, conf
-   high). If it's real, it's a candidate second target.
-4. **Sihao (optional, parked):** A₁₀ deep slab via C port or CI chunks; OpenEvolve margin-minimization
-   on the perturbed-braid family. Neither blocks the writeup.
-- **NOTHING IS RUNNING anywhere** (local + CI both idle; A₁₀ deliberately parked). All results pushed.
-- **In-flight/awaiting human:** (a) Nikol's three exhaustive runs (her machine); (b) GREEN finalist
-  review; (c) README open question from 2026-07-01 (license + whether to name sources publicly).
+### 📌 STATE AS OF 2026-07-07 (Sihao session close) — what's next, in priority order:
+1. **Referee `f2_drafts/g1_draft_b.md`** (adversarial, blind, per house rule — re-run the
+   `g1b_scripts/`, attack the B.0–B.9 chain). It claims to CLOSE ledger item G1 with explicit
+   constants; if it survives, F2 part (a) is down to G2 only. **Do not treat G1 as closed until
+   this referee pass exists.**
+2. **Write G2 (tilted frame)** — g1_draft_b §8 says the same B.0–B.9 skeleton transfers with the
+   tilted-cf identity quoted in the F2 ledger's G2 row. G1+G2 ⇒ Theorem A (= F2(a)) fully proved.
+3. **Nikol: judge the corrected F1 statement.** F1-smooth as frozen is FALSE (refereed, §3):
+   B₃ kills non-simply-laced, A₁×D₄ kills reducible. The paper's F1 must read "irreducible
+   simply-laced". Apply the referee's MINOR REPAIRS (list at end of `f1smooth_referee.md`) if you
+   want the draft as a paper section; the type-A staircase theorem (Thm 4.4) is proved and usable.
+4. **E₆ exhaustive via CI** — the last verification-table gap (`bruhat-scan.yml` verify mode,
+   proven on A₇/B₆; one manual dispatch, ~hours). A₇ min 1.054250 already confirmed F1 exhaustively.
+5. **Nikol: review the pipeline's FIRST GREEN** — `arxiv-openproblem:1003.3127v1#2` (kill-search,
+   conf high). If it's real, it's a candidate second target.
+6. **Optional, parked:** A₁₀ deep slab (C port or CI chunks); OpenEvolve margin-minimization;
+   harness m→200 extension (minutes, unblocks g1_draft_b's 150<m<m₁ band).
+- **NOTHING IS RUNNING anywhere** (local + CI idle). All work committed + pushed as of 2026-07-07.
+- **In-flight/awaiting human:** (a) g1_draft_b referee pass (item 1 — the perishable one);
+  (b) F1 rewording decision + f1smooth MINOR REPAIRS; (c) GREEN finalist review; (d) README open
+  question from 2026-07-01 (license + whether to name sources publicly).
 
 ### 🚀 PHASE II IS LIVE — Bruhat attack started 2026-07-03 (Nikol session). SIHAO READ THIS:
 **We are actively working Bruhat-interval log-concavity (Brenti Conj 2.11) in `phase2/bruhat/`.

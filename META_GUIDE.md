@@ -449,6 +449,29 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-07-07 — HANDOFF CATCH-UP: commit the 07-06 proof-phase work (G1 draft, F1-smooth verdict); orient session (Sihao session)
+- **Committed the uncommitted 2026-07-06 Engine-A work** that a prior session left untracked in
+  `phase2/bruhat/f2_drafts/`: `g1_draft_b.md` + `g1b_scripts/` (6 verification scripts) and
+  `f1smooth_draft.md` + `f1smooth_referee.md`. (The A₇/B₆ exhaustive CI results, F2 campaign,
+  `PROOF_PLAN.md`, and `paper/skeleton.md` were already committed 07-06.)
+- **State of those results:** (a) **g1_draft_b claims G1 CLOSED** (both halves, explicit constants,
+  direct Fourier bounding, exact m⁻² term found) — **UNREFEREED**; house rule says no ledger flip
+  until an adversarial referee pass exists. (b) **F1-smooth is FALSE as frozen** (refereed, MINOR
+  REPAIRS): B₃ (1,2,2,2,1) kills non-simply-laced, **A₁×D₄ smooth violation kills reducible** (new);
+  corrected statement = irreducible + simply-laced; type-A staircase theorem (Thm 4.4) proved;
+  exhaustive smooth verification through rank 6 + type A to m=17. It consumes F2 machinery, closes
+  no F2 ledger gap.
+- **Fix:** `g1b_scripts/g1b_final.py` exec'd its dependency via an absolute scratchpad path (dead on
+  any other machine) → now resolves `g1b_const2.py` relative to the script; re-ran, output intact;
+  draft's self-description note updated to match.
+- **Decisions:** priority order restated in HANDOFF §7 — (1) referee g1_draft_b, (2) write G2
+  (tilted frame, same skeleton), (3) Nikol judges corrected F1 wording, (4) E₆ exhaustive via CI,
+  (5) GREEN finalist review. F1's paper statement MUST add "irreducible" (A₁×D₄ bites otherwise).
+- **Open questions:** does g1_draft_b survive refereeing (esp. the B.7 sympy table + corner bounds)?
+  G2 tilted-cf pass — same constants machinery or new obstruction? m₁≥180 vs harness-150 band:
+  extend harness to m=200 (minutes) or sharpen Lemma 1.4?
+- **Spend:** ~$0 (no API calls; orientation + git hygiene only).
+
 ### 2026-07-03→06 — PHASE II SCALED TIER: ~320k intervals, 0 violations; F1/F2/F3 structural findings vetted; CI harness (Sihao sessions)
 - **Sihao's lane executed** (per Nikol's 07-03 handoff): built `phase2/bruhat/{scaled,scaled_general,
   fast}.py` — per-interval engines with NO global enumeration (complement-BFS from w₀ for near-top
