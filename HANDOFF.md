@@ -397,6 +397,51 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
 
+### 📣 STATUS REPORT FOR NIKOL (2026-07-07 — Sihao asked that you see this first)
+**Where the Bruhat/Brenti attack stands, in one block — and the exact path to a paper.**
+
+**Honest ledger of what we have:**
+- **Unconditional (proved / machine-exact):** frontier moved past Brenti's list — exhaustive
+  A₆, A₇ (170.3M intervals), B₅-full, B₆, D₆ all pass; first-ever E₇ data; ~320k scaled-tier
+  intervals, zero violations. **A₇'s exhaustive global min = the [e,w₀] value EXACTLY → F1
+  confirmed exhaustively in one group.** Sharp constants corrected with 4-draft+4-referee
+  consensus: c = 7/8 is FALSE at m=6, true sharp constant **187/216**; second-order coefficient
+  **27/25** verified to 6 digits; exact harness to m=150. **F1-smooth as frozen is FALSE**
+  (refereed): B₃ kills non-simply-laced, A₁×D₄ (smooth!) kills reducible → corrected F1 must
+  read **irreducible + simply-laced**; type-A staircase theorem (Thm 4.4) proved.
+- **Proved modulo gaps:** F2(a) — the Mahonian asymptotic σ²(r_m−1) → 1 — is proved modulo
+  G1 + G2 only (all structural lemmas fully proved + referee-verified). **G1 has a full closure
+  draft (`f2_drafts/g1_draft_b.md`, explicit constants, exact m⁻² term) — UNREFEREED, so it
+  does not count yet.** G2 (tilted frame) is sketched with the same skeleton.
+- **Honestly open:** G3 (argmin to within 1 for m>150 — no route; paper ships part (b) in the
+  weakened O(m) form), G4 (constant chase — mechanical once G1+G2 land). Proving Brenti 2.11
+  itself is NOT in reach and the paper does not claim it.
+
+**Assessment:** the paper floor is already secured (verification + F1 conjecture w/ exact A₇
+confirmation + F3 equality classification + crystallographic "why Weyl escapes H₃" heuristic +
+corrected sharp constants) → solid EJC / Experimental Math. paper even if every gap stays open.
+The ceiling — F2(a) as a fully PROVED theorem, venue → JCTA/JACo tier — hangs on exactly two
+items: **referee G1, write G2.** Better-than-even odds; referee campaigns have so far
+strengthened drafts, not killed them. Spend ≈ $40 total. Remaining work is refereeing, one CI
+dispatch, and writing — marginal value of more compute is ~zero.
+
+**🗺 PATH TO PAPER (do these, in order — items 1–3 make the theorem, 4–7 make the paper):**
+1. **Referee `g1_draft_b.md`** (adversarial, blind; re-run `g1b_scripts/`, attack B.0–B.9).
+   Survives → F2(a) is down to G2 alone. ~1 session.
+2. **Write G2** (tilted frame; same B.0–B.9 skeleton + the tilted-cf identity in the ledger's
+   G2 row; kill the [1/m, 3.7/m] hole explicitly). ~1–2 sessions. **G1+G2 ⇒ Theorem A proved.**
+3. **E₆ exhaustive via CI** (`bruhat-scan.yml` verify mode, one manual dispatch, ~hours) —
+   closes the verification table; update skeleton.md's interval counts.
+4. **Nikol ratifies statements:** corrected F1 (irreducible simply-laced), F3's exact scope
+   ("only mechanism" wording), apply f1smooth's MINOR REPAIRS list (end of `f1smooth_referee.md`).
+5. **Assemble from `paper/skeleton.md`** (§ plan + abstract already drafted, understated tone
+   locked): verification tables from `results/*.md`, F2 §6 from `F2_PROOF_DRAFT.md` + G1/G2,
+   F1-smooth §5 material from `f1smooth_draft.md` (the proved type-A theorem + counterexamples).
+6. **Pre-submission kill-search (MANDATORY, Erdősgate rule):** fresh arXiv sweep on
+   equality-cases lines (Stanley–Yan, Kahn–Saks) + re-check Brenti's updates page + OPAC.
+7. **Lean attempt on the key lemma if feasible** (house rule: verification artifact for proofs
+   too); then venue call per the dossier (EJC / Sém. Loth. / Exp. Math; JCTA-tier if 1–2 landed).
+
 ### 📌 STATE AS OF 2026-07-07 (Sihao session close) — what's next, in priority order:
 1. **Referee `f2_drafts/g1_draft_b.md`** (adversarial, blind, per house rule — re-run the
    `g1b_scripts/`, attack the B.0–B.9 chain). It claims to CLOSE ledger item G1 with explicit

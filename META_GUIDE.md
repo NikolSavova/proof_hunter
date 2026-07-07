@@ -471,6 +471,11 @@ prior-art kill-search**; has a writeable-down win condition.
   G2 tilted-cf pass — same constants machinery or new obstruction? m₁≥180 vs harness-150 band:
   extend harness to m=200 (minutes) or sharpen Lemma 1.4?
 - **Spend:** ~$0 (no API calls; orientation + git hygiene only).
+- **(Same session, later)** Full status report on the Bruhat attack written for Nikol and folded
+  into HANDOFF §7 ("STATUS REPORT FOR NIKOL"): honest ledger (unconditional / modulo-gaps / open),
+  assessment (paper floor secured; ceiling = F2(a) proved, hangs on referee-G1 + write-G2), and a
+  7-step PATH TO PAPER (referee G1 → G2 → E₆ CI → statement ratification → assemble skeleton →
+  pre-submission kill-search → Lean attempt + venue call).
 
 ### 2026-07-03→06 — PHASE II SCALED TIER: ~320k intervals, 0 violations; F1/F2/F3 structural findings vetted; CI harness (Sihao sessions)
 - **Sihao's lane executed** (per Nikol's 07-03 handoff): built `phase2/bruhat/{scaled,scaled_general,
