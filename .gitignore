@@ -13,3 +13,4 @@ venv/
 # macOS
 .DS_Store
 phase2/bruhat/live.log
+phase2/bruhat/logs/

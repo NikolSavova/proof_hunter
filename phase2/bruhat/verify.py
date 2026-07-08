@@ -20,8 +20,12 @@ import time
 from weyl import WeylGroup
 
 
-def check_group(W: WeylGroup):
-    """Check every Bruhat interval of W. Returns (stats dict, violations list)."""
+def check_group(W: WeylGroup, from_u: int = 0, progress_every: int = 0):
+    """Check every Bruhat interval of W (with bottom element index >= from_u).
+    Returns (stats dict, violations list). With progress_every > 0, prints a
+    resumable checkpoint line every that-many bottom elements: if the run is
+    killed, rerun with --from-u <last printed u+1> and merge stats by hand.
+    """
     violations = []
     n_intervals = 0
     # two near-miss trackers, each (margin, ratio, u, v, k, ranks):
@@ -29,7 +33,13 @@ def check_group(W: WeylGroup):
     #   tightr = min ratio a_k^2/(a_{k-1}a_{k+1})            (true near-misses)
     tight = None
     tightr = None
-    for u in range(W.N):
+    t0 = time.time()
+    for u in range(from_u, W.N):
+        if progress_every and u > from_u and (u - from_u) % progress_every == 0:
+            rr = f"{tightr[1]:.6f}" if tightr else "-"
+            print(f"  [checkpoint] u={u}/{W.N} intervals={n_intervals} "
+                  f"violations={len(violations)} min_ratio={rr} "
+                  f"elapsed={time.time()-t0:.0f}s", flush=True)
         upset = W.up[u]
         lu = W.length[u]
         while upset:
@@ -57,10 +67,20 @@ def word_str(W, i):
 
 
 def main(names):
+    from_u = 0
+    progress_every = 0
+    if "--from-u" in names:
+        i = names.index("--from-u")
+        from_u = int(names[i + 1]); del names[i:i + 2]
+    if "--progress" in names:
+        i = names.index("--progress")
+        progress_every = int(names[i + 1]); del names[i:i + 2]
     outdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
     os.makedirs(outdir, exist_ok=True)
-    out = os.path.join(outdir, f"run_{'-'.join(names)}_{os.getpid()}.md")
-    lines = [f"# Bruhat log-concavity brute-force run — groups: {' '.join(names)}\n"]
+    suffix = f"_from{from_u}" if from_u else ""
+    out = os.path.join(outdir, f"run_{'-'.join(names)}{suffix}_{os.getpid()}.md")
+    lines = [f"# Bruhat log-concavity brute-force run — groups: {' '.join(names)}"
+             + (f" (bottom-element index >= {from_u})" if from_u else "") + "\n"]
     any_violation = False
 
     for name in names:
@@ -71,7 +91,7 @@ def main(names):
         print(f"{W.name}: |W|={W.N}, maxlen={W.maxlen}, built+validated in "
               f"{t_build:.1f}s; checking all intervals...", flush=True)
         t0 = time.time()
-        stats, violations = check_group(W)
+        stats, violations = check_group(W, from_u, progress_every)
         t_check = time.time() - t0
         m, r, u, v, k, a = stats["tight"]
         mr, rr, ur, vr, kr, ar = stats["tightr"]

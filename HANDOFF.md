@@ -472,10 +472,12 @@ Do NOT duplicate the verifier or the exhaustive runs — your lane is the scaled
   Poincaré polynomial ≡ degree product, known #roots) + `verify.py` (enumerates ALL Bruhat intervals
   via up/down bitsets, checks aₖ² ≥ aₖ₋₁aₖ₊₁, tracks min-margin AND min-ratio near-misses).
   Results in `phase2/bruhat/results/` (append-only, new file per run).
-- **Verified ALL-PASS so far:** every previously-known case reproduced (A₂–A₅, B₂–B₄, D₄–D₅, F₄, G₂)
-  **plus NEW, past the public frontier: A₆ (3.55M intervals), B₅ complete (closes the ℓ<20 gap),
-  D₆ (84.3M intervals).** Running now (bg, ETA hrs): **A₇, B₆, E₆** — that completes every Weyl group
-  exhaustively checkable on a laptop.
+- **✅ EXHAUSTIVE TIER COMPLETE (2026-07-05): every Weyl group up to |W|≈52k checked — ALL PASS, no
+  counterexample.** Known cases reproduced (A₂–A₅, B₂–B₄, D₄–D₅, F₄, G₂) plus **NEW past the public
+  frontier: A₆ (3.55M intervals), A₇ (170.3M), B₅ complete (closes the ℓ<20 gap), B₆ (350.7M),
+  D₆ (84.3M), E₆ (466.2M — min ratio 1.0284, the closest any Weyl group comes to failing).**
+  B₆/E₆ ran in two resumed segments — coverage evidence in `results/run_B6-E6_segment_coverage.md`.
+  **Newcomer orientation: read `phase2/bruhat/START_HERE.md`** (conjecture from scratch + resources).
 - **Prior-art KILLED-SEARCH FRESH (2026-07-03, two independent reads: Claude+web, gpt-5.5+web high):**
   conjecture confirmed open; public frontier = exactly Brenti's OPAC list (Aₙ/Dₙ n≤5, Bₙ n≤4, B₅ only
   ℓ≥20, F₄, dihedral); NO ONE has claimed A₆/B₅-short/B₆/D₆/E₆; Brenti's own updates page silent on 2.11.
