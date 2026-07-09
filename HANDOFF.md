@@ -297,6 +297,37 @@ Compute is done; the work is now mathematics + writeup. All in `phase2/bruhat/`:
   irreducible (the A₁×D₄ counterexample bites any version quantifying over reducible W); F3's
   dihedral-equality classification is consistent with the B₃ witness (it IS the (1,2,2,2,1) pattern).
 
+**⚡ TIER-2 PORTFOLIO OPENED — parallel proof-fleet direction + re-tag of all 96 finalists (2026-07-09, Sihao).**
+Nikol keeps Bruhat; Sihao opens a SECOND lane: attack multiple candidates in parallel with a
+**prover–verifier loop** — frontier reasoning models drafting PROSE PROOFS (blind drafts +
+adversarial referees, the F2-campaign pattern), **Lean 4 + mathlib as the final soundness gate**
+(formalize the STATEMENT first, human checks fidelity, then lemma-by-lemma proof attempt).
+Design decisions this session: (a) Lean is the exit gate, NOT the inner-loop verifier (inner loop =
+referees + numeric harness on finite instances); (b) the binding constraint is mathlib coverage →
+every candidate needs a "mathlib-expressibility" rating; (c) the old GO/MAYBE shortlist was scored
+for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
+- **RE-TAG RUN (ultracode, 44 agents, ~16 min, ~$0 API):** all 96 finalists rated on proof_shaped /
+  lemma_sized 0-3 / mathlib 0-3 / numeric_testable + a concrete FIRST LEMMA each; all 32 tagger
+  STRONG/MEDIUMs then attacked by adversarial skeptics (default-to-disagree). **Taggers said 12
+  STRONG / 20 MEDIUM → skeptics left 2 STRONG / 4 MEDIUM** (the "first reads over-rate tractability"
+  pattern, now measured at 29 verdict changes).
+- **Report: `problem-id/review/tier2_retag.md`** (+ `tier2_retag_raw.json`, all 96 rationales).
+- **The 2 STRONG:** (1) **`erdos:838`** (max convex-position subsets, no-3-collinear) — skeptic BUILT
+  the row-glued construction with exact rational coords and exhaustively confirmed the decomposition
+  lemma at m=3,4 (zero exceptions; flipped orientation fails 310×, so the test has teeth); target =
+  upper-bound constant 0.7213 < 1 on an open Erdős problem; caveat: active-forum scoop risk, sweep first.
+  (2) **`arxiv-openproblem:1003.3127v1#2`** — the pipeline's FIRST GREEN, now with a **verified candidate
+  counterexample** (Bregman right-projections of a nonconvex curve under negative entropy: skeptic
+  fetched the source survey, confirmed statement fidelity, checked g''≥3.45>0 on [1,2] — "I tried hard
+  to kill this and failed on the mathematics"; solution may be HOURS-scale; residual risk = novelty
+  sweep of citing papers + a second construction for the cl C*⊆U* half to make a complete note).
+- **The 4 MEDIUM:** `dagstuhl:23121#2` (Wilf-equivalence bijection, Burstein Conj 16 slice),
+  `kourovka:19.20` (|PIso(G)|>|End(G)| for minimal nonabelian), `2511.01306v1` (ternary cyclic codes —
+  quadratic-character count kills the h=m−1 slice), `2206.06472v4#12` (benzel tiling 2-adic periodicity).
+- **NOT built yet:** `phase2/loop/` harness + per-problem specs/verifiers (design agreed in-session:
+  PROBLEM.md = frozen statement + machine-checkable win condition + kill criteria; verify.py written
+  before any prover runs; Tier-1 certificate fleet as cheap uncorrelated side bet).
+
 **Top candidates from RUN 1 (still valid; Erdős AMBER, already kill-searched) — Phase II warm-start:**
 1. **Erdős #791** — additive 2-basis `g(n)` (minimal `A⊆{0..n}` with `A+A ⊇ {0..n}`). Records:
    Kohonen 2017 upper `85/294`, Yu 2015 lower. **Concrete attack:** SAT/MILP search for a better
@@ -328,8 +359,17 @@ Compute is done; the work is now mathematics + writeup. All in `phase2/bruhat/`:
   every script in `f2_drafts/g1b_scripts/`, attack B.0–B.9); only then flip the F2 ledger's G1 row.
 - [ ] **(Bruhat, PROOF-CRITICAL) G2 (tilted frame)** — same skeleton as g1_draft_b (B.0–B.9 for
   truncated geometrics + the tilted-cf identity in the G2 ledger row). G1+G2 ⇒ Theorem A = F2(a).
-- [ ] **(Bruhat) E₆ exhaustive** — the last verification gap; CI `verify` mode exists
-  (`bruhat-scan.yml`, proven on A₇/B₆). One manual dispatch.
+- [x] ✅ **(Bruhat) E₆ exhaustive — DONE by Nikol (2026-07-08 push):** 466.2M intervals, 0 violations,
+  min ratio 1.028446; B₆ 350.7M also complete. Exhaustive tier CLOSED. Only loose end: E₆ seg-1
+  witness interval not recorded (re-scan u<6000 only if wanted for the writeup) — see
+  `phase2/bruhat/results/run_B6-E6_segment_coverage.md`.
+- [ ] **(Tier-2, NEW) Build `phase2/loop/`** — per-problem dirs for the 6 re-tag survivors:
+  PROBLEM.md (frozen statement + win condition + kill criteria) + verify.py (numeric harness) +
+  Lean statement stub. Then the draft→referee→Lean fleet. See §3 Tier-2 block + `review/tier2_retag.md`.
+- [ ] **(Tier-2, FIRST) Novelty sweeps before any proving:** (a) `1003.3127v1#2` — page-by-page sweep
+  of works citing the survey (the construction is a one-character tweak of the authors' own Example
+  3.3; skeptic + killsearch found no resolution but it's the residual risk); (b) `erdos:838` — the
+  upper-window constant-1 remark is an unpublished Apr-2026 forum note → unindexed-notes sweep.
 - [ ] **(Bruhat) Harness extension m→200** (`mahonian.py` exact run, ~minutes) — covers the
   150<m<m₁ band g1_draft_b needs (= G4's plan).
 - [ ] **(Bruhat, optional) A₁₀ deep slab**: port the complement-BFS hot loop (`fast.py`) to C/Rust, or
@@ -442,7 +482,9 @@ dispatch, and writing — marginal value of more compute is ~zero.
 7. **Lean attempt on the key lemma if feasible** (house rule: verification artifact for proofs
    too); then venue call per the dossier (EJC / Sém. Loth. / Exp. Math; JCTA-tier if 1–2 landed).
 
-### 📌 STATE AS OF 2026-07-07 (Sihao session close) — what's next, in priority order:
+### 📌 STATE AS OF 2026-07-09 (Sihao session close) — TWO LANES now. Priority order per lane:
+
+**LANE 1 — Bruhat paper (NIKOL):**
 1. **Referee `f2_drafts/g1_draft_b.md`** (adversarial, blind, per house rule — re-run the
    `g1b_scripts/`, attack the B.0–B.9 chain). It claims to CLOSE ledger item G1 with explicit
    constants; if it survives, F2 part (a) is down to G2 only. **Do not treat G1 as closed until
@@ -453,16 +495,29 @@ dispatch, and writing — marginal value of more compute is ~zero.
    B₃ kills non-simply-laced, A₁×D₄ kills reducible. The paper's F1 must read "irreducible
    simply-laced". Apply the referee's MINOR REPAIRS (list at end of `f1smooth_referee.md`) if you
    want the draft as a paper section; the type-A staircase theorem (Thm 4.4) is proved and usable.
-4. **E₆ exhaustive via CI** — the last verification-table gap (`bruhat-scan.yml` verify mode,
-   proven on A₇/B₆; one manual dispatch, ~hours). A₇ min 1.054250 already confirmed F1 exhaustively.
-5. **Nikol: review the pipeline's FIRST GREEN** — `arxiv-openproblem:1003.3127v1#2` (kill-search,
-   conf high). If it's real, it's a candidate second target.
-6. **Optional, parked:** A₁₀ deep slab (C port or CI chunks); OpenEvolve margin-minimization;
-   harness m→200 extension (minutes, unblocks g1_draft_b's 150<m<m₁ band).
-- **NOTHING IS RUNNING anywhere** (local + CI idle). All work committed + pushed as of 2026-07-07.
-- **In-flight/awaiting human:** (a) g1_draft_b referee pass (item 1 — the perishable one);
-  (b) F1 rewording decision + f1smooth MINOR REPAIRS; (c) GREEN finalist review; (d) README open
-  question from 2026-07-01 (license + whether to name sources publicly).
+4. ~~E₆ exhaustive~~ — **✅ DONE (Nikol, 2026-07-08 push): exhaustive tier CLOSED** (B₆ 350.7M +
+   E₆ 466.2M, all pass). Then paper assembly per the PATH TO PAPER above (items 5–7).
+
+**LANE 2 — Tier-2 proof fleet (SIHAO) — opened 2026-07-09, see §3 Tier-2 block:**
+1. **Novelty sweeps FIRST (Erdősgate)** on the 2 STRONG re-tag survivors: `1003.3127v1#2`
+   (citing-papers sweep — verified candidate counterexample in hand, may be an hours-scale note)
+   and `erdos:838` (unindexed forum-notes sweep — the constant-1 remark is an Apr-2026 forum post).
+2. **Build `phase2/loop/`** — PROBLEM.md + verify.py + Lean statement stub per survivor
+   (2 STRONG + 4 MEDIUM, `review/tier2_retag.md`); then the blind-drafts → adversarial-referees →
+   Lean-gate fleet (F2-campaign pattern, automated via ultracode workflows).
+3. **Nikol's eyeball wanted (not blocking):** `1003.3127v1#2` — the skeptic verified the
+   counterexample mathematics (Bregman projection uniqueness via g''>0 on [1,2] + ∇f(C) nonconvex);
+   if she concurs after Bruhat, it's the fastest publishable-unit candidate we have.
+4. **Optional, parked:** A₁₀ deep slab (C port or CI chunks); OpenEvolve margin-minimization;
+   harness m→200 extension (minutes, unblocks g1_draft_b's 150<m<m₁ band); Tier-1 certificate
+   fleet (SAT/LP problems from the old GO list) as the cheap uncorrelated side bet.
+
+- **NOTHING IS RUNNING anywhere** (local + CI idle; the re-tag workflow completed). All work
+  committed + pushed as of 2026-07-09.
+- **In-flight/awaiting human:** (a) g1_draft_b referee pass (Nikol — the perishable one);
+  (b) F1 rewording decision + f1smooth MINOR REPAIRS (Nikol); (c) Sihao to confirm Tier-2 portfolio
+  scope/budget + re-share the prover–verifier-loop link he referenced (never re-shared, designed
+  from HANDOFF Option A′ instead); (d) README open question from 2026-07-01 (license + naming sources).
 
 ### 🚀 PHASE II IS LIVE — Bruhat attack started 2026-07-03 (Nikol session). SIHAO READ THIS:
 **We are actively working Bruhat-interval log-concavity (Brenti Conj 2.11) in `phase2/bruhat/`.

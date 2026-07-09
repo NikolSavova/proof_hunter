@@ -449,6 +449,36 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-07-09 — TIER-2 LANE OPENED: parallel proof-fleet direction + ultracode re-tag of all 96 finalists (Sihao session)
+- **Pulled Nikol's exhaustive-tier completion** (commit 8caca9c): B₆ 350.7M + E₆ 466.2M intervals,
+  all pass — **the exhaustive tier is CLOSED**; E₆ min ratio 1.028446 (seg-1 witness interval not
+  recorded; re-scan u<6000 only if wanted for the writeup). Plus `phase2/bruhat/START_HERE.md` primer.
+- **Direction decision (Sihao):** Nikol keeps Bruhat (Lane 1); Sihao opens Lane 2 = attack multiple
+  candidates in parallel with a prover–verifier loop — reasoning models drafting PROSE PROOFS
+  (blind drafts + adversarial referees, the F2-campaign pattern), **Lean as the FINAL gate, not the
+  inner-loop verifier** (formalize the statement first, human checks fidelity, then lemma-by-lemma).
+  Binding constraint = mathlib coverage. The old GO/MAYBE shortlist was scored for Engine-B search
+  (wrong rubric for this mode) → re-tagged everything.
+- **RE-TAG RUN (ultracode workflow, 44 agents, 16 min, 1.5M subagent tokens, ~$0 API):** all 96
+  finalists rated (proof_shaped / lemma_sized / mathlib / numeric_testable + concrete first lemma);
+  all 32 tagger STRONG/MEDIUMs attacked by adversarial skeptics. **12 STRONG / 20 MEDIUM → 2 STRONG /
+  4 MEDIUM after verify** (29 downgrades — "first reads over-rate tractability", now measured).
+  Report: `problem-id/review/tier2_retag.md` + `tier2_retag_raw.json` (non-destructive, new files).
+- **Headline finds:** (1) `erdos:838` STRONG — skeptic *built the construction* (exact rational
+  coords) and exhaustively confirmed the decomposition lemma at m=3,4; target = upper-bound constant
+  0.7213 on an open Erdős problem. (2) `1003.3127v1#2` (the first GREEN) STRONG — skeptic verified
+  the candidate Bregman-projection counterexample against the source survey ("tried hard to kill it,
+  failed on the mathematics"); possibly hours-scale; risk = novelty sweep + needs the second
+  (cl C*⊆U*) construction for a complete note. 4 MEDIUM: dagstuhl:23121#2 (Wilf bijection),
+  kourovka:19.20 (|PIso|>|End|), 2511.01306v1 (ternary codes character count), 2206.06472v4#12 (benzels).
+- **Decisions/next:** novelty sweeps FIRST on both STRONGs (Erdősgate); then build `phase2/loop/`
+  (PROBLEM.md + verify.py + Lean statement stub per survivor); Tier-1 certificate fleet kept as a
+  cheap uncorrelated side bet. HANDOFF §7 restructured into TWO LANES.
+- **Open questions:** Sihao to confirm portfolio scope/budget; the prover–verifier-loop link he
+  referenced was never re-shared (designed from HANDOFF Option A′); does 1003.3127v1#2 survive the
+  citing-papers sweep?
+- **Spend:** ~$0 OpenAI (all Fable agents); ~1.5M subagent tokens.
+
 ### 2026-07-07 — HANDOFF CATCH-UP: commit the 07-06 proof-phase work (G1 draft, F1-smooth verdict); orient session (Sihao session)
 - **Committed the uncommitted 2026-07-06 Engine-A work** that a prior session left untracked in
   `phase2/bruhat/f2_drafts/`: `g1_draft_b.md` + `g1b_scripts/` (6 verification scripts) and
