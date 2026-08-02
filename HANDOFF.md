@@ -454,12 +454,13 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - ✅ Repair 3 (referee-grade certificates): four exact-arithmetic scripts now in repo at
   `f2_drafts/g1b_scripts/exact_certs_20260802/` (cumulants, N-table, Lemma-A 80-digit, B.0
   exact-integer certs) — all run clean from that location. Sihao's originals untouched.
-- ⏳ Repairs 1+2 IN FLIGHT at session close (background agent, this machine): repair 1 = exact
-  pointwise check of Cor B.4's C₁=0.45 for every 4≤m≤109; repair 2 = close the 150<m<m₁(y₀)
-  band (m=151..229 per C2-table row) by direct exact computation. Scripts will land as
-  `g1b_scripts/repair1_pointwise_m4to109_20260802.py` + `repair2_band_m151to229_20260802.py`.
-  **If those files are absent when you read this, the run died — re-launch per issues 1–2 of the
-  maths referee report.** Results + errata to be written up in `f2_drafts/g1b_repairs_20260802.md`.
+- ✅ Repairs 1+2 DONE (2026-08-02, later same session): **both PASS, dual-precision certified
+  (50 vs 100 digits).** Repair 1: σm²|E(k)| ≤ 0.45 exactly verified for ALL m∈4..109, all k
+  (global max 0.103 at m=4 — margin >4.3×). Repair 2: the 150<m<m₁ band CLOSED for every
+  C2-table row (m=151..229; e.g. y₀=1 band max 0.915 vs bound 3.1) — subsumes Sihao's parked
+  "harness m→200" item. Scripts: `g1b_scripts/repair1_pointwise_m4to109_20260802.py` +
+  `repair2_band_m151to229_20260802.py`. **Full writeup + draft errata list:
+  `f2_drafts/g1b_repairs_20260802.md`. ⇒ Referee issues 1–3 all closed; F2(a) hangs on G2 ALONE.**
 - 📋 Draft errata (NOT yet applied — originals kept untouched per Nikol's no-erasing rule; record
   in the repairs doc): B.6 Delta_tail display double-counts λ^a; C2-table column "m² sup N/P²"
   actually shows A2N/P_min (display-only); §6 y₀=0.1 measured = 0.206 not 0.194; g1b_truth.py's

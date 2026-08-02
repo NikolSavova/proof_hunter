@@ -464,11 +464,14 @@ prior-art kill-search**; has a writeable-down win condition.
   function — NUMERICS CONFIRMED. Zero MAJOR/FATAL findings; 5 MINOR + 3 COSMETIC. Reports:
   `f2_drafts/g1b_referee_maths_20260802.md` + `g1b_referee_numerics_20260802.md`.
   **⇒ Theorem A (=F2(a)) now hangs on G2 + two finite computations only.**
-- **Repairs started immediately:** repair 3 DONE (exact certificates copied into
-  `g1b_scripts/exact_certs_20260802/`, verified running); repairs 1 (pointwise C₁ for 4≤m≤109)
-  + 2 (close the 150<m<m₁ band to m=229) IN FLIGHT in a background agent at session close —
-  landing as dated `repair1_*/repair2_*` scripts + `g1b_repairs_20260802.md` writeup. Draft
-  errata recorded, originals untouched (Nikol's no-erasing rule).
+- **Repairs COMPLETED same session (all three referee issues closed):** repair 3 = exact
+  certificates in `g1b_scripts/exact_certs_20260802/` (verified running); repair 1 = pointwise
+  C₁=0.45 exactly verified for ALL 4≤m≤109 (global max 0.103, margin >4.3×); repair 2 = the
+  150<m<m₁ band closed for every C2 row (m=151..229; subsumes the parked "harness m→200" item).
+  Both dual-precision certified (50 vs 100 digits, agreement ~1e−40). Scripts landed as dated
+  `repair1_*/repair2_*` files; full writeup + 8-item draft errata list in
+  `f2_drafts/g1b_repairs_20260802.md`. Originals untouched (Nikol's no-erasing rule).
+  **⇒ F2(a) = Theorem A now hangs on G2 ALONE.**
 - **Decisions:** (a) referee verdict accepted → next maths action is WRITE G2 (tilted frame);
   (b) repair 2 goes straight to m=229, subsuming Sihao's parked "harness m→200" item;
   (c) AI-assistance disclosure policy for the paper reaffirmed (acknowledge + everything
