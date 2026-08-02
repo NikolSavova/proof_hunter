@@ -437,6 +437,43 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
 
+### ✅ 2026-08-02 (Nikol + Claude session) — G1 IS REFEREED: **SURVIVES WITH MINOR REPAIRS**
+**Lane-1 item 1 (the perishable one) is DONE.** Two independent blind passes on
+`f2_drafts/g1_draft_b.md`, both committed:
+- `f2_drafts/g1b_referee_maths_20260802.md` — adversarial maths referee, attacked all of B.0–B.9,
+  recomputed key algebra by hand, upgraded the B.0 float root certificates to exact isolation.
+  Verdict: **SURVIVES WITH MINOR REPAIRS** (5 MINOR + 3 COSMETIC, zero MAJOR/FATAL). Statement
+  matches the ledger's Prop 2.2 in substance; one mild drift: Cor B.4's C₁=0.45 carries an m≥110
+  threshold + an unproven small-m assertion → repair 1 below. **No circularity with G2.**
+- `f2_drafts/g1b_referee_numerics_20260802.md` — independent computational audit: every script
+  re-run (sympy/mpmath-dependent ones re-implemented in *exact* stdlib arithmetic), all constants
+  reproduce; verdict **NUMERICS CONFIRMED**.
+**⇒ F2(a) = Theorem A is now down to G2 + two finite computations.**
+
+**Repairs status (per the referee's issue list):**
+- ✅ Repair 3 (referee-grade certificates): four exact-arithmetic scripts now in repo at
+  `f2_drafts/g1b_scripts/exact_certs_20260802/` (cumulants, N-table, Lemma-A 80-digit, B.0
+  exact-integer certs) — all run clean from that location. Sihao's originals untouched.
+- ⏳ Repairs 1+2 IN FLIGHT at session close (background agent, this machine): repair 1 = exact
+  pointwise check of Cor B.4's C₁=0.45 for every 4≤m≤109; repair 2 = close the 150<m<m₁(y₀)
+  band (m=151..229 per C2-table row) by direct exact computation. Scripts will land as
+  `g1b_scripts/repair1_pointwise_m4to109_20260802.py` + `repair2_band_m151to229_20260802.py`.
+  **If those files are absent when you read this, the run died — re-launch per issues 1–2 of the
+  maths referee report.** Results + errata to be written up in `f2_drafts/g1b_repairs_20260802.md`.
+- 📋 Draft errata (NOT yet applied — originals kept untouched per Nikol's no-erasing rule; record
+  in the repairs doc): B.6 Delta_tail display double-counts λ^a; C2-table column "m² sup N/P²"
+  actually shows A2N/P_min (display-only); §6 y₀=0.1 measured = 0.206 not 0.194; g1b_truth.py's
+  float Lemma-A section needs an in-file warning; hardcoded /Users/sihaohuang paths.
+
+**Current plan of record: `phase2/bruhat/PLAN_2026-08-02.md`** (dated, does not erase earlier
+plans). Nikol is back after a ~3-week gap and is on the 5-day learning ramp in that file
+(Björner–Brenti Ch. 2 etc.). **Next actions: finish repairs 1+2 + write `g1b_repairs_20260802.md`
+→ then WRITE G2 (tilted frame — g1_draft_b §8 says the B.0–B.9 skeleton transfers). G1+G2 ⇒
+Theorem A fully proved → JCTA-tier ceiling.**
+
+**Sihao:** G1 is off your plate — refereed clean. Your parked "harness m→200 extension" is being
+subsumed by repair 2 (going to 229 directly). Nothing else in your Lane 2 changed.
+
 ### 📣 STATUS REPORT FOR NIKOL (2026-07-07 — Sihao asked that you see this first)
 **Where the Bruhat/Brenti attack stands, in one block — and the exact path to a paper.**
 
@@ -485,10 +522,9 @@ dispatch, and writing — marginal value of more compute is ~zero.
 ### 📌 STATE AS OF 2026-07-09 (Sihao session close) — TWO LANES now. Priority order per lane:
 
 **LANE 1 — Bruhat paper (NIKOL):**
-1. **Referee `f2_drafts/g1_draft_b.md`** (adversarial, blind, per house rule — re-run the
-   `g1b_scripts/`, attack the B.0–B.9 chain). It claims to CLOSE ledger item G1 with explicit
-   constants; if it survives, F2 part (a) is down to G2 only. **Do not treat G1 as closed until
-   this referee pass exists.**
+1. ~~**Referee `f2_drafts/g1_draft_b.md`**~~ — **✅ DONE 2026-08-02: SURVIVES WITH MINOR
+   REPAIRS** (see the 2026-08-02 block at the top of §7; reports committed in `f2_drafts/`).
+   F2 part (a) is down to G2 + two finite computations (repairs in flight).
 2. **Write G2 (tilted frame)** — g1_draft_b §8 says the same B.0–B.9 skeleton transfers with the
    tilted-cf identity quoted in the F2 ledger's G2 row. G1+G2 ⇒ Theorem A (= F2(a)) fully proved.
 3. **Nikol: judge the corrected F1 statement.** F1-smooth as frozen is FALSE (refereed, §3):

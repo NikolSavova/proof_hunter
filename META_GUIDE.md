@@ -449,6 +449,36 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-02 — G1 REFEREED CLEAN: F2(a) down to G2 (Nikol + Claude session, first after ~3-week gap)
+- **Nikol back after a long gap; re-oriented from repo alone** (the handoff files did their job).
+  Set model Fable 5. Wrote **`phase2/bruhat/PLAN_2026-08-02.md`** — dated plan of record (Nikol's
+  5-day learning ramp: Björner–Brenti GTM 231 Ch. 2 core + Ardila videos + Brenti survey; then
+  ratification duties; earlier plans untouched). Nikol began the reading ramp this session.
+- **⭐ MAIN EVENT: `g1_draft_b.md` adversarially refereed (Lane-1 item 1, the perishable one) —
+  verdict SURVIVES WITH MINOR REPAIRS.** Two independent blind agents: (1) maths referee attacked
+  all of B.0–B.9, recomputed algebra by hand, re-certified B.0's polynomial inequalities with
+  EXACT root isolation (upgrading the draft's float nroots), confirmed no G2 circularity, and
+  matched the proved statement against the ledger's Prop 2.2 (substantive match; one mild drift
+  in Cor B.4's small-m coverage). (2) numerics auditor re-ran all 6 scripts (re-implementing the
+  sympy/mpmath ones in exact stdlib arithmetic) + independent spot-checks from the generating
+  function — NUMERICS CONFIRMED. Zero MAJOR/FATAL findings; 5 MINOR + 3 COSMETIC. Reports:
+  `f2_drafts/g1b_referee_maths_20260802.md` + `g1b_referee_numerics_20260802.md`.
+  **⇒ Theorem A (=F2(a)) now hangs on G2 + two finite computations only.**
+- **Repairs started immediately:** repair 3 DONE (exact certificates copied into
+  `g1b_scripts/exact_certs_20260802/`, verified running); repairs 1 (pointwise C₁ for 4≤m≤109)
+  + 2 (close the 150<m<m₁ band to m=229) IN FLIGHT in a background agent at session close —
+  landing as dated `repair1_*/repair2_*` scripts + `g1b_repairs_20260802.md` writeup. Draft
+  errata recorded, originals untouched (Nikol's no-erasing rule).
+- **Decisions:** (a) referee verdict accepted → next maths action is WRITE G2 (tilted frame);
+  (b) repair 2 goes straight to m=229, subsuming Sihao's parked "harness m→200" item;
+  (c) AI-assistance disclosure policy for the paper reaffirmed (acknowledge + everything
+  machine-checkable or human-verified; no claim no author understands).
+- **Open questions:** unchanged from 07-09 (F1 rewording ratification, f1smooth MINOR REPAIRS,
+  Sihao's Tier-2 scope confirm, README license). Nikol's ratification duties now gated only on
+  his reading ramp.
+- **Spend:** ≈ $0 API this session (referee/audit ran on Claude subscription agents; no OpenAI
+  calls). Cumulative Bruhat ≈ $40.
+
 ### 2026-07-09 — TIER-2 LANE OPENED: parallel proof-fleet direction + ultracode re-tag of all 96 finalists (Sihao session)
 - **Pulled Nikol's exhaustive-tier completion** (commit 8caca9c): B₆ 350.7M + E₆ 466.2M intervals,
   all pass — **the exhaustive tier is CLOSED**; E₆ min ratio 1.028446 (seg-1 witness interval not
