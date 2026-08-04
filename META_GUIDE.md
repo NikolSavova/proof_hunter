@@ -449,6 +449,23 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-03/04 — G2 CAMPAIGN STARTED: two blind drafts, interrupted by laptop sleep (Nikol + Claude)
+- Launched the G2 closure campaign (last gap in Theorem A): **two blind parallel drafts**,
+  T1 = direct B.0–B.9 tilted-skeleton transfer, T2 = independent route. Repeated overnight
+  agent deaths traced to **laptop sleep** (local agents freeze with the machine — same lesson
+  as the July B₆/E₆ runs); mitigated with detached `caffeinate -i` + a new write-as-you-go
+  rule for drafting agents (skeleton to disk first, save after every lemma).
+- **T2 is the promising one (~1050 lines committed, unfinished):** route = tilt-invariance of
+  r(k) ⇒ refined law (ii) reduces to the REFEREED untilted Theorem B.8 at k = μ(λ) + an
+  explicit uniform-in-λ cumulant dictionary; crude law (i) via tilted-kernel LCLT. Open at
+  interruption: far-region viability, region-2 handoff arithmetic, one finite certificate,
+  tilted 6th-order remainder ("T.9''"). T1 = skeleton only. NC scripts not yet on disk.
+- **Session end forced by human leaving (laptop off, unattended).** WIP committed; exact
+  resume instructions in HANDOFF §7 top block. Next: finish drafts → merge → blind adversarial
+  referee (house rule) → G1+G2 ⇒ Theorem A proved.
+- Also this session (2026-08-03 morning): confirmed to Nikol the G1 chapter fully done;
+  Nikol progressing on the START_HERE reading ramp. Spend ≈ $0 API (subscription agents).
+
 ### 2026-08-02 — G1 REFEREED CLEAN: F2(a) down to G2 (Nikol + Claude session, first after ~3-week gap)
 - **Nikol back after a long gap; re-oriented from repo alone** (the handoff files did their job).
   Set model Fable 5. Wrote **`phase2/bruhat/PLAN_2026-08-02.md`** — dated plan of record (Nikol's

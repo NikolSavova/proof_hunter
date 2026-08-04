@@ -437,6 +437,27 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
 
+### ⏳ 2026-08-03/04 (Nikol + Claude session) — G2 DRAFTING IN PROGRESS, interrupted mid-run
+**Two blind parallel G2 drafts launched (F2-campaign pattern); session ended with laptop
+shutting down, so both drafting agents died mid-work. WIP committed as-is:**
+- `f2_drafts/g2_draft_t2_20260803.md` (~1050 lines, SUBSTANTIAL but UNFINISHED — NC tables and
+  §8 "What remains" not yet filled; scripts `g2_scripts/t2/` may be missing/partial). **Route:
+  perturbation-in-lambda: r(k) is TILT-INVARIANT (tilt multiplies a_k by θ^k, cancels in the
+  second difference of log a_k), so the refined law (ii) = g1_draft_b's refereed untilted
+  Theorem B.8 read at k = μ(λ), plus an explicit uniform-in-λ cumulant DICTIONARY (μ(λ),
+  σ_λ² two-sided bounds for |λ| ≤ K/m); crude law (i) via a tilted-kernel LCLT re-run of
+  Lemma 1.5.** Flagged-open-at-interruption: far-region viability condition, region-2 handoff
+  arithmetic, a finite certificate, and "Lemma T.9''" (tilted 6th-order model remainder).
+- `f2_drafts/g2_draft_t1_20260803.md` (skeleton only, 55 lines — direct B.0–B.9 tilted
+  transfer route; barely started).
+**NEXT SESSION: relaunch/finish the drafts** (fresh agents can resume FROM the committed WIP
+files — instruct them to read their own draft first and continue; T2 is close enough that
+finishing+NC-scripts is likely one agent-run). Then: merge/pick → blind adversarial referee
+pass (house rule) → if survives, Theorem A = F2(a) is FULLY PROVED. Target statement =
+ledger Prop 3.5(i)+(ii) + the σ_λ² ≳ k(1+k/m) order bound; the (i)/(ii) ranges must overlap.
+**Ops lesson (recurring): local agents die when the laptop sleeps — run `caffeinate -i`
+(detached) at session start for long agent work, keep lid open; only CI survives lid-close.**
+
 ### ✅ 2026-08-02 (Nikol + Claude session) — G1 IS REFEREED: **SURVIVES WITH MINOR REPAIRS**
 **Lane-1 item 1 (the perishable one) is DONE.** Two independent blind passes on
 `f2_drafts/g1_draft_b.md`, both committed:
