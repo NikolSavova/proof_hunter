@@ -297,6 +297,43 @@ Compute is done; the work is now mathematics + writeup. All in `phase2/bruhat/`:
   irreducible (the A₁×D₄ counterexample bites any version quantifying over reducible W); F3's
   dihedral-equality classification is consistent with the B₃ witness (it IS the (1,2,2,2,1) pattern).
 
+**⚡ G2 T2 FINALIZED FOR REAL + two residue items explored (2026-08-05, Nikol + Claude).**
+- **T2 draft (`f2_drafts/g2_draft_t2_20260803.md`) finalized.** The 2026-08-03 WIP had claimed
+  "8 PASSes" from scripts that were never saved onto disk — this session caught it: all 10 numeric
+  scripts (`g2_scripts/t2/`) were actually written and run, surfacing and fixing several real bugs
+  in the first-pass claims (a sign error in T.6iii, a false certificate `1/60` that fails at
+  `j=2,t=1/4`, a fabricated precision figure). **T2's own honest §8 verdict: G2 is NOT fully closed
+  by T2 alone** — 3 residue items: (1) far-exponent/deep-tilt lemma, (4) T.9's mechanical bucket
+  table, (5) same far-exponent issue as (1). T1 (the alternate direct-transfer route,
+  `g2_draft_t1_20260803.md`) is still an unstarted 55-line skeleton.
+- **Item 1 explored — confirmed hard AND necessary, not closed.** Diagnosed precisely why neither
+  existing far-region mechanism (T.7b-final, T.7c) extends to `lam in (pi/m, 1/2]`: the `pi/m`
+  near/far split is meaningless for fixed `lam>0` as `m` grows; T.7c's technique is small-tilt-only
+  by construction (its prefactor is `e^{-Theta(m)}` for deep tilt). Ruled OUT an escape hatch — the
+  hope that `sigma_lam^2 >= C_0` confines deep tilt to a shrinking range as `m` grows is FALSE (the
+  max usable `lam` GROWS toward 1 as `m` grows), so this lemma is load-bearing across nearly the
+  full tilt range for `m>=180`, not a corner case. A repair route (`(1+A_j)/(1+a)` exact factor
+  identity) is identified but has an unresolved constant-chasing handoff between sub-regimes.
+  Full writeup + diagnostic script: `f2_drafts/g2_item1_deep_tilt_notes_20260805.md`,
+  `g2_scripts/t2_item1/diag1_deep_tilt.py`.
+- **Item 4 explored — also under-scoped; its own proof text cites an unwritten "Lemma T.9'".**
+  Built that missing lemma from scratch via sympy (the tilted 6-term Edgeworth model polynomial
+  `P_lam(y)`, with the two new odd cumulant terms `kappa_3`, `kappa_5`), verified two independent
+  ways (imaginary part cancels to exactly 0 symbolically; the untilted limit `alpha=delta=0`
+  reproduces `g1_draft_b`'s known `N(0)` formula exactly, term for term). Found and resolved a real
+  bucket-placement subtlety: `N_lam(0)` has a bare `alpha^2` term that's `O(1/m)` not `O(1/m^2)` —
+  confirmed it's exactly the "`kappa_3^2`" piece the theorem's own proof already folds into the
+  `w^2` bucket, just never shown explicitly. Grid-certified the resulting (correctly-scoped)
+  pointwise bucket: `<= 1.55 (K=1), 4.09 (K=2), 4.91 (K=4)` — smaller than the draft's own `C_R~5.1`
+  guess. Still open: the box/tail/out kernel-transfer bucket (likely dominant) and the Taylor-
+  remainder bucket. Writeup + script: `f2_drafts/g2_item4_bucket_notes_20260805.md`,
+  `g2_scripts/t2_item4/t2i4_nc1_model.py` (PASS).
+- **Pattern worth flagging: every "quick/mechanical" label in the draft's own honest ledger
+  undersold the real difficulty — both items explored tonight hid an unwritten sub-lemma.** Also
+  recurring: every measured/certified constant has come in well BELOW the draft's own guesses —
+  encouraging (suggests closure is blocked on *effort*, not on the maths being false), but neither
+  item is close to finished. Session spend ≈ $0 API (subscription agent).
+
 **⚡ TIER-2 PORTFOLIO OPENED — parallel proof-fleet direction + re-tag of all 96 finalists (2026-07-09, Sihao).**
 Nikol keeps Bruhat; Sihao opens a SECOND lane: attack multiple candidates in parallel with a
 **prover–verifier loop** — frontier reasoning models drafting PROSE PROOFS (blind drafts +
@@ -355,10 +392,14 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   MathOverflow `open-problem` tag. (Hannover OpenQIProblemsWiki still UNREACHABLE 2026-07-01 + redundant w/ iqoqi.)
 - [ ] **gpt-5.5-pro deep pass** on the top ~8 finalists once the diversified set is kill-searched (org
   TPM=200k → throttle; `--model gpt-5.5-pro`).
-- [ ] **(Bruhat, PROOF-CRITICAL) Referee `g1_draft_b.md`** — adversarial pass per house rule (re-run
-  every script in `f2_drafts/g1b_scripts/`, attack B.0–B.9); only then flip the F2 ledger's G1 row.
-- [ ] **(Bruhat, PROOF-CRITICAL) G2 (tilted frame)** — same skeleton as g1_draft_b (B.0–B.9 for
-  truncated geometrics + the tilted-cf identity in the G2 ledger row). G1+G2 ⇒ Theorem A = F2(a).
+- [x] ✅ **(Bruhat) Referee `g1_draft_b.md`** — DONE 2026-08-02: SURVIVES WITH MINOR REPAIRS (see §3);
+  repairs 1+2 also done same day. G1 row of the F2 ledger closed.
+- [ ] **(Bruhat, PROOF-CRITICAL) G2 (tilted frame)** — IN PROGRESS, not closed. T2 draft
+  (`f2_drafts/g2_draft_t2_20260803.md`) finalized 2026-08-05 with real numeric scripts, but its own
+  honest §8 says G2 is NOT closed by T2 alone: 3 residue items, 2 explored 2026-08-05 (both confirmed
+  hard, both have real partial progress, neither finished — see §3's 2026-08-05 entry and
+  `f2_drafts/g2_item1_deep_tilt_notes_20260805.md` / `g2_item4_bucket_notes_20260805.md`). T1 (the
+  alternate route) is still an unstarted skeleton. G1+G2 ⇒ Theorem A = F2(a), once G2 lands.
 - [x] ✅ **(Bruhat) E₆ exhaustive — DONE by Nikol (2026-07-08 push):** 466.2M intervals, 0 violations,
   min ratio 1.028446; B₆ 350.7M also complete. Exhaustive tier CLOSED. Only loose end: E₆ seg-1
   witness interval not recorded (re-scan u<6000 only if wanted for the writeup) — see
