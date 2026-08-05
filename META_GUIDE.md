@@ -449,6 +449,51 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-05 — G2 T2 FINALIZED (real, not fabricated); items 1 & 4 of its honest ledger explored, both confirmed hard (Nikol + Claude)
+- **T2 draft finalized for real.** The 2026-08-03 WIP had claimed "8 PASSes"
+  from scripts that were never saved — this session caught that: all 10 numeric
+  scripts (`g2_scripts/t2/`) were actually written and run, and several
+  first-pass claims turned out to be WRONG when checked (a sign error, a false
+  certificate `1/60` that fails at `j=2,t=1/4`, a fabricated precision figure)
+  — all corrected in the text. T2's own honest verdict (§8): **G2 is NOT fully
+  closed by T2 alone**; three residue items remain (1: far-exponent/deep-tilt
+  lemma, 4: T.9's mechanical bucket table, 5: same far-exponent issue). T1
+  (the alternate direct-transfer route) is still an unstarted 55-line skeleton.
+- **Item 1 explored (deep-tilt far-region decay, `lam in (pi/m, 1/2]`) — no
+  proof, but the difficulty is now precisely diagnosed and an escape hatch was
+  ruled OUT.** Neither existing far-region mechanism extends: the `pi/m`
+  near/far split is meaningless for fixed `lam>0` as `m` grows (`|phi_lam(pi/m)|
+  -> 1`, not 0); T.7c's pairwise-tilt-comparison technique is small-tilt-only
+  by construction (its prefactor is `e^{-Theta(m)}` for deep tilt). Checked
+  whether `sigma_lam^2 >= C_0` might confine deep tilt to a shrinking range as
+  `m` grows (which would let the item drop out) — it does NOT: the max `lam`
+  satisfying `sigma_lam^2 >= 2000` GROWS toward 1 as `m` grows, so item 1 is
+  load-bearing across nearly the full tilt range for `m>=180`, not a corner
+  case. The repair route (`(1+A_j)/(1+a)` exact factor identity) looks right
+  but has an unresolved constant-chasing handoff between sub-regimes.
+  `f2_drafts/g2_item1_deep_tilt_notes_20260805.md` + `g2_scripts/t2_item1/`.
+- **Item 4 explored (T.9's "mechanical" bucket table) — also under-scoped: its
+  own proof text cites a "Lemma T.9'" that was never written.** Built it from
+  scratch (the tilted 6-term Edgeworth model polynomial `P_lam(y)`, via sympy),
+  verified two ways (imaginary part cancels to exactly 0 symbolically; the
+  untilted limit reproduces g1_draft_b's known `N(0)` formula exactly). Found
+  and resolved a real bucket-placement subtlety: `N_lam(0)` has a bare `alpha^2`
+  term that's `O(1/m)` not `O(1/m^2)` — confirmed it's exactly the "`kappa_3^2`"
+  piece the theorem's own proof already folds into the `w^2` bucket, just never
+  shown explicitly. Grid-certified the resulting (correctly-scoped) bucket:
+  `<= 1.55 (K=1), 4.09 (K=2), 4.91 (K=4)` — smaller than the draft's `C_R~5.1`
+  guess. Still open: the box/tail/out kernel-transfer bucket (likely dominant)
+  and the Taylor-remainder bucket. `f2_drafts/g2_item4_bucket_notes_20260805.md`
+  + `g2_scripts/t2_item4/t2i4_nc1_model.py` (PASS).
+- **Pattern across both explorations: every "quick/mechanical" label in the
+  draft's own honest ledger undersold the real difficulty** — both items
+  turned out to hide an unwritten sub-lemma. Also a recurring finding: every
+  measured/certified constant has come in well BELOW the draft's own guesses
+  (large headroom), suggesting the eventual closure is more likely blocked on
+  *effort* than on the mathematics being false. Session spend ≈ $0 API
+  (subscription agent); three commits: T2 finalization (pre-session, `4274e51`),
+  item-1 diagnostic, item-4 partial progress.
+
 ### 2026-08-03/04 — G2 CAMPAIGN STARTED: two blind drafts, interrupted by laptop sleep (Nikol + Claude)
 - Launched the G2 closure campaign (last gap in Theorem A): **two blind parallel drafts**,
   T1 = direct B.0–B.9 tilted-skeleton transfer, T2 = independent route. Repeated overnight

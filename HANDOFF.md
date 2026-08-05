@@ -437,6 +437,49 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
 
+### ✅ 2026-08-05 (Nikol + Claude session) — G2 T2 FINALIZED (real numbers this
+time); items 1 & 4 of its honest §8 ledger explored — both real, both harder
+than labeled, both have genuine partial progress banked
+**T2 draft (`f2_drafts/g2_draft_t2_20260803.md`) is now finalized for real** —
+the 2026-08-03 WIP had claimed "8 PASSes" from scripts that were never saved;
+this session caught it and actually wrote + ran all 10 (`g2_scripts/t2/`),
+correcting several wrong first-pass claims along the way (a sign error, a
+false certificate, a fabricated precision figure). **T2's own honest verdict:
+G2 is NOT fully closed by T2 alone** — three residue items in §8: (1) far-
+exponent/deep-tilt lemma, (4) T.9's mechanical bucket table, (5) same far-
+exponent issue as (1). T1 (the alternate route) is still an unstarted skeleton.
+
+**Both "quick" residue items turned out to hide an unwritten sub-lemma —
+explored, not closed:**
+- **Item 1 (deep-tilt far region, `lam in (pi/m, 1/2]`):** confirmed hard AND
+  necessary (ruled out an escape hatch — `sigma_lam^2 >= C_0` does NOT confine
+  deep tilt to a shrinking range as `m` grows). Diagnosed exactly why neither
+  existing mechanism extends; the repair route is identified but unfinished
+  (a constant-chasing handoff between sub-regimes). Writeup:
+  `f2_drafts/g2_item1_deep_tilt_notes_20260805.md`.
+- **Item 4 (T.9's "mechanical" bucket table):** its own proof text cites a
+  "Lemma T.9'" that was never written. Built it from scratch via sympy (the
+  tilted model polynomial, verified two independent ways), found and resolved
+  a real bucket-placement subtlety (a bare `alpha^2` term that's `O(1/m)` not
+  `O(1/m^2)`), and grid-certified ONE bucket of `C_R(K)`: `<= 1.55 (K=1), 4.09
+  (K=2), 4.91 (K=4)` — smaller than the draft's own guess. Still open: the
+  box/tail/out kernel-transfer bucket (likely dominant) and the Taylor-
+  remainder bucket. Writeup: `f2_drafts/g2_item4_bucket_notes_20260805.md`.
+
+**Recurring pattern worth noting: every measured/certified constant across
+both explorations came in well BELOW the draft's own prose guesses.** This is
+encouraging — it suggests eventual closure is more likely blocked on *effort*
+than on the underlying mathematics being false — but neither item is close to
+finished; both are genuinely multi-session-scale, not quick patches.
+
+**NEXT SESSION, pick one:** (a) finish item 1's constant-chasing handoff
+(comparable scope to what's already done); (b) finish item 4's remaining two
+buckets (box/tail/out + Taylor remainder, following g1_draft_b's Lemma B.6/B.7'
+pattern exactly, now that the missing "Lemma T.9'" piece exists); (c) referee
+T2 as finalized (house rule) before adding more surface area — it has real,
+checkable content now, unlike the pre-session WIP. All three are legitimate;
+no verdict was reached on priority order this session.
+
 ### ⏳ 2026-08-03/04 (Nikol + Claude session) — G2 DRAFTING IN PROGRESS, interrupted mid-run
 **Two blind parallel G2 drafts launched (F2-campaign pattern); session ended with laptop
 shutting down, so both drafting agents died mid-work. WIP committed as-is:**
