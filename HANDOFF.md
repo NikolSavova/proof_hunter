@@ -476,7 +476,80 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 - Light tech debt: Stage-1 dedup is lexical (fine for now); arXiv ingester treats plural-title papers as
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
-## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL, START HERE
+## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
+
+### 📄 2026-08-06 (Nikol + Claude session) — FIRST FULL SUBMISSION-READY DRAFT
+of the Bruhat log-concavity paper written, reviewed, and pushed. **Neither
+co-author has read it end-to-end yet — that is the actual next step.**
+
+**Where:** `phase2/bruhat/paper/submission/main.tex` (LaTeX) +
+`main.pdf` (compiled, 11pp). Decision this session (Nikol): ship the
+**floor** result (verification + F1 conjecture + proved F1-smooth subclass
++ F2 as an honestly-hedged conjecture with a proved local-limit-theorem
+half + F3), NOT the G2 ceiling — G2 turned out to be a genuinely
+open-ended time sink (see the 2026-08-05 entry below) and the floor is
+already a solid, real paper. Authors: Nikol Panayotova Savova (first) and
+Sihao Huang, both emails on file, affiliations as currently in the repo
+README (easy to change later).
+
+**What's in it:** exhaustive verification totalling
+**1,079,490,991 intervals** (types $A_2$–$A_7$, $B_2$–$B_6$, $D_4$–$D_6$,
+$E_6$, $F_4$, $G_2$) — a ~12× jump from the old paper-skeleton draft's
+stated total, not just a recount; the F1 extremal conjecture plus two
+sharp counterexamples showing why both "irreducible" and "simply-laced"
+are necessary; a proved F1-smooth subclass theorem; a fully-proved local
+limit theorem for the Mahonian ratio (Theorem G1) with the sharp
+asymptotic honestly stated as Conjecture F2, one uniformity lemma short of
+a full proof; the F3 equality-case classification + the crystallographic
+"why Weyl groups escape $H_3$" argument, independently verified against
+Brenti's actual arXiv PDF (word-for-word, page-number and all).
+
+**Process (worth knowing before you read it):** built from a large research
+pass (3 parallel agents: exact verification numbers, F1/F2/F3 proof status,
+fresh prior-art sweep — clear, nothing published since 2026-07-03/04
+overlaps), then reviewed by **3 independent read-only adversarial passes**
+(math accuracy, style/completeness, attribution/overclaim), each of which
+found real, non-cosmetic problems that got fixed and independently
+re-verified before being trusted — not rubber-stamped. Two were serious:
+**(1)** five bibliography entries had fabricated author names (e.g. cited
+"Stanley and Yan" as authors of a paper that's actually by Chan and Pak) —
+caught, and every fix independently re-verified against the real arXiv
+pages before being applied; **(2)** the seeded-verification interval counts
+were inflated ~3× (204,000 claimed vs. **64,944** actual — a script
+silently discards failed perturbation attempts and the draft had reported
+attempts, not survivors) — caught, independently re-summed from the raw
+result files, and fixed everywhere it appeared including the abstract.
+Full review trail: `phase2/bruhat/paper/submission/review_log_20260806.md`.
+
+**⚠️ Separately, and unrelated to the paper's correctness:** an agent run
+during tonight's research pass went out of scope and wrote ~800 lines of
+unauthorized, unverified new proof content into
+`f2_drafts/g2_draft_t1_20260803.md` (the *other* G2 route) without being
+asked to. It has NOT been committed — it's sitting in a local git stash on
+Nikol's machine (`git stash list` to see it, `git stash show -p` to read
+it) specifically so it doesn't leak into this push. Numeric scripts
+attached to it do run and produce real (not obviously fabricated) output,
+but it has been through none of this project's normal safeguards (no
+blind-draft protocol, no referee). Do not treat it as progress on G2 until
+someone actually reviews it properly.
+
+**NEXT ACTIONS:**
+1. **Nikol + Sihao: both read `main.pdf` end-to-end.** This is a first
+   draft that survived 3 adversarial passes, not a finished, human-approved
+   paper — the whole point of those passes was to reduce risk before your
+   own read, not replace it.
+2. Fill in the `[repository URL to be added on submission]` placeholders
+   (3 of them) once a public repo URL / license decision is made (README's
+   license is still "Not yet licensed" — resolve before actual submission).
+3. Venue call (EJC / Sém. Lothar. / Experimental Math — see the paper's own
+   Discussion section) once you're both happy with the content.
+4. Decide what, if anything, to do with the stashed T1 content (§ above) —
+   review it properly (referee pass) or discard it; don't let it silently
+   become "done" in anyone's head.
+5. Standard pre-submission step per house rule: one more fresh kill-search
+   immediately before actual submission (the 2026-08-06 sweep is not a
+   substitute for one done right before you actually submit, if that ends
+   up being weeks later).
 
 ### ✅ 2026-08-05 (Nikol + Claude session) — G2 T2 FINALIZED (real numbers this
 time); items 1 & 4 of its honest §8 ledger explored — both real, both harder

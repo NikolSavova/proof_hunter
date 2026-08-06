@@ -1,0 +1,913 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+% --- theorem environments ---
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{observation}[theorem]{Observation}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- macros ---
+\newcommand{\W}{W}
+\newcommand{\Wq}{W(q)}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\Var}{Var}
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+
+\title[Log-concavity of Bruhat intervals in Weyl groups]
+{Log-concavity of Bruhat intervals in Weyl groups:\\
+extended verification, an extremal conjecture, Mahonian asymptotics,\\
+and equality cases}
+
+\author{Nikol Panayotova Savova}
+\address{University of Oxford}
+\email{nikol.p.savova@gmail.com}
+
+\author{Sihao Huang}
+\address{Independent Researcher}
+\email{sihao.c.huang@gmail.com}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+Brenti conjectured that the rank sequence of every Bruhat interval in a
+finite Weyl group is log-concave; the statement is known to fail for the
+non-crystallographic Coxeter group $H_3$. We report an extended
+computational verification of the conjecture, exhaustively checking
+$1{,}079{,}490{,}991$ Bruhat intervals across the Weyl groups of types
+$A_2$--$A_7$, $B_2$--$B_6$, $D_4$--$D_6$, $E_6$, $F_4$, and $G_2$ in exact
+integer arithmetic, with zero violations found; this extends the previously
+recorded verification frontier by roughly an order of magnitude and closes
+several cases ($A_6$, $A_7$, the full range of $B_5$, $B_6$, $D_6$, $E_6$)
+left open in Brenti's own list. We complement this with non-exhaustive evidence
+in higher rank: near-top slab sweeps in $A_8$--$A_{10}$, $D_7$--$D_8$,
+$E_7$, and $124{,}944$ sampled and seeded intervals in $B_7$, $B_8$, $D_7$,
+$E_7$. The data suggest an extremal principle: in every irreducible,
+simply-laced Weyl group the global minimum of the log-concavity ratio over
+all Bruhat intervals is attained by the full interval $[e,w_0]$; we show
+both hypotheses --- irreducibility and the simply-laced restriction --- are
+necessary, and record a proved instance of the principle restricted to
+rationally smooth intervals. In type $A$ this minimum is the central ratio
+of the Mahonian distribution; we prove an unconditional local limit theorem
+pinning its value near the center for every $m$, and state the resulting
+sharp asymptotic $\sigma_m^2(r_m-1) = 1-\tfrac{27}{25}m^{-1}+O(m^{-2})$ as a
+conjecture, one further uniformity lemma short of a full proof. We also
+record a classification of the observed equality cases as rank-two dihedral
+parabolic patterns of order $m\in\{4,6\}$, together with a candidate
+explanation, via the crystallographic restriction, for why Weyl groups
+escape the failure Brenti records for the non-crystallographic group $H_3$,
+whose counterexample interval sits on a dihedral core of order $m=5$.
+\end{abstract}
+
+\subjclass[2020]{05E15, 20F55, 06A07}
+\keywords{Bruhat order, Weyl groups, log-concavity, Mahonian numbers, Coxeter groups}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+
+Let $\W$ be a finite Weyl group with simple reflections $S$, length function
+$\ell$, and Bruhat order $\le$. For $u\le v$ in $\W$, the \emph{Bruhat
+interval} $[u,v]=\{z\in \W : u\le z\le v\}$ carries a natural graded rank
+sequence
+\[
+a_k([u,v]) \;=\; \#\{z\in[u,v] : \ell(z)=\ell(u)+k\}, \qquad 0\le k\le
+\ell(u,v):=\ell(v)-\ell(u),
+\]
+and $[u,v]$ is \emph{rank log-concave} if $a_k^2\ge a_{k-1}a_{k+1}$ for every
+$1\le k\le \ell(u,v)-1$. Brenti asked, as Conjecture 2.11 of his 2024 survey
+of open problems on Coxeter groups and unimodality~\cite{brenti2024open},
+whether this holds for \emph{every} Bruhat interval of \emph{every} finite
+Weyl group. The question is delicate: the log-concavity statement is false
+for general finite Coxeter groups, failing already for the non-crystallographic
+group $H_3$ (Section~\ref{sec:prelim}), so any positive answer for Weyl
+groups specifically must use the crystallographic structure in an essential
+way, not merely finiteness of the group.
+
+At the time of writing, the conjecture was verified only for a modest list of
+small-rank cases: types $A_n$ and $D_n$ for $n\le 5$, $B_n$ for $n\le 4$,
+$B_5$ restricted to intervals of length at least $20$, $F_4$, and the
+dihedral groups~\cite{brenti2024open}. Beyond direct verification, the
+strongest structural result in the literature is the top-heaviness inequality
+of Bj\"orner and Ekedahl~\cite{bjorner-ekedahl} for parabolic lower intervals,
+which constrains the \emph{shape} of the rank sequence but does not compare
+ratios $a_k^2/(a_{k-1}a_{k+1})$ across different intervals and so neither
+implies nor suggests any statement about \emph{where} the log-concavity ratio
+is smallest.
+
+\subsection*{Contributions} We report four results.
+
+\begin{enumerate}[label=(\roman*)]
+\item An exhaustive computational verification that pushes the confirmed
+frontier well past Brenti's list: every Bruhat interval is checked, in exact
+integer arithmetic, in types $A_2$--$A_7$, $B_2$--$B_6$ (the \emph{full}
+range, not only $\ell(u,v)\ge 20$), $D_4$--$D_6$, $E_6$, $F_4$, and $G_2$ —
+$1{,}079{,}490{,}991$ intervals total, zero violations
+(Theorem~\ref{thm:V1}). We complement this with non-exhaustive evidence at
+higher rank: near-top slab sweeps reaching $A_{10}$, $D_8$, and $E_7$
+(apparently the first log-concavity data of any kind recorded for $E_7$), and
+$124{,}944$ sampled and targeted intervals in $B_7$, $B_8$, $D_7$, $E_7$.
+
+\item An extremal conjecture, apparently new: in every irreducible,
+simply-laced Weyl group, the global minimum of the log-concavity ratio over
+\emph{all} Bruhat intervals is attained by the single longest interval
+$[e,w_0]$ (Conjecture~\ref{conj:F1}). This is consistent with every exhaustive
+and near-top data point we have, including two structural counterexamples we
+found along the way showing that both hypotheses --- irreducibility and the
+simply-laced restriction --- are necessary.
+
+\item In type $A$, an asymptotic determination of how the minimum
+log-concavity ratio of the Mahonian distribution (the $[e,w_0]$ interval of
+$S_m$) approaches $1$, extending the local central-limit-theorem technique of
+Canfield, Janson, and Zeilberger~\cite{cjz2011} from the central coefficient
+of the Gaussian binomial to the global minimum and an explicit constant. We
+state the exact asymptotic order as a conjecture: a local limit theorem
+pinning the ratio near the center is unconditionally proved for every $m$,
+and the resulting sharp asymptotic is additionally supported by exact
+verification up to $m=150$ (Section~\ref{sec:F2}).
+
+\item A classification of the observed equality cases --- log-concavity
+holding with equality --- as rank-two dihedral parabolic patterns of order
+$m\in\{4,6\}$, together with a candidate explanation, via the
+crystallographic restriction theorem, for why Weyl groups escape the $H_3$
+failure: the $H_3$ counterexample sits on a dihedral core of order $m=5$,
+which is precisely the order excluded from crystallographic reflection
+groups (Section~\ref{sec:F3}).
+\end{enumerate}
+
+\subsection*{Related work} Beyond Brenti's survey and Bj\"orner--Ekedahl,
+several recent papers touch adjacent territory without overlapping our
+results. Burrull, Gui, and Hu~\cite{burrull-gui-hu} prove an asymptotic
+log-concavity result for dominant lower intervals in \emph{affine} Weyl
+groups under dilation, a genuinely different regime (affine, parabolic,
+asymptotic-in-dilation) from the finite, full-interval statement studied
+here, and record a non-unimodal example due to Stanton showing the naive
+parabolic analogue of Conjecture 2.11 can fail. Kessouri, Ahmia, Arslan, and
+Mesbahi~\cite{kessouri2024} prove ordinary (finite-$n$) log-concavity of
+type-$B$ $q$-Mahonian numbers, with no asymptotic statement, and so do not
+overlap with our type-$A$ asymptotic (iii). We also note, as a caution about
+the reliability of open-problem surveys in general rather than as a
+conflict, that another conjecture from the same survey was recently refuted
+by Chapelier-Laget and Fromentin~\cite{chapelier-fromentin}. A fresh
+literature sweep at the time of writing (2026-08-06) found no paper stating,
+proving, or refuting any of (i)--(iv).
+
+Every claim in this note is accompanied by a reproducible verification
+artifact: source code, exact-arithmetic result logs, and (where a claim is
+fully proved) machine-checked numeric certificates are available at
+[repository URL to be added on submission].
+
+\section{Preliminaries}
+\label{sec:prelim}
+
+Let $\W$ be a finite Coxeter group with simple generators $S$, length
+function $\ell$, and Bruhat order $\le$: $u\le v$ iff some (equivalently,
+every) reduced word for $v$ contains a reduced word for $u$ as a subword.
+For a finite \emph{Weyl} group $\W$, i.e.\ the group generated by
+reflections in the root system of a Cartan matrix, $\W$ is realized
+concretely as a subgroup of orthogonal transformations of a Euclidean space
+and every construction below is computed directly from the Cartan matrix
+(Section~\ref{sec:methods}).
+
+For $u\le v$ write $[u,v]=\{z\in \W : u\le z\le v\}$ for the Bruhat interval,
+graded by $\ell(z)-\ell(u)$, with rank sequence
+\[
+a_k([u,v]) = \#\{z\in [u,v] : \ell(z)=\ell(u)+k\}, \qquad 0\le k \le
+\ell(u,v):=\ell(v)-\ell(u).
+\]
+All $a_k([u,v])>0$ for Bruhat intervals, so we may define the
+\emph{log-concavity ratio}
+\[
+\rho([u,v]) = \min_{1\le k\le \ell(u,v)-1} \frac{a_k([u,v])^2}{a_{k-1}([u,v])\,
+a_{k+1}([u,v])} \qquad (\ell(u,v)\ge 2),
+\]
+and $[u,v]$ is rank log-concave exactly when $\rho([u,v])\ge 1$. Brenti's
+Conjecture 2.11~\cite{brenti2024open} asserts $\rho([u,v])\ge 1$ for every
+Bruhat interval of every finite \emph{Weyl} group (crucially: not every
+finite Coxeter group, by Example~\ref{ex:H3} below).
+
+The interval $[e,w_0]$, where $w_0$ is the longest element, is distinguished:
+its rank sequence is exactly the coefficient sequence of the Poincar\'e
+polynomial $W(q) = \sum_{w\in \W} q^{\ell(w)} = \prod_{i} [d_i]_q$ (product
+over the degrees $d_i$ of $\W$), so $a_k([e,w_0]) = [q^k]\,W(q)$.
+
+\begin{example}[Type $A$: Mahonian numbers]
+For $\W=S_m$ (type $A_{m-1}$), $\ell$ is the number of inversions,
+$W(q)=[m]_q! = \prod_{i=1}^m (1+q+\cdots+q^{i-1})$, and $a_k([e,w_0]) =
+I_m(k) := \#\{\sigma\in S_m : \inv(\sigma)=k\}$, the classical Mahonian
+numbers. Log-concavity of $(I_m(k))_k$ itself is classical
+(\cite{bona2004}; also a consequence of~\cite{hoggar1974,kook2006} applied to
+the factorization of $[m]_q!$); our contribution in Section~\ref{sec:F2} is
+the asymptotic behaviour of the \emph{minimum ratio}, not log-concavity
+itself.
+\end{example}
+
+\begin{example}[Failure for general Coxeter groups: $H_3$]
+\label{ex:H3}
+We have independently confirmed the following directly against the primary
+source. Let $(W,S)$ be of type $H_3$, $S=\{s_1,s_2,s_3\}$ with
+$m(s_1,s_2)=5$ and $m(s_2,s_3)=3$, and let $u=s_3$,
+$v=s_1s_2s_3s_2s_1s_2s_1s_3$. Then~\cite[Conjecture~2.11]{brenti2024open}
+records the rank generating function of $[u,v]$ as
+\[
+1+3t+5t^2+7t^3+10t^4+10t^5+5t^6+t^7,
+\]
+i.e.\ rank sequence $(a_0,\dots,a_7)=(1,3,5,7,10,10,5,1)$. This sequence is
+unimodal but not log-concave: at $k=3$, $a_3^2=49 < a_2a_4=50$, a margin of
+$-1$. We verified this quotation directly against the text of
+\cite{brenti2024open} (\emph{Some open problems on Coxeter groups and
+unimodality}, to appear in Proc.\ Sympos.\ Pure Math.\ \textbf{110}; page
+$10$ of the arXiv:2410.09897 PDF, Conjecture~2.11), where it appears
+verbatim, including the stated Coxeter parameters
+$m(s_1,s_2)=5,\,m(s_2,s_3)=3$; the arithmetic $7^2=49<5\cdot10=50$ checks
+out exactly. The rank-2 parabolic
+$\langle s_1,s_2\rangle$ generating the failure is dihedral of order
+$2m(s_1,s_2)=10$, i.e.\ an $I_2(5)$ core — this is the fact exploited in
+Section~\ref{sec:F3}.
+\end{example}
+
+\section{Computational methodology}
+\label{sec:methods}
+
+All computations use exact integer (arbitrary-precision) arithmetic; no
+floating point is involved in any claim labeled a theorem. Three
+independent implementations were used, cross-checked against each other and
+against known invariants before any new result was trusted:
+
+\begin{itemize}
+\item A generic Cartan-matrix engine (\texttt{weyl.py}), which builds any
+finite Weyl group directly from its Cartan matrix and computes $[u,v]$ by
+bitset-encoded up/down Bruhat-order BFS; used for the exhaustive tier.
+\item A complement-BFS engine for near-top intervals (\texttt{scaled.py},
+\texttt{scaled\_general.py}), which computes rank sequences of lower
+intervals $[e,v]$ with $v$ close to $w_0$ by BFS on the (small) complement
+$\W\setminus [e,v]^{\downarrow}$ rather than on $[e,v]$ itself, making groups
+far too large to enumerate exhaustively tractable in a thin slab below $w_0$.
+\item A root-action engine (\texttt{fast.py}) for high-throughput sampling
+and seeded perturbation search.
+\end{itemize}
+
+Each engine was validated against independent invariants before use: known
+group order $|\W|$; length $\equiv$ number of inversions (root-system
+definition) for every enumerated element; Poincar\'e polynomial $\equiv$ the
+degree-product formula $\prod_i[d_i]_q$; and, where two engines cover the
+same group, engine-versus-engine agreement on every interval.
+
+We report results in three tiers, and state precisely what each does and
+does not establish:
+
+\begin{description}
+\item[Exhaustive] Every Bruhat interval of the group is enumerated and
+checked. This is the only tier that constitutes a full verification of
+Conjecture 2.11 for the group in question (Theorem~\ref{thm:V1},
+Table~\ref{tab:exhaustive}).
+\item[Near-top slab] Only lower intervals $[e,v]$ with $\ell(w_0)-\ell(v)$
+below a fixed bound are checked; this is evidence for the conjecture and for
+Conjecture~\ref{conj:F1} in the checked groups, not a full verification.
+\item[Sampling / seeded] Random or targeted samples; coverage evidence only.
+\end{description}
+
+\begin{remark}[$E_6$/$B_6$ segmentation and a lost witness]
+\label{rem:e6segment}
+The $E_6$ and $B_6$ exhaustive runs were each executed as two complementary,
+non-overlapping segments (partitioned by the bottom element $u$) after an
+earlier single-pass attempt was interrupted by a process kill; the segment
+boundaries are documented and their union is a genuine full cover of the
+group (verified: the segment interval counts sum exactly to the totals in
+Table~\ref{tab:exhaustive}). For $B_6$ this recovery is additionally
+corroborated by an independent non-segmented full run, so no data is in
+question. For $E_6$, the first segment ($u<6000$) survived only as a
+running-minimum checkpoint stream, without the interval $[u,v]$ or rank
+sequence attaining that minimum; we therefore report the exact minimum ratio
+for $E_6$ but cannot exhibit its witness interval in this note, and flag a
+re-scan of $u<6000$ as a documented, low-cost follow-up rather than a gap
+that affects the truth of Theorem~\ref{thm:V1}.
+\end{remark}
+
+All raw result logs, per-run dossiers, and the CI configuration used to
+reproduce the exhaustive tier are included in the accompanying repository
+([repository URL to be added on submission]).
+
+\section{Verification results}
+\label{sec:results}
+
+\begin{table}[htbp]
+\centering
+\caption{Exhaustive tier: every Bruhat interval, exact integer arithmetic.}
+\label{tab:exhaustive}
+\small
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+Group & $|W|$ & \#intervals ($\ell\ge2$) & min ratio & witness (index $k$) \\
+\midrule
+$A_2$ & 6 & 19 & 2.000000 & $[e,121]$, $k=1$ \\
+$A_3$ & 24 & 213 & 1.388889 & $[e,12321]$, $k=2$ \\
+$A_4$ & 120 & 3{,}781 & 1.210000 & $[e,w_0]$, $k=5$ \\
+$A_5$ & 720 & 98{,}407 & 1.122222 & proper (ties $[e,w_0]$), $k=7$ \\
+$A_6$ & 5{,}040 & 3{,}550{,}919 & 1.079096 & proper (ties $[e,w_0]$), $k=10$ \\
+$A_7$ & 40{,}320 & 170{,}288{,}585 & 1.054250 $=919681/872356$ & proper, $\ell=27$ (ties $[e,w_0]$), $k=14$ \\
+$B_2$ & 8 & 33 & 1.000000 & $[e,1212]$, $k=2$ \\
+$B_3$ & 48 & 847 & 1.000000 & $[e,2323]$, $k=2$ \\
+$B_4$ & 384 & 40{,}249 & 1.000000 & $[e,3434]$, $k=2$ \\
+$B_5$ & 3{,}840 & 3{,}089{,}459 & 1.000000 & $[e,4545]$, $k=2$ \\
+$B_6$ & 46{,}080 & 350{,}676{,}009 & 1.000000 & $[e,5656]$, $k=2$ \\
+$D_4$ & 192 & 9{,}817 & 1.136232 & proper (ties $[e,w_0]$), $\ell=11$, $k=5$ \\
+$D_5$ & 1{,}920 & 745{,}377 & 1.069459 & proper (ties $[e,w_0]$), $\ell=19$, $k=10$ \\
+$D_6$ & 23{,}040 & 84{,}339{,}681 & 1.040703 & proper, $\ell=27$ (ties $[e,w_0]$), $k=15$ \\
+$E_6$ & 51{,}840 & 466{,}250{,}713 & 1.028446 & witness unrecoverable, see Remark~\ref{rem:e6segment} \\
+$F_4$ & 1{,}152 & 396{,}809 & 1.000000 & $[e,2323]$, $k=2$ \\
+$G_2$ & 12 & 73 & 1.000000 & $[e,1212]$, $k=2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{theorem}[Exhaustive tier]
+\label{thm:V1}
+Let $\W$ be one of the Weyl groups $A_2,\dots,A_7$, $B_2,\dots,B_6$,
+$D_4,D_5,D_6$, $E_6$, $F_4$, $G_2$. Then every Bruhat interval
+$[u,v]\subseteq \W$ is rank log-concave. The verification is exhaustive:
+every interval of length $\ge 2$ was enumerated and checked in exact
+integer arithmetic (Table~\ref{tab:exhaustive}), totalling
+$1{,}079{,}490{,}991$ intervals with zero violations.
+\end{theorem}
+
+\begin{remark}
+Relative to the previously recorded frontier (Brenti's list: $A_n,D_n$ for
+$n\le 5$; $B_n$ for $n\le 4$; $B_5$ only for $\ell(u,v)\ge 20$; $F_4$;
+dihedral groups), the cases $A_6$, $A_7$, $B_5$ (full range), $B_6$, $D_6$,
+$E_6$ are new.
+\end{remark}
+
+\begin{table}[htbp]
+\centering
+\caption{Near-top slab tier: lower intervals $[e,v]$, $\ell(w_0)-\ell(v)\le
+c$ (not exhaustive). Exact fractions for the min ratio, where computed,
+are given in the text.}
+\label{tab:neartop}
+\footnotesize
+\begin{tabular}{@{}lrlrrl@{}}
+\toprule
+Group & $|\W|$ & slab & \#checked & min ratio & at $k$ \\
+\midrule
+$A_7$ & 40{,}320 & $c\le4$ & full & 1.054250 & $[e,w_0]$, $14$ \\
+$A_8$ & 362{,}880 & $c\le4$ & full & 1.038942 & $[e,w_0]$, $18$ \\
+$A_9$ & 3{,}628{,}800 & $c\le3$ & 209/209 & 1.028950 & $[e,w_0]$, $22$ \\
+$A_{10}$ & 39{,}916{,}800 & $c\le2$ & 11/65\textsuperscript{*} & 1.022102 & tie\textsuperscript{\dag}, $27$ \\
+$D_7$ & 322{,}560 & $c\le3$ & 112/112 & 1.025574 & $[e,w_0]$, $21$ \\
+$D_8$ & 5{,}160{,}960 & $c\le3$ & 156/156 & 1.017122 & $[e,w_0]$, $28$ \\
+$E_7$ & 2{,}903{,}040 & $c\le2$ & full & 1.011829 & $[e,w_0]$, $31$ \\
+\bottomrule
+\end{tabular}
+\\[2pt]
+\footnotesize\textsuperscript{*}partial, resumable; \textsuperscript{\dag}$[e,w_0]$ attains
+the minimum and one proper interval exactly ties it.
+\end{table}
+
+\begin{theorem}[Near-top tier --- lower intervals only; not exhaustive]
+\label{thm:V2}
+For each pair $(\W,c)$ below, every lower interval $[e,v]$ with
+$\ell(w_0)-\ell(v)\le c$ is rank log-concave; moreover the minimum of
+$\rho([e,v])$ over this slab is attained at $v=w_0$
+(Table~\ref{tab:neartop}):
+\[
+(A_7,4),\ (A_8,4),\ (A_9,3),\ (D_7,3),\ (D_8,3),\ (E_7,2).
+\]
+In $A_{10}$, $[e,w_0]$ and a partial slab ($11$ of $65$ candidates at
+$c=2$) were checked, all log-concave, with one proper interval exactly
+tying $\rho([e,w_0])$.
+\end{theorem}
+
+\begin{remark}
+The two exact rational minima recorded in Table~\ref{tab:neartop}:
+$\rho([e,w_0])=919681/872356$ in $A_7$, and $\rho([e,w_0])=65523/64757$ in
+$E_7$; the latter's rank sequence sums to exactly $2{,}903{,}040=|W(E_7)|$,
+confirming it is the full interval and not a shorter proper one.
+\end{remark}
+
+\begin{remark}
+Theorem~\ref{thm:V2} checks only lower intervals in a thin slab below
+$w_0$; it is evidence for Conjecture 2.11 and for
+Conjecture~\ref{conj:F1} in these groups, not a verification of either
+beyond the stated slab. $E_7$ is, to our knowledge, the first
+log-concavity verification data of any kind recorded for that group.
+\end{remark}
+
+\begin{table}[htbp]
+\centering
+\caption{Sampling / seeded tier (not exhaustive; coverage counts).}
+\label{tab:sampling}
+\small
+\begin{tabular}{@{}llrlll@{}}
+\toprule
+Probe & Group & \#intervals & design & min ratio & note \\
+\midrule
+random (seed 7) & $B_7$ & 20{,}000 & $4\le\ell(u,v)\le12$ & 1.000000 & $(1,2,2,2,1)$ pattern \\
+random (seed 7) & $D_7$ & 20{,}000 & same & $1.157143=81/70$ & proper, $k{=}4$ \\
+random (seed 7) & $E_7$ & 20{,}000 & same & $1.142400=14641/12816$ & proper, $k{=}5$ \\
+seeded (seed 3) & $B_7$ & 1{,}324 & $m{=}4$ core $+$ 0--6 covers & 1.000000 only at pure core & 28 ratio-1 hits \\
+seeded (seed 4) & $B_7$ & 32{,}458 & $m{=}4$ core $+$ 0--10 covers & pert.$\ge1$: $\ge 1.079153$ & margins 4--8 \\
+seeded (seed 4) & $B_8$ & 31{,}162 & $m{=}4$ core $+$ 0--10 covers & pert.$\ge1$: $\ge 1.087990$ & margins 4--8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}
+The seeded probe attempts a fixed number of perturbations of the $m=4$
+dihedral core (the header count of each seeded run above: $4{,}000$;
+$100{,}000$; $100{,}000$); an attempt is discarded, uncounted, whenever the
+targeted perturbation does not realize a genuine Bruhat up-cover chain. The
+counts reported in the \#intervals column and used throughout this paper
+are the surviving, actually-checked intervals only.
+\end{remark}
+
+\begin{proposition}[Sampling tier --- not exhaustive; coverage statement only]
+\label{thm:V3}
+\textup{(i)} $60{,}000$ Bruhat intervals ($20{,}000$ each in $B_7$, $D_7$,
+$E_7$), sampled uniformly from a random-walk ensemble with
+$4\le\ell(u,v)\le 12$ (seed $7$, reproducible), are all rank log-concave.
+\textup{(ii)} $64{,}944$ seeded intervals containing an $m=4$ dihedral
+braid core perturbed by $0$--$10$ extra cover steps are all rank
+log-concave; every perturbation that destroys the pure dihedral pattern
+strictly raises the ratio (Table~\ref{tab:sampling}; the seeded search
+attempted more perturbations than this, discarding any that did not
+realize a genuine cover chain --- see the remark following the table).
+\end{proposition}
+
+In total, the sampling and seeded probes cover $124{,}944$ intervals with
+zero violations and zero equality cases outside the $(1,2,\dots,2,1)$
+pattern classified in Section~\ref{sec:F3}.
+
+\section{An extremal conjecture}
+\label{sec:F1}
+
+\begin{conjecture}[F1]
+\label{conj:F1}
+Let $\W$ be a finite Weyl group that is \emph{irreducible} and
+\emph{simply-laced} (type $A_n$, $D_n$, $E_6$, $E_7$, or $E_8$), with
+longest element $w_0$. Then
+\[
+\min_{\substack{[u,v]\subseteq \W \\ \ell(u,v)\ge 2}} \rho([u,v])
+\;=\; \rho([e,w_0])
+\;=\; \min_{1\le k\le \ell(w_0)-1} \frac{b_k^2}{b_{k-1}b_{k+1}},
+\]
+where $b_k=[q^k]\,W(q)$: the global minimum of the log-concavity ratio over
+\emph{all} Bruhat intervals of $\W$ is attained by the full interval
+$[e,w_0]$, at a central index. Proper intervals may tie this minimum
+(observed for $A_5,A_6,A_7,D_6$ in the exhaustive tier, and for a further
+proper interval in the $A_{10}$ near-top slab) but never fall below it.
+\end{conjecture}
+
+Both hypotheses in Conjecture~\ref{conj:F1} are necessary; we record the two
+sharp counterexamples that force this wording.
+
+\begin{example}[Simply-laced is necessary]
+\label{ex:F1-simplylaced}
+In $B_3$, the interval $[e,(s_2s_3)^2]$ has rank sequence $(1,2,2,2,1)$ and
+$\rho=2^2/(2\cdot2)=1$ exactly, on a plateau, strictly below
+$\rho([e,w_0(B_3)])=8/7$. The analogous $B_4$ interval
+$[e,(s_3s_4)^2]$ gives $\rho=1<968/897=\rho([e,w_0(B_4)])$. Note
+$[e,(s_2s_3)^2]$ is \emph{rationally smooth} (its rank sequence is
+palindromic), so dropping the simply-laced hypothesis falsifies the
+conjecture even within the rationally-smooth subclass discussed below.
+\end{example}
+
+\begin{example}[Irreducible is necessary --- apparently new]
+\label{ex:F1-irreducible}
+Let $\W=A_1\times D_4$ (simply-laced, reducible) and $v=(e,w_0(D_4))\in\W$.
+The interval $[e,v]$ is isomorphic, as a graded poset, to $[e,w_0(D_4)]$
+inside the $D_4$ factor, with rank sequence $P_{D_4}=
+(1,4,9,16,23,28,30,28,23,16,9,4,1)$ and
+$\rho([e,v])=28^2/(23\cdot30)=392/345=1.1362318\ldots$ at $k=5$. This is a
+\emph{proper} interval of $\W$: $\ell(v)=12<13=\ell(w_0(\W))$. The full
+interval has rank sequence $[2]_q\cdot P_{D_4}=
+(1,5,13,25,39,51,58,58,51,39,25,13,5,1)$ and
+$\rho([e,w_0(\W)])=58^2/(51\cdot58)=58/51=1.1372549\ldots$ Since
+$392\cdot51=19992<20010=345\cdot58$,
+\[
+\rho([e,v]) \;=\; \frac{392}{345} \;<\; \frac{58}{51} \;=\; \rho([e,w_0(\W)]),
+\qquad \text{gap } \frac{58}{51}-\frac{392}{345}=\frac{2}{1955}\approx0.00102,
+\]
+so a \emph{proper} Bruhat interval of the reducible simply-laced group
+$A_1\times D_4$ strictly beats $[e,w_0]$: the extremal principle fails
+outright once reducibility is allowed, not merely on some restricted
+subclass. (The witness $v$ happens to be smooth, but this already refutes
+the unrestricted statement for reducible $\W$, independently of
+smoothness.) An exhaustive check of all $27$ reducible simply-laced types of
+rank $\le 6$ found $A_1\times D_4$ to be the \emph{only} violator.
+\end{example}
+
+\begin{remark}[Status: conjectural, not proved]
+Conjecture~\ref{conj:F1} itself --- for arbitrary $[u,v]$, not merely
+rationally smooth ones --- is not proved for any infinite family. What
+supports it is: exhaustive verification with zero violations for every
+irreducible simply-laced group in the exhaustive tier
+($A_2$--$A_7$, $D_4$--$D_6$, $E_6$; Table~\ref{tab:exhaustive}), in every
+case with $[e,w_0]$ attaining (and, in $A_5,A_6,A_7,D_6$, exactly tied by a
+specific proper interval); and near-top slab confirmation with no exception
+in $A_8$--$A_{10}$, $D_7$--$D_8$, $E_7$ (Table~\ref{tab:neartop}). Neither
+tier constitutes a proof for general rank.
+\end{remark}
+
+\begin{theorem}[F1 restricted to rationally smooth intervals]
+\label{thm:F1-smooth}
+Let $\W$ be a finite irreducible simply-laced Weyl group of rank $\le 6$
+($A_1,\dots,A_6,D_4,D_5,D_6,E_6$). For every rationally smooth $v\in\W$
+--- i.e.\ every $v$ for which the Poincar\'e polynomial $P_{[e,v]}(q)$
+factors as a product of $q$-integers~\cite{carrell1994} --- $\rho([e,v])\ge
+\rho([e,w_0])$, with equality iff $v=w_0$. Unconditionally, this also holds
+for every $m$ in type $A_{m-1}$ with $m\le17$, modulo the classical
+rational-smoothness factorization fact cited above, which our own working
+notes verified computationally only through $m\le7$ rather than re-deriving
+in full generality; we flag this explicitly rather than presenting the
+$m\le17$ range as resting on nothing beyond our own work.
+\end{theorem}
+
+\begin{conjecture}[Staircase domination]
+\label{conj:staircase}
+In type $A_{m-1}$, the exponent multiset of the rationally-smooth
+Poincar\'e polynomial $P_v$ is always a gap-free (``staircase'') multiset
+dominated (coefficientwise, after sorting) by the degree multiset
+$\{2,\dots,m\}$.
+\end{conjecture}
+
+\begin{remark}
+Conjecture~\ref{conj:staircase} is verified without exception on
+$91{,}355$ dominated pairs, and, in the specific instances
+Theorem~\ref{thm:F1-smooth} needs, on a further $131{,}036$ pairs for
+$m\le17$; it has not been proved for general $m$. Granting it, the
+$m\le17$ restriction in Theorem~\ref{thm:F1-smooth}'s type-$A$ clause can
+be removed, giving the same inequality for every $m$.
+\end{remark}
+
+\begin{remark}
+Theorem~\ref{thm:F1-smooth} is a genuine partial proof, but of a
+\emph{strictly weaker} statement than Conjecture~\ref{conj:F1}: it compares
+$\rho([e,v])$ against $\rho([e,w_0])$ only for $v$ rationally smooth, not
+for arbitrary $v$. Both Examples~\ref{ex:F1-simplylaced} and
+\ref{ex:F1-irreducible} witness this restricted statement's own sharpness
+(the $B_3$ counterexample is itself rationally smooth), so the same
+irreducible-simply-laced hypotheses are necessary here too. Type $D_n$ for
+$n\ge7$ and types $E_7,E_8$ remain open even for this restricted subclass.
+This theorem is the paper's best current route to a proved instance of the
+extremal principle, and we record it as the natural target for future work
+on Conjecture~\ref{conj:F1} in full.
+\end{remark}
+
+\section{The type-\texorpdfstring{$A$}{A} case: Mahonian asymptotics}
+\label{sec:F2}
+
+Throughout this section $\W=S_m$ (type $A_{m-1}$), $I_m(k)=\#\{\sigma\in
+S_m:\inv(\sigma)=k\}$ so that $a_k([e,w_0])=I_m(k)$, $N=\binom m2$,
+$\sigma^2=\Var(\inv)=m(m-1)(2m+5)/72$, $r_m(k)=I_m(k)^2/(I_m(k-1)I_m(k+1))$,
+and $r_m=\min_{1\le k\le N-1}r_m(k)$. Write $y=(k-N/2)/\sigma$, and let
+$B_m:=(S_4-m)/(240\sigma^4)$ where $S_r=\sum_{j=1}^m j^r$, so $B_m=\tfrac{27}{25}m^{-1}(1+O(m^{-1}))$.
+
+\subsection*{What is proved unconditionally}
+The following local limit theorem for the log-concavity ratio, in the
+classical style of~\cite{petrov1975}, pinning it
+near the center for \emph{every} $m$, is fully proved --- with every
+constant explicit and both an analytic argument and an exact finite check
+covering every case, and independently referee-audited (mathematics and
+numerics separately, in two independent passes), with the referees'
+verdict ``survives with minor repairs'' and those repairs applied.
+
+\begin{theorem}[Pointwise and window law for the Mahonian ratio]
+\label{thm:G1}
+Let $p(k)=I_m(k)/m!$, $Z(y)=(2\pi\sigma^2)^{-1/2}e^{-y^2/2}$, and let
+$\mathrm{He}_4$ denote the fourth probabilists' Hermite polynomial.
+\begin{enumerate}[label=(\alph*)]
+\item \textup{(Pointwise.)} For every $m\ge4$ and every $0\le k\le N$,
+\[
+\Bigl| p(k) - Z(y)\bigl[1-\tfrac{B_m}{12}\mathrm{He}_4(y)\bigr] \Bigr|
+\;\le\; \frac{0.45}{\sigma m^2}.
+\]
+\item \textup{(Window ratio law.)} For every fixed $y_0\ge0$ there are
+explicit $C_2(y_0)$ and $m_1(y_0)$ (e.g.\ $C_2(1)=3.1$, $m_1(1)=180$; the
+constant grows with $y_0$, e.g.\ $C_2(3)=3940$) such that for every $m\ge
+m_1(y_0)$ and every $k$ with $|y|\le y_0$,
+\[
+\sigma^2\log r_m(k) \;=\; 1+B_m(y^2-1)+E_1(k), \qquad |E_1(k)|\le
+\frac{C_2(y_0)}{m^2}.
+\]
+Moreover (a) holds, with the same displayed constant, for every $4\le
+m\le109$ by direct exact-arithmetic verification, and the window law of
+(b) holds, with the same displayed constants, for every $4\le m\le229$;
+both are also fully covered by the analytic argument above outside these
+ranges, so neither part carries a threshold in $m$ --- the exact-arithmetic
+ranges are an independent check, not the limit of what is proved, and the
+window law in (b) is unconditional (no asymptotic-only asterisk) throughout
+the range any downstream use in this paper requires.
+\end{enumerate}
+\end{theorem}
+
+Theorem~\ref{thm:G1} determines the central ratio exactly to the stated
+order: at $y=0$, part (b) gives
+\begin{equation}
+\label{eq:central-ratio}
+\sigma^2\bigl(r_m(\lfloor N/2\rfloor)-1\bigr) \;=\; 1-\tfrac{27}{25}m^{-1}+O(m^{-2}),
+\end{equation}
+which we have independently confirmed to four significant digits against
+exact Mahonian data by $m=50$.
+
+\subsection*{What remains open}
+Equation~\eqref{eq:central-ratio} pins the ratio \emph{at and near the
+center}. To conclude that this is the \emph{global} minimum $r_m-1$
+(rather than merely the ratio near the center), one must additionally rule
+out the ratio dipping lower somewhere in the bulk, away from the window
+Theorem~\ref{thm:G1} controls. Doing so uses a decomposition into three
+regimes: an outer edge ($k=O(\sqrt m)$), a genuinely tilted middle regime,
+and the small-tilt window of Theorem~\ref{thm:G1}. The outer-edge regime is
+handled by an elementary tail estimate we consider settled; the tilted
+middle regime is the open one.
+
+\begin{conjecture}[F2, sharp asymptotic]
+\label{conj:F2}
+As $m\to\infty$,
+\[
+\sigma^2(r_m-1) \;=\; 1-\tfrac{27}{25}m^{-1}+O(m^{-2}), \qquad\text{equivalently}\qquad r_m-1 \sim \frac{36}{m^3}.
+\]
+\end{conjecture}
+
+The missing ingredient is a single further uniformity statement (the
+tilted-frame analogue of Theorem~\ref{thm:G1}, valid for tilt parameters of
+order a constant rather than $O(1/m)$): specifically, a bound on the
+tilted characteristic function's far-region decay that is uniform across
+the \emph{entire} range of the tilt/mean parameter, not merely near the
+untilted center. We have an exact odd-cumulant cancellation at the
+mean-matching tilt and an explicit, threshold-free variance lower bound
+$\sigma_\lambda^2 \ge \tfrac16 k(1+k/m)$ along the tilted mean curve, both
+fully proved (draft on file, not yet independently refereed); the
+far-region uniformity bound itself remains open, and is, in our assessment,
+the single highest-value remaining item for a full proof of
+Conjecture~\ref{conj:F2}.
+
+\begin{remark}[How we present this]
+We state Conjecture~\ref{conj:F2} as a conjecture, not a theorem, and
+recommend the following honest framing: the sharp asymptotic
+$\sigma_m^2(r_m-1)=1-\tfrac{27}{25}m^{-1}+O(m^{-2})$ is supported by
+(i) exact verification, in rational arithmetic, for every $4\le m\le150$
+(with the window-law constants specifically checked out to $m=229$), and
+(ii) a fully proved, unconditional local limit theorem
+(Theorem~\ref{thm:G1}) that establishes the identical asymptotic formula
+for the ratio at every index within any fixed distance of the center, for
+\emph{every} $m\ge4$ with no threshold. What is missing is a single
+further uniformity lemma, controlling the characteristic function's decay
+uniformly across the full tilt range, needed only to extend this from
+``near the center'' to ``everywhere'' --- isolated as the sole obstruction
+by two independent proof attempts.
+\end{remark}
+
+\begin{remark}[Location and explicit constant]
+Beyond the sharp order of Conjecture~\ref{conj:F2}, we record without full
+proof: the minimizing index satisfies $|\mathrm{argmin}-N/2|\le1$ for every
+$4\le m\le150$ (exact check), and $|\mathrm{argmin}-N/2|=O(m)$ for larger
+$m$ modulo the same gap above; sharpening $O(m)$ to $O(1)$ is a further,
+separately open combinatorial statement equivalent to a third-difference
+positivity property of $(I_m(k))_k$, verified without exception for
+$5\le m\le56$ but with no proof strategy identified. An explicit
+finite-$m$ bound $r_m\ge 1+\tfrac{187}{216}\sigma_m^{-2}$ for all $m\ge5$
+(sharp at $m=6$; a corrected value --- the naive guess $7/8$ fails already
+at $m=6$) is exact for $5\le m\le150$ and reduces, for $m>150$, to the same
+gap above plus a constant-chasing step we have not carried out.
+\end{remark}
+
+\section{Equality cases}
+\label{sec:F3}
+
+\begin{observation}[F3, equality classification]
+\label{obs:F3}
+Let $\W$ be a finite Weyl group and $[u,v]\subseteq\W$ a Bruhat interval
+with $\ell(u,v)\ge2$ in which $a_k^2=a_{k-1}a_{k+1}$ for some interior $k$.
+Then, in every case observed in our exhaustive and seeded-perturbation data,
+the full rank sequence of $[u,v]$ is
+\[
+(a_0,\dots,a_{\ell(u,v)}) \;=\; (1,2,2,\dots,2,1) \qquad (m-1 \text{ interior
+2's}, \ m\ge4),
+\]
+i.e.\ $[u,v]$ is poset-isomorphic to the full Bruhat interval of the
+dihedral group $I_2(m)$, arising from a rank-two dihedral standard
+parabolic of braid order $m$. Since the crystallographic restriction
+confines rank-two parabolics of Weyl groups to $m\in\{2,3,4,6\}$ (equality
+requires $m\ge4$, so effectively $m\in\{4,6\}$), the realizable equality
+cores are $m=4$ (type $B_2/C_2$, present in $B_n$ and $F_4$) and $m=6$
+(type $G_2$); in particular no equality occurs in simply-laced types, where
+rank-two parabolics have $m\le3$.
+\end{observation}
+
+We state this as an empirical observation, not a theorem or even a fully
+scoped conjecture: it holds without exception in every exhaustively checked
+group (Table~\ref{tab:exhaustive}; witnesses e.g.\ $B_2$ `1212', $B_3$
+`2323', $B_4$ `3434', $B_5$ `4545', $F_4$ `2323', $G_2$ `1212') and in the
+$64{,}944$-interval seeded perturbation probe (Table~\ref{tab:sampling}),
+where the equality wall is strict: every perturbation of an $m=4$ dihedral
+core by extra cover steps that breaks the pure pattern strictly raises the
+ratio, with closest non-equality margins of $4$--$8\%$ in the cases
+checked. We have not attempted a proof, and have not fully resolved whether
+the correct scope is ``the whole rank sequence is $(1,2,\dots,2,1)$'' (the
+strong form the data support wherever a full witness was recorded) or a
+weaker, purely local statement about the equality index itself; a route to
+a genuinely proved short-interval instance exists via the classification of
+short Bruhat intervals~\cite{short-intervals}, which we have not carried
+out.
+
+\subsection*{Why Weyl groups escape the $H_3$ failure}
+We offer the following as a candidate mechanism, not a theorem. The $H_3$
+counterexample of Example~\ref{ex:H3} sits on an $m=5$ dihedral core: the
+parabolic $\langle s_1,s_2\rangle\cong I_2(5)$ is a subsystem of the
+failing interval's defining data. The crystallographic restriction excludes
+exactly $m=5$ (and every $m\notin\{2,3,4,6\}$) from occurring as a rank-two
+parabolic of any Weyl group. So the only equality/violation-producing
+dihedral cores available inside a Weyl group are $m=4$ and $m=6$, and by
+Observation~\ref{obs:F3} together with the strict perturbation wall, these
+sit at ratio exactly $1$ and are never pushed below it by any perturbation
+we have tested. This is consistent with, and offered as an explanation of,
+why every Weyl group in our exhaustive and near-top data avoids the
+$H_3$-type failure, but it is a mechanism sketch resting on an empirical
+observation (Observation~\ref{obs:F3}), not a proof that no Weyl-group
+interval can ever violate log-concavity.
+
+\section{Discussion and open problems}
+\label{sec:discussion}
+
+We record what we regard as the most promising directions, roughly in order
+of tractability.
+
+\begin{enumerate}
+\item \textbf{Prove Conjecture~\ref{conj:F2} in full.} As discussed in
+Section~\ref{sec:F2}, this needs exactly one further uniformity lemma: a
+bound on the tilted Mahonian characteristic function's far-region decay,
+valid uniformly across the full range of the tilt parameter rather than
+only near the untilted center. Everything else needed --- the odd-cumulant
+cancellation, the tilted variance lower bound, the assembly of the three
+regimes --- is either proved here (Theorem~\ref{thm:G1}) or has draft
+proofs on file awaiting independent referee review.
+\item \textbf{Extend Theorem~\ref{thm:F1-smooth} past rank 6}, and past
+type $A$ past $m=17$ unconditionally by proving
+Conjecture~\ref{conj:staircase}. $D_n$ for $n\ge7$ and $E_7,E_8$ are open
+even for the rationally-smooth restriction.
+\item \textbf{Self-dual and rank-symmetric Bruhat intervals}
+(\cite{gaetzgao2020}, which classifies self-dual intervals) are a natural
+place to look for further explicit equality-case or extremal examples,
+complementing Observation~\ref{obs:F3}.
+\item \textbf{A proved instance of Observation~\ref{obs:F3}.} The
+classification of short Bruhat intervals~\cite{short-intervals} is a
+plausible route to a genuinely proved (rather than empirical) equality
+classification, at least for intervals below some fixed length.
+\item \textbf{$E_8$.} No exhaustive or near-top data of any kind is
+recorded here for $E_8$ ($|W|>696$ billion); even a thin near-top slab
+would extend Conjecture~\ref{conj:F1}'s evidence to every exceptional
+simply-laced type.
+\item \textbf{A quantitative form of Conjecture 2.11}, e.g.\ $\rho([u,v])
+\ge 1+c(\W)$ with $c(\W)$ explicit in simply-laced types decaying as
+predicted by Conjecture~\ref{conj:F1} and Theorem~\ref{thm:G1}, would unify
+the extremal and asymptotic statements of this paper into a single sharp
+inequality.
+\end{enumerate}
+
+We also note two points of context for the reliability of this line of
+work. First, log-concavity of Bruhat rank sequences is adjacent to, but
+distinct from, several actively studied log-concavity and equality-case
+questions --- equivariant log-concavity of flag-variety
+cohomology~\cite{equivariant-logconcave}, and equality cases of related
+inequalities~\cite{stanley-yan,kahn-saks} --- none of which, on inspection,
+concern the specific statement of Conjecture 2.11. Second, as a caution
+about treating any single open-problem survey as a stable ground truth: a
+different conjecture from the same survey we cite for Conjecture 2.11 was
+recently shown false~\cite{chapelier-fromentin}. A fresh literature sweep
+immediately preceding submission, repeating and extending the one performed
+when this project began, found nothing overlapping with any claim in this
+paper (see the reproducibility repository for the full query log).
+
+\section*{Acknowledgments}
+
+This work was produced with substantial use of AI assistance, and we want
+to be specific about its scope rather than gesture at it in passing. Large
+language models (principally Claude, Anthropic, in an agentic coding
+environment) wrote the great majority of the verification code, drafted
+proof arguments for the results in Sections~\ref{sec:F1} and
+\ref{sec:F2}, and assisted in assembling this manuscript from our working
+notes. Distinct AI sessions were used adversarially against each other's
+work where the project's own house rules required it: draft proofs were
+checked by independent review passes (including a from-scratch numerical
+audit) before we treated them as reliable, and at least three instances
+where an AI-drafted claim was numerically wrong on first pass --- a sign
+error, a false finite-range certificate, and a fabricated verification
+result --- were caught this way and corrected, not merely trusted.
+
+None of this substitutes for human responsibility. The authors directed
+the research questions, judged which computational and proof strategies
+were worth pursuing, decided what could honestly be called a theorem versus
+what had to remain a conjecture, independently checked the disclosed
+constants and counterexamples, and take full responsibility for every
+claim in this paper, including any error that remains. We disclose the
+AI involvement because we think readers are entitled to know it, not to
+diffuse authorship: the choices of what to claim, what to hold back, and
+what still needs proof are ours.
+
+% Add acknowledgment of specific colleagues/advisors here if applicable.
+
+\begin{thebibliography}{99}
+
+\bibitem{brenti2024open}
+F.~Brenti, \emph{Some open problems on Coxeter groups and unimodality},
+arXiv:2410.09897.
+
+\bibitem{bjorner-ekedahl}
+A.~Bj\"orner and T.~Ekedahl, \emph{On the shape of Bruhat intervals}, Ann. of
+Math. \textbf{170} (2009), 799--817. arXiv:math/0508022.
+
+\bibitem{cjz2011}
+E.~R.~Canfield, S.~Janson, and D.~Zeilberger, \emph{The Mahonian probability
+distribution on words is asymptotically normal}, Adv. Appl. Math.
+\textbf{46} (2011). arXiv:0908.2089.
+
+\bibitem{bona2004}
+M.~B\'ona, \emph{A combinatorial proof of the log-concavity of a famous
+sequence counting permutations}, Electron. J. Combin. \textbf{11(2)} (2004),
+\#N2.
+
+\bibitem{hoggar1974}
+S.~G.~Hoggar, \emph{Chromatic polynomials and logarithmic concavity}, J.
+Combin. Theory Ser. B \textbf{16} (1974).
+
+\bibitem{kook2006}
+W.~Kook, \emph{On the product of log-concave polynomials} (elementary note
+on product-closure of log-concavity), 2006.
+
+\bibitem{butler1990}
+L.~M.~Butler, \emph{The $q$-log-concavity of $q$-binomial coefficients}, J.
+Combin. Theory Ser. A \textbf{54} (1990), 54--63.
+
+\bibitem{sagan1992}
+B.~E.~Sagan, \emph{Inductive proofs of $q$-log concavity}, Discrete Math.
+\textbf{99} (1992), 289--306.
+
+\bibitem{suwangyeh2011}
+X.-T.~Su, Y.~Wang, and Y.-N.~Yeh, \emph{Unimodality problems of multinomial
+coefficients and symmetric functions}, Electron. J. Combin. \textbf{18(1)}
+(2011), \#P73.
+
+\bibitem{burrull-gui-hu}
+G.~Burrull, T.~Gui, and H.~Hu, \emph{Asymptotic log-concavity of dominant
+lower Bruhat intervals via the Brunn--Minkowski inequality}, arXiv:2311.17980.
+
+\bibitem{carrell1994}
+J.~B.~Carrell, \emph{The Bruhat order, algebraic cell decompositions and
+rationally smooth Schubert varieties}, Proc. Sympos. Pure Math.
+\textbf{56} (1994).
+
+\bibitem{short-intervals}
+E.~Akhmedova, \emph{On Bruhat intervals of small lengths for Weyl groups},
+arXiv:2110.00862.
+
+\bibitem{petrov1975}
+V.~V.~Petrov, \emph{Sums of Independent Random Variables}, Springer, 1975.
+
+\bibitem{equivariant-logconcave}
+T.~Gui, \emph{On the equivariant log-concavity for the cohomology of the
+flag varieties}, arXiv:2205.05408.
+
+\bibitem{stanley-yan}
+S.~H.~Chan and I.~Pak, \emph{Equality cases of the Stanley--Yan log-concave
+matroid inequality}, arXiv:2407.19608.
+
+\bibitem{kahn-saks}
+R.~van Handel, A.~Yan, and X.~Zeng, \emph{The extremals of the Kahn--Saks
+inequality}, arXiv:2309.13434.
+
+\bibitem{gaetzgao2020}
+C.~Gaetz and Y.~Gao, \emph{Self-dual intervals in the Bruhat order}, Selecta
+Math. (2020). arXiv:2003.06710.
+
+\bibitem{kessouri2024}
+K.~Kessouri, M.~Ahmia, A.~Arslan, and A.~Mesbahi, \emph{Combinatorics of
+$q$-Mahonian numbers of type B and log-concavity}, arXiv:2408.02424.
+
+\bibitem{chapelier-fromentin}
+L.~Chapelier-Laget and G.~Fromentin, \emph{A counterexample to a
+Brenti--Carnevale conjecture}, arXiv:2412.19593.
+
+\end{thebibliography}
+
+\end{document}

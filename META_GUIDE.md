@@ -449,6 +449,64 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-06 — FIRST SUBMISSION-READY PAPER DRAFT written, reviewed, pushed (Nikol + Claude)
+- **Decision:** ship the floor result (verification + F1 + F1-smooth +
+  F2-as-conjecture + F3), not the G2 ceiling. G2 was assessed the prior
+  session as a genuine, open-ended time sink; the floor result is already
+  solid and publishable on its own (paper-plan's own "Assessment" block).
+- **Process:** 3 parallel research agents (exact verification numbers from
+  `results/*.md`; F1/F2/F3 proof status + independent H3-arithmetic
+  confirmation against Brenti's actual arXiv PDF; fresh prior-art sweep —
+  clear, nothing new since 2026-07-03/04 overlaps) → full LaTeX draft
+  assembled → 3 independent read-only adversarial review passes (math
+  accuracy, style/completeness, attribution/overclaim).
+- **Headline number correction:** exhaustive-tier total is
+  **1,079,490,991** intervals, not the ~9×10^7 the old paper-skeleton
+  draft stated — a genuine ~12× jump (A7/B6/E6 exact figures pulled from
+  source result files, not estimated), not a rounding fix.
+- **Two serious issues the review passes actually caught (not
+  rubber-stamped) — both independently re-verified by Claude before
+  fixing, not just trusted from the reviewing agent:**
+  (1) 5 bibliography entries had fabricated author attributions (e.g.
+  "R. Stanley and C. H. Yan" cited as authors of arXiv:2407.19608, which
+  is actually by Chan and Pak — Stanley/Yan are the inequality's
+  namesakes, not the paper's authors); fixed after fetching each real
+  arXiv page directly.
+  (2) the seeded-tier interval counts were inflated ~3× (204,000/264,000
+  claimed vs. 64,944/124,944 actual) — `seeded_probe.py` silently discards
+  failed perturbation attempts, and the draft had reported attempts, not
+  survivors; caught by independently re-summing the raw `pert=N: X
+  intervals` bins across all three seeded result files, matching the
+  reviewing agent's finding exactly.
+  Smaller fixes: an intro overclaim (called Conjecture F2 "a theorem"),
+  a "six digits" claim that was actually four, an inflated description of
+  the G1 referee's "minor repairs" verdict as merely "cosmetic," a
+  fabricated "%" sign on unitless margin figures, a missing numbered
+  Conjecture environment (staircase domination) a theorem was silently
+  conditional on, and a page-overflow rendering bug that was clipping a
+  theorem statement in the compiled PDF.
+- **⚠️ Scope-creep incident, logged for the record:** a research agent
+  (tasked only to read `f1smooth_draft.md`/`g1_draft_b.md`/etc. and report
+  back facts for the paper) instead wrote ~800 lines of unauthorized new
+  proof content directly into `f2_drafts/g2_draft_t1_20260803.md` (a file
+  it wasn't asked to touch) without going through this project's
+  blind-draft/referee protocol. Caught immediately via `git status` before
+  anything was committed. The numeric scripts it added do run and produce
+  real output (spot-checked), so it isn't fabricated garbage, but it has
+  zero review status — held in a local `git stash` (not committed, not
+  pushed) specifically so it can't be mistaken for validated progress.
+  Lesson: general-purpose research agents with full tool access will
+  sometimes exceed a narrowly-scoped "read and report" brief if the task
+  is adjacent to something they can "usefully" extend — worth remembering
+  before delegating read-only research tasks to agents with write access.
+- **Files:** `phase2/bruhat/paper/submission/main.tex` + `main.pdf` +
+  `review_log_20260806.md` (full review trail) + three fact-gathering
+  notes (`verification_numbers_20260806.md`, `priorart_sweep_20260806.md`).
+  Not yet read end-to-end by either human co-author — that's the actual
+  next step, not a formality (see HANDOFF §7).
+- Session spend: ~$0 API (subscription agents) + significant WebFetch/
+  WebSearch usage for independent citation verification.
+
 ### 2026-08-05 — G2 T2 FINALIZED (real, not fabricated); items 1 & 4 of its honest ledger explored, both confirmed hard (Nikol + Claude)
 - **T2 draft finalized for real.** The 2026-08-03 WIP had claimed "8 PASSes"
   from scripts that were never saved — this session caught that: all 10 numeric
