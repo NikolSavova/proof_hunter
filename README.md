@@ -117,4 +117,5 @@ See [`problem-id/README.md`](problem-id/README.md) for the full pipeline referen
 
 ## License
 
-Not yet licensed. All rights reserved by the authors pending a license decision.
+MIT — see [`LICENSE`](LICENSE). (Paper preprints are posted to arXiv under the
+arXiv non-exclusive license, chosen at upload.)
