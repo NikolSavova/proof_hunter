@@ -1,0 +1,17 @@
+== (1) The cross-package plug: wp2-a2 C_ker(4) into wp3-a2 Theorem S R3 ==
+    M(4) = 367 <= 401 (Theorem S's analytic range start): True
+    grid   C = C_R^PT(4)grid   + C_ker(4) = 5.32  + 37810.04 = 37815.36
+      R3 bound at m = 401: 1 - B_401 - C/401^2 = 0.762141  (> 0: True; -> 1 as m -> inf)
+    closed C = C_R^PT(4)closed + C_ker(4) = 187.8 + 37810.04 = 37997.84
+      R3 bound at m = 401: 1 - B_401 - C/401^2 = 0.761006  (> 0: True; -> 1 as m -> inf)
+== (2) part-(c) crossover: smallest m with 1 - B_m - C/m^2 >= 187/216 = 0.865741 ==
+    K=4 grid flavor   (37815.36)         m* = 535   (stays >= target beyond: True)   harness covers to 400: gap [401, 534]
+    K=4 closed flavor (37997.84)         m* = 537   (stays >= target beyond: True)   harness covers to 400: gap [401, 536]
+    K=1 flavor C_R(1)+m^2Lin (41.40)     m* = 30   (stays >= target beyond: True)   harness covers to 400: gap NONE (m* <= 400)
+== (3) sanity: B_m * m -> 27/25 = 1.08 ==
+    m =    30  B_m*m = 1.068679
+    m =   401  B_m*m = 1.078693
+    m =  1581  B_m*m = 1.079661
+== (4) Theorem S R2 spec vs wp2-a2 (independence check) ==
+    R2 (|w| > 4) and Theorem T.9-final scope (|w| <= 4) are disjoint: True (by definition)
+DONE
