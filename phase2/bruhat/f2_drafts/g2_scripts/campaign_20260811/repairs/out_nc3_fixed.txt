@@ -1,0 +1,33 @@
+(1) Hermite sup certificates on |y|<=0.05: max ratio = 1.0000 (<= 1: True)
+(2) Taylor bucket T(K, m) = m^2 sup|L''''|/(12 s2min)  [C_R contribution]:
+        m         K=1        K=2        K=4   (Pmin at K=4)
+       30     0.02034    0.06117    1.65299   (0.8710)
+       60     0.00388    0.01118    0.19700   (0.9455)
+      120     0.00084    0.00238    0.03517   (0.9750)
+      180     0.00035    0.00100    0.01402   (0.9838)
+      500     0.00004    0.00012    0.00158   (0.9944)
+     2000     0.00000    0.00001    0.00009   (0.9986)
+    decreasing in m on 30..3000 (step 10), all K: True
+(3) true Taylor remainder vs bound (samples):
+       m  K    w    s2*R_T*m^2 bucket bound    ratio   RT<=h4/12*supL4tr
+      30  1  0.5     6.981e-03      0.02034  3.4e-01                True
+      30  1  1.0     8.432e-03      0.02034  4.1e-01                True
+      30  2  1.0     8.432e-03      0.06117  1.4e-01                True
+      30  2  2.0     1.325e-02      0.06117  2.2e-01                True
+      30  4  2.0     1.325e-02      1.65299  8.0e-03                True
+      30  4  4.0     1.943e-02      1.65299  1.2e-02                True
+      60  1  0.5     1.789e-03      0.00388  4.6e-01                True
+      60  1  1.0     2.037e-03      0.00388  5.3e-01                True
+      60  2  1.0     2.037e-03      0.01118  1.8e-01                True
+      60  2  2.0     2.910e-03      0.01118  2.6e-01                True
+      60  4  2.0     2.910e-03      0.19700  1.5e-02                True
+      60  4  4.0     4.828e-03      0.19700  2.5e-02                True
+     120  1  0.5     4.537e-04      0.00084  5.4e-01                True
+     120  1  1.0     5.015e-04      0.00084  6.0e-01                True
+     120  2  1.0     5.015e-04      0.00238  2.1e-01                True
+     120  2  2.0     6.790e-04      0.00238  2.8e-01                True
+     120  4  2.0     6.790e-04      0.03517  1.9e-02                True
+     120  4  4.0     1.199e-03      0.03517  3.4e-02                True
+(4) quadrature check (m=30, w=1): max rel dev phat vs Z*P = 1.25e-16; ratio identity rel dev = 3.08e-17   (float-precision comparison)
+
+NC-W3 VERDICT: PASS

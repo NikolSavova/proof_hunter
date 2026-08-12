@@ -1,0 +1,31 @@
+NC-T5 (a): T.6(i) exact identity, 2000 random points
+  max rel deviation = 1.03e-13
+NC-T5 (b): (T.6ii) on |t| <= pi/m
+  m=30 w=0.001: max |phi|/exp(-s2 t^2/5) = 0.9999
+  m=30 w=0.5: max |phi|/exp(-s2 t^2/5) = 0.9999
+  m=30 w=1.0: max |phi|/exp(-s2 t^2/5) = 0.9999
+  m=30 w=3.0: max |phi|/exp(-s2 t^2/5) = 0.9999
+  m=60 w=0.001: max |phi|/exp(-s2 t^2/5) = 0.9999
+  m=60 w=0.5: max |phi|/exp(-s2 t^2/5) = 0.9999
+  m=60 w=1.0: max |phi|/exp(-s2 t^2/5) = 0.9999
+  m=60 w=3.0: max |phi|/exp(-s2 t^2/5) = 0.9999
+NC-T5 (c): (T.6iii-final) on 1/(20m) <= t <= 1/(2m)
+  m=30 w=0.001: max ratio = 0.0167
+  m=30 w=0.5: max ratio = 0.0161
+  m=30 w=1.0: max ratio = 0.0144
+  m=30 w=3.0: max ratio = 0.0020
+  m=60 w=0.001: max ratio = 0.0158
+  m=60 w=0.5: max ratio = 0.0153
+  m=60 w=1.0: max ratio = 0.0137
+  m=60 w=3.0: max ratio = 0.0021
+NC-T5 (d): (T.7b-cert)
+  first-pass claim range: j=2, t=1/4: 1-|F|^2 = 0.015544 < 1/60 = 0.016667  -> claim FALSE
+  corrected cert min over jt>=0.45: 0.012603 at j=2, t=0.2250  (>= 1/80 = 0.012500: True)
+NC-T5 (e): (T.7b-final corrected) |phi| <= exp(-m_*/4730), w <= pi
+  m=30 w=0.5: max|phi| = 1.099e-02  bound = 0.993678  slack = 9.04e+01
+  m=30 w=1.0: max|phi| = 1.255e-02  bound = 0.993678  slack = 7.92e+01
+  m=30 w=3.0: max|phi| = 3.465e-02  bound = 0.997888  slack = 2.88e+01
+  m=60 w=0.5: max|phi| = 1.484e-04  bound = 0.987395  slack = 6.65e+03
+  m=60 w=1.0: max|phi| = 1.911e-04  bound = 0.987395  slack = 5.17e+03
+  m=60 w=3.0: max|phi| = 1.348e-03  bound = 0.995781  slack = 7.38e+02
+NC-T5 VERDICT: PASS (with corrected (d),(e) as stated)

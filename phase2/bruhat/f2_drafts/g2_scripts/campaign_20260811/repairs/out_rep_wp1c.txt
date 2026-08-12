@@ -1,0 +1,27 @@
+R1: 13 named constants, closed form vs independent quadrature (dps 60), rounding margins:
+    c_1(0)   = 0.247809115812  quoted 0.2478  margin   9.12e-6  safe(>0): True
+    c_1(1)   = 0.225989909281  quoted 0.2259  margin   8.99e-5  safe(>0): True
+    c_1(2)   = 0.180262139392  quoted 0.1802  margin   6.21e-5  safe(>0): True
+    c_1(3)   =  0.13612350595  quoted 0.1361  margin   2.35e-5  safe(>0): True
+    c_1(4)   = 0.101983937137  quoted 0.1019  margin   8.39e-5  safe(>0): True
+    c_1(5)   = 0.0773528771559  quoted 0.0773  margin   5.29e-5  safe(>0): True
+    c_1(6)   = 0.0598125119561  quoted 0.0598  margin   1.25e-5  safe(>0): True
+    c_1(pi)  =  0.13064436369  quoted 0.1306  margin   4.44e-5  safe(>0): True
+    c_1'(0)  =  0.46178221384  quoted 0.4617  margin   8.22e-5  safe(>0): True
+    c_1'(1)  = 0.432382323049  quoted 0.4323  margin   8.23e-5  safe(>0): True
+    c_1'(2)  = 0.366914764789  quoted 0.3669  margin   1.48e-5  safe(>0): True
+    c_1'(4)  = 0.237418455598  quoted 0.2374  margin   1.85e-5  safe(>0): True
+    c_V      = 0.0372513232987  quoted 0.0372  margin   5.13e-5  safe(>0): True
+    min margin = 9.116e-6 (>= 9e-6: True); constants with margin < 5e-5 (the FALSE old claim): ['c_1(0)', 'c_1(3)', 'c_1(6)', 'c_1(pi)', "c_1'(2)", "c_1'(4)"]
+    -> restated claim 'rounded down, margin >= 9e-6' is TRUE; old '>= 5e-5' FALSE for exactly the referees' six constants.
+R2: 2 asinh(sqrt 10) = 3.7371022422  (draft said 3.7358 -- wrong digit; correct 3.7371...)
+R4: identity (cosh sin - sinh cos)' == 2 sinh sin: max rel dev 1.69e-61 (dps 60, 200 pts); sinh/sin strictly increasing on (0, pi/2) grid: True; tan > tanh spots: True
+    -> the one-line analytic proof replaces NC-W3's grid; wp1-c's 'no grid certificates' claim becomes true.
+R5: (V) thresholds, unit-step scans:
+    old exponent, s2 = C_0 (easiest point): m >= 292672  [wp1-c quoted 292672; T2 prose said '~2.5e5'; T2 referee 2.96e5]
+    old exponent, uniform worst case:       m >= 1065849  [wp1-c quoted 1065849]
+    new exponent c_V = 0.0372 (pi/m cut):   m >= 879  [wp1-c quoted 879]
+    new exponent c_1(pi) = 0.1306 (t_1 cut): m >= 185  [wp1-c quoted 185]
+    -> the correct wording: 'same convention recomputed: ~2.9e5; T2's own ~2.5e5 not reproducible (discrepancy in T2's loop); both old numbers catastrophic either way'.
+
+REP-WP1C VERDICT: PASS

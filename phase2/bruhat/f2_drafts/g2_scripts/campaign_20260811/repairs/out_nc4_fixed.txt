@@ -1,0 +1,38 @@
+(1) PW_grid re-run (independent implementation):
+    K=1: max |N0_resid/P0^2 m^2| = 1.5491 at (m,w)=(30, 1.0)
+    K=2: max |N0_resid/P0^2 m^2| = 4.0889 at (m,w)=(30, 2.0)
+    K=4: max |N0_resid/P0^2 m^2| = 4.9126 at (m,w)=(2000, 2.8)
+    reproduces item-4 notes (1.5491/4.0889/4.9126 within 0.02): True
+(2) PW_closed(K, m) [all m >= row-m, closed-form boxes]:
+         m        K=1        K=2        K=4
+       180     10.278     21.063    187.414
+       500     10.270     20.981    181.574
+      2000     10.269     20.950    179.287
+     10000     10.268     20.942    178.694
+    decreasing in m (180..2000 step 60): True
+(3) proved w^2-envelope coefficient c_w(K), max over m in {180, 500, 2000, 10000} (T.9 claims c_w = 1/2):
+    K=1: c_w = 0.4067   (B-part 0.2727 + bare-alpha^2 0.1340, worst m = 180)   -> c_w <= 1/2: True
+    K=2: c_w = 0.4658   (B-part 0.2802 + bare-alpha^2 0.1857, worst m = 180)   -> c_w <= 1/2: True
+    K=4: c_w = 0.9506   (B-part 0.3734 + bare-alpha^2 0.5772, worst m = 180)   -> c_w <= 1/2: False
+(4) linearization bucket Lin(K, 180): K=1: 0.2308 K=2: 0.2571 K=4: 0.3719
+(5) ASSEMBLED C_R^{PT}(K) at m >= 180  [pointwise + Taylor + Lin; kernel bucket PENDING wp2-a]:
+     K   PW_grid  PW_closed    Taylor     Lin  C_R^PT grid  C_R^PT closed
+     1    1.5491     10.278   0.00035  0.2308       1.7803         10.509
+     2    4.0889     21.063   0.00100  0.2571       4.3470         21.321
+     4    4.9126    187.414   0.01402  0.3719       5.2985        187.800
+(6) exact-harness truth (m in {30, 60, 100, 140}):
+       m  K   needed0 needed_env  ker_truth  (max over k with |w|<=K)
+      30  1     0.349      0.344      1.374
+      30  2     0.783      0.343      4.031
+      30  4     2.410      0.338      5.031
+      60  1     0.543      0.089      1.386
+      60  2     2.146      0.089      4.070
+      60  4     5.233      0.089      5.022
+     100  1     1.068      0.022      1.391
+     100  2     3.689      0.022      4.061
+     100  4     8.781      0.022      5.031
+     140  1     1.523      0.070      1.386
+     140  2     5.175      0.070      4.059
+     140  4    12.280      0.070      5.038
+
+NC-W4 VERDICT: PASS

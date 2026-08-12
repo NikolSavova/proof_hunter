@@ -1,0 +1,32 @@
+B3: pointwise bucket |N0_resid/P0^2| m^2 at K = 4 beyond the grid:
+    m =   2000: max 4.9213 at w = 2.725
+    m =   5000: max 4.9226 at w = 2.725
+    m =  10000: max 4.9231 at w = 2.725
+    m =  20000: max 4.9233 at w = 2.725
+    m =  50000: max 4.9234 at w = 2.725
+    global max on extended range = 4.9234 at (50000, 2.725)  [referee: 4.9233 at (20000, 2.725); certified grid value was 4.9126 (m <= 2000)]
+    restated: PW_grid(4) ~ 4.93 on the extended tested range; C_R^PT grid K=4: 4.93 + 0.01402 + 0.3719 = 5.32  (was 5.2985)
+B4: W.1(ii) four-band PROVED deficit bound, exhaustive integer m:
+    max over m = 30..400 (every integer) x 200 w-pts = 0.379644 at (m, w) = (32, 4.0)
+    [referee: 0.379644 at (32, 4.0); draft grid said 0.3789 at (30, 4.0)]   <= 0.40 (c_4 = 0.60 stands): True
+B5: exact tail certificates (inlining maths-referee V2):
+    (i) identity 330m^2(m-1)(2m+5) - 100(m+1)(2m+1)(3m^2+3m-1) == 10(6m^4-51m^3-265m^2+10): True
+        6*30^2-51*30-265 = 3605 > 0, vertex 51/12 < 30 -> positive for all m >= 30: True; exhaustive 30..5000: True
+    (ii) q4/q6 exact identities (4 spot m, exact ints): True; termwise m >= 30: True; exhaustive Fractions 30..3000: True
+B7: signed sum [(B_lam - B_m) + 36a^2/P0^2]/(B_m w^2), fixed lib:
+    range over m in {60,120,300,1000,2000}, w in (0, 4]: [+0.0050, +0.0114]   [referee: +0.0050 .. +0.0109]
+    -> the (I)/(II) cancellation is internal to W.6's two parts; no kernel coupling needed for c_w(4) <= 1/2 (signed kappa_3/kappa_5 boxes suffice).
+B8: trivia certifications:
+    monomial weights: total 28; weight-4: 5; weight-6: 8; weight 8+10: 15 (draft said 13 -- correct count 15): True
+    e^(1.5/s2min) at (K=1, m=180): 1.0000095
+    e^(1.5/s2min) at (K=4, m=180): 1.0000153
+    v>0 condition |L''(0)|_box + h^2 sup|L''''|/12 at (K=1, m=30): 0.0631 < 1: True   [outside W.7's m >= 180 scope -- informational; harness covers m <= 150]
+    v>0 condition |L''(0)|_box + h^2 sup|L''''|/12 at (K=1, m=180): 0.0080 < 1: True
+    v>0 condition |L''(0)|_box + h^2 sup|L''''|/12 at (K=4, m=30): 1.0357 < 1: False   [outside W.7's m >= 180 scope -- informational; harness covers m <= 150]
+    v>0 condition |L''(0)|_box + h^2 sup|L''''|/12 at (K=4, m=180): 0.1053 < 1: True
+    v = F(0) - 1 > 0 proved on W.7's stated scope m >= 180, all K: True
+    (at K = 4, m = 30 the crude-box condition fails (1.036) -- but m < 180 is outside W.7's statement; on the harness range the numerics referee measured v > 0 directly, min 1.29e-5.)
+    m^2 Lin(4, m) at m = 180/240/500/1000: ['0.3719', '0.2795', '0.1346', '0.0674'] decreasing: True (analytic: d/dx[e^(c/x)/x] < 0, s2min increasing in m)
+    Hermite sups on FULL |y| <= 1/2 (1001-pt grid, n = 1..8): all hold: True, max ratio 1.0000 (repair 5a alignment)
+
+REP-WP2B-EXTRAS VERDICT: PASS

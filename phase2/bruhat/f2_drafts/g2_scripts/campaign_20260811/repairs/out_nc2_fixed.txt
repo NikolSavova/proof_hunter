@@ -1,0 +1,30 @@
+(a) E decreasing on (0,4] (400-pt grid): True
+    E(1) = 0.004006927541  (<= 0.00400694: True)
+    E(2) = 0.003587187144  (<= 0.00358720: True)
+    E(3) = 0.003040358636  (<= 0.00304100: True)
+(b) max |g''(u)|/(|u|/120) on (0,4]: 0.99999206  (<= 1: True)
+(c) max |g'''(u)-1/120|/(u^2/273) on (0,4]: 0.54166193  (<= 1: True)
+    C5 = 48 zeta(5)/(2pi)^5 = 0.005082652228 (<= 0.00508266: True)
+    C6 = 240 zeta(6)/(2pi)^6 = 0.003968253968 (<= 0.00396835: True)
+(d) cumulant bounds vs closed forms (ratios must be <= 1):
+    |kappa_3| / [lam(S_4+m)/120]      max ratio = 0.9994
+    |kappa_3| / [w m^4/545]           max ratio = 0.9851
+    |kappa_4| / [(S_4+m)/120]         max ratio = 0.9983
+    |kappa_4-kappa_4(0)| / [lam^2(S_6+m)/273] max ratio = 0.5413
+    |kappa_4-kappa_4(0)| / [w^2 m^5/1500]     max ratio = 0.4761
+    |kappa_5| / [C5 (S_5+m)]          max ratio = 0.7861
+    |kappa_6| / [C6 (S_6+m)]          max ratio = 0.9959
+    [info] m=60 w=2.0: kappa_4(lam)/kappa_4(0) = 0.4670
+    [info] m=60 w=3.0: kappa_4(lam)/kappa_4(0) = 0.0982
+    [info] m=60 w=4.0: kappa_4(lam)/kappa_4(0) = -0.1417
+(e) four-band deficit bound (Lemma W.1):
+    max PROVED deficit bound over grid = 0.3789 at (m,w)=(30, 4.0)  (<= 0.40, giving c_4 = 0.60: True)
+    max (true deficit - bound) = 0.00e+00  (must be <= 0)
+    coef(30) = S_4/(240 m^2 lambda) = 0.031088 (<= 0.0330: True), decreasing on 30..300 step 10: True
+    floors: true min s2/lambda vs c_K:
+      K=1: true min s2/lambda = 0.9698  (>= c_1 = 0.967: True)
+      K=2: true min s2/lambda = 0.8887  (>= c_2 = 0.868: True)
+      K=4: true min s2/lambda = 0.6629  (>= c_4 = 0.6: True)
+(f) (S_4+m)*545 <= 120 m^5 (m=30..2000 sample): True;  (S_6+m)*1500 <= 273 m^7: True
+
+NC-W2 VERDICT: PASS
