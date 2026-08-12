@@ -449,7 +449,36 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
-### 2026-08-06 — FIRST SUBMISSION-READY PAPER DRAFT written, reviewed, pushed (Nikol + Claude)
+### 2026-08-11→12 — G2 CLOSURE CAMPAIGN, 5 waves ≈70 Fable agents: G2 collapsed from a 5-item ledger to 4 named open statements; Theorem A now CONDITIONAL with a fully-refereed reduction (Sihao + Claude, autonomous overnight)
+- **Licenses decided + applied:** MIT for the repo (LICENSE at root, both authors);
+  arXiv non-exclusive (not CC BY) for the preprint, keeping venue options open.
+- **Method:** blind-draft + adversarial-referee fleets (the F2-campaign pattern,
+  automated via ultracode workflows); ~70 agents over 5 waves, all outputs in
+  `phase2/bruhat/f2_drafts/g2_campaign_20260811/` (drafts, 2-referee reports per
+  unit, STATUS.md … STATUS_wave5.md ledgers — read STATUS_wave5.md first).
+- **PROVED, two-referee, this campaign:** wp1-c master far-region bound (thresholds
+  ~5.1e6 → 143-379); Δ_ker bucket + T.9-final ⇒ **Prop 3.5(ii) CLOSED**; Theorem S
+  region stitching ⇒ **Prop 3.5(i) reduced to one named lemma CL(79,20,0.89)**;
+  SL3' mid-exponent; sliver closure; SL4'-X; SL4'-E pricing; repaired SL4' assembly;
+  T2's overdue house-rule referee debt discharged (both halves); exact harness
+  ground truth extended m=150 → **560** (CL obligation now m ≥ 561; G4's [401,536]
+  part-(c) band closed as a side effect).
+- **HONESTLY OPEN — the exact residue (STATUS_wave5 §2):** four CONJECTURED
+  statements (S1) SL1'-w(i) banded cumulant scales (⚠ truth margin only 3.7-3.9%),
+  (S2) SL1'-w(ii) R5 bound, (S3) joint-cancellation (E3) — ADDED this campaign by a
+  twice-refereed impossibility result killing the recorded plan, (S4) bootstrap
+  seed. CL is proved modulo (S1)-(S4) with chain-verified C* = 18.23 ≤ 20; no flip
+  executed (correctly). **Theorem A = F2(a) is NOT proved; it is conditional on
+  exactly these four.**
+- **Ops lessons:** (a) hard output-token cap killed 15 proving-agents across the
+  campaign; fixed via CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000 in settings — but the
+  SL1' package ALSO blew the 128k cap: that piece needs decomposition, not caps;
+  (b) referee fleets repeatedly caught fabricated/overstated claims (7.96x → 1.30x
+  margin headline; refuted architected routes) — the house two-referee rule is
+  earning its cost; (c) residue count went 3 → 4 this wave: fleets are converging
+  on thin-margin statements where human judgment (relax constants? re-architect
+  budget?) beats more compute.
+- Spend: ~20M subagent tokens API. All work committed + pushed per-wave.
 - **Decision:** ship the floor result (verification + F1 + F1-smooth +
   F2-as-conjecture + F3), not the G2 ceiling. G2 was assessed the prior
   session as a genuine, open-ended time sink; the floor result is already

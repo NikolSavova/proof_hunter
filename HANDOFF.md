@@ -478,6 +478,36 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
+### ⚡ 2026-08-11→12 (Sihao + Claude, autonomous overnight) — G2 CLOSURE CAMPAIGN:
+Theorem A is now PROVED CONDITIONAL on exactly 4 named open statements, with the
+reduction fully two-referee certified. **Read
+`phase2/bruhat/f2_drafts/g2_campaign_20260811/STATUS_wave5.md` first** — it is the
+authoritative ledger of the whole 5-wave campaign (~70 Fable agents; per-wave
+detail in STATUS.md…STATUS_wave4.md; full chronology in META §8's new entry).
+
+**What flipped to closed (all two-referee):** Prop 3.5(ii) [the refined law];
+Prop 3.5(i) reduced gap-free to the single lemma CL(79,20,0.89); the far-region
+obstruction (thresholds 5.1e6 → hundreds); T2's referee debt; exact harness to
+m=560 (⇒ CL only needed for m ≥ 561; G4's [401,536] band closed). Licenses DONE:
+MIT at repo root; use arXiv non-exclusive at upload (NOT CC BY — venue freedom).
+
+**What is honestly open — the entire remaining gap to unconditional Theorem A:**
+four CONJECTURED statements, (S1)-(S4) in STATUS_wave5 §2 (banded cumulant scales,
+R5 bound, joint-cancellation (E3), bootstrap seed). ⚠ (S1)'s measured truth margin
+is only 3.7-3.9% — it may need re-architected constants rather than a heroic
+proof; the C* budget has slack (18.23 vs 20; 136 from m ≥ 1581) to spend on that.
+(S3) exists because a twice-refereed impossibility result killed the previously
+recorded plan — do not resurrect the sign-lemma route.
+
+**DECISION NEEDED (Sihao paused the autonomous cascade here deliberately):**
+(a) commission a wave 6 at (S1)-(S4) — needs a decomposed SL1' design (that
+package blew even a 128k output cap; split per-band) and possibly relaxed
+constants; (b) ship the paper upgraded to the CONDITIONAL theorem claim (exact
+sentence in STATUS_wave5 §4) + finite companions 5 ≤ m ≤ 560 — already a real
+upgrade over F2-as-conjecture; or (c) Nikol human-ratifies the campaign chain
+first (assembly §8 checklist, ex-flip) before any further spend. Small
+referee debt if proceeding: composition note + hygiene overlay are unrefereed.
+
 ### 📄 2026-08-06 (Nikol + Claude session) — FIRST FULL SUBMISSION-READY DRAFT
 of the Bruhat log-concavity paper written, reviewed, and pushed. **Neither
 co-author has read it end-to-end yet — that is the actual next step.**
