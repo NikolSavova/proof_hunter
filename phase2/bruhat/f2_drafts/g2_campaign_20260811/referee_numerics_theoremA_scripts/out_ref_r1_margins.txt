@@ -1,0 +1,6 @@
+lambda(401) = 5393450/3 = 1797816.6666666667
+R1a: lambda*(m-1)/(2(m+1)) = 894436.2 >= 1e5: True
+R1b integer k=280:      1885.7
+R1b continuous k=280.7: 1879.06 >= 1879: True (doc/NC-P4 floor 1879 safe: True)
+both R1a/R1b exceed 1.02 by >= 1842x: True
+DONE

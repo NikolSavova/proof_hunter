@@ -1,0 +1,38 @@
+== R0. closed-form S_4 cross-check (raw exact sum vs closed formula) ==
+  S4 raw == closed at m in {4,30,180,367,401,1581}: True
+  B_401 exact = 390276489/145083805000 = 0.0026900073
+== R1. the plug, independently ==
+  M(4) = 367 <= 401: True
+  grid   C_A = 37815.3642 ; r3(401) = 4434031708853/5817860580... ~ 0.762141 ; >0: True
+  closed C_A = 37997.8442 ; r3(401) = 4427429491213/5817860580... ~ 0.761006 ; >0: True
+  r3 bound strictly increasing on [401, 3001] (exact, grid C_A): True
+== R2. crossovers m* (scan from m = 5, independent) ==
+  K=4 grid    m* = 535 (prev below: True; stays 500 beyond: True)
+  K=4 closed  m* = 537 (prev below: True; stays 500 beyond: True)
+  K=1 center  m* = 22 (prev below: True; stays 500 beyond: True)
+== R3. R2-region budget arithmetic, independently ==
+  v(7/10) = 119/600 (= 119/600: True) ; v(7/10)*401 = 47719/600 = 79.5317 >= 79: True
+  v(1)*1581 = 527 >= 527: True
+  eps* = 1291739/5000000 = 0.2583478 (doc: 0.2583478 -> match: True)
+  band1 20/79.5 = 0.251572 <= eps*: True ; exact-floor 0.251472 <= eps*: True
+  band2 cap 136/527 = 0.2580645 <= eps*: True ; margin = 2.833e-04 ; actual C*=20: 20/527 = 0.0380
+  137/527 = 0.2599620 > eps*: True  (so 136 is the max integer C* on band 2)
+  R2 conclusion (1 - 20/79.5)/rho = 1.029318 >= 1.02: True
+  e^0.89 > 2.435129651 (25 terms) ; > 17/7: True ; > 2: True
+== R4. the w^2 bracket, independently (+ spot values beyond 2000) ==
+  grid   br(401) = 0.009575 > 0: True ; scan 401..2000: True ; br(3000) = 0.016520 ; br(5000) = 0.016752
+  closed br(401) = 0.009556 > 0: True ; scan 401..2000: True ; br(3000) = 0.016520 ; br(5000) = 0.016751
+  bracket strictly increasing on the scan (grid): True ; limit 6.85 E(4) = 0.017056
+== R5. H(K, M(K)) all three, independently ==
+  K=1: H(180) = 0.0097 <= 1/2: True
+  K=2: H(181) = 0.0241 <= 1/2: True
+  K=4: H(367) = 0.3321 <= 1/2: True
+== R6. (27/25)-form remainder: (1.08 - B_m*m)*m in (0, 0.55] ==
+  scan m in [30, 2000] + {3e3, 5e3, 1e4, 1e5}: all in (0, 0.55]: True (range 0.3396 .. 0.5399)
+  (=> B_m*m < 1.08 on the scan, g1_b B.0(ii) direction confirmed;
+      C_A also bounds the 1 - (27/25)/m form two-sidedly since 0.55 + 1.8 << C_A)
+== R7. independent Mahonian rebuild (prefix-sum recurrence), 4 <= m <= 80 ==
+  failures (argmin/min=central/C5) on 4..80: 0 ; strict increase 6..80: True
+  varfit(4) = 91/108 (= 91/108: True) ; varfit(5) = 7/8 (= 7/8: True)
+  varfit(6) == 187/216: True ; varfit(40) = 0.973381 ; varfit(60) = 0.982146 ; varfit(80) = 0.986575
+DONE

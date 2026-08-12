@@ -1,0 +1,33 @@
+== (a) T.4' absolute kappa_4 clause ==
+  exact  S*_4/120/m^5 + pi^2/2200 = 0.0062948 ; m^5/155 = 0.0064516 ; exact chain <= /155: True
+  displayed (1.18/600) + pi^2/2200 = 0.0064529 ; <= 1/155: False  (display misses by 1.24e-06)
+== (b) T.4' kappa_3 chain margin ==
+  1.79*1.18/600 + 1.79/(120*30^4) = 0.00352035 vs 1/284 = 0.00352113 : holds True (margin 7.8e-07)
+== (c) T.9'' constants ==
+  term ratio sqrt2(m+1)/(2m) at m=30 = 0.73068 <= 0.7314 : True
+  first-term r=7 coeff = 9.4084e-08 = 1/1.0629e+07 (draft: 1/1.063e7)
+  /0.2686 -> 1/2.8549e+06 ; >= 1/2.8e6 (safe) : True
+  r=4: 7.0139e-05 -> /0.2686 = 2.611277e-04  (draft prints 2.61e-4; F2: unsafe rounding, true 2.6113e-4)
+  2*3!*zeta(4)/(2pi)^4 = 0.0083333333 = 1/120 exactly: True
+== (d) T.7b assembly ==
+  80 e^2 = 591.124 ; 4*80e^2 = 2364.5 ; doubling -> 4729.0 <= 4730 claimed (safe dir): True
+  exp(-1/(80e^2)) exponent: 1/(80e^2) = 1/591.1 (draft: 591.2)
+  (1/2)(1 - pi/m) at m=32 = 0.4509 >= 0.45 : True
+  m_* >= m/pi - 1 at m=32 = 9.19 >= 4 : True
+== (e) T.7c assembly ==
+  2.8/(sqrt2 pi) = 0.6302 (draft 0.6302)
+  m(1-0.6302)-1 >= 0.35m first at m: 0.0198m>=1 -> m>=50.5 (draft m>=51)
+  0.35*0.35 = 0.1225 ; 0.1225/2 = 0.06125 >= 0.06 : True
+== (f) (T.6iii-final): referee's rigorous constant chase ==
+  c1 = 0.5938 ; |z_j| <= 0.0371 ; 1/(2(1-z)) = 0.5193
+  total coeff of (m-1)^2 sigma^2 t^4: 1/24 + 0.0458 = 0.0874 <= 1/6 = 0.1667 : True
+== (g) T.3 constants ==
+  deficit upper at (w<=1,m>=30) = 0.034667 <= 0.04 : True -> sigma_s^2 >= 0.9653 lambda >= 0.96 lambda: True
+  0.96/36 = 1/37.50 >= 1/38 : True
+== (h) T.10(1) ==
+  m^3/72 >= 2000: m=52: 1952.9, m=53: 2067.7 (threshold 53 exact)
+  pi = 3.14159 < 3.7: historical band [1/m, 3.7/m] NOT fully inside |w|<=pi
+== (i) T.4 crude clause at w = pi, m >= 30 ==
+  0.0300 pi^2 (1+0.1+pi^2/18) = 0.4880 < 0.5 : True
+== (j) F1 exact failure threshold of (1-d)^{-2} <= 1+2.1d ==
+  roots of 2.1d^2-3.2d+0.1: [0.03191858491638611, 1.4918909388931376] -> fails for d > 0.0319 (claimed valid to 0.35: FALSE)

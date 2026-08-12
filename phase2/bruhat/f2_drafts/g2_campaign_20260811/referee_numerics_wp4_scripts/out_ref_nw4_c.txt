@@ -1,0 +1,50 @@
+C1: SL2 truth floor attack, min (A/m - c_A) per m over corner points
+   m=   401: min margin = +0.01919 at w = 4.00000   OK
+   m=   402: min margin = +0.01919 at w = 4.00000   OK
+   m=   403: min margin = +0.01919 at w = 4.00000   OK
+   m=   407: min margin = +0.01918 at w = 4.00000   OK
+   m=   499: min margin = +0.01903 at w = 4.00000   OK
+   m=  1000: min margin = +0.01868 at w = 4.00000   OK
+   m=  5000: min margin = +0.01840 at w = 4.00000   OK
+   m=100000: min margin = +0.01834 at w = 4.00000   OK
+C2: Lemma C.1 attack: max A/(m h(lam)), h = (lam/2)^2/sinh^2(lam/2)
+   max A/(m h) = 0.999317 at (m, lam) = (5000, 0.89)   (must be <= 1)
+C3: s2/m on W7 at m = 401 (bonus min(m,s2) = m margin)
+   lam = 0.0998 (w =   40.02): s2/m = 92.1895
+   lam = 0.2000 (w =   80.20): s2/m = 23.9225
+   lam = 0.4000 (w =  160.40): s2/m = 6.0469
+   lam = 0.6000 (w =  240.60): s2/m = 2.6614
+   lam = 0.8000 (w =  320.80): s2/m = 1.4677
+   lam = 0.8900 (w =  356.89): s2/m = 1.1723
+C4: (H1) W7 deep corner, m = 401 (NC-PL1's m=401 grid stops at w=250)
+   lam = 0.63 (w =  252.6): R31 = 2.0529 (vs 2.2), R42 = 6.1231 (vs 6.6)  headroom R42: 7.8%
+   lam = 0.70 (w =  280.7): R31 = 2.0696 (vs 2.2), R42 = 6.1796 (vs 6.6)  headroom R42: 6.8%
+   lam = 0.75 (w =  300.8): R31 = 2.0823 (vs 2.2), R42 = 6.2225 (vs 6.6)  headroom R42: 6.1%
+   lam = 0.80 (w =  320.8): R31 = 2.0956 (vs 2.2), R42 = 6.2676 (vs 6.6)  headroom R42: 5.3%
+   lam = 0.85 (w =  340.8): R31 = 2.1097 (vs 2.2), R42 = 6.3153 (vs 6.6)  headroom R42: 4.5%
+   lam = 0.88 (w =  352.9): R31 = 2.1185 (vs 2.2), R42 = 6.3451 (vs 6.6)  headroom R42: 4.0%
+   lam = 0.89 (w =  356.9): R31 = 2.1215 (vs 2.2), R42 = 6.3552 (vs 6.6)  headroom R42: 3.9%
+   geometric limits at lam=0.89: R31_G = 2.1303, R42_G = 6.4113
+C5: SL3.1 scope attack (all m >= 2 claim): min -log|phi|/(s2 t^2)
+   m= 2 lam=0.10: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m= 2 lam=0.45: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m= 2 lam=0.89: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m= 3 lam=0.10: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m= 3 lam=0.45: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m= 3 lam=0.89: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m= 5 lam=0.10: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m= 5 lam=0.45: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m= 5 lam=0.89: tier1 min = 0.4779 (>= c1 0.1317175: True), tier2 min = 0.4555 (>= c2 0.0871362: True)
+   m=10 lam=0.10: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m=10 lam=0.45: tier1 min = 0.4828 (>= c1 0.1317175: True), tier2 min = 0.4651 (>= c2 0.0871362: True)
+   m=10 lam=0.89: tier1 min = 0.4228 (>= c1 0.1317175: True), tier2 min = 0.3744 (>= c2 0.0871362: True)
+   m=30 lam=0.10: tier1 min = 0.5000 (>= c1 0.1317175: True), tier2 min = 0.5000 (>= c2 0.0871362: True)
+   m=30 lam=0.45: tier1 min = 0.4102 (>= c1 0.1317175: True), tier2 min = 0.3611 (>= c2 0.0871362: True)
+   m=30 lam=0.89: tier1 min = 0.3898 (>= c1 0.1317175: True), tier2 min = 0.3343 (>= c2 0.0871362: True)
+   scope-attack violations: 0
+C6: exact eps_j vs 0.35/0.57 over adversarial (lam, j) sweep
+   max eps_j(pi/(0.8lam))  = 0.2643 at (lam,j)=(0.45, 401)  (cert 0.35)
+   max eps_j(pi/(1.074lam))= 0.4458 at (lam,j)=(0.2, 401)  (cert 0.57)
+C7: refutation robustness: honest W1 mid entry at gamma = c1 (not 1/8)
+   gamma = 0.1250000: honest mid entry = 129.86  (architected T_u slot 1.0125)
+   gamma = 0.1317175: honest mid entry = 101.41  (architected T_u slot 1.0125)

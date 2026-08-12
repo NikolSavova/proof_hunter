@@ -1,0 +1,38 @@
+(1) plug arithmetic
+  C_A grid   = 189076821/5000 = 37815.3642 (doc: 37815.3642): True
+  C_A closed = 189989221/5000 = 37997.8442 (doc: 37997.8442): True
+  R3(401) grid   = 0.762141  (doc 0.762141)
+  R3(401) closed = 0.761006  (doc 0.761006)
+(2) R2 budget
+  eps* = 1291739/5000000 = 0.2583478 (doc 0.2583478): True
+  v(7/10)*401 = 47719/600 = 79.5317 >= 79: True ; v(1)*1581 = 527 >= 527: True
+  band1 20/79.5 = 0.251572 <= eps*: True ; band2 136/527 = 0.2580645 <= eps*: True (margin 2.83e-04)
+  R2 concl (1-20/79.5)/rho = 1.029318 >= 1.02: True
+  e^0.89 > 2.435129651 ; > 17/7: True ; > 2: True  => log(17/7), log2 < 0.89
+(3) R3 w^2 bracket
+  bracket(401) grid   = 0.009575 > 0: True
+  bracket(401) closed = 0.009556 > 0: True
+  B.0(ii) floor g(401) grid   = 0.009571 > 0: True (g term-by-term increasing: True)
+  B.0(ii) floor g(401) closed = 0.009551 > 0: True (g term-by-term increasing: True)
+  [g > 0 for ALL m >= 401 follows: each of -1/m, -1/m^2 terms increases in m]
+  1 - 17*B(401) - C_grid/401^2 = 0.7191 > 0 (chain multiplier validity)
+(4) R1a/R1b at m = 401
+  R1a: lambda*400/804 = 894436.2 >= 1e5: True
+  R1b: (m-1)^2(2m+5)/(144 c(1+c) m) = 1879.1 (doc: 1879)
+(5) H(4, 367) and B_m*m
+  H(4,367) = 0.3321 <= 1/2: True (doc 0.3321)
+  B_m*m: m=401: 1.078693 ; m=100000: 1.079995 (doc 1.078693 / 1.079995)
+(6) independent Mahonian rebuild to m = 40
+  m=6: argmin=7 (central 7), varfit=0.8657407407407407 == 187/216: True
+  m=40: argmin=390 (central 390), varfit=0.9733807894528755 (doc 0.973381)
+(7) the 27/25-form constant (finding MR-2 evidence)
+  m=   401  (1.08/m - B_m)*m^2 = 0.5241
+  m=  1000  (1.08/m - B_m)*m^2 = 0.5336
+  m= 10000  (1.08/m - B_m)*m^2 = 0.5394
+  m=100000  (1.08/m - B_m)*m^2 = 0.5399
+  => |B_m - (27/25)/m| ~ 0.53/m^2: real, O(m^-2), but its explicit constant is
+     NOT in C_A and nowhere displayed; B.0(ii) gives only 0.012/m at this scale.
+(8) G4 crossovers (replication)
+  grid   m* = 535 (doc: 535)
+  closed m* = 537 (doc: 537)
+DONE

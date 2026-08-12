@@ -1,0 +1,17 @@
+(a) closed-form Var vs direct summation (max abs rel diff):
+    9.157e-26   (identity confirmed to working precision)
+(a) A/m vs h(lam) = (lam/2)^2/sinh^2(lam/2), dense band grid:
+    violations of A/m <= h(lam): 0 / 720 pts ; max A/(m h(lam)) = 0.9978 ; max A/m = 0.9869 < 1
+(b) true budget column min over dense w-grid, per band, m=401 (vs 20 c_A):
+    (4,5]     min 20A/min(m,s2) =   5.996  vs 20c_A =   5.6   consistent
+    (5,6]     min 20A/min(m,s2) =   7.875  vs 20c_A =   7.0   consistent
+    (6,8]     min 20A/min(m,s2) =   9.488  vs 20c_A =   8.4   consistent
+    (8,10]    min 20A/min(m,s2) =  11.880  vs 20c_A =  10.4   consistent
+    (10,20]   min 20A/min(m,s2) =  13.495  vs 20c_A =  12.0   consistent
+    (20,40]   min 20A/min(m,s2) =  16.751  vs 20c_A =  14.0   consistent
+    (40,inf)  min 20A/min(m,s2) =  18.439  vs 20c_A =  16.0   consistent
+(c) far-entry honesty record at m=401 (exp(-0.0373*401) = 3.1925e-07):
+    with A = 0.024 m^3 (B.0(i) fallback): 0.36 sqrt(A) A e^-0.0373m = 221.3  (FAILS 0.05)
+    with A = 0.024 m^2 (the slip):        value = 0.0276
+    fallback route first reaches <= 0.05 at m = 692 (gap [401, 691] uncovered by it)
+    with A <= m (Lemma SL5.0):            value = 9.229e-04  (<= 0.01 with 10x room)

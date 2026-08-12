@@ -1,0 +1,39 @@
+== (A) the plug: C_ker(4) [wp2-a2 D.5] into Theorem S R3 [wp3-a2] ==
+  A1. scope: M(4) = 367 <= 401 = Theorem S analytic start: True
+      D.5 band |w| <= 4 == R3 band |w| <= 4 (w-uniform, T.9-final note): True by statement
+  A2. grid   C = 5.32 + 37810.0442 = 37815.3642 ; R3 bound at m=401 = 0.762141 (>0: True)
+  A2. closed C = 187.8 + 37810.0442 = 37997.8442 ; R3 bound at m=401 = 0.761006 (>0: True)
+  A3. B_m strictly decreasing on [401, 3001] (exact scan): True ; C/m^2 trivially decreasing => R3 bound increasing -> 1
+== (B) part-(c)/G4 crossovers: smallest m with 1 - B_m - C/m^2 >= 187/216 ==
+  K=4 grid   (C = 37815.3642)      m* = 535 (stays beyond: True; harness gap: [401, 534])
+  K=4 closed (C = 37997.8442)      m* = 537 (stays beyond: True; harness gap: [401, 536])
+  K=1 center (C = 41.17 + 0.2308)  m* = 22 (stays beyond: True; harness gap: NONE)
+== (C) Theorem S R2 budget, REPAIRED constants (rho(4) <= 0.72711) ==
+  C1. s2 floors: v(7/10)*401 = 47719/600 = 79.5317 >= 79 (C_0* met: True);
+      v(1)*1581 = 527 = 527.0 >= 527
+  C2. eps* = 1 - 1.02*rho = 1291739/5000000 = 0.2583478
+  C3. band-1 budget 20/79.5 = 0.251572  (exact-floor 20/79.5317 = 0.251472)  <= eps*: True / True
+      band-2 budget 136/527 = 0.2580645 <= eps*: True  (margin 2.83e-04)
+  C4. R2 conclusion (1 - 20/79.5)/rho = 1.029318 >= 1.02: True
+  C5. e^0.89 > 2.435129651 (18-term positive partial sum, exact Fractions)
+      17/7 = 2.428571429 < e^0.89 => log(17/7) < 0.89 (cap, c=7/10): True
+      2 < e^0.89 => log 2 < 0.89 (cap, c=1): True
+      => Lambda* = 0.89 covers every residual-band tilt (Lemma P.8): True
+== (D) R3 w^2-bracket WITH the plugged C (positivity => w^2 term discardable) ==
+  grid   bracket(401) = 0.009575 > 0: True ; exact scan 401..2000 all > 0: True
+  closed bracket(401) = 0.009556 > 0: True ; exact scan 401..2000 all > 0: True
+  (limit 6.85*E(4) = 0.017056 > 0; B_m, C/m^2 decreasing => positive for all m >= 401)
+== (E) independent exact harness rebuild, 4 <= m <= 60 ==
+  [C5 scope check] varfit(4) = 91/108 = 0.842593 < 187/216: True (the m=4 record row)
+  m= 4 argmin=   2 (expect 2 [exception])  varfit=0.842593
+  m= 6 argmin=   7 (expect 7)  varfit=0.865741  [= 187/216 exactly: True]
+  m=40 argmin= 390 (expect 390)  varfit=0.973381
+  m=60 argmin= 885 (expect 885)  varfit=0.982146
+  C1-C3/C5 failures on 4..60: 0 ; C6 varfit strictly increasing 6..60: True
+== (F) B_m*m -> 27/25 = 1.08 ; H(4, 367) recompute ==
+  m =     30  B_m*m = 1.068679
+  m =    401  B_m*m = 1.078693
+  m =   1581  B_m*m = 1.079661
+  m = 100000  B_m*m = 1.079995
+  H(4, 367) = B_367*(1 + c_w(4)*16) + C_R(4)closed/367^2 = 0.3321 <= 0.5: True
+DONE

@@ -1,0 +1,2 @@
+m=120: max over band of eps*min(m,s2) = 1.1696 at k=1960 (w=4.78, s2=28445.3)  [CL asks <= 20]
+m=200: max over band of eps*min(m,s2) = 1.1710 at k=5458 (w=4.84, s2=129871.1)  [CL asks <= 20]

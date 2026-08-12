@@ -1,0 +1,57 @@
+== PART A: Hermite closed forms + eta ==
+ w=4.5: lam=0.011222 s2=1.107209e+06 A=139.433 R31=0.7808 R42=0.4056
+   closed-vs-quad qhat rel err max = 6.601e-31
+   eta = -2.918706e-03 = -0.40696 u ; leading-form resid = 1.001e-06 (= 0.0195 u^2)
+   |eta| <= (R42/2 + max(R31^2, lam^2/2)) u ? bound=0.8125 vs |eta|/u=0.4070
+ w=7: lam=0.017456 s2=7.101602e+05 A=216.403 R31=1.2273 R42=1.7782
+   closed-vs-quad qhat rel err max = 1.041e-30
+   eta = -2.852151e-03 = -0.61721 u ; leading-form resid = 4.729e-07 (= 0.0221 u^2)
+   |eta| <= (R42/2 + max(R31^2, lam^2/2)) u ? bound=2.3955 vs |eta|/u=0.6172
+ w=30: lam=0.074813 s2=6.384487e+04 A=357.338 R31=1.8780 R42=5.2648
+   closed-vs-quad qhat rel err max = 1.470e-30
+   eta = -2.495261e-03 = -0.89165 u ; leading-form resid = 2.732e-08 (= 0.0035 u^2)
+   |eta| <= (R42/2 + max(R31^2, lam^2/2)) u ? bound=6.1592 vs |eta|/u=0.8917
+ w=200: lam=0.498753 s2=1.554518e+03 A=386.694 R31=2.0249 R42=6.0255
+   closed-vs-quad qhat rel err max = 1.577e-30
+   eta = -2.491238e-03 = -0.96335 u ; leading-form resid = 9.808e-07 (= 0.1467 u^2)
+   |eta| <= (R42/2 + max(R31^2, lam^2/2)) u ? bound=7.1129 vs |eta|/u=0.9633
+
+== PART B: refutation of the architected ledger normalization ==
+ W1: A=112.3  plan mid entry=1.012  honest numerator mid entry (gamma=1/8)=129.86  ratio=128.3
+ W2: A=140.3  plan mid entry=0.471  honest numerator mid entry (gamma=1/8)=73.61  ratio=156.4
+ W3: A=168.4  plan mid entry=0.214  honest numerator mid entry (gamma=1/8)=39.56  ratio=184.5
+ far numerator entry at w=4.05, m=401 (u-units): 1191   [m*qW = 20.23]
+ far numerator entry at w=4.2, m=401 (u-units): 92.3   [m*qW = 22.79]
+ far numerator entry at w=4.5, m=401 (u-units): 0.6757   [m*qW = 27.70]
+ far numerator entry at w=5.0, m=401 (u-units): 0.0003509   [m*qW = 35.27]
+ (architected far entry 0.36*sqrt(A)*A*e^{-0.0373m} = 1.37e-04)
+ W.6 exponent monotone-in-tau violations on [0.8,tau0] grid: 0
+ W.6 x(w,0.8) increasing in w over grid: False; x(4.05,.8)=0.01907 -> E=m*x=7.65
+
+== PART C: corrected honest ledger ==
+ -- table at m=401, strengthened (C5*, gamma*) per band --
+ W1: C5*=0.05 gam*=0.42 total=1195.818 budget=5.6 FAIL | main=1.50 R5n=0.49 cube=0.22 cross=0.19 midn=0.009 Xn=0.343 farn=1.19e+03 den=0.092 quad=2.444
+ W2: C5*=0.06 gam*=0.42 total=3.753 budget=7.0 PASS | main=2.24 R5n=0.53 cube=0.35 cross=0.39 midn=0.001 Xn=0.000 farn=0.000215 den=0.088 quad=0.157
+ W3: C5*=0.08 gam*=0.40 total=6.124 budget=8.4 PASS | main=3.65 R5n=0.64 cube=0.62 cross=0.93 midn=0.000 Xn=0.000 farn=7.99e-10 den=0.107 quad=0.177
+ W4: C5*=0.10 gam*=0.40 total=7.891 budget=10.4 PASS | main=4.74 R5n=0.72 cube=0.81 cross=1.35 midn=0.000 Xn=0.000 farn=1.07e-17 den=0.120 quad=0.150
+ W5: C5*=0.15 gam*=0.38 total=11.720 budget=12.0 PASS | main=6.70 R5n=1.01 cube=1.22 cross=2.40 midn=0.000 Xn=0.000 farn=5.33e-23 den=0.168 quad=0.218
+ W6b: C5*=0.25 gam*=0.34 total=13.678 budget=14.0 PASS | main=7.51 R5n=1.55 cube=1.31 cross=2.81 midn=0.000 Xn=0.000 farn=5.53e-35 den=0.259 quad=0.241
+ W7: C5*=0.80 gam*=0.32 total=19.171 budget=16.0 FAIL | main=8.24 R5n=4.65 cube=1.41 cross=3.09 midn=0.000 Xn=0.000 farn=1.28e-41 den=0.775 quad=1.009
+ -- far sliver boundary: smallest w with W1 row passing, vs m --
+  m=401: W1 row passes for w >= 4.51
+  m=420: W1 row passes for w >= 4.38
+  m=440: W1 row passes for w >= 4.31
+  m=460: W1 row passes for w >= 4.25
+  m=480: W1 row passes for w >= 4.2
+  m=500: W1 row passes for w >= 4.16
+  m=520: W1 row passes for w >= 4.12
+  m=540: W1 row passes for w >= 4.08
+  m=560: W1 row passes for w >= 4.05
+ -- thresholds M*(band) under STATED SL1-SL3 (C5=3 or 8, gamma=1/8) --
+  W1: does not close by m=40000
+  W2: does not close by m=40000
+  W3: does not close by m=40000
+  W4: does not close by m=40000
+  W5: does not close by m=40000
+  W6b: M* = 34868  (stated SL1-SL3, honest assembly)
+  W7: does not close by m=40000

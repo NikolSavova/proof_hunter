@@ -1,0 +1,14 @@
+(a) note-2 bracket 6.85 E(4)(1 - 17B_m - C/m^2) - B_m, exact:
+    first positive m = 82 (draft said '~68'; repair value 82)
+    positive for all 82 <= m <= 5000: True
+    consumed claims: m=100: 0.003168 > 0: True ; m=401: 0.013585 > 0: True
+    companion (no (1-17B_m-C/m^2) factor): first m = 63
+(b) NC-13 center margin 1 - B - C'/m^2 >= 187/216, exact:
+    C'=  1: m0 =  9 (1.08/m flavor),  9 (exact B_m flavor)
+    C'=  5: m0 = 12 (1.08/m flavor), 12 (exact B_m flavor)
+    C'= 20: m0 = 17 (1.08/m flavor), 17 (exact B_m flavor)
+    C'= 42: m0 = 23 (1.08/m flavor), 23 (exact B_m flavor)
+    -> repair R-F4: 'm ~ 27' should read m = 23 (both flavors); safe direction, conclusion (<< 400) unchanged
+(c) R1 margin at (1581, 1): exact = 17363 + 14921/28458 = 17363.524 ;
+    17363 <= margin < 17364: True  (safe print '17363x'; NC-P4's '17364' was rounded UP)
+VERDICT: PASS

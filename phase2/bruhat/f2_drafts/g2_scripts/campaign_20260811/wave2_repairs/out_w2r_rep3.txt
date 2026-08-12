@@ -1,0 +1,15 @@
+(R-F2) genuine full per-piece rows at the theorem thresholds:
+      m  K    m2*box    m2*tail     m2*far      dbar    m2*den     m2*Cker2
+    180  1   27.3882   1.66e-10   5.23e-05  5.35e-05    3.4951     30.8863
+    181  2  191.1309   4.42e-08   1.81e-01  2.65e-04   17.6086    209.0224
+    367  4  36059.3053   6.09e-13   1.93e-01  4.92e-03  1391.0887  37810.0442
+    Cker(row) <= displayed headline 30.89/209.03/37811: True
+(R-F6) LFlow provenance:
+    LFlow(K=1, m=180) = 0.99248
+    LFlow(K=2, m=181) = 0.98704
+    LFlow(K=4, m=367) = 0.96388
+    LFlow(K=4, m=180) = 0.92237
+    min over theorem-used pairs = 0.96388 >= 0.9638: True
+    every value > 0.9223 (safe restatement): True
+    LFlow(4, 180) < 0.9224 (the draft's rounding was UP/unsafe): True
+VERDICT: PASS

@@ -1,0 +1,28 @@
+(a) variance closed form vs direct sum:
+    max rel dev = 2.01e-13  (PASS iff < 1e-10)
+(b) SL3.B  A = lam^2 s2 <= m :
+    violations = 0, max A/m = 0.9810  (PASS iff 0 violations)
+(c) SL3.1 measured min of -log|phi|/(s2 t^2)  [tier1 on [lam/2,.8lam], tier2 on [.8lam,1.074lam]]:
+    m=401 w=   4.05: tier1 min=0.4923 (>=c1? True) tier2 min=0.4861 (>=c2? True)  [t0/lam=1.0000]
+    m=401 w=   4.20: tier1 min=0.4904 (>=c1? True) tier2 min=0.4831 (>=c2? True)  [t0/lam=1.0000]
+    m=401 w=   5.00: tier1 min=0.4794 (>=c1? True) tier2 min=0.4655 (>=c2? True)  [t0/lam=1.0000]
+    m=401 w=   7.00: tier1 min=0.4516 (>=c1? True) tier2 min=0.4255 (>=c2? True)  [t0/lam=1.0000]
+    m=401 w=  20.00: tier1 min=0.4025 (>=c1? True) tier2 min=0.3655 (>=c2? True)  [t0/lam=1.0002]
+    m=401 w= 100.00: tier1 min=0.3887 (>=c1? True) tier2 min=0.3480 (>=c2? True)  [t0/lam=1.0052]
+    m=401 w= 356.89: tier1 min=0.3794 (>=c1? True) tier2 min=0.3219 (>=c2? True)  [t0/lam=1.0737]
+    m=900 w=   4.05: tier1 min=0.4923 (>=c1? True) tier2 min=0.4861 (>=c2? True)  [t0/lam=1.0000]
+    m=900 w= 356.89: tier1 min=0.3857 (>=c1? True) tier2 min=0.3428 (>=c2? True)  [t0/lam=1.0134]
+(d) exact eps_j vs Eps(lam,x0)  [b1 = pi/(0.8 lam), b2 = pi/(1.074 lam)]:
+    lam=0.10 j=  5: eps1=0.0000<=Eps1=0.2567? True | eps2=0.0000<=Eps2=0.4517? True
+    lam=0.10 j= 50: eps1=0.0915<=Eps1=0.2567? True | eps2=0.3111<=Eps2=0.4517? True
+    lam=0.10 j=401: eps1=0.2455<=Eps1=0.2567? True | eps2=0.4345<=Eps2=0.4517? True
+    lam=0.50 j=  5: eps1=0.0000<=Eps1=0.2886? True | eps2=0.0000<=Eps2=0.4992? True
+    lam=0.50 j= 50: eps1=0.2763<=Eps1=0.2886? True | eps2=0.4809<=Eps2=0.4992? True
+    lam=0.50 j=401: eps1=0.2763<=Eps1=0.2886? True | eps2=0.4809<=Eps2=0.4992? True
+    lam=0.89 j=  5: eps1=0.0000<=Eps1=0.3223? True | eps2=0.1831<=Eps2=0.5485? True
+    lam=0.89 j= 50: eps1=0.2355<=Eps1=0.3223? True | eps2=0.3963<=Eps2=0.5485? True
+    lam=0.89 j=401: eps1=0.2355<=Eps1=0.3223? True | eps2=0.3963<=Eps2=0.5485? True
+(e) true T_u (Simpson, 4000 panels on [lam/2, pi]) vs SL3.2 bound, m=401:
+    w=  4.05: A= 121.969  T_u(true)=0.0000  bound=0.8155  ratio=221162.00
+    w=  5.00: A= 157.668  T_u(true)=0.0000  bound=0.2961  ratio=4747218.61
+    w= 20.00: A= 335.455  T_u(true)=0.0000  bound=0.0016  ratio=3358082969692.24

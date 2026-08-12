@@ -1,0 +1,14 @@
+===== m = 401 =====
+  N = 80200; band k-range: [278, 24442]  (mu(0.89) = 277.86, mu(4/m) = 24442.78)
+  testing 260 adversarial k values
+  violations: {'CL>20': 0, 'A<cA*m': 0, 'A>m': 0, 's2<=m': 0, 's2<141.7497': 0, 'r<1': 0, 'bandless': 0}
+  max eps*min(m,s2) = 1.17187 at k=21950 (w=4.894, s2=1033340.4, A=153.92)   [CL asks <= 20]
+  min (A/m - c_A(band)) = 0.019219 at k=24442 (w=4.000)
+  max A/m = 0.967587 at (w=137.722);  min s2/m = 1.1731 at (w=356.771)
+===== m = 402 =====
+  N = 80601; band k-range: [279, 24565]  (mu(0.89) = 278.56, mu(4/m) = 24565.23)
+  testing 67 adversarial k values
+  violations: {'CL>20': 0, 'A<cA*m': 0, 'A>m': 0, 's2<=m': 0, 's2<141.7497': 0, 'r<1': 0, 'bandless': 0}
+  max eps*min(m,s2) = 1.17186 at k=22199 (w=4.841, s2=1050948.3, A=152.38)   [CL asks <= 20]
+  min (A/m - c_A(band)) = 0.019199 at k=24565 (w=4.000)
+  max A/m = 0.931026 at (w=349.913);  min s2/m = 1.17492 at (w=357.403)

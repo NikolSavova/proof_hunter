@@ -1,0 +1,20 @@
+(1) certified E(u) brackets (exact integer arithmetic, N = 50000):
+  E(1): 0.004006927541 <= E <= 0.004006927542 ; corrected print 0.00400692 is lower bound: True ; original print 0.00400693 NOT a lower bound (> E_hi)
+  E(2): 0.003587187143 <= E <= 0.003587187144 ; corrected print 0.00358718 is lower bound: True ; original print 0.00358719 NOT a lower bound (> E_hi)
+  E(3): 0.003040358636 <= E <= 0.003040358637 ; corrected print 0.00304035 is lower bound: True ; original print 0.00304036 NOT a lower bound (> E_hi)
+  E(4): 0.002489924424 <= E <= 0.002489924425 ; corrected print 0.00248992 is lower bound: True ; original print safe
+  E(5): 0.002006520248 <= E <= 0.002006520249 ; corrected print 0.00200652 is lower bound: True ; original print safe
+  E(6): 0.001612406722 <= E <= 0.001612406723 ; corrected print 0.00161240 is lower bound: True ; original print 0.00161241 NOT a lower bound (> E_hi)
+(2) rigorous tail bound = 1.369e-17  (< 2e-15 restated claim: True; < 2e-17: True; original '< 2e-21' FALSE: True)
+(3) propagated P.7 floors (deficit >= 6.85 w0^2 E_lo; rho <= 1-d):
+  w0=1: deficit >= 0.0274474   rho <= 0.9725526
+  w0=2: deficit >= 0.0982889   rho <= 0.9017111
+  w0=3: deficit >= 0.1874381   rho <= 0.8125619
+  w0=4: deficit >= 0.2728957   rho <= 0.7271043
+  w0=5: deficit >= 0.3436165   rho <= 0.6563835
+  w0=6: deficit >= 0.3976194   rho <= 0.6023806
+  deficit(2) >= 0.0982: True ; rho(2) <= 0.9018: True ; deficit(4) >= 0.27289: True ; rho(4) <= 0.72711: True
+(4) R2 chain: eps* = 1 - 1.02 rho = 0.258353 >= 20/79.5 = 0.251573 : True ;
+    R2 value (1 - 20/79.5)/rho = 1.029326 >= 1.0292: True ; >= 1.02: True
+(5) note-2 at m=401: 6.85 E(4)_lo (1 - 17 B_m - C/m^2) = 0.016274 >= 0.01627: True ; full bracket = 0.013584 > 0: True
+VERDICT: PASS

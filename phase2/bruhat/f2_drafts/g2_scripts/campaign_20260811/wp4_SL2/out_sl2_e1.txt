@@ -1,0 +1,5 @@
+E1.1 identity: 660 (q, j) pairs compared in exact Fractions; mismatches = 0
+E1.2 variance-monotone-in-j violations, lam in {0.01..0.89} x j <= 60: 0
+E1.3 anchor Var(U_3^{0.89}) * 0.89^2 = 0.3666   [NC-PL1 quotes 0.3666]
+E1.4 h(x) spot-row, x = 0.5, 1, 2, 4, 6, 8, 10:
+      0.979425  0.920674  0.724062  0.304087  0.089679  0.021484  0.004540

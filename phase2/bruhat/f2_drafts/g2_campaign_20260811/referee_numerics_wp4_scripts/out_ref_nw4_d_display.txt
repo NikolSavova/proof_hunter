@@ -1,0 +1,18 @@
+(1) assembler table [1] (printed cols from out_wp4asm_chain.txt):
+  W1: exact tot = 4.7344730 printed 4.7345 ok;  exact mar = 0.8655270 printed 0.8655 ok
+  W2: exact tot = 4.4335480 printed 4.4335 UNSAFE;  exact mar = 2.5664520 printed 2.5665 UNSAFE
+  W3: exact tot = 4.8790430 printed 4.8790 UNSAFE;  exact mar = 3.5209570 printed 3.5210 UNSAFE
+  W4: exact tot = 5.2248820 printed 5.2249 ok;  exact mar = 5.1751180 printed 5.1751 ok
+  W5: exact tot = 6.2747760 printed 6.2748 ok;  exact mar = 5.7252240 printed 5.7252 ok
+  W6b: exact tot = 6.6872920 printed 6.6873 ok;  exact mar = 7.3127080 printed 7.3127 ok
+  W7: exact tot = 8.8231320 printed 8.8231 UNSAFE;  exact mar = 7.1768680 printed 7.1769 UNSAFE
+(2) SL5 NC-SL5-1 table (printed cols from out_sl5_nc1.txt):
+  W1: tot=4.7338454 [4.7338 UNSAFE] mar=0.8661546 [0.8662 UNSAFE] I1u=1.0118454 [1.0118 UNSAFE]
+  W2: tot=4.4332552 [4.4333 ok] mar=2.5667448 [2.5667 ok] I1u=0.4705552 [0.4706 ok]
+  W3: tot=4.8789086 [4.8789 UNSAFE] mar=3.5210914 [3.5211 UNSAFE] I1u=0.2144086 [0.2144 UNSAFE]
+  W4: tot=5.2248390 [5.2248 UNSAFE] mar=5.1751610 [5.1752 UNSAFE] I1u=0.0681390 [0.0681 UNSAFE]
+  W5: tot=6.2747588 [6.2748 ok] mar=5.7252412 [5.7252 ok] I1u=0.0268588 [0.0269 ok]
+  W6b: tot=6.6872859 [6.6873 ok] mar=7.3127141 [7.3127 ok] I1u=0.0082859 [0.0083 ok]
+  W7: tot=8.8231299 [8.8231 UNSAFE] mar=7.1768701 [7.1769 UNSAFE] I1u=0.0025299 [0.0025 UNSAFE]
+note: worst printed-vs-exact gap in either table is < 5e-5; every
+PASS/FAIL and every budget comparison is exact-Fraction and unaffected.

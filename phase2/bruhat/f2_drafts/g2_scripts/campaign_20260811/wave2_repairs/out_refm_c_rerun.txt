@@ -1,0 +1,15 @@
+== (a) (2.2)-(2.5) vs exact-pmf cumulants ==
+  m= 8 lam=0.3 mu : exact-pmf 9.39668025716 closed 9.39668025716  rel dev 4.6e-51
+  m= 8 lam=0.3 k2 : exact-pmf 13.5563883841 closed 13.5563883841  rel dev 3.2e-51
+  m= 8 lam=0.3 k3 : exact-pmf 15.6233247871 closed 15.6233247871  rel dev 5.5e-51
+  m= 8 lam=0.3 k4 : exact-pmf -19.3287980094 closed -19.3287980094  rel dev 1.7e-49
+  m=12 lam=0.05 mu : exact-pmf 30.3521354251 closed 30.3521354251  rel dev 1.5e-49
+  m=12 lam=0.05 k2 : exact-pmf 52.5412840653 closed 52.5412840653  rel dev 1.6e-51
+  m=12 lam=0.05 k3 : exact-pmf 24.7426525183 closed 24.7426525183  rel dev 8.1e-49
+  m=12 lam=0.05 k4 : exact-pmf -473.268804806 closed -473.268804806  rel dev 4.0e-50
+== (b) T.5 staircase + (**) on 500 random nonincreasing exact-Fraction vectors ==
+  decomposition exact on all vectors: True ; (**) holds: True ; min margin = 0.0
+== (c) T.4 kernel E(u): partial-fraction sum vs direct; lower bound; monotone ==
+  max rel dev direct vs partial-fraction (4 pts, N=2e5): 5.4e-17
+  240*E(u) vs 1-u^2/19.7: [(0.5, 0.9902, 0.9873), (1.0, 0.9617, 0.9492), (2.0, 0.8609, 0.797), (3.0, 0.7297, 0.5431), (3.14, 0.7107, 0.4995)] lower bound holds: True
+  E decreasing on (0, 3.1]: True ; E(pi)*240 = 0.71049

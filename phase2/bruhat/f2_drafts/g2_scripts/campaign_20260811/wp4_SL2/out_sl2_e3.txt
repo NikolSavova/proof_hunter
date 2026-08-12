@@ -1,0 +1,29 @@
+E3 truth scan at m = 401 (201-point grid per band, plus w0+1e-6):
+    band   min A/m   at w      cert.floor  c_A   truth>=floor>=c_A
+    W1    0.2992   4.0000    0.287499    0.28  PASS
+    W2    0.3932   5.0000    0.381808    0.35  PASS
+    W3    0.4735   6.0000    0.462885    0.42  PASS
+    W4    0.5934   8.0000    0.584512    0.52  PASS
+    W5    0.6728   10.0000   0.665138    0.60  PASS
+    W6b   0.8365   20.0000   0.831552    0.70  PASS
+    W7    0.9182   40.0000   0.852716    0.80  PASS
+E3 truth scan at m = 802 (201-point grid per band, plus w0+1e-6):
+    band   min A/m   at w      cert.floor  c_A   truth>=floor>=c_A
+    W1    0.2988   4.0000    0.287499    0.28  PASS
+    W2    0.3927   5.0000    0.381808    0.35  PASS
+    W3    0.4730   6.0000    0.462885    0.42  PASS
+    W4    0.5928   8.0000    0.584512    0.52  PASS
+    W5    0.6722   10.0000   0.665138    0.60  PASS
+    W6b   0.8361   20.0000   0.831552    0.70  PASS
+    W7    0.9182   40.0000   0.852716    0.80  PASS
+E3 band-edge value (outside the open band): A/m at w = 4.0, m = 401: 0.2992   [NC-PL1 quotes 0.2992]
+E3 pointwise master-inequality spot check at m = 401
+   (all differences must be >= 0):
+   w =    4.2 : A/m = 0.318922, V(w)-v(lam) = 0.318015, diff = +0.000907
+   w =    5.5 : A/m = 0.435166, V(w)-v(lam) = 0.434074, diff = +0.001092
+   w =    7.0 : A/m = 0.539659, V(w)-v(lam) = 0.538468, diff = +0.001191
+   w =    9.0 : A/m = 0.637037, V(w)-v(lam) = 0.635802, diff = +0.001234
+   w =   15.0 : A/m = 0.781811, V(w)-v(lam) = 0.780564, diff = +0.001247
+   w =   30.0 : A/m = 0.891118, V(w)-v(lam) = 0.889871, diff = +0.001247
+   w =  100.0 : A/m = 0.963182, V(w)-v(lam) = 0.961935, diff = +0.001247
+   w =  300.0 : A/m = 0.944916, V(w)-v(lam) = 0.943669, diff = +0.001247

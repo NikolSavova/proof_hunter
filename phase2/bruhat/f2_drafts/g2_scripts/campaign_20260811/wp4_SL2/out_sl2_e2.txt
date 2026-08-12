@@ -1,0 +1,25 @@
+E2.0 e^(1/8) bracket: lo = 1.133148453066826, width <= 5.740e-35
+E2.1 band certificates (exact Fractions; prints floor-rounded for
+     lower bounds, ceil-rounded for upper bounds):
+     band        w0  LBV(w0)   cap     UBv(cap)    floor     c_A   margin  verdict
+     W1  (4,5]     4  0.287512  5/401   0.00001296  0.287499  0.28  0.007499  PASS
+     W2  (5,6]     5  0.381827  6/401   0.00001866  0.381808  0.35  0.031808  PASS
+     W3  (6,8]     6  0.462919  8/401   0.00003317  0.462885  0.42  0.042885  PASS
+     W4  (8,10]    8  0.584563  10/401  0.00005183  0.584512  0.52  0.064512  PASS
+     W5  (10,20]  10  0.665345  20/401  0.00020727  0.665138  0.60  0.065138  PASS
+     W6b (20,40]  20  0.832381  40/401  0.00082877  0.831552  0.70  0.131552  PASS
+     W7  (40,oo)  40  0.916190  89/100  0.06347403  0.852716  0.80  0.052716  PASS
+E2.2 all seven bands PASS: True
+E2.3 crude global chain 0.28*401/0.89^2 = 1122800/7921 = 141.7497 >= 141: True
+E2.4 W7 chain c_A(W7)/0.89^2 = 8000/7921 = 1.009973 > 1: True
+E2.5 per-band chains  s2 >= c_A(band) * 401 / cap^2  at m = 401
+     (cap = w1/401 on the finite bands, 89/100 on W7):
+     W1  (4,5]   : s2 >= 722189.45
+     W2  (5,6]   : s2 >= 626900.56
+     W3  (6,8]   : s2 >= 423157.88
+     W4  (8,10]  : s2 >= 335302.24
+     W5  (10,20] : s2 >= 96721.80
+     W6b (20,40] : s2 >= 28210.52
+     W7  (40,oo) : s2 >= 404.99
+     minimum over bands (attained on W7): s2 >= 404.99 ;
+     per-m, the W7 chain reads s2 >= (8000/7921) m = 1.009973... m > m.

@@ -1,0 +1,7 @@
+m=401.  w | C5(0.45lam) | min -log|phi|/(s2 t^2) on [.45,.7]lam | W6@0.7lam | tail_u
+w=  4.2: C5=  0.0083  midmin= 0.4931  W6(0.7lam)=   4.195  tail_u=  1.63475 (I1u=1.3900, I2u=0.1897)
+w=    7: C5=  0.0174  midmin= 0.4629  W6(0.7lam)=  23.587  tail_u=  0.27448 (I1u=0.2019, I2u=0.0000)
+w=   20: C5=  0.1410  midmin= 0.4209  W6(0.7lam)=  56.488  tail_u=  0.06116 (I1u=0.0127, I2u=0.0000)
+w=  150: C5=  0.1955  midmin= 0.4074  W6(0.7lam)=  75.502  tail_u=  0.01081 (I1u=0.0036, I2u=0.0000)
+w=  356: C5=  0.2105  midmin= 0.4012  W6(0.7lam)=  72.409  tail_u=  0.00751 (I1u=0.0053, I2u=0.0000)
+note: tail_u is the tail bucket in u=1/A units; ledger target: total <= 20*c_A(w).

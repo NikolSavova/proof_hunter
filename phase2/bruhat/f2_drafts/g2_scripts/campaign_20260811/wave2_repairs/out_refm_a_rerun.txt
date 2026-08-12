@@ -1,0 +1,29 @@
+== (a) EX^2(Geom) vs (1+1/lam)^2 — the displayed T.8'' route ==
+violations of EX2 <= (1+1/lam)^2 (lam, EX2, bound), first/last of 30:
+   (0.02, 4950.331670011058, 2601.0)  ...  (0.31, 17.89418714646648, 17.857440166493237)
+  at lam=0.1: EX2 = 190.3251  (1+1/lam)^2 = 121.0000  Var(Geom) = 99.9167
+== (b) statement rescue: Var(U_j) <= Var(Geom) and mixture identity ==
+  mixture identity max rel dev over grid: 7.116e-38   VarU<=VarX everywhere: True
+  Var(Geom)=q/(1-q)^2 <= (1+1/lam)^2 check at lam=0.1: 99.9167 <= 121.0000 : True
+== (c) T.8'' as stated: m_* >= sqrt(s2/m) - 1 — numerical search ==
+  violations of stated -1 form on grid: none (statement holds numerically; chain as displayed gives only -2)
+== (d) T.10(2): rho = 1-0.04 w0^2 — where is the true boundary w*? ==
+  m=  60 w0=0.5 : w* (deficit = 0.04 w0^2) = 0.5751 = 1.1502*w0  -> sets DISJOINT (w*>w0)
+  m=  60 w0=1.0 : w* (deficit = 0.04 w0^2) = 1.1671 = 1.1671*w0  -> sets DISJOINT (w*>w0)
+  m= 100 w0=0.5 : w* (deficit = 0.04 w0^2) = 0.5771 = 1.1543*w0  -> sets DISJOINT (w*>w0)
+  m= 100 w0=1.0 : w* (deficit = 0.04 w0^2) = 1.1712 = 1.1712*w0  -> sets DISJOINT (w*>w0)
+  m= 200 w0=0.5 : w* (deficit = 0.04 w0^2) = 0.5786 = 1.1573*w0  -> sets DISJOINT (w*>w0)
+  m= 200 w0=1.0 : w* (deficit = 0.04 w0^2) = 1.1742 = 1.1742*w0  -> sets DISJOINT (w*>w0)
+== (e) (T.4)-upper at w<=1, m>=30 ==
+  0.0300(1+3/30+1/18) = 0.034667   (prose claims 0.0332; script NC-T2 row uses 0.034667)
+== (f) repair: rho := 1 - 0.022 w0^2 ==
+  deficit(w0)  >= 0.02700 w0^2 > 0.022 w0^2 : True
+  deficit(.9w0)>= 0.02210 w0^2 > 0.022 w0^2 : True
+  -> {s2>=rho*l} in {|w|<=w0}; {|w|>=0.9w0} in {s2<=rho*l}: overlap annulus [0.9w0, w0], rel width 0.1
+== (g) numerics-referee F1-repair inequality range check ==
+  d=0.050: (1-d)^-2 = 1.10803 vs 1+2d+3.5d^2 = 1.10875  -> OK
+  d=0.100: (1-d)^-2 = 1.23457 vs 1+2d+3.5d^2 = 1.23500  -> OK
+  d=0.107: (1-d)^-2 = 1.25400 vs 1+2d+3.5d^2 = 1.25407  -> OK
+  d=0.120: (1-d)^-2 = 1.29132 vs 1+2d+3.5d^2 = 1.29040  -> FALSE
+  d=0.200: (1-d)^-2 = 1.56250 vs 1+2d+3.5d^2 = 1.54000  -> FALSE
+  d=0.400: (1-d)^-2 = 2.77778 vs 1+2d+3.5d^2 = 2.36000  -> FALSE

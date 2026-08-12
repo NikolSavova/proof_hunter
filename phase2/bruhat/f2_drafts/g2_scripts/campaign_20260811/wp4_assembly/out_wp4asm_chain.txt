@@ -1,0 +1,50 @@
+
+[1: harmonized architected slots (3.192/0.2/0.01), m>=401 vs C*=20] ledger recompute, m-floor = 401, budget C* = 20, I2u = 0.2, far slot = 0.01  (exact Fractions, safe rounding)
+ band          c_A    A0      k4/2   0.3R31^2  R5<=    I1u<=   I2u<=   slop  far<=    total<=   C*c_A   margin   T/c_A
+ W1 (4,5]      0.28   112.28  0.400   0.300   1.8120 1.012473 0.200000  1.0     0.01   4.7345    5.60   0.8655  16.909 PASS
+ W2 (5,6]      0.35   140.35  0.700   0.432   1.6207 0.470848 0.200000  1.0     0.01   4.4335    7.00   2.5665  12.667 PASS
+ W3 (6,8]      0.42   168.42  1.300   0.675   1.4795 0.214543 0.200000  1.0     0.01   4.8790    8.40   3.5210  11.617 PASS
+ W4 (8,10]     0.52   208.52  1.750   0.867   1.3297 0.068182 0.200000  1.0     0.01   5.2249   10.40   5.1751  10.048 PASS
+ W5 (10,20]    0.60   240.60  2.600   1.200   1.2379 0.026876 0.200000  1.0     0.01   6.2748   12.00   5.7252  10.458 PASS
+ W6b (20,40]   0.70   280.70  3.000   1.323   1.1460 0.008292 0.200000  1.0     0.01   6.6873   14.00   7.3127   9.553 PASS
+ W7 (40,inf)   0.80   320.80  3.300   1.452   2.8586 0.002532 0.200000  1.0     0.01   8.8231   16.00   7.1769  11.029 PASS
+  all rows PASS: True;  effective C* = max_W T(W)/c_A(W) = 16.9088 (exact 4734473/280000)  vs budget 20
+
+[2: sharper SL3 slots (3.192/P2-band/1.3e-7), m>=401 vs C*=20] ledger recompute, m-floor = 401, budget C* = 20, I2u = P2, far slot = 1.3e-07  (exact Fractions, safe rounding)
+ band          c_A    A0      k4/2   0.3R31^2  R5<=    I1u<=   I2u<=   slop  far<=    total<=   C*c_A   margin   T/c_A
+ W1 (4,5]      0.28   112.28  0.400   0.300   1.8120 1.012473 0.059134  1.0  1.3e-07   4.5836    5.60   1.0164  16.370 PASS
+ W2 (5,6]      0.35   140.35  0.700   0.432   1.6207 0.470848 0.013884  1.0  1.3e-07   4.2374    7.00   2.7626  12.107 PASS
+ W3 (6,8]      0.42   168.42  1.300   0.675   1.4795 0.214543 0.003194  1.0  1.3e-07   4.6722    8.40   3.7278  11.124 PASS
+ W4 (8,10]     0.52   208.52  1.750   0.867   1.3297 0.068182 0.000383  1.0  1.3e-07   5.0153   10.40   5.3847   9.645 PASS
+ W5 (10,20]    0.60   240.60  2.600   1.200   1.2379 0.026876 0.000069  1.0  1.3e-07   6.0648   12.00   5.9352  10.108 PASS
+ W6b (20,40]   0.70   280.70  3.000   1.323   1.1460 0.008292 0.000009  1.0  1.3e-07   6.4773   14.00   7.5227   9.253 PASS
+ W7 (40,inf)   0.80   320.80  3.300   1.452   2.8586 0.002532 0.000001  1.0  1.3e-07   8.6131   16.00   7.3869  10.766 PASS
+  all rows PASS: True;  effective C* = max_W T(W)/c_A(W) = 16.3700 (exact 458360713/28000000)  vs budget 20
+
+[3: m>=1581 worst case vs relaxed C*=136] ledger recompute, m-floor = 1581, budget C* = 136, I2u = 0.2, far slot = 0.01  (exact Fractions, safe rounding)
+ band          c_A    A0      k4/2   0.3R31^2  R5<=    I1u<=   I2u<=   slop  far<=    total<=   C*c_A   margin   T/c_A
+ W1 (4,5]      0.28   442.68  0.400   0.300   0.9126 0.000066 0.200000  1.0     0.01   2.8227   38.08  35.2573  10.081 PASS
+ W2 (5,6]      0.35   553.35  0.700   0.432   0.8163 0.000003 0.200000  1.0     0.01   3.1583   47.60  44.4417   9.024 PASS
+ W3 (6,8]      0.42   664.02  1.300   0.675   0.7451 0.000001 0.200000  1.0     0.01   3.9301   57.12  53.1899   9.357 PASS
+ W4 (8,10]     0.52   822.12  1.750   0.867   0.6697 0.000001 0.200000  1.0     0.01   4.4967   70.72  66.2233   8.648 PASS
+ W5 (10,20]    0.60   948.60  2.600   1.200   0.6234 0.000001 0.200000  1.0     0.01   5.6334   81.60  75.9666   9.389 PASS
+ W6b (20,40]   0.70  1106.70  3.000   1.323   0.5772 0.000001 0.200000  1.0     0.01   6.1102   95.20  89.0898   8.729 PASS
+ W7 (40,inf)   0.80  1264.80  3.300   1.452   1.4397 0.000001 0.200000  1.0     0.01   7.4017  108.80 101.3983   9.252 PASS
+  all rows PASS: True;  effective C* = max_W T(W)/c_A(W) = 10.0809 (exact 201619/20000)  vs budget 136
+
+[1b] D1 impact at W1: I1u(3.19) = 1.011838 -> I1u(3.192) = 1.012473; delta = 0.000634  (absorbed: W1 margin ~0.865)
+
+[4] ESTIMATES (floats, labeled; sizing the orphaned wp4_SL4/sl4_nc1.py finding)
+  honest mid entry, W1 (A=112.28): gamma=1/8 -> 129.86  (architected slot 1.0125; ratio 128.3, ~A x)
+  honest mid entry, W1, gamma=0.42 -> 0.0089  (closes; SL3 PROVED gamma = 0.1317 only; measured truth on mid range 0.3794-0.4923, NC-SL3-2)
+  honest R5 numerator entry, W1, C5=3 (SL1 architected): 29.47  (architected slot 6.4*3/sqrt(A) = 1.81; ratio 16.3); C5*=0.05 -> 0.491
+  honest far entry (exp 0.0741m), w=4.05, m=401: with s2<=1.05m^3/36 -> 0.3229 ; with s2<=m^3/w^2 (SL5.0) -> 0.9758
+  honest far entry (exp 0.0741m), w=4.05, m=420: with s2<=1.05m^3/36 -> 0.1019 ; with s2<=m^3/w^2 (SL5.0) -> 0.3080
+  honest far entry (exp 0.0741m), w=4.05, m=430: with s2<=1.05m^3/36 -> 0.0553 ; with s2<=m^3/w^2 (SL5.0) -> 0.1671
+  honest far entry (exp 0.0741m), w=4.05, m=440: with s2<=1.05m^3/36 -> 0.0299 ; with s2<=m^3/w^2 (SL5.0) -> 0.0904
+  honest far entry (exp 0.0741m), w=4.05, m=460: with s2<=1.05m^3/36 -> 0.0087 ; with s2<=m^3/w^2 (SL5.0) -> 0.0262
+  honest far entry (exp 0.0741m), w=4.05, m=500: with s2<=1.05m^3/36 -> 0.0007 ; with s2<=m^3/w^2 (SL5.0) -> 0.0021
+  orphan far floor at w=4.05: qW = 0.05045, m*qW = 20.23 (vs SL3 floor 0.0741*401 = 29.71); orphan far entry 1191 (archived out_sl4_nc1.txt)
+  honest-far sliver (<=0.05) closes at m = 432 with cap B.0(i) (orphan, cruder floor: m=560-class)
+  honest-far sliver (<=0.05) closes at m = 450 with cap SL5.0 (orphan, cruder floor: m=560-class)
+  (all of [4] is measurement/sizing of the UNREFEREED orphaned SL4 evidence, not a certified bound)

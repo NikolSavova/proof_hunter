@@ -1,0 +1,53 @@
+== A1: assembler ledger tables, independent recompute ==
+[PASS] [1] W1: exact<=printed (R5,I1u,total) & PASS r5=1.8119659 i1=1.0124727 tot=4.7344386 bud=5.6
+[FAIL] [1] W2: exact<=printed (R5,I1u,total) & PASS r5=1.6206716 i1=0.4708479 tot=4.4335195 bud=7.0
+[FAIL] [1] W3: exact<=printed (R5,I1u,total) & PASS r5=1.479464 i1=0.21454261 tot=4.8790066 bud=8.4
+[PASS] [1] W4: exact<=printed (R5,I1u,total) & PASS r5=1.3296195 i1=0.068181307 tot=5.2248008 bud=10.4
+[PASS] [1] W5: exact<=printed (R5,I1u,total) & PASS r5=1.2378084 i1=0.026875655 tot=6.274684 bud=12.0
+[PASS] [1] W6b: exact<=printed (R5,I1u,total) & PASS r5=1.1459879 i1=0.0082910051 tot=6.6872789 bud=14.0
+[FAIL] [1] W7: exact<=printed (R5,I1u,total) & PASS r5=2.858596 i1=0.0025314997 tot=8.8231275 bud=16.0
+  [1] all rows pass: True; effective C* (exact-value side) = 16.908709
+  [2] all rows pass: True; effective C* (exact-value side) = 16.369901
+  [3] all rows pass: True; effective C* (exact-value side) = 10.080768
+[PASS] [1] effective C* printed 16.9088 = 4734473/280000 >= exact 4734473/280000 = 16.908832
+[PASS] [1b] D1 delta = 0.000634 delta=0.0006344
+== A2: SL3 constants, table, Eps sup ==
+[PASS] 8/sqrt(2pi) in (3.19, 3.192] = 3.191538243
+[PASS] 11.5/(1.6 sqrt(2pi)) <= 2.87 = 2.86739764
+[PASS] 0.64/11.5 >= 0.0556 
+[PASS] sqrt(pi/2)/4 <= 0.3134 
+[PASS] c1 = (2/pi^2)(0.65) >= 1/8 = 0.13171754
+[PASS] c2 = (2/pi^2)(0.43) >= 1/11.5 = 0.087136218, 1/11.5 = 0.086956522
+[PASS] x1 = 3.9269 <= pi/0.8 
+[PASS] x2 = 2.9251 <= pi/1.074 
+[PASS] q(2,1) >= 0.0741 q(2,1) = 0.074126537
+[PASS] t0(0.89)/0.89 <= 1.074 = 1.07372378
+[PASS] P3(401) <= 1.3e-7 = 1.25687e-7
+[PASS] SL3.2 W1: P1 <= printed 1.0125, P2 <= printed 0.0592 P1=1.01247 P2=0.0591335
+[PASS] SL3.2 W2: P1 <= printed 0.4709, P2 <= printed 0.0139 P1=0.470848 P2=0.0138832
+[PASS] SL3.2 W3: P1 <= printed 0.2146, P2 <= printed 0.0032 P1=0.214543 P2=0.00319359
+[PASS] SL3.2 W4: P1 <= printed 0.0682, P2 <= printed 0.0004 P1=0.0681813 P2=0.00038227
+[PASS] SL3.2 W5: P1 <= printed 0.0269, P2 <= printed 0.0001 P1=0.0268757 P2=6.89948e-5
+[PASS] SL3.2 W6b: P1 <= printed 0.0083, P2 <= printed 0.0001 P1=0.00829101 P2=8.01685e-6
+[PASS] SL3.2 W7: P1 <= printed 0.0026, P2 <= printed 0.0001 P1=0.0025315 P2=9.21965e-7
+[PASS] Eps(.,3.9269) fine-grid sup <= 0.35 (claimed max piece 0.32257) grid sup = 0.32235
+[PASS] Eps(.,2.9251) fine-grid sup <= 0.57 (claimed max piece 0.54890) grid sup = 0.548542
+== A3: SL2 certificates, independent ==
+[PASS] SL2 w0=4: LBV<=V(w0), UBv>=v(cap), floor>c_A V=0.2983334 LBV=0.287512 v(cap)=1.29559e-5 UBv=0.00001296 floor=0.287499 cA=0.28
+[PASS] SL2 w0=5: LBV<=V(w0), UBv>=v(cap), floor>c_A V=0.39216588 LBV=0.381827 v(cap)=1.86564e-5 UBv=0.00001866 floor=0.3818083 cA=0.35
+[PASS] SL2 w0=6: LBV<=V(w0), UBv>=v(cap), floor>c_A V=0.47238854 LBV=0.462919 v(cap)=3.31666e-5 UBv=0.00003317 floor=0.4628858 cA=0.42
+[PASS] SL2 w0=8: LBV<=V(w0), UBv>=v(cap), floor>c_A V=0.592206 LBV=0.584563 v(cap)=5.18223e-5 UBv=0.00005183 floor=0.5845112 cA=0.52
+[PASS] SL2 w0=10: LBV<=V(w0), UBv>=v(cap), floor>c_A V=0.67156709 LBV=0.665345 v(cap)=0.00020727 UBv=0.00020727 floor=0.6651377 cA=0.60
+[PASS] SL2 w0=20: LBV<=V(w0), UBv>=v(cap), floor>c_A V=0.83550664 LBV=0.832381 v(cap)=0.00082877 UBv=0.00082877 floor=0.8315522 cA=0.70
+[PASS] SL2 w0=40: LBV<=V(w0), UBv>=v(cap), floor>c_A V=0.9177533 LBV=0.916190 v(cap)=0.063474 UBv=0.06347403 floor=0.852716 cA=0.80
+[PASS] SL2 left-Riemann V-lower at w0=4 matches printed LBV to 5e-6 and <= V riemann=0.28751295 printed=0.287512
+[PASS] SL2 left-Riemann V-lower at w0=40 matches printed LBV to 5e-6 and <= V riemann=0.9161908 printed=0.916190
+[PASS] exact chain 0.28*401/0.89^2 = 1122800/7921 >= 141.749 = 141.74978
+[PASS] W7 chain 0.80/0.89^2 = 8000/7921 > 1 
+== A4: SL5 far entry + log certs ==
+[PASS] far(401) = 0.36*401^1.5*e^-14.9573 <= 9.229e-4 (and > 9.2e-4: sharp) = 0.000922882
+[PASS] log(17/7) <= 0.8874 = 0.8873032
+[PASS] log 2 <= 0.6932 
+[PASS] (402/401)^3 < 1.0746 = 1.0075
+[PASS] SL5 3.19-flavor W1 I1u 1.0118: 3.19*sqrt(A0)e^{-A0/32} <= 1.0118+1e-4 = 1.0118383
+REF-A: AT LEAST ONE FAIL
