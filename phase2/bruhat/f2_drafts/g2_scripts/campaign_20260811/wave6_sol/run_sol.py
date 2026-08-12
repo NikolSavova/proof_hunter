@@ -12,7 +12,7 @@ import json, pathlib, sys, time
 import openai
 
 ROOT = pathlib.Path(__file__).resolve()
-BRUHAT = ROOT.parents[3]                      # .../phase2/bruhat
+BRUHAT = ROOT.parents[4]                      # wave6_sol -> campaign -> g2_scripts -> f2_drafts -> bruhat
 CAMP = BRUHAT / "f2_drafts" / "g2_campaign_20260811"
 KEY = (pathlib.Path.home() / ".config/proof_hunter/openai_key.txt").read_text().strip()
 MODEL = "gpt-5.6-sol"
@@ -59,21 +59,48 @@ RULES = ("\n\nRULES: complete rigorous proof with every constant explicit and na
          "unprovable as stated, demonstrate why and prove the strongest true variant.")
 
 
+IDS = ROOT.parent / "ids.json"
+
+
+def _ids():
+    return json.loads(IDS.read_text()) if IDS.exists() else {}
+
+
+def _retry(fn, what, tries=60, wait=30):
+    """Survive transient network drops (the 2026-08-12 DNS outage killed two polls)."""
+    for i in range(tries):
+        try:
+            return fn()
+        except (openai.APIConnectionError, openai.APITimeoutError, openai.InternalServerError) as e:
+            print(f"  ({what}: {type(e).__name__}, retry {i + 1}/{tries} in {wait}s)", flush=True)
+            time.sleep(wait)
+    raise RuntimeError(f"{what}: still failing after {tries} retries")
+
+
 def run(target):
     client = openai.OpenAI(api_key=KEY)
-    resp = client.responses.create(
-        model=MODEL,
-        input=[{"role": "developer", "content": BASE_CTX},
-               {"role": "user", "content": TARGETS[target] + RULES}],
-        reasoning={"effort": "high"},
-        background=True,
-    )
+    known = _ids()
+    if target in known:
+        rid = known[target]
+        print(f"{target}: resuming existing response id = {rid}", flush=True)
+        resp = _retry(lambda: client.responses.retrieve(rid), f"{target} retrieve")
+    else:
+        resp = _retry(lambda: client.responses.create(
+            model=MODEL,
+            input=[{"role": "developer", "content": BASE_CTX},
+                   {"role": "user", "content": TARGETS[target] + RULES}],
+            reasoning={"effort": "high"},
+            background=True,
+        ), f"{target} create")
+        known[target] = resp.id
+        IDS.write_text(json.dumps(known, indent=1))
+        print(f"{target}: submitted, response id = {resp.id}", flush=True)
     t0 = time.time()
     while resp.status in ("queued", "in_progress"):
         if time.time() - t0 > TIMEOUT_S:
             raise TimeoutError(f"{target}: exceeded {TIMEOUT_S}s")
         time.sleep(POLL_S)
-        resp = client.responses.retrieve(resp.id)
+        resp = _retry(lambda: client.responses.retrieve(resp.id), f"{target} poll")
     if resp.status != "completed":
         raise RuntimeError(f"{target}: {resp.status}: {getattr(resp, 'error', None)}")
     out = CAMP / f"sol_{target}_20260812.md"
