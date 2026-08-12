@@ -69,9 +69,13 @@ both hypotheses --- irreducibility and the simply-laced restriction --- are
 necessary, and record a proved instance of the principle restricted to
 rationally smooth intervals. In type $A$ this minimum is the central ratio
 of the Mahonian distribution; we prove an unconditional local limit theorem
-pinning its value near the center for every $m$, and state the resulting
-sharp asymptotic $\sigma_m^2(r_m-1) = 1-\tfrac{27}{25}m^{-1}+O(m^{-2})$ as a
-conjecture, one further uniformity lemma short of a full proof. We also
+pinning its value near the center for every $m$, determine the global
+minimum exactly, in integer arithmetic, for every $4\le m\le560$, and prove the
+sharp asymptotic $\sigma_m^2(r_m-1) = 1-\tfrac{27}{25}m^{-1}+O(m^{-2})$
+conditional on a single explicitly stated core lemma on the exponentially
+tilted Mahonian distribution --- needed only for $m\ge561$, and itself
+reduced, with explicit constants throughout, to four explicitly stated open
+cumulant statements. We also
 record a classification of the observed equality cases as rank-two dihedral
 parabolic patterns of order $m\in\{4,6\}$, together with a candidate
 explanation, via the crystallographic restriction, for why Weyl groups
@@ -137,15 +141,21 @@ and near-top data point we have, including two structural counterexamples we
 found along the way showing that both hypotheses --- irreducibility and the
 simply-laced restriction --- are necessary.
 
-\item In type $A$, an asymptotic determination of how the minimum
-log-concavity ratio of the Mahonian distribution (the $[e,w_0]$ interval of
-$S_m$) approaches $1$, extending the local central-limit-theorem technique of
-Canfield, Janson, and Zeilberger~\cite{cjz2011} from the central coefficient
-of the Gaussian binomial to the global minimum and an explicit constant. We
-state the exact asymptotic order as a conjecture: a local limit theorem
-pinning the ratio near the center is unconditionally proved for every $m$,
-and the resulting sharp asymptotic is additionally supported by exact
-verification up to $m=150$ (Section~\ref{sec:F2}).
+\item In type $A$, a determination --- conditional on a single explicitly
+stated open lemma --- of how the minimum log-concavity ratio of the
+Mahonian distribution (the $[e,w_0]$ interval of $S_m$) approaches $1$,
+extending the local central-limit-theorem technique of Canfield, Janson,
+and Zeilberger~\cite{cjz2011} from the central coefficient of the Gaussian
+binomial to the global minimum and an explicit constant. A local limit
+theorem pinning the ratio near the center is unconditionally proved for
+every $m$; the minimum itself is determined exactly, in integer
+arithmetic, for every $4\le m\le560$; and the sharp asymptotic
+$\sigma_m^2(r_m-1)=1-\tfrac{27}{25}m^{-1}+O(m^{-2})$ is proved conditional
+on one explicitly stated lemma about the exponentially tilted Mahonian
+distribution (Conjecture~\ref{conj:CL}), needed only for $m\ge561$, with
+the reduction complete and every constant explicit; the lemma is in turn
+reduced to four explicitly stated open cumulant statements
+(Section~\ref{sec:F2}).
 
 \item A classification of the observed equality cases --- log-concavity
 holding with equality --- as rank-two dihedral parabolic patterns of order
@@ -630,66 +640,280 @@ order: at $y=0$, part (b) gives
 which we have independently confirmed to four significant digits against
 exact Mahonian data by $m=50$.
 
-\subsection*{What remains open}
-Equation~\eqref{eq:central-ratio} pins the ratio \emph{at and near the
-center}. To conclude that this is the \emph{global} minimum $r_m-1$
-(rather than merely the ratio near the center), one must additionally rule
-out the ratio dipping lower somewhere in the bulk, away from the window
-Theorem~\ref{thm:G1} controls. Doing so uses a decomposition into three
-regimes: an outer edge ($k=O(\sqrt m)$), a genuinely tilted middle regime,
-and the small-tilt window of Theorem~\ref{thm:G1}. The outer-edge regime is
-handled by an elementary tail estimate we consider settled; the tilted
-middle regime is the open one.
+The second unconditional ingredient is exact: the global minimum itself
+--- its location, its value, and the sharp finite-$m$ bound --- has been
+computed exactly for every $4\le m\le560$.
 
-\begin{conjecture}[F2, sharp asymptotic]
-\label{conj:F2}
-As $m\to\infty$,
+\begin{theorem}[Exact finite range]
+\label{thm:finite560}
+For every $5\le m\le560$, with every verdict computed in exact integer or
+rational arithmetic:
+\begin{enumerate}[label=(\roman*)]
+\item the minimum of $r_m(k)$ over $1\le k\le N-1$ is attained at the
+central index $k=\lfloor N/2\rfloor$ (for $N$ odd, the mirror index
+$\lceil N/2\rceil$ ties it exactly, as palindromy forces);
+\item consequently $r_m=r_m(\lfloor N/2\rfloor)$;
+\item $\sigma^2(r_m-1)\ge\tfrac{187}{216}$, with equality if and only if
+$m=6$;
+\item $m\mapsto\sigma^2(r_m-1)$ is strictly increasing for $6\le m\le560$,
+reaching $\sigma^2(r_m-1)=0.998072\ldots$ at $m=560$, where
+$m\bigl(1-\sigma^2(r_m-1)\bigr)\approx1.07935$, consistent with the limit
+$\tfrac{27}{25}=1.08$.
+\end{enumerate}
+At $m=4$, and only there in the computed range, the minimizing index is
+not central ($\mathrm{argmin}=2$, $N/2=3$) and
+$\sigma^2(r_4-1)=\tfrac{91}{108}<\tfrac{187}{216}$.
+\end{theorem}
+
+The computation is a checkpointed harness over the $q$-factorial
+recurrence for $I_m$; every verdict is an integer or exact-rational
+comparison, floating point appears only in printed displays, and the
+complete result logs --- one row for every $4\le m\le560$, all passing ---
+are archived in the repository.
+
+\subsection*{From the center to the global minimum: the reduction}
+Equation~\eqref{eq:central-ratio} pins the ratio at and near the center,
+and Theorem~\ref{thm:finite560} settles every $4\le m\le560$ outright. What
+remains for the sharp asymptotic is to rule out the ratio dipping below
+its central value somewhere in the bulk for $m\ge561$. This has now been
+carried out in full, with every constant explicit, \emph{modulo exactly
+one statement}: an estimate for the exponentially tilted Mahonian
+distribution in the deep-tilt regime, stated precisely as
+Conjecture~\ref{conj:CL} below. We first fix the frame.
+
+For $\lambda\in\mathbb R$ let $U^\lambda_1,\dots,U^\lambda_m$ be
+independent, with $U^\lambda_j$ supported on $\{0,1,\dots,j-1\}$ and
+$\Pr(U^\lambda_j=i)\propto e^{-\lambda i}$, and set
+$S_\lambda:=\sum_{j=1}^m U^\lambda_j$ (not to be confused with the power
+sums $S_r$ above), $\mu(\lambda):=\mathbb E S_\lambda$.
+At $\lambda=0$ this is the inversion statistic:
+$\Pr(S_0=k)=I_m(k)/m!$. Since $\mu'(\lambda)=-\Var S_\lambda<0$, every
+interior $k$ ($1\le k\le N-1$) has a unique \emph{mean-matching tilt}
+$\lambda(k)$ with $\mu(\lambda(k))=k$; write
+$s^2=s^2(k):=\Var S_{\lambda(k)}$, let $\kappa_3,\kappa_4$ denote the
+third and fourth cumulants of $S_{\lambda(k)}$, and let
+$\varphi(t):=\mathbb E\,e^{it(S_{\lambda(k)}-k)}$. By palindromy
+$r_m(N-k)=r_m(k)$ and $\lambda(N-k)=-\lambda(k)$, so we take $k\le N/2$,
+i.e.\ $\lambda(k)\ge0$, throughout, and set $\omega:=m\lambda(k)$.
+
+\begin{conjecture}[Core lemma $\mathrm{CL}(79,20,0.89)$]
+\label{conj:CL}
+For every $m\ge561$ and every interior $k$ with $s^2(k)\ge79$ and
+$4/m<\lambda(k)\le0.89$,
 \[
-\sigma^2(r_m-1) \;=\; 1-\tfrac{27}{25}m^{-1}+O(m^{-2}), \qquad\text{equivalently}\qquad r_m-1 \sim \frac{36}{m^3}.
+r_m(k)-1 \;=\; \frac{1}{s^2}\Bigl(1+\theta\,\frac{20}{\min(m,s^2)}\Bigr)
+\qquad\text{for some }\theta=\theta(m,k)\in[-1,1].
 \]
 \end{conjecture}
 
-The missing ingredient is a single further uniformity statement (the
-tilted-frame analogue of Theorem~\ref{thm:G1}, valid for tilt parameters of
-order a constant rather than $O(1/m)$): specifically, a bound on the
-tilted characteristic function's far-region decay that is uniform across
-the \emph{entire} range of the tilt/mean parameter, not merely near the
-untilted center. We have an exact odd-cumulant cancellation at the
-mean-matching tilt and an explicit, threshold-free variance lower bound
-$\sigma_\lambda^2 \ge \tfrac16 k(1+k/m)$ along the tilted mean curve, both
-fully proved (draft on file, not yet independently refereed); the
-far-region uniformity bound itself remains open, and is, in our assessment,
-the single highest-value remaining item for a full proof of
-Conjecture~\ref{conj:F2}.
+\begin{remark}
+Three notes on the statement. (a) The hypothesis $s^2\ge79$ is part of
+the frozen specification of the reduction but never binds: on the stated
+tilt range $s^2\ge1122800/7921>141$ is proved. (b) Only the lower-bound
+half ($\theta\ge-1$) is consumed by Theorem~\ref{thm:F2}. (c) The
+complementary small-tilt range $\lambda(k)\le4/m$ is not part of the
+conjecture because it is covered unconditionally by the proved window law
+(region (d) of Remark~\ref{rem:reduction}). The reduction behind
+Theorem~\ref{thm:F2} needs this statement for every $m\ge401$; the range
+$401\le m\le560$ is discharged by the exact computation of
+Theorem~\ref{thm:finite560}, which is why the conjecture is stated, and
+is needed, only for $m\ge561$.
+\end{remark}
 
-\begin{remark}[How we present this]
-We state Conjecture~\ref{conj:F2} as a conjecture, not a theorem, and
-recommend the following honest framing: the sharp asymptotic
-$\sigma_m^2(r_m-1)=1-\tfrac{27}{25}m^{-1}+O(m^{-2})$ is supported by
-(i) exact verification, in rational arithmetic, for every $4\le m\le150$
-(with the window-law constants specifically checked out to $m=229$), and
-(ii) a fully proved, unconditional local limit theorem
-(Theorem~\ref{thm:G1}) that establishes the identical asymptotic formula
-for the ratio at every index within any fixed distance of the center, for
-\emph{every} $m\ge4$ with no threshold. What is missing is a single
-further uniformity lemma, controlling the characteristic function's decay
-uniformly across the full tilt range, needed only to extend this from
-``near the center'' to ``everywhere'' --- isolated as the sole obstruction
-by two independent proof attempts.
+\begin{theorem}[F2, sharp asymptotic --- conditional]
+\label{thm:F2}
+Assume Conjecture~\ref{conj:CL}. Then
+\[
+\sigma^2(r_m-1) \;=\; 1-\tfrac{27}{25}m^{-1}+O(m^{-2}),
+\qquad\text{equivalently}\qquad r_m-1 \sim \frac{36}{m^3},
+\]
+and in particular $\sigma^2(r_m-1)\to1$. The error term is explicit and
+two-sided: for every $m\ge561$,
+\[
+1-B_m-\frac{C_A}{m^2} \;\le\; \sigma^2(r_m-1) \;\le\; 1-B_m+\frac{1.8}{m^2},
+\qquad C_A=37997.85,
+\]
+the upper bound holding unconditionally for every $m\ge180$.
+\end{theorem}
+
+\begin{remark}[Shape of the reduction, and where the conjecture enters]
+\label{rem:reduction}
+The proof is an assembly in which every constant is explicit and every
+step is archived, with machine-verified certificates, in the repository;
+we record its shape here. Take $m\ge561$ and (WLOG) $k\le N/2$. The
+interior indices split into four regions by the size of $k$ and of
+$\omega(k)=m\lambda(k)$, with $K_c:=\min(\tfrac7{10}m,\,m-1)$ for
+$m<1581$ and $K_c:=m-1$ beyond:
+\begin{enumerate}[label=(\alph*)]
+\item $k=1$: an exact pentagonal-recurrence bound gives
+$r_m(1)-1\ge\tfrac{m-1}{2(m+1)}$, hence $\sigma^2(r_m(1)-1)\ge10^5$;
+\item $2\le k\le K_c$: an elementary two-term bound gives
+$r_m(k)-1\ge\tfrac{m-1}{2k(m+k)}$, hence $\sigma^2(r_m(k)-1)\ge1879$;
+\item $k>K_c$ with $\omega(k)>4$ (the deep-tilt region): here
+$\min(m,s^2)\ge79.5$, $s^2\le0.72711\,\sigma^2$, and
+$\lambda(k)\le\log(17/7)<0.89$, all proved; Conjecture~\ref{conj:CL} ---
+consumed here and nowhere else --- gives
+$\sigma^2(r_m(k)-1)\ge\bigl(1-\tfrac{20}{79.5}\bigr)/0.72711\ge1.0293$;
+\item $k>K_c$ with $\omega(k)\le4$: the window law of
+Theorem~\ref{thm:G1}, extended unconditionally and with explicit
+constants to the full small-tilt window $|\omega|\le4$, gives
+$\sigma^2(r_m(k)-1)\ge1-B_m-C_A/m^2$.
+\end{enumerate}
+Regions (a)--(c) all exceed $1.02>1-B_m$, so the global minimum lies in
+region (d); the lower bound follows, and the upper bound is
+$r_m\le r_m(\lfloor N/2\rfloor)$ together with the explicit form
+of~\eqref{eq:central-ratio}. The size of $C_A$ is an artifact of one
+lossy triangle-inequality step (the measured analogue of the dominant
+contribution is about $5$); any fixed constant suffices for the sharp
+asymptotic.
+\end{remark}
+
+\subsection*{Reduction of the core lemma to four cumulant statements}
+Conjecture~\ref{conj:CL} has itself been reduced, with explicit constants
+throughout, to four statements about the cumulants of the tilted law.
+Partition the deep-tilt values $\omega=m\lambda\in(4,\,0.89\,m]$ into
+seven bands
+\[
+\mathcal W_1=(4,5],\ \mathcal W_2=(5,6],\ \mathcal W_3=(6,8],\
+\mathcal W_4=(8,10],\ \mathcal W_5=(10,20],\ \mathcal W_6=(20,40],\
+\mathcal W_7=(40,\infty),
+\]
+each intersected with $\{\lambda\le0.89\}$, and normalize the cumulants
+on the tilt scale:
+\[
+\tilde\kappa_3:=\frac{|\kappa_3|\,\lambda}{s^2},\qquad
+\tilde\kappa_4:=\frac{\kappa_4\,\lambda^2}{s^2}.
+\]
+
+\begin{table}[htbp]
+\centering
+\caption{Per-band constants in Conjecture~\ref{conj:S} (bands of
+$\omega=m\lambda$). The $J_0$ entries are six-digit displays of exact
+rational constants archived in the repository.}
+\label{tab:CLbands}
+\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+band & $\mathcal W_1$ & $\mathcal W_2$ & $\mathcal W_3$ & $\mathcal W_4$ & $\mathcal W_5$ & $\mathcal W_6$ & $\mathcal W_7$ \\
+$\omega$-range & $(4,5]$ & $(5,6]$ & $(6,8]$ & $(8,10]$ & $(10,20]$ & $(20,40]$ & $(40,\infty)$ \\
+\midrule
+$R_3$ & 1.0 & 1.2 & 1.5 & 1.7 & 2.0 & 2.1 & 2.2 \\
+$R_4$ & 0.8 & 1.4 & 2.6 & 3.5 & 5.2 & 6.0 & 6.6 \\
+$C_5$ & 0.05 & 0.06 & 0.08 & 0.10 & 0.15 & 0.25 & 0.80 \\
+$J_0$ & 0.682942 & 1.10268 & 1.91562 & 2.53645 & 3.66793 & 4.17806 & 4.59597 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{conjecture}[The four open statements]
+\label{conj:S}
+For every $m\ge561$ and every interior $k$ with
+$\lambda=\lambda(k)\in(4/m,\,0.89]$, with $\mathcal W$ the band containing
+$\omega=m\lambda$ and constants $R_3,R_4,C_5,J_0$ as in
+Table~\ref{tab:CLbands}:
+\begin{itemize}
+\item[(S1)] \emph{(banded cumulant scales)}\quad
+$\tilde\kappa_3\le R_3(\mathcal W)$ and $\tilde\kappa_4\le R_4(\mathcal W)$;
+\item[(S2)] \emph{(fifth-order core remainder)}\quad for
+$0\le t\le\lambda/2$, with the continuous branch of $\log\varphi$
+starting at $\log\varphi(0)=0$,
+\[
+\Bigl|\log\varphi(t)+\frac{s^2t^2}{2}+\frac{i\kappa_3t^3}{6}
+-\frac{\kappa_4t^4}{24}\Bigr| \;\le\;
+C_5(\mathcal W)\,\frac{s^2t^5}{\lambda^3};
+\]
+\item[(S3)] \emph{(joint cancellation)}\quad
+$\tilde\kappa_3^{\,2}-\tilde\kappa_4/2\le J_0(\mathcal W)$;
+\item[(S4)] \emph{(a-priori ratio seed)}\quad
+$\bigl|s^2\bigl(r_m(k)-1\bigr)-1\bigr|\le0.89$.
+\end{itemize}
+\end{conjecture}
+
+\begin{proposition}[Reduction of the core lemma]
+\label{prop:CLred}
+Statements (S1)--(S4) of Conjecture~\ref{conj:S} imply
+Conjecture~\ref{conj:CL}; the composed chain in fact delivers the
+constant $18.23$ in place of $20$ for every $m\ge561$.
+\end{proposition}
+
+The assembly behind Proposition~\ref{prop:CLred} proceeds band by band
+over Table~\ref{tab:CLbands}: (S1) and (S3) price the main
+Gaussian-model term, (S2) prices the core remainder, and (S4) seeds a
+self-consistency step which then closes with strict contraction; every
+other ingredient --- variance floors and caps, the far-region decay of
+$\varphi$, the crossover and mid-range bounds --- is proved with explicit
+constants. The complete chain, together with an end-to-end machine
+re-verification of its composed constant (a mixture of exact rational
+certificates and high-precision numerical evaluation), is archived in
+the repository.
+
+\begin{remark}[Status and evidence for (S1)--(S4)]
+\label{rem:S-evidence}
+All four statements are open; none has a proof, and all four are
+load-bearing --- the assembly consumes each of them, and removing any one
+leaves no theorem. The list has also moved in both directions under
+scrutiny: two earlier hypotheses at this level were proved outright and
+retired, while (S3) and (S4) entered the list when simpler plans were
+found to fail. We therefore report the numerical evidence with its
+margins rather than with optimism.
+\begin{itemize}
+\item (S1): the measured suprema of $\tilde\kappa_3$ and $\tilde\kappa_4$
+at the deep corner of $\mathcal W_7$ are $2.1215$ and $6.3552$
+(large-$m$ limits $2.1303$ and $6.4113$) against the caps $2.2$ and
+$6.6$ --- headroom of only $3.7\%$ and $3.9\%$, the thinnest margins
+anywhere in the reduction.
+\item (S2): measured remainder ratios lie between $0.0083$ and $0.2104$;
+the slack over $C_5$ ranges from a factor $1.6$ to a factor $8$
+depending on the band (the lowest band's slack was measured at interior
+probe points, not uniformly to its edge).
+\item (S3): worst measured margin $32.6\%$, at $(m,\omega)=(561,5.0)$.
+This statement cannot be dispensed with: there is a point consistent
+with (S1) and with $\kappa_4\ge0$ at which the estimate (S3) feeds
+fails by $43\%$, so a joint bound of this shape is genuinely required
+--- an earlier plan that priced the two cumulants separately is
+provably dead.
+\item (S4): a weak a-priori form of the conclusion itself (constant
+$0.89$ where Conjecture~\ref{conj:CL} concludes
+$20/\min(m,s^2)\le0.036$, since $s^2\ge m$ on this range); it is listed
+separately precisely because
+assuming it silently would overstate what is proved. Exact verification
+of the inequality of Conjecture~\ref{conj:CL} at $m=401$ and $m=402$
+(below its stated range), on $260$
+adversarially chosen interior indices, passes with a $17\times$ margin,
+and every tilted ratio measured in this project sits far inside
+$0.89$.
+\end{itemize}
+\end{remark}
+
+\begin{remark}[What is claimed, and what is not]
+Unconditional: Theorems~\ref{thm:G1} and~\ref{thm:finite560}, and the
+upper-bound half of Theorem~\ref{thm:F2}. Conditional: the sharp
+asymptotic of Theorem~\ref{thm:F2}, on Conjecture~\ref{conj:CL} and on
+nothing else; and Conjecture~\ref{conj:CL} itself would follow from
+(S1)--(S4) by Proposition~\ref{prop:CLred}. Open: statements (S1)--(S4).
+We do not regard the margins of Remark~\ref{rem:S-evidence} --- one of
+which is under $4\%$ --- as grounds for treating any of the four as close
+to proved; they are open mathematics.
 \end{remark}
 
 \begin{remark}[Location and explicit constant]
-Beyond the sharp order of Conjecture~\ref{conj:F2}, we record without full
-proof: the minimizing index satisfies $|\mathrm{argmin}-N/2|\le1$ for every
-$4\le m\le150$ (exact check), and $|\mathrm{argmin}-N/2|=O(m)$ for larger
-$m$ modulo the same gap above; sharpening $O(m)$ to $O(1)$ is a further,
-separately open combinatorial statement equivalent to a third-difference
-positivity property of $(I_m(k))_k$, verified without exception for
-$5\le m\le56$ but with no proof strategy identified. An explicit
-finite-$m$ bound $r_m\ge 1+\tfrac{187}{216}\sigma_m^{-2}$ for all $m\ge5$
-(sharp at $m=6$; a corrected value --- the naive guess $7/8$ fails already
-at $m=6$) is exact for $5\le m\le150$ and reduces, for $m>150$, to the same
-gap above plus a constant-chasing step we have not carried out.
+Beyond the sharp order of Theorem~\ref{thm:F2}, two refinements. The
+minimizing index is exactly central for every $5\le m\le560$
+(Theorem~\ref{thm:finite560}); for $m\ge561$, conditional on
+Conjecture~\ref{conj:CL}, the reduction localizes it to the small-tilt
+window $|\lambda(k)|\le4/m$ around the center (region (d) of
+Remark~\ref{rem:reduction}). Sharpening this to
+$|\mathrm{argmin}-N/2|\le1$ for every $m$ is a further, separately open
+combinatorial statement, equivalent to a third-difference positivity
+property of $(I_m(k))_k$, verified without exception for $5\le m\le56$
+but with no proof strategy identified. The explicit finite-$m$ bound
+$r_m\ge 1+\tfrac{187}{216}\sigma_m^{-2}$ for all $m\ge5$ (sharp at $m=6$;
+a corrected value --- the naive guess $7/8$ fails already at $m=6$) is
+exact for $5\le m\le560$ (Theorem~\ref{thm:finite560}(iii)) and holds for
+every $m\ge561$ conditional on Conjecture~\ref{conj:CL}, since the
+explicit lower bound of Theorem~\ref{thm:F2} exceeds $\tfrac{187}{216}$
+for every $m\ge537$; granting the conjecture, the sharp bound therefore
+holds for every $m\ge5$, with equality only at $m=6$.
 \end{remark}
 
 \section{Equality cases}
@@ -754,14 +978,17 @@ We record what we regard as the most promising directions, roughly in order
 of tractability.
 
 \begin{enumerate}
-\item \textbf{Prove Conjecture~\ref{conj:F2} in full.} As discussed in
-Section~\ref{sec:F2}, this needs exactly one further uniformity lemma: a
-bound on the tilted Mahonian characteristic function's far-region decay,
-valid uniformly across the full range of the tilt parameter rather than
-only near the untilted center. Everything else needed --- the odd-cumulant
-cancellation, the tilted variance lower bound, the assembly of the three
-regimes --- is either proved here (Theorem~\ref{thm:G1}) or has draft
-proofs on file awaiting independent referee review.
+\item \textbf{Prove Conjecture~\ref{conj:CL} --- that is, statements
+(S1)--(S4) of Conjecture~\ref{conj:S}.} By Theorem~\ref{thm:F2} and
+Proposition~\ref{prop:CLred}, these four cumulant statements about the
+tilted Mahonian law are now the \emph{entire} distance between the sharp
+asymptotic and an unconditional theorem: the far-region decay, the
+crossover and mid-range bounds, the variance floors and caps, the
+assembly itself, and the whole range $4\le m\le560$ are all in place with
+explicit constants. The measured margins (Remark~\ref{rem:S-evidence})
+locate the risk: the cumulant caps of (S1) in the deepest band have under
+$4\%$ headroom, and that is where a proof attempt --- or a counterexample
+search --- should begin.
 \item \textbf{Extend Theorem~\ref{thm:F1-smooth} past rank 6}, and past
 type $A$ past $m=17$ unconditionally by proving
 Conjecture~\ref{conj:staircase}. $D_n$ for $n\ge7$ and $E_7,E_8$ are open
