@@ -1,0 +1,12 @@
+== [B1] gap probes, every integer m in [463, 699] x 12 off-grid w ==
+  probes: 2844;  FAILs: 0
+  max over gap probes = 0.991128 at (m, w) = (463, '4+3e-10')
+
+== [B2] 500 seeded random off-grid (m, w) on [463, 699] x (4, 5] ==
+  FAILs: 0;  max = 0.970703 at (m, w) = (464, '4.001084819')
+
+== [B3] dense edge scan m = 463, w = 4 + k*2e-6, k = 1..250 ==
+  FAILs: 0;  row(4+2e-6) = 0.99110957 -> row(4.0005) = 0.98653256
+  nonincreasing in w across the dense scan: True  (edge is the max -- consistent with Fact R.G's worst point (463, 4+))
+
+== [B4] SL4'-X monotone-in-tau flag violations over ALL 3594 evaluations above: 0 ==

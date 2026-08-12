@@ -1,0 +1,15 @@
+== referee r3: direct-moment truth verification at load-bearing points ==
+  (direct tilted-uniform sums, dps 40; gap = |direct - phi-route|/|direct|)
+  m=401 w=4.9 [W1]: r31=0.8662 r42=0.6000 J=0.4502 (<=J0 0.6829: True) |eta|/u=0.4503 ratio=0.6432 (<=1: True) REMact=1.39e-04 (<=REM*: True) k4>0: True  gap=3.6e-38
+  m=401 w=356.8 [W7]: r31=2.1214 r42=6.3550 J=1.3230 (<=J0 4.5960: True) |eta|/u=0.9285 ratio=0.1804 (<=1: True) REMact=1.34e-03 (<=REM*: True) k4>0: True  gap=1.1e-39
+  m=561 w=4.001 [W1]: r31=0.6684 r42=0.1964 J=0.3485 (<=J0 0.6829: True) |eta|/u=0.3486 ratio=0.4980 (<=1: True) REMact=9.68e-05 (<=REM*: True) k4>0: True  gap=5.1e-38
+  m=561 w=5.0 [W1]: r31=0.8864 r42=0.6506 J=0.4603 (<=J0 0.6829: True) |eta|/u=0.4604 ratio=0.6576 (<=1: True) REMact=9.87e-05 (<=REM*: True) k4>0: True  gap=4.1e-38
+  m=561 w=6.0 [W2]: r31=1.0739 r42=1.2058 J=0.5503 (<=J0 1.1027: True) |eta|/u=0.5503 ratio=0.4861 (<=1: True) REMact=8.85e-05 (<=REM*: True) k4>0: True  gap=4.8e-39
+  m=561 w=499.29 [W7]: r31=2.1240 r42=6.3713 J=1.3258 (<=J0 4.5960: True) |eta|/u=0.9307 ratio=0.1808 (<=1: True) REMact=9.59e-04 (<=REM*: True) k4>0: True  gap=4.5e-40
+  m=1000 w=5.0 [W1]: r31=0.8860 r42=0.6496 J=0.4601 (<=J0 0.6829: True) |eta|/u=0.4601 ratio=0.6573 (<=1: True) REMact=5.54e-05 (<=REM*: True) k4>0: True  gap=3.3e-38
+  m=1000 w=890 [W7]: r31=2.1268 r42=6.3889 J=1.3288 (<=J0 4.5960: True) |eta|/u=0.9333 ratio=0.1813 (<=1: True) REMact=5.38e-04 (<=REM*: True) k4>0: True  gap=9.7e-40
+  max direct-vs-phi relative gap over all 8 points: 5.11e-38
+
+  expected from draft/e2: (401,4.9) |eta|/u=0.4503 ratio=0.6432 ;
+  (401,356.8) 0.9285/0.1804 ; (561,5.0) r31=0.8864 r42=0.6506 J=0.4603
+  ratio=0.6576 ; (561,499.29) J=1.3258 ratio=0.1808 ; (1000,890) J=1.3288

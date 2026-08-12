@@ -1,0 +1,30 @@
+== [0] exact identity check: N^2 - D == eps2 [C_b b4 + C_a a^2], c6 = a^2/2 ==
+  tuple 0: exact equality: True
+  tuple 1: exact equality: True
+  tuple 2: exact equality: True
+  tuple 3: exact equality: True
+  tuple 4: exact equality: True
+  tuple 5: exact equality: True
+  identity holds at all exact rational tuples: True
+
+== [1] per-band certified constants at m >= 561 (exact rationals; floats shown) ==
+  S0 = 1122800/7921 = 141.74978 ; E0 = 1/S0 = 0.0070546847
+  W1 : A0=157.08 Lam=0.008913 J*=0.7 R42+=1.4 bbar=0.000371 a2bar=0.000177 dbar=0.0049 phi=0.0121 e_b=0.00181 e_a=0.00598
+       REM2=0.017058 d1max=9.36e-08 REM*=0.0170581 J0=0.682942  upper-side REM* <= 0.3 R31*^2: True  positivity(D,qhat): True
+  W2 : A0=196.35 Lam=0.0107 J*=1.132 R42+=2.264 bbar=0.00048 a2bar=0.000204 dbar=0.00596 phi=0.0131 e_b=0.00207 e_a=0.00664
+       REM2=0.0293184 d1max=1.35e-07 REM*=0.0293186 J0=1.10268  upper-side REM* <= 0.3 R31*^2: True  positivity(D,qhat): True
+  W3 : A0=235.62 Lam=0.01426 J*=1.975 R42+=3.95 bbar=0.000699 a2bar=0.000265 dbar=0.0082 phi=0.0154 e_b=0.00263 e_a=0.00803
+       REM2=0.0593793 d1max=2.4e-07 REM*=0.0593796 J0=1.91562  upper-side REM* <= 0.3 R31*^2: True  positivity(D,qhat): True
+  W4 : A0=291.72 Lam=0.01783 J*=2.617 R42+=5.234 bbar=0.000748 a2bar=0.000275 dbar=0.00865 phi=0.0159 e_b=0.00274 e_a=0.00831
+       REM2=0.0805481 d1max=3.74e-07 REM*=0.0805485 J0=2.53645  upper-side REM* <= 0.3 R31*^2: True  positivity(D,qhat): True
+  W5 : A0=336.6 Lam=0.03565 J*=3.8 R42+=7.6 bbar=0.000941 a2bar=0.00033 dbar=0.0106 phi=0.0179 e_b=0.00323 e_a=0.00955
+       REM2=0.132065 d1max=1.5e-06 REM*=0.132066 J0=3.66793  upper-side REM* <= 0.3 R31*^2: True  positivity(D,qhat): True
+  W6b: A0=392.7 Lam=0.0713 J*=4.323 R42+=8.646 bbar=0.000917 a2bar=0.000312 dbar=0.0102 phi=0.0175 e_b=0.00313 e_a=0.00929
+       REM2=0.144933 d1max=5.99e-06 REM*=0.144939 J0=4.17806  upper-side REM* <= 0.3 R31*^2: True  positivity(D,qhat): True
+  W7 : A0=448.8 Lam=0.89 J*=4.752 R42+=9.504 bbar=0.000882 a2bar=0.0003 dbar=0.00983 phi=0.0171 e_b=0.00303 e_a=0.00904
+       REM2=0.155097 d1max=0.000933 REM*=0.15603 J0=4.59597  upper-side REM* <= 0.3 R31*^2: True  positivity(D,qhat): True
+
+== [2] summary tables (float; exact fractions above are authoritative) ==
+  REM*(W): 0.017058 / 0.029319 / 0.05938 / 0.080548 / 0.13207 / 0.14494 / 0.15603
+  J0(W)  : 0.682942 / 1.10268 / 1.91562 / 2.53645 / 3.66793 / 4.17806 / 4.59597
+  exact J0: W1=57118994397115584673581017925677/83636677924642268545373517242925 ; W2=8780262582038667260419032112399/7962646693509388441518013303500 ; W3=23226752114049600942786345918529/12124924040534855811562282250412 ; W4=51023670104731644648292691510971089029/20116161940562749876981457575487758500 ; W5=245090904838186778621087950886801/66819881289258331982063507145735 ; W6b=4920815274788484069344938110131077/1177774992986013038502688349299500 ; W7=14348506522021163951398568763173/3121975792131000476837815995000

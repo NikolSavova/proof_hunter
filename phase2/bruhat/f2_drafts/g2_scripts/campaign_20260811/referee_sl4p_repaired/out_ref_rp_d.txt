@@ -1,0 +1,37 @@
+== [D1] SL4'-E eta pricing at NEW W1 points (m = 463/561/699) ==
+  m=463 w=4.0001: ratio = 0.49798  k4>0: True
+  m=463 w=4.5: ratio = 0.5812  k4>0: True
+  m=463 w=5.0: ratio = 0.65778  k4>0: True
+  m=561 w=4.001: ratio = 0.498  k4>0: True
+  m=561 w=5.0: ratio = 0.65764  k4>0: True
+  m=699 w=4.2: ratio = 0.53165  k4>0: True
+  m=699 w=5.0: ratio = 0.65751  k4>0: True
+  ALL <= 1 (SL4'-E): True;  k4 > 0 everywhere: True
+  worst = 0.65778 at (463, '5.0');  still <= 0.66 (draft F3 sentence): True
+
+== [D2] efac boundary display rounding ==
+  4(1-e^(-1/4)) = 0.884796867714  (draft displays 0.88480)
+  efac(0.88480) = 2.71829276124 vs e = 2.71828182846  -> efac(0.88480) > e: True  (display rounds UP past the boundary)
+  efac(0.8464) = 2.5882936 < e: True  (working cutoff safe)
+
+== [D3] e_midn tier-1 peak and decrease threshold ==
+  peak of e_midn(0.1317, A) on [30, 50] step 0.01: A = 36.66  (draft: ~36.7)
+  strictly nonincreasing on [45.5581, 200] step 0.01 (6/g sufficiency): True
+  6/g = 45.558087;  far threshold 5.5/0.0741 = 74.224022
+
+== [D4] SS2 C5*-acceptance remark, other bands at m = 401 ==
+  W2, C5*=0.2: row = 0.977534 PASS  (remark claims PASS)
+  W3, C5*=0.4: row = 0.915428 PASS  (remark claims PASS)
+  W4, C5*=0.4: row = 0.76794 PASS  (remark claims PASS)
+  W3, C5*=0.8: row = 1.57566 FAIL  (remark claims ?)
+  W4, C5*=0.8: row = 1.24719 FAIL  (remark claims ?)
+
+== [D5] independent harness parse (split-based) ==
+  results_m540: 478 data rows, m in [4, 481]
+  results_m560: 79 data rows, m in [482, 560]
+  overlap keys: [];  non-PASS rows: 0
+  union rows: 557;  gaps in [4, 560]: NONE;  gaps in [401, 560]: NONE
+  row m=461 (m540):  461 106030  53015  53015   3.6541e-07 0.9976590034  1.07920   PASS
+  row m=462 (m540):  462 106491  53245  53245   3.6304e-07 0.9976640667  1.07920   PASS
+  row m=463 (m540):  463 106953  53476  53476   3.6070e-07 0.9976691079  1.07920   PASS
+  OVERALL: # OVERALL: PASS -- all of C1..C6 hold exactly for 4 <= m <= 560 (C2/C3 with the known m=4 exception; rows split across this file and the honored prior file(s)).

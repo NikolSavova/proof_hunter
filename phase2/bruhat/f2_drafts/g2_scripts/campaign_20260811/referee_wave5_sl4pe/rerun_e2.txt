@@ -1,0 +1,57 @@
+== [A] implementation guard vs archived out_sl4p_nc2.txt (m = 401) ==
+  w=4.9: |eta|/u=0.4503 (archived 0.4503)  ratio=0.6432 (archived 0.6432)
+  w=356.8: |eta|/u=0.9285 (archived 0.9285)  ratio=0.1804 (archived 0.1804)
+
+== [B] m = 561 adversarial probes (band edges + interiors + deep corner) ==
+  m=561 w=4.001 [W1]: r31=0.6684 r42=0.1964 J=0.3485 (J0=0.6829 PASS) |eta|/u=0.3486 ratio=0.4980 PASS k4>0:True REMact=9.68e-05 (<=REM*=0.0171: True)
+  m=561 w=4.05 [W1]: r31=0.6796 r42=0.2149 J=0.3544 (J0=0.6829 PASS) |eta|/u=0.3545 ratio=0.5064 PASS k4>0:True REMact=9.73e-05 (<=REM*=0.0171: True)
+  m=561 w=4.3 [W1]: r31=0.7362 r42=0.3163 J=0.3839 (J0=0.6829 PASS) |eta|/u=0.3839 ratio=0.5485 PASS k4>0:True REMact=9.90e-05 (<=REM*=0.0171: True)
+  m=561 w=4.5 [W1]: r31=0.7805 r42=0.4049 J=0.4067 (J0=0.6829 PASS) |eta|/u=0.4068 ratio=0.5811 PASS k4>0:True REMact=9.97e-05 (<=REM*=0.0171: True)
+  m=561 w=4.9 [W1]: r31=0.8658 r42=0.5991 J=0.4500 (J0=0.6829 PASS) |eta|/u=0.4501 ratio=0.6429 PASS k4>0:True REMact=9.92e-05 (<=REM*=0.0171: True)
+  m=561 w=5.0 [W1]: r31=0.8864 r42=0.6506 J=0.4603 (J0=0.6829 PASS) |eta|/u=0.4604 ratio=0.6576 PASS k4>0:True REMact=9.87e-05 (<=REM*=0.0171: True)
+  m=561 w=5.001 [W2]: r31=0.8866 r42=0.6512 J=0.4604 (J0=1.1027 PASS) |eta|/u=0.4605 ratio=0.4068 PASS k4>0:True REMact=9.87e-05 (<=REM*=0.0293: True)
+  m=561 w=5.5 [W2]: r31=0.9844 r42=0.9214 J=0.5083 (J0=1.1027 PASS) |eta|/u=0.5084 ratio=0.4491 PASS k4>0:True REMact=9.47e-05 (<=REM*=0.0293: True)
+  m=561 w=6.0 [W2]: r31=1.0739 r42=1.2058 J=0.5503 (J0=1.1027 PASS) |eta|/u=0.5503 ratio=0.4861 PASS k4>0:True REMact=8.85e-05 (<=REM*=0.0293: True)
+  m=561 w=6.001 [W3]: r31=1.0740 r42=1.2063 J=0.5504 (J0=1.9156 PASS) |eta|/u=0.5504 ratio=0.2787 PASS k4>0:True REMact=8.85e-05 (<=REM*=0.0594: True)
+  m=561 w=7 [W3]: r31=1.2270 r42=1.7768 J=0.6171 (J0=1.9156 PASS) |eta|/u=0.6171 ratio=0.3124 PASS k4>0:True REMact=7.30e-05 (<=REM*=0.0594: True)
+  m=561 w=8 [W3]: r31=1.3485 r42=2.3075 J=0.6646 (J0=1.9156 PASS) |eta|/u=0.6646 ratio=0.3365 PASS k4>0:True REMact=5.73e-05 (<=REM*=0.0594: True)
+  m=561 w=8.001 [W4]: r31=1.3486 r42=2.3080 J=0.6647 (J0=2.5365 PASS) |eta|/u=0.6646 ratio=0.2540 PASS k4>0:True REMact=5.73e-05 (<=REM*=0.0805: True)
+  m=561 w=9 [W4]: r31=1.4437 r42=2.7717 J=0.6985 (J0=2.5365 PASS) |eta|/u=0.6984 ratio=0.2669 PASS k4>0:True REMact=4.39e-05 (<=REM*=0.0805: True)
+  m=561 w=10 [W4]: r31=1.5184 r42=3.1636 J=0.7236 (J0=2.5365 PASS) |eta|/u=0.7235 ratio=0.2764 PASS k4>0:True REMact=3.34e-05 (<=REM*=0.0805: True)
+  m=561 w=10.001 [W5]: r31=1.5184 r42=3.1640 J=0.7236 (J0=3.6679 PASS) |eta|/u=0.7235 ratio=0.1904 PASS k4>0:True REMact=3.34e-05 (<=REM*=0.1321: True)
+  m=561 w=15 [W5]: r31=1.7196 r42=4.3183 J=0.7979 (J0=3.6679 PASS) |eta|/u=0.7975 ratio=0.2099 PASS k4>0:True REMact=1.09e-05 (<=REM*=0.1321: True)
+  m=561 w=20 [W5]: r31=1.8036 r42=4.8206 J=0.8425 (J0=3.6679 PASS) |eta|/u=0.8419 ratio=0.2215 PASS k4>0:True REMact=5.84e-06 (<=REM*=0.1321: True)
+  m=561 w=20.001 [W6b]: r31=1.8036 r42=4.8207 J=0.8425 (J0=4.1781 PASS) |eta|/u=0.8419 ratio=0.1947 PASS k4>0:True REMact=5.84e-06 (<=REM*=0.1449: True)
+  m=561 w=30 [W6b]: r31=1.8775 r42=5.2631 J=0.8933 (J0=4.1781 PASS) |eta|/u=0.8918 ratio=0.2062 PASS k4>0:True REMact=4.40e-06 (<=REM*=0.1449: True)
+  m=561 w=40 [W6b]: r31=1.9114 r42=5.4653 J=0.9206 (J0=4.1781 PASS) |eta|/u=0.9181 ratio=0.2122 PASS k4>0:True REMact=5.64e-06 (<=REM*=0.1449: True)
+  m=561 w=40.001 [W7]: r31=1.9114 r42=5.4654 J=0.9206 (J0=4.5960 PASS) |eta|/u=0.9181 ratio=0.1931 PASS k4>0:True REMact=5.64e-06 (<=REM*=0.1560: True)
+  m=561 w=60 [W7]: r31=1.9440 r42=5.6580 J=0.9502 (J0=4.5960 PASS) |eta|/u=0.9444 ratio=0.1985 PASS k4>0:True REMact=1.10e-05 (<=REM*=0.1560: True)
+  m=561 w=100 [W7]: r31=1.9714 r42=5.8120 J=0.9804 (J0=4.5960 PASS) |eta|/u=0.9645 ratio=0.2023 PASS k4>0:True REMact=3.00e-05 (<=REM*=0.1560: True)
+  m=561 w=200 [W7]: r31=2.0046 r42=5.9636 J=1.0365 (J0=4.5960 PASS) |eta|/u=0.9731 ratio=0.2021 PASS k4>0:True REMact=1.23e-04 (<=REM*=0.1560: True)
+  m=561 w=350 [W7]: r31=2.0552 r42=6.1413 J=1.1533 (J0=4.5960 PASS) |eta|/u=0.9591 ratio=0.1939 PASS k4>0:True REMact=4.14e-04 (<=REM*=0.1560: True)
+  m=561 w=499.29 [W7]: r31=2.1240 r42=6.3713 J=1.3258 (J0=4.5960 PASS) |eta|/u=0.9307 ratio=0.1808 PASS k4>0:True REMact=9.59e-04 (<=REM*=0.1560: True)
+  ALL checks PASS at m = 561: True;  worst pricing ratio = 0.6576
+  worst J/J0 by band: W1=0.6740  W2=0.4991  W3=0.3470  W4=0.2853  W5=0.2297  W6b=0.2203  W7=0.2885
+
+== [C] scope: m = 1000 and m = 5000 ==
+  m=1000 w=5.0 [W1]: r31=0.8860 r42=0.6496 J=0.4601 (J0=0.6829 PASS) |eta|/u=0.4601 ratio=0.6573 PASS k4>0:True REMact=5.54e-05 (<=REM*=0.0171: True)
+  m=1000 w=890 [W7]: r31=2.1268 r42=6.3889 J=1.3288 (J0=4.5960 PASS) |eta|/u=0.9333 ratio=0.1813 PASS k4>0:True REMact=5.38e-04 (<=REM*=0.1560: True)
+  m=5000 w=5.0 [W1]: r31=0.8855 r42=0.6486 J=0.4599 (J0=0.6829 PASS) |eta|/u=0.4599 ratio=0.6570 PASS k4>0:True REMact=1.11e-05 (<=REM*=0.0171: True)
+  m=5000 w=4450 [W7]: r31=2.1296 r42=6.4068 J=1.3318 (J0=4.5960 PASS) |eta|/u=0.9359 ratio=0.1818 PASS k4>0:True REMact=1.08e-04 (<=REM*=0.1560: True)
+
+== [D] NON-DERIVABILITY of the pricing from (E0)+(E1)+(E2)+sign lemma ==
+  point: m=561, w=4.5 (W1), s2=2.4413e+06 (>= S0: True), A=157.08 in [c_A m, m]: True, k3=R31* s2/lam, k4=0
+  eta/u = -1.000964   price = 0.700032   |eta|/(price*u) = 1.4299  ** > 1: pricing FAILS at this hypothesis-consistent point **
+
+== [E] J-max location: W1 fine w-scan and W7 scan, m = 561 ==
+  W1 grid w = 4.00(0.05)5.00: max J = 0.4603 at w = 5.0 (J0(W1) = 0.6829; margin 32.6%)
+  W7 scan to lam = 0.89: max J = 1.3258 at w = 499.29 (J0(W7) = 4.5960; margin 71.2%)
+
+== [F] (P3') alternative-route diagnostic: max measured r31 vs sqrt(J0(W)) ==
+  W1 : r31(right edge) = 0.8864 vs sqrt(J0) = 0.8264 -> DEAD (joint (E3) form required)
+  W2 : r31(right edge) = 1.0739 vs sqrt(J0) = 1.0501 -> DEAD (joint (E3) form required)
+  W3 : r31(right edge) = 1.3485 vs sqrt(J0) = 1.3841 -> VIABLE
+  W4 : r31(right edge) = 1.5184 vs sqrt(J0) = 1.5926 -> VIABLE
+  W5 : r31(right edge) = 1.8036 vs sqrt(J0) = 1.9152 -> VIABLE
+  W6b: r31(right edge) = 1.9114 vs sqrt(J0) = 2.0440 -> VIABLE
+  W7 : r31(right edge) = 2.1240 vs sqrt(J0) = 2.1438 -> VIABLE

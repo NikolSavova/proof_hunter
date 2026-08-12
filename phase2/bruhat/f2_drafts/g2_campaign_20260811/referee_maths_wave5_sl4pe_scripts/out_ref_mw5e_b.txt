@@ -1,0 +1,18 @@
+== [C] independent truth probes (series route, dps 50) ==
+  m=401 w=4.9: r31=0.866155 r42=0.600004 J=0.450222 |eta|/u=0.450286 ratio=0.643197 k4>0:True
+  m=561 w=5.0: r31=0.886365 r42=0.650647 J=0.460318 |eta|/u=0.460377 ratio=0.657645 k4>0:True
+  m=561 w=4.5: r31=0.780471 r42=0.404884 J=0.406693 |eta|/u=0.406761 ratio=0.58106 k4>0:True
+  m=561 w=499.29: r31=2.12402 r42=6.3713 J=1.32583 |eta|/u=0.930741 ratio=0.180795 k4>0:True
+  m=1000 w=5.0: r31=0.885955 r42=0.649624 J=0.460105 |eta|/u=0.460148 ratio=0.657342 k4>0:True
+
+== [D] Prop E.3 point recomputed (dps 50) ==
+  eta/u = -1.000963731   price = 0.7000321714   |eta|/(price*u) = 1.4298825  (> 1: True)
+
+== [E] Lemma E.4 point values (dps 50, K = 800) ==
+  G_4(4)  = 0.232348298890392   (e3 claimed 0.23234829889; > 0.23: True)
+  h_4(4)  = 5.420211696382   (e3 claimed 5.420211696; < 6: True)
+  G_4(3.3) = -0.011689  G_4(3.5) = 0.0292934  (sign change: True)
+  x phi_5 - 4 phi_4 at x = 4: 0.0121527 (>= 0: True)
+
+== [F] limit J at w = 5 (roadmap anchor) ==
+  J_lim(5) = 0.45984382  (e3 claimed 0.45984)

@@ -1,0 +1,8 @@
+[RB] adversarial pointwise attack on Lemmas X.a/X.b/X.c + Theorem X.1
+  dense-scan corner w=4 lam=0.89: 8001 pts, min inc = 3.83078e-6, strictly increasing: True
+  dense-scan m=561 w=4.001: 8001 pts, min inc = 4.3245e-6, strictly increasing: True
+[RB] Cor X.2 audit: r(u) = asin(sinh u)/u on 4001-pt grid of (0, 0.445]
+  strictly increasing: True | all r > 1: True | r(0.445) = 1.07372378042 < 1.074: True
+  record: inf over D of M(tau=0.8) = 4 sin(0.356)/0.89 = 1.5664172 (floor 1.53904 is 1.78% below)
+[RB] points tested: 3091; violations: 0
+[RB] ALL OK

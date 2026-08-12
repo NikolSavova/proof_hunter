@@ -1,0 +1,66 @@
+== [i] m-direction: W1 right edge w = 5.0, m = 561..571 + large ==
+  m=561 w=5.0 [W1]: J=0.460318 J/J0=0.6740 ratio=0.6576 REMact=9.87e-05 k4>0:True
+  m=571 w=5.0 [W1]: J=0.460310 J/J0=0.6740 ratio=0.6576 REMact=9.70e-05 k4>0:True
+  m=600 w=5.0 [W1]: J=0.460286 J/J0=0.6740 ratio=0.6576 REMact=9.23e-05 k4>0:True
+  m=700 w=5.0 [W1]: J=0.460221 J/J0=0.6739 ratio=0.6575 REMact=7.91e-05 k4>0:True
+  m=1000 w=5.0 [W1]: J=0.460105 J/J0=0.6737 ratio=0.6573 REMact=5.54e-05 k4>0:True
+  m=2000 w=5.0 [W1]: J=0.459973 J/J0=0.6735 ratio=0.6571 REMact=2.77e-05 k4>0:True
+  m=20000 w=5.0 [W1]: J=0.459857 J/J0=0.6733 ratio=0.6569 REMact=2.77e-06 k4>0:True
+  J(w=5.0) nonincreasing in m over the scan: True
+
+== [ii] W2 right edge w = 6.0, m-scan ==
+  m=561 w=6.0 [W2]: J=0.550317 J/J0=0.4991 ratio=0.4861 REMact=8.85e-05 k4>0:True
+  m=600 w=6.0 [W2]: J=0.550286 J/J0=0.4990 ratio=0.4861 REMact=8.28e-05 k4>0:True
+  m=1000 w=6.0 [W2]: J=0.550111 J/J0=0.4989 ratio=0.4860 REMact=4.96e-05 k4>0:True
+  m=5000 w=6.0 [W2]: J=0.549913 J/J0=0.4987 ratio=0.4858 REMact=9.93e-06 k4>0:True
+  J(w=6.0) nonincreasing in m over the scan: True
+
+== [iii] deep-tilt corner lam = 0.89 exactly, many m ==
+  m=561 w=499.29 [W7]: J=1.325832 J/J0=0.2885 ratio=0.1808 REMact=9.59e-04 k4>0:True
+  m=562 w=500.18 [W7]: J=1.325844 J/J0=0.2885 ratio=0.1808 REMact=9.58e-04 k4>0:True
+  m=563 w=501.07 [W7]: J=1.325856 J/J0=0.2885 ratio=0.1808 REMact=9.56e-04 k4>0:True
+  m=577 w=513.53 [W7]: J=1.326019 J/J0=0.2885 ratio=0.1808 REMact=9.33e-04 k4>0:True
+  m=601 w=534.89 [W7]: J=1.326281 J/J0=0.2886 ratio=0.1809 REMact=8.95e-04 k4>0:True
+  m=700 w=623.0 [W7]: J=1.327171 J/J0=0.2888 ratio=0.1810 REMact=7.69e-04 k4>0:True
+  m=1077 w=958.53 [W7]: J=1.329063 J/J0=0.2892 ratio=0.1813 REMact=5.00e-04 k4>0:True
+  m=2000 w=1780.0 [W7]: J=1.330685 J/J0=0.2895 ratio=0.1816 REMact=2.69e-04 k4>0:True
+  m=10000 w=8900.0 [W7]: J=1.332198 J/J0=0.2899 ratio=0.1819 REMact=5.38e-05 k4>0:True
+
+== [iv] micro-edges and off-grid interiors ==
+  m=561 w=4.0001 [W1]: J=0.348431 J/J0=0.5102 ratio=0.4978 REMact=9.68e-05 k4>0:True
+  m=561 w=4.00001 [W1]: J=0.348420 J/J0=0.5102 ratio=0.4978 REMact=9.68e-05 k4>0:True
+  m=562 w=4.0001 [W1]: J=0.348430 J/J0=0.5102 ratio=0.4978 REMact=9.67e-05 k4>0:True
+  m=600 w=4.0001 [W1]: J=0.348402 J/J0=0.5101 ratio=0.4978 REMact=9.05e-05 k4>0:True
+  m=561 w=4.95 [W1]: J=0.455198 J/J0=0.6665 ratio=0.6503 REMact=9.90e-05 k4>0:True
+  m=561 w=4.99 [W1]: J=0.459299 J/J0=0.6725 ratio=0.6562 REMact=9.88e-05 k4>0:True
+  m=561 w=4.999 [W1]: J=0.460217 J/J0=0.6739 ratio=0.6575 REMact=9.87e-05 k4>0:True
+  m=563 w=5.0 [W1]: J=0.460317 J/J0=0.6740 ratio=0.6576 REMact=9.84e-05 k4>0:True
+  m=563 w=5.25 [W2]: J=0.485056 J/J0=0.4399 ratio=0.4285 REMact=9.67e-05 k4>0:True
+  m=563 w=5.75 [W2]: J=0.530068 J/J0=0.4807 ratio=0.4683 REMact=9.15e-05 k4>0:True
+  m=563 w=6.5 [W3]: J=0.586422 J/J0=0.3061 ratio=0.2969 REMact=8.08e-05 k4>0:True
+  m=563 w=7.5 [W3]: J=0.642904 J/J0=0.3356 ratio=0.3255 REMact=6.47e-05 k4>0:True
+  m=563 w=8.5 [W4]: J=0.682945 J/J0=0.2693 ratio=0.2609 REMact=5.00e-05 k4>0:True
+  m=563 w=9.5 [W4]: J=0.711904 J/J0=0.2807 ratio=0.2720 REMact=3.82e-05 k4>0:True
+  m=563 w=12.5 [W5]: J=0.766848 J/J0=0.2091 ratio=0.2017 REMact=1.78e-05 k4>0:True
+  m=563 w=17.5 [W5]: J=0.822544 J/J0=0.2243 ratio=0.2163 REMact=7.50e-06 k4>0:True
+  m=563 w=25 [W6b]: J=0.872346 J/J0=0.2088 ratio=0.2015 REMact=4.49e-06 k4>0:True
+  m=563 w=35 [W6b]: J=0.908695 J/J0=0.2175 ratio=0.2097 REMact=4.80e-06 k4>0:True
+  m=563 w=45 [W7]: J=0.930061 J/J0=0.2024 ratio=0.1949 REMact=6.62e-06 k4>0:True
+  m=563 w=80 [W7]: J=0.967388 J/J0=0.2105 ratio=0.2010 REMact=1.90e-05 k4>0:True
+  m=563 w=150 [W7]: J=1.007665 J/J0=0.2192 ratio=0.2031 REMact=6.74e-05 k4>0:True
+  m=563 w=300 [W7]: J=1.107604 J/J0=0.2410 ratio=0.1974 REMact=2.90e-04 k4>0:True
+  m=563 w=450 [W7]: J=1.260407 J/J0=0.2742 ratio=0.1857 REMact=7.34e-04 k4>0:True
+  m=600 w=5.0 [W1]: J=0.460286 J/J0=0.6740 ratio=0.6576 REMact=9.23e-05 k4>0:True
+  m=600 w=6.0 [W2]: J=0.550286 J/J0=0.4990 ratio=0.4861 REMact=8.28e-05 k4>0:True
+  m=600 w=8.0 [W3]: J=0.664599 J/J0=0.3469 ratio=0.3365 REMact=5.35e-05 k4>0:True
+  m=600 w=10.0 [W4]: J=0.723554 J/J0=0.2853 ratio=0.2764 REMact=3.12e-05 k4>0:True
+  m=600 w=20.0 [W5]: J=0.842447 J/J0=0.2297 ratio=0.2215 REMact=5.32e-06 k4>0:True
+  m=600 w=40.0 [W6b]: J=0.920323 J/J0=0.2203 ratio=0.2123 REMact=4.71e-06 k4>0:True
+  m=600 w=534 [W7]: J=1.326270 J/J0=0.2886 ratio=0.1809 REMact=8.97e-04 k4>0:True
+  m=100000 w=5.0 [W1]: J=0.459846 J/J0=0.6733 ratio=0.6569 REMact=5.54e-07 k4>0:True
+
+== TOTALS: 62 off-grid probes, 0 FAILs ==
+
+== [v] fixed-lam geometric limit at lam = 0.89 (draft: J -> ~1.332) ==
+  r31_geom = 2.1303061 (STATUS_wave4 quotes 2.1303), r42_geom = 6.4112558 (quotes 6.4113)
+  J_geom = 1.332576  (draft: ~1.332; J0(W7) = 4.59597)

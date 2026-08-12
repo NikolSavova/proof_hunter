@@ -1,0 +1,16 @@
+== (a) J(m=561, w) - J_lim(w) at W1-W6b right edges ==
+  w =  5: J(561) = 0.46031849  J_lim = 0.45984382  gap = 0.0004747  (<= 5e-4: True)
+  w =  6: J(561) = 0.55031731  J_lim = 0.54986581  gap = 0.0004515  (<= 5e-4: True)
+  w =  8: J(561) = 0.66462617  J_lim = 0.66427125  gap = 0.0003549  (<= 5e-4: True)
+  w = 10: J(561) = 0.7235812  J_lim = 0.7232668  gap = 0.0003144  (<= 5e-4: True)
+  w = 20: J(561) = 0.84252011  J_lim = 0.84187431  gap = 0.0006458  (<= 5e-4: False)
+  w = 40: J(561) = 0.92059223  J_lim = 0.91841384  gap = 0.002178  (<= 5e-4: False)
+
+== (b) envelope-vs-truth and envelope-vs-budget ratios ==
+  W1 : REM*/REMact =     171x   (0.3R31*^2)/REM* =  17.6x   price/REM* =  41.0x
+  W2 : REM*/REMact =     310x   (0.3R31*^2)/REM* =  14.7x   price/REM* =  38.6x
+  W3 : REM*/REMact =     671x   (0.3R31*^2)/REM* =  11.4x   price/REM* =  33.3x
+  W4 : REM*/REMact =    1406x   (0.3R31*^2)/REM* =  10.8x   price/REM* =  32.5x
+  W5 : REM*/REMact =    3954x   (0.3R31*^2)/REM* =   9.1x   price/REM* =  28.8x
+  W6b: REM*/REMact =   24818x   (0.3R31*^2)/REM* =   9.1x   price/REM* =  29.8x
+  W7 : REM*/REMact =     163x   (0.3R31*^2)/REM* =   9.3x   price/REM* =  30.5x

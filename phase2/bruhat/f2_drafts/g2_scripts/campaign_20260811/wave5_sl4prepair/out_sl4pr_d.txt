@@ -1,0 +1,55 @@
+== [D1] (F3) SL4'-E eta pricing at the band right edges / missed corners ==
+  m=401 w=4.001 [W1]: |eta|/u = 0.34881  ratio = 0.49826  k4>0: True
+  m=401 w=4.9 [W1]: |eta|/u = 0.45029  ratio = 0.6432  k4>0: True
+  m=401 w=5.0 [W1]: |eta|/u = 0.46058  ratio = 0.6579  k4>0: True
+  m=401 w=6.0 [W2]: |eta|/u = 0.55053  ratio = 0.48628  k4>0: True
+  m=401 w=8.0 [W3]: |eta|/u = 0.66469  ratio = 0.33652  k4>0: True
+  m=401 w=10.0 [W4]: |eta|/u = 0.72351  ratio = 0.27643  k4>0: True
+  m=401 w=20.0 [W5]: |eta|/u = 0.84183  ratio = 0.22146  k4>0: True
+  m=401 w=40.0 [W6b]: |eta|/u = 0.91768  ratio = 0.21203  k4>0: True
+  m=401 w=356.89 [W7]: |eta|/u = 0.92843  ratio = 0.18035  k4>0: True
+  m=402 w=5.0 [W1]: |eta|/u = 0.46058  ratio = 0.6579  k4>0: True
+  m=1000 w=5.0 [W1]: |eta|/u = 0.46015  ratio = 0.65734  k4>0: True
+  ALL |eta| <= price*u: True;  kappa_4 > 0 everywhere: True
+  worst ratio = 0.6579 at (m, w) = (401, '5.0')  [referee C2: 0.6579 at the W1 right edge]
+  corrected F3 sentence: 'never above 0.66 of its budget; worst 0.6579 at w = 5': True
+
+== [D2] (F5) efac boundary ==
+  true 'iff' boundary: efac(C5*) <= e  iff  C5* <= 4(1-e^(-1/4)) = 0.88479687
+  efac(0.8464) = 2.58829 < e = 2.71828: True   (0.8464 stays a SAFE sufficient cutoff; W7's C5* = 0.80 < 0.8464)
+  efac(0.88479687) = 2.7182818  (= e to print precision)
+
+== [D3] (F6) A-monotonicity: thresholds and the used range ==
+  tier-1 mid (g = 0.1317): pure-form A^(3/2)e^(-gA/4) decreasing iff A > 6/g = 45.5581 (referee's threshold; SUFFICIENT for the full entry,
+  whose Mills factor (1+2/(gA)) is decreasing); the full entry's actual peak is at
+  A ~ 36.7; witness that 'A >= 32' was FALSE: e_midn(32) = 140.965 < e_midn(36) = 142.176: True
+  used range: A0 >= 0.28*401 = 112.28 (W1) up to 0.85*401 (W7)
+  mid g=0.42: nonincreasing on the used range A in [112, 3000] (step 1): True
+  mid g=0.40: nonincreasing on the used range A in [112, 3000] (step 1): True
+  mid g=0.1317: nonincreasing on the used range A in [112, 3000] (step 1): True
+  X tier-2 (Xn+Xd): nonincreasing on the used range A in [112, 3000] (step 1): True
+  tier-2 X pure-form A^(3/2)e^(-0.64 c2 A) threshold: 1.5/(0.64*0.0871) = 26.9087 (Mills factor decreasing; sufficient)
+  far entry: m^5.5 e^(-0.0741 m) decreasing iff m > 5.5/0.0741 = 74.224 ('m >= 75' safe)
+  increasing entries (share rule needs e(A)/A nondecreasing): far is EXACTLY
+  linear in A (e/A constant); W1's X is ~A^(5/2) (e/A ~ A^(3/2)): both satisfy it.
+
+== [D4] (F7) share decomposition at (w, m) = (4.05, 401), explicit convention ==
+  convention: contribution of each slot to the row value share*(1+q), i.e.
+  slot*(1+QUADF)*INFL/20 for the A-increasing slots, dec-part/(20*0.28)*(1+QUADF).
+  row total = 1.3911 (FAIL, inside the trapezoid);
+  X-share = 0.99538;  far-share = 0.12144;  dec-share = 0.27429   [referee D1: 0.9954 / 0.1214 / 0.2743, total 1.3911]
+  m*x(4.05, 0.8) = 7.6453   [the crossover-limited diagnosis stands; 'share 0.68' is RETIRED]
+
+== [D5] (F4) C5*-slack scoping ==
+  W1, m=401, w=4.10, C5*=0.4: row = 1.4695 FAIL
+  W1, m=401, w=4.30, C5*=0.4: row = 0.96081 PASS
+  W1, m=401, w=4.10, C5*=0.05: row = 0.96655 PASS
+  W6b, m=401, C5*=0.4: row = 0.89301 PASS  -> W6b slack = 0.4/0.25 = 1.6x (NOT '2x-8x')
+  W5, m=401: C5*=0.15 row = 0.98909 PASS;  C5*=0.20 row = 1.0095 FAIL  -> W5 acceptance is 0.15 (the ledger value; the block-[4] grid prints 0.10, its next grid point)
+
+== [D6] exact harness-coverage parse (mootness input) ==
+  parsed data rows: 557;  non-PASS rows: 0 
+  coverage [4, 560]: gaps = NONE;  [401, 560]: gaps = NONE
+  OVERALL line (verbatim): # OVERALL: PASS -- all of C1..C6 hold exactly for 4 <= m <= 560 (C2/C3 with the known m=4 exception; rows split across this file and the honored prior file(s)).
+  => M_H = 560; trapezoid m-ranges [401, 462] (route a) and [401, 469] (route b)
+     are covered: True

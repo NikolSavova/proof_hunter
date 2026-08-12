@@ -1,0 +1,34 @@
+== [A1] w_dagger(m), gamma*(W1) = 0.42 (table value; route (a)), step 0.001, m = 401..462 ==
+  m=401: w_dagger = 4.095   (row at w_dagger = 0.999182)
+  m=402: w_dagger = 4.093   (row at w_dagger = 0.995484)
+  m=405: w_dagger = 4.086   (row at w_dagger = 0.994252)
+  m=410: w_dagger = 4.075   (row at w_dagger = 0.996668)
+  m=420: w_dagger = 4.057   (row at w_dagger = 0.996268)
+  m=430: w_dagger = 4.042   (row at w_dagger = 0.992952)
+  m=440: w_dagger = 4.028   (row at w_dagger = 0.994397)
+  m=450: w_dagger = 4.015   (row at w_dagger = 0.996228)
+  m=455: w_dagger = 4.009   (row at w_dagger = 0.995263)
+  m=460: w_dagger = 4.003   (row at w_dagger = 0.995744)
+  m=461: w_dagger = 4.002   (row at w_dagger = 0.994158)
+  m=462: w_dagger = 4.001   (row at w_dagger = 0.99262)
+  w_dagger nonincreasing over the FULL integer grid m = 401..462: True
+  w_dagger(401) = 4.095  [referee B2: 4.095; draft's 4.10 was the 0.01-grid value, safe direction]
+  w_dagger(462) refined (step 1e-5) = 4.00021  [referee B2b: 4.00021]
+
+== [A2] w -> 4+ closure edge: first m with W1 PASS at the open edge ==
+  w = 4.0 (limit): first PASS m = 463   [461:1.01282F  462:1.0019F  463:0.991128P  464:0.980515P]
+  w = 4+1e-9: first PASS m = 463   [461:1.01282F  462:1.0019F  463:0.991128P  464:0.980515P]
+  w = 4+1e-7: first PASS m = 463   [461:1.01282F  462:1.00189F  463:0.991127P  464:0.980514P]
+  => corrected trapezoid m-range at gamma* = 0.42:  [401, 462]   (F2 repair: 461 -> 462; referee B2c confirmed)
+
+== [A3] route (b) record: the trapezoid under the ORIGINAL stated gamma*(W1) = 0.25 ==
+  w_dagger(401; gamma* = 0.25), step 0.005 = 4.135   [referee E2: 4.135]
+  first full-closure m at w -> 4+ under gamma* = 0.25: 470  -> route-(b) trapezoid m-range [401, 469]   [referee E3: 470]
+
+== [A4] mootness arithmetic (both routes) vs harness coverage ==
+  route (a): gamma*(W1)=0.42: trapezoid m-range [401, 462];  max m = 462 <= M_H = 560: True;  first sliver-free m = 463 <= 561: True
+  route (b): gamma*(W1)=0.25: trapezoid m-range [401, 469];  max m = 469 <= M_H = 560: True;  first sliver-free m = 470 <= 561: True
+  => under EITHER route the corrected trapezoid lies entirely inside the
+     harness-verified range [401, 560]; at the shifted CL threshold m >= 561
+     the W1 sliver exception is EMPTY (see scripts [B] and [C] for the
+     m >= 463 / m >= 700 W1 closure that makes the m >= 561 statement total).

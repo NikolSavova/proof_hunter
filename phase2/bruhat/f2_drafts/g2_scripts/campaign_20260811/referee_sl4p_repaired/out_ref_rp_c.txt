@@ -1,0 +1,25 @@
+== [C1] epsilon audit (independent, dps 60) ==
+  theta_max = 0.004786096257;  theta_max^2/6 = 3.8177862e-6 <= 4e-6: True
+  (lam/2)_max^2/5 = 3.9717718e-6 <= 4e-6: True
+  (1-epsM)^2/(1+epsS)^2 = 0.999984000128 >= 1 - 1.7e-5 = 0.999983: True
+
+== [C2] elementary brackets on the used range ==
+  sin(th) >= th(1 - th^2/6) on (0, theta_max], 1000 pts: True
+  sinh(x) <= x(1 + x^2/5) on (0, 1], 1000 pts (incl. used range): True
+
+== [C3] independent cell certificate ==
+  ncell = 548: all factors positive: True;  min bound = 0.0176601 at tau1 = 0.8;  >= 0.0176: True
+  ncell = 2740: all factors positive: True;  min bound = 0.01773513 at tau1 = 0.8;  >= 0.0176: True
+
+== [C4] truth attack: direct min of x(w, tau; m) over adversarial grids ==
+  points: 11256;  global min x = 0.01775542 at (m, w, tau) = (561, '4.0', '0.8')
+  min >= floor 0.0176: True;  draft's corner truth 0.0177554: x(4+1e-9, 0.8; 561) = 0.0177554
+
+== [C5] Lemma R.2 re-derived (own code, dps 60) ==
+  K_Xn = 0.1933096692 <= 0.19332: True;  K_Xd = 0.2186203697 <= 0.21863: True
+  w-power cancelation m*(m^3/w^2)^1.5*lam^3 = m^2.5 exact at 3 samples: True
+  B(m) strictly decreasing on [700, 3000] step 1: True  (log-deriv < 0 iff m > 2.5/0.0176 = 142.045)
+  rowbound(700) = 0.91140651  [prover: 0.911407]  <= 0.9115: True
+  rowbound strictly decreasing on [700, 1500] step 1: True
+  X_w6(w=4.2, m=750) Xn+Xd = 0.00280098 <= B(750) = 5.51947: True
+  X_w6(w=4.000003, m=700) Xn+Xd = 0.349829 <= B(700) = 11.1999: True

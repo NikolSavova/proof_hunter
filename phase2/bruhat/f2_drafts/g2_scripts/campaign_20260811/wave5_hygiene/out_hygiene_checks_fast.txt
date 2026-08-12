@@ -1,0 +1,30 @@
+[A] EXACT parse: harness coverage 4..560 (m540 honored + m560 fresh)
+  results_m540.txt: 478 data rows, m in [4, 481], FAIL rows: 0, '# OVERALL' lines: 0
+  results_m560.txt: 79 data rows, m in [482, 560], FAIL rows: 0, '# OVERALL' lines: 1
+  union coverage: m in [4, 560]; gaps in [4, 560]: []
+  FAIL rows anywhere: 0
+  W-F1 support: m540 last data row m = 481 (== 481: True), m540 has NO overall line: True
+  m560 OVERALL line (verbatim):
+    # OVERALL: PASS -- all of C1..C6 hold exactly for 4 <= m <= 560 (C2/C3 with the known m=4 exception; rows split across this file and the honored prior file(s)).
+  m560 last data row (verbatim): ' 560 156520  78260  78260   2.0405e-07 0.9980725915  1.07935   PASS'
+  BLOCK A PASS: True
+[B] RECORD-ONLY: referee from-scratch fresh re-run state + byte-identity
+  fresh file: 438 data rows, m in [4, 441], gaps: [], FAIL rows: 0, OVERALL lines: 0 (0 => still incomplete)
+  byte-identity vs primary rows on overlap [4, 441]: mismatches: []
+  BLOCK B (record-only) clean: True
+[C] EXACT-rational SL3' R1 crossover margins: ratio = q*(1/(1+tau_start^2) - 2*gamma*)/b
+   W1: ana(tau_start) = 0.003901  ratio = 1.4288x (referee dps-30: 1.4286x, agree to 5e-4: True)
+   W2: ana(tau_start) = 0.003941  ratio = 1.4409x (referee dps-30: 1.4409x, agree to 5e-4: True)
+   W3: ana(tau_start) = 0.004520  ratio = 1.7068x (referee dps-30: 1.7065x, agree to 5e-4: True)
+   W4: ana(tau_start) = 0.004725  ratio = 1.7735x (referee dps-30: 1.7732x, agree to 5e-4: True)
+   W5: ana(tau_start) = 0.005207  ratio = 1.9243x (referee dps-30: 1.9241x, agree to 5e-4: True)
+  W6b: ana(tau_start) = 0.005840  ratio = 1.8653x (referee dps-30: 1.8654x, agree to 5e-4: True)
+   W7: ana(tau_start) = 0.012768  ratio = 1.2971x (referee dps-30: 1.2971x, agree to 5e-4: True)
+  worst certified crossover margin: 1.2971x at W7 (claim: 1.30x-class at W7): True
+  BLOCK C PASS: True
+[D] Small numeric errata (SL3' R5/F3, R3/F1 arithmetic, eps_t)
+  4.04*(1/4 + 1/401) = 1.020075 exactly (= 1.020075: True; <= 1.0201: True; draft printed '= 1.0202' -> errata '<= 1.0201')
+  eps_t = 1/sinh^2(3.925) = 1.560224e-03 (nearest 1.5602e-3; <= 1.57e-3: True; draft printed '= 1.5603e-3' -> '<=')
+  E.6.B corner: true slack 0.002673 - cell bound 0.001448 = 0.001225 concession (~0.0012, NOT ~0.0026: True)
+  BLOCK D PASS: True
+OVERALL (blocks A/C/D): PASS

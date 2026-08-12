@@ -1,0 +1,20 @@
+[RA] exact / dps-80 independent re-derivation of NX-1..NX-6
+  NX-1a: 1.074*0.89 = 47793/50000 = 0.95586, y0 = 47793/100000 = 0.47793, both exact : OK
+  NX-1b-exact: 1 - y0^2/6 = 19238609717/20000000000 = 0.96193048585 >= 0.96193 (exact rational compare) : OK
+  NX-1b-digits: printed 0.96193048585 vs exact 0.96193048585 : OK
+  NX-1c: 2*0.96193 = 1.92386 >= 1.9238 (exact) : OK
+  NX-2-exp: 1.64 >= exp(0.9516/1.9238) = 1.63991762694003 (log-free reformulation) : OK
+  NX-2-digits: psi(0.8) = 0.151696630044 vs printed 0.151696630044; margin over 0.1516 = 9.663e-5 : OK
+  NX-3a-exact: f(0.8) = 40/41 = 0.9756097561, f(1.074) = 0.9974571344, min >= 0.9756 (exact) : OK
+  NX-3a-digits: printed 0.9756097561 / 0.9974571344 both reproduce : OK
+  NX-3a-scan: dense 5001-pt scan min = 0.975609756098 attained at tau = 0.8 (endpoint-min claim holds) : OK
+  NX-3b-exact: 1.9238*0.9756 - 1 = 0.87685928 = 0.87685928 exactly >= 0.8768 : OK
+  NX-4-exact: c*0.8 = 1.53904 exactly >= 1.539 : OK
+  NX-4-exp: 2 > exp(1/1.53904) = 1.91507290395788 (equiv. 1.53904 > 1/log2 = 1.442695041) : OK
+  NX-5-sin: sinh(0.445) = 0.4598329599 <= sin(0.4778855) = 0.459902593842 (asin-free reformulation) : OK
+  NX-5-digits: tau0(0.89)/0.89 = 1.07372378041763 vs printed 1.07372378042; < 1.074 margin = 0.0002762 : OK
+  NX-6-exact: 0.445/(1-0.445^2/6) = 0.4601881256 <= 0.4602 (exact rational compare) : OK
+  NX-6-sinh: sinh(0.445) = 0.4598329599 <= geo (margin 0.0003552) and < 1 : OK
+  NX-6-digits: printed 0.4598329599 / 0.4601881256 both reproduce : OK
+  NX-6-series: (2k+1)! >= 6^k verified k = 0..20 (induction base+shape) : OK
+[RA] ALL OK

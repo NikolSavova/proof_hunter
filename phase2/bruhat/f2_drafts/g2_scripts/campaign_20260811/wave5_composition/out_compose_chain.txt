@@ -1,0 +1,49 @@
+[A] exact harness coverage (threshold shift)
+  data rows honored/fresh union: 557;  PASS rows: 557;  non-PASS: 0
+  gaps in [4, 560]: NONE;  gaps in [401, 560]: NONE
+  OVERALL line (verbatim): # OVERALL: PASS -- all of C1..C6 hold exactly for 4 <= m <= 560 (C2/C3 with the known m=4 exception; rows split across this file and the honored prior file(s)).
+  [A] coverage m in [4, 560] exact-PASS, threshold shifts to m >= 561: True
+
+[B] the seven ledger rows: m = 401 (SL4'-R certification) and m = 561 (operative)
+  m= 401:  W2=0.86008  W3=0.65844  W4=0.58993  W5=0.98909  W6b=0.82768  W7=0.98084
+  m= 561:  W2=0.35065  W3=0.48309  W4=0.51831  W5=0.70933  W6b=0.69981  W7=0.8723
+  m= 601:  W2=0.32987  W3=0.47332  W4=0.50993  W5=0.68992  W6b=0.68614  W7=0.85384
+  m=1581:  W2=0.26088  W3=0.38904  W4=0.41952  W5=0.553  W6b=0.55132  W7=0.65297
+  reference reproduction at 401: W5 = 0.98909 (~0.9891), W7 = 0.98084 (~0.9808): True
+  all W2-W7 rows at m = 561 <= 1: True;  m-monotone spot (561 >= 601 >= 1581): True
+  worst W2-W7 row at m = 561: 0.872304 (W7)
+
+[C] W1 closure ladder on m >= 561
+  m=561: worst probe row = 0.424939 at w = 4.000000001  (all <= 1: True)
+  m=650: worst probe row = 0.289044 at w = 4.000000001  (all <= 1: True)
+  m=699: worst probe row = 0.261345 at w = 4.000000001  (all <= 1: True)
+  Fact R.G sentinel reproduction: worst = 0.424939 at (m, w) = (561, '4.000000001');
+  X_w6 monotone-in-tau flag (Theorem X.1, now PROVED) at every probe: True
+  Lemma R.2 recomputed: m=700: B = 11.1999, dec_W1 = 1.23288, W1 row bound = 0.911407 (<= 0.9115: True)
+                        m=1000: 0.231364   m=1581: 0.205265   (B nonincreasing for m >= 142.05)
+
+[D] the COMPOSED effective constant
+  segment worsts: W2-W7@561 = 0.872304 | W1[561,699] = 0.424939 | W1[700,inf) = 0.911407
+  composed worst row bound on m >= 561 = 0.911407  ->  C*(m >= 561) = 18.2281 <= 20: True
+  m >= 1581: worst W2-W7 row = 0.65297 (W7), W1 tail bound = 0.205265
+  C*(m >= 1581) = 13.0594 <= 136: True   (headroom 10.41x)
+  (reference: SL4'-R certification at m = 401: C*_eff = 20 x 0.98909 = 19.782 <= 20)
+
+[E] eta-pricing interface (wave5_sl4pe Theorem E vs the ledger main row)
+  W1: J* = 0.7;  J* - REM* = 0.682942 vs quoted J0 = 0.682942 (match: True);  REM* <= 0.3 R31*^2: True
+  W7: J* = 4.752;  J* - REM* = 4.59597 vs quoted J0 = 4.59597 (match: True);  REM* <= 0.3 R31*^2: True
+  all 7 bands: J0 = J* - REM* consistent AND REM* <= 0.3 R31*^2: True
+  ledger main(W7) = R42*/2 + 0.3 R31*^2 + lam_max^2/2 = J*(W7) + 0.89^2/2 = 5.14805 (exact Fraction)
+  (exactly 4.752 + 0.39605 = 5.14805: True; the sl4pe maths referee's '5.148' is 3-dp display)
+
+[F] sliver far-entry headroom at the operative threshold + X.2 cap
+  far'(561, 4) = 4.556e-5  (slot 0.05; headroom 1097.6x  [SLV note: 4.556e-05, 1097.6x])
+  tau_0(0.89)/0.89 = 1.07372378 <= 1.074 (Cor X.2 edge): True
+
+== COMPOSED-CHAIN VERDICT ==
+  [A] harness/threshold: True  [B] rows@561: True  [C] W1 ladder: True  [D] C* budgets: True  [E] eta interface: True  [F] sliver/X.2: True
+  ALL CHECKS PASS: True
+  NOTE: this certifies the IMPLICATION chain and its constants only.
+  CL(79, 20, 0.89) at m >= 561 remains CONDITIONAL on the named open
+  hypotheses (S1)-(S4) of CL_composition_20260812.md sec 4 (SL1'-w(i),
+  SL1'-w(ii), SL4'-E-J = (E3), and the SL4'.6/.7 bootstrap seed).

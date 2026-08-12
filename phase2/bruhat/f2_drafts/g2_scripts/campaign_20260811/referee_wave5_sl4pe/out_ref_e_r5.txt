@@ -1,0 +1,32 @@
+== [1] Lemma E.4 point values (dps 60, K = 1200) ==
+  G_4(4)     = 0.23234829889039236846   (draft: 0.23234829889; > 0.23: True)
+  h_4(4)     = 5.4202116963816995327   (draft: 5.420211696; < 6: True)
+  6 - h_4(4) = 0.579788303618   (draft: 0.5798 / 0.579788)
+  G_4(0+) sanity: -4 pi^2 + 24 zeta(2) = 4.9784e-60 (should be 0)
+  G_4'(4.0) fd = 0.5797883036183 vs 6 - h_4 = 0.5797883036183 (match: True)
+  G_4'(6.0) fd = 2.72329791143773 vs 6 - h_4 = 2.72329791143773 (match: True)
+  G_4'(10.0) fd = 5.54583578481706 vs 6 - h_4 = 5.54583578481706 (match: True)
+  int_0^4 (6 - h_4) = 0.232348298890392 vs G_4(4) = 0.232348298890392 (match to quad tol: True)
+
+== [2] independent w* bisection (dps 60) ==
+  w* = 3.36717501284   (draft: 3.367175; < 4: True)
+  G_4(3.3) = -0.011689021  G_4(3.5) = 0.029293381
+
+== [3] Riemann-limit claims at w = 5 (finite-m phi-route truth) ==
+  m=2000: lam^3 s2 = 1.961863419 vs G_2(5) = 1.960829396 (gap 0.00103)
+         lam^4 k3 = 1.737615875 vs G_3(5) = 1.736197297 (gap 0.00142)
+         lam^5 k4 = 1.273193677 vs G_4(5) = 1.271247418 (gap 0.00195)
+  m=20000: lam^3 s2 = 1.960933027 vs G_2(5) = 1.960829396 (gap 0.000104)
+         lam^4 k3 = 1.736339137 vs G_3(5) = 1.736197297 (gap 0.000142)
+         lam^5 k4 = 1.271441991 vs G_4(5) = 1.271247418 (gap 0.000195)
+  limit at w=5: r31_lim = 0.88544026 (draft 0.88544), r42_lim = 0.64832128 (draft 0.64832), J_lim = 0.45984382 (draft 0.45984)
+
+== [4] limit-table spots, P-cap, actual tail vs claimed bound ==
+  w = 6: J_lim = 0.549866  (e3 quotes 0.54987)
+  w = 8: J_lim = 0.664271  (e3 quotes 0.66427)
+  w = 10: J_lim = 0.723267  (e3 quotes 0.72327)
+  w = 20: J_lim = 0.841874  (e3 quotes 0.84187)
+  w = 40: J_lim = 0.918414  (e3 quotes 0.91841)
+  w = 1000: J_lim = 0.99671  (e3 quotes 0.99671)
+  P(y)/(2 y^4) at y = 13.3: 0.689779 (<= 1: True); P monotone-ratio => cap holds for all y >= 13.3
+  actual tail (k in 301..500) = 3.05e-516; prover bound = 6.08e-516; actual <= bound: True

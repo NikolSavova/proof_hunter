@@ -1,0 +1,28 @@
+[V1] closed-form dx/dtau vs mp.diff (independent derivation check)
+  V1: m=401.0 lam=0.0100998 tau=0.9: closed=0.158353599 vs diff=0.158353599, rel=2.11e-51 : True
+  V1: m=5.0 lam=0.8 tau=1.0: closed=0.1552537793 vs diff=0.1552537793, rel=2.15e-51 : True
+  V1: m=4.494382 lam=0.89 tau=1.074: closed=0.1579927888 vs diff=0.1579927888, rel=2.11e-51 : True
+  V1: m=462.0 lam=0.00866017 tau=0.8: closed=0.1262565634 vs diff=0.1262565634, rel=0.0 : True
+[V2] EXTREME corner w=4, lam=0.89 (m=4/0.89=4.4944, unprobed by prover): full 4001-pt scan of [0.8, 1.074]
+  V2: min dx/dtau=0.111843, min g=0.0871773, min x=0.0157617, min M=1.5664172 (floor claim 1.9238*0.8=1.53904; also 1.9238*tau check below) : True
+  V2b: min over grid of [M - 1.9238 tau] = 0.000994342 > 0 : True
+[V3] random-box scan of D: 3000 quasirandom (w, lam, tau), w in [4, 400], lam in (0, 0.89], tau in [0.8, 1.074]
+  V3: violations = 0; min dx/dtau over sample = 0.154377 : True
+[V4] Cor X.2: r(u) = arcsin(sinh u)/u on (0, 0.445] -- monotone? >1? max?
+  V4: nondecreasing=True, min r=1.000000017 > 1, r(0.445)=1.07372378042 < 1.074 : True
+[V5] Cor X.3 numeric: left-endpoint sums vs true integrals (n=60, three W1 points)
+  V5: w=4.001: integral_n=1.0066112e-11 <= totn=1.1026295e-11; integral_d=1.5096746e-7 <= totd=1.6465281e-7 : True
+  V5: w=4.05: integral_n=6.0391598e-12 <= totn=6.633165e-12; integral_d=8.8509135e-8 <= totd=9.679462e-8 : True
+  V5: w=5.0: integral_n=3.916116e-16 <= totn=4.4872992e-16; integral_d=3.8178892e-12 <= totd=4.355788e-12 : True
+[V6] NX constants re-derived independently (dps 50)
+  V6a: y0 = 0.47793 (float check; exactness is Fraction-checked upstream) : True
+  V6b: 1-y0^2/6 = 0.96193048585 : True
+  V6c: psi(0.8) = 0.151696630044 : True
+  V6d: min(40/41, f(1.074)) = 0.975609756098 : True
+  V6e: 1.53904 > 1/log2 = 1.44269504089 : True
+  V6f: tau0(0.89)/0.89 = 1.0737237804176 : True
+  V6g: sinh(0.445) = 0.4598329599 : True
+[V7] hypothesis boundaries are REAL (out-of-domain sanity; record-only)
+  V7a: w=1.6, m=401: M(0.8) = 0.63999973 < 1 (x-formula P<0: floor needed) : True
+  V7b: w=4, m=5, tau in [4.5,6] (outside [0.8,1.074]): min dx/dtau = -0.13423 < 0 : True
+OVERALL: PASS

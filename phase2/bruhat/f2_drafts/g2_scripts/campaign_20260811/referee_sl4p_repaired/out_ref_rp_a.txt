@@ -1,0 +1,26 @@
+== [A1] true crossing wc(m) by bisection, m = 401..462 ==
+  m=401: wc = 4.0948783   w_dagger_grid = 4.095   (grid - true = 0.000122)
+  m=430: wc = 4.0411603   w_dagger_grid = 4.042   (grid - true = 0.00084)
+  m=461: wc = 4.0013685   w_dagger_grid = 4.002   (grid - true = 0.000632)
+  m=462: wc = 4.0002033   w_dagger_grid = 4.001   (grid - true = 0.000797)
+  crossing genuine (FAIL at wc-1e-6, PASS at wc+1e-6) failures: 0
+  wc nonincreasing over m = 401..462: True
+  SAFE DIRECTION wc(m) <= w_dagger_grid(m) for ALL m: True;  grid gap < 0.001 for ALL m: True
+
+== [A2] one-crossing attack: off-grid probes ABOVE wc(m), m = 401..462 ==
+  probes above the true crossing: 2790;  FAILs (row > 1): 0
+  worst (largest) row above crossing = 0.999993 at (m, w) = (401, '4.0948793')
+
+== [A3] m = 462 micro-window ==
+  true crossing wc(462) = 4.00020331
+  in (4.0002, 4.00021]: True
+  row(462, 4.00019) = 1.0001239  FAIL
+  row(462, 4.0002) = 1.0000308  FAIL
+  row(462, 4.00021) = 0.99993774  PASS
+
+== [A4] edge ladders at m = 461/462/463 ==
+  m=461: row(4+eps), eps=1e-15..1e-3: [FFFFFFFFFF]  row(4+1e-15) = 1.01282
+  m=462: row(4+eps), eps=1e-15..1e-3: [FFFFFFFFFP]  row(4+1e-15) = 1.0019
+  m=463: row(4+eps), eps=1e-15..1e-3: [PPPPPPPPPP]  row(4+1e-15) = 0.991128
+  m=463 ladder nonincreasing in w: True  (max at the open edge; draft Fact R.G's edge claim)
+  first m with PASS at w = 4+1e-15: 463   [draft/F2: 463]

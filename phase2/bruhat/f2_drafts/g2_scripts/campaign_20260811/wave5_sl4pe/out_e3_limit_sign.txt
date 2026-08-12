@@ -1,0 +1,21 @@
+== [1] Lemma E.4 certification ==
+  G_4(4) = 0.23234829889  (> 0.23: True); series tail (k > 300) < 6.08e-516
+  h_4(4) = 5.420211696  (< 6: True)
+  term-wise fact: x phi_5(x) - 4 phi_4(x) = sum_k k^3 e^{-kx} (kx - 4) >= 0
+  for x >= 4 (every summand >= 0), so h_4' = x^3 (4 phi_4 - x phi_5) <= 0:
+  h_4 on x = 4..12 step 1: 5.42021 4.44346 3.2767 2.20545 1.37775 0.810491 0.454164 0.244562 0.127413  decreasing: True
+  G_4'(w) = 6 - h_4(w) on [4, 40]: min over grid = 0.579788 (>= 6 - h_4(4) = 0.579788 for all w >= 4 by the term-wise fact)
+
+== [2] sign boundary w* of G_4 (record-only diagnostic) ==
+  G_4(3.3) = -0.011689 < 0 < G_4(3.5) = 0.0292934
+  w* = 3.367175  (the lam -> 0 kappa_4 sign boundary; in-band w > 4 clears it by 0.633 in w)
+
+== [3] lam -> 0 limit roadmap for hypothesis (E3): J_lim vs J0(W) ==
+  W1 : max J_lim = 0.45984 at w = 5.0 (r31_lim = 0.88544, r42_lim = 0.64832)  vs J0 = 0.6829: margin 32.7%
+  W2 : max J_lim = 0.54987 at w = 6.0 (r31_lim = 1.0729, r42_lim = 1.2027)  vs J0 = 1.1027: margin 50.1%
+  W3 : max J_lim = 0.66427 at w = 8.0 (r31_lim = 1.3477, r42_lim = 2.3039)  vs J0 = 1.9156: margin 65.3%
+  W4 : max J_lim = 0.72327 at w = 10.0 (r31_lim = 1.5177, r42_lim = 3.1603)  vs J0 = 2.5364: margin 71.5%
+  W5 : max J_lim = 0.84187 at w = 20.0 (r31_lim = 1.8031, r42_lim = 4.8188)  vs J0 = 3.6679: margin 77.0%
+  W6b: max J_lim = 0.91841 at w = 40.0 (r31_lim = 1.9104, r42_lim = 5.4623)  vs J0 = 4.1781: margin 78.0%
+  W7 : max J_lim = 0.99671 at w = 1000.0 (r31_lim = 1.9967, r42_lim = 5.9802)  vs J0 = 4.5960: margin 78.3%
+  w -> oo limit: r31 -> 2, r42 -> 6, J -> 1.0; the deep-tilt (lam -> 0.89) corner is the 2D W7 direction, measured in e2 [B]/[C] (J <= 1.332)

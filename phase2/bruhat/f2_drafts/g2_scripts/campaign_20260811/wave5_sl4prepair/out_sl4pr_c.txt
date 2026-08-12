@@ -1,0 +1,32 @@
+== [C1] Lemma R.1: cell-certified floor x(w, tau) >= 0.0176 on [0.8, 1.074] ==
+  theta_max = 1.074*2.5/561 = 0.0047861;  theta_max^2/6 = 3.81779e-6 <= epsM = 4e-6: True
+  (lam/2)_max^2/5 = 3.97177e-6 <= epsS = 4e-6: True
+  (1-epsM)^2/(1+epsS)^2 = 0.9999840001 >= 1 - eps_r = 0.999983: True
+  cells: 548 (width 0.0005);  all cell brackets positive: True
+  min cell lower bound = 0.0176601 at tau-cell [0.8, 0.8005]
+  CERTIFIED: x(w, tau) >= 0.0176 for all m >= 561, w in (4, 5], tau in [0.8, 1.074]: True
+  spot truth: x(4+1e-9, 0.8, 561) = 0.0177554  (floor 0.0176; the floor is tight at the (w -> 4+, tau = 0.8) corner)
+
+== [C2] Lemma R.2: analytic W1 tail, m >= 700, all w in (4, 5] ==
+  K_Xn = (sqrt(2pi)/pi)(1.074^3-0.8^3)/3 = 0.1933097 <= 0.19332: True
+  K_Xd = (sqrt(2pi)/pi)(0.274)         = 0.2186204 <= 0.21863: True
+  B(m) log-derivative 2.5/m - 0.0176 < 0 iff m > 142.045  -> B nonincreasing on m >= 143 (a fortiori on m >= 700)
+  m=700: B(m) = 11.1999;  dec_W1 = 1.23288;  W1 row bound = 0.911407  PASS  (margin 0.08859)
+  m=750: B(m) = 5.51947;  dec_W1 = 1.21481;  W1 row bound = 0.567346  PASS
+  m=800: B(m) = 2.68998;  dec_W1 = 1.19846;  W1 row bound = 0.394535  PASS
+  m=1000: B(m) = 0.139054;  dec_W1 = 1.14583;  W1 row bound = 0.231364  PASS
+  m=2000: B(m) = 1.78621e-8;  dec_W1 = 1.01524;  W1 row bound = 0.19761  PASS
+  m=5000: B(m) = 2.0696e-30;  dec_W1 = 0.899376;  W1 row bound = 0.175057  PASS
+  monotonicity of the m = 700 bound in m: every piece closed-form nonincreasing --
+    main: (5/m)^2/2 decreasing; 1/sqrt(0.28 m) entries decreasing;
+    mid(g=0.42): decreasing for A0 >= 6/0.42 = 14.29 (used A0 >= 196);
+    B: nonincreasing for m >= 143;  far: nonincreasing for m >= 75.
+  CERTIFIED: W1 row <= 0.91141 for ALL m >= 700 and ALL w in (4, 5]  [inputs: W.6 pointwise + Lemma R.1 + C.1 + A2 + SL1'-w + SL4'-E; NO SL4'-X]
+  why the grid rung [561, 699] is needed: B(561) = 74.389 vs the
+  available X-slot at m = 561 ~ 12.475 (flat-exponent bound too crude there)
+
+== [C3] sanity: tail bound vs X_w6 grid values at m = 700 (display only) ==
+  w=4.000000001: X_w6 Xn+Xd = 0.349849  vs  B(700) = 11.1999  (bound/actual = 32.01x)
+  w=4.5: X_w6 Xn+Xd = 2.77347e-5  vs  B(700) = 11.1999  (bound/actual = 4.038e+5x)
+  w=5.0: X_w6 Xn+Xd = 3.1967e-9  vs  B(700) = 11.1999  (bound/actual = 3.504e+9x)
+  tau0(lam) at m=561, w=5: 1.0000066 <= 1.074 (SL3.C): True

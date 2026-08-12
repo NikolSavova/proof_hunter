@@ -1,0 +1,27 @@
+== [B1] Lemma R.1 independent re-certification ==
+  theta_max^2/6 = 3.81779e-6 <= epsM: True
+  (lam/2)max^2/5 = 3.97177e-6 <= epsS: True
+  sinh(x) <= x(1+x^2/5) on (0,1]: check chain (x^2/6)/(1-x^2/20) <= x^2/5 iff x^2 <= 10/3: True;  spot sinh(1) = 1.1752 <= 1.2: True
+  (1-epsM)^2/(1+epsS)^2 = 0.99998400013 >= 1-eps_r: True
+  ncell = 548: min cell floor = 0.0176601 at tau1 = 0.8  >= 0.0176: True
+  ncell = 1096: min cell floor = 0.017707 at tau1 = 0.8  >= 0.0176: True
+  truth sweep min x = 0.0177554 at (m, w, tau) = (561, '4.000000001', '0.8')  >= 0.0176: True
+
+== [B2] Lemma R.2 independent + SL3'-load-bearing test ==
+  K_Xn = 0.19330967 (<= 0.19332: True);  K_Xd = 0.21862037 (<= 0.21863: True)
+  row bound(700, g=0.42 [SL3']) = 0.911407  [prover: 0.911407]
+  row bound(700, g=0.1317 [PROVED tier-1 only]) = 2.45039  -> SL3' load-bearing in Lemma R.2: True
+  first m with tier-1-only R.2 bound <= 1: 819
+
+== [B3] referee construction: per-cell-floor X bound (NO SL4'-X) on [561, 699] ==
+  m=561: per-cell-floor W1 row bound = 0.416537
+  m=600: per-cell-floor W1 row bound = 0.339696
+  m=650: per-cell-floor W1 row bound = 0.286564
+  m=699: per-cell-floor W1 row bound = 0.260103
+  ALL m in [561, 699]: per-cell-floor row bound <= 1: True  (worst 0.416537 at m = 561)
+  => the [561, 699] rung closes with NO SL4'-X and NO w-grid: the X bound is
+     w-uniform (exact w-cancellation) and uses only R.1's cell floors pointwise.
+  (record) m=463: per-cell-floor bound = 0.961058  (floors derived for m >= 561; eps audit extends: theta_max(463)^2/6 = 5.605e-6 <= 4e-6: False)
+  (record) m=470: per-cell-floor bound = 0.892417  (floors derived for m >= 561; eps audit extends: theta_max(463)^2/6 = 5.605e-6 <= 4e-6: False)
+  (record) m=500: per-cell-floor bound = 0.665013  (floors derived for m >= 561; eps audit extends: theta_max(463)^2/6 = 5.605e-6 <= 4e-6: False)
+  (record) m=540: per-cell-floor bound = 0.479253  (floors derived for m >= 561; eps audit extends: theta_max(463)^2/6 = 5.605e-6 <= 4e-6: False)

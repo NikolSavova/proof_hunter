@@ -1,0 +1,14 @@
+== [A] symbolic verification of Lemma E.1(ii)/(iii) ==
+  (ii)  N^2 - D - eps2[C_b b4 + C_a a^2] == 0 symbolically: True
+  (iii) A*eta - [lam^2/2 + rho1 A + (E/D)((C_b/24) r42 + (C_a/36) r31^2)] == 0: True
+
+== [B] independent exact re-derivation of the E.2 certificate, m >= 561 ==
+  W1 : REM* = 0.017058  J0 = 0.682942  upper-slack True  positivity True
+  W2 : REM* = 0.029319  J0 = 1.102681  upper-slack True  positivity True
+  W3 : REM* = 0.059380  J0 = 1.915620  upper-slack True  positivity True
+  W4 : REM* = 0.080548  J0 = 2.536452  upper-slack True  positivity True
+  W5 : REM* = 0.132066  J0 = 3.667934  upper-slack True  positivity True
+  W6b: REM* = 0.144939  J0 = 4.178061  upper-slack True  positivity True
+  W7 : REM* = 0.156030  J0 = 4.595970  upper-slack True  positivity True
+  all bands: upper-side REM* <= 0.3 R31*^2: True; positivity: True
+  independent exact J0 fractions == archived e1 fractions (all 7 bands): True

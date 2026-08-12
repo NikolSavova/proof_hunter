@@ -1,0 +1,19 @@
+== referee r1: independent exact recertification of Lemma E.2 ==
+  S0 = 1122800/7921 = 141.74977907, E0 = 0.0070546847
+  W1 : REM* = 0.017058068129  J0 = 0.682941931871  J0 == archived fraction: True  REM*<=0.3R31^2: True  pos: True
+       e2 float copy 0.0170581 is ABOVE exact (REMact side anti-conservative by 3.19e-08; J-check side conservative)
+  W2 : REM* = 0.029318577604  J0 = 1.102681422396  J0 == archived fraction: True  REM*<=0.3R31^2: True  pos: True
+       e2 float copy 0.0293186 is ABOVE exact (REMact side anti-conservative by 2.24e-08; J-check side conservative)
+  W3 : REM* = 0.059379577439  J0 = 1.915620422561  J0 == archived fraction: True  REM*<=0.3R31^2: True  pos: True
+       e2 float copy 0.0593796 is ABOVE exact (REMact side anti-conservative by 2.26e-08; J-check side conservative)
+  W4 : REM* = 0.080548451464  J0 = 2.536451548536  J0 == archived fraction: True  REM*<=0.3R31^2: True  pos: True
+       e2 float copy 0.0805485 is ABOVE exact (REMact side anti-conservative by 4.85e-08; J-check side conservative)
+  W5 : REM* = 0.132066143949  J0 = 3.667933856051  J0 == archived fraction: True  REM*<=0.3R31^2: True  pos: True
+       e2 float copy 0.132066 is BELOW exact (J-check side anti-conservative by 1.44e-07; REMact side conservative)
+  W6b: REM* = 0.144939416193  J0 = 4.178060583807  J0 == archived fraction: True  REM*<=0.3R31^2: True  pos: True
+       e2 float copy 0.144939 is BELOW exact (J-check side anti-conservative by 4.16e-07; REMact side conservative)
+  W7 : REM* = 0.156030179162  J0 = 4.595969820838  J0 == archived fraction: True  REM*<=0.3R31^2: True  pos: True
+       e2 float copy 0.15603 is BELOW exact (J-check side anti-conservative by 1.79e-07; REMact side conservative)
+  ALL J0 fractions match archived e1 output: True
+  ALL upper-side + positivity checks: True
+  R42+ = 2J* > R42* on every band: True

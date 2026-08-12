@@ -1,0 +1,27 @@
+== [B1] W1 row, every integer m in [463, 699] x 106-point w-probe set ==
+  m=463: max row over probes = 0.991128 at w = 4.0  PASS
+  m=470: max row over probes = 0.919951 at w = 4.0  PASS
+  m=480: max row over probes = 0.829864 at w = 4.0  PASS
+  m=500: max row over probes = 0.683781 at w = 4.0  PASS
+  m=520: max row over probes = 0.57355 at w = 4.0  PASS
+  m=540: max row over probes = 0.490371 at w = 4.0  PASS
+  m=560: max row over probes = 0.427634 at w = 4.0  PASS
+  m=561: max row over probes = 0.424939 at w = 4.0  PASS
+  m=580: max row over probes = 0.380329 at w = 4.0  PASS
+  m=600: max row over probes = 0.344648 at w = 4.0  PASS
+  m=640: max row over probes = 0.297313 at w = 4.0  PASS
+  m=699: max row over probes = 0.261345 at w = 4.0  PASS
+  FAIL count over all 25122 (m, w) probes: 0
+  X_w6 monotone-in-tau flag violations (SL4'-X audit, 25122 evaluations x 60 cells): 0
+  overall max row on the grid: 0.991128 at (m, w) = (463, 4.0)   [worst point = smallest m at the open w-edge]
+
+== [B2] fine w-scans (step 0.001), sentinels m = 463 / 561 / 699 ==
+  m=463: fails on scan = 0;  max over scan = 0.981966 at w = 4.001;  edge row(4+1e-9) = 0.991128  (margin 0.008872)
+  m=561: fails on scan = 0;  max over scan = 0.422318 at w = 4.001;  edge row(4+1e-9) = 0.424939  (margin 0.5751)
+  m=699: fails on scan = 0;  max over scan = 0.260946 at w = 4.001;  edge row(4+1e-9) = 0.261345  (margin 0.7387)
+
+== [B3] column m-monotonicity over m = 463..699, all w-columns of [B1] ==
+  columns: 106;  nonincreasing-in-m violations: 0
+
+  => W1 row <= 1 for every probed (m, w), m in [463, 699]; worst margin at
+     (463, 4+): see [B2]; monotone evidence: [B3] columns + [A1] w_dagger shape.

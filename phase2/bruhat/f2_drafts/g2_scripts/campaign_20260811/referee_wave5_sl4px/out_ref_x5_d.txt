@@ -1,0 +1,21 @@
+[RD1] ledger X-entry reproduction at (w = 4.30, m = 401, A = m)
+  Xn = 1.03249, Xd = 0.00385305, Xn+Xd = 1.0363 (draft/ledger: 1.0363), mono = True : OK
+
+[RD2] Cor X.3: left-endpoint sums vs true integrals (mp.quad)
+  w=  4.30 m= 401: totn 60/6000/int = 4.95516e-13 >= 4.45839e-13 >= 4.45356e-13 | totd = 6.44869e-9 >= 5.82711e-9 >= 5.82104e-9 | mono both: True : OK
+  w= 4.001 m= 462: totn 60/6000/int = 2.14065e-12 >= 1.93202e-12 >= 1.92999e-12 | totd = 4.26703e-8 >= 3.86777e-8 >= 3.86387e-8 | mono both: True : OK
+  w=   5.0 m= 401: totn 60/6000/int = 4.4873e-16 >= 3.92157e-16 >= 3.91612e-16 | totd = 4.35579e-12 >= 3.82304e-12 >= 3.81789e-12 | mono both: True : OK
+  w= 4.001 m= 561: totn 60/6000/int = 1.72679e-13 >= 1.52776e-13 >= 1.52583e-13 | totd = 5.10911e-9 >= 4.53983e-9 >= 4.5343e-9 | mono both: True : OK
+  w=   4.0 m=   5: totn 60/6000/int = 0.0970331 >= 0.096443 >= 0.096437 | totd = 0.175195 >= 0.174931 >= 0.174928 | mono both: True : OK
+
+[RD3] Remark R3 guard audit (guards never active on w >= 4)
+  guarded == raw at all 60 left endpoints of 7 cases: True
+
+[RD4] Section-6 consistency-note arithmetic vs wave-4 referee archive
+  m*inc = 401*1.78994e-5 = 0.007178 (draft: 7.2e-3) | draft cell = 0.000137 (draft: 1.37e-4)
+  referee interval length = 0.200009 (draft: ~0.20) | referee cell = 3.333e-5 (draft: ~3.33e-5) | ratio = 4.11 (draft: ~4.1)
+  scaled prediction = 0.001746 vs wave-4 referee ARCHIVED min dE at (4.05,401) = 0.001746
+  same scaling at (4.001,401): prediction 0.001688 vs ARCHIVED 0.001688
+  NOTE: wave-4 referee report's phrase '>= 1.7e-3' vs its own archived min 0.001688 at (4.001,401): REPORT-SIDE MIS-FLOOR (archive value below 1.7e-3)
+
+[RD] OVERALL: ALL OK

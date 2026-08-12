@@ -1,0 +1,11 @@
+== referee r2: envelope + pricing attack at hypothesis-boundary corners ==
+  cases run: 1764;  VIOLATIONS: 0
+  worst envelope fraction |eta/u - main|/REM* = 0.117173
+  worst pricing ratio |eta|/(price u)         = 0.976621
+  worst E.1(i)-vs-direct eta relative gap     = 9.936e-48
+
+== Prop E.3 point, independent recomputation (dps 60) ==
+  eta/u (direct)    = -1.0009637308
+  eta/u (algebraic) = -1.0009637308
+  price = 0.700032171;  |eta|/(price*u) = 1.4298825
+  hypothesis check: s2 >= S0: True; A = 157.08 >= 0.28*561 = 157.08: True; r31 = 1.0 = R31*(W1); r42 = 0; k4 >= 0
