@@ -1,0 +1,21 @@
+=== SL3' Stage 2, script B: Certificate E.5.3 (per-band cells) ===
+quadrature step D=0.001, tau-cell width 0.0025; eps_hat=0.000625
+band  gamma*  b(W)      q(W)     tau_c'   tau_start  cells(w x tau)  min delta_cert  ratio  PASS
+W1    0.42   0.002730  0.29825  0.4215   0.4150   200x154      0.036055   13.21x  PASS  worst cell (w1c,t1,t2)=(4.0, 0.41500000000000004, 0.41750000000000004)
+W2    0.42   0.002735  0.39208  0.4251   0.4200   200x152      0.036214   13.24x  PASS  worst cell (w1c,t1,t2)=(5.995, 0.7975000000000003, 0.8000000000000003)
+W3    0.40   0.002648  0.47231  0.4912   0.4850   200x126      0.041498   15.67x  PASS  worst cell (w1c,t1,t2)=(7.99, 0.7975000000000003, 0.8000000000000003)
+W4    0.40   0.002664  0.59214  0.4930   0.4875   200x125      0.028654   10.75x  PASS  worst cell (w1c,t1,t2)=(9.99, 0.7975000000000003, 0.8000000000000003)
+W5    0.38   0.002706  0.67152  0.5557   0.5500   500x100      0.032532   12.02x  PASS  worst cell (w1c,t1,t2)=(19.98, 0.7974999999999948, 0.7999999999999947)
+W6b   0.34   0.003131  0.83548  0.6801   0.6750   500x50      0.094264   30.11x  PASS  worst cell (w1c,t1,t2)=(39.96, 0.7974999999999974, 0.7999999999999974)
+W7    0.32   0.009844  0.91774  0.7326   0.7275   1x29      0.078395    7.96x  PASS  worst cell (w1c,t1,t2)=(40.0, 0.7974999999999985, 0.7999999999999985)
+ALL BANDS PASS: True
+
+E.7 small-lam budget recap (delta_cert vs b(W) = K1' lam_max^2 + eps_hat + 2gamma*/401):
+  W1  : certified delta_norm >= 0.036055 >= b = 0.002730  (headroom 13.21x)
+  W2  : certified delta_norm >= 0.036214 >= b = 0.002735  (headroom 13.24x)
+  W3  : certified delta_norm >= 0.041498 >= b = 0.002648  (headroom 15.67x)
+  W4  : certified delta_norm >= 0.028654 >= b = 0.002664  (headroom 10.75x)
+  W5  : certified delta_norm >= 0.032532 >= b = 0.002706  (headroom 12.02x)
+  W6b : certified delta_norm >= 0.094264 >= b = 0.003131  (headroom 30.11x)
+  W7  : certified delta_norm >= 0.078395 >= b = 0.009844  (headroom 7.96x)
+=== end script B ===

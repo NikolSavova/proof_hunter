@@ -1,0 +1,30 @@
+== (1) exact-rational b(W) audit:  b = (1.65-1.98g)/12 * lam_max^2 + 1/1600 + 2g/401 ==
+  W1  : b = 702473/257281600 = 0.002730366  (draft prints 0.002730; nearest-6dp of exact = 0.002730; match: True)
+  W2  : b = 17591833/6432040000 = 0.002735032  (draft prints 0.002735; nearest-6dp of exact = 0.002735; match: True)
+  W3  : b = 3407013/1286408000 = 0.002648470  (draft prints 0.002648; nearest-6dp of exact = 0.002648; match: True)
+  W4  : b = 685521/257281600 = 0.002664477  (draft prints 0.002664; nearest-6dp of exact = 0.002664; match: True)
+  W5  : b = 696289/257281600 = 0.002706330  (draft prints 0.002706; nearest-6dp of exact = 0.002706; match: True)
+  W6b : b = 805473/257281600 = 0.003130706  (draft prints 0.003131; nearest-6dp of exact = 0.003131; match: True)
+  W7  : b = 493431/50125000 = 0.009844010  (draft prints 0.009844; nearest-6dp of exact = 0.009844; match: True)
+
+== (2) independent E.5.3 rebuild, quadrature D = 0.0005 (draft used 0.001) ==
+band  b(W)      tau_start  min_delta_cert   draft_min   diff      PASS
+W1    0.002730  0.4150     0.036135       0.036055   +7.98e-05  PASS   worst cell (4.0, 0.41500000000000004, 0.41750000000000004)
+W2    0.002735  0.4200     0.036277       0.036214   +6.31e-05  PASS   worst cell (5.995, 0.7975000000000003, 0.8000000000000003)
+W3    0.002648  0.4850     0.041546       0.041498   +4.83e-05  PASS   worst cell (7.99, 0.7975000000000003, 0.8000000000000003)
+W4    0.002664  0.4875     0.028693       0.028654   +3.90e-05  PASS   worst cell (9.99, 0.7975000000000003, 0.8000000000000003)
+W5    0.002706  0.5500     0.032551       0.032532   +1.90e-05  PASS   worst cell (19.98, 0.7974999999999948, 0.7999999999999947)
+W6b   0.003131  0.6750     0.094273       0.094264   +8.90e-06  PASS   worst cell (39.96, 0.7974999999999974, 0.7999999999999974)
+W7    0.009844  0.7275     0.078400       0.078395   +5.19e-06  PASS   worst cell (40.0, 0.7974999999999985, 0.7999999999999985)
+ALL BANDS PASS (independent rebuild): True
+
+== (3) ground-truth delta_norm at worst-cell corners (mpmath quad, dps 25) ==
+  W1   worst cell (4.0, 0.41500000000000004, 0.41750000000000004): true delta_norm corners min = 0.046809  certified = 0.036135  concession = 0.010674  (cert <= truth: True)
+  W2   worst cell (5.995, 0.7975000000000003, 0.8000000000000003): true delta_norm corners min = 0.042416  certified = 0.036277  concession = 0.006139  (cert <= truth: True)
+  W3   worst cell (7.99, 0.7975000000000003, 0.8000000000000003): true delta_norm corners min = 0.048505  certified = 0.041546  concession = 0.006959  (cert <= truth: True)
+  W4   worst cell (9.99, 0.7975000000000003, 0.8000000000000003): true delta_norm corners min = 0.035130  certified = 0.028693  concession = 0.006437  (cert <= truth: True)
+  W5   worst cell (19.98, 0.7974999999999948, 0.7999999999999947): true delta_norm corners min = 0.037677  certified = 0.032551  concession = 0.005126  (cert <= truth: True)
+  W6b  worst cell (39.96, 0.7974999999999974, 0.7999999999999974): true delta_norm corners min = 0.098740  certified = 0.094273  concession = 0.004467  (cert <= truth: True)
+  W7   worst cell (40.0, 0.7974999999999985, 0.7999999999999985): true delta_norm corners min = 0.133585  certified = 0.078400  concession = 0.055185  (cert <= truth: True)
+lower-bound property holds at every probed corner: True
+== end r2 ==

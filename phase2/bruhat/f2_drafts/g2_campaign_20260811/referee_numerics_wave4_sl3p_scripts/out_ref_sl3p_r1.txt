@@ -1,0 +1,19 @@
+== ref_sl3p_r1: direct SL3' statement check, independent path (dps=30) ==
+m       w           tau    band    g* | slack        gamma_ach    | ratio
+points checked: 241   FAILs (slack<=0): 0
+worst gamma_ach/gamma* = 1.05921 at m=401 w=20.0 tau=0.8 (W5)
+  m=401 w=4.05     tau=0.8 [W1]: -2log|phi| = 76.8524292638  2 g* s2 t^2 = 65.570416  slack = 11.282  gamma_ach = 0.492265
+  m=401 w=4.9      tau=0.8 [W1]: -2log|phi| = 94.8723112958  2 g* s2 t^2 = 82.860004  slack = 12.0123  gamma_ach = 0.480888
+  m=401 w=20.0     tau=0.8 [W5]: -2log|phi| = 172.826134662  2 g* s2 t^2 = 163.16533  slack = 9.6608  gamma_ach = 0.402499
+  m=401 w=356.89   tau=0.8 [W7]: -2log|phi| = 180.828712165  2 g* s2 t^2 = 152.51474  slack = 28.314  gamma_ach = 0.379407
+  m=401 w=120.3    tau=0.8 [W7]: -2log|phi| = 192.423963529  2 g* s2 t^2 = 158.73629  slack = 33.6877  gamma_ach = 0.387912
+
+== large-m float64 sweep (worst-band probes) ==
+  m=200000 w=20        tau=0.80 [W5 g*=0.38]: slack=+4822.6569  gamma_ach=0.402547  ratio=1.0593  PASS
+  m=200000 w=20        tau=0.58 [W5 g*=0.38]: slack=+6992.8193  gamma_ach=0.442199  ratio=1.1637  PASS
+  m=200000 w=10        tau=0.80 [W4 g*=0.40]: slack=+4496.6049  gamma_ach=0.426155  ratio=1.0654  PASS
+  m=200000 w=5         tau=0.80 [W1 g*=0.42]: slack=+5975.8532  gamma_ach=0.479523  ratio=1.1417  PASS
+  m=200000 w=178000    tau=0.80 [W7 g*=0.32]: slack=+14064.8904  gamma_ach=0.378666  ratio=1.1833  PASS
+  m=200000 w=60000     tau=0.80 [W7 g*=0.32]: slack=+16675.0014  gamma_ach=0.385630  ratio=1.2051  PASS
+  m=1000000 w=20        tau=0.80 [W5 g*=0.38]: slack=+24113.2682  gamma_ach=0.402547  ratio=1.0593  PASS
+== end r1 ==

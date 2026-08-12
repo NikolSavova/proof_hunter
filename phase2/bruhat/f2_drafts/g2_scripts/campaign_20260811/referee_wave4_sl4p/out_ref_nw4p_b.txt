@@ -1,0 +1,40 @@
+== [B1] w_dagger(m) on the FULL integer grid m = 401..480 (w step 0.01, scan to 5.00, re-failure check) ==
+  m=401: w_dagger=4.10  refail-above: False
+  m=402: w_dagger=4.10  refail-above: False
+  m=403: w_dagger=4.09  refail-above: False
+  m=404: w_dagger=4.09  refail-above: False
+  m=405: w_dagger=4.09  refail-above: False
+  m=406: w_dagger=4.09  refail-above: False
+  m=407: w_dagger=4.09  refail-above: False
+  m=408: w_dagger=4.08  refail-above: False
+  m=409: w_dagger=4.08  refail-above: False
+  m=410: w_dagger=4.08  refail-above: False
+  m=420: w_dagger=4.06  refail-above: False
+  m=430: w_dagger=4.05  refail-above: False
+  m=440: w_dagger=4.03  refail-above: False
+  m=450: w_dagger=4.02  refail-above: False
+  m=460: w_dagger=4.01  refail-above: False
+  m=470: w_dagger=4.00  refail-above: False
+  m=480: w_dagger=4.00  refail-above: False
+  w_dagger nonincreasing over m=401..480: True;  rows with re-failure above w_dagger: 0
+
+== [B2] fine w-scan, m = 401, step 0.001 ==
+  w_dagger(401) to 3 dp = 4.095;  last failing w = 4.094;  re-failure above: False
+  row(401, 4.099) = 0.9729  row(401, 4.100) = 0.9665
+
+== [B3] w -> 4+ closure for m >= 462 (probe w = 4.0000001; draft checked only w = 4.001) ==
+  m in [462, 500] at w = 4.0000001: failures = [(462, 1.001894333018324)]
+  m=462: row(4.0000001)=1.0019  row(4.001)=0.9926
+  m=465: row(4.0000001)=0.9701  row(4.001)=0.9611
+  m=470: row(4.0000001)=0.9200  row(4.001)=0.9115
+  m=480: row(4.0000001)=0.8299  row(4.001)=0.8224
+  control m=461: row(4.0000001) = 1.0128 (expected FAIL > 1: True)
+
+== [B4] m-monotonicity, full integer grid 401..600 + 600..2000/50 (W1 at w = 4.3) ==
+  W1 : violations of nonincreasing-in-m: 0
+  W2 : violations of nonincreasing-in-m: 0
+  W3 : violations of nonincreasing-in-m: 0
+  W4 : violations of nonincreasing-in-m: 0
+  W5 : violations of nonincreasing-in-m: 0
+  W6b: violations of nonincreasing-in-m: 0
+  W7 : violations of nonincreasing-in-m: 0

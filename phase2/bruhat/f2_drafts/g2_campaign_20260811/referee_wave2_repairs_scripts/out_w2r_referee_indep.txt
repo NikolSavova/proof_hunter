@@ -1,0 +1,49 @@
+(1) independent E(u), mpmath nsum dps=50:
+ E(1) = 0.0040069275411257 inside rep1 bracket                        True
+   corrected print 0.00400692 <= E                                    True
+   original print 0.00400693 > E (unsafe)? True
+ E(2) = 0.0035871871437277 inside rep1 bracket                        True
+   corrected print 0.00358718 <= E                                    True
+   original print 0.00358719 > E (unsafe)? True
+ E(3) = 0.0030403586360313 inside rep1 bracket                        True
+   corrected print 0.00304035 <= E                                    True
+   original print 0.00304036 > E (unsafe)? True
+ E(4) = 0.0024899244245532 inside rep1 bracket                        True
+   corrected print 0.00248992 <= E                                    True
+   original print 0.00248992 > E (unsafe)? False
+ E(5) = 0.002006520248541 inside rep1 bracket                         True
+   corrected print 0.00200652 <= E                                    True
+   original print 0.00200652 > E (unsafe)? False
+ E(6) = 0.0016124067221762 inside rep1 bracket                        True
+   corrected print 0.00161240 <= E                                    True
+   original print 0.00161241 > E (unsafe)? True
+(2) pi bracket:
+ P_LO/Q < pi < P_HI/Q                                                 True
+(3) per-term monotonicity in p (endpoint validity):
+ term strictly decreasing in p at all spot (u,n)                      True
+(4) B_m / deficit / rho / R2 chain:
+   B_401*401 = 1.078693 (expect ~27/25 = 1.08)
+ B_401*401 in (1.06, 1.09)                                            True
+ rho(4) certified <= 0.72711                                          True
+   old print 0.7271 unsafe by 4.283e-06 (doc claims 4.8e-6)
+ gap in (4e-6, 5e-6)                                                  True
+ eps* >= 20/79.5                                                      True
+   R2 value = 1.029326 (doc: 1.029326)
+ R2 value >= 1.0292                                                   True
+ deficit(2) >= 0.0982 and old 0.0983 unsafe                           True
+(5) rep2 cross-checks:
+ bracket first positive at m = 82                                     True
+ bracket negative at m = 81 and 68                                    True
+   m0 table: {1: (9, 9), 5: (12, 12), 20: (17, 17), 42: (23, 23)}
+ m0 = 9/12/17/23 (disp) and same exact                                True
+ margin = 17363 + 14921/28458                                         True
+ 17363 <= margin < 17364                                              True
+(6) refm_a hand checks:
+   EX2(lam=0.1) = 190.3251 (out: 190.3251), Var = 99.9167 (out: 99.9167)
+ EX2 approx 190.3251                                                  True
+ Var approx 99.9167 and <= 121                                        True
+   M8 inequality failure root d* = 0.108194 (doc: 'fails from d ~ 0.107')
+ d* in (0.107, 0.11)                                                  True
+(7) C2: 1 - 0.0330*3.7^2 = 0.54823 >= 0.548
+ s2/lambda floor at w=3.7                                             True
+VERDICT: PASS

@@ -1,0 +1,22 @@
+[script B tau-edges] top edge per band:
+  W1: last edge = 0.80000000000000027  (0.8 - last = -2.220e-16); n_cells = 154 (printed 154)
+  W2: last edge = 0.80000000000000027  (0.8 - last = -2.220e-16); n_cells = 152 (printed 152)
+  W3: last edge = 0.80000000000000027  (0.8 - last = -2.220e-16); n_cells = 126 (printed 126)
+  W4: last edge = 0.80000000000000027  (0.8 - last = -2.220e-16); n_cells = 125 (printed 125)
+  W5: last edge = 0.79999999999999472  (0.8 - last = 5.329e-15); n_cells = 100 (printed 100)
+  W6b: last edge = 0.79999999999999738  (0.8 - last = 2.665e-15); n_cells = 50 (printed 50)
+  W7: last edge = 0.79999999999999849  (0.8 - last = 1.554e-15); n_cells = 29 (printed 29)
+[script C tau-edges]
+  last = 0.79999999999997573 (0.8 - last = 2.431e-14); cells = 440
+[script C lam-edges]
+  n_edges = 1192, rows = 1191; non-increasing consecutive pairs: 0
+  last lam edge = 0.89000000000000024 (0.89 - last = -2.220e-16)
+[script C part A lam-edges]
+  last = 0.89000000000000057 (0.89 - last = -5.551e-16); cells = 236
+[script B w-cells] top w per band:
+  W1: last w2c = 5.00000000000000000 (w_top - last = 0.000e+00)
+  W2: last w2c = 6.00000000000000000 (w_top - last = 0.000e+00)
+  W3: last w2c = 8.00000000000000000 (w_top - last = 0.000e+00)
+  W4: last w2c = 10.00000000000000000 (w_top - last = 0.000e+00)
+  W5: last w2c = 20.00000000000000000 (w_top - last = 0.000e+00)
+  W6b: last w2c = 40.00000000000000000 (w_top - last = 0.000e+00)

@@ -1,0 +1,23 @@
+== [D1] W1 row decomposition at w = 4.05, m = 401 (SS5 claims X-share 0.68, far-share 0.11) ==
+  tot = 1.3911 (FAIL expected, w below w_dagger) | dec-share = 0.2743  X-share = 0.9954  far-share = 0.1214
+  m*x(4.05, 0.8) = 7.6453 (draft: 7.65)
+
+== [D2] thin-margin rows at dps 100 ==
+  W5 : tot = 0.989087631073  <= 1: True  margin = 0.0109124  (quoted 0.9891)
+  W7 : tot = 0.980836120133  <= 1: True  margin = 0.0191639  (quoted 0.9808)
+  W2 : tot = 0.860082901566  <= 1: True  margin = 0.139917  (quoted 0.8601)
+
+== [D3] far-entry decrease threshold ==
+  5.5/0.0741 = 74.224  (draft: 'grows faster ... for m >= 75'; 74.23 <= 75 so the claim is safe-direction)
+
+== [D4] efac values on the acceptance grid ==
+  efac(0.05) = 1.0516
+  efac(0.06) = 1.06232
+  efac(0.08) = 1.08417
+  efac(0.10) = 1.10658
+  efac(0.15) = 1.16519
+  efac(0.25) = 1.29454
+  efac(0.4) = 1.52416
+  efac(0.8) = 2.44141
+  20 * 0.9891 = 19.782 (draft: 19.78 <= 20)
+  1/0.28 = 3.57143 (draft SS6: 'up to 3.57x')

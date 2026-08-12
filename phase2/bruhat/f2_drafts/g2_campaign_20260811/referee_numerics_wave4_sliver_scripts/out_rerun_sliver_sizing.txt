@@ -1,0 +1,20 @@
+[A] EXACT sizing certificate for the W1 far sliver (entry form: composite SS5.3 SL4' display; floor 0.0741 = A3(ii); cap m^3/w^2 = Lemma C.1 + sinh x >= x)
+  (i)  w-monotonicity: entry proportional to 1/w^3 -> sup at w = 4 (covers all w > 4, hence the whole sliver band (4, 4.51] and W1)
+  (ii) m-monotonicity (m >= 451): (452/451)^11 = 1.024662 < exp_lb(0.1482) = 1.159745 : True
+  (iii) far'(451, 4) <= 0.047550  <= 0.05 : True   (margin factor 1.0515)
+        far'(450, 4) >= 0.050586  >  0.05 : True   (boundary honesty: m0 = 450 is exact for this entry form)
+  CERTIFIED: far'(m, w) <= 0.05 for ALL integers m >= 451 and ALL w >= 4  [(i) + (ii) + (iii)]
+
+[B] EXACT harness coverage audit (checkpointed m560 run + honored prior rows)
+  FAIL rows anywhere: 0  
+  contiguous PASS coverage: m in [401, 560]  (gaps in [401, 560]: [])
+  last results_m560.txt row (verbatim): ' 560 156520  78260  78260   2.0405e-07 0.9980725915  1.07935   PASS'
+  M_H = 560;  sliver m-extent [401, 450] covered: True
+
+[C] FLOAT diagnostics (display-only)
+  far'(451, 4) ~ 4.755e-02   safety factor vs slot 0.05: 1.1x
+  far'(496, 4) ~ 2.859e-03   safety factor vs slot 0.05: 17.5x
+  far'(561, 4) ~ 4.556e-05   safety factor vs slot 0.05: 1097.6x
+  crude orphan floor qW(4.05) = 0.05045: same entry <= 0.05 only from m = 712  (the '~560-class' sizing; superseded because q(2,1) >= 0.0741 is PROVED via A3(ii))
+
+OVERALL: PASS

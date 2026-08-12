@@ -1,0 +1,21 @@
+== m = 401 ==
+  w=4.05 [W1]: |eta|/u=0.3547  price=0.7001  ratio=0.5067  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=0.2465  lead-resid/u^2=0.0166
+  w=4.5 [W1]: |eta|/u=0.4070  price=0.7001  ratio=0.5813  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=0.3858  lead-resid/u^2=0.0195
+  w=4.9 [W1]: |eta|/u=0.4503  price=0.7001  ratio=0.6432  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=0.5251  lead-resid/u^2=0.0214
+  w=5.5 [W2]: |eta|/u=0.5086  price=1.1321  ratio=0.4492  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=0.7523  lead-resid/u^2=0.0231
+  w=7 [W3]: |eta|/u=0.6172  price=1.9752  ratio=0.3125  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=1.3412  lead-resid/u^2=0.0221
+  w=9 [W4]: |eta|/u=0.6985  price=2.6173  ratio=0.2669  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=2.0124  lead-resid/u^2=0.0158
+  w=15 [W5]: |eta|/u=0.7975  price=3.8007  ratio=0.2098  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=3.0478  lead-resid/u^2=0.0051
+  w=30 [W6b]: |eta|/u=0.8917  price=4.3258  ratio=0.2061  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=3.6932  lead-resid/u^2=0.0035
+  w=60 [W7]: |eta|/u=0.9436  price=4.7632  ratio=0.1981  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=3.9789  lead-resid/u^2=0.0114
+  w=100 [W7]: |eta|/u=0.9621  price=4.7831  ratio=0.2011  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=4.1167  lead-resid/u^2=0.0326
+  w=200 [W7]: |eta|/u=0.9633  price=4.8764  ratio=0.1976  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=4.3672  lead-resid/u^2=0.1467
+  w=356.8 [W7]: |eta|/u=0.9285  price=5.1479  ratio=0.1804  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=4.9235  lead-resid/u^2=0.6039
+  ALL |eta| <= price*u: True;  worst ratio = 0.6432;  kappa_4 > 0 everywhere: True
+== m = 601 ==
+  w=4.05 [W1]: |eta|/u=0.3545  price=0.7000  ratio=0.5063  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=0.2460  lead-resid/u^2=0.0166
+  w=7 [W3]: |eta|/u=0.6170  price=1.9751  ratio=0.3124  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=1.3399  lead-resid/u^2=0.0221
+  w=60 [W7]: |eta|/u=0.9446  price=4.7570  ratio=0.1986  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=3.9670  lead-resid/u^2=0.0051
+  w=300 [W7]: |eta|/u=0.9687  price=4.8766  ratio=0.1986  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=4.3912  lead-resid/u^2=0.1476
+  w=534 [W7]: |eta|/u=0.9313  price=5.1467  ratio=0.1810  k4>0:True  ptwise(R42/2+0.3R31^2+lam^2/2)=4.9344  lead-resid/u^2=0.6030
+  ALL |eta| <= price*u: True;  worst ratio = 0.5063;  kappa_4 > 0 everywhere: True

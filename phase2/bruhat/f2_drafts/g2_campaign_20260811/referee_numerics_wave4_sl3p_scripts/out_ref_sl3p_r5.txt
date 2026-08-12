@@ -1,0 +1,6 @@
+dense scan: max ratio = 0.994269 at (lam, tau) = (1.0471526714161644e-07, 0.5750000000000005)
+analytic lam,tau->0 limit: (1-2g)/(12*K1) = 0.354191
+  ratio(lam=0.3, tau=1e-6) = 0.352603
+  ratio(lam=1e-6, tau=1e-6) = 0.354191
+  ratio(lam=1e-6, tau=0.8) = 0.354191
+  ratio(lam=0.3, tau=0.8) = 0.353066

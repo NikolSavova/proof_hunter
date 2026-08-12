@@ -1,0 +1,19 @@
+== [C1] cross-check vs prover nc2 at its own points (w = 4.9, 356.8; m = 401) ==
+  m=401 w=4.9 [W1]: |eta|/u=0.4503 price=0.7001 ratio=0.6432 k4>0:True <= 0.65 PASS(<=1)
+  m=401 w=356.8 [W7]: |eta|/u=0.9285 price=5.1479 ratio=0.1804 k4>0:True <= 0.65 PASS(<=1)
+
+== [C2] band RIGHT edges + w->4+ + exact-0.89 corner, m = 401 ==
+  m=401 w=4.001 [W1]: |eta|/u=0.3488 price=0.7000 ratio=0.4983 k4>0:True <= 0.65 PASS(<=1)
+  m=401 w=5.0 [W1]: |eta|/u=0.4606 price=0.7001 ratio=0.6579 k4>0:True ** > 0.65 ** PASS(<=1)
+  m=401 w=6.0 [W2]: |eta|/u=0.5505 price=1.1321 ratio=0.4863 k4>0:True <= 0.65 PASS(<=1)
+  m=401 w=8.0 [W3]: |eta|/u=0.6647 price=1.9752 ratio=0.3365 k4>0:True <= 0.65 PASS(<=1)
+  m=401 w=10.0 [W4]: |eta|/u=0.7235 price=2.6173 ratio=0.2764 k4>0:True <= 0.65 PASS(<=1)
+  m=401 w=20.0 [W5]: |eta|/u=0.8418 price=3.8012 ratio=0.2215 k4>0:True <= 0.65 PASS(<=1)
+  m=401 w=40.0 [W6b]: |eta|/u=0.9177 price=4.3280 ratio=0.2120 k4>0:True <= 0.65 PASS(<=1)
+  m=401 w=356.89 [W7]: |eta|/u=0.9284 price=5.1481 ratio=0.1803 k4>0:True <= 0.65 PASS(<=1)
+  worst ratio at the edge points = 0.6579   (draft SS0/SS3 claim 'never above 0.65 of its budget': FAILS at an off-sample point)
+
+== [C3] scope spot-checks: m = 402 (CL threshold parity) and m = 1000 ==
+  m=402 w=4.9 [W1]: |eta|/u=0.4503 price=0.7001 ratio=0.6432 k4>0:True <= 0.65 PASS(<=1)
+  m=402 w=5.0 [W1]: |eta|/u=0.4606 price=0.7001 ratio=0.6579 k4>0:True ** > 0.65 ** PASS(<=1)
+  m=1000 w=5.0 [W1]: |eta|/u=0.4601 price=0.7000 ratio=0.6573 k4>0:True ** > 0.65 ** PASS(<=1)

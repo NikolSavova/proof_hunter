@@ -1,0 +1,36 @@
+== [E1] W1 row at m = 401 under STATED SL3'-w gamma* = 0.25 (vs certified-at-0.42) ==
+  w=4.095: row(g=0.25)=1.1998 FAIL   row(g=0.42)=0.9992 PASS
+  w=4.10: row(g=0.25)=1.1671 FAIL   row(g=0.42)=0.9665 PASS
+  w=4.12: row(g=0.25)=1.0533 FAIL   row(g=0.42)=0.8527 PASS
+  w=4.14: row(g=0.25)=0.9622 PASS   row(g=0.42)=0.7616 PASS
+  w=4.16: row(g=0.25)=0.8893 PASS   row(g=0.42)=0.6887 PASS
+  w=4.18: row(g=0.25)=0.8310 PASS   row(g=0.42)=0.6304 PASS
+  w=4.20: row(g=0.25)=0.7843 PASS   row(g=0.42)=0.5837 PASS
+  w=4.25: row(g=0.25)=0.7043 PASS   row(g=0.42)=0.5037 PASS
+  w=4.30: row(g=0.25)=0.6584 PASS   row(g=0.42)=0.4579 PASS
+
+== [E2] w_dagger(401) as a function of the assumed gamma* (w step 0.005) ==
+  gamma* = 0.25: w_dagger(401) = 4.135
+  gamma* = 0.30: w_dagger(401) = 4.105
+  gamma* = 0.35: w_dagger(401) = 4.1
+  gamma* = 0.42: w_dagger(401) = 4.095
+
+== [E3] full-band closure m at w -> 4+ under gamma* = 0.25 (vs 463 at 0.42) ==
+  first m with row(m, 4.0; g=0.25) <= 1: 470
+
+== [E4] SL1'-w remark probe: 'W1 accepts C5* up to 0.4' at the sliver edge ==
+  w=4.10, C5*=0.05: row = 0.9665 PASS
+  w=4.10, C5*=0.4: row = 1.4695 FAIL
+  w=4.30, C5*=0.4: row = 0.9608 PASS
+  w=4.30, C5*=0.05: row = 0.4579 PASS
+
+== [E5] W2-W4 at weakened gammas (w-independent rows), m = 401 and m-monotone spot ==
+  W2 g=0.25 m=401: tot = 0.8983 PASS
+  W2 g=0.25 m=500: tot = 0.4230 PASS
+  W2 g=0.25 m=1000: tot = 0.2827 PASS
+  W3 g=0.20 m=401: tot = 0.7326 PASS
+  W3 g=0.20 m=500: tot = 0.5190 PASS
+  W3 g=0.20 m=1000: tot = 0.4232 PASS
+  W4 g=0.15 m=401: tot = 0.7908 PASS
+  W4 g=0.15 m=500: tot = 0.5735 PASS
+  W4 g=0.15 m=1000: tot = 0.4569 PASS

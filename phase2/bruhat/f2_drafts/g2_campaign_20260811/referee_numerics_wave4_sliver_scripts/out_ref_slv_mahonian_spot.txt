@@ -1,0 +1,28 @@
+[build] polynomial to m = 560 rebuilt independently in 13.1 s
+
+[R] spot rows, my independently formatted line vs results-file line (byte compare)
+  m=401 [results_m540.txt]: IDENTICAL
+  m=450 [results_m540.txt]: IDENTICAL
+  m=482 [results_m560.txt]: IDENTICAL
+  m=536 [results_m560.txt]: IDENTICAL
+  m=554 [results_m560.txt]: IDENTICAL
+  m=560 [results_m560.txt]: IDENTICAL
+
+[450] full exact certificate battery at the sliver boundary m = 450
+  N = 101025 (odd: True), mid = 50512, argmin(full scan) = 50512
+  C1 sym+pos: True;  C2 argmin==mid: True;  C3 min==central: True;  C4 odd tie: True
+  varfit(450) = 0.9976018257  > 187/216: True
+
+[C5/C6] exact varfit checks at the sampled m
+  C5 varfit > 187/216 at all sampled m: True
+  C6 strict increase across sampled pairs incl. resume boundaries 481->482, 495->496: True
+
+[F] footer checkpoint varfit values (12 digits) vs my exact recomputation
+  varfit(534) = 0.997978810615  vs footer 0.997978810615 : MATCH
+  varfit(535) = 0.997982586007  vs footer 0.997982586007 : MATCH
+  varfit(536) = 0.997986347205  vs footer 0.997986347205 : MATCH
+  varfit(537) = 0.997990094521  vs footer 0.997990094521 : MATCH
+  varfit(540) = 0.998001253256  vs footer 0.998001253256 : MATCH
+  varfit(560) = 0.998072591511  vs footer 0.998072591511 : MATCH
+
+OVERALL: PASS

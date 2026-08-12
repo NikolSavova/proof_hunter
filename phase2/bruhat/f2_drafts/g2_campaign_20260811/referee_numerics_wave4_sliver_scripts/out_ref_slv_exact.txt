@@ -1,0 +1,35 @@
+[T] mpmath dps-60 true values of far'(m, w)
+  far'(449, 4) = 0.0538141590231   vs slot 0.05 -> OVER  (slot/value = 0.9291235)
+  far'(450, 4) = 0.0505858773727   vs slot 0.05 -> OVER  (slot/value = 0.98841816)
+  far'(451, 4) = 0.0475499670526   vs slot 0.05 -> UNDER  (slot/value = 1.0515254)
+  far'(452, 4) = 0.0446950482422   vs slot 0.05 -> UNDER  (slot/value = 1.1186922)
+  far'(496, 4) = 0.00285873244578   vs slot 0.05 -> UNDER  (slot/value = 17.490269)
+  far'(555, 4) = 6.69797699943e-5   vs slot 0.05 -> UNDER  (slot/value = 746.49405)
+  far'(561, 4) = 4.55554829319e-5   vs slot 0.05 -> UNDER  (slot/value = 1097.5627)
+  far'(401, 4) = 1.01282484188   vs slot 0.05 -> OVER  (slot/value = 0.049366878)
+  far'(401, 4.51) = 0.706617995144   vs slot 0.05 -> OVER  (slot/value = 0.070759591)
+  far'(451, 4.51) = 0.0331742084105   vs slot 0.05 -> UNDER  (slot/value = 1.507195)
+  far'(450, 4.0000001) = 0.0505858735788   vs slot 0.05 -> OVER  (slot/value = 0.98841824)
+  quoted 4.755e-02 at m=451: true 0.04755; safety 1.0515x
+  quoted 2.859e-03 at m=496: true 0.002859; safety 17.49x
+  quoted 4.556e-05 at m=561: true 4.556e-5; safety 1097.6x
+
+[E] independent exact-Fraction certificate (different depths/brackets)
+  far'(451,4) <= 0.04754997  (<= 0.05: True; margin factor 1.0515)
+  far'(450,4) >= 0.05058588  (>  0.05: True)
+  (452/451)^11 = 1.024662452 < (1+0.1482/2^20)^(2^20) = 1.159744810 <= e^0.1482 : True
+  ((m+1)/m)^11 strictly decreasing in m: algebraic (log-derivative < 0) -> ratio < 1 for ALL m >= 451
+
+[S] single-crossing scan (floats for location; exact at the boundary)
+  stationary point of m^5.5 e^-0.0741m at m = 74.22 (< 401) -> strictly decreasing on [401, inf)
+  first integer m in [401, 460] with far'(m,4) <= 0.05: 451 (expect 451)
+  sparse tail m = 600..5000 all under slot: True
+
+[C-check] crude orphan floor and closure points
+  qW(4.05) = 0.050445  (draft prints 0.05045); m*qW at m=401: 20.23 (orphan quote 20.23)
+  crude-floor closure (this cap, w=4): m = 712  (draft: 712)
+  0.0741*401 = 29.7141  (composite quote 29.71)
+
+[N] note arithmetic: 536-450 = 86 ; 560-450 = 110 ; 0.05/0.047550 = 1.0515
+
+OVERALL: PASS (all assertions held)

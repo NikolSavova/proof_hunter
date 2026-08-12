@@ -1,0 +1,43 @@
+== [A1] independent ledger rebuild, m = 401, dps 60 (draft quotes 4 dp) ==
+  W1 : rebuilt=0.4578515  quoted=0.4579  |diff|<5e-5: True  PASS(<=1): True
+  W2 : rebuilt=0.8600829  quoted=0.8601  |diff|<5e-5: True  PASS(<=1): True
+  W3 : rebuilt=0.6584392  quoted=0.6584  |diff|<5e-5: True  PASS(<=1): True
+  W4 : rebuilt=0.5899293  quoted=0.5899  |diff|<5e-5: True  PASS(<=1): True
+  W5 : rebuilt=0.9890876  quoted=0.9891  |diff|<5e-5: True  PASS(<=1): True
+  W6b: rebuilt=0.8276761  quoted=0.8277  |diff|<5e-5: True  PASS(<=1): True
+  W7 : rebuilt=0.9808361  quoted=0.9808  |diff|<5e-5: True  PASS(<=1): True
+
+== [A2] W1 crossover: n = 60 vs n = 6000, monotonicity audit on fine grid ==
+  w=4.001 m=401: Xn(60)=28.5206 Xn(6000)=26.061 coarse>=fine: True  viol(6000-grid)=0  min dE=0.001688
+  w=4.05 m=401: Xn(60)=16.5421 Xn(6000)=15.0751 coarse>=fine: True  viol(6000-grid)=0  min dE=0.001746
+  w=4.10 m=401: Xn(60)=9.48639 Xn(6000)=8.62201 coarse>=fine: True  viol(6000-grid)=0  min dE=0.001804
+  w=4.30 m=401: Xn(60)=1.03249 Xn(6000)=0.928981 coarse>=fine: True  viol(6000-grid)=0  min dE=0.002024
+  w=4.90 m=401: Xn(60)=0.00165736 Xn(6000)=0.00145371 coarse>=fine: True  viol(6000-grid)=0  min dE=0.002574
+  w=5.0 m=401: Xn(60)=0.000594715 Xn(6000)=0.000519737 coarse>=fine: True  viol(6000-grid)=0  min dE=0.002653
+  w=4.001 m=462: Xn(60)=12.0646 Xn(6000)=10.8887 coarse>=fine: True  viol(6000-grid)=0  min dE=0.001944
+  w=4.05 m=461: Xn(60)=6.57373 Xn(6000)=5.91597 coarse>=fine: True  viol(6000-grid)=0  min dE=0.002008
+
+== [A3] exact E|He3|, E|He4| closed forms vs prover's 1.510/2.801 ==
+  E|He3| = 2 phi(0)+8 phi(sqrt3) = 1.510013   (prover 1.510)
+  E|He4| = 4[He3(z2)phi(z2)-He3(z1)phi(z1)] = 2.800600301   (prover 2.801)
+  exact budget: Theta+dHe+dq = 0.088374441 <= 0.09: True   1/(1-.) = 1.0969416 <= 1.10: True
+
+== [A4] efac 'iff' boundary: efac(C5) <= e  <=>  C5 <= 4(1-e^(-1/4)) ==
+  exact boundary = 0.88479687   (draft claims 0.8464; 0.8464 <= boundary: True -> claimed cutoff is SAFE but the 'iff' constant is wrong)
+  efac(0.8464) = 2.5882936 <= e: True
+  efac(0.8848) = 2.7182928 vs e = 2.7182818
+
+== [A5] A-monotonicity thresholds for dec entries (draft: 'decreasing on A >= 32') ==
+  mid[gam*=0.15 (W4 min)]: A^1.5 e^(-gA/4) decreasing iff A >= 40.0
+  mid[c1 = 0.1317 (tier-1)]: A^1.5 e^(-gA/4) decreasing iff A >= 45.5581
+  X-tier2: decreasing iff A >= 26.9087
+  actual minimum A0 used = 0.28*401 = 112.28 -> all entries decreasing ON THE USED RANGE; the flat 'A >= 32' claim is false for tier-1 mid on [32, 45.6)
+
+== [A6] named-constant roundings ==
+  48 sqrt(2pi)/pi = 38.29845892 <= 38.2985: True
+  8 sqrt(2pi)/pi = 6.383076486 <= 6.3831: True
+  cube exact 3840/1296*K = 2.364102402 <= 2.37: True
+  cross exact 384/144*K = 2.127692162 <= 2.13: True
+  k4^2-term exact coeff 945/1152 = 0.8203125; 0.56/sqrt(A) >= 0.8203/A iff A >= 2.14577 (draft says 'A >= 3': safe)
+  2 sqrt(2pi) = 5.013256549 <= 5.01326: True
+  m*x(4.05, 0.8, 401) = 7.6453   (draft SS5: 7.65)

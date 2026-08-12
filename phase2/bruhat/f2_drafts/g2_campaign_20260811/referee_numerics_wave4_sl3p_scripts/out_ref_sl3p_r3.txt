@@ -1,0 +1,15 @@
+== ref_sl3p_r3: E.6 adversarial probes ==
+(a) off-grid scan (609 lam x 195 tau x ~2065 x): min F(lam)-F(x) = +0.002673 at (lam,tau,x)=(0.30000, 0.58000, 0.60000)  PASS(>0): True
+    corner refine lam=0.30: min slack = +0.002673 at (tau,x)=(0.5800, 0.6000)   [draft's 'true corner slack ~0.004']
+(b) tail: max F(x), x in [7.85,60], all tau <= 0.8: +1.638786e-04  <= eps_t = 1.560224e-03: True
+    min F(lam) on [0.30,0.89]x[0.58,0.8] (fine grid): 0.066956  >= eps_t: True  (draft floor 0.066061)
+(c) condition C(lam, 0.58) continuous scan: min lhs/rhs = 1.1374 at lam=0.89000  (>1: True)  [cell-certified min was 1.1294]
+(d) tau <= 0.58 off-grid scan: min F(lam)-F(x) = +1.339e-06 at (0.3000, 0.013, 0.6000)  PASS(>0): True
+(e) fp arange top-edge audit:
+    script B B/W5 : last tau edge = 0.79999999999999472  (0.8 - last = 5.33e-15; appended-0.8: False)
+    script B B/W6b: last tau edge = 0.79999999999999738  (0.8 - last = 2.66e-15; appended-0.8: False)
+    script B B/W7 : last tau edge = 0.79999999999999849  (0.8 - last = 1.55e-15; appended-0.8: False)
+    script C: last tau edge = 0.79999999999997573 (0.8 - last = 2.43e-14); last lam edge = 0.89000000000000024 (0.89 - last = -2.22e-16); n_lam_edges = 1192 (printed rows = len-1 = 1191)
+    script C Part A: last lam edge = 0.89000000000000057 (0.89 - last = -5.55e-16)
+(f) coarse d-lam=0.002 rerun: min cell slack = -0.001559 at (0.3, 0.6194999999999956); cells<guard: 8913  -> recorded first-pass FAIL is REPRODUCED
+== end r3 ==

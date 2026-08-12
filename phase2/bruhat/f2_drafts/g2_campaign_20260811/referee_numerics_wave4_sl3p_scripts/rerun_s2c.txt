@@ -1,0 +1,9 @@
+=== SL3' Stage 2, script C: Certificate E.6 (W7 termwise) ===
+Part A: 236 lam-cells on [0.30,0.89], tau0=0.58:
+  min C-margin lhs/rhs = 1.1294 at lam-cell [0.8875,0.8900]  PASS=True
+Part B: 1191 lam-rows x 440 tau-cells, x-cells to 7.85:
+  min cell slack F_lb - max_x F_ub = 0.001448 at (lam1,tau1)=(0.3, 0.58)  cells<guard(1e-06): 0
+Part C: eps_t = 1/sinh^2(3.925) = 1.560224e-03; min F_lb over all part-B cells = 0.066061
+  floor/eps_t = 42.3x  PASS=True
+E.6 CERTIFIED (A and B and C): True
+=== end script C ===

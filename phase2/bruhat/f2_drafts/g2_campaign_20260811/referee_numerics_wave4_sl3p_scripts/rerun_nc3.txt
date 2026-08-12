@@ -1,0 +1,13 @@
+== sl3p_nc3: E.6 normalized slack + W7 split budget ==
+E.6 min [F(lam)-F(x)]/tau^2, lam in [0.25,0.89]: +0.005538 at lam=0.25 tau=0.10 x=0.500  (PASS (>0))
+E.6 min [F(lam)-F(x)]/tau^2, lam in [0.30,0.89]: +0.007921 at lam=0.30 tau=0.10 x=0.600  (PASS (>0))
+small-tau limit of normalized slack at (lam, x)=(0.30, 0.60): (1-2*0.32)*(h(0.3)-h(0.6)) = +0.007920
+W7 split budget, lam_split=0.30: delta*(W7)=0.08511 vs K1*lam_split^2 + V/401 = 0.00220  (headroom 39x)
+W7 split budget, lam_split=0.35: delta*(W7)=0.08511 vs K1*lam_split^2 + V/401 = 0.00283  (headroom 30x)
+
+consumer impact: SL4' honest mid' at A0 = c_A(W)*401:
+  W1 A0=112.28 gamma=0.4200: exp(-gamma*A0/4)=e^-11.79=7.585e-06  mid' = 0.008935
+  W1 A0=112.28 gamma=0.1317: exp(-gamma*A0/4)=e^-3.70=2.480e-02  mid' = 101.5
+  W4 A0=208.52 gamma=0.4000: exp(-gamma*A0/4)=e^-20.85=8.792e-10  mid' = 2.704e-06
+  W5 A0=240.60 gamma=0.3800: exp(-gamma*A0/4)=e^-22.86=1.184e-10  mid' = 4.74e-07
+  W7 A0=320.80 gamma=0.3200: exp(-gamma*A0/4)=e^-25.66=7.149e-12  mid' = 5.221e-08

@@ -1,0 +1,24 @@
+== ref_sl3p_r4: E.4a / E.4b direct inequality checks ==
+(a) E.4a slack = RHS - sum  (must be >= 0):
+  m=401   w=4.05    tau=0.8   g*=0.42: sum = -28.486769  RHS = -27.765497  slack = 0.721272  PASS
+  m=401   w=4.05    tau=0.3   g*=0.42: sum = 2.5038254  RHS = 2.5842811  slack = 0.0804557  PASS
+  m=401   w=4.05    tau=0.8   g*=0.32: sum = 7.2287908  RHS = 7.8671368  slack = 0.638346  PASS
+  m=401   w=5.0     tau=0.42  g*=0.42: sum = 1.5577396  RHS = 1.7156651  slack = 0.157926  PASS
+  m=401   w=20.0    tau=0.8   g*=0.38: sum = -6.3467742  RHS = -5.6958863  slack = 0.650888  PASS
+  m=401   w=40.0    tau=0.65  g*=0.34: sum = 0.2877628  RHS = 0.63379658  slack = 0.346034  PASS
+  m=401   w=120.3   tau=0.8   g*=0.32: sum = -0.25481148  RHS = 0.35767621  slack = 0.612488  PASS
+  m=401   w=120.3   tau=0.73  g*=0.32: sum = 0.029167871  RHS = 0.48877955  slack = 0.459612  PASS
+  m=401   w=120.3   tau=0.05  g*=0.32: sum = 0.0093527963  RHS = 0.011401236  slack = 0.00204844  PASS
+  m=2000  w=20.0    tau=0.8   g*=0.38: sum = -31.638193  RHS = -30.347946  slack = 1.29025  PASS
+  m=1000  w=300.0   tau=0.8   g*=0.32: sum = -0.25481148  RHS = 0.59718594  slack = 0.851997  PASS
+E.4a all cases PASS: True
+
+(b) E.4b corner + random off-grid:
+  g*=0.32: corner (0.3,0.8): F(0)-F(lam) = 0.00172251 <= K1' t^2 l^2 = 0.00487872 (ratio 0.3531); random 1e6 max ratio = 0.35675  PASS=True
+  g*=0.34: corner (0.3,0.8): F(0)-F(lam) = 0.00153137 <= K1' t^2 l^2 = 0.00468864 (ratio 0.3266); random 1e6 max ratio = 0.32794  PASS=True
+  g*=0.38: corner (0.3,0.8): F(0)-F(lam) = 0.00114909 <= K1' t^2 l^2 = 0.00430848 (ratio 0.2667); random 1e6 max ratio = 0.26964  PASS=True
+  g*=0.40: corner (0.3,0.8): F(0)-F(lam) = 0.000957952 <= K1' t^2 l^2 = 0.0041184 (ratio 0.2326); random 1e6 max ratio = 0.23500  PASS=True
+  g*=0.42: corner (0.3,0.8): F(0)-F(lam) = 0.000766813 <= K1' t^2 l^2 = 0.00392832 (ratio 0.1952); random 1e6 max ratio = 0.19580  PASS=True
+
+(c) 4.04*(1/4 + 1/401) = 1.020075  (draft prints '= 1.0202'; true value 1.020075 -> the '=' is a round-UP; <= 1.03 used in eps_env: True)
+== end r4 ==

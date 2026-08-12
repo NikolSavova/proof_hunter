@@ -1,0 +1,55 @@
+== [0] named-constant verification (Gaussian-moment integrals, mp.quad, dps 40) ==
+  R5 const: C5=0.05: direct=0.183067 <= claimed 0.183067 : True   [efac=1.0516 <= e=2.7183: True]
+  R5 const: C5=0.8: direct=6.800153 <= claimed 6.800153 : True   [efac=2.4414 <= e=2.7183: True]
+  cube const: direct=0.214918 <= claimed 2.37/sqrt(A)=0.215455 : True
+  cross consts: direct=0.200206 <= claimed (2.13+0.56)/sqrt(A)=0.244545 : True
+  mid Mills: direct=2.06325e-14 <= bound=2.06603e-14 : True
+  K_far = 2*sqrt(2pi) = 5.01326; K_mid = sqrt(2pi)/pi = 0.79788; 48*sqrt(2pi)/pi = 38.2985; 8*sqrt(2pi)/pi = 6.3831
+
+== [1] share-priced honest ledger, m = 401 (W1 reported at w = 4.30; sliver in [2]) ==
+ W1 : share*(1+q)=0.4579 PASS margin=+0.5421 | main=0.700[SL1'i+E] R5n=0.190[SL1'ii] cube=0.224 cross=0.195[SL1'i] mid=4.47e-03[SL3'] X=1.0363[W.6cert] far=2.03[A3+C.1] dens=0.0318
+ W2 : share*(1+q)=0.8601 PASS margin=+0.1399 | main=1.132[SL1'i+E] R5n=0.206[SL1'ii] cube=0.346 cross=0.395[SL1'i] mid=3.25e-04[SL3'] X=2.6480[A3-t2] far=1.04[A3+C.1] dens=0.0344
+ W3 : share*(1+q)=0.6584 PASS margin=+0.3416 | main=1.975[SL1'i+E] R5n=0.256[SL1'ii] cube=0.616 cross=0.932[SL1'i] mid=5.44e-05[SL3'] X=0.7184[A3-t2] far=0.6[A3+C.1] dens=0.0427
+ W4 : share*(1+q)=0.5899 PASS margin=+0.4101 | main=2.617[SL1'i+E] R5n=0.293[SL1'ii] cube=0.806 cross=1.353[SL1'i] mid=1.35e-06[SL3'] X=0.1045[A3-t2] far=0.253[A3+C.1] dens=0.0489
+ W5 : share*(1+q)=0.9891 PASS margin=+0.0109 | main=3.801[SL1'i+E] R5n=0.432[SL1'ii] cube=1.222 cross=2.404[SL1'i] mid=2.18e+00[A3-t1] X=0.0215[A3-t2] far=0.13[A3+C.1] dens=0.1060
+ W6b: share*(1+q)=0.8277 PASS margin=+0.1723 | main=4.328[SL1'i+E] R5n=0.740[SL1'ii] cube=1.310 cross=2.805[SL1'i] mid=7.27e-01[A3-t1] X=0.0029[A3-t2] far=0.0162[A3+C.1] dens=0.1331
+ W7 : share*(1+q)=0.9808 PASS margin=+0.0192 | main=5.148[SL1'i+E] R5n=4.052[SL1'ii] cube=1.367 cross=2.996[SL1'i] mid=1.33e-01[A3-t1] X=0.0001[A3-t2] far=0.00202[A3+C.1] dens=0.6768
+  W.6 exponent monotone-in-tau on all W1 evaluations: True
+
+== [2] W1 far sliver: w_dagger(m) = least w with W1 row PASS (scan step 0.01) ==
+  m=401: W1 PASS for w >= 4.1
+  m=410: W1 PASS for w >= 4.08
+  m=420: W1 PASS for w >= 4.06
+  m=430: W1 PASS for w >= 4.05
+  m=440: W1 PASS for w >= 4.03
+  m=445: W1 PASS for w >= 4.03
+  m=450: W1 PASS for w >= 4.02
+  m=460: W1 PASS for w >= 4.01
+  m=480: W1 PASS for w >= 4.0
+  m=500: W1 PASS for w >= 4.0
+  full-band closure at w = 4.001: first m with W1 PASS = 462
+
+== [3] m-monotonicity of the shares (W1 at w = 4.3) ==
+  W1 : shares at m=401/500/700/1000/2000 = 0.4579/0.2663/0.2400/0.2230/0.1976  nonincreasing: True
+  W2 : shares at m=401/500/700/1000/2000 = 0.8601/0.4170/0.3064/0.2827/0.2515  nonincreasing: True
+  W3 : shares at m=401/500/700/1000/2000 = 0.6584/0.5063/0.4560/0.4232/0.3743  nonincreasing: True
+  W4 : shares at m=401/500/700/1000/2000 = 0.5899/0.5335/0.4926/0.4569/0.4034  nonincreasing: True
+  W5 : shares at m=401/500/700/1000/2000 = 0.9891/0.7579/0.6589/0.6065/0.5300  nonincreasing: True
+  W6b: shares at m=401/500/700/1000/2000 = 0.8277/0.7275/0.6595/0.6066/0.5275  nonincreasing: True
+  W7 : shares at m=401/500/700/1000/2000 = 0.9808/0.9051/0.8153/0.7361/0.6172  nonincreasing: True
+
+== [4] minimal sufficient hypotheses per band (one-at-a-time, others at defaults) ==
+  W1 : min gamma* = 0.25 (0.1317 = PROVED tier-1); max C5* = 0.4 (subject to C5* <= 0.8464 for Lemma SL4'.3)
+  W2 : min gamma* = 0.25 (0.1317 = PROVED tier-1); max C5* = 0.2 (subject to C5* <= 0.8464 for Lemma SL4'.3)
+  W3 : min gamma* = 0.20 (0.1317 = PROVED tier-1); max C5* = 0.4 (subject to C5* <= 0.8464 for Lemma SL4'.3)
+  W4 : min gamma* = 0.15 (0.1317 = PROVED tier-1); max C5* = 0.4 (subject to C5* <= 0.8464 for Lemma SL4'.3)
+  W5 : min gamma* = 0.1317 (0.1317 = PROVED tier-1); max C5* = 0.10 (subject to C5* <= 0.8464 for Lemma SL4'.3)
+  W6b: min gamma* = 0.1317 (0.1317 = PROVED tier-1); max C5* = 0.4 (subject to C5* <= 0.8464 for Lemma SL4'.3)
+  W7 : min gamma* = 0.1317 (0.1317 = PROVED tier-1); max C5* = 0.8 (subject to C5* <= 0.8464 for Lemma SL4'.3)
+
+== [5] INFL/QUADF self-consistency budget (Lemmas SL4'.6-7) ==
+  total-perturbation bootstrap Theta = 20/m = 0.0499
+  Edgeworth-vs-Gaussian weight correction <= a3*E|He3|+b4*E|He4| = 0.0215*1.510+0.0009*2.801 = 0.0350
+  q-hat offset ratio |q0/q+- - 1| <= 1/(2 s2) <= 0.00353  (s2 >= 141.7497, A2(iii))
+  needed inflation 1/(1-Theta-dHe-dq) = 1.0969 <= INFL = 1.1: True
+  second-order absorption: (Theta+dHe+dq) = 0.0884 <= QUADF = 0.09: True

@@ -1,0 +1,39 @@
+== (1) MR-1: B.0(ii)-based all-m>=401 positivity floor for the R3 w^2-bracket ==
+   bracket(m) := 6.85*E4*(1 - 17*B_m - C_A/m^2) - B_m ; floor g(m) uses B_m <= 1.080/m (B.0(ii), proof-grade):
+   g(m) = 6.85*E4*(1 - 18.36/m - C_A/m^2) - 1.080/m   [18.36 = 17*1.080]
+   grid  : bracket(401) = 0.009575 ; floor g(401) = 0.009571 > 0: True
+   closed: bracket(401) = 0.009556 ; floor g(401) = 0.009551 > 0: True
+   g is term-by-term increasing in m (each of -1/m, -1/m^2 enters with negative sign),
+   spot-verified g(m+1) > g(m) at m in {401, 1000, 5000, 10^5}: True
+   => bracket(m) >= g(m) >= g(401) > 0 for ALL m >= 401, no scan (MR-1 discharged).
+
+== (2) MR-2/N-F2: the 27/25-recentring certificate, PROOF-GRADE ==
+   claim: 0 <= (27/25)/m - B_m <= 0.55/m^2 for all m >= 30
+   lower side = B.0(ii) upper bound B_m <= 1.080/m = (27/25)/m (g1_b, proof-grade).
+   upper side: q(m) := (11/20)/m^2 - (27/25)/m + B_m >= 0 for m >= 30 — polynomial certificate:
+   q(m) = N(m)/D(m), D(m) = 100*m**2*(m - 1)**2*(2*m + 5)**2 > 0 for m >= 2 (product of positive factors)
+   N(m) = 4*m**4 + 2568*m**3 + 2635*m**2 - 6582*m + 1375
+   real roots of N in [30, oo): 0 (total real roots: 4)
+   q(30) = 515527/2205450000 = 2.338e-04 > 0: True
+   => N has no sign change on [30, oo) and is positive at 30: q(m) >= 0 for ALL m >= 30: True
+   measured d(m) = ((27/25)/m - B_m)*m^2 (matches referee scans, safe direction):
+     m=    30  d = 0.3396
+     m=   100  d = 0.4773
+     m=   401  d = 0.5241
+     m=  2000  d = 0.5368
+     m=100000  d = 0.5399
+   exact limit of d(m) as m -> oo: 27/50 = 0.5400  (< 0.55: certificate is honest, not padded)
+   => two-sided O(m^-2) constant for the (27/25)-centered form: C_A + 0.55 (MR-2 flavor (b)).
+
+== (3) C5-erratum arithmetic (harness scope 5 <= m, not 4 <= m) ==
+   varfit(4) = 91/108 ; == 91/108: True ; < 187/216: True
+   varfit(5) = 7/8 ; == 7/8: True ; >= 187/216: True
+   varfit(6) = 187/216 ; == 187/216 (equality case): True
+   => C5 as displayed ('4 <= m <= 400') is FALSE at m = 4 and true on 5 <= m <= 400;
+      run_m200.py line 106 exempts m = 4 by design — display erratum only.
+
+== (4) N-F3: the two spec-point margin ratios (both correct, mixed in the text) ==
+   20/79.5 = 0.251572 ; eps* = 0.2583478 ; measured 0.0385
+   budget ratio  (20/79.5)/0.0385 = 6.53  -> '6.5x'
+   eps*  ratio   eps*/0.0385      = 6.71  -> '6.7x'
+DONE

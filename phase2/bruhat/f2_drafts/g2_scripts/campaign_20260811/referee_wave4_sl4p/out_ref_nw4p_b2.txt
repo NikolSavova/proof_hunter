@@ -1,0 +1,19 @@
+== [B2a] row(m, w = 4.0 exact) = lim_{w->4+} row(m, w), m = 459..470 ==
+  m=459: row(w->4+) = 1.035151  FAIL
+  m=460: row(w->4+) = 1.023904  FAIL
+  m=461: row(w->4+) = 1.012820  FAIL
+  m=462: row(w->4+) = 1.001895  FAIL
+  m=463: row(w->4+) = 0.991128  PASS
+  m=464: row(w->4+) = 0.980515  PASS
+  m=465: row(w->4+) = 0.970055  PASS
+  m=466: row(w->4+) = 0.959744  PASS
+  m=467: row(w->4+) = 0.949581  PASS
+  m=468: row(w->4+) = 0.939562  PASS
+  m=469: row(w->4+) = 0.929686  PASS
+  m=470: row(w->4+) = 0.919951  PASS
+
+== [B2b] m = 462 threshold: least w with PASS (step 1e-5) ==
+  w_dagger(462) = 4.00021
+
+== [B2c] first m with full closure at w -> 4+ ==
+  first m with row(m, 4.0) <= 1: 463  -> corrected trapezoid: m in [401, 462] (draft SS5/SS8 say [401, 461])

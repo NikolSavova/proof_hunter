@@ -1,0 +1,28 @@
+=== SL3' Stage 2, script A: closed-form constants ===
+(a) C_env = 4/(1-e^-2pi)^2 = 4.014981  (claimed <= 4.04: True)
+(b) min over u>=1.25 of e^(2pi u)/(4.04 u^2) = 408.075 (>=1: True)
+    derivative 2pi - 2/u > 0 for u > 1/pi: monotone increasing, so u=1.25 is the min: at u=1.25: 408.075
+(c1) (sinh^2 v - v^2)/(v^4/3) in [0.999645,1.003005]  (claim <= 1.01: True)
+(c2) (1-H(v))/(v^2/3)     in [0.995516,1.000021]  (claim in [0.99,1.01]: True)
+(c3) (1-S(u))/(u^2/3)     max = 1.000000  (claim <= 1, exact by alternating series sin^2 u >= u^2-u^4/3: True)
+(d) K1' verification, lam in (0,0.3], tau in (0,0.8]:
+    gamma*=0.32: K1'=0.08470  max (F(0)-F(lam))/(K1' tau^2 lam^2) = 0.35419  PASS=True
+    gamma*=0.34: K1'=0.08140  max (F(0)-F(lam))/(K1' tau^2 lam^2) = 0.32760  PASS=True
+    gamma*=0.38: K1'=0.07480  max (F(0)-F(lam))/(K1' tau^2 lam^2) = 0.26738  PASS=True
+    gamma*=0.40: K1'=0.07150  max (F(0)-F(lam))/(K1' tau^2 lam^2) = 0.23310  PASS=True
+    gamma*=0.42: K1'=0.06820  max (F(0)-F(lam))/(K1' tau^2 lam^2) = 0.19550  PASS=True
+(e) I_h = int_0^{pi/0.8=3.92699} h: right-sum lower 2.784022, left-sum upper 2.784029; certified I_h >= 2.7: True
+(f) Case-B constant c_B = 26.3415; min over w>=2pi of c_B/(4.04 w^3 e^-w) = 14.08  (>1: True)
+    (w^3 e^-w decreasing for w>3; value at w=2pi: 1.87141 < c_B)
+(g) E.5.2 spot grid: min G - 1/(2(1+tau^2)) = 0.000633 at (200.0, 0.05)  (>=0: True)
+(h) min[(1/lam+1) - 1/(1-e^-lam)] = 4.180233e-01 (>=0: True)
+    e^(-2pi/tau)/tau^2 monotone increasing on (0,0.8]: True; value at 0.8 = 6.065675e-04
+    eps_hat := max eps_env(tau)/tau^2 = 1.03 e^(-2.5pi)/0.64 = 6.247645e-04
+(i) E.6a spot check at tau0=0.58, gamma=0.32: condition C margins and direct F-domination
+    lam=0.30: C-margin = 1.2714 (>1 needed); direct min F(lam)-F(x) over tau<=0.58 = 0.000001
+    lam=0.45: C-margin = 1.2481 (>1 needed); direct min F(lam)-F(x) over tau<=0.58 = 0.000002
+    lam=0.60: C-margin = 1.2168 (>1 needed); direct min F(lam)-F(x) over tau<=0.58 = 0.000003
+    lam=0.75: C-margin = 1.1785 (>1 needed); direct min F(lam)-F(x) over tau<=0.58 = 0.000004
+    lam=0.89: C-margin = 1.1374 (>1 needed); direct min F(lam)-F(x) over tau<=0.58 = 0.000006
+(j) eps_t = 1/sinh^2(3.925) = 1.560224e-03 (claim <= 1.57e-3: True); 2pi/0.8 - 7.85 = 0.003982 > 0
+=== end script A ===
