@@ -1,0 +1,112 @@
+== [G] GUARDS: reproduce the wave-5 chain numbers before touching anything ==
+  old row(W2, 561) = 0.35065  [compose: 0.35065]  match: True
+  old row(W3, 561) = 0.48309  [compose: 0.48309]  match: True
+  old row(W4, 561) = 0.51831  [compose: 0.51831]  match: True
+  old row(W5, 561) = 0.709326  [compose: 0.70933]  match: True
+  old row(W6b, 561) = 0.699808  [compose: 0.69981]  match: True
+  old row(W7, 561) = 0.872304  [compose: 0.8723]  match: True
+  old R.2 bound(700) = 0.911407  [prover/referee: 0.911407]  match: True
+  old cell-rung row(561) = 0.416537  [referee M3: 0.416537]  match: True
+  min cell floor = 0.0176601  [R.1: 0.0176601]  >= 0.0176: True
+  truth r31/r42 (561, w=5.0) = 0.88636/0.65065  [e2: 0.8864/0.6506]
+  truth r31/r42 (561, w=499.29) = 2.124/6.3713  [e2: 2.1240/6.3713]
+  G_4(4) via integral = 0.2323483  [Lemma E.4: 0.2323483]
+  r31geo(0.89) = 2.13031  r42geo(0.89) = 6.41126  [STATUS geometric limits: 2.1303/6.4113]
+  ALL GUARDS OK: True
+
+== [T] TRUTH: per-band sup of r31/r42 over the band x {m >= 561} ==
+  W1 : sup@561 r31 = 0.88636 (edge), r42 = 0.65065 (edge);  m-direction at edge DEcreasing (561 >= 1000 >= 2500): r31 True, r42 True  [edge@2500: 0.88565/0.64884]
+  W2 : sup@561 r31 = 1.0739 (edge), r42 = 1.2058 (edge);  m-direction at edge DEcreasing (561 >= 1000 >= 2500): r31 True, r42 True  [edge@2500: 1.0731/1.2034]
+  W3 : sup@561 r31 = 1.3485 (edge), r42 = 2.3075 (edge);  m-direction at edge DEcreasing (561 >= 1000 >= 2500): r31 True, r42 True  [edge@2500: 1.3479/2.3047]
+  W4 : sup@561 r31 = 1.5184 (edge), r42 = 3.1636 (edge);  m-direction at edge DEcreasing (561 >= 1000 >= 2500): r31 True, r42 True  [edge@2500: 1.5178/3.1611]
+  W5 : sup@561 r31 = 1.8036 (edge), r42 = 4.8206 (edge);  m-direction at edge DEcreasing (561 >= 1000 >= 2500): r31 True, r42 True  [edge@2500: 1.8032/4.8191]
+  W6b: sup@561 r31 = 1.9114 (edge), r42 = 5.4653 (edge);  m-direction at edge DEcreasing (561 >= 1000 >= 2500): r31 True, r42 True  [edge@2500: 1.9104/5.4625]
+  W7 : max on 561-scan r31 = 2.124, r42 = 6.3713 (at the lam = 0.89 corner)
+       corner (m=561, lam=0.89): r31 = 2.12402, r42 = 6.3713
+       corner (m=1581, lam=0.89): r31 = 2.12809, r42 = 6.39713
+       corner (m=5000, lam=0.89): r31 = 2.12961, r42 = 6.4068
+       m-INcreasing toward the geometric limit: True;  all finite-m below limit: True;  geo curves lam-increasing on (0, 0.89]: True
+       => T31sup(W7) = r31geo(0.89) = 2.13031, T42sup(W7) = r42geo(0.89) = 6.41126 (sup, not attained)
+  NOTE (sl4pe-numerics F1): W1-W6b sups are attained AT m = 561 (m-direction decreasing,
+  checked above at three m per band edge); no uniform 5e-4 limit-gap budget is used anywhere.
+
+== [D] DESIGN: per-band equal-margin targets, x = min(row-cap @ 0.98, 1.35) ==
+  W1 : x_cap(row<=0.98) = 1.3515  x_used = 1.35  ->  R31* = 1.19 (margin 34.26%), R42* = 0.87 (margin 33.71%)
+  W2 : x_cap(row<=0.98) = 2.0515  x_used = 1.35  ->  R31* = 1.44 (margin 34.09%), R42* = 1.62 (margin 34.35%)
+  W3 : x_cap(row<=0.98) = 1.6626  x_used = 1.35  ->  R31* = 1.82 (margin 34.97%), R42* = 3.11 (margin 34.78%)
+  W4 : x_cap(row<=0.98) = 1.5936  x_used = 1.35  ->  R31* = 2.04 (margin 34.36%), R42* = 4.27 (margin 34.97%)
+  W5 : x_cap(row<=0.98) = 1.3241  x_used = 1.3241  ->  R31* = 2.38 (margin 31.96%), R42* = 6.38 (margin 32.35%)
+  W6b: x_cap(row<=0.98) = 1.3415  x_used = 1.3415  ->  R31* = 2.56 (margin 33.94%), R42* = 7.33 (margin 34.12%)
+  W7 : x_cap(row<=0.98) = 1.2753  x_used = 1.2753  ->  R31* = 2.71 (margin 27.21%), R42* = 8.17 (margin 27.43%)
+  (W7 designed with C5*(W7) = 0.50, the single (S2) adjustment -- block [S2];
+   W1 capped by BOTH its rungs: cell rung at 561 and Lemma R.2 tail at 700.)
+
+== [C] CHAIN CERTIFICATE with the new targets ==
+  m=561:  W2=0.455366  W3=0.666046  W4=0.718169  W5=0.976193  W6b=0.978293  W7=0.977247
+  m=601:  W2=0.432621  W3=0.652598  W4=0.705742  W5=0.951104  W6b=0.958647  W7=0.958568
+  m=1581:  W2=0.342146  W3=0.528123  W4=0.571056  W5=0.751978  W6b=0.75839  W7=0.755307
+  all W2-W7 rows at 561 <= 0.98: True;  m-monotone spot (561 >= 601 >= 1581): True
+  (structural m-monotonicity: every dec/far/X entry is the same closed form the
+   wave-4/5 referees certified nonincreasing on the used range; the new constants
+   scale terms without changing any m-dependence.)
+  W1 cell rung, every integer m in [561, 699]: worst = 0.485067 at m = 561;  all <= 1: True  (<= 0.98: True)
+  W1 Lemma R.2 tail (new constants): m=700: 0.976016  m=750: 0.630819  m=1000: 0.290501  m=1581: 0.258665   (B(m) nonincreasing for m >= 142.05)
+  COMPOSED worst row bound on m >= 561 = 0.978293  ->  C*(m >= 561) = 19.5659 <= 20: True
+  m >= 1581: worst row = 0.75839  ->  C*(m >= 1581) = 15.1678 <= 136: True  (headroom 8.966x)
+
+== [E] THEOREM E RE-CERTIFICATION (exact Fractions; port of e1) with new targets ==
+  W1 : J* = 0.85983  REM* = 0.0256747  J0 = 0.834155   REM* <= 0.3 R31*^2: True   positivity(D, qhat): True
+  W2 : J* = 1.43208  REM* = 0.0462312  J0 = 1.38585   REM* <= 0.3 R31*^2: True   positivity(D, qhat): True
+  W3 : J* = 2.54872  REM* = 0.0987854  J0 = 2.44993   REM* <= 0.3 R31*^2: True   positivity(D, qhat): True
+  W4 : J* = 3.38348  REM* = 0.132538  J0 = 3.25094   REM* <= 0.3 R31*^2: True   positivity(D, qhat): True
+  W5 : J* = 4.88932  REM* = 0.21647  J0 = 4.67285   REM* <= 0.3 R31*^2: True   positivity(D, qhat): True
+  W6b: J* = 5.63108  REM* = 0.247699  J0 = 5.38338   REM* <= 0.3 R31*^2: True   positivity(D, qhat): True
+  W7 : J* = 6.28823  REM* = 0.273469  J0 = 6.01476   REM* <= 0.3 R31*^2: True   positivity(D, qhat): True
+  exact J0 fractions: W1=63320252763861249576544966224633640226869/75909429765332682858941474977584762150000 ; W2=879388294106962962879484000336055381/634548491043900671404747032544021875 ; W3=143143213035814499117382663598630329462523/58427359773933438840534352584883238418750 ; W4=452697561698994348174388025847765939557057/139251184062688029907845730157370860137500 ; W5=277739640575519392230684785903223898735409/59436884447004223842557778927156160912500 ; W6b=248905173829345050327374529752047988782007/46235847183795735457640885156647743637500 ; W7=905116493848913634928319436280365703943/150482536489086318360659309145692550000
+  ALL Theorem-E side conditions hold at the new targets: True
+
+== [J] (S3) RECALIBRATION: measured J max (m = 561 scan) vs the NEW J0(W) ==
+  W1 : J_max(561) = 0.46032  vs J0_new = 0.834155   margin 44.82%
+  W2 : J_max(561) = 0.55032  vs J0_new = 1.38585   margin 60.29%
+  W3 : J_max(561) = 0.66463  vs J0_new = 2.44993   margin 72.87%
+  W4 : J_max(561) = 0.72358  vs J0_new = 3.25094   margin 77.74%
+  W5 : J_max(561) = 0.84252  vs J0_new = 4.67285   margin 81.97%
+  W6b: J_max(561) = 0.92059  vs J0_new = 5.38338   margin 82.9%
+  W7 : J_max(561) = 1.3258  vs J0_new = 6.01476   margin 77.96%
+  W7 geometric-limit J at the corner = 1.3326 vs J0_new = 6.01476  (margin 77.84%; J INcreases in m on W7 -- budget off the limit)
+
+== [B] BOOTSTRAP (referee M2 chord/monotone-iteration) at the NEW worst rows ==
+  d = dHe + dq = 0.0385273;  INFL/QUADF validity at m >= 561: 20/561 + d = 0.074178 <= 1 - 1/1.10 = 0.090909 (INFL) and <= 0.09 (QUADF): True
+  W2 @ m=561: tot = 0.45537  G(20/m) = 0.0158509 < 20/m = 0.0356506: True (margin 55.54%);  x_seed = 0.92147 >= 0.89: True
+  W3 @ m=561: tot = 0.66605  G(20/m) = 0.0231874 < 20/m = 0.0356506: True (margin 34.96%);  x_seed = 0.92147 >= 0.89: True
+  W4 @ m=561: tot = 0.71817  G(20/m) = 0.0250007 < 20/m = 0.0356506: True (margin 29.87%);  x_seed = 0.92147 >= 0.89: True
+  W5 @ m=561: tot = 0.97619  G(20/m) = 0.0339589 < 20/m = 0.0356506: True (margin 4.745%);  x_seed = 0.92147 >= 0.89: True
+  W6b @ m=561: tot = 0.97829  G(20/m) = 0.0340279 < 20/m = 0.0356506: True (margin 4.552%);  x_seed = 0.92147 >= 0.89: True
+  W7 @ m=561: tot = 0.97725  G(20/m) = 0.0339854 < 20/m = 0.0356506: True (margin 4.671%);  x_seed = 0.92147 >= 0.89: True
+  W1 @ m=700 (R.2 tail row): tot = 0.97602  G(20/m) = 0.026723 < 20/m = 0.0285714: True (margin 6.47%);  x_seed = 0.92007 >= 0.89: True
+  W1 @ m=561 (cell-rung row): tot = 0.48507  G(20/m) = 0.0168402 < 20/m = 0.0356506: True (margin 52.76%);  x_seed = 0.92147 >= 0.89: True
+  BOOTSTRAP closes from the (S4) seed 0.89 at every new worst row: True
+
+== [S2] (S2)-CONSISTENCY: C5* table and the single W7 adjustment ==
+  C5*(W): W1-W6b UNCHANGED = 0.05/0.06/0.08/0.10/0.15/0.25;  W7: 0.80 -> 0.50
+  kappa_5 leading-order C5 estimate at the W7 corner: m=561: 0.21153;  geometric limit: 0.21357  [recorded measured truth max: 0.2104]
+  => C5*(W7) = 0.50 keeps a 2.376x margin over the recorded W7 truth (was 3.802x); W1-W6b margins untouched.
+  ledger C5-acceptance with the NEW targets (largest C5 the row absorbs at row = 1):
+    W2 : acceptance C5 = 0.5722 = 9.536x of target 0.06
+    W3 : acceptance C5 = 0.5138 = 6.423x of target 0.08
+    W4 : acceptance C5 = 0.567 = 5.67x of target 0.1
+    W5 : acceptance C5 = 0.2179 = 1.453x of target 0.15
+    W6b: acceptance C5 = 0.3143 = 1.257x of target 0.25
+    W7 : acceptance C5 = 0.5556 = 1.111x of target 0.5
+    W1 : acceptance C5 = 0.08081 = 1.616x of target 0.05 (binding rung: R.2 @ 700)
+
+== FINAL TABLE (old -> new; margin = min clause margin vs truth sup over m >= 561) ==
+  W1 : R31* 1.0 -> 1.19  R42* 0.8 -> 0.87   old margins 12.82%/22.95%  ->  NEW 34.26%/33.71%   [min 33.71%]
+  W2 : R31* 1.2 -> 1.44  R42* 1.4 -> 1.62   old margins 11.75%/16.11%  ->  NEW 34.09%/34.35%   [min 34.09%]
+  W3 : R31* 1.5 -> 1.82  R42* 2.6 -> 3.11   old margins 11.24%/12.67%  ->  NEW 34.97%/34.78%   [min 34.78%]
+  W4 : R31* 1.7 -> 2.04  R42* 3.5 -> 4.27   old margins 11.96%/10.63%  ->  NEW 34.36%/34.97%   [min 34.36%]
+  W5 : R31* 2.0 -> 2.38  R42* 5.2 -> 6.38   old margins 10.89%/7.87%  ->  NEW 31.96%/32.35%   [min 31.96%]
+  W6b: R31* 2.1 -> 2.56  R42* 6.0 -> 7.33   old margins 9.87%/9.783%  ->  NEW 33.94%/34.12%   [min 33.94%]
+  W7 : R31* 2.2 -> 2.71  R42* 6.6 -> 8.17   old margins 3.272%/2.944%  ->  NEW 27.21%/27.43%   [min 27.21%]
+  WORST-BAND (S1) PROOF MARGIN: 27.21%  (was 2.94% -- W7 r42 vs its geometric limit)
+  C*(m >= 561) = 19.5659 <= 20;  C*(m >= 1581) = 15.1678 <= 136;  ALL CHECKS PASS: True
