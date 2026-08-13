@@ -449,6 +449,29 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: iterated blow-up improves candidate upper coefficient to 1/2 (Sihao + Codex)
+- **New theorem:** a vertical lexicographic composition `S[Q]` has exact profile formulas
+  `C=C(Q) sum_j c_j(S)|Q|^(j-1)`, the reflected cup formula, and
+  `W=|S|W(Q)+C(Q)U(Q) sum_{j>=2}v_j(S)|Q|^(j-2)`. Iterating a fixed `r`-point
+  template with largest cap/cup sizes `a,b` gives exact base-2 coefficient
+  `(a+b-2)/(2 log2 r)`.
+- **Optimization:** choose the balanced cap--cup extremal template of size
+  `binom(2k-4,k-2)` with `a=b=k-1`, then let `k` grow. This proves the candidate bound
+  `limsup log2 f(N)/(log2 N)^2 <= 1/2`, superseding both the row `0.721347...` and central-cell
+  `0.639326...` bounds. The cap--cup theorem also shows `1/2` is best possible among all fixed-
+  template vertical iterations.
+- **Verification:** `lexicographic_blowup.py` realizes the abstract composition with exact rational
+  coordinates, brute-enumerates all subsets in a 9-point case, and independently checks a 36-point
+  case by last-edge and endpoint DPs. Formula and audit agree at `(C,U,W)=(14136,14136,441399)`.
+  Self-contained proof: `proof_blowup_half.md`; updated full attack: `FULL_ATTACK.md`.
+- **Full problem remains open:** rigorous window is now `[1/4,1/2]`. Matching requires a weighted
+  endpoint-multiplicity theorem. A max-term/tropical simplification of the strong-glue recurrence was
+  tested and fails because additive path multiplicities carry essential entropy. The close graph
+  analogue (Székely 1984) also has a random upper coefficient `1/2` and a difficult lower gap.
+- **Novelty status:** targeted searches found no public convex-subset bound at `1/2`; Baek--Balko's
+  more general blow-ups are construction-size tools and do not enumerate total convex subsets.
+  Still required: independent line-by-line audit and MathSciNet/expert clearance. Spend ~$0 API.
+
 ### 2026-08-13 — ERDŐS #838 FULL-PROBLEM ATTACK: exact endpoint reduction; original limit still open (Sihao + Codex)
 - **Upper theorem hardened:** `proof_central.md` now constructs the rational strong glue explicitly,
   proves its orientation signs by a `>8` versus `<=4` slope separation, uses the exact

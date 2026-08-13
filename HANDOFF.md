@@ -129,36 +129,32 @@ this file; CLOSE = write the handoff + commit/push), plus `/load` (run the openi
 `/handoff` (run the close protocol) slash commands in `.claude/commands/`. API key relocated out of the
 repo (§0). SSH auth configured per-machine. **Run `/handoff` at the end of every working session.**
 
-**⭐ ERDŐS #838: CANDIDATE NEW UPPER CONSTANT (2026-08-12, Sihao + Codex ultracode).**
-The Tier-2 lane produced a complete candidate proof, exact-rational geometry certificate,
-arbitrary-precision DP audit, and public-source kill-search in `phase2/loop/erdos838/`.
-For `f(N)=min_{|P|=N} #{convex-position subsets of P}`, the construction uses one central
-Pascal cell, not the full row, and gives (all displayed logs base 2)
-`limsup log2(f(N))/(log2 N)^2 <= 1-1/(4 ln 2) = 0.6393262398...`, improving the
-explicit public upper coefficient `1`. The earlier whole-row idea gives only
-`1/(2 ln 2)=0.7213475...` and is sharp for that construction. Two independent audits agree:
-the exact cap recurrence is `C(m,i)=C(m-1,i)+(1+binom(m-1,i))C(m-1,i-1)`; every convex
-subset injects into `(upper cap, lower cup)`; and the central cell's actual convex-subset
-count has the same `0.639326...` exponent. Exact enumeration passed every cell through `m=5`
-and the three interior `m=6` cells; DP passed through `m=256`. The dated sweep found no
-matching bound, including exact/symbolic constants, citation neighborhoods, forum/blog/GitHub
-notes, and recent construction papers. **Status: high-confidence apparently novel partial
-result, NOT a solution of the requested limit. Remaining gate: MathSciNet/expert novelty check
-and human line-by-line proof review before public claim.** Main draft: `proof_central.md`;
-geometry: `agent_geometry/`; asymptotics: `agent_asymptotic/`; search:
-`prior_art_20260812.md`.
+**⭐ ERDŐS #838: CANDIDATE UPPER COEFFICIENT NOW `1/2` (2026-08-12→13, Sihao + Codex).**
+The earlier audited central-Pascal-cell bound `0.6393262398...` has been superseded by an iterated
+vertical lexicographic blow-up. For a fixed template `S` of size `r`, largest cap `a`, and largest
+cup `b`, the exact substitution formulas give asymptotic convex-subset coefficient
+`(a+b-2)/(2 log2 r)`. The cap--cup theorem makes this at least `1/2` for every fixed template;
+balanced Pascal cells approach equality. Hence the new self-contained candidate theorem is
+`limsup log2(f(N))/(log2 N)^2 <= 1/2`. The proof and exact formulas are in
+`phase2/loop/erdos838/proof_blowup_half.md`. `lexicographic_blowup.py` independently constructs
+the abstract order type, realizes it with exact rational coordinates, directly enumerates a
+9-point composition, and verifies a 36-point composition by unrelated endpoint DPs; both routes
+give `(C,U,W)=(14136,14136,441399)` in the 36-point test. The old `proof_central.md` remains useful
+as an audited single-cell lemma. No public source for the `1/2` convex-subset bound was found;
+Baek--Balko define more general blow-ups but do not enumerate all convex subsets. **Status:
+apparently novel partial result, not externally refereed, and NOT a full solution.**
 
-**Follow-up 2026-08-13 — full-problem attack, honest stopping point.** The upper proof is now
-self-contained down to an explicit rational strong-glue construction. `FULL_ATTACK.md` proves the
-exact endpoint identity
-`V(P)=1+N+sum_{s<t} c(s,t)u(s,t)`, gives an integer DP for those endpoint counts, and shows why
-every black-box ES/double-counting bootstrap is stuck at coefficient `1/4`. The missing full-solution
-lemma is now precise: a weighted endpoint-alignment inequality for realizable rank-3 signotopes.
-A complete Aichholzer order-type census gives exact minima `45,73,114,169` for `N=6,7,8,9`, below
-all decomposable constructions already at `N=6`; this kills the naive claim that Pascal cells are
-globally extremal. New artifacts: `order_type_audit.py`, `decomposable_dp.py`, `explore_lower.py`.
-**Still not a solution of the original limit question.** Best next attacks: weighted Baek--Balko
-down-set labels, SAT/CP-SAT signotope optimization, and enumeration of their generalized blow-ups.
+**Full-problem state.** The rigorous base-2 window is now `[1/4,1/2]`. `FULL_ATTACK.md` proves the
+exact endpoint identity `V(P)=1+N+sum_{s<t} c(s,t)u(s,t)`, explains the black-box `1/4` barrier,
+and isolates a matching `1/2` endpoint-multiplicity conjecture for realizable rank-3 signotopes.
+The most concrete lower lanes are: weighted Baek--Balko down-set labels; a matching theorem first
+for the strong-glue recurrence `(C,U,W)`; and planar convex-closure entropy. A naive tropical/max-
+term reduction of the decomposition recurrence fails because additive path multiplicities carry
+the exponent. The graph analogue (Székely 1984, total homogeneous subgraphs) has the same random
+upper coefficient `1/2` but a hard lower gap, warning that the matching lower may be genuinely
+deep. Complete small-order-type minima remain `45,73,114,169` for `N=6,7,8,9`. Immediate next gate:
+independent line-by-line proof audit + MathSciNet/expert novelty check, then pursue conditional
+endpoint alignment or search generalized blow-ups for a coefficient below `1/2`.
 
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good
@@ -415,9 +411,9 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   STRONG / 20 MEDIUM → skeptics left 2 STRONG / 4 MEDIUM** (the "first reads over-rate tractability"
   pattern, now measured at 29 verdict changes).
 - **Report: `problem-id/review/tier2_retag.md`** (+ `tier2_retag_raw.json`, all 96 rationales).
-- **The 2 STRONG:** (1) **`erdos:838`** — now ATTACKED: the row-glued construction was strengthened
-  to a single central Pascal cell, yielding the audited candidate upper coefficient
-  `1-1/(4 ln 2)=0.639326...`; see the 2026-08-12 block above and `phase2/loop/erdos838/`.
+- **The 2 STRONG:** (1) **`erdos:838`** — now ATTACKED: the central-Pascal-cell coefficient was
+  superseded by the iterated vertical blow-up candidate upper coefficient `1/2`; see the
+  2026-08-13 block above and `phase2/loop/erdos838/`.
   Public-source novelty sweep passed; MathSciNet/expert confirmation remains.
   (2) **`arxiv-openproblem:1003.3127v1#2`** — the pipeline's FIRST GREEN, now with a **verified candidate
   counterexample** (Bregman right-projections of a nonconvex curve under negative entropy: skeptic
@@ -499,12 +495,13 @@ spending to chase unconditional Theorem A.
   witness interval not recorded (re-scan u<6000 only if wanted for the writeup) — see
   `phase2/bruhat/results/run_B6-E6_segment_coverage.md`.
 - [ ] **(Tier-2) Build `phase2/loop/` for the remaining survivors** — `erdos:838` is DONE
-  (proof + exact geometry/DP + kill-search); per-problem dirs are still owed for the other five.
+  (candidate `1/2` upper proof + exact geometry/DP + kill-search; original limit still open);
+  per-problem dirs are still owed for the other five.
   Then the draft→referee→Lean fleet. See §3 Tier-2 block + `review/tier2_retag.md`.
 - [ ] **(Tier-2, FIRST) Novelty sweep for `1003.3127v1#2`** — page-by-page sweep of works citing
   the survey (the construction is a one-character tweak of the authors' own Example 3.3; skeptic +
   killsearch found no resolution but it is the residual risk). **`erdos:838` public-source sweep is
-  DONE**; only MathSciNet/expert confirmation remains.
+  DONE**; its `1/2` theorem still needs independent proof review plus MathSciNet/expert confirmation.
 - [ ] **(Bruhat) Harness extension m→200** (`mahonian.py` exact run, ~minutes) — covers the
   150<m<m₁ band g1_draft_b needs (= G4's plan).
 - [ ] **(Bruhat, optional) A₁₀ deep slab**: port the complement-BFS hot loop (`fast.py`) to C/Rust, or
@@ -572,11 +569,14 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
-### ⭐ 2026-08-12 — ERDŐS #838 CANDIDATE RESULT
-The full candidate theorem and rerunnable certificates are in `phase2/loop/erdos838/`.
-The next action on this lane is **human line-by-line review of `proof_central.md`**, followed by
-a MathSciNet/expert novelty check. Do not post the `0.639326...` coefficient publicly as novel
-until those two gates pass. No computation is running.
+### ⭐ 2026-08-13 — ERDŐS #838 CANDIDATE `1/2` UPPER RESULT
+Read `phase2/loop/erdos838/proof_blowup_half.md` and run
+`python3 phase2/loop/erdos838/lexicographic_blowup.py`. Before any public claim, obtain an
+independent line-by-line geometry/counting audit and complete the MathSciNet/expert novelty check.
+For the full problem, work from `FULL_ATTACK.md`: either prove endpoint multiplicity at coefficient
+`1/2` (first for the exact strong-glue recurrence) or use the general Baek--Balko blow-up to search
+for a construction below `1/2`. Do not describe the original limit problem as solved. No computation
+is running.
 
 ### ⛔ 2026-08-12 LATE (Sihao + Claude) — CAMPAIGN PAUSED. READ THIS BLOCK FIRST.
 **Authoritative ledger: `phase2/bruhat/f2_drafts/g2_campaign_20260811/CLOSURE_PLAN_v2_20260812.md`.**

@@ -41,43 +41,44 @@ The lower constant uses Suk's \(ES(k)=2^{k+o(k)}\) theorem and a
 double-counting argument.  The upper constant counts all subsets of size at
 most \(\log_2 N+O(1)\) in the classical Erdős--Szekeres construction.
 
-## Candidate new target
+## Candidate new upper theorem
 
 Prove the strict upper-window improvement
 
 \[
 \boxed{
 \limsup_{N\to\infty}\frac{\log_2 f(N)}{(\log_2 N)^2}
-\leq 1-\frac{1}{4\ln 2}=0.6393262398\ldots .
+\leq \frac12.
 }
 \]
 
-The construction uses the central cell
-\(T_{m,\lfloor m/2\rfloor}\) of the standard Morris--Soltan /
-Erdős--Szekeres Pascal construction. It has \(2^{m-o(m)}\) points. The new
-ingredient is to count its caps and cups recursively, then use the fact that
-every convex subset is determined by its upper cap and lower cup.
+The construction repeatedly replaces every point of a large balanced
+cap--cup extremal template by a thin vertical copy of the preceding iterate.
+The exact cap, cup, and convex-subset substitution formulas give coefficient
+\((a+b-2)/(2\log_2 r)\) for a fixed \(r\)-point template whose largest cap
+and cup have sizes \(a,b\). Balanced Pascal cells make this tend to \(1/2\).
+The earlier central-cell construction gives the weaker audited coefficient
+\(1-1/(4\ln2)=0.639326\ldots\).
 
 ## Verification / kill criteria
 
 The candidate bound dies if any of the following fails.
 
-1. A cap in a recursively glued Pascal cell can use an unrestricted cap in
-   one child and at most one point from the other child, giving the recurrence
-   in `proof_draft.md`.
-2. Convex subsets contained in one cell are bounded by the product of that
-   cell's cap and cup counts.
-3. The central cap rate is
-   \(A(1/2)=1/2-1/(8\ln2)\).
-4. The passage from \({m\choose\lfloor m/2\rfloor}\) points to arbitrary
-   \(N\) changes the leading coefficient.
+1. The thin vertical composition does not realize the four asserted classes
+   of orientation signs.
+2. A spanning convex subset can use more than one point in an intermediate
+   macro-block, or its occupied macro-blocks need not be convex.
+3. The exact substitution formula in `proof_blowup_half.md` misses a class
+   of caps, cups, or convex subsets.
+4. Iterating the formula does not have coefficient
+   \((a+b-2)/(2\log_2 r)\), or deletion to arbitrary \(N\) changes it.
 5. A fresh literature sweep finds the same or a stronger count already in
    print or in public notes.
 
-The underlying separated-union construction is stated in Morris--Soltan,
-*Bull. AMS* 37 (2000), Theorem 2.5 and its proof. The new proof is in
-proof_central.md; the independently audited row calculation remains in
-proof_draft.md as a weaker \(0.721347\ldots\) route.
+The new proof is in proof_blowup_half.md and its exact rational-coordinate
+audit is lexicographic_blowup.py. The independently audited central-cell and
+row calculations remain in proof_central.md and proof_draft.md as weaker
+routes.
 
 ## Primary links
 

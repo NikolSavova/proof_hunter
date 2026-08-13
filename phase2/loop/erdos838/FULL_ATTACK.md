@@ -1,303 +1,310 @@
-# Erdős 838: full-solution attack
+# Erdős 838: current full-solution attack
 
-> Status, 2026-08-13. The new upper theorem is proved in
-> proof_central.md. The original limit problem is **not** proved here.
-> This note reduces the missing lower bound to an exact weighted
-> cap/cup-multiplicity statement, records the \(1/4\) barrier for all
-> black-box Erdős--Szekeres double counts, and gives falsification data for
-> the most obvious extremal conjectures.
+> Status, 2026-08-13. There is now a self-contained candidate proof of the
+> unconditional upper coefficient \(1/2\), with an exact rational-coordinate
+> verification artifact. The original limit problem remains open. The
+> missing lower bound is isolated below as an endpoint-alignment theorem.
 
-All logarithms are base \(2\), except \(\ln\).
+All logarithms are base \(2\).
 
-## 1. What a full solution would now look like
+## 1. Rigorous window
 
-Write
-
-\[
- \kappa=1-\frac1{4\ln2}=0.639326239777\ldots .
-\]
-
-The central Pascal-cell construction proves unconditionally that
+Let \(f(N)\) be the minimum number of convex-position subsets in an
+\(N\)-point planar set in general position. The current candidate theorem in
+proof_blowup_half.md gives
 
 \[
- \limsup_{N\to\infty}
- \frac{\log f(N)}{(\log N)^2}\leq\kappa.             \tag{1}
+ \limsup_{N\to\infty}\frac{\log f(N)}{(\log N)^2}\leq\frac12. \tag{1}
 \]
 
-The cleanest possible completion is therefore the following multiplicity
-theorem.
+The proof iterates a thin vertical lexicographic blow-up of a balanced
+cap--cup extremal configuration. If a fixed template \(S\) has \(r\) points,
+largest cap \(a\), and largest cup \(b\), the iteration has the exact
+convex-subset coefficient
 
-> **Endpoint multiplicity conjecture.** Every \(N\)-point set \(P\) in
-> general position satisfies
-> \[
->  V(P)\geq
->  2^{\,(\kappa-o(1))(\log N)^2},                   \tag{EM}
-> \]
-> uniformly over \(P\).
+\[
+ \rho(S)=\frac{a+b-2}{2\log r}.                    \tag{2}
+\]
 
-Here \(V(P)\) counts all convex-position subsets; including or excluding
-sets of size at most two has no effect on the displayed exponent. Equation
-(EM), together with (1), would prove that the limit in Erdős 838 exists and
-equals \(\kappa\).
+The cap--cup theorem gives \(r\leq2^{a+b-2}\), so \(\rho(S)\geq1/2\) for
+every fixed template. The balanced Pascal cells make \(\rho(S)\to1/2\).
+Thus (1) is sharp within this entire construction class, not just for the
+particular templates used in the proof.
 
-This is a target, not yet a theorem. It may be false if a better construction
-exists. Two independent searches are therefore needed in parallel:
+The best currently available lower argument remains
 
-1. prove (EM), or a weaker improvement over \(1/4\);
-2. optimize the upper construction beyond Pascal cells.
+\[
+ \liminf_{N\to\infty}\frac{\log f(N)}{(\log N)^2}\geq\frac14. \tag{3}
+\]
 
-The exact reformulation below makes the first lane finite and algebraic.
+Hence the rigorous base-\(2\) window is
+
+\[
+ \boxed{\qquad \frac14\leq\liminf\leq\limsup\leq\frac12.\qquad} \tag{4}
+\]
+
+This does not prove that the limit exists.
 
 ## 2. Exact endpoint factorization
 
 After a small rotation, label the points
 \(p_1,\ldots,p_N\) by increasing \(x\)-coordinate. For \(s<t\), let
 
-* \(c(s,t)\) be the number of caps whose leftmost and rightmost points are
-  \(p_s,p_t\);
-* \(u(s,t)\) be the analogous number of cups.
+* \(c(s,t)\) be the number of caps with endpoints \(p_s,p_t\);
+* \(u(s,t)\) be the number of cups with endpoints \(p_s,p_t\).
 
-The two-point set \(\{p_s,p_t\}\) is counted once in each number.
-
-### Proposition 1 (exact identity)
+Pairs count once as both a cap and a cup. Every convex subset of size at
+least two has a unique upper cap and lower cup with the same endpoints, and
+the union of any such cap/cup pair is convex. Therefore
 
 \[
  \boxed{\quad
  V(P)=1+N+\sum_{1\leq s<t\leq N}c(s,t)u(s,t).
- \quad}                                             \tag{2}
+ \quad}                                             \tag{5}
 \]
 
-**Proof.** A convex subset of size at least two has unique leftmost and
-rightmost points. Its upper hull is a cap and its lower hull is a cup with
-those same endpoints. Conversely, take any cap and cup with common
-endpoints. Every interior point of the cap is strictly on one side of the
-endpoint line, and every interior point of the cup is strictly on the other,
-so their interiors are disjoint. The monotone-chain hull algorithm retains
-all their points, and their union is in convex position. These maps are
-inverse. The terms \(1+N\) account for the empty set and the singletons.
-\(\square\)
+The maps in (5) are inverse: the upper and lower hull chains recover the
+convex subset, while their interior vertices lie on opposite sides of the
+endpoint line. This identity has been checked against the complete
+Aichholzer order-type and convex-\(k\)-gon data through \(N=9\).
 
-This identity matters more than the coarser inequality
-\(V(P)\leq\#\mathrm{caps}\,\#\mathrm{cups}\) used for the upper construction:
-the full lower problem is precisely an **endpoint alignment** problem.
-
-### A finite dynamic program
-
-Let \(\chi(i,j,k)\in\{-,+\}\) be the orientation of
-\((p_i,p_j,p_k)\), for \(i<j<k\). Fix \(s\). Let \(C_s(i,j)\) count cap
-paths starting at \(s\) whose last two vertices are \(i,j\), and define
-\(U_s(i,j)\) similarly. Then
+For fixed \(s\), the endpoint counts are computed by
 
 \[
 \begin{aligned}
 C_s(s,j)&=U_s(s,j)=1,\\
 C_s(i,j)&=\sum_{\substack{s\leq h<i\\\chi(h,i,j)=-}}C_s(h,i),\\
-U_s(i,j)&=\sum_{\substack{s\leq h<i\\\chi(h,i,j)=+}}U_s(h,i)
-                                                        \tag{3}
+U_s(i,j)&=\sum_{\substack{s\leq h<i\\\chi(h,i,j)=+}}U_s(h,i), \tag{6}\\
+c(s,t)&=\sum_{i=s}^{t-1}C_s(i,t),\qquad
+u(s,t)=\sum_{i=s}^{t-1}U_s(i,t).
 \end{aligned}
 \]
 
-for \(s<i<j\), and
+Thus the full lower problem is exactly a weighted endpoint-alignment
+problem for realizable rank-three signotopes.
+
+## 3. The matching conjecture
+
+The clean completion of (1) would be
+
+> **Endpoint multiplicity conjecture.** Uniformly over all \(N\)-point sets
+> \(P\) in general position,
+> \[
+> \sum_{s<t}c(s,t)u(s,t)
+> \geq2^{(1/2-o(1))(\log N)^2}.                    \tag{EM}
+> \]
+
+Equation (EM) and (1) would prove that the limit in Erdős 838 exists and
+equals \(1/2\) in base \(2\), or \(1/(2\ln2)\) in the natural-log
+normalization.
+
+There are two useful intermediate targets. Write
 
 \[
-c(s,t)=\sum_{i=s}^{t-1}C_s(i,t),\qquad
-u(s,t)=\sum_{i=s}^{t-1}U_s(i,t).                    \tag{4}
+ C(P)=N+\sum_{s<t}c(s,t),\qquad
+ U(P)=N+\sum_{s<t}u(s,t).
 \]
 
-To justify the local recurrence, a cap is exactly an \(x\)-ordered chain
-whose consecutive slopes strictly decrease; a cup has consecutive slopes
-strictly increase. Thus (2)--(4) compute \(V(P)\) from the orientation signs
-alone in \(O(N^4)\) elementary integer operations. The script
-order_type_audit.py independently verifies (2) against the published
-convex-\(k\)-gon profiles for the extremal order types through \(N=9\), after
-enumerating every realizable order type at each of those sizes.
-
-## 3. Why the known lower bound stops at \(1/4\)
-
-Suk's theorem, sharpened in its error term by Holmsen--Mojarrad--Pach--Tardos,
-states
+A possible two-lemma route is
 
 \[
- ES(k)=2^{k+o(k)}.                                  \tag{5}
+ \log C(P)+\log U(P)
+ \geq(1/2-o(1))(\log N)^2,                         \tag{7}
 \]
 
-Choose \(t=ES(k)\). Every \(t\)-subset of an \(N\)-point set contains a
-convex \(k\)-subset. Counting pairs \((T,K)\), where \(K\subseteq T\),
-gives
+together with the conditional alignment statement
 
 \[
- \#\{\text{convex }k\text{-subsets}\}
- \geq\frac{\binom Nt}{\binom{N-k}{t-k}}
- =\frac{\binom Nk}{\binom tk}.                      \tag{6}
+ \log V(P)\geq\log C(P)+\log U(P)-o((\log N)^2)    \tag{8}
 \]
 
-Put \(t=N^{\alpha+o(1)}\). Equation (5) permits
-\(k=(\alpha+o(1))\log N\), and (6) gives
+whenever \(\log V(P)=O((\log N)^2)\). The condition in (8) is necessary:
+one can strongly glue a cup-heavy set on the left to a cap-heavy set on the
+right, making the reverse cap/cup masses badly anti-aligned, but that example
+already has exponentially many convex subsets and is harmless for (EM).
+
+Neither (7) nor (8) is currently proved.
+
+## 4. Why black-box Erdős--Szekeres stops at \(1/4\)
+
+The modern Erdős--Szekeres theorem says
+
+\[
+ ES(k)=2^{k+o(k)}.                                 \tag{9}
+\]
+
+Take \(T=N^\alpha\). Every \(T\)-subset contains a convex
+\((\alpha-o(1))\log N\)-subset. Double-counting the pairs consisting of a
+\(T\)-set and one selected witness gives
 
 \[
  \log f(N)\geq
  \bigl(\alpha(1-\alpha)-o(1)\bigr)(\log N)^2.
 \]
 
-The maximum is \(1/4\), at \(\alpha=1/2\).
+The maximum is \(1/4\), at \(\alpha=1/2\). Recursively inserting the same
+bound at the smaller scale does not amplify the coefficient: the entropy
+gained inside the sample is exactly offset by the reduced number of
+extensions back to \(P\).
 
-This is not merely a poor choice of scale. Any argument that treats (5) as
-a black-box statement saying only “each \(t\)-set contains one witness” has
-the same variational term \(\alpha(1-\alpha)\). Even recursively inserting
-a lower bound \(f(t)\geq2^{(c-o(1))(\log t)^2}\) does not amplify \(c\).
-After discarding subset sizes below
-\((c\alpha-o(1))\log N\) and double-counting the rest, the best exponent
-obtainable is
+Positive-fraction Erdős--Szekeres theorems do not currently help. The best
+known quantitative constants lose \(2^{\Theta(k)}\) in cluster size; even an
+idealized loss \(2^k\) merely reproduces \(1/4\). A matching proof must count
+many compatible witnesses or exploit endpoint sharing.
+
+## 5. Construction theorem and audit
+
+For point sets \(S,Q\) whose two coordinates increase, replace every point
+of \(S\) by a sufficiently thin almost-vertical copy of \(Q\). Write the
+composition as \(S[Q]\). If \(c_j(S),u_j(S),v_j(S)\) are the cap, cup, and
+convex profiles of \(S\), and \(n=|Q|\), the exact formulas are
 
 \[
- c\alpha^2+c\alpha(1-\alpha)=c\alpha\leq c.         \tag{7}
+\begin{aligned}
+C(S[Q])&=C(Q)\sum_{j\geq1}c_j(S)n^{j-1},\\
+U(S[Q])&=U(Q)\sum_{j\geq1}u_j(S)n^{j-1},           \tag{10}\\
+W(S[Q])&=|S|W(Q)+C(Q)U(Q)\sum_{j\geq2}v_j(S)n^{j-2}.
+\end{aligned}
 \]
 
-Thus matching (1) requires a multiplicity or stability input that remembers
-how cap and cup paths share endpoints. More averaging cannot do it.
+A spanning cap can expand only its first macro-block; a spanning cup only
+its last. A spanning convex subset expands its first block to a cap and its
+last to a cup, while every intermediate occupied block contributes exactly
+one point. Its occupied macro-blocks form a convex subset of \(S\).
 
-## 4. The precise missing lemma
+The independent script lexicographic_blowup.py:
 
-The orientations of a planar point set form a rank-three realizable
-signotope: for every \(a<b<c<d\), the sequence
+1. constructs the abstract composition signs;
+2. realizes them with exact rational coordinates;
+3. evaluates (10);
+4. independently counts caps/cups by last-edge dynamic programming;
+5. independently counts convex subsets by (5).
+
+For \(S=Q=T_{4,2}\), a 36-point configuration, both routes return
+
+\[
+ (C,U,W)=(14136,14136,441399).
+\]
+
+## 6. Lower-bound lanes that still look viable
+
+### 6.1 Weighted down-set/signotope induction
+
+The orientation signs satisfy the one-change axiom: for every
+\(a<b<c<d\), the four signs
 
 \[
  \chi(a,b,c),\ \chi(a,b,d),\ \chi(a,c,d),\ \chi(b,c,d)
 \]
 
-has at most one sign change. Baek and Balko use exactly this language in
-their 2025 work on split polygons. Their key distinction is also exactly
-ours: a split polygon has cap and cup chains sharing one endpoint, whereas a
-convex polygon has chains sharing both endpoints.
+have at most one sign change. Existing cap--cup proofs label vertices by
+down-sets generated from pairs of longest red/blue path lengths. The desired
+upgrade is to replace longest lengths by the full path-count vectors in
+(6), then prove a nesting or majorization statement strong enough for
+(7)--(8).
 
-In terms of (3)--(4), the desired theorem is the weighted signotope
-inequality
+The obstacle is precise: unweighted labels prove that some long paths
+exist, but they forget how much red and blue path mass reaches the same
+left/right endpoint pair.
 
-\[
- \sum_{s<t}c(s,t)u(s,t)
- \geq
- 2^{\,(\kappa-o(1))(\log N)^2}.                    \tag{8}
-\]
+### 6.2 Strongly decomposable sets
 
-The most promising proof architecture is:
-
-1. **Weighted down-set labels.** Replace the longest-path pair used in the
-   cap--cup and split-polygon theorems by the full path-count vectors in
-   (3). The one-change axiom should impose nesting or majorization on these
-   vectors.
-2. **Endpoint-alignment lemma.** Prove that cap mass and cup mass cannot be
-   asymptotically disjoint over their left endpoints. A loss
-   \(2^{O(\log N\log\log N)}\) is harmless; a loss
-   \(2^{\Theta((\log N)^2)}\) is not.
-3. **Entropy optimization.** Once alignment is available, the same
-   binomial entropy integral as in the Pascal-cell upper bound should yield
-   \(A(1/2)+A(1/2)=\kappa\).
-
-This is the point at which a proof currently stops. One cannot expect an
-argument using only unconstrained two-colorings: Baek--Balko exhibit abstract
-colorings where even the corresponding sharp weak-polygon existence
-statement fails. The one-change/signotope constraint, or still more of
-realizability, must be used essentially.
-
-## 5. Construction-side control experiment
-
-For a strongly decomposable set \(P=A\prec B\), let \(C,U,W\) count its
-nonempty caps, cups, and convex subsets. The exact recurrences are
+For a strong glue \(P=A\prec B\), exact nonempty counts satisfy
 
 \[
 \begin{aligned}
 C(P)&=C(B)+(1+|B|)C(A),\\
-U(P)&=U(A)+(1+|A|)U(B),\\
-W(P)&=W(A)+W(B)+C(A)U(B).                          \tag{9}
+U(P)&=U(A)+(1+|A|)U(B),                            \tag{11}\\
+W(P)&=W(A)+W(B)+C(A)U(B).
 \end{aligned}
 \]
 
-The last identity follows because every spanning convex subset is uniquely a
-nonempty cap in \(A\) united with a nonempty cup in \(B\). It reduces
-optimization over every binary decomposable construction to a Pareto dynamic
-program in the state \((C,U,W)\).
+The new \(1/2\) construction lies inside this class: replace every leaf of
+a large balanced Pascal-cell decomposition tree by the preceding iterate.
+So the earlier \(0.639326\ldots\) decomposable-extremality guess was false.
 
-The exact minima of \(W+1\) found by decomposable_dp.py are:
+A matching lower bound for every decomposition tree is now a sharply posed
+intermediate theorem. Equation (11) says that \(W\) is a sum, over internal
+tree nodes, of a cap mass from the left child times a cup mass from the
+right child. A proof must show that either one subtree already has
+\(2^{(1/2-o(1))(\log N)^2}\) convex subsets, or one of these forward products
+is large. The reverse product \(C(B)U(A)\) is the only obstruction to a
+naive induction.
 
-| \(N\) | 6 | 7 | 8 | 9 | 12 | 16 | 20 | 21 |
-|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| decomposable minimum | 46 | 76 | 121 | 185 | 543 | 1758 | 4821 | 6092 |
-| normalized rate | .827 | .793 | .769 | .750 | .707 | .674 | .655 | .652 |
+Exact Pareto dynamic programming through \(N=21\) finds no counterexample
+and gives decreasing normalized minima, but finite sizes are too small to
+distinguish \(1/2\) from larger constants.
 
-The displayed rate drifts toward \(\kappa\), and iterating every fixed
-template tested through size \(21\) is worse than the nonstationary central
-Pascal cell. This is only weak evidence: at these sizes compulsory triples
-still dominate, and an untested nonstationary tree could behave differently.
-The controlled target is therefore:
+### 6.3 Convex-closure entropy
 
-> **Decomposable extremality conjecture.**
-> \(W(P)\geq
-> 2^{(\kappa-o(1))(\log |P|)^2}\) for every decomposable \(P\).
+The closure operator
 
-A proof would establish that the central Pascal cell is asymptotically
-optimal among the decomposable class, which contains the classical
-Erdős--Szekeres and Horton-type constructions. It would not by itself prove
-(EM), because
-general point sets need not be decomposable.
+\[
+ \operatorname{cl}(X)=P\cap\operatorname{conv}(X)
+\]
 
-## 6. Complete small-order-type falsification
+makes \(P\) a finite convex geometry. Every closed set has a unique set of
+extreme generators, and those generators form a convex-position subset.
+Conversely every convex-position subset is the extreme generator of its
+closure. Hence
 
-Using Aichholzer's complete database of realizable order types and its
-convex-\(k\)-gon profiles gives:
+\[
+ V(P)=\#\{\text{closed sets of this planar convex geometry}\}. \tag{12}
+\]
 
-| \(N\) | exact minimum \(V(P)\), empty included | decomposable minimum |
-|---:|---:|---:|
-| 6 | 45 | 46 |
-| 7 | 73 | 76 |
-| 8 | 114 | 121 |
-| 9 | 169 | 185 |
+There is also the exact fiber identity
 
-Therefore the tempting finite claim “a Pascal/decomposable set minimizes
-the number of convex subsets” is already false at \(N=6\). The order types
-minimizing total cap/cup mass are also different from those minimizing
-\(V(P)\). This is why (8), not a separate lower bound on the total number of
-caps and cups, is the correct invariant.
+\[
+ 2^N=\sum_{S\text{ convex}}2^{\,|P\cap\operatorname{int}\operatorname{conv}S|}.
+                                                               \tag{13}
+\]
 
-The database is not copied into this repository. To reproduce the census,
-download matching otypesNN and kgonsNN files from the Point Set Order Type
-Database and run, for example,
+Equations (12)--(13) offer an entropy route, but general abstract convex
+geometries can have only \(N+1\) closed sets. Any useful argument must use
+planar realizability and general position, not anti-exchange alone.
 
-    python3 order_type_audit.py 9 --data-dir /path/to/database
+## 7. A warning from the graph analogue
 
-## 7. Concrete next attacks
+Székely's 1984 problem asks for the minimum total number of complete and
+independent vertex subsets in an arbitrary graph. Its random-graph upper
+bound has coefficient \(1/2\) in the same base-\(2\) normalization, while
+the best lower bound in that paper is substantially smaller. There is no
+known reduction between that problem and Erdős 838, but the structural
+analogy is close: both ask for total multiplicity rather than the size of
+one Ramsey witness.
 
-In order of expected information gain:
+This makes a quick matching lower bound unlikely. It also suggests that the
+right tools may be Ramsey--Turán stability, weighted containers, or entropy
+of path-count profiles rather than another application of the existence
+theorem.
 
-1. Encode rank-three signotopes and (3)--(4) in SAT/CP-SAT for
-   \(N=10,\ldots,14\). Optimize (2), inspect minimizers, and test whether
-   realizability appears to matter.
-2. Extract a weighted analogue of the down-set injection in Baek--Balko
-   Lemma 10. The first target should be any universal coefficient strictly
-   greater than \(1/4\), not immediately \(\kappa\).
-3. Prove or kill the decomposable extremality conjecture by finding an
-   inductive potential for (9). This is the cleanest controlled model for
-   the entropy calculation.
-4. Run the generalized blow-up constructions of Baek--Balko through the
-   endpoint DP. They generalize the classical extremal examples and are the
-   most credible place for an upper coefficient below \(\kappa\).
+## 8. Falsification data
 
-## 8. Honest conclusion
+The complete order-type census gives the exact minima below; the empty set
+is included.
 
-We now have a complete proof of the strict upper improvement (1), an exact
-algebraic identity for the full problem, and a sharply identified missing
-lemma. We do **not** yet have a proof of the Erdős--Hammer limit conjecture.
-The next genuine mathematical step is a weighted endpoint-alignment theorem
-for realizable signotopes; without it, claiming the value \(\kappa\) would be
-premature.
+| \(N\) | 6 | 7 | 8 | 9 |
+|---:|---:|---:|---:|---:|
+| all order types | 45 | 73 | 114 | 169 |
+| decomposable order types | 46 | 76 | 121 | 185 |
 
-## References
+Thus decomposable sets cease to be exactly extremal already at \(N=6\), but
+the discrepancy is far too small to diagnose the asymptotic constant.
+Simple Horton/double-chain monotonicity conjectures also fail on these
+records.
 
-- A. Suk, *On the Erdős--Szekeres convex polygon problem*,
-  <https://arxiv.org/abs/1604.08657>.
-- A. F. Holmsen, H. N. Mojarrad, J. Pach, G. Tardos,
-  *Two extensions of the Erdős--Szekeres problem*,
-  <https://arxiv.org/abs/1710.11415>.
-- J. Baek, M. Balko, *The Erdős--Szekeres Conjecture Revisited*,
-  <https://doi.org/10.4230/LIPIcs.SoCG.2025.13>.
-- Point Set Order Type Database,
-  <https://mathbases.org/d/order-types>.
+## 9. Current next move
+
+The best proof attempt is now:
+
+1. prove the cap/cup product bound (7) for realizable signotopes;
+2. prove conditional endpoint alignment (8), first under the recursive
+   decomposition law (11);
+3. in parallel, run the general Baek--Balko blow-up operation through a
+   weighted convex-subset partition function, looking for a construction
+   below \(1/2\);
+4. treat any claimed matching lower bound as a major theorem and subject it
+   to an independent proof audit before calling Erdős 838 solved.
+
+The upper theorem is complete enough for external review. The full problem
+is not solved.

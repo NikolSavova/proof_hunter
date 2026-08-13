@@ -4,6 +4,10 @@
 > algebraically and geometrically. A broad public-source kill-search found no
 > matching bound, but a MathSciNet citation sweep and an expert referee are
 > still required before making a definitive novelty claim.
+>
+> Superseded, 2026-08-13: the iterated vertical blow-up in
+> proof_blowup_half.md improves the upper coefficient to \(1/2\). This file is
+> retained because its single-cell recurrence and audit remain useful.
 
 All logarithms below are base \(2\), except \(\ln\), which is natural.
 
