@@ -478,6 +478,55 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
+### ⛔ 2026-08-12 LATE (Sihao + Claude) — CAMPAIGN PAUSED. READ THIS BLOCK FIRST.
+**Authoritative ledger: `phase2/bruhat/f2_drafts/g2_campaign_20260811/CLOSURE_PLAN_v2_20260812.md`.**
+
+**Spend stopped at ~$1500 over two days.** Standing policy: NO Fable fleets; Sol only, at
+`effort=max`, and only when a human asks. Fable credits are exhausted anyway.
+
+**THE PAPER IS FINE AND IS THE DELIVERABLE.** `paper/submission/main.pdf` (14pp) is intact,
+restyled and reframed this session: hedged colon-free title, byline moved to a first-page
+footnote disclosing AI assistance (both names + emails still there), Discussion split by
+logical status, AI register removed, significance properly argued without overselling.
+Two red `\TODO`s remain in the PDF, both CONTENT decisions for the authors — the stale
+(S1)-(S4) count, and F1-smooth's `m<=17` range resting on Carrell 1994.
+
+**MATHEMATICAL STATE — nothing has been found FALSE.** Every adversarial finding in two days
+was "asserted rather than proved", "certificate never run", or "constant understated". The one
+real error (a `1/12` L1 trapezoid constant) was caught, corrected to `1/8`, and absorbed.
+Measured truth holds with margin everywhere it has been checked.
+
+Theorem A = G1 (CLOSED since 08-02) + G2. G2 = Prop 3.5(ii) (CLOSED) + 3.5(i), and 3.5(i)
+reduces by Theorem S to CL, which holds by exact computation for `m <= 560` and needs, for
+`m >= 561`:
+| | status |
+|---|---|
+| (S1) banded cumulant scales | **PROVED**, two-referee |
+| (S2) `R5` remainder bound | proof + full independent numeric replay; needs script archiving + minor repairs |
+| (S3) joint cancellation | **consolidated into one self-contained doc** (`sol_s3consol_20260812.md`), unrefereed; W7 half already passed both lanes |
+| (S4) ratio seed | proved only `m >= 700`; `[561,699]` gap now carried by (S5) |
+| (S5) `w`-continuum certificate | **NEW** (composition repair); drafted `sol_s5cont_20260812.md`, unrefereed |
+| (S6) bootstrap closure | **NEW**; **NOT CLOSED** — `sol_s6boot_20260812.md` lists five named sub-gaps |
+
+**Why the count grew 4 -> 6 (then 5, since (S1) is proved):** (S5)/(S6) were always required;
+they were hidden inside a composition step that said "and therefore". Finding them before
+submission is the system working, not a regression.
+
+**RECOMMENDATION (Claude's, for the humans to accept or reject):** ship the paper with F2 as a
+theorem conditional on the displayed lemma CL, and STATE (S2)-(S6) in the paper as explicit
+open problems with their constants — (S6)'s five sub-gaps make that a genuinely useful target
+rather than a hand-wave. Do not resume fleet spending to chase unconditional Theorem A; it is
+not close, and (S6) has never had a working argument.
+
+**Two briefing defects found and patched** (both caused false-negative referee verdicts):
+agents were fed the wave-5 ledger (so they reported (S1) open long after it was proved), and
+briefs asserted certificates instead of attaching them (one FATAL was purely this). The runner
+now includes `STATUS_wave6.md` and has an `attach()` helper. **Rule: hand over the artifact,
+never the assurance.**
+
+**Nothing is running. Nothing is queued.**
+
+
 ### ⚡ 2026-08-11→12 (Sihao + Claude, autonomous overnight) — G2 CLOSURE CAMPAIGN:
 Theorem A is now PROVED CONDITIONAL on exactly 4 named open statements, with the
 reduction fully two-referee certified. **Read
