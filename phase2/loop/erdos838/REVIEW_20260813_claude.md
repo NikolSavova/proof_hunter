@@ -83,9 +83,16 @@ Baek–Balko, Section 4:
 > `A ≺ B` in which `A` and `B` are strongly decomposable."
 
 **Same class.** Their "deep below" (`B` above every line through two points of `A`, and `A` below
-every line through two points of `B`) is our `≺` up to a 180° rotation: they get *cap = one point of
-`A` + cap of `B`*, we get *cap of `A` + one point of `B`*, which is the same condition with caps and
-cups and the left–right order both swapped. The class is closed under that rotation.
+every line through two points of `B`) is our `≺` up to a reflection: they get *cap = one point of
+`A` + cap of `B`*, we get *cap of `A` + one point of `B`*.
+
+> **ERRATUM, added after Sol's revision.** I originally wrote that the conversion is a **180°
+> rotation**. That is **wrong**, and the revised paper's `ρ(x,y) = (−x,y)` is **right**. Verified
+> numerically: a Baek–Balko "deep below" configuration has (first-two-in-one-block,
+> last-two-in-one-block) signs `(+1, −1)`; after `ρ` they become `(−1, +1)`, which is exactly what
+> `≺` requires. A 180° rotation reverses the point order *and* preserves the determinant, so the
+> sign read in increasing `x`-order flips — it does not produce `≺`. Anyone who followed my
+> original sentence would have introduced an error. My apologies; the paper's version stands.
 
 And they **prove a theorem about it** — their Theorem 8: every decomposable set of more than
 `Σ_{i=k−a+2}^{u} C(k−2, i−2)` points contains an `a`-cap, a `u`-cup, or `k` points in convex
@@ -142,7 +149,45 @@ morning of 2026-08-13; the same mistake is available here and should not be repe
 
 ---
 
-## 6. Bottom line
+## 6. Follow-up on the revision (added 2026-08-13, later)
+
+The revised paper fixes almost everything, and improves on one of my suggestions.
+
+**Better than I asked.** I said to credit the decomposable class to Baek–Balko. Sol instead traced
+it to its actual origin: **Balko, Kynčl, Langerman and Pilz**, *Induced Ramsey-type results and
+binary predicates for point sets*, Electron. J. Combin. **24**(4) (2017), P4.24. I verified
+independently that this paper defines exactly the notion — `|P| = 1`, or a partition `P₁ ∪ P₂` with
+`x(P₁) < x(P₂)`, `P₁` deep below `P₂`, both decomposable — eight years before Baek–Balko. That is
+the right primary citation and my recommendation was the weaker one.
+
+Also fixed and checked: the explicit coefficient-1 derivation; the sentence that the bound exceeds
+`1/2` at every finite `k` and tends to `1/2` from above; the `eps`-is-chosen-afresh clarification;
+the `L − Δ > 3` patch; the author footnote; consistent terminology with no leftovers. Compiles
+clean at 10 pages, no unresolved references.
+
+**Three things still outstanding.**
+
+1. **`\cite[Theorem~7]{BaekBalko2026}`, used twice (lines 127, 460), is probably wrong.** In the
+   SoCG 2025 version the decomposable/Erdős–Szekeres result is **Theorem 8**; Theorem 7 there is
+   `C_weak(7) > 33`, an unrelated computational statement. The bibliography entry points at the
+   JCTA 2026 version, whose numbering may legitimately differ — but nothing in this folder records
+   anyone having read the JCTA version. Check the number against whichever version is actually
+   cited, and cite the version you read.
+2. **The JCTA gate is still not in `paper/README.md`'s "Before submission" list.** That list has
+   three items and does not include reading the full journal version of the single closest paper.
+   My clearance is on the extended abstract, which states outright that the proofs of Theorem 8 and
+   Lemma 14 are omitted. Please add it as item 0.
+3. **The Székely coincidence was weakened rather than resolved** — from "no transfer between the
+   two settings is known" to "that argument does not directly yield the geometric statement here."
+   That is vaguer and still does not answer the question a referee will ask: is the matching `1/2`
+   a shared mechanism or a coincidence?
+
+**Minor.** The abstract's "the optimal universal coefficient `1/2` is attained within the entire
+decomposable class" can be misread as claiming `1/2` is optimal for the problem. It is not — the
+window is `[1/4, 1/2]` and the limit's existence is open. `1/2` is *sharp within the class*.
+Suggest saying that.
+
+## 7. Bottom line
 
 A real theorem, competently proved, with a matching barrier showing the method is exhausted at
 `1/2`. The verification artifact reproduces under an independent implementation. The novelty claim
