@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "all seven-subsets of integer slopes [0,60]",
+  "number_of_seven_cliques": 42,
+  "minimum_phase_radius": 120,
+  "lexicographically_first_minimizer": [
+    0,
+    10,
+    12,
+    15,
+    20,
+    30,
+    60
+  ]
+}

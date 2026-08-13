@@ -1,0 +1,22 @@
+{
+  "abstract_prefix": 9,
+  "literal_checks": [
+    {
+      "basis_size": 1888,
+      "first_missing": null,
+      "pass": true,
+      "required_through": 33488,
+      "t": 61
+    },
+    {
+      "basis_size": 1935,
+      "first_missing": null,
+      "pass": true,
+      "required_through": 40400,
+      "t": 67
+    }
+  ],
+  "m": 9,
+  "role_cost": 8,
+  "status": "PASS"
+}

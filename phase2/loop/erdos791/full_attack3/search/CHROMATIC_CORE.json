@@ -1,0 +1,861 @@
+{
+  "status": "PASS",
+  "claim": "The displayed 14-vertex direct-complete footprint graph has chromatic number seven.  The JSON verifies the upper bound; the companion six-color CNF plus DRAT proves the lower bound.",
+  "t": 3,
+  "block": 9,
+  "points_per_type": 4,
+  "types": [
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      4
+    ],
+    [
+      0,
+      1,
+      2,
+      5
+    ],
+    [
+      0,
+      1,
+      2,
+      6
+    ],
+    [
+      0,
+      1,
+      2,
+      7
+    ],
+    [
+      0,
+      1,
+      3,
+      4
+    ],
+    [
+      0,
+      1,
+      3,
+      5
+    ],
+    [
+      0,
+      1,
+      3,
+      6
+    ],
+    [
+      0,
+      1,
+      3,
+      7
+    ],
+    [
+      0,
+      1,
+      4,
+      7
+    ],
+    [
+      0,
+      1,
+      5,
+      7
+    ],
+    [
+      0,
+      2,
+      3,
+      5
+    ],
+    [
+      0,
+      2,
+      4,
+      5
+    ],
+    [
+      0,
+      2,
+      4,
+      7
+    ]
+  ],
+  "edges": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      0,
+      9
+    ],
+    [
+      0,
+      10
+    ],
+    [
+      0,
+      11
+    ],
+    [
+      0,
+      12
+    ],
+    [
+      0,
+      13
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      7
+    ],
+    [
+      1,
+      9
+    ],
+    [
+      1,
+      10
+    ],
+    [
+      1,
+      12
+    ],
+    [
+      1,
+      13
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      2,
+      9
+    ],
+    [
+      2,
+      11
+    ],
+    [
+      2,
+      13
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      3,
+      9
+    ],
+    [
+      3,
+      11
+    ],
+    [
+      3,
+      12
+    ],
+    [
+      3,
+      13
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      4,
+      9
+    ],
+    [
+      4,
+      13
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      5,
+      10
+    ],
+    [
+      5,
+      11
+    ],
+    [
+      5,
+      12
+    ],
+    [
+      5,
+      13
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      6,
+      9
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      6,
+      11
+    ],
+    [
+      6,
+      12
+    ],
+    [
+      7,
+      9
+    ],
+    [
+      7,
+      10
+    ],
+    [
+      7,
+      12
+    ],
+    [
+      7,
+      13
+    ],
+    [
+      8,
+      10
+    ],
+    [
+      8,
+      11
+    ],
+    [
+      8,
+      12
+    ],
+    [
+      9,
+      12
+    ],
+    [
+      9,
+      13
+    ],
+    [
+      10,
+      11
+    ]
+  ],
+  "edge_count": 59,
+  "six_clique": [
+    0,
+    2,
+    3,
+    7,
+    9,
+    13
+  ],
+  "six_clique_verified": true,
+  "nonedges_with_missing_points": [
+    {
+      "left": 0,
+      "right": 1,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 0,
+      "right": 4,
+      "missing": [
+        6
+      ]
+    },
+    {
+      "left": 0,
+      "right": 5,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 1,
+      "right": 2,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 1,
+      "right": 6,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 1,
+      "right": 8,
+      "missing": [
+        6
+      ]
+    },
+    {
+      "left": 1,
+      "right": 11,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 2,
+      "right": 5,
+      "missing": [
+        7
+      ]
+    },
+    {
+      "left": 2,
+      "right": 10,
+      "missing": [
+        4
+      ]
+    },
+    {
+      "left": 2,
+      "right": 12,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 3,
+      "right": 4,
+      "missing": [
+        5
+      ]
+    },
+    {
+      "left": 3,
+      "right": 5,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 3,
+      "right": 6,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 3,
+      "right": 10,
+      "missing": [
+        4
+      ]
+    },
+    {
+      "left": 4,
+      "right": 8,
+      "missing": [
+        6
+      ]
+    },
+    {
+      "left": 4,
+      "right": 10,
+      "missing": [
+        4
+      ]
+    },
+    {
+      "left": 4,
+      "right": 11,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 4,
+      "right": 12,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 5,
+      "right": 7,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 5,
+      "right": 9,
+      "missing": [
+        6
+      ]
+    },
+    {
+      "left": 6,
+      "right": 13,
+      "missing": [
+        6
+      ]
+    },
+    {
+      "left": 7,
+      "right": 8,
+      "missing": [
+        5
+      ]
+    },
+    {
+      "left": 7,
+      "right": 11,
+      "missing": [
+        7
+      ]
+    },
+    {
+      "left": 8,
+      "right": 9,
+      "missing": [
+        6
+      ]
+    },
+    {
+      "left": 8,
+      "right": 13,
+      "missing": [
+        6
+      ]
+    },
+    {
+      "left": 9,
+      "right": 10,
+      "missing": [
+        3
+      ]
+    },
+    {
+      "left": 9,
+      "right": 11,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 10,
+      "right": 12,
+      "missing": [
+        8
+      ]
+    },
+    {
+      "left": 10,
+      "right": 13,
+      "missing": [
+        6
+      ]
+    },
+    {
+      "left": 11,
+      "right": 12,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "left": 11,
+      "right": 13,
+      "missing": [
+        1,
+        8
+      ]
+    },
+    {
+      "left": 12,
+      "right": 13,
+      "missing": [
+        1,
+        3
+      ]
+    }
+  ],
+  "seven_coloring": [
+    6,
+    0,
+    3,
+    4,
+    6,
+    1,
+    4,
+    5,
+    2,
+    1,
+    3,
+    0,
+    3,
+    2
+  ],
+  "seven_coloring_verified": true,
+  "vertex_deletion_six_colorings": [
+    {
+      "deleted_vertex": 0,
+      "six_coloring": [
+        null,
+        0,
+        0,
+        3,
+        5,
+        1,
+        3,
+        1,
+        2,
+        2,
+        4,
+        5,
+        4,
+        4
+      ]
+    },
+    {
+      "deleted_vertex": 1,
+      "six_coloring": [
+        0,
+        null,
+        1,
+        2,
+        0,
+        3,
+        2,
+        3,
+        4,
+        4,
+        1,
+        5,
+        1,
+        5
+      ]
+    },
+    {
+      "deleted_vertex": 2,
+      "six_coloring": [
+        0,
+        0,
+        null,
+        1,
+        5,
+        2,
+        1,
+        2,
+        3,
+        3,
+        4,
+        5,
+        4,
+        4
+      ]
+    },
+    {
+      "deleted_vertex": 3,
+      "six_coloring": [
+        5,
+        0,
+        0,
+        null,
+        3,
+        5,
+        4,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ]
+    },
+    {
+      "deleted_vertex": 4,
+      "six_coloring": [
+        0,
+        0,
+        1,
+        2,
+        null,
+        3,
+        2,
+        3,
+        4,
+        4,
+        1,
+        5,
+        1,
+        5
+      ]
+    },
+    {
+      "deleted_vertex": 5,
+      "six_coloring": [
+        0,
+        1,
+        1,
+        2,
+        0,
+        null,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "deleted_vertex": 6,
+      "six_coloring": [
+        0,
+        0,
+        2,
+        1,
+        1,
+        3,
+        null,
+        3,
+        4,
+        4,
+        1,
+        5,
+        2,
+        5
+      ]
+    },
+    {
+      "deleted_vertex": 7,
+      "six_coloring": [
+        0,
+        0,
+        1,
+        2,
+        4,
+        5,
+        2,
+        null,
+        3,
+        5,
+        1,
+        4,
+        1,
+        3
+      ]
+    },
+    {
+      "deleted_vertex": 8,
+      "six_coloring": [
+        2,
+        3,
+        3,
+        4,
+        2,
+        0,
+        4,
+        0,
+        null,
+        1,
+        1,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "deleted_vertex": 9,
+      "six_coloring": [
+        0,
+        5,
+        1,
+        2,
+        0,
+        1,
+        2,
+        3,
+        3,
+        null,
+        4,
+        5,
+        4,
+        4
+      ]
+    },
+    {
+      "deleted_vertex": 10,
+      "six_coloring": [
+        0,
+        1,
+        1,
+        2,
+        0,
+        3,
+        2,
+        3,
+        4,
+        4,
+        null,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "deleted_vertex": 11,
+      "six_coloring": [
+        2,
+        3,
+        3,
+        4,
+        2,
+        0,
+        4,
+        0,
+        1,
+        1,
+        5,
+        null,
+        5,
+        5
+      ]
+    },
+    {
+      "deleted_vertex": 12,
+      "six_coloring": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        5,
+        3,
+        3,
+        4,
+        2,
+        4,
+        null,
+        5
+      ]
+    },
+    {
+      "deleted_vertex": 13,
+      "six_coloring": [
+        0,
+        0,
+        4,
+        3,
+        5,
+        1,
+        3,
+        1,
+        2,
+        2,
+        4,
+        5,
+        4,
+        null
+      ]
+    }
+  ],
+  "vertex_critical_verified": true,
+  "six_color_cnf": {
+    "variables": 84,
+    "clauses": 578,
+    "sha256": "39a4712886801de0bbd8cdaa4b7d423ac4746407f40cb45083cb2b194d25c7aa"
+  },
+  "scalable_family_claimed": false
+}

@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "block": 10201,
+      "legal_transitions": 376,
+      "maximum_hole_transition": [
+        [
+          15,
+          60
+        ],
+        [
+          0,
+          10
+        ]
+      ],
+      "maximum_holes": 239,
+      "median_holes": 0,
+      "minimum_holes": 0,
+      "ordered_transitions": 441,
+      "residual_union_size": 1581,
+      "states": 21,
+      "t": 101
+    },
+    {
+      "block": 22801,
+      "legal_transitions": 254,
+      "maximum_hole_transition": [
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          10
+        ]
+      ],
+      "maximum_holes": 2134,
+      "median_holes": 0,
+      "minimum_holes": 0,
+      "ordered_transitions": 441,
+      "residual_union_size": 9198,
+      "states": 21,
+      "t": 151
+    },
+    {
+      "block": 63001,
+      "legal_transitions": 25,
+      "maximum_hole_transition": [
+        [
+          10,
+          20
+        ],
+        [
+          0,
+          10
+        ]
+      ],
+      "maximum_holes": 8175,
+      "median_holes": 1053,
+      "minimum_holes": 0,
+      "ordered_transitions": 441,
+      "residual_union_size": 35000,
+      "states": 21,
+      "t": 251
+    }
+  ],
+  "scope": "finite transition diagnostics, not an asymptotic theorem",
+  "status": "PASS"
+}

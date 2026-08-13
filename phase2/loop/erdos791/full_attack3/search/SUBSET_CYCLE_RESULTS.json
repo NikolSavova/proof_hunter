@@ -1,0 +1,156 @@
+{
+  "status": "PASS",
+  "scope": "affine-origin roles and union states of at most three events at t=3,5,7; H-S-T triangle checked for even 4<=t<=20",
+  "affine_subset_automata": [
+    {
+      "t": 3,
+      "roles": 4,
+      "distinct_union_states_size_at_most_3": 24,
+      "nonstationary_states": 6,
+      "genuine_nonlocal_two_cycles": 0
+    },
+    {
+      "t": 5,
+      "roles": 6,
+      "distinct_union_states_size_at_most_3": 413,
+      "nonstationary_states": 127,
+      "genuine_nonlocal_two_cycles": 0
+    },
+    {
+      "t": 7,
+      "roles": 8,
+      "distinct_union_states_size_at_most_3": 3288,
+      "nonstationary_states": 1392,
+      "genuine_nonlocal_two_cycles": 0
+    }
+  ],
+  "triangle_two_cycle": [
+    {
+      "t": 4,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    },
+    {
+      "t": 6,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    },
+    {
+      "t": 8,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    },
+    {
+      "t": 10,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    },
+    {
+      "t": 12,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    },
+    {
+      "t": 14,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    },
+    {
+      "t": 16,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    },
+    {
+      "t": 18,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    },
+    {
+      "t": 20,
+      "A_events": [
+        "H+S",
+        "H+T"
+      ],
+      "B_events": [
+        "S+T"
+      ],
+      "A_to_B": true,
+      "B_to_A": true,
+      "A_stationary": true,
+      "B_stationary": false
+    }
+  ],
+  "conclusion": "The triangle is a genuine alternating two-state cycle because its S+T state cannot repeat.  In the tested affine languages, every two-cycle consists entirely of already-stationary states."
+}

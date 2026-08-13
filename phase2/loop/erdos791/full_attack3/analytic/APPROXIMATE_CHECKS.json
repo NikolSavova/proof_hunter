@@ -1,0 +1,15 @@
+{
+  "accounting_instances": 4996,
+  "block_residue_instances": 5000,
+  "carry_triangle_instances": 99,
+  "jitter_instances": 5049,
+  "parameters": {
+    "jitter_through": 100,
+    "random_trials": 5000,
+    "seed": 791,
+    "through": 3
+  },
+  "rank_one_instances": 4096,
+  "scope": "finite identities only; compactness/Fourier theorem is proved in markdown",
+  "status": "PASS"
+}

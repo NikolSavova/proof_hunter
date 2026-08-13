@@ -1,0 +1,28 @@
+{
+  "status": "VERIFIED",
+  "claim": "The 14-vertex footprint graph in CHROMATIC_CORE.json is not 6-colorable.",
+  "generator_command": "python3 chromatic_core.py --output CHROMATIC_CORE.json --cnf /private/tmp/chromatic_core_6color.cnf",
+  "solver_command": "cadical /private/tmp/chromatic_core_6color.cnf /private/tmp/chromatic_core_6color.drat",
+  "solver": "CaDiCaL 3.0.1",
+  "solver_exit": 20,
+  "checker_command": "drat-trim /private/tmp/chromatic_core_6color.cnf /private/tmp/chromatic_core_6color.drat",
+  "checker_exit": 0,
+  "checker_terminal_status": "s VERIFIED",
+  "cnf_variables": 84,
+  "cnf_clauses": 578,
+  "cnf_sha256": "39a4712886801de0bbd8cdaa4b7d423ac4746407f40cb45083cb2b194d25c7aa",
+  "drat_uncompressed_bytes": 173935,
+  "drat_uncompressed_sha256": "e0ed6cd2af3f02b687e3aa30fe69dba69fc7ae96098e9ff83df0c80acfcde412",
+  "artifact": "chromatic_core_6color.drat.gz",
+  "artifact_sha256": "1d5c00eef47e4a6f8b5ac32a8b1cc5ba2760763362617f257c0bc0e546d5b7d5",
+  "checker_statistics": {
+    "formula_core_clauses": 530,
+    "formula_clauses": 578,
+    "core_lemmas": 5987,
+    "total_lemmas": 7119,
+    "resolution_steps": 153824,
+    "RAT_lemmas": 0,
+    "verification_seconds": 0.057
+  },
+  "scope_limit": "This proves a finite t=3 chromatic statement, not a t-to-infinity tile family."
+}

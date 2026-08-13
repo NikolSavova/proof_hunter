@@ -1,0 +1,489 @@
+{
+  "status": "PASS",
+  "scope": "exact finite affine-line automata at the listed t; no asymptotic no-go claim",
+  "rows": [
+    {
+      "t": 3,
+      "type_count": 12,
+      "partial_event_count": 65,
+      "transition_count": 451,
+      "self_loop_count": 26,
+      "nonlocal_periodic_SCC_count": 0,
+      "largest_nonlocal_SCC": 0,
+      "sample_self_loops": [
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            "inf",
+            2
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            "inf",
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            "inf",
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ]
+    },
+    {
+      "t": 5,
+      "type_count": 30,
+      "partial_event_count": 434,
+      "transition_count": 3712,
+      "self_loop_count": 124,
+      "nonlocal_periodic_SCC_count": 0,
+      "largest_nonlocal_SCC": 0,
+      "sample_self_loops": [
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        [
+          [
+            "inf",
+            2
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "t": 7,
+      "type_count": 56,
+      "partial_event_count": 1539,
+      "transition_count": 16524,
+      "self_loop_count": 342,
+      "nonlocal_periodic_SCC_count": 0,
+      "largest_nonlocal_SCC": 0,
+      "sample_self_loops": [
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            "inf",
+            1
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      ]
+    },
+    {
+      "t": 11,
+      "type_count": 132,
+      "partial_event_count": 8645,
+      "transition_count": 125221,
+      "self_loop_count": 1330,
+      "nonlocal_periodic_SCC_count": 0,
+      "largest_nonlocal_SCC": 0,
+      "sample_self_loops": [
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            7
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            8
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            9
+          ]
+        ],
+        [
+          [
+            "inf",
+            0
+          ],
+          [
+            0,
+            10
+          ]
+        ]
+      ]
+    }
+  ],
+  "literal_stationary_cycle_checks": [
+    {
+      "t": 3,
+      "slope": 1,
+      "blocks": 6,
+      "literal_size": 22,
+      "required_through": 53,
+      "first_missing": 54,
+      "pass": true
+    },
+    {
+      "t": 5,
+      "slope": 1,
+      "blocks": 6,
+      "literal_size": 38,
+      "required_through": 149,
+      "first_missing": 150,
+      "pass": true
+    },
+    {
+      "t": 7,
+      "slope": 1,
+      "blocks": 6,
+      "literal_size": 54,
+      "required_through": 293,
+      "first_missing": 294,
+      "pass": true
+    },
+    {
+      "t": 11,
+      "slope": 1,
+      "blocks": 6,
+      "literal_size": 86,
+      "required_through": 725,
+      "first_missing": 726,
+      "pass": true
+    }
+  ],
+  "symbolic_sublemma": "For a pair of t-point types whose B=t^2 ordered sums are modulo-complete, low and carry partition the block. Between two such exact events e->f iff low(e) is a subset of low(f); therefore a directed cycle of exact events forces identical low footprints."
+}

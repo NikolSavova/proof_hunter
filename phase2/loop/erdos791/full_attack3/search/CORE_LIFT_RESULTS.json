@@ -1,0 +1,76 @@
+{
+  "status": "HAS_UNKNOWN",
+  "scope": "fixed 14-vertex edge topology, each type has t+1 points and contains zero, type zero fixed to [0,t]; not a global seven-chromatic no-go",
+  "rows": [
+    {
+      "t": 4,
+      "block": 16,
+      "points_per_type": 5,
+      "type_zero_fixed_to": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.49808100000000005,
+      "branches": 45158,
+      "conflicts": 3911
+    },
+    {
+      "t": 5,
+      "block": 25,
+      "points_per_type": 6,
+      "type_zero_fixed_to": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.081934,
+      "branches": 191673,
+      "conflicts": 10667
+    },
+    {
+      "t": 6,
+      "block": 36,
+      "points_per_type": 7,
+      "type_zero_fixed_to": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "status": "INFEASIBLE",
+      "wall_seconds": 6.570181000000001,
+      "branches": 593263,
+      "conflicts": 54761
+    },
+    {
+      "t": 7,
+      "block": 49,
+      "points_per_type": 8,
+      "type_zero_fixed_to": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "status": "UNKNOWN",
+      "wall_seconds": 30.062042,
+      "branches": 591942,
+      "conflicts": 95
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "status": "PARTIAL_PROGRESS_NO_791_RESOLUTION",
+  "main_finite_result": {
+    "t": 3,
+    "block": 9,
+    "microtypes": 14,
+    "points_per_microtype": 4,
+    "compatibility_edges": 59,
+    "clique_number": 6,
+    "chromatic_number": 7,
+    "vertex_critical": true,
+    "upper_certificate": "CHROMATIC_CORE.json:seven_coloring",
+    "lower_certificate": "chromatic_core_6color.drat.gz",
+    "drat_audit": "CHROMATIC_DRAT_AUDIT.json",
+    "asymptotic_limit": "finite cost ratio 4/3; no t+o(t) seven-chromatic family proved"
+  },
+  "exhaustive_baseline": {
+    "artifact": "BASELINE_RESULTS.json",
+    "scope": "all zero-containing t- and (t+1)-point microtypes at t=3,4",
+    "t3": {
+      "vertices": 84,
+      "edges": 362,
+      "clique_number": 6,
+      "verified_coloring_upper": 7
+    },
+    "t4": {
+      "vertices": 1820,
+      "edges": 6357,
+      "clique_number": 3,
+      "verified_coloring_upper": 6
+    }
+  },
+  "bounded_k7_search": {
+    "artifact": "K7_CPSAT_RESULTS.json",
+    "verified_SAT_t_size": [[4, 6], [5, 8], [6, 10]],
+    "UNKNOWN_t_size_after_10_seconds": [[5, 7], [6, 9], [7, 11]],
+    "no_UNSAT_claim_from_UNKNOWN": true
+  },
+  "normalized_core_lift": {
+    "artifact": "CORE_LIFT_RESULTS.json",
+    "model": "same 14 vertices and 59 required edges, t+1 points per type, type zero fixed to [0,t]",
+    "CP_SAT_INFEASIBLE_t": [4, 5, 6],
+    "UNKNOWN_t_after_30_seconds": [7],
+    "proof_limit": "no portable UNSAT certificate; normalization is not proved without loss"
+  },
+  "carry_automata": {
+    "single_event_affine_artifact": "AFFINE_LINE_AUTOMATON_RESULTS.json",
+    "single_event_scope": "all affine translated line pairs at t=3,5,7,11",
+    "nontrivial_partial_event_SCCs_found": 0,
+    "subset_artifact": "SUBSET_CYCLE_RESULTS.json",
+    "subset_scope": "unions of at most three origin-affine pair events at t=3,5,7",
+    "genuine_nonlocal_two_cycles_found": 0,
+    "triangle_control": "H-S-T alternating cycle verified for every even 4<=t<=20"
+  },
+  "verdict": "The finite chromatic barrier r>=7 is attainable, but no near-lossless scalable realization or record-improving certificate was found."
+}

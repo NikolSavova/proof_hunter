@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "q": 3,
+      "B": 7,
+      "translations_checked": 343,
+      "maximum_of_nine_transitions": 9,
+      "first_best_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "q": 4,
+      "B": 13,
+      "translations_checked": 2197,
+      "maximum_of_nine_transitions": 9,
+      "first_best_translation": [
+        0,
+        3,
+        4
+      ]
+    },
+    {
+      "q": 5,
+      "B": 21,
+      "translations_checked": 9261,
+      "maximum_of_nine_transitions": 7,
+      "first_best_translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "q": 6,
+      "B": 31,
+      "translations_checked": 29791,
+      "maximum_of_nine_transitions": 7,
+      "first_best_translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}
