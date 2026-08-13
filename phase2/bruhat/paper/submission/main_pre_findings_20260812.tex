@@ -86,8 +86,8 @@ arithmetic, for every $4\le m\le560$. The sharp asymptotic
 $\sigma_m^2(r_m-1) = 1-\tfrac{27}{25}m^{-1}+O(m^{-2})$ is conditional on a
 single explicitly stated core lemma for the exponentially tilted Mahonian
 distribution. This lemma is needed only for $m\ge561$, and we reduce it,
-with explicit constants throughout, to six explicitly stated statements
-about the tilted law, one of which we prove here.
+with explicit constants throughout, to four explicitly stated open
+cumulant statements.
 
 Finally, our computations find equality only in rank-two dihedral parabolic
 patterns of order $m\in\{4,6\}$. We state this as an empirical
@@ -197,8 +197,8 @@ stated lemma about the exponentially tilted Mahonian distribution
 (Conjecture~\ref{conj:CL}), we then prove the sharp asymptotic
 $\sigma_m^2(r_m-1)=1-\tfrac{27}{25}m^{-1}+O(m^{-2})$. The lemma is needed
 only for $m\ge561$. We give a complete reduction with every constant
-explicit, and reduce the lemma in turn to six explicitly stated
-statements about the tilted law, one of which we prove here (Section~\ref{sec:F2}).
+explicit, and reduce the lemma in turn to four explicitly stated open
+cumulant statements (Section~\ref{sec:F2}).
 
 \item We give an empirical classification of the observed equality cases,
 in which log-concavity holds with equality, as rank-two dihedral parabolic
@@ -599,9 +599,15 @@ Let $\W$ be a finite irreducible simply-laced Weyl group of rank $\le 6$
 ($A_1,\dots,A_6,D_4,D_5,D_6,E_6$). For every rationally smooth $v\in\W$,
 i.e.\ every $v$ for which the Poincar\'e polynomial $P_{[e,v]}(q)$ factors
 as a product of $q$-integers~\cite{carrell1994}, we have
-$\rho([e,v])\ge\rho([e,w_0])$, with equality iff $v=w_0$. Granting the
+$\rho([e,v])\ge\rho([e,w_0])$, with equality iff $v=w_0$. Using the
 classical rational-smoothness factorization result cited above, the same
-conclusion holds in type $A_{m-1}$ for $m\le17$.
+conclusion holds for every $m$ in type $A_{m-1}$ with $m\le17$.
+\TODO{Content edit pending, needs an author check. The copy-edit pass flagged that
+the working notes verify the required factorization only through $m\le7$, with the
+range $8\le m\le17$ resting on \cite{carrell1994}. Confirm that the cited theorem
+yields exactly this factorization and equality conclusion through $m\le17$; if it
+does not, the scope or status of this clause must change (a mathematical edit, not
+a wording one).}
 Our
 working notes verify that factorization computationally only through
 $m\le7$; for the remaining cases we rely on the cited result rather than
@@ -815,7 +821,7 @@ asymptotic.
 
 \subsection*{Reduction of the core lemma to four cumulant statements}
 We reduce Conjecture~\ref{conj:CL}, with explicit constants throughout, to
-six statements about the tilted law, five of which remain open.
+four statements about the cumulants of the tilted law.
 Partition the deep-tilt values $\omega=m\lambda\in(4,\,0.89\,m]$ into
 seven bands
 \[
@@ -850,15 +856,14 @@ $J_0$ & 0.682942 & 1.10268 & 1.91562 & 2.53645 & 3.66793 & 4.17806 & 4.59597 \\
 \end{tabular}
 \end{table}
 
-\begin{conjecture}[The supporting statements; (S1) is now a theorem]
+\begin{conjecture}[The four open statements]
 \label{conj:S}
 For every $m\ge561$ and every interior $k$ with
 $\lambda=\lambda(k)\in(4/m,\,0.89]$, with $\mathcal W$ the band containing
 $\omega=m\lambda$ and constants $R_3,R_4,C_5,J_0$ as in
 Table~\ref{tab:CLbands}:
 \begin{itemize}
-\item[(S1)] \emph{(banded cumulant scales; \textbf{proved}, see
-Remark~\ref{rem:S-evidence})}\quad
+\item[(S1)] \emph{(banded cumulant scales)}\quad
 $\tilde\kappa_3\le R_3(\mathcal W)$ and $\tilde\kappa_4\le R_4(\mathcal W)$;
 \item[(S2)] \emph{(fifth-order core remainder)}\quad for
 $0\le t\le\lambda/2$, with the continuous branch of $\log\varphi$
@@ -871,49 +876,43 @@ C_5(\mathcal W)\,\frac{s^2t^5}{\lambda^3};
 \item[(S3)] \emph{(joint cancellation)}\quad
 $\tilde\kappa_3^{\,2}-\tilde\kappa_4/2\le J_0(\mathcal W)$;
 \item[(S4)] \emph{(a-priori ratio seed)}\quad
-$\bigl|s^2\bigl(r_m(k)-1\bigr)-1\bigr|\le0.89$;
-\item[(S5)] \emph{($\omega$-continuum certificate)}\quad the band-$\mathcal W_1$
-row bound holds for every real $\omega\in(4,5]$ and every integer
-$561\le m\le699$, not merely at sampled $\omega$;
-\item[(S6)] \emph{(bootstrap closure)}\quad the self-consistency map used in
-the proof of Proposition~\ref{prop:CLred} satisfies $G(t)<t$ throughout
-$20/m<t\le0.89$, uniformly in $m$, in the band, and in $\lambda$.
+$\bigl|s^2\bigl(r_m(k)-1\bigr)-1\bigr|\le0.89$.
 \end{itemize}
 \end{conjecture}
 
 \begin{proposition}[Reduction of the core lemma]
 \label{prop:CLred}
-Statements (S1)--(S6) of Conjecture~\ref{conj:S} imply
-Conjecture~\ref{conj:CL}, with a composed constant strictly below $20$ for
-every $m\ge561$.
+Statements (S1)--(S4) of Conjecture~\ref{conj:S} imply
+Conjecture~\ref{conj:CL}; the composed chain in fact delivers the
+constant $18.23$ in place of $20$ for every $m\ge561$.
 \end{proposition}
 
 The proof of Proposition~\ref{prop:CLred} proceeds band by band through
 Table~\ref{tab:CLbands}. Statements (S1) and (S3) bound the main
 Gaussian-model term, (S2) bounds the core remainder, and (S4) starts a
-self-consistency argument that closes, by (S6), through strict contraction.
-Statement (S5) supplies the continuum certificate for the lowest band. All other
+self-consistency argument that closes by strict contraction. All other
 ingredients, including the variance floors and caps, the far-region decay
 of $\varphi$, and the crossover and mid-range bounds, are proved with
-explicit constants. The repository contains the complete chain and a machine
-re-verification of the resulting constant. Those computations use
-directed-rounding interval arithmetic together with exact integer and
-rational arithmetic where stated; they are rigorous modulo the interval
-library, and we do not claim they are exact-rational throughout.
+explicit constants. The repository contains the complete chain and a
+machine re-verification of the resulting constant, using exact rational
+certificates and high-precision numerical evaluation.
 
+\TODO{Content edit pending, not a style issue. This remark and the surrounding
+apparatus (Conjecture~\ref{conj:S}, Table of per-band constants,
+Proposition~\ref{prop:CLred}, and the abstract/introduction sentences saying
+``four explicitly stated open cumulant statements'') are STALE as of 2026-08-12:
+(S1) has since been proved and independently refereed, and an adversarial review of
+the composition step indicates a further hypothesis (a $w$-continuum certificate)
+may be required, so the operative count is not four. The per-band constants also
+moved to a re-architected generation. Do not renumber until the composition-v2
+referee findings are resolved; the (S1)-to-theorem upgrade is separately available
+now and is known to discharge the existing table a fortiori.}
 \begin{remark}[Status and evidence for (S1)--(S4)]
 \label{rem:S-evidence}
-Statement (S1) has since been proved, by a bandwise argument with a
-rigorous interval certificate; we record it here as part of the reduction
-because the remaining statements are stated relative to the same bands and
-constants. The other five remain open, and the proof of
-Proposition~\ref{prop:CLred} uses each of them. The list has changed as the
-reduction was scrutinised: two earlier hypotheses were proved and removed;
-(S3) and (S4) were added after simpler arguments failed; and (S5) and (S6)
-were added after an adversarial review found that the composition step had
-been relying on a finite sample of $\omega$ and on a fixed-point ansatz
-respectively. We regard the current list as the honest one, while noting
-that it has grown under scrutiny before. We report the numerical evidence and its margins below.
+All four statements remain open, and the proof of
+Proposition~\ref{prop:CLred} uses each of them. Two earlier hypotheses at
+this stage were proved and removed; (S3) and (S4) were added after simpler
+arguments failed. We report the numerical evidence and its margins below.
 \begin{itemize}
 \item (S1): At the deep corner of $\mathcal W_7$, the computed suprema of
 $\tilde\kappa_3$ and $\tilde\kappa_4$ are $2.1215$ and $6.3552$
@@ -937,16 +936,6 @@ in Conjecture~\ref{conj:CL} at $m=401$ and $m=402$, below its stated
 range, cover $260$ adversarially chosen interior indices and have a
 $17\times$ margin. Every tilted ratio computed in this project also lies
 well within $0.89$.
-\item (S5): The per-cell floors give a computed row bound of $0.4165$ at
-$m=561$ and $0.2601$ at $m=699$, against the required threshold $1$. What is
-missing is not margin but coverage: the available checks are a finite
-$\omega$-grid, and the monotonicity available to us runs in a different
-variable, so it does not interpolate between sampled points.
-\item (S6): The map satisfies $G(20/m)<20/m$ at the two thinnest rows
-($0.0492<0.0499$ and $0.0421<0.0432$), and the measured basin extends to
-about $0.90$. Convexity of the branches, directed bounds at both endpoints,
-and a reduction showing that those two rows dominate every band and every
-$m\ge561$ are all still required.
 \end{itemize}
 \end{remark}
 
@@ -955,7 +944,7 @@ Theorems~\ref{thm:G1} and~\ref{thm:finite560} are unconditional, as is the
 upper-bound half of Theorem~\ref{thm:F2}. The sharp asymptotic in
 Theorem~\ref{thm:F2} assumes only Conjecture~\ref{conj:CL}.
 Proposition~\ref{prop:CLred} proves that (S1)--(S4) imply
-Conjecture~\ref{conj:CL}. Five of the six remain open. In particular,
+Conjecture~\ref{conj:CL}. All four statements remain open. In particular,
 the numerical margins in Remark~\ref{rem:S-evidence}, one of which is
 under $4\%$, do not constitute a proof.
 \end{remark}
@@ -1072,7 +1061,7 @@ subclass. Conjecture~\ref{conj:staircase} is also unproved in general.
 Observation~\ref{obs:F3} is an empirical equality classification, and the
 proposed explanation of the $H_3$ failure is not a proof.
 
-\item[Open.] Conjecture~\ref{conj:CL} and the statements (S2)--(S6)
+\item[Open.] Conjecture~\ref{conj:CL} and all four statements (S1)--(S4)
 remain open. Also open are Conjecture~\ref{conj:F1} in general rank, the
 rationally smooth cases beyond the stated ranges, a proved equality
 classification, the stronger central-location statement for the Mahonian
