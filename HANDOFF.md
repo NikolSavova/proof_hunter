@@ -524,6 +524,16 @@ briefs asserted certificates instead of attaching them (one FATAL was purely thi
 now includes `STATUS_wave6.md` and has an `attach()` helper. **Rule: hand over the artifact,
 never the assurance.**
 
+**NIKOL — start here:** `paper/submission/AUTHOR_DECISIONS.md` is the single consolidated
+checklist (14 items: 4 blocking, 4 data reconciliations, 3 claims to confirm, style, then
+venue). The paper itself is at `paper/submission/main.pdf`, 14pp, and has been through three
+adversarial review passes plus a researched copyedit since you last saw it — the F2 section
+in particular was rewritten three times on 08-12 and now presents the sharp asymptotic as a
+theorem CONDITIONAL on a displayed lemma, with six supporting statements (one proved, five
+open) stated explicitly. Two things you should know were caught: the draft you last saw
+asserted "(S1)-(S4) imply CL", which adversarial review has since WITHDRAWN as false; and the
+`q`-integer factorization was misattributed to Carrell 1994 (it is Gasharov 1998).
+
 **Nothing is running. Nothing is queued.**
 
 
