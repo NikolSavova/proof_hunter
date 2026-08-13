@@ -14,6 +14,7 @@ import openai
 ROOT = pathlib.Path(__file__).resolve()
 BRUHAT = ROOT.parents[4]                      # wave6_sol -> campaign -> g2_scripts -> f2_drafts -> bruhat
 CAMP = BRUHAT / "f2_drafts" / "g2_campaign_20260811"
+SCRIPTS = BRUHAT / "f2_drafts" / "g2_scripts" / "campaign_20260811"
 KEY = (pathlib.Path.home() / ".config/proof_hunter/openai_key.txt").read_text().strip()
 MODEL = os.environ.get("SOL_MODEL", "gpt-5.6-sol")
 EFFORT = os.environ.get("SOL_EFFORT", "high")
@@ -23,6 +24,20 @@ POLL_S, TIMEOUT_S = 20, 7200
 def read(name, cap=60_000):
     p = CAMP / name
     return f"\n\n===== FILE: {name} =====\n" + p.read_text()[:cap] if p.exists() else ""
+
+
+def attach(relpath, cap=60_000):
+    """Attach an ARTIFACT (script, output, log) from the scripts tree.
+
+    Lesson of 2026-08-12: briefs that told agents a certificate was 'established and
+    citable' produced drafts that ASSERTED it, and referees reading only the draft
+    correctly called it unsourced (one FATAL). Hand over the artifact, not the assurance.
+    """
+    p = SCRIPTS / relpath
+    if not p.exists():
+        return f"\n\n===== ARTIFACT MISSING: {relpath} =====\n"
+    return (f"\n\n===== ARTIFACT: g2_scripts/campaign_20260811/{relpath} =====\n"
+            + p.read_text()[:cap])
 
 
 BASE_CTX = (
@@ -270,6 +285,66 @@ m >= 700. (S6) is the SEPARATE obligation of showing the iteration actually desc
 below 20/m, uniformly."""
                 + read("sol_comprepair_20260812.md", 45_000)
                 + read("wave4_sl4p_repaired_20260812.md", 30_000)),
+    # ---- wave 7b: consolidate (S3) into ONE document that CARRIES its evidence ----
+    "s3consol": ("""ASSEMBLE (S3) INTO A SINGLE SELF-CONTAINED DOCUMENT THAT CARRIES ITS OWN EVIDENCE.
+
+WHY THIS RUN EXISTS. (S3)'s mathematics is now spread across four documents that cite each other,
+and the referees have — correctly — refused to accept citations in place of evidence. The numerics
+referee on the sign-gap draft returned FATAL, with findings 1, 2, 3 and 6 all of the form "the
+load-bearing certificate is absent: no file, code, output, hash, cell count, or margin is supplied."
+Those certificates EXIST. They were executed and they pass. They were simply never carried into the
+document. Every one of them is attached below as a real script and a real archived output. Your job
+is to write the single document a referee can accept without following a single pointer.
+
+WHAT (S3) IS: for m >= 561 and each band W, the joint-cancellation bound J(w,lam) <= J0(W), where
+J = F3^2/F2^2 - F4/(2 F2) in the notation of the attached drafts.
+
+THE PIECES, AND THEIR REAL STATUS:
+ 1. COMPACT BANDS W1-W6b — CERTIFIED. Script `s3_certificate/s3_cert.py` + archived output
+    `out_s3_certificate.txt` attached. Adaptive certified interval computation, cell width floor
+    1/2048 in w and 1/256 in z, ZERO hard-failure cells, run with the CORRECTED Euler-Maclaurin
+    constant (factor 2 >= (2 - 2^-7) = 1.9921875). Per-band worst leaves, max J_upper, and min
+    F2_lower are all in the output. Quote these numbers; do not re-derive or re-assert them.
+ 2. (SOL.5), |h_n^(8)| <= 10^12 on (0,40] — CERTIFIED, INCLUDING [0,1]. Script
+    `s3_certificate/sol5_cert.py` + output `out_sol5_certificate.txt` attached. The referee's
+    finding 3 ("no rigorous compact-interval calculation on 0 <= x <= 1") is answered by this
+    script's PART A: a Cauchy coefficient bound on the circle |z| = 6 < 2 pi, with M_n(6) enclosed
+    by complex interval arithmetic over 4000 arc-boxes; PART B handles [1,40] by the direct Leibniz
+    series with an explicit geometric tail. Margins: 3.3e10x / 7.4e08x / 1.1e07x on [0,1] and
+    3.3e05x / 1.3e04x / 4.6e02x on [1,40].
+ 3. THE SIGN GAP, B >= 0 — the attached sign draft proves h_3 strictly decreasing via
+    3(coth y - 1/y) > tanh y, whence B = m h_3(lam) - sum_j h_3(j lam) >= 0. Keep this argument;
+    its referee's MAJOR findings were about missing certificates (items 1-2 above), not about it.
+ 4. W7 — the attached W7-certificate draft PASSED BOTH REFEREE LANES (MINOR_REPAIRS each). Fold it
+    in and apply its repair lists.
+
+MANDATORY REQUIREMENTS (these are the referee findings, restated as your spec):
+ * DEFINE the bands W1-W7 with open/closed endpoint conventions and give the EXACT rational J0(W)
+   values. Their absence was FATAL finding 2.
+ * CARRY the evidence: for each certificate, state the script name, the archived output, the cell
+   count actually executed, the worst cell, and the minimum margin. No claim of the form "it is
+   established that".
+ * The corrected constant 17/10321920 = (2 - 2^-7)|B_8|/8! multiplies the remainder allowance by
+   255/128 relative to the old 1/1209600. The attached run ALREADY used factor 2 >= that, and still
+   certified every band; say so explicitly with the post-correction margins, answering finding 4.
+ * Define E_{n,8} by a full Euler-Maclaurin identity so a checker can verify endpoint signs and
+   normalization (finding 5), and include the f(x) = x^8 polynomial oracle.
+ * Scope A > 0 to m >= 2 (finding 7).
+ * State honestly, at the end, anything still owed — including that the interval computations are
+   rigorous modulo directed-rounding interval arithmetic (mpmath 1.4.1, CPython 3.12.2) rather than
+   exact rational arithmetic, and what it would take to close that.
+
+DELIVERABLE: one document, self-contained, that a referee can accept or reject on its own contents."""
+                 + read("sol_s3w7sign_20260812.md", 20_000)
+                 + read("sol_s3w7cert_20260812.md", 22_000)
+                 + read("s3_certificate_20260812.md", 18_000)
+                 + read("s3_certificate_response_20260812.md", 15_000)
+                 + read("solref_numerics_sol_s3w7sign_20260812.md", 18_000)
+                 + read("solref_maths_sol_s3w7sign_20260812.md", 15_000)
+                 + attach("wave6_sol/s3_certificate/s3_cert.py", 22_000)
+                 + attach("wave6_sol/s3_certificate/out_s3_certificate.txt", 8_000)
+                 + attach("wave6_sol/s3_certificate/sol5_cert.py", 18_000)
+                 + attach("wave6_sol/s3_certificate/out_sol5_certificate.txt", 6_000)),
     "s3": ("Prove (S3), the joint-cancellation statement J <= J0(W) (worst measured margin 32.6% at "
            "(561, 5.0)). Constraint: a refereed impossibility result (Prop E.3, excerpted below) shows "
            "the sign-lemma route CANNOT work — do not use it; find another route."

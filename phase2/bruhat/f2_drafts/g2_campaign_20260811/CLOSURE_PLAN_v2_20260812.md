@@ -67,3 +67,44 @@ three fronts tonight — (S2) proved and replayed, (S3) and (S4) drafted — whi
 assembly was found to rest on two previously unstated certificates. Every adversarial pass
 so far has been worth its cost, and none has yet found the campaign's claims to be false;
 what they keep finding is that the claims were resting on less than advertised.
+
+---
+
+## Addendum, same evening — the six referee lanes, and a briefing lesson
+
+**Verdicts:** `s3w7cert` MINOR_REPAIRS / MINOR_REPAIRS (**passes both lanes** — W7's
+certificates are the first piece of (S3) to clear the bar); `s3w7sign` MAJOR_ISSUES /
+**FATAL**; `s4seed` MAJOR_ISSUES / MAJOR_ISSUES.
+
+### The FATAL was a packaging failure, not a mathematical one
+
+Its findings 1, 2, 3 and 6 all say the same thing: the load-bearing certificates are
+"absent — no file, code, output, hash, cell count, or margin." **Those certificates exist
+and pass.** `s3_cert.py` certifies W1–W6b at cell width 1/128 with zero hard failures,
+using the corrected constant; `sol5_cert.py` certifies `|h_n^(8)| <= 10^12` on (0,40]
+*including* the [0,1] range the referee flagged, via a Cauchy bound on `|z| = 6`. The draft
+never carried them because **the brief told the agent they were "established and citable"
+instead of handing over the artifacts.** The referee, reading only the draft, was right.
+
+Two briefing defects of the same species were found tonight:
+
+1. the base context fed every agent the wave-5 ledger, so agents reported (S1) as open
+   long after it was proved (patched: `STATUS_wave6.md` now included);
+2. briefs asserted certificates rather than attaching them (patched: an `attach()` helper
+   now pastes scripts and archived outputs into the prompt).
+
+**Rule going forward: hand over the artifact, never the assurance.**
+
+### Actions taken
+
+- **`s3consol` launched** — assembles (S3) into ONE self-contained document with
+  `s3_cert.py`, `sol5_cert.py` and both archived outputs pasted in, the band table and
+  exact `J0(W)` values defined, the post-correction margins stated, `E_{n,8}` given by a
+  full Euler–Maclaurin identity, and every referee finding answered from evidence rather
+  than citation.
+- **(S4) is NOT relaunched yet** — it is blocked, not merely unpolished. Its seed is proved
+  only for `m >= 700`; the `[561, 699]` range was to be bypassed by M3, and its referee
+  showed M3 is a cell-floor/crossover result, not a proof of the seed bound, and may itself
+  sit downstream of the seed. That range is now (S5)'s to carry, so (S4) waits on (S5).
+  Its band-edge slip (theorem excludes `m|lambda| = 4`, composition uses the closed edge) is
+  repairable and noted.
