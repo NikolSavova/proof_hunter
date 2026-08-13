@@ -1,0 +1,30 @@
+{
+  "abstract_prefix": 100,
+  "certificate": "/Users/sihaohuang/Desktop/Coding/proof_hunter/phase2/loop/erdos791/closure/tiles/periodic_gadget_check.json",
+  "claimed_m": 100,
+  "direct_checks": [
+    {
+      "basis_size": 49,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 399,
+      "t": 2
+    },
+    {
+      "basis_size": 93,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 1599,
+      "t": 4
+    },
+    {
+      "basis_size": 137,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 3599,
+      "t": 6
+    }
+  ],
+  "ell": 22,
+  "status": "PASS"
+}

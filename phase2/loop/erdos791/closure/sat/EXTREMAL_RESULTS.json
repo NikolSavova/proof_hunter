@@ -1,0 +1,630 @@
+{
+  "capacity_bound": "m <= i*(j+k)+j*k-1",
+  "capacity_tight_exact_runs": [
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 193 of 1703 lemmas in core using 24618 resolution steps",
+        "c 0 RAT lemmas in core; 97 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 2989088,
+      "cnf_sha256": "cd8f1276b59bb25637b25456ecbfe5cd80b7c87476e60073c3cdb48739416463",
+      "counts": [
+        2,
+        9,
+        7
+      ],
+      "ell": 18,
+      "m": 94,
+      "proof_bytes": 45289,
+      "proof_checked": true,
+      "proof_sha256": "4f408aacd5f51e41250c50ab86583e0298ed9c843e8cf68c36e7e97f155e1de0",
+      "solve_seconds": 0.073054,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 350 of 13401 lemmas in core using 47417 resolution steps",
+        "c 0 RAT lemmas in core; 162 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 3038640,
+      "cnf_sha256": "c722639280d2149405336e92ba29b57dbbd1b0b637cba347b54cd887c8dee745",
+      "counts": [
+        3,
+        10,
+        5
+      ],
+      "ell": 18,
+      "m": 94,
+      "proof_bytes": 148328,
+      "proof_checked": true,
+      "proof_sha256": "3468bac9aee6d57edcb6d3c3bf71b540f52a98b3a0d235404d5c110579ee92c0",
+      "solve_seconds": 0.091346,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 561 of 32663 lemmas in core using 68634 resolution steps",
+        "c 0 RAT lemmas in core; 532 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 3010788,
+      "cnf_sha256": "2abba6a412dd92fe106bcb2fb496cf9715035c8338e01b33bda4e8ecbe272c73",
+      "counts": [
+        5,
+        10,
+        3
+      ],
+      "ell": 18,
+      "m": 94,
+      "proof_bytes": 1312241,
+      "proof_checked": true,
+      "proof_sha256": "abaca4c24650946ff34bdb55f8bdf7d6082a985f54325e126613447cfff68da1",
+      "solve_seconds": 0.121669,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 1353 of 31142 lemmas in core using 326258 resolution steps",
+        "c 0 RAT lemmas in core; 2030 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 2929864,
+      "cnf_sha256": "ccfd7770e55111ae466a8f3b052943d0a9529fa6f5e5137faaf3877aa162c8a3",
+      "counts": [
+        7,
+        9,
+        2
+      ],
+      "ell": 18,
+      "m": 94,
+      "proof_bytes": 1553054,
+      "proof_checked": true,
+      "proof_sha256": "8e49f49ea618d63a1bd84139009a594c660c034c0d2b47ec7ee37a282160c6c9",
+      "solve_seconds": 0.703001,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 794 of 36462 lemmas in core using 174738 resolution steps",
+        "c 0 RAT lemmas in core; 533 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 2908722,
+      "cnf_sha256": "24c83893fb0744782139f0c5aa2f9496cd2ca77401e606697a4592f7185e3316",
+      "counts": [
+        9,
+        7,
+        2
+      ],
+      "ell": 18,
+      "m": 94,
+      "proof_bytes": 2248557,
+      "proof_checked": true,
+      "proof_sha256": "35e1975b148a0ff525b6032125fd903d745742f0414057b4c056f461e1da89fd",
+      "solve_seconds": 0.538902,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 386 of 14259 lemmas in core using 59555 resolution steps",
+        "c 0 RAT lemmas in core; 788 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 2947604,
+      "cnf_sha256": "4a9fd03ec663f5d110b0ef2a2d72b42fdae40e47db4a37db3ad435283c67207f",
+      "counts": [
+        10,
+        5,
+        3
+      ],
+      "ell": 18,
+      "m": 94,
+      "proof_bytes": 277725,
+      "proof_checked": true,
+      "proof_sha256": "e8c60299bd01097e8fb85ddd0ab5889bca40c68a9afd2347dc12ef3c5a6127c4",
+      "solve_seconds": 0.156036,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 155 of 19409 lemmas in core using 14501 resolution steps",
+        "c 0 RAT lemmas in core; 3 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 3731276,
+      "cnf_sha256": "6c786828410e6da2362c0cfcdd480ffb9d6e07d110af2b6e81a709f6a3868730",
+      "counts": [
+        2,
+        9,
+        8
+      ],
+      "ell": 19,
+      "m": 105,
+      "proof_bytes": 201121,
+      "proof_checked": true,
+      "proof_sha256": "ae8c2b098110ab953b9ec00b80706ff20430685a20b7389ce531cd48610d819e",
+      "solve_seconds": 0.093888,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 1255 of 27774 lemmas in core using 429947 resolution steps",
+        "c 0 RAT lemmas in core; 2480 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 3650890,
+      "cnf_sha256": "94cfaad8769fe14274c5cc04ead436ede071aa7596099ca31d3ebdac6415f163",
+      "counts": [
+        8,
+        9,
+        2
+      ],
+      "ell": 19,
+      "m": 105,
+      "proof_bytes": 1998188,
+      "proof_checked": true,
+      "proof_sha256": "a546d6c6e31e8fb860215513caa7b1a2167b72609e6d6c9c7161eb736c3dbe66",
+      "solve_seconds": 0.622419,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 985 of 26414 lemmas in core using 275381 resolution steps",
+        "c 0 RAT lemmas in core; 2324 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 3638983,
+      "cnf_sha256": "8d6f107d808f7bbf7eb203bcbdd1b7c5f2dd1a71af58cefe41e9615b3f992b8b",
+      "counts": [
+        9,
+        8,
+        2
+      ],
+      "ell": 19,
+      "m": 105,
+      "proof_bytes": 2316586,
+      "proof_checked": true,
+      "proof_sha256": "49d829a17320747177dc312ae5b065cbc03abd346470ffaaeee3503158de1da2",
+      "solve_seconds": 0.562952,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 187 of 26849 lemmas in core using 18622 resolution steps",
+        "c 0 RAT lemmas in core; 4 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 4568613,
+      "cnf_sha256": "22a0fbcc2c58ef2fd26bff35efa2f1037cb73a9ab0e368a99080448b04b340fb",
+      "counts": [
+        2,
+        9,
+        9
+      ],
+      "ell": 20,
+      "m": 116,
+      "proof_bytes": 290423,
+      "proof_checked": true,
+      "proof_sha256": "a9e47e0fa73f1d5d238b6e88e0adc67acdd3cb427ba1f0d3682dc36f84e79401",
+      "solve_seconds": 0.116733,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 337 of 24403 lemmas in core using 58205 resolution steps",
+        "c 0 RAT lemmas in core; 25 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 4640288,
+      "cnf_sha256": "d0cdd98f7d1b9ecd68df9cd516b88790b130bebd67a4fe599fe940311a75da9e",
+      "counts": [
+        3,
+        11,
+        6
+      ],
+      "ell": 20,
+      "m": 116,
+      "proof_bytes": 244507,
+      "proof_checked": true,
+      "proof_sha256": "cc89d2e26a72713941c99fd5073a9d120ce1611ef63879390e280324d101296a",
+      "solve_seconds": 0.134064,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 648 of 26067 lemmas in core using 302363 resolution steps",
+        "c 0 RAT lemmas in core; 2000 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 4585637,
+      "cnf_sha256": "155dae429377dcaed9fc30e183dac3f5270f79255cd191eb6d37fb280bdbc512",
+      "counts": [
+        6,
+        11,
+        3
+      ],
+      "ell": 20,
+      "m": 116,
+      "proof_bytes": 404051,
+      "proof_checked": true,
+      "proof_sha256": "145c663b2765e7cf1948bc532049cc7b2fc6af8affc4249b11a0a675c1eeeca4",
+      "solve_seconds": 0.553508,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 1699 of 27255 lemmas in core using 864418 resolution steps",
+        "c 0 RAT lemmas in core; 2797 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 4447441,
+      "cnf_sha256": "88cd8cb74d67a433dccf1e117d19b01a31da137474db75f0d860959d3fb95531",
+      "counts": [
+        9,
+        9,
+        2
+      ],
+      "ell": 20,
+      "m": 116,
+      "proof_bytes": 1684233,
+      "proof_checked": true,
+      "proof_sha256": "f19d546be33ce8b881dbe52cc0172e89306b935b221b1f357d66d0c2ec2d20ca",
+      "solve_seconds": 1.123047,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 1081 of 52856 lemmas in core using 286469 resolution steps",
+        "c 0 RAT lemmas in core; 543 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 4505185,
+      "cnf_sha256": "66ce570b9c1a9177214ecbc3ee11bbedd10a75eecb4d8f94f789ced3a0448b56",
+      "counts": [
+        11,
+        6,
+        3
+      ],
+      "ell": 20,
+      "m": 116,
+      "proof_bytes": 2256049,
+      "proof_checked": true,
+      "proof_sha256": "d3c17b7c0919fc004ceed97cfef200a74a7797b64bd00d057222f8858f933ab6",
+      "solve_seconds": 0.343869,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 263 of 43226 lemmas in core using 29965 resolution steps",
+        "c 0 RAT lemmas in core; 12 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 6750963,
+      "cnf_sha256": "04554880783a1c07f76211e97aa09fed0393ab64982bd45fedc795419c8c82f8",
+      "counts": [
+        3,
+        12,
+        7
+      ],
+      "ell": 22,
+      "m": 140,
+      "proof_bytes": 419217,
+      "proof_checked": true,
+      "proof_sha256": "b68f80c9bb4141c7c65caa10bfe0e3e757bef9ba6b3663d8753af981cadc05fc",
+      "solve_seconds": 0.298357,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 1463 of 65728 lemmas in core using 504654 resolution steps",
+        "c 0 RAT lemmas in core; 3883 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 6661810,
+      "cnf_sha256": "3b70b8f5e97edfe3314a298f18c3ddb434552ca8041a59f85f5c49bb54567398",
+      "counts": [
+        7,
+        12,
+        3
+      ],
+      "ell": 22,
+      "m": 140,
+      "proof_bytes": 2786077,
+      "proof_checked": true,
+      "proof_sha256": "c33fa36f372491cac43588eef54f0cf75042e84692bee758b6d128eef140e2f7",
+      "solve_seconds": 1.381483,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 836 of 56938 lemmas in core using 518952 resolution steps",
+        "c 0 RAT lemmas in core; 1042 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 6560088,
+      "cnf_sha256": "40bf71c2f92a0a2e8e9b1b3b7906261c683207907bf831ae408c37cee9a456e8",
+      "counts": [
+        12,
+        7,
+        3
+      ],
+      "ell": 22,
+      "m": 140,
+      "proof_bytes": 826787,
+      "proof_checked": true,
+      "proof_sha256": "348b44bae0ef71f18e4c251cad619076b15bd78b9c6bcec005ca58a954c0b54e",
+      "solve_seconds": 0.890885,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 532 of 24204 lemmas in core using 136467 resolution steps",
+        "c 0 RAT lemmas in core; 11 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 8201444,
+      "cnf_sha256": "012b0f10a6fc6e46769998bf0928b42ab66f898d4af93a080a61150236d107b0",
+      "counts": [
+        4,
+        13,
+        6
+      ],
+      "ell": 23,
+      "m": 153,
+      "proof_bytes": 265999,
+      "proof_checked": true,
+      "proof_sha256": "c6a5301cfffd0448de8decb7033a69364744f0034d0c8206283d53506b22b605",
+      "solve_seconds": 0.387345,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 577 of 57469 lemmas in core using 225442 resolution steps",
+        "c 0 RAT lemmas in core; 111 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 8143644,
+      "cnf_sha256": "59e7c4a195c03d815b75812bf732d743d7912c05c6a2d64d9f251e8c3c53dd8e",
+      "counts": [
+        6,
+        13,
+        4
+      ],
+      "ell": 23,
+      "m": 153,
+      "proof_bytes": 685723,
+      "proof_checked": true,
+      "proof_sha256": "32a5b3c2da086b9fb04c974802c80b2dcb099521bea1f58b8a02125f830c4b4c",
+      "solve_seconds": 0.713115,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    },
+    {
+      "checker_exit": 0,
+      "checker_summary": [
+        "c 1311 of 92493 lemmas in core using 339256 resolution steps",
+        "c 0 RAT lemmas in core; 3419 redundant literals in core lemmas",
+        "s VERIFIED"
+      ],
+      "cnf_bytes": 7954420,
+      "cnf_sha256": "9f67df34d3293c84eb6659513f54e4b6931a04abfeed2bed3b4af6ee2d6818e9",
+      "counts": [
+        13,
+        6,
+        4
+      ],
+      "ell": 23,
+      "m": 153,
+      "proof_bytes": 7386305,
+      "proof_checked": true,
+      "proof_sha256": "be9251ee7f1de09659f84958b3863d98c52eb527e77febc6dc5446945c396f03",
+      "solve_seconds": 1.654137,
+      "solver_exit": 20,
+      "status": "UNSAT"
+    }
+  ],
+  "census": [
+    {
+      "canonical_positive_splits": 72,
+      "capacity_feasible": 30,
+      "capacity_infeasible": 42,
+      "capacity_tight_splits": [
+        [
+          2,
+          9,
+          7
+        ],
+        [
+          3,
+          10,
+          5
+        ],
+        [
+          5,
+          10,
+          3
+        ],
+        [
+          7,
+          9,
+          2
+        ],
+        [
+          9,
+          7,
+          2
+        ],
+        [
+          10,
+          5,
+          3
+        ]
+      ],
+      "ell": 18,
+      "target_m": 94
+    },
+    {
+      "canonical_positive_splits": 81,
+      "capacity_feasible": 29,
+      "capacity_infeasible": 52,
+      "capacity_tight_splits": [
+        [
+          2,
+          9,
+          8
+        ],
+        [
+          8,
+          9,
+          2
+        ],
+        [
+          9,
+          8,
+          2
+        ]
+      ],
+      "ell": 19,
+      "target_m": 105
+    },
+    {
+      "canonical_positive_splits": 90,
+      "capacity_feasible": 34,
+      "capacity_infeasible": 56,
+      "capacity_tight_splits": [
+        [
+          2,
+          9,
+          9
+        ],
+        [
+          3,
+          11,
+          6
+        ],
+        [
+          6,
+          11,
+          3
+        ],
+        [
+          9,
+          9,
+          2
+        ],
+        [
+          11,
+          6,
+          3
+        ]
+      ],
+      "ell": 20,
+      "target_m": 116
+    },
+    {
+      "canonical_positive_splits": 100,
+      "capacity_feasible": 33,
+      "capacity_infeasible": 67,
+      "capacity_tight_splits": [],
+      "ell": 21,
+      "target_m": 128
+    },
+    {
+      "canonical_positive_splits": 110,
+      "capacity_feasible": 40,
+      "capacity_infeasible": 70,
+      "capacity_tight_splits": [
+        [
+          3,
+          12,
+          7
+        ],
+        [
+          7,
+          12,
+          3
+        ],
+        [
+          12,
+          7,
+          3
+        ]
+      ],
+      "ell": 22,
+      "target_m": 140
+    },
+    {
+      "canonical_positive_splits": 121,
+      "capacity_feasible": 45,
+      "capacity_infeasible": 76,
+      "capacity_tight_splits": [
+        [
+          4,
+          13,
+          6
+        ],
+        [
+          6,
+          13,
+          4
+        ],
+        [
+          13,
+          6,
+          4
+        ]
+      ],
+      "ell": 23,
+      "target_m": 153
+    },
+    {
+      "canonical_positive_splits": 132,
+      "capacity_feasible": 45,
+      "capacity_infeasible": 87,
+      "capacity_tight_splits": [],
+      "ell": 24,
+      "target_m": 167
+    }
+  ],
+  "scope": "all canonical positive J/K-unordered type splits",
+  "target_formula": "floor(85*ell^2/294)+1"
+}

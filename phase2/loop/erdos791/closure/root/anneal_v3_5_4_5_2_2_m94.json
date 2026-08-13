@@ -1,0 +1,13 @@
+{
+  "status": "NO_SOLUTION_FOUND",
+  "target": 94,
+  "counts": [5, 4, 5, 2, 2],
+  "proposals": 200000000,
+  "accepted": 4585153,
+  "seconds": 592.661,
+  "best_coverage": 81,
+  "best_prefix": 80,
+  "placement": {
+    "I": [0, 6, 10, 14, 18],    "J": [0, 1, 2, 33],    "K": [3, 21, 24, 27, 30],    "L0": [46, 48],    "L1": [45, 47]
+  }
+}

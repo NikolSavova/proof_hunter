@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "product_basis_pairs_checked": 169,
+  "elementary_scaled_family_checked_t_through": 20,
+  "inverse_n_checked": 13,
+  "small_R_truncated_at_12": [
+    -1,
+    0,
+    2,
+    4,
+    8,
+    12,
+    12,
+    12,
+    12
+  ],
+  "scope": "finite sanity checks only; no asymptotic claim"
+}

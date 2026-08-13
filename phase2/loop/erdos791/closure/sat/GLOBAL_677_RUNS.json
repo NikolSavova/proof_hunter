@@ -1,0 +1,111 @@
+{
+  "aggregate": {
+    "conflicts": 17115580,
+    "propagations": 25488942383,
+    "sat_models": 0,
+    "status": "UNKNOWN",
+    "verified_unsat_proofs": 0
+  },
+  "interpretation": "K0=0 and K0=1 exhaust the normalized global instance, but both bounded runs returned UNKNOWN; therefore no global conclusion follows.",
+  "runs": [
+    {
+      "clauses": 186841,
+      "cnf_sha256": "1e79a06a45ab73e54ea3391155a466d560ea7dbef488919673076098f1e4b212",
+      "config": "--sat",
+      "conflicts": 4506552,
+      "k0_case": 0,
+      "process_seconds": 706.91,
+      "propagations": 6651921504,
+      "seed": 791,
+      "solver": "Kissat 4.0.4",
+      "status": "UNKNOWN",
+      "variables": 47649,
+      "wall_limit_seconds": 900,
+      "wall_seconds": 900.05
+    },
+    {
+      "capacity_cuts": false,
+      "clauses": 93509,
+      "cnf_sha256": "6f7c4c4282ef988c92b11a3cc094b1e8ab09453e0eb0f8593bed77eccaab49c8",
+      "config": "--sat",
+      "conflicts": 4909192,
+      "k0_case": 0,
+      "process_seconds": 728.63,
+      "propagations": 5429072196,
+      "seed": 2791,
+      "solver": "Kissat 4.0.4",
+      "status": "UNKNOWN",
+      "variables": 24106,
+      "wall_limit_seconds": 900,
+      "wall_seconds": 900.05
+    },
+    {
+      "clauses": 186841,
+      "cnf_sha256": "26729d2b465bec0a26b89651e132084959d77e2d4d08012ba5d62ee68ec45329",
+      "config": "--default",
+      "conflicts": 4419322,
+      "k0_case": 1,
+      "process_seconds": 734.7,
+      "propagations": 8319736368,
+      "seed": 7913,
+      "solver": "Kissat 4.0.4",
+      "status": "UNKNOWN",
+      "variables": 47649,
+      "wall_limit_seconds": 900,
+      "wall_seconds": 900.07
+    },
+    {
+      "clauses": 186843,
+      "cnf_sha256": "bba8652646673b1a95a13658a0a8c51b1159cd64557ad7fad79966dd90b07ab0",
+      "config": "--sat",
+      "conflicts": 3280514,
+      "extra_units": [
+        "I:1=0",
+        "J:1=1"
+      ],
+      "k0_case": 0,
+      "process_seconds": 500.49,
+      "propagations": 5088212315,
+      "scope": "subcase suggested by the normalized m=115 construction",
+      "seed": 42,
+      "solver": "Kissat 4.0.4",
+      "status": "UNKNOWN",
+      "variables": 47649,
+      "wall_limit_seconds": 600,
+      "wall_seconds": 600.02
+    }
+  ],
+  "target": {
+    "counts": [
+      6,
+      7,
+      7
+    ],
+    "cut_bounds": {
+      "consecutive": [
+        32,
+        48
+      ],
+      "direct": [
+        68,
+        84
+      ],
+      "sum_IJ": [
+        26,
+        42
+      ],
+      "sum_IK": [
+        26,
+        42
+      ],
+      "sum_JK": [
+        33,
+        49
+      ]
+    },
+    "ell": 20,
+    "global_cnf_sha256": "8601387ced75cd37b138ff6341476cce42d58808c9d0fa189f6737b18d2b83f4",
+    "m": 116,
+    "normalized_cases": "K0=0 or K0=1"
+  }
+}

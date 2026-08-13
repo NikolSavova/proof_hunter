@@ -1,0 +1,49 @@
+{
+  "fixed_certificate_encoding": {
+    "certificate": "../../campaign/theory/family_20_115.json",
+    "clauses": 184611,
+    "cnf_sha256": "ed80eaf707496c5de86630e7f7cf34ba080afb44d40de6218819d6275d8f71ce",
+    "counts": [
+      6,
+      7,
+      7
+    ],
+    "ell": 20,
+    "m": 115,
+    "solver": "CaDiCaL 3.0.1",
+    "status": "SAT",
+    "variables": 46998
+  },
+  "independent_verifier": {
+    "certificate_sha256": "e7268873667f62d43b56ee04a51449b4b199089ded22f171f18991756420d325",
+    "direct_expansion_checks": [
+      {
+        "actual_sumset_prefix_through": 461,
+        "basis_size": 45,
+        "required_through": 459,
+        "t": 2
+      },
+      {
+        "actual_sumset_prefix_through": 1037,
+        "basis_size": 65,
+        "required_through": 1034,
+        "t": 3
+      }
+    ],
+    "exact_tile_prefix": 115,
+    "status": "PASS",
+    "witnesses_sha256": "9da7d8ac19087b139139f036dca4ab31ff6dcde52a83892de46a43bcd729eea9"
+  },
+  "exhaustive_gadget_checks": {
+    "fixed_placements_m_at_most_3": {
+      "cases": 159,
+      "description": "CNF satisfiability compared with direct tile-predicate evaluation",
+      "status": "PASS"
+    },
+    "unary_range_counter_n_at_most_6": {
+      "cases": 2814,
+      "description": "all bit assignments and all lower/upper ranges",
+      "status": "PASS"
+    }
+  }
+}

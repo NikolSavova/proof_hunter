@@ -1,0 +1,81 @@
+{
+  "A": 112,
+  "B": 224,
+  "D": 143,
+  "abstract_prefix": 510,
+  "ell": 42,
+  "last_block_as_L0": true,
+  "m": 510,
+  "obstruction": {
+    "a": 6,
+    "base_term": 0,
+    "equality": true,
+    "gap_85ell2_minus_294m": 0,
+    "nonnegative_x_correction": 0,
+    "proof_case": "w=0: integer exceptional case a=6; otherwise positive real discriminant bound",
+    "w": 0,
+    "x": 0,
+    "y": 0
+  },
+  "parameters": {
+    "r": 5,
+    "s": 17,
+    "u": 6,
+    "z": 2
+  },
+  "placement": {
+    "I": [
+      0,
+      5,
+      112,
+      117,
+      122,
+      127,
+      132,
+      137
+    ],
+    "J": [
+      10,
+      16,
+      22,
+      28,
+      34,
+      40,
+      46,
+      52,
+      58,
+      64,
+      70,
+      76,
+      82,
+      88,
+      94,
+      100,
+      106
+    ],
+    "K": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229
+    ],
+    "L0": [
+      367,
+      368,
+      369,
+      370,
+      371,
+      372
+    ],
+    "L1": []
+  },
+  "ratio": "510/1764",
+  "status": "PASS"
+}

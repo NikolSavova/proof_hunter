@@ -1,0 +1,4197 @@
+{
+  "ell": 8,
+  "rows": [
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 0,
+        "L0": 1,
+        "L1": 6
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.010861249989829957
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 0,
+        "L0": 2,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02689099998679012
+    },
+    {
+      "branches": 149,
+      "conflicts": 5,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 0,
+        "L0": 3,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.025697625009343028
+    },
+    {
+      "branches": 154,
+      "conflicts": 10,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 0,
+        "L0": 4,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02572804200462997
+    },
+    {
+      "branches": 171,
+      "conflicts": 12,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 0,
+        "L0": 5,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.030676958966068923
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 0,
+        "L0": 6,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.010775167029350996
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 0,
+        "L0": 7,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02538179198745638
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 1,
+        "L0": 0,
+        "L1": 6
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.012676416081376374
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 1,
+        "L0": 1,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.01401395897846669
+    },
+    {
+      "branches": 1560,
+      "conflicts": 160,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 1,
+        "L0": 2,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06435412506107241
+    },
+    {
+      "branches": 4130,
+      "conflicts": 300,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 1,
+        "L0": 3,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07704454194754362
+    },
+    {
+      "branches": 4454,
+      "conflicts": 455,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 1,
+        "L0": 4,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06660937506239861
+    },
+    {
+      "branches": 390,
+      "conflicts": 32,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 1,
+        "L0": 5,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.047024708008393645
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 1,
+        "L0": 6,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.026095250039361417
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 2,
+        "L0": 0,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.020108458935283124
+    },
+    {
+      "branches": 2519,
+      "conflicts": 223,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 2,
+        "L0": 1,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04181070800404996
+    },
+    {
+      "branches": 6368,
+      "conflicts": 553,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 2,
+        "L0": 2,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04738945805002004
+    },
+    {
+      "branches": 19525,
+      "conflicts": 3164,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 2,
+        "L0": 3,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09126154193654656
+    },
+    {
+      "branches": 5646,
+      "conflicts": 563,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 2,
+        "L0": 4,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07507708296179771
+    },
+    {
+      "branches": 159,
+      "conflicts": 6,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 2,
+        "L0": 5,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02260908391326666
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 3,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02078625001013279
+    },
+    {
+      "branches": 4539,
+      "conflicts": 295,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 3,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04955529095605016
+    },
+    {
+      "branches": 10622,
+      "conflicts": 1343,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 3,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06716633308678865
+    },
+    {
+      "branches": 11229,
+      "conflicts": 1585,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 3,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0910347499884665
+    },
+    {
+      "branches": 168,
+      "conflicts": 15,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 3,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04397291596978903
+    },
+    {
+      "branches": 154,
+      "conflicts": 6,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 4,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04138933296781033
+    },
+    {
+      "branches": 4489,
+      "conflicts": 289,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 4,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05227920797187835
+    },
+    {
+      "branches": 15570,
+      "conflicts": 1723,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 4,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.11522837495431304
+    },
+    {
+      "branches": 172,
+      "conflicts": 20,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 4,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07758945797104388
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 5,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.013424790930002928
+    },
+    {
+      "branches": 3929,
+      "conflicts": 244,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 5,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05680604197550565
+    },
+    {
+      "branches": 167,
+      "conflicts": 15,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 5,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03680366592016071
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 6,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.035326958051882684
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 6,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02972550003323704
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 0,
+        "K": 7,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.022793125011958182
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 0,
+        "L0": 0,
+        "L1": 6
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.014910334022715688
+    },
+    {
+      "branches": 1172,
+      "conflicts": 71,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 0,
+        "L0": 1,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04161920805927366
+    },
+    {
+      "branches": 3508,
+      "conflicts": 225,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 0,
+        "L0": 2,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09969170799013227
+    },
+    {
+      "branches": 5518,
+      "conflicts": 521,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 0,
+        "L0": 3,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08939058403484523
+    },
+    {
+      "branches": 10457,
+      "conflicts": 909,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 0,
+        "L0": 4,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0999394579557702
+    },
+    {
+      "branches": 3086,
+      "conflicts": 185,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 0,
+        "L0": 5,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0525576249929145
+    },
+    {
+      "branches": 440,
+      "conflicts": 40,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 0,
+        "L0": 6,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0308742499910295
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 1,
+        "L0": 0,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04331316705793142
+    },
+    {
+      "branches": 8808,
+      "conflicts": 724,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 1,
+        "L0": 1,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1745270409155637
+    },
+    {
+      "branches": 12362,
+      "conflicts": 1965,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 1,
+        "L0": 2,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1356962090358138
+    },
+    {
+      "branches": 13004,
+      "conflicts": 2740,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 1,
+        "L0": 3,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.14932879095431417
+    },
+    {
+      "branches": 9978,
+      "conflicts": 1415,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 1,
+        "L0": 4,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1429534169146791
+    },
+    {
+      "branches": 3750,
+      "conflicts": 299,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 1,
+        "L0": 5,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07607216597534716
+    },
+    {
+      "branches": 3760,
+      "conflicts": 333,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 2,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05049375002272427
+    },
+    {
+      "branches": 11891,
+      "conflicts": 1626,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 2,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.17660262493882328
+    },
+    {
+      "branches": 70751,
+      "conflicts": 6462,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 2,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4337944999570027
+    },
+    {
+      "branches": 31671,
+      "conflicts": 4907,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 2,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.2624842079821974
+    },
+    {
+      "branches": 6720,
+      "conflicts": 804,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 2,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05359399993903935
+    },
+    {
+      "branches": 10361,
+      "conflicts": 1055,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 3,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08686754200607538
+    },
+    {
+      "branches": 12438,
+      "conflicts": 1964,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 3,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.14911033306270838
+    },
+    {
+      "branches": 57505,
+      "conflicts": 7257,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 3,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.37381541600916535
+    },
+    {
+      "branches": 5484,
+      "conflicts": 1040,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 3,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0703573749633506
+    },
+    {
+      "branches": 4097,
+      "conflicts": 496,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 4,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08004008303396404
+    },
+    {
+      "branches": 9484,
+      "conflicts": 1245,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 4,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.12469262501690537
+    },
+    {
+      "branches": 7132,
+      "conflicts": 739,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 4,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.054935666965320706
+    },
+    {
+      "branches": 765,
+      "conflicts": 44,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 5,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.037088125012815
+    },
+    {
+      "branches": 3458,
+      "conflicts": 233,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 5,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08398604206740856
+    },
+    {
+      "branches": 440,
+      "conflicts": 40,
+      "counts": {
+        "I": 1,
+        "J": 1,
+        "K": 6,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06846374995075166
+    },
+    {
+      "branches": 950,
+      "conflicts": 75,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 0,
+        "L0": 0,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.027873708051629364
+    },
+    {
+      "branches": 4642,
+      "conflicts": 455,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 0,
+        "L0": 1,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08064545888919383
+    },
+    {
+      "branches": 11050,
+      "conflicts": 1899,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 0,
+        "L0": 2,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08509125001728535
+    },
+    {
+      "branches": 11916,
+      "conflicts": 1950,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 0,
+        "L0": 3,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.11036533303558826
+    },
+    {
+      "branches": 6625,
+      "conflicts": 1222,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 0,
+        "L0": 4,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07443608390167356
+    },
+    {
+      "branches": 4584,
+      "conflicts": 566,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 0,
+        "L0": 5,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.029210083070211112
+    },
+    {
+      "branches": 5907,
+      "conflicts": 527,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 1,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08061245805583894
+    },
+    {
+      "branches": 15446,
+      "conflicts": 3181,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 1,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.19106012501288205
+    },
+    {
+      "branches": 48089,
+      "conflicts": 6659,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 1,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.29439679195638746
+    },
+    {
+      "branches": 75451,
+      "conflicts": 8120,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 1,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6109971669502556
+    },
+    {
+      "branches": 23411,
+      "conflicts": 3025,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 1,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09777233307249844
+    },
+    {
+      "branches": 13304,
+      "conflicts": 1390,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 2,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06648766703438014
+    },
+    {
+      "branches": 37942,
+      "conflicts": 6823,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 2,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.2839089579647407
+    },
+    {
+      "branches": 48329,
+      "conflicts": 8787,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 2,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.36994133295957
+    },
+    {
+      "branches": 17545,
+      "conflicts": 4506,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 2,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.11137316701933742
+    },
+    {
+      "branches": 14594,
+      "conflicts": 1297,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 3,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06978258397430182
+    },
+    {
+      "branches": 73356,
+      "conflicts": 7520,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 3,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.49565783399157226
+    },
+    {
+      "branches": 14157,
+      "conflicts": 5097,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 3,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.11219779099337757
+    },
+    {
+      "branches": 5621,
+      "conflicts": 606,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 4,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05363604100421071
+    },
+    {
+      "branches": 17103,
+      "conflicts": 2474,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 4,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1105508329346776
+    },
+    {
+      "branches": 4770,
+      "conflicts": 586,
+      "counts": {
+        "I": 1,
+        "J": 2,
+        "K": 5,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.035809958004392684
+    },
+    {
+      "branches": 2046,
+      "conflicts": 313,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 0,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02963049989193678
+    },
+    {
+      "branches": 17703,
+      "conflicts": 1942,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 0,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08370579103939235
+    },
+    {
+      "branches": 26992,
+      "conflicts": 3495,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 0,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.14700100000482053
+    },
+    {
+      "branches": 20291,
+      "conflicts": 2721,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 0,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.11504966695792973
+    },
+    {
+      "branches": 8711,
+      "conflicts": 1652,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 0,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0600821670377627
+    },
+    {
+      "branches": 11530,
+      "conflicts": 1936,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 1,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07869670796208084
+    },
+    {
+      "branches": 83882,
+      "conflicts": 9972,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 1,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6651391671039164
+    },
+    {
+      "branches": 56728,
+      "conflicts": 7809,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 1,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5375056250486523
+    },
+    {
+      "branches": 25370,
+      "conflicts": 3691,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 1,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.11628079100046307
+    },
+    {
+      "branches": 15543,
+      "conflicts": 2797,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 2,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08806091698352247
+    },
+    {
+      "branches": 60674,
+      "conflicts": 7043,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 2,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4511092089815065
+    },
+    {
+      "branches": 27659,
+      "conflicts": 5334,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 2,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.14287945802789181
+    },
+    {
+      "branches": 15827,
+      "conflicts": 1735,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 3,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07811941707041115
+    },
+    {
+      "branches": 47708,
+      "conflicts": 6264,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 3,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.19122250005602837
+    },
+    {
+      "branches": 6979,
+      "conflicts": 1517,
+      "counts": {
+        "I": 1,
+        "J": 3,
+        "K": 4,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0428872499614954
+    },
+    {
+      "branches": 6517,
+      "conflicts": 796,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 0,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03921020799316466
+    },
+    {
+      "branches": 17902,
+      "conflicts": 2240,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 0,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09386754094157368
+    },
+    {
+      "branches": 21100,
+      "conflicts": 2478,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 0,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.13455787498969585
+    },
+    {
+      "branches": 6080,
+      "conflicts": 1287,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 0,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0558797080302611
+    },
+    {
+      "branches": 13348,
+      "conflicts": 1992,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 1,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07752083300147206
+    },
+    {
+      "branches": 16834,
+      "conflicts": 3319,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 1,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1941157499095425
+    },
+    {
+      "branches": 25055,
+      "conflicts": 3729,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 1,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.14985462499316782
+    },
+    {
+      "branches": 27671,
+      "conflicts": 3047,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 2,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.11938679206650704
+    },
+    {
+      "branches": 23360,
+      "conflicts": 4165,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 2,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1048904589843005
+    },
+    {
+      "branches": 6080,
+      "conflicts": 1287,
+      "counts": {
+        "I": 1,
+        "J": 4,
+        "K": 3,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.037149874959141016
+    },
+    {
+      "branches": 1863,
+      "conflicts": 265,
+      "counts": {
+        "I": 1,
+        "J": 5,
+        "K": 0,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.031787042040377855
+    },
+    {
+      "branches": 5804,
+      "conflicts": 852,
+      "counts": {
+        "I": 1,
+        "J": 5,
+        "K": 0,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.10485745791811496
+    },
+    {
+      "branches": 2574,
+      "conflicts": 479,
+      "counts": {
+        "I": 1,
+        "J": 5,
+        "K": 0,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.057516542030498385
+    },
+    {
+      "branches": 4794,
+      "conflicts": 403,
+      "counts": {
+        "I": 1,
+        "J": 5,
+        "K": 1,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08007145905867219
+    },
+    {
+      "branches": 11508,
+      "conflicts": 1736,
+      "counts": {
+        "I": 1,
+        "J": 5,
+        "K": 1,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08146620797924697
+    },
+    {
+      "branches": 2614,
+      "conflicts": 492,
+      "counts": {
+        "I": 1,
+        "J": 5,
+        "K": 2,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.031993000069633126
+    },
+    {
+      "branches": 290,
+      "conflicts": 19,
+      "counts": {
+        "I": 1,
+        "J": 6,
+        "K": 0,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.026032749912701547
+    },
+    {
+      "branches": 502,
+      "conflicts": 44,
+      "counts": {
+        "I": 1,
+        "J": 6,
+        "K": 0,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.034880541963502765
+    },
+    {
+      "branches": 501,
+      "conflicts": 44,
+      "counts": {
+        "I": 1,
+        "J": 6,
+        "K": 1,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05766858393326402
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 1,
+        "J": 7,
+        "K": 0,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.010196666000410914
+    },
+    {
+      "branches": 535,
+      "conflicts": 56,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 0,
+        "L0": 1,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05665137502364814
+    },
+    {
+      "branches": 2491,
+      "conflicts": 402,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 0,
+        "L0": 2,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.047738416003994644
+    },
+    {
+      "branches": 4643,
+      "conflicts": 916,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 0,
+        "L0": 3,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.056960082962177694
+    },
+    {
+      "branches": 3296,
+      "conflicts": 723,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 0,
+        "L0": 4,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.046184000093489885
+    },
+    {
+      "branches": 2477,
+      "conflicts": 331,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 0,
+        "L0": 5,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0737973329378292
+    },
+    {
+      "branches": 524,
+      "conflicts": 44,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 0,
+        "L0": 6,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06636049994267523
+    },
+    {
+      "branches": 418,
+      "conflicts": 39,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 1,
+        "L0": 0,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.027461792109534144
+    },
+    {
+      "branches": 6126,
+      "conflicts": 1032,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 1,
+        "L0": 1,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09069099999032915
+    },
+    {
+      "branches": 56886,
+      "conflicts": 7594,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 1,
+        "L0": 2,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4689535840880126
+    },
+    {
+      "branches": 103091,
+      "conflicts": 10836,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 1,
+        "L0": 3,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.7128995830425993
+    },
+    {
+      "branches": 14499,
+      "conflicts": 3133,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 1,
+        "L0": 4,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.20872408302966505
+    },
+    {
+      "branches": 2614,
+      "conflicts": 439,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 1,
+        "L0": 5,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.039253916940651834
+    },
+    {
+      "branches": 2518,
+      "conflicts": 137,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 2,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03603679209481925
+    },
+    {
+      "branches": 13611,
+      "conflicts": 2865,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 2,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.15668091597035527
+    },
+    {
+      "branches": 73645,
+      "conflicts": 12025,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 2,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6209331669379026
+    },
+    {
+      "branches": 89521,
+      "conflicts": 10079,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 2,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6520563750527799
+    },
+    {
+      "branches": 5481,
+      "conflicts": 1282,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 2,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05540604190900922
+    },
+    {
+      "branches": 3529,
+      "conflicts": 320,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 3,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.062396833091042936
+    },
+    {
+      "branches": 73582,
+      "conflicts": 7919,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 3,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.44502091698814183
+    },
+    {
+      "branches": 43235,
+      "conflicts": 7993,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 3,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4166662080679089
+    },
+    {
+      "branches": 12105,
+      "conflicts": 1798,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 3,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09141487500164658
+    },
+    {
+      "branches": 3547,
+      "conflicts": 399,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 4,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03888170805294067
+    },
+    {
+      "branches": 13427,
+      "conflicts": 2674,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 4,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.16168408293742687
+    },
+    {
+      "branches": 4362,
+      "conflicts": 1033,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 4,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04930600000079721
+    },
+    {
+      "branches": 1728,
+      "conflicts": 163,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 5,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03744066692888737
+    },
+    {
+      "branches": 2888,
+      "conflicts": 441,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 5,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03747524996288121
+    },
+    {
+      "branches": 543,
+      "conflicts": 56,
+      "counts": {
+        "I": 2,
+        "J": 0,
+        "K": 6,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0223117918940261
+    },
+    {
+      "branches": 402,
+      "conflicts": 41,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 0,
+        "L0": 0,
+        "L1": 5
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06642912502866238
+    },
+    {
+      "branches": 9360,
+      "conflicts": 1374,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 0,
+        "L0": 1,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.13529387500602752
+    },
+    {
+      "branches": 42077,
+      "conflicts": 6044,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 0,
+        "L0": 2,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.30725774995516986
+    },
+    {
+      "branches": 85209,
+      "conflicts": 9589,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 0,
+        "L0": 3,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6310936249792576
+    },
+    {
+      "branches": 15275,
+      "conflicts": 3455,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 0,
+        "L0": 4,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1960974590620026
+    },
+    {
+      "branches": 6558,
+      "conflicts": 1288,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 0,
+        "L0": 5,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07276354206260294
+    },
+    {
+      "branches": 8317,
+      "conflicts": 896,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 1,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.10725750005804002
+    },
+    {
+      "branches": 30086,
+      "conflicts": 7830,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 1,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.537878500064835
+    },
+    {
+      "branches": 116552,
+      "conflicts": 27676,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 1,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.399359417031519
+    },
+    {
+      "branches": 97940,
+      "conflicts": 17936,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 1,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.7492676670663059
+    },
+    {
+      "branches": 35046,
+      "conflicts": 6885,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 1,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.2924180410336703
+    },
+    {
+      "branches": 15073,
+      "conflicts": 2589,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 2,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.15965529100503772
+    },
+    {
+      "branches": 100575,
+      "conflicts": 18622,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 2,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.5512710000621155
+    },
+    {
+      "branches": 124108,
+      "conflicts": 25576,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 2,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.366000709007494
+    },
+    {
+      "branches": 111050,
+      "conflicts": 15911,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 2,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.0213203330058604
+    },
+    {
+      "branches": 30513,
+      "conflicts": 4796,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 3,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.24905933300033212
+    },
+    {
+      "branches": 92155,
+      "conflicts": 15021,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 3,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.4413292919052765
+    },
+    {
+      "branches": 63696,
+      "conflicts": 13102,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 3,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.641280958079733
+    },
+    {
+      "branches": 15305,
+      "conflicts": 1979,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 4,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1530597920063883
+    },
+    {
+      "branches": 35068,
+      "conflicts": 6503,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 4,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.3539972499711439
+    },
+    {
+      "branches": 6558,
+      "conflicts": 1288,
+      "counts": {
+        "I": 2,
+        "J": 1,
+        "K": 5,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07534833392128348
+    },
+    {
+      "branches": 7730,
+      "conflicts": 1071,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 0,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07179508300032467
+    },
+    {
+      "branches": 100578,
+      "conflicts": 8975,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 0,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5948009999701753
+    },
+    {
+      "branches": 90877,
+      "conflicts": 16646,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 0,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.2161918750498444
+    },
+    {
+      "branches": 42478,
+      "conflicts": 9398,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 0,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5245271670864895
+    },
+    {
+      "branches": 34673,
+      "conflicts": 5765,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 0,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.17083975009154528
+    },
+    {
+      "branches": 16780,
+      "conflicts": 4129,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 1,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.2018749580020085
+    },
+    {
+      "branches": 104196,
+      "conflicts": 23482,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 1,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.1160383330425248
+    },
+    {
+      "branches": 140545,
+      "conflicts": 33926,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 1,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 3.379380500060506
+    },
+    {
+      "branches": 87905,
+      "conflicts": 19959,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 1,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.4341107909567654
+    },
+    {
+      "branches": 75620,
+      "conflicts": 11769,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 2,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.691265458939597
+    },
+    {
+      "branches": 132733,
+      "conflicts": 26021,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 2,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.523420208017342
+    },
+    {
+      "branches": 138202,
+      "conflicts": 27541,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 2,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.972023249953054
+    },
+    {
+      "branches": 65026,
+      "conflicts": 7501,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 3,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.3925733750220388
+    },
+    {
+      "branches": 99829,
+      "conflicts": 17445,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 3,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.0324753330787644
+    },
+    {
+      "branches": 23452,
+      "conflicts": 5319,
+      "counts": {
+        "I": 2,
+        "J": 2,
+        "K": 4,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.15964241605252028
+    },
+    {
+      "branches": 22650,
+      "conflicts": 2812,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 0,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09889266605023295
+    },
+    {
+      "branches": 73695,
+      "conflicts": 12605,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 0,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6615116660250351
+    },
+    {
+      "branches": 74596,
+      "conflicts": 11395,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 0,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.9994202500674874
+    },
+    {
+      "branches": 77737,
+      "conflicts": 10532,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 0,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4108156249858439
+    },
+    {
+      "branches": 120702,
+      "conflicts": 9581,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 1,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6565587919903919
+    },
+    {
+      "branches": 121913,
+      "conflicts": 28485,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 1,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.9262446250068024
+    },
+    {
+      "branches": 132619,
+      "conflicts": 23173,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 1,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.0116962080355734
+    },
+    {
+      "branches": 60318,
+      "conflicts": 9631,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 2,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.500923249986954
+    },
+    {
+      "branches": 167475,
+      "conflicts": 26944,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 2,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.1911226250231266
+    },
+    {
+      "branches": 81792,
+      "conflicts": 11280,
+      "counts": {
+        "I": 2,
+        "J": 3,
+        "K": 3,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4258416659431532
+    },
+    {
+      "branches": 47750,
+      "conflicts": 4186,
+      "counts": {
+        "I": 2,
+        "J": 4,
+        "K": 0,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.18627808394376189
+    },
+    {
+      "branches": 90606,
+      "conflicts": 10481,
+      "counts": {
+        "I": 2,
+        "J": 4,
+        "K": 0,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.7979701660806313
+    },
+    {
+      "branches": 47000,
+      "conflicts": 5657,
+      "counts": {
+        "I": 2,
+        "J": 4,
+        "K": 0,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.2037174580618739
+    },
+    {
+      "branches": 93379,
+      "conflicts": 8565,
+      "counts": {
+        "I": 2,
+        "J": 4,
+        "K": 1,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6259051250526682
+    },
+    {
+      "branches": 135523,
+      "conflicts": 15470,
+      "counts": {
+        "I": 2,
+        "J": 4,
+        "K": 1,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.9619445409625769
+    },
+    {
+      "branches": 50440,
+      "conflicts": 5882,
+      "counts": {
+        "I": 2,
+        "J": 4,
+        "K": 2,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1958839170401916
+    },
+    {
+      "branches": 15992,
+      "conflicts": 1457,
+      "counts": {
+        "I": 2,
+        "J": 5,
+        "K": 0,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08492262498475611
+    },
+    {
+      "branches": 7033,
+      "conflicts": 1440,
+      "counts": {
+        "I": 2,
+        "J": 5,
+        "K": 0,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08553333301097155
+    },
+    {
+      "branches": 7033,
+      "conflicts": 1440,
+      "counts": {
+        "I": 2,
+        "J": 5,
+        "K": 1,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0810882500372827
+    },
+    {
+      "branches": 546,
+      "conflicts": 60,
+      "counts": {
+        "I": 2,
+        "J": 6,
+        "K": 0,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.024970000027678907
+    },
+    {
+      "branches": 5081,
+      "conflicts": 700,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 0,
+        "L0": 1,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.041597999981604517
+    },
+    {
+      "branches": 29937,
+      "conflicts": 3482,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 0,
+        "L0": 2,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.10382458299864084
+    },
+    {
+      "branches": 14576,
+      "conflicts": 3213,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 0,
+        "L0": 3,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07398691598791629
+    },
+    {
+      "branches": 20600,
+      "conflicts": 3097,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 0,
+        "L0": 4,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08657379203941673
+    },
+    {
+      "branches": 4215,
+      "conflicts": 672,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 0,
+        "L0": 5,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05550625000614673
+    },
+    {
+      "branches": 2047,
+      "conflicts": 300,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 1,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02730858395807445
+    },
+    {
+      "branches": 106886,
+      "conflicts": 8698,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 1,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4471527920104563
+    },
+    {
+      "branches": 76266,
+      "conflicts": 16760,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 1,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.9149309580679983
+    },
+    {
+      "branches": 102264,
+      "conflicts": 13240,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 1,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.8599263340001926
+    },
+    {
+      "branches": 13068,
+      "conflicts": 3335,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 1,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08402304199989885
+    },
+    {
+      "branches": 12121,
+      "conflicts": 1469,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 2,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.058226500055752695
+    },
+    {
+      "branches": 45107,
+      "conflicts": 10711,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 2,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4862795419758186
+    },
+    {
+      "branches": 64152,
+      "conflicts": 16510,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 2,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.0063667499925941
+    },
+    {
+      "branches": 75738,
+      "conflicts": 8961,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 2,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.27474020794034004
+    },
+    {
+      "branches": 9545,
+      "conflicts": 1883,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 3,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.058714917046017945
+    },
+    {
+      "branches": 53364,
+      "conflicts": 10250,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 3,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5183794579934329
+    },
+    {
+      "branches": 35712,
+      "conflicts": 7058,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 3,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.19978745793923736
+    },
+    {
+      "branches": 4229,
+      "conflicts": 681,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 4,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.042940709041431546
+    },
+    {
+      "branches": 24765,
+      "conflicts": 3349,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 4,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09995491709560156
+    },
+    {
+      "branches": 4452,
+      "conflicts": 700,
+      "counts": {
+        "I": 3,
+        "J": 0,
+        "K": 5,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03109583305194974
+    },
+    {
+      "branches": 1875,
+      "conflicts": 296,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 0,
+        "L0": 0,
+        "L1": 4
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02781304100062698
+    },
+    {
+      "branches": 51789,
+      "conflicts": 6688,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 0,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.31568533298559487
+    },
+    {
+      "branches": 102232,
+      "conflicts": 15354,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 0,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.9729987499304116
+    },
+    {
+      "branches": 112372,
+      "conflicts": 14687,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 0,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.8822641250444576
+    },
+    {
+      "branches": 31956,
+      "conflicts": 4848,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 0,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.17355383292306215
+    },
+    {
+      "branches": 58010,
+      "conflicts": 5567,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 1,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.27912412490695715
+    },
+    {
+      "branches": 105228,
+      "conflicts": 24814,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 1,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.186481249984354
+    },
+    {
+      "branches": 188440,
+      "conflicts": 42859,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 1,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 4.265235207974911
+    },
+    {
+      "branches": 91649,
+      "conflicts": 17277,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 1,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.0629542500246316
+    },
+    {
+      "branches": 63044,
+      "conflicts": 9115,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 2,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4468467909609899
+    },
+    {
+      "branches": 124696,
+      "conflicts": 28391,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 2,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.67852945800405
+    },
+    {
+      "branches": 149110,
+      "conflicts": 32014,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 2,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.307267750031315
+    },
+    {
+      "branches": 105317,
+      "conflicts": 9232,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 3,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.573316500056535
+    },
+    {
+      "branches": 98561,
+      "conflicts": 17895,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 3,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.273520875023678
+    },
+    {
+      "branches": 26825,
+      "conflicts": 5202,
+      "counts": {
+        "I": 3,
+        "J": 1,
+        "K": 4,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.17090233403723687
+    },
+    {
+      "branches": 46840,
+      "conflicts": 3998,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 0,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.15265683399047703
+    },
+    {
+      "branches": 98634,
+      "conflicts": 17396,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 0,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.0669503340031952
+    },
+    {
+      "branches": 90951,
+      "conflicts": 20150,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 0,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.4751135830301791
+    },
+    {
+      "branches": 65979,
+      "conflicts": 13258,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 0,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5467432499863207
+    },
+    {
+      "branches": 89321,
+      "conflicts": 11920,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 1,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.7964983340352774
+    },
+    {
+      "branches": 182938,
+      "conflicts": 41013,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 1,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 4.553700375021435
+    },
+    {
+      "branches": 160993,
+      "conflicts": 32846,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 1,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.358740375027992
+    },
+    {
+      "branches": 115236,
+      "conflicts": 15218,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 2,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.1475807499373332
+    },
+    {
+      "branches": 149473,
+      "conflicts": 32684,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 2,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.6258263749768957
+    },
+    {
+      "branches": 68428,
+      "conflicts": 12464,
+      "counts": {
+        "I": 3,
+        "J": 2,
+        "K": 3,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4746399999130517
+    },
+    {
+      "branches": 34612,
+      "conflicts": 4647,
+      "counts": {
+        "I": 3,
+        "J": 3,
+        "K": 0,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1434390830108896
+    },
+    {
+      "branches": 100837,
+      "conflicts": 14793,
+      "counts": {
+        "I": 3,
+        "J": 3,
+        "K": 0,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.8537849590647966
+    },
+    {
+      "branches": 81625,
+      "conflicts": 12453,
+      "counts": {
+        "I": 3,
+        "J": 3,
+        "K": 0,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.491418290999718
+    },
+    {
+      "branches": 69429,
+      "conflicts": 11445,
+      "counts": {
+        "I": 3,
+        "J": 3,
+        "K": 1,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6225494579412043
+    },
+    {
+      "branches": 145664,
+      "conflicts": 26600,
+      "counts": {
+        "I": 3,
+        "J": 3,
+        "K": 1,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.9247143330285326
+    },
+    {
+      "branches": 74713,
+      "conflicts": 13552,
+      "counts": {
+        "I": 3,
+        "J": 3,
+        "K": 2,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.48110204096883535
+    },
+    {
+      "branches": 45956,
+      "conflicts": 4365,
+      "counts": {
+        "I": 3,
+        "J": 4,
+        "K": 0,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1722822090378031
+    },
+    {
+      "branches": 68554,
+      "conflicts": 6597,
+      "counts": {
+        "I": 3,
+        "J": 4,
+        "K": 0,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.27295770798809826
+    },
+    {
+      "branches": 69159,
+      "conflicts": 6763,
+      "counts": {
+        "I": 3,
+        "J": 4,
+        "K": 1,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.25108949991408736
+    },
+    {
+      "branches": 4487,
+      "conflicts": 673,
+      "counts": {
+        "I": 3,
+        "J": 5,
+        "K": 0,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.028008332941681147
+    },
+    {
+      "branches": 6349,
+      "conflicts": 1150,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 0,
+        "L0": 1,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.059532875078730285
+    },
+    {
+      "branches": 58754,
+      "conflicts": 7009,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 0,
+        "L0": 2,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.2756561669521034
+    },
+    {
+      "branches": 23105,
+      "conflicts": 3521,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 0,
+        "L0": 3,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.12517079198732972
+    },
+    {
+      "branches": 2902,
+      "conflicts": 1013,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 0,
+        "L0": 4,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03288287506438792
+    },
+    {
+      "branches": 3864,
+      "conflicts": 609,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 1,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03248454199638218
+    },
+    {
+      "branches": 55206,
+      "conflicts": 6440,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 1,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.28111779200844467
+    },
+    {
+      "branches": 90842,
+      "conflicts": 11566,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 1,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.8368994169868529
+    },
+    {
+      "branches": 19017,
+      "conflicts": 4916,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 1,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1221733329584822
+    },
+    {
+      "branches": 11612,
+      "conflicts": 1792,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 2,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.060225166962482035
+    },
+    {
+      "branches": 111535,
+      "conflicts": 12972,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 2,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.864374874974601
+    },
+    {
+      "branches": 45427,
+      "conflicts": 7285,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 2,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.20516495895572007
+    },
+    {
+      "branches": 11247,
+      "conflicts": 1689,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 3,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05854012502823025
+    },
+    {
+      "branches": 24212,
+      "conflicts": 4166,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 3,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.10872099990956485
+    },
+    {
+      "branches": 2957,
+      "conflicts": 1023,
+      "counts": {
+        "I": 4,
+        "J": 0,
+        "K": 4,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03441958292387426
+    },
+    {
+      "branches": 3023,
+      "conflicts": 577,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 0,
+        "L0": 0,
+        "L1": 3
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03212433401495218
+    },
+    {
+      "branches": 96594,
+      "conflicts": 9335,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 0,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5260338749503717
+    },
+    {
+      "branches": 100578,
+      "conflicts": 12747,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 0,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.8167230830295011
+    },
+    {
+      "branches": 34644,
+      "conflicts": 5984,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 0,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.18487054109573364
+    },
+    {
+      "branches": 77040,
+      "conflicts": 7570,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 1,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.33923487493302673
+    },
+    {
+      "branches": 104375,
+      "conflicts": 22351,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 1,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 2.0623048749985173
+    },
+    {
+      "branches": 88801,
+      "conflicts": 15551,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 1,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.8139784160302952
+    },
+    {
+      "branches": 81535,
+      "conflicts": 8003,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 2,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5304966659750789
+    },
+    {
+      "branches": 120665,
+      "conflicts": 18237,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 2,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.1419161669909954
+    },
+    {
+      "branches": 41256,
+      "conflicts": 6866,
+      "counts": {
+        "I": 4,
+        "J": 1,
+        "K": 3,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.25489879201631993
+    },
+    {
+      "branches": 27335,
+      "conflicts": 2976,
+      "counts": {
+        "I": 4,
+        "J": 2,
+        "K": 0,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.14702004101127386
+    },
+    {
+      "branches": 101751,
+      "conflicts": 14236,
+      "counts": {
+        "I": 4,
+        "J": 2,
+        "K": 0,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.0390839170431718
+    },
+    {
+      "branches": 73220,
+      "conflicts": 11721,
+      "counts": {
+        "I": 4,
+        "J": 2,
+        "K": 0,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5246865829685703
+    },
+    {
+      "branches": 101596,
+      "conflicts": 10443,
+      "counts": {
+        "I": 4,
+        "J": 2,
+        "K": 1,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.6628325000638142
+    },
+    {
+      "branches": 113732,
+      "conflicts": 21754,
+      "counts": {
+        "I": 4,
+        "J": 2,
+        "K": 1,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 1.5510277909925207
+    },
+    {
+      "branches": 77536,
+      "conflicts": 12004,
+      "counts": {
+        "I": 4,
+        "J": 2,
+        "K": 2,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.5853698330465704
+    },
+    {
+      "branches": 20566,
+      "conflicts": 2767,
+      "counts": {
+        "I": 4,
+        "J": 3,
+        "K": 0,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.10207883303519338
+    },
+    {
+      "branches": 101095,
+      "conflicts": 8843,
+      "counts": {
+        "I": 4,
+        "J": 3,
+        "K": 0,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.4273810419254005
+    },
+    {
+      "branches": 99955,
+      "conflicts": 8796,
+      "counts": {
+        "I": 4,
+        "J": 3,
+        "K": 1,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.42734887497499585
+    },
+    {
+      "branches": 2904,
+      "conflicts": 1013,
+      "counts": {
+        "I": 4,
+        "J": 4,
+        "K": 0,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.031325708026997745
+    },
+    {
+      "branches": 4583,
+      "conflicts": 699,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 0,
+        "L0": 1,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03582812496460974
+    },
+    {
+      "branches": 12302,
+      "conflicts": 1553,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 0,
+        "L0": 2,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.05503170797601342
+    },
+    {
+      "branches": 3527,
+      "conflicts": 591,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 0,
+        "L0": 3,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06039079197216779
+    },
+    {
+      "branches": 1708,
+      "conflicts": 195,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 1,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03214525000657886
+    },
+    {
+      "branches": 14338,
+      "conflicts": 2644,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 1,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.13298224995378405
+    },
+    {
+      "branches": 17320,
+      "conflicts": 2603,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 1,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08287433395162225
+    },
+    {
+      "branches": 3888,
+      "conflicts": 494,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 2,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03952749993186444
+    },
+    {
+      "branches": 13353,
+      "conflicts": 2184,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 2,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06690112501382828
+    },
+    {
+      "branches": 3669,
+      "conflicts": 590,
+      "counts": {
+        "I": 5,
+        "J": 0,
+        "K": 3,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03059166599996388
+    },
+    {
+      "branches": 1807,
+      "conflicts": 215,
+      "counts": {
+        "I": 5,
+        "J": 1,
+        "K": 0,
+        "L0": 0,
+        "L1": 2
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.031351708923466504
+    },
+    {
+      "branches": 33749,
+      "conflicts": 4030,
+      "counts": {
+        "I": 5,
+        "J": 1,
+        "K": 0,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.19601920805871487
+    },
+    {
+      "branches": 12343,
+      "conflicts": 2744,
+      "counts": {
+        "I": 5,
+        "J": 1,
+        "K": 0,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.1138798330212012
+    },
+    {
+      "branches": 70007,
+      "conflicts": 5893,
+      "counts": {
+        "I": 5,
+        "J": 1,
+        "K": 1,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.24433391692582518
+    },
+    {
+      "branches": 33152,
+      "conflicts": 5619,
+      "counts": {
+        "I": 5,
+        "J": 1,
+        "K": 1,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.2739238750655204
+    },
+    {
+      "branches": 11782,
+      "conflicts": 2665,
+      "counts": {
+        "I": 5,
+        "J": 1,
+        "K": 2,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.09202833299059421
+    },
+    {
+      "branches": 7876,
+      "conflicts": 890,
+      "counts": {
+        "I": 5,
+        "J": 2,
+        "K": 0,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07094329199753702
+    },
+    {
+      "branches": 9138,
+      "conflicts": 2217,
+      "counts": {
+        "I": 5,
+        "J": 2,
+        "K": 0,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.08009958395268768
+    },
+    {
+      "branches": 9138,
+      "conflicts": 2217,
+      "counts": {
+        "I": 5,
+        "J": 2,
+        "K": 1,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07921137497760355
+    },
+    {
+      "branches": 3386,
+      "conflicts": 548,
+      "counts": {
+        "I": 5,
+        "J": 3,
+        "K": 0,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.029782166006043553
+    },
+    {
+      "branches": 532,
+      "conflicts": 49,
+      "counts": {
+        "I": 6,
+        "J": 0,
+        "K": 0,
+        "L0": 1,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.025163167039863765
+    },
+    {
+      "branches": 523,
+      "conflicts": 63,
+      "counts": {
+        "I": 6,
+        "J": 0,
+        "K": 0,
+        "L0": 2,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.02445262495893985
+    },
+    {
+      "branches": 278,
+      "conflicts": 15,
+      "counts": {
+        "I": 6,
+        "J": 0,
+        "K": 1,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.06248304096516222
+    },
+    {
+      "branches": 1363,
+      "conflicts": 143,
+      "counts": {
+        "I": 6,
+        "J": 0,
+        "K": 1,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.04075645795091987
+    },
+    {
+      "branches": 517,
+      "conflicts": 62,
+      "counts": {
+        "I": 6,
+        "J": 0,
+        "K": 2,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.030756125110201538
+    },
+    {
+      "branches": 300,
+      "conflicts": 20,
+      "counts": {
+        "I": 6,
+        "J": 1,
+        "K": 0,
+        "L0": 0,
+        "L1": 1
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.03767612494993955
+    },
+    {
+      "branches": 1465,
+      "conflicts": 124,
+      "counts": {
+        "I": 6,
+        "J": 1,
+        "K": 0,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.0424237500410527
+    },
+    {
+      "branches": 1458,
+      "conflicts": 134,
+      "counts": {
+        "I": 6,
+        "J": 1,
+        "K": 1,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.07941870903596282
+    },
+    {
+      "branches": 514,
+      "conflicts": 61,
+      "counts": {
+        "I": 6,
+        "J": 2,
+        "K": 0,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.024695832980796695
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 7,
+        "J": 0,
+        "K": 0,
+        "L0": 1,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.010266583994962275
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 7,
+        "J": 0,
+        "K": 1,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.009792792028747499
+    },
+    {
+      "branches": 0,
+      "conflicts": 0,
+      "counts": {
+        "I": 7,
+        "J": 1,
+        "K": 0,
+        "L0": 0,
+        "L1": 0
+      },
+      "status": "INFEASIBLE",
+      "wall_seconds": 0.009963499964214861
+    }
+  ],
+  "status": "NO_WITNESS",
+  "statuses": {
+    "INFEASIBLE": 322
+  },
+  "target": 19,
+  "tested_splits": 322
+}

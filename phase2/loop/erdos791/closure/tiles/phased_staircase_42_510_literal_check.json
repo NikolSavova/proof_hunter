@@ -1,0 +1,30 @@
+{
+  "abstract_prefix": 510,
+  "certificate": "/Users/sihaohuang/Desktop/Coding/proof_hunter/phase2/loop/erdos791/closure/tiles/phased_staircase_42_510.json",
+  "claimed_m": 510,
+  "direct_checks": [
+    {
+      "basis_size": 97,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 2039,
+      "t": 2
+    },
+    {
+      "basis_size": 181,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 8159,
+      "t": 4
+    },
+    {
+      "basis_size": 265,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 18359,
+      "t": 6
+    }
+  ],
+  "ell": 42,
+  "status": "PASS"
+}
