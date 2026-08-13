@@ -129,6 +129,25 @@ this file; CLOSE = write the handoff + commit/push), plus `/load` (run the openi
 `/handoff` (run the close protocol) slash commands in `.claude/commands/`. API key relocated out of the
 repo (§0). SSH auth configured per-machine. **Run `/handoff` at the end of every working session.**
 
+**⭐ ERDŐS #838: CANDIDATE NEW UPPER CONSTANT (2026-08-12, Sihao + Codex ultracode).**
+The Tier-2 lane produced a complete candidate proof, exact-rational geometry certificate,
+arbitrary-precision DP audit, and public-source kill-search in `phase2/loop/erdos838/`.
+For `f(N)=min_{|P|=N} #{convex-position subsets of P}`, the construction uses one central
+Pascal cell, not the full row, and gives (all displayed logs base 2)
+`limsup log2(f(N))/(log2 N)^2 <= 1-1/(4 ln 2) = 0.6393262398...`, improving the
+explicit public upper coefficient `1`. The earlier whole-row idea gives only
+`1/(2 ln 2)=0.7213475...` and is sharp for that construction. Two independent audits agree:
+the exact cap recurrence is `C(m,i)=C(m-1,i)+(1+binom(m-1,i))C(m-1,i-1)`; every convex
+subset injects into `(upper cap, lower cup)`; and the central cell's actual convex-subset
+count has the same `0.639326...` exponent. Exact enumeration passed every cell through `m=5`
+and the three interior `m=6` cells; DP passed through `m=256`. The dated sweep found no
+matching bound, including exact/symbolic constants, citation neighborhoods, forum/blog/GitHub
+notes, and recent construction papers. **Status: high-confidence apparently novel partial
+result, NOT a solution of the requested limit. Remaining gate: MathSciNet/expert novelty check
+and human line-by-line proof review before public claim.** Main draft: `proof_central.md`;
+geometry: `agent_geometry/`; asymptotics: `agent_asymptotic/`; search:
+`prior_art_20260812.md`.
+
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good
   problem."** Nikol owns/edits it; the automated gates approximate it. **Key principle (Nikol, this
@@ -384,10 +403,10 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   STRONG / 20 MEDIUM → skeptics left 2 STRONG / 4 MEDIUM** (the "first reads over-rate tractability"
   pattern, now measured at 29 verdict changes).
 - **Report: `problem-id/review/tier2_retag.md`** (+ `tier2_retag_raw.json`, all 96 rationales).
-- **The 2 STRONG:** (1) **`erdos:838`** (max convex-position subsets, no-3-collinear) — skeptic BUILT
-  the row-glued construction with exact rational coords and exhaustively confirmed the decomposition
-  lemma at m=3,4 (zero exceptions; flipped orientation fails 310×, so the test has teeth); target =
-  upper-bound constant 0.7213 < 1 on an open Erdős problem; caveat: active-forum scoop risk, sweep first.
+- **The 2 STRONG:** (1) **`erdos:838`** — now ATTACKED: the row-glued construction was strengthened
+  to a single central Pascal cell, yielding the audited candidate upper coefficient
+  `1-1/(4 ln 2)=0.639326...`; see the 2026-08-12 block above and `phase2/loop/erdos838/`.
+  Public-source novelty sweep passed; MathSciNet/expert confirmation remains.
   (2) **`arxiv-openproblem:1003.3127v1#2`** — the pipeline's FIRST GREEN, now with a **verified candidate
   counterexample** (Bregman right-projections of a nonconvex curve under negative entropy: skeptic
   fetched the source survey, confirmed statement fidelity, checked g''≥3.45>0 on [1,2] — "I tried hard
@@ -467,13 +486,13 @@ spending to chase unconditional Theorem A.
   min ratio 1.028446; B₆ 350.7M also complete. Exhaustive tier CLOSED. Only loose end: E₆ seg-1
   witness interval not recorded (re-scan u<6000 only if wanted for the writeup) — see
   `phase2/bruhat/results/run_B6-E6_segment_coverage.md`.
-- [ ] **(Tier-2, NEW) Build `phase2/loop/`** — per-problem dirs for the 6 re-tag survivors:
-  PROBLEM.md (frozen statement + win condition + kill criteria) + verify.py (numeric harness) +
-  Lean statement stub. Then the draft→referee→Lean fleet. See §3 Tier-2 block + `review/tier2_retag.md`.
-- [ ] **(Tier-2, FIRST) Novelty sweeps before any proving:** (a) `1003.3127v1#2` — page-by-page sweep
-  of works citing the survey (the construction is a one-character tweak of the authors' own Example
-  3.3; skeptic + killsearch found no resolution but it's the residual risk); (b) `erdos:838` — the
-  upper-window constant-1 remark is an unpublished Apr-2026 forum note → unindexed-notes sweep.
+- [ ] **(Tier-2) Build `phase2/loop/` for the remaining survivors** — `erdos:838` is DONE
+  (proof + exact geometry/DP + kill-search); per-problem dirs are still owed for the other five.
+  Then the draft→referee→Lean fleet. See §3 Tier-2 block + `review/tier2_retag.md`.
+- [ ] **(Tier-2, FIRST) Novelty sweep for `1003.3127v1#2`** — page-by-page sweep of works citing
+  the survey (the construction is a one-character tweak of the authors' own Example 3.3; skeptic +
+  killsearch found no resolution but it is the residual risk). **`erdos:838` public-source sweep is
+  DONE**; only MathSciNet/expert confirmation remains.
 - [ ] **(Bruhat) Harness extension m→200** (`mahonian.py` exact run, ~minutes) — covers the
   150<m<m₁ band g1_draft_b needs (= G4's plan).
 - [ ] **(Bruhat, optional) A₁₀ deep slab**: port the complement-BFS hot loop (`fast.py`) to C/Rust, or
@@ -540,6 +559,12 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
+
+### ⭐ 2026-08-12 — ERDŐS #838 CANDIDATE RESULT
+The full candidate theorem and rerunnable certificates are in `phase2/loop/erdos838/`.
+The next action on this lane is **human line-by-line review of `proof_central.md`**, followed by
+a MathSciNet/expert novelty check. Do not post the `0.639326...` coefficient publicly as novel
+until those two gates pass. No computation is running.
 
 ### ⛔ 2026-08-12 LATE (Sihao + Claude) — CAMPAIGN PAUSED. READ THIS BLOCK FIRST.
 **Authoritative ledger: `phase2/bruhat/f2_drafts/g2_campaign_20260811/CLOSURE_PLAN_v2_20260812.md`.**
@@ -892,12 +917,12 @@ dispatch, and writing — marginal value of more compute is ~zero.
    E₆ 466.2M, all pass). Then paper assembly per the PATH TO PAPER above (items 5–7).
 
 **LANE 2 — Tier-2 proof fleet (SIHAO) — opened 2026-07-09, see §3 Tier-2 block:**
-1. **Novelty sweeps FIRST (Erdősgate)** on the 2 STRONG re-tag survivors: `1003.3127v1#2`
-   (citing-papers sweep — verified candidate counterexample in hand, may be an hours-scale note)
-   and `erdos:838` (unindexed forum-notes sweep — the constant-1 remark is an Apr-2026 forum post).
-2. **Build `phase2/loop/`** — PROBLEM.md + verify.py + Lean statement stub per survivor
-   (2 STRONG + 4 MEDIUM, `review/tier2_retag.md`); then the blind-drafts → adversarial-referees →
-   Lean-gate fleet (F2-campaign pattern, automated via ultracode workflows).
+1. **Novelty sweep FIRST (Erdősgate)** on `1003.3127v1#2` (citing-papers sweep — verified
+   candidate counterexample in hand, may be an hours-scale note). The `erdos:838` public-source
+   sweep is complete; its remaining novelty gate is MathSciNet/expert confirmation.
+2. **Build `phase2/loop/` for the remaining five survivors.** The `erdos:838` directory now has
+   PROBLEM.md, proof, exact geometry and DP verifiers, and prior-art record; its next gate is
+   human review, not another blind draft.
 3. **Nikol's eyeball wanted (not blocking):** `1003.3127v1#2` — the skeptic verified the
    counterexample mathematics (Bregman projection uniqueness via g''>0 on [1,2] + ∇f(C) nonconvex);
    if she concurs after Bruhat, it's the fastest publishable-unit candidate we have.

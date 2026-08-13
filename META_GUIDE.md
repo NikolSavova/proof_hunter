@@ -449,6 +449,35 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-12 — ERDŐS #838: central Pascal cell gives candidate upper coefficient 0.639326 (Sihao + Codex ultracode)
+- **Result:** for the minimum number `f(N)` of convex-position subsets forced in an `N`-point
+  general-position planar set, obtained the candidate partial theorem
+  `limsup log2 f(N)/(log2 N)^2 <= 1-1/(4 ln 2) = 0.6393262398...`. This improves the
+  explicit public upper coefficient `1`; it does not prove existence or determine the limit.
+- **Construction:** use the single central cell `T(m,floor(m/2))` of the classical
+  Erdős--Szekeres/Morris--Soltan Pascal construction (`N=binom(m,floor(m/2))=2^{m-o(m)}`),
+  rather than the full `2^m`-point row. The whole-row route has the sharp but weaker coefficient
+  `1/(2 ln 2)=0.7213475...`.
+- **Proof spine:** nonempty cap counts satisfy the exact recurrence
+  `C(m,i)=C(m-1,i)+(1+binom(m-1,i))C(m-1,i-1)`. Latest-diagonal path domination gives
+  `log2 C(m,xm)=A(x)m^2+O(m log m)`, with `A(1/2)=1/2-1/(8 ln 2)`. Every convex subset
+  injects into its upper-cap/lower-cup pair, giving the displayed coefficient. Conversely,
+  every left-cap/right-cup union is convex, so the actual central-cell count has the same rate.
+- **Verification:** two independent lanes audited geometry and asymptotics. Exact rational
+  enumeration passed all cells through `m=5`, the interior `m=6` cells (central:
+  `N=20, C=U=1281, W=10951`), and the 32-point row with zero decomposition failures.
+  Arbitrary-precision DP passed through `m=256` (actual normalized central rate `0.640979821`,
+  converging to `0.639326240`).
+- **Kill-search:** exact symbolic/decimal searches, source/citation neighborhoods, the public
+  Erdős thread, recent construction papers, blogs, and GitHub found no matching bound. Verdict:
+  high-confidence apparently novel, subject to MathSciNet/expert confirmation. The strongest
+  explicit public window located was base-2 `[1/4,1]`.
+- **Artifacts:** `phase2/loop/erdos838/{PROBLEM.md,proof_central.md,verify.py,
+  prior_art_20260812.md}`, plus `agent_geometry/` and `agent_asymptotic/` certificates.
+- **Process note:** one cap-recurrence orientation typo appeared while consolidating and was
+  caught by comparing the prose against both independent exact DPs; the final draft uses
+  nonempty caps and boundary value `1`. Spend: approximately $0 direct API.
+
 ### 2026-08-11→12 — G2 CLOSURE CAMPAIGN (7 waves, Fable then Sol): Theorem A is CONDITIONAL on CL; CL's hypothesis count went 4 → 6 under scrutiny (one since proved); paper rewritten and shipped-ready (Sihao + Claude)
 - **Licenses decided + applied:** MIT for the repo (LICENSE at root, both authors);
   arXiv non-exclusive (not CC BY) for the preprint, keeping venue options open.

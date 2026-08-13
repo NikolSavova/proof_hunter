@@ -385,3 +385,17 @@ python3 phase2/loop/erdos838/agent_asymptotic/dp_audit.py \
    on the exact strong-gluing orientation and decomposition.  Those are the
    only genuinely geometric inputs; `dp_audit.py` intentionally does not
    certify them.
+
+## 8. Independent checks received
+
+The geometry lane subsequently verified the central-cell converse with exact
+rational coordinates and exhaustive enumeration: the recurrence (16) agrees
+for every cell through `m=5` and the nontrivial interior cells at `m=6`
+(centrally `C=U=1281`, `W=10951`).  It also supplied the sharp squeeze
+`C(2r-1,r-1)^2 <= W(2r,r) <= C(2r,r)^2`.
+
+A parallel prior-art sweep found no occurrence of either `0.721347...` or
+`0.639326...` in the indexed papers, construction expositions, discussion
+thread, GitHub material, or unindexed web notes that it searched.  The
+`0.639326...` claim should still receive a final MathSciNet/expert check before
+public release.

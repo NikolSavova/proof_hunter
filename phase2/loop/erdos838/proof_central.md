@@ -1,8 +1,9 @@
 # A candidate upper-bound improvement for Erdős problem 838
 
 > Status, 2026-08-12: complete candidate proof, independently audited
-> algebraically and geometrically, but not yet a public novelty claim. A
-> broader literature sweep and an expert referee are still required.
+> algebraically and geometrically. A broad public-source kill-search found no
+> matching bound, but a MathSciNet citation sweep and an expert referee are
+> still required before making a definitive novelty claim.
 
 All logarithms below are base \(2\), except \(\ln\), which is natural.
 
@@ -145,6 +146,28 @@ V(Q_m)\leq1+C_{m,i}U_{m,i}
 where \(V(Q_m)\) denotes the number of its convex-position subsets and the
 initial \(1\) counts the empty set.
 
+For this particular strong glue, the estimate also has a useful converse at
+the exponential scale. If \(X\subseteq A\) is a nonempty cap and
+\(Y\subseteq B\) is a nonempty cup, then \(X\cup Y\) is in convex position:
+its upper hull is \(X\) followed by the rightmost point of \(Y\), and its
+lower hull is the leftmost point of \(X\) followed by \(Y\). Thus, if
+\(W_{m,i}\) counts nonempty convex subsets, then
+
+\[
+W_{m,i}=W_{m-1,i-1}+W_{m-1,i}
++C_{m-1,i-1}C_{m-1,m-1-i}.                       \tag{6a}
+\]
+
+In particular, for even \(m=2r\),
+
+\[
+C_{2r-1,r-1}^2\leq W_{2r,r}\leq C_{2r,r}^2.      \tag{6b}
+\]
+
+Hence the coefficient derived below is the actual convex-subset exponent of
+the central-cell construction, not merely an artifact of the cap--cup upper
+bound. Only the upper inequality is needed for the theorem.
+
 Since \(i/m\to1/2\), (4)--(6) imply
 
 \[
@@ -227,7 +250,7 @@ The proof has four independently checkable parts.
 1. **Exact geometry.** The agent_geometry/audit_geometry.py script constructs
    rational coordinates and checks every orientation. It exhaustively
    verifies (1), the hull-chain injection, and the classical row
-   decomposition through \(m=5\).
+   decomposition through \(m=5\), plus the three interior \(m=6\) cells.
 2. **Exact integer recurrence.** The agent_asymptotic/dp_audit.py script
    evaluates cap, convex-cell, and row recurrences with arbitrary-precision
    integers through any requested \(m\).
@@ -236,8 +259,8 @@ The proof has four independently checkable parts.
 4. **Prior art.** The original 1978 paper, the 2000 Morris--Soltan survey,
    the current Erdős Problems page and its April 2026 comments, and direct
    searches for the constants contain no matching bound found so far.
-   This is encouraging, not a completed MathSciNet-level novelty clearance.
+   The dated search record is in prior_art_20260812.md. This is encouraging,
+   not a completed MathSciNet-level novelty clearance.
 
 The main remaining obligation is therefore literature/expert verification,
 not a known gap in the displayed proof.
-

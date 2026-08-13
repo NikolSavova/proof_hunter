@@ -278,6 +278,7 @@ Reproduce with:
 ```
 python3 phase2/loop/erdos838/agent_geometry/audit_geometry.py --m 3 4
 python3 phase2/loop/erdos838/agent_geometry/audit_geometry.py --m 5 --max-subset-size 7
+python3 phase2/loop/erdos838/agent_geometry/audit_geometry.py --check-n6-cells
 ```
 
 ## Bottom line

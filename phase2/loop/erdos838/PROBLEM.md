@@ -81,8 +81,11 @@ proof_draft.md as a weaker \(0.721347\ldots\) route.
 
 ## Primary links
 
+- Original 1978 paper:
+  <https://users.renyi.hu/~p_erdos/1978-44.pdf>
 - Official problem: <https://www.erdosproblems.com/838>
 - Discussion thread: <https://www.erdosproblems.com/forum/thread/838>
 - Morris--Soltan survey: <https://doi.org/10.1090/S0273-0979-00-00877-6>
 - Eppstein's exposition of the Pascal-row construction:
   <https://11011110.github.io/blog/2017/07/01/pascals-triangle-points.html>
+- Dated prior-art record: prior_art_20260812.md

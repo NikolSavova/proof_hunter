@@ -283,14 +283,34 @@ def audit(n: int, max_subset_size: int | None) -> None:
         print(f"  cell convex counts: {cell_convex[n]}")
 
 
+def audit_n6_interior_cells() -> None:
+    """Directly enumerate the three manageable nontrivial n=6 cells."""
+    n = 6
+    caps, cups = dp_counts(n)
+    cell_convex = dp_convex_counts(n, caps, cups)
+    print("n=6 interior-cell direct enumeration:")
+    for i in (2, 3, 4):
+        pts = cell(n, i)
+        c, u, v = cap_cup_counts(pts)
+        assert c == caps[n][i], (n, i, c, caps[n][i])
+        assert u == cups[n][i], (n, i, u, cups[n][i])
+        assert v == cell_convex[n][i], (n, i, v, cell_convex[n][i])
+        assert v <= c * u, (n, i, v, c, u)
+        print(f"  i={i}, N={len(pts)}, Cap={c}, Cup={u}, W={v}: PASS")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--m", type=int, nargs="+", default=[3, 4])
     ap.add_argument("--max-subset-size", type=int,
                     help="Useful at m=5: every convex subset has size <=m+1")
+    ap.add_argument("--check-n6-cells", action="store_true",
+                    help="Directly enumerate cells T(6,i), i=2,3,4")
     args = ap.parse_args()
     for n in args.m:
         audit(n, args.max_subset_size)
+    if args.check_n6_cells:
+        audit_n6_interior_cells()
 
 
 if __name__ == "__main__":
