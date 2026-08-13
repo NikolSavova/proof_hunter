@@ -1,0 +1,40 @@
+C = 20 pi^2 = 197.392088  (draft uses 197.39 as a lower bound -> True)
+
+[ID] identification checks for G and H' (draft leaves these implicit):
+  w=  4: H'(w) numeric = 0.695912681 vs 1 - G(w) = 0.695912681 -> True
+  w= 10: H'(w) numeric = 0.995459595 vs 1 - G(w) = 0.995459595 -> True
+  w= 20: H'(w) numeric = 0.999999176 vs 1 - G(w) = 0.999999176 -> True
+  int_0^oo G = 2 zeta(2) = pi^2/3 = 3.289868134 (draft: < 3.29 -> True)
+  G decreasing: G(w) = 1/s(w/2)^2, s(y) = sinh(y)/y increasing on y>0 (analytic);
+    G(  0.1) = 0.999167083
+    G(  0.5) = 0.979424522
+    G( 0.89) = 0.936525975
+    G(    2) = 0.724061661
+    G(    8) = 0.021484020
+    G(   20) = 0.000000824
+    G(   40) = 0.000000000
+
+[W7] SOL.4 chain:
+  G(0.89) = [0.936525975, 0.936525975]  vs 117/125 = 0.936 -> PASS   (margin 1.000562x — TIGHT)
+  D_m/m > G(0.89) - 3.29/40 = 0.854275975  vs claimed 683/800 = 0.85375 -> PASS
+  50/(120 D_m/m) <= 0.487742461  vs 40000/81960 = 0.488042948 < 0.4881 < 0.50 -> PASS
+  (SOL.4.2 uses sup y^5 A_4 < 25 twice — verified 24.854113 in s2b_replay block [B])
+
+[W4/W5/W6b] SOL.7 monotonicity chain:
+  w_0 = C/24 = 8.224670
+  W4 [8,w_0] at w=8: (C-192+16+T(8))/(120 H(8)) = 0.078066 < 0.079 -> PASS
+  W4 [w_0,10]: max J'(w) = -5.267860 < -3.2 -> PASS
+  W4: J(10) = 1.868860 > 1.7 -> PASS
+  W5 [10,14]: max J_5'(w) = -4.732987 < -4.2 -> PASS
+  W5: J_5(14) = 12.661611 > 12 -> PASS
+  W5: B^2 = 112896.000 < 6A^2 = 115272.920 at w=14 -> PASS  (margin 1.0211x — TIGHT)
+  W5/W6b monotonicity on [14,40]: min[(24-F_1)H - (24w-C+T)(1-G) - (121-w)] = 6.008721 > 0 -> PASS
+  W5 value at w=20: 0.140941 < 0.142 -> PASS
+  W6b value at w=40: 0.173115 < 0.174 -> PASS
+
+[E] finite-m assembly (SOL.5.6) for W4, W5, W6b:
+  W4: L = 4.737648, B = 0.09, e_b = 6.354835e-04, E_b = 0.516156 -> U_b <= 0.090920 vs C5* = 0.1 -> PASS (margin 1.100x)
+  W5: L = 6.715671, B = 0.142, e_b = 3.601073e-03, E_b = 1.191182 -> U_b <= 0.143555 vs C5* = 0.15 -> PASS (margin 1.045x)
+  W6b: L = 16.710133, B = 0.174, e_b = 2.287741e-02, E_b = 3.017848 -> U_b <= 0.175746 vs C5* = 0.25 -> PASS (margin 1.423x)
+
+# OVERALL: ALL W4-W7 CHECKS PASS

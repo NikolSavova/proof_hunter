@@ -86,12 +86,65 @@ refined cells give tighter `B`. Note also that even the *pessimistic* width-`1/6
 still clear the targets (W1: `U_b <= 0.039497 < 0.05`), so the spec error of §2 never
 threatened the (S2) constants — only the intermediate lemma as stated.
 
+## 3b. Bands W4, W5, W6b (SOL.7) and W7 (SOL.4) — ALSO REPLAYED, all pass
+
+*(Added after the first version of this report; script
+`s2b_replay/s2b_replay_w4w7.py`, output `out_s2b_replay_w4w7.txt`.)*
+
+These four bands are monotonicity arguments rather than cell sweeps. The draft uses `G`
+and `F_1` without ever restating them, so the identifications were **derived and then
+checked, not assumed**: from `H(w) = w - pi^2/3 + 2 sum_r e^{-rw}S_2(rw)/r^2` one gets
+`H'(w) = 1 - w^2 A_1(w)`, so `G(w) = w^2 A_1(w)` (= `h_2(w)` of the (S3) work) and
+`F_1(w) = w^5 A_4(w)`. Numerical differentiation of `H` matches `1 - G` to 9 digits at
+`w = 4, 10, 20`; `int_0^oo G = pi^2/3 = 3.2898681 < 3.29` as the draft asserts; `G` is
+decreasing (analytically, `G = 1/s(w/2)^2` with `s(y) = sinh(y)/y` increasing).
+
+```
+[W7]  G(0.89)          = 0.936525975  vs required 117/125 = 0.936    (margin 1.000562x)
+      D_m/m > G(0.89) - 3.29/40 = 0.854275975  vs claimed 683/800    PASS
+      50/(120 D_m/m)  <= 0.487742461  vs 40000/81960 = 0.488042948   PASS
+[W4]  at w=8: (C-192+16+T(8))/(120 H(8)) = 0.078066 < 0.079          PASS
+      max J'(w) on [w_0,10] = -5.267860 < -3.2 ; J(10) = 1.868860 > 1.7   PASS
+[W5]  max J_5'(w) on [10,14] = -4.732987 < -4.2 ; J_5(14) = 12.661611 > 12  PASS
+      B^2 = 112896.000 < 6A^2 = 115272.920 at w=14   (margin 1.0211x) PASS
+      monotonicity on [14,40]: min[(24-F_1)H - (24w-C+T)(1-G) - (121-w)] = 6.0087 > 0  PASS
+      value at w=20 = 0.140941 < 0.142                                PASS
+[W6b] value at w=40 = 0.173115 < 0.174                                PASS
+```
+
+Finite-`m` assembly for these bands (SOL.5.6), completing the seven:
+
+| band | `L` | `B` | `U_b <=` | target `C5*` | margin |
+|---|---|---|---|---|---|
+| W4 | 4.737648 | 0.09 | 0.090920 | 0.10 | 1.100x |
+| W5 | 6.715671 | 0.142 | 0.143555 | 0.15 | **1.045x** |
+| W6b | 16.710133 | 0.174 | 0.175746 | 0.25 | 1.423x |
+| W7 | — | — | 0.487742 | 0.50 | 1.025x |
+
+**All seven band constants are now independently reproduced.**
+
+### ⚠️ Margin observation (the main risk this replay surfaces)
+
+Several load-bearing constants are *very* tight, and they were not flagged as such in the
+draft:
+
+- **`G(0.89) = 0.9365260` against the required `0.936` — 0.056% of slack.** The entire
+  W7 band rests on this one evaluation. Had the draft rounded `117/125` even slightly
+  differently, W7 would fail.
+- `B^2 < 6A^2` at `w = 14`: 2.1% slack.
+- W5's assembled constant: 4.5% slack. W7's: 2.5%.
+
+Nothing here is wrong, but the chain has little room. Any later revision to an upstream
+constant (`sup y^5 A_4 < 25`, the `H`/`T` tables, the scout's `C5*(W7) = 0.50`) must be
+re-checked against these four points specifically, not assumed absorbed.
+
 ## 4. ⚠️ Scope — what this pass does NOT cover
 
-1. **Bands W4, W5, W6b (SOL.7) and W7 (SOL.4) were not replayed.** Their arguments are
-   analytic rather than cell-based; my script covers W1–W3 only. The draft's claimed
-   `W7: 40000/81960 < 0.4881 < 0.50` scalar reproduces (§1), but the derivation that
-   *reduces* W7 to that scalar was not audited.
+1. ~~Bands W4–W7 were not replayed.~~ **DISCHARGED — see §3b.** Residual: the derivation
+   *reducing* each band to its scalar criterion (notably SOL.7.8's numerator `|C-24w| +
+   2w + T(w)`, whose `2w` term I could not re-derive from the stated `sqrt(A^2+B^2y^2) <=
+   |A| + B|y|`, `y = ux`, `x <= 1/2` without SOL.2's definitions of `u` and
+   `B_infinity`) remains unaudited. The scalar criteria themselves all reproduce.
 2. **No line-by-line maths audit** of SOL.1–SOL.8. I verified the model identity, the
    scalar constants, the H/T tables, the W1–W3 certificate, and the W1–W3 assembly. The
    analytic derivations — SOL.2's dimensionless reduction, SOL.3's scalar-bound structure,
@@ -108,14 +161,21 @@ threatened the (S2) constants — only the intermediate lemma as stated.
 
 ## 5. Bottom line
 
-**(S2) attempt 2 is materially stronger than attempt 1 and nothing I checked contradicts
-it.** Attempt 1 was FATAL for proving none of the seven bounds, with a measured 23x
+**All seven band constants of (S2) now reproduce independently, and nothing I checked
+contradicts the draft.** Attempt 1 was FATAL for proving none of the seven bounds, with a measured 23x
 deficit on W1 from cancellation-free bounding; attempt 2 retains the cancellation and its
 W1 constant reproduces at `0.0258` against the `0.05` target — a genuine ~45x improvement
 in the binding quantity, independently confirmed here.
 
-**But (S2) is NOT closed.** Under the house rule it needs a full maths referee lane
-(§4.2) and a pass over W4–W7 (§4.1), plus the §2 repair applied to the draft text. What
-is established is that the draft's numerical spine, where I could check it, is real: it
-reproduces from the stated formulas alone, its tight constants hold, and its one
-reproducible defect is a cell-count spec error that costs nothing downstream.
+**But (S2) is NOT closed.** Under the house rule it still needs a full lemma-by-lemma
+maths lane (§4.2) — the derivations connecting the verified numbers are unaudited, and
+§4.1 records one step (SOL.7.8's numerator) I could not re-derive from the text as
+written. The §2 cell-width repair must also be applied to the draft. What IS established:
+the draft's numerical spine reproduces end to end from its stated formulas alone, across
+all seven bands, with no number taken from it; its tight constants hold; and its only
+reproducible defect is a resolution spec error that costs nothing downstream.
+
+**Recommended status: (S2) = PARTIAL, numerics independently confirmed, maths lane owed.**
+That is a strictly better position than any other open statement in the campaign — (S3)
+has a known unproved sign hypothesis in W7, and (S4) has a circular sub-argument — but it
+is not closure.
