@@ -1,0 +1,14 @@
+(SOL.5) certificate: |h_n^(8)(x)| <= 10^12 on (0,40], n = 2,3,4
+PART A — x in [0,1], Cauchy coefficient bound on |z| = 6 (4000 arcs):
+  SUM8 = sum_(m>=4) (2m)!/((2m-8)! 6^(2m)) <= 0.064929
+  M_2(6) <= 467.982   (worst arc near theta = 4.7069)
+  n=2: sup_[0,1] |h_n^(8)| <= 30.3856  vs H_8 = 1e12  -> PASS  (margin 3.29e+10x)
+  M_3(6) <= 20954.6   (worst arc near theta = 4.7210)
+  n=3: sup_[0,1] |h_n^(8)| <= 1360.56  vs H_8 = 1e12  -> PASS  (margin 7.35e+08x)
+  M_4(6) <= 1.44485e+06   (worst arc near theta = 4.7210)
+  n=4: sup_[0,1] |h_n^(8)| <= 93812.7  vs H_8 = 1e12  -> PASS  (margin 1.07e+07x)
+PART B — x in [1,40], direct Leibniz series, term-wise absolute bound:
+  n=2: sup_[1,40] |h_n^(8)| <= 3.024e+06  vs H_8 = 1e12  -> PASS  (margin 3.31e+05x)
+  n=3: sup_[1,40] |h_n^(8)| <= 7.91078e+07  vs H_8 = 1e12  -> PASS  (margin 1.26e+04x)
+  n=4: sup_[1,40] |h_n^(8)| <= 2.1722e+09  vs H_8 = 1e12  -> PASS  (margin 460x)
+# OVERALL: PASS — (SOL.5) CERTIFIED on (0,40]

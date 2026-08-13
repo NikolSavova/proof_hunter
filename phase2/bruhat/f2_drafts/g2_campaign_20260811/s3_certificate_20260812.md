@@ -78,12 +78,7 @@ e.g. `max J = 0.46031849` on W1 (headroom 7.94% against the 1/2 target).
    either that wording relaxed or the run redone in `Fraction`s. The margins
    (worst: W1's 7.94%) are enormous relative to any plausible floating-point
    subtlety, but this is a wording-vs-implementation gap, not zero.
-2. **(SOL.5) is CONSUMED, not certified.** The remainder radius uses the draft's
-   `|h_n^(8)| <= H_8 := 10^12` on `(0, 40]`. This certificate is therefore
-   conditional on (SOL.5). The referee independently measured the truth as
-   `max |h_n^(8)| = 0.232 / 1.393 / 6.952` (n = 2/3/4) — **~11 orders of slack** —
-   so (SOL.5) is not in doubt, but its own interval certification (referee F1's
-   second item) remains unrun. Cheaply closable.
+2. ~~**(SOL.5) is CONSUMED, not certified.**~~ **CLOSED — see §6 below.**
 3. **(SOL.16)/(SOL.17)** — the W7 leg's certificates — remain unrun (referee F1,
    third item). W7 is the `(40, 0.89m]` band and is NOT covered by this note.
 4. **The maths-referee lane for (S3) never ran** (killed by the Fable credit
@@ -96,6 +91,44 @@ Was: **MAJOR_ISSUES** — architecture true at every testable point, central
 certificate unexecuted, two text flaws.
 Now: the central certificate for **Lemma SOL.3 (bands W1–W6b) is EXECUTED and
 PASSES** with the F2-corrected constant, and F2/F3 are recorded as errata.
-Remaining for (S3) to close: items 1–4 of §4 — i.e. one cheap re-run for
-(SOL.5), the W7 certificates, and the two referee lanes. **(S3) is not yet
-closed; it is materially closer, and nothing found so far contradicts it.**
+Remaining for (S3) to close: items 1, 3 and 4 of §4 — the exact-rational wording
+question, the W7 certificates, and the referee lanes. **(S3) is not yet closed;
+it is materially closer, and nothing found so far contradicts it.**
+
+---
+
+## 6. (SOL.5) — ALSO CERTIFIED (same session)
+
+The second item of referee F1 — the draft's unrun certification of
+`|h_n^(8)(x)| <= H_8 := 10^12` on `(0, 40]`, which §2's remainder radius
+consumes — is now **PROVED**, removing that conditionality.
+
+**Script:** `.../s3_certificate/sol5_cert.py` · **Output:** `out_sol5_certificate.txt`
+
+`h_n` is even and analytic on `C \ {2 pi i k, k != 0}`, so the nearest singularity
+to the real axis is at distance `2 pi`. Two regimes, because the direct series is
+useless near `0` (its Leibniz terms diverge like `x^-8` while `h_n` stays smooth):
+
+- **`x in [0,1]` — Cauchy coefficient bound.** With `h_n(x) = sum_m c_{n,m} x^(2m)`
+  and `|c_{n,m}| <= M_n(6)/6^(2m)` (radius `6 < 2 pi`), differentiating 8 times gives
+  `|h_n^(8)(x)| <= M_n(6) * SUM8`, `SUM8 = sum_{m>=4}(2m)!/((2m-8)! 6^(2m)) <= 0.064929`.
+  `M_n(6)` is enclosed by complex interval arithmetic (implemented over `mpmath.iv`
+  real intervals) on 4000 arc-boxes of the circle.
+- **`x in [1,40]` — direct Leibniz series**, bounded term-wise in absolute value with
+  an explicit geometric tail bound (`K = 400`; the hypothesis `K >= 2p/x` is asserted
+  in code). Enormously lossy — it discards ~8 orders of true cancellation — but the
+  `10^12` target is loose enough to absorb that.
+
+```
+n=2: sup_[0,1] |h^(8)| <=      30.4   | sup_[1,40] <= 3.02e+06   (margins 3.3e10x / 3.3e05x)
+n=3: sup_[0,1] |h^(8)| <=    1360.6   | sup_[1,40] <= 7.91e+07   (margins 7.4e08x / 1.3e04x)
+n=4: sup_[0,1] |h^(8)| <=   93812.7   | sup_[1,40] <= 2.17e+09   (margins 1.1e07x / 4.6e02x)
+# OVERALL: PASS — (SOL.5) CERTIFIED on (0,40]
+```
+
+Consistency with the referee's independent measurement (`max |h_n^(8)| =
+0.232/1.393/6.952`): our bounds exceed those truths by the expected margin — the
+`[0,1]` Cauchy route loses ~2–4 orders (radius-6 coefficient bounding), the `[1,40]`
+term-wise route loses ~7–8 orders (no cancellation). Both are upper bounds, both
+clear `10^12` comfortably, and neither contradicts the truth. Same method caveat as
+§4 item 1: directed-rounding intervals, not exact rationals.
