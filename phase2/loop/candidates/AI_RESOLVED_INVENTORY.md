@@ -25,6 +25,7 @@ now by everyone who read Tao's digestion. The quieter results are where the uncl
 
 | # | Result | System / people | Date | Type |
 |---|---|---|---|---|
+| 0 | **Hadamard matrices** for all 12 previously-unknown admissible orders < 2000 | Alpöge, Voinov, Reynolds-Haertle + Claude | ~2026-08-11 | construction — **artifact not locatable** |
 | 1 | **Jacobian conjecture** false in dim ≥ 3 | Alpöge + Claude Fable 5 | 2026-07-20 | counterexample |
 | 2 | **Erdős unit distance conjecture** false | OpenAI internal model; refined by Will Sawin | 2026-05-20 | counterexample |
 | 3 | Unit distance, strongest form | Anthropic system, autonomous | 2026 | counterexample |
@@ -40,6 +41,51 @@ now by everyone who read Tao's digestion. The quieter results are where the uncl
 
 Item 12 is a cautionary entry: an AI "resolution" that turned out to be in the literature already.
 It is the Erdősgate failure mode, and it is why every item here needs a sweep before work starts.
+
+## Item 0 — the Hadamard result, and why it is BLOCKED (2026-08-13)
+
+The best-shaped target we have found, and currently unusable.
+
+**The claim.** Alpöge, with Philippe Voinov, Saul Reynolds-Haertle and Claude, posted matrices for
+all admissible orders below 2000 that had no known Hadamard matrix — the twelve orders
+**668, 716, 892, 1132, 1244, 1388, 1436, 1676, 1772, 1916, 1948, 1964** — moving the smallest
+unknown order to 2004 or beyond. Order 668 had been the smallest open case since 428 fell in 2004.
+
+**Why it is the right shape.** It is a CONSTRUCTION, not a counterexample, which inverts the
+downstream economics: counterexamples close doors (the Jacobian was a terminal node; unit distance
+turned out not to be a hub at all), whereas every theorem of the form "if a Hadamard matrix of
+order n exists, then …" now fires for twelve new orders, and that conditional literature in design
+theory and coding theory is large and load-bearing. And the central question is unanswered:
+**is it an improved search or a general construction?** If general, it need not stop at 2000.
+
+**Why it is blocked.** After four searches I can find **no verifiable artifact**:
+
+- no arXiv preprint;
+- no repository or data file;
+- Wikipedia states the result with **no citation and no external link**;
+- Epoch AI marks it *provisionally* solved, says it was "posted in the form of a puzzle", and
+  provides no download;
+- TheoremDB's packet still records 668 as unresolved — but that packet was reviewed **2026-07-24**,
+  before the announcement, so it is stale rather than contradictory.
+
+**This blocks the whole plan.** The differentiator was local structural analysis of the matrices —
+do they factor through Williamson, Goethals–Seidel, Baumert–Hall or Paley arrays, or something
+new — and that is what answers "search or construction". Without the matrices there is nothing to
+analyse. Note the asymmetry: obtaining them is the hard part; **verifying one is a single matrix
+multiply**, `H Hᵀ = 668·I`.
+
+**Standing rule applies.** This project ships a verification artifact with every result. We would
+be building on an uncited social-media claim. The result is very likely real — Alpöge has the
+Jacobian track record — but "likely real" is not the standard, and the failure mode here is the
+mirror image of Erdősgate: not missing an existing result, but building on an unverified one.
+
+**The unblocking action is human, not computational.** Someone with X access should retrieve the
+post and the puzzle. That is a two-minute task for Sihao and is currently gating everything.
+
+**Related and properly documented, if this stays blocked:** *Generating Hadamard matrices with
+transformers*, arXiv:2604.11101 (April 2026), and Cati's *A database of constructions of Hadamard
+matrices*, arXiv:2411.18897 — a real database, which is exactly the reference object we would need
+to classify the new matrices against.
 
 ## Ranked by downstream value
 
