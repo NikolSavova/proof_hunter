@@ -7,7 +7,7 @@ Same hardened Responses-API pattern as run_sol.py (background, id journal, retry
 
 Usage: ./verify_sol.py <target-file-relative-to-campaign-dir> [maths|numerics|both]
 """
-import json, pathlib, sys, time
+import json, os, pathlib, sys, time
 
 import openai
 
@@ -15,8 +15,9 @@ ROOT = pathlib.Path(__file__).resolve()
 BRUHAT = ROOT.parents[4]
 CAMP = BRUHAT / "f2_drafts" / "g2_campaign_20260811"
 KEY = (pathlib.Path.home() / ".config/proof_hunter/openai_key.txt").read_text().strip()
-MODEL = "gpt-5.6-sol"
-POLL_S, TIMEOUT_S = 20, 3600
+MODEL = os.environ.get("SOL_MODEL", "gpt-5.6-sol")
+EFFORT = os.environ.get("SOL_EFFORT", "max")   # policy 2026-08-12: Sol always at max
+POLL_S, TIMEOUT_S = 20, 7200
 IDS = ROOT.parent / "verify_ids.json"
 
 CTX = ("You are an adversarial referee on a mathematics campaign (Mahonian distribution, "
@@ -64,7 +65,7 @@ def run(target_rel, kind):
             input=[{"role": "developer", "content": CTX},
                    {"role": "user", "content": BRIEF[kind] + "\n\n===== DRAFT UNDER REVIEW: "
                     + target_rel + " =====\n" + target[:80_000] + TAIL}],
-            reasoning={"effort": "high"},
+            reasoning={"effort": EFFORT},
             background=True,
         ), f"{key} create")
         known[key] = resp.id
@@ -80,7 +81,7 @@ def run(target_rel, kind):
         raise RuntimeError(f"{key}: {resp.status}: {getattr(resp, 'error', None)}")
     stem = pathlib.Path(target_rel).stem
     out = CAMP / f"solref_{kind}_{stem}.md"
-    out.write_text(f"# {kind} referee ({MODEL}) — {target_rel} — {time.strftime('%Y-%m-%d %H:%M')}\n\n"
+    out.write_text(f"# {kind} referee ({MODEL}, effort={EFFORT}) — {target_rel} — {time.strftime('%Y-%m-%d %H:%M')}\n\n"
                    "> Cross-model referee report (Sol on the reviewed draft). Numeric checks are\n"
                    "> DERIVED, not executed — script them before trusting.\n\n" + resp.output_text)
     print(f"{key}: completed -> {out.name}", flush=True)
