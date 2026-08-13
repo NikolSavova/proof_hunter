@@ -449,6 +449,42 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: independent `1/2` audit + sharp lower-frontier lemmas (Sihao + Codex ultracode)
+- **Upper theorem survived two independent audits.** The vertical blow-up geometry, exact
+  `(C,U,W)` classifier, rational realizability, fixed-template asymptotics, and deletion to arbitrary
+  `N` were reconstructed from scratch. A new rational 16-point test with a nonconvex four-point
+  macro skeleton exhausts all `2^16` subsets and finds exactly 3,146 spanning convex subsets, with
+  zero classification failures. `proof_blowup_half.md` now states the generic blow-up provenance
+  precisely and retains novelty only for the mixed signs, exact enumerator, and `1/2` optimization.
+- **Broader construction barrier.** For nonstationary homogeneous compositions
+  `Q_t=S_t[Q_{t-1}]`, with `ell_t=log|S_t|` and `L_t=sum ell_i`, unavoidable two-block terms give
+  `log W >= (L^2-sum ell_t^2)/2`. Thus stationary, periodic, finite-menu, and all schedules whose
+  largest scale is `o(L)` cannot beat `1/2`; polynomial random thinning preserves it too. Any better
+  upper construction must use a macroscopic scale jump plus directional anti-alignment.
+- **Sharp decomposable lower lemma.** For every binary strong-glue tree,
+  `CU >= 2^((log N)^2/2-log N)`. The exact Cauchy--Schwarz remainder shows that every bad forward
+  term `C(left)U(right)` creates a reverse-alignment square, but nodewise charging is insufficient:
+  the square can vanish while reverse/forward differs by a factor up to `(a+1)(b+1)`. Exact search
+  through `N=19` and randomized trees support the stronger imbalance-corrected potential, but a
+  global amortized reset lemma is still missing. The recurrences transfer exactly to counting
+  leaf-induced left combs, right combs, and one-turn combs in ordered binary trees; no applicable
+  growing-pattern theorem was found.
+- **Full `1/2` history mass, failed compression.** A nested endpoint-pair process always has at
+  least `2^{-binom(t,2)}(m-(2^t-2))_+^t/t!` hinged histories. Taking
+  `t=log m-2 log log m` gives the desired `2^((log m)^2/2-O(log m log log m))` raw multiplicity.
+  Exact rational examples show that same-sign levels need not be caps/cups, a hinged history need
+  not be split, and even a hinged split family can have maximum convex subset only about `N/2`.
+  Thus the FKK/BCP graph compression does not transfer without using the full nested order type.
+- **Literature/kill-search.** Published growing-`k` supersaturation and Baek--Balko split-support
+  counting both optimize at the existing `1/4`; Bukh--Vasileuski's same-type lemma gives structured
+  product families but only coefficient `1/20` directly. Generic blow-ups are prior art, while no
+  source was found for the convex-subset `1/2` enumerator or matching lower lemma. New artifacts:
+  `lower_bound_frontier.md`, `agent_asymptotic/{NEW_HALF_AUDIT.md,TREE_ALIGNMENT.md}`,
+  `agent_geometry/{half_audit.md,HISTORY_ATTACK.md,audit_blowup_classification.py}`,
+  `agent_killsearch/{SECOND_STAGE.md,MULTIPLICITY.md,RECURRENCE_TRANSFER.md}`. **Honest status:**
+  upper coefficient `1/2` is a strongly audited apparent new partial result; problem 838 remains
+  open at an explicit alignment/compression theorem. Spend approximately $0 direct API.
+
 ### 2026-08-13 — ERDŐS #838: iterated blow-up improves candidate upper coefficient to 1/2 (Sihao + Codex)
 - **New theorem:** a vertical lexicographic composition `S[Q]` has exact profile formulas
   `C=C(Q) sum_j c_j(S)|Q|^(j-1)`, the reflected cup formula, and

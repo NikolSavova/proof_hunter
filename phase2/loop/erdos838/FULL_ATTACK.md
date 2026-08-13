@@ -1,8 +1,8 @@
 # Erdős 838: current full-solution attack
 
 > Status, 2026-08-13. There is now a self-contained candidate proof of the
-> unconditional upper coefficient \(1/2\), with an exact rational-coordinate
-> verification artifact. The original limit problem remains open. The
+> unconditional upper coefficient \(1/2\), with two independent exact
+> rational-coordinate audits. The original limit problem remains open. The
 > missing lower bound is isolated below as an endpoint-alignment theorem.
 
 All logarithms are base \(2\).
@@ -186,6 +186,22 @@ For \(S=Q=T_{4,2}\), a 36-point configuration, both routes return
  (C,U,W)=(14136,14136,441399).
 \]
 
+The fixed-template obstruction extends to nonstationary homogeneous
+compositions. If \(Q_t=S_t[Q_{t-1}]\), put
+\(\ell_t=\log|S_t|\) and \(L_t=\sum_{i\leq t}\ell_i\). The unavoidable
+two-block terms and the cap--cup theorem give
+
+\[
+ \log W(Q_d)\geq
+ \frac12\left(L_{d-1}^2-\sum_{t<d}\ell_t^2\right). \tag{10a}
+\]
+
+Consequently no stationary, periodic, finite-menu, or slowly growing
+template schedule can beat \(1/2\). Polynomial random thinning preserves
+the same coefficient as well. A better construction would have to use a
+macroscopic scale jump or heterogeneous clusters with deliberate directional
+cap/cup anti-alignment.
+
 ## 6. Lower-bound lanes that still look viable
 
 ### 6.1 Weighted down-set/signotope induction
@@ -231,9 +247,41 @@ right child. A proof must show that either one subtree already has
 is large. The reverse product \(C(B)U(A)\) is the only obstruction to a
 naive induction.
 
-Exact Pareto dynamic programming through \(N=21\) finds no counterexample
+Exact Pareto dynamic programming through \(N=19\) finds no counterexample
 and gives decreasing normalized minima, but finite sizes are too small to
 distinguish \(1/2\) from larger constants.
+
+There is now a sharp theorem for the *unoriented* product. Put
+\(R(T)=\sqrt{C(T)U(T)}\). Cauchy--Schwarz in (11) gives, when
+\(|A|=a,|B|=b\),
+
+\[
+ R(T)\geq\sqrt{b+1}R(A)+\sqrt{a+1}R(B).
+\]
+
+Following the larger child and summing its discarded-sibling weights proves
+
+\[
+ C(T)U(T)\geq
+ 2^{\frac12(\log N)^2-\log N}.                    \tag{11a}
+\]
+
+The coefficient is sharp, but \(W\geq\sqrt{CU}\) recovers only \(1/4\).
+The exact Cauchy--Schwarz remainder identifies what is missing:
+
+\[
+\begin{split}
+C(T)U(T)={}&
+\left(\sqrt{b+1}R(A)+\sqrt{a+1}R(B)\right)^2\\
+&+\left(\sqrt{C(B)U(A)}-
+\sqrt{(a+1)(b+1)C(A)U(B)}\right)^2.               \tag{11b}
+\end{split}
+\]
+
+Thus every suppressed forward term in \(W\) creates explicit reverse-
+alignment slack in the product recurrence. Charging that slack across the
+tree is the cleanest current route to the matching decomposable theorem;
+`lower_bound_frontier.md` gives the proof of (11a) and the exact conjecture.
 
 ### 6.3 Convex-closure entropy
 
@@ -267,16 +315,51 @@ planar realizability and general position, not anti-exchange alone.
 
 Székely's 1984 problem asks for the minimum total number of complete and
 independent vertex subsets in an arbitrary graph. Its random-graph upper
-bound has coefficient \(1/2\) in the same base-\(2\) normalization, while
-the best lower bound in that paper is substantially smaller. There is no
-known reduction between that problem and Erdős 838, but the structural
-analogy is close: both ask for total multiplicity rather than the size of
-one Ramsey witness.
+bound has coefficient \(1/2\) in the same base-\(2\) normalization. The best
+current graph lower coefficient located in this attack is \(1/4\), due to
+Feige--Kenyon--Kogan (2020). Bal--Cutler--Pebody (2025) package its core as a
+product count for nested monochromatic-neighborhood histories, with only a
+factorial fibre loss. There is no known reduction between that problem and
+Erdős 838, but the structural analogy is close: both ask for total
+multiplicity rather than the size of one Ramsey witness.
 
 This makes a quick matching lower bound unlikely. It also suggests that the
 right tools may be Ramsey--Turán stability, weighted containers, or entropy
 of path-count profiles rather than another application of the existence
 theorem.
+
+There is nevertheless an exact geometric analogue of the *history-counting*
+half of the graph proof. A nested endpoint-pair process produces
+
+\[
+ 2^{\frac12(\log N)^2-O(\log N\log\log N)}       \tag{14}
+\]
+
+hinged orientation histories in every ordered point set. The finite bound
+and proof are in `agent_geometry/HISTORY_ATTACK.md`. What fails is the
+compression half: vertices carrying the same history sign need not be a cap
+or cup, and a hinged history need not even be a split polygon. Both failures
+have exact rational witnesses. An infinite rational family is simultaneously
+hinged and split but has largest convex subset only about half its points.
+Thus (14) has precisely the right mass, but converting it to shared-endpoint
+cap--cup pairs remains a genuine theorem rather than a transcription of the
+graph argument.
+
+There is also an exact ordered-tree reformulation of the decomposable lane.
+In a strong-decomposition tree, a leaf subset is a cap exactly when its
+reduced induced ordered tree is a left comb; cups give right combs; convex
+subsets give a left-comb branch joined to a right-comb branch. Hence the
+tree-alignment conjecture is equivalently:
+
+> Every ordered full binary tree with \(N\) leaves has
+> \(2^{(1/2-o(1))(\log N)^2}\) leaf subsets whose reduced induced tree is a
+> one-turn left--right comb.
+
+This transfer is exact. The search in
+`agent_killsearch/RECURRENCE_TRANSFER.md` found no growing-pattern theorem
+that implies it. Fixed-pattern caterpillar inducibility is nearby, but its
+available error is vacuous at pattern size \(\Theta(\log N)\), and it counts
+a different rooted shape.
 
 ## 8. Falsification data
 
@@ -297,9 +380,10 @@ records.
 
 The best proof attempt is now:
 
-1. prove the cap/cup product bound (7) for realizable signotopes;
-2. prove conditional endpoint alignment (8), first under the recursive
-   decomposition law (11);
+1. use the proved tree product bound (11a) and exact slack (11b) to prove
+   the tree-alignment conjecture;
+2. build a weighted endpoint-history analogue of the graph good-sequence
+   count, with a \(2^{O(k\log k)}\) fibre bound;
 3. in parallel, run the general Baek--Balko blow-up operation through a
    weighted convex-subset partition function, looking for a construction
    below \(1/2\);

@@ -140,21 +140,29 @@ balanced Pascal cells approach equality. Hence the new self-contained candidate 
 the abstract order type, realizes it with exact rational coordinates, directly enumerates a
 9-point composition, and verifies a 36-point composition by unrelated endpoint DPs; both routes
 give `(C,U,W)=(14136,14136,441399)` in the 36-point test. The old `proof_central.md` remains useful
-as an audited single-cell lemma. No public source for the `1/2` convex-subset bound was found;
-Baek--Balko define more general blow-ups but do not enumerate all convex subsets. **Status:
-apparently novel partial result, not externally refereed, and NOT a full solution.**
+as an audited single-cell lemma. Two independent fresh audits found no geometric, recurrence,
+rational-realizability, asymptotic, or arbitrary-`N` flaw; a separate 16-point exhaustive test with
+a nonconvex macro skeleton classified all `2^16` subsets exactly. Generic order-type blow-ups are
+prior art (Han--Kohayakawa--Sales--Stagni; Baek--Balko), but no public source for this mixed-sign
+enumerator or the `1/2` convex-subset bound was found. **Status: apparently novel partial result,
+not externally refereed, and NOT a full solution.**
 
 **Full-problem state.** The rigorous base-2 window is now `[1/4,1/2]`. `FULL_ATTACK.md` proves the
 exact endpoint identity `V(P)=1+N+sum_{s<t} c(s,t)u(s,t)`, explains the black-box `1/4` barrier,
 and isolates a matching `1/2` endpoint-multiplicity conjecture for realizable rank-3 signotopes.
-The most concrete lower lanes are: weighted Baek--Balko down-set labels; a matching theorem first
-for the strong-glue recurrence `(C,U,W)`; and planar convex-closure entropy. A naive tropical/max-
-term reduction of the decomposition recurrence fails because additive path multiplicities carry
-the exponent. The graph analogue (Székely 1984, total homogeneous subgraphs) has the same random
-upper coefficient `1/2` but a hard lower gap, warning that the matching lower may be genuinely
-deep. Complete small-order-type minima remain `45,73,114,169` for `N=6,7,8,9`. Immediate next gate:
-independent line-by-line proof audit + MathSciNet/expert novelty check, then pursue conditional
-endpoint alignment or search generalized blow-ups for a coefficient below `1/2`.
+For every strong-decomposition tree, the new sharp product theorem is
+`CU >= 2^((log N)^2/2-log N)`; only left-cap/right-cup alignment is missing. Its exact one-node
+slack square and the self-contained ordered-tree reformulation (count induced one-turn combs) are
+in `lower_bound_frontier.md`. Nonstationary homogeneous blow-ups with no macroscopic scale jump
+cannot beat `1/2`, and polynomial thinning also preserves the coefficient. Separately, a rigorous
+nested-bag lemma produces `2^((log N)^2/2-O(log N log log N))` hinged histories in every point set,
+but exact rational examples kill the naive compression to caps, cups, or split polygons; see
+`agent_geometry/HISTORY_ATTACK.md`. Literature transfer searches found no theorem closing either
+gap. The graph analogue (Székely 1984) is itself open between coefficients `1/4` and `1/2`.
+Complete small-order-type minima remain `45,73,114,169` for `N=6,7,8,9`. **Immediate next gate:**
+external expert/MathSciNet novelty clearance for the upper theorem; mathematically, prove an
+amortized imbalance-reset lemma for one-turn combs or a full-order-type compression of hinged
+histories with only `2^{O(log N log log N)}` fibre loss.
 
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good

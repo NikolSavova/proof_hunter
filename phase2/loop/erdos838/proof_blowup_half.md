@@ -1,9 +1,10 @@
 # A \(1/2\) upper coefficient for Erdős problem 838
 
-> Status, 2026-08-13: self-contained candidate proof with an independent
-> finite order-type audit. This supersedes the \(0.639326\ldots\) central-cell
-> bound in proof_central.md. It has not yet been externally refereed or
-> checked against a complete MathSciNet citation graph.
+> Status, 2026-08-13: self-contained candidate proof, checked by two
+> independent exact finite order-type audits. This supersedes the
+> \(0.639326\ldots\) central-cell bound in proof_central.md. It has not yet
+> been externally refereed or checked against a complete MathSciNet citation
+> graph.
 
 All logarithms in this note are base \(2\).
 
@@ -23,11 +24,20 @@ Then
 Including or excluding the empty set and sets of size at most two does not
 affect the conclusion.
 
-The construction is an iterated **vertical lexicographic blow-up** of a
-large balanced cap--cup extremal configuration. The key point is that the
+The construction is a directionally specified realization of an iterated
+**order-type blow-up** of a large balanced cap--cup extremal configuration.
+Generic order-type blow-ups and almost-vertical Erdős--Szekeres blow-ups
+already occur in the literature; what is used here is the particular pair of
+mixed-triple signs below. The key point is that the
 number of caps and cups multiplies by a polynomial at every substitution;
 the number of all convex subsets is then controlled by the product of those
 two quantities.
+
+For construction provenance, see Han--Kohayakawa--Sales--Stagni,
+*SODA 2019*, for iterated order-type blow-ups, and Baek--Balko,
+*SoCG 2025 / JCTA 2026*, for almost-vertical Erdős--Szekeres blow-ups. The
+targeted search recorded in `agent_killsearch/SECOND_STAGE.md` found no
+source containing the mixed-sign enumerator (2) or the resulting constant.
 
 ## 1. Vertical lexicographic composition
 
@@ -60,9 +70,12 @@ For two points in a common block, their displacement is
 \((\varepsilon^2\Delta x,\varepsilon\Delta y)\), with both coordinate
 differences positive. Against a point in a later block the determinant is
 negative for small \(\varepsilon\); against a point in an earlier block it
-is positive. There are only finitely many determinants, so one
-\(\varepsilon>0\) enforces all the assertions simultaneously. In particular,
-the construction is realizable and in general position.
+is positive. There are only finitely many determinants and strict coordinate
+inequalities, so all the assertions hold throughout an interval
+\(0<\varepsilon<\varepsilon_0\). Choosing a rational \(\varepsilon\) in this
+interval gives an exact rational realization in general position. Its two
+coordinates are again strictly increasing, so the construction can be
+iterated without a limiting or compactness argument.
 
 ## 2. Exact substitution formulas
 
@@ -145,8 +158,10 @@ insert the entire first-block cap, and use the rightmost point of the
 last-block cup. This is a cap by the first part of the proof. Similarly,
 the leftmost point of the first-block cap, the lower macro-hull, and the
 entire last-block cup form a cup. These chains have the same left and right
-endpoints and together contain every chosen point. Their union is therefore
-in convex position. The choices are unique and contribute
+endpoints and together contain every chosen point. A strict cap lies above
+its endpoint chord and a strict cup lies below that chord. Hence the two
+chains do not cross, and their union is the boundary of a convex polygon.
+The choices are unique and contribute
 \(C(Q)U(Q)n^{j-2}\). Convex subsets lying in a single block contribute
 \(rW(Q)\), proving the final formula. \(\square\)
 
