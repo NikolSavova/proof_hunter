@@ -65,6 +65,31 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-13 — ERDŐS #669: FULL ATTACK + PROOF-GRADE ZONOTOPE LOWER BOUNDS (Sihao + Codex ultracode).**
+The problem was first corrected in the repository: #669 is the generalized orchard/rich-lines
+problem, not the Heilbronn/fixed-area-triangle problem previously guessed in the shortlist. For
+fixed `k`, it asks about the maxima `f_k(n)` and `F_k(n)` of exactly-`k` and at-least-`k` rich lines,
+including existence of their normalized quadratic limits.
+
+A rigorous lattice-zonotope construction now proves
+`f_k(n),F_k(n) >= n^2/[4A(2k)]-O_k(n)`, where `A(2k)` is the minimum area of a convex lattice
+`2k`-gon. For primitive normals `V`, the arrangement has exactly `n_q=2Dq+k` lines and
+`Dq^2+kq+1` finite exact-`k` vertices, with `D=sum|det(v_i,v_j)|`; projective duality and generic
+padding give the point-set bound. Mixed-area/Minkowski plus Simpson proves optimality throughout
+the whole weighted/full-support lattice-zonotope scheme. The coefficients for `k=4,...,11` are
+`1/28,1/56,1/96,1/160,1/236,1/348,1/484,1/656`, improving Palásti's printed table at
+`k=4,5,6,7,8,11`. Exact projective enumeration passes for every stored direction set at `q=1,2`;
+the independent four-direction checker passes through `q=30`.
+
+**Novelty warning:** `1/28` is definitely 2019 web prior art (Zhao Hui Du), and the polygon,
+Ehrhart, and direction ingredients are classical (Palásti, Stanley, Simpson, Deza et al.). No source
+checked records the general orchard deduction or the new-looking `k=5,6,7,8,11` coefficients, but
+they are only “apparently unrecorded” pending MathSciNet/zbMATH and specialist clearance. The full
+problem is **not solved**: for `k>=4`, neither limit existence nor the exact constants are known.
+The exhaustive restart document is
+`phase2/loop/erdos669/HANDOFF_2026-08-13.md`; proofs and checks are in the adjacent
+`FULL_ATTACK.md`, `ZONOTOPE_CONSTRUCTION.md`, `PRIOR_ART.md`, and verifier scripts.
+
 **⭐ 2026-08-13 — ERDŐS #791: THREE FULL ATTACKS; COMPLETE CONTEXT HANDOFF WRITTEN (Sihao + Codex ultracode).**
 The limit problem remains open and no numerical record was improved, but the latest attack removes
 the previous finite-chromatic obstruction.  For every fixed `r`, an exact lattice construction gives
@@ -476,6 +501,17 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 ## 4. WHAT STILL NEEDS TO BE BUILT
 
+**Erdős #669 candidate-result obligations.**
+
+- [ ] Run a specialist-grade MathSciNet/zbMATH/citation clearance of the general orchard deduction
+  and the `k=5,6,7,8,11` coefficients. The `k=4` coefficient is known prior art.
+- [ ] Obtain an independent human line-by-line proof audit of the lattice converse, infinity points,
+  padding, sublattice factor, and mixed-area optimality.
+- [ ] Only if both gates pass, turn `phase2/loop/erdos669/ZONOTOPE_CONSTRUCTION.md` into a short,
+  conservatively claimed note with both exact verifiers attached.
+- [ ] A full solution still requires exact global constants and/or existence of the normalized limits
+  for `k>=4`; superadditivity, sampling, and `O(n)` increments provably do not suffice.
+
 **Erdős #791 full-solution frontier.**  Do not restart with another static role clique: arbitrary
 fixed `K_r` is now constructed exactly.  The live obligation is one of: (i) a temporal
 representation/role-assignment theorem giving `k+o(k)` cost while consecutive targets follow legal
@@ -615,6 +651,15 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
+
+### ⭐ 2026-08-13 — ERDŐS #669 ZONOTOPE RESULT: CLEAR NOVELTY BEFORE DRAFTING
+Read `phase2/loop/erdos669/HANDOFF_2026-08-13.md` first, then rerun the two exact verifiers listed
+there. The mathematical candidate is a general lower bound
+`f_k(n)>=n^2/[4A(2k)]-O_k(n)` with apparently unrecorded improvements over Palásti for
+`k=5,6,7,8,11`. The `k=4` case is definitely prior art and the underlying zonotope ingredients are
+classical. Before writing or circulating a paper, search MathSciNet/zbMATH forward citations and ask
+an arrangements specialist; then obtain a human proof audit. Do not describe #669 as solved and do
+not replace any `liminf` by a limit. Nothing is running.
 
 ### ⭐ 2026-08-13 — ERDŐS #791 HANDOFF / NEXT SOLUTION ATTACK
 Read `phase2/loop/erdos791/HANDOFF_20260813.md` completely, then

@@ -33,7 +33,7 @@ Famous, crowded, and hard for real reasons. Prize size is an anti-signal for us.
 
 | # | Tags | OEIS | Note |
 |---|---|---|---|
-| **669** | geometry | A003035, A006065, A008997 | **my pick** — see below |
+| **669** | geometry | A003035, A006065, A008997 | generalized Orchard/rich-lines problem; original identification below was wrong |
 | 201 | additive combinatorics, APs | A003002–A003005 | the no-3-term-AP / Szekeres sequences; Behrend-type constructions |
 | 82 | graph theory | 14 sequences | most computed data of any open problem here |
 | 1208 | geometry, distances | A193838, A271490 | adjacent to the unit-distance world that just moved |
@@ -41,7 +41,14 @@ Famous, crowded, and hard for real reasons. Prize size is an anti-signal for us.
 | 155 | additive combinatorics, Sidon | A143824, A227590, A003022 | A003022 is Golomb rulers — heavily searched already |
 | 545, 555, 87 | graph theory, Ramsey | 2 each | small Ramsey-type, construction-shaped |
 
-## Why #669
+## Why #669 — CORRECTION 2026-08-13
+
+**The identification in the original section below was wrong.** Erdős #669 is
+not a Heilbronn/fixed-area-triangle problem. It asks for the maximum numbers
+\(f_k(n)\) and \(F_k(n)\) of lines containing exactly/at least \(k\) among \(n\)
+planar points. The correct attack now lives in `../../erdos669/`. The text below
+is retained as an audit trail for how an OEIS-only guess failed; do not use its
+Golod--Shafarevich/Heilbronn recommendation.
 
 Two independent lines of evidence converged on it today, which has not happened for anything else
 this session.

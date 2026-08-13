@@ -449,6 +449,36 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #669: zonotope lower-bound theorem and exhaustive handoff (Sihao + Codex ultracode)
+
+- **Problem identity repaired.** The repository shortlist had guessed that #669 was a
+  Heilbronn/fixed-area triangle question. The primary sources and durable database row show that it
+  is the generalized orchard problem: maximize exactly-`k` and at-least-`k` rich lines and determine
+  the normalized quadratic limits. The shortlist and new `phase2/loop/erdos669/PROBLEM.md` now carry
+  the correct statement.
+- **Rigorous partial theorem.** A primitive `k`-direction lattice zonotope of determinant area `D`
+  gives `2Dq+k` arrangement lines and exactly `Dq^2+kq+1` finite `k`-fold vertices. Duality and
+  padding prove `f_k(n),F_k(n)>=n^2/(4D)-O_k(n)`. The sublattice-index caveat was corrected, and
+  mixed-area/Minkowski plus Simpson's minimum-area lattice polygons prove the optimal coefficient in
+  the whole weighted/full-support scheme is `1/[4A(2k)]`. For `k=4,...,11` this gives
+  `1/28,1/56,1/96,1/160,1/236,1/348,1/484,1/656`, beating Palásti at `k=4,5,6,7,8,11`.
+- **Verification shipped.** `verify_zonotope_construction.py` exactly checks all projective
+  intersections, infinity exceptions, hull/Pick counts, pair identities, and Melchior for the stored
+  `k=4,...,11` sets at `q=1,2`; all pass. The independent `k=4` checker passes through `q=30`.
+- **Prior-art discipline.** The `k=4` coefficient `1/28` is definitely in a 2019 Zhao Hui Du web
+  construction (its displayed `1/24` is an arithmetic typo). Stanley's Ehrhart formula, Simpson's
+  minimum polygons, and some exact generator sets are classical. No checked source records the
+  general orchard deduction or the new-looking coefficients, but novelty is deliberately marked
+  uncleared pending MathSciNet/zbMATH and an arrangements specialist.
+- **No false full-solution claim.** Limit existence and exact constants remain open for `k>=4`.
+  Generic union, downward sampling, and `O(n)` increment lemmas were proved, but a lacunary numerical
+  countermodel shows these axioms cannot force a quadratic limit; naive geometric blow-ups lose a
+  factor `k-1`. Current upper bounds and the exact `k=4` Melchior defect identity are recorded in
+  `FULL_ATTACK.md`.
+- **Durable restart package.** The self-contained operational record is
+  `phase2/loop/erdos669/HANDOFF_2026-08-13.md`, with proof, prior-art, verifier commands, dead ends,
+  claim discipline, and next attacks. Approximate direct API spend: `$0` in this local Codex session.
+
 ### 2026-08-13 — ERDŐS #791: durable full-context handoff after third full attack (Sihao + Codex ultracode)
 
 - **Wrote the complete restart brief** at
