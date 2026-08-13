@@ -1,0 +1,675 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\cV}{\mathcal V}
+
+\title{Counting convex subsets in iterated order-type blow-ups}
+\author{}
+\date{Draft of August 13, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a planar point set $P$ in general position, let $v(P)$ be the number
+of its subsets in convex position, and let
+\[
+ f(N)=\min\{v(P):|P|=N\}.
+\]
+Erd\H{o}s and Hammer asked for the asymptotic behaviour of $f(N)$; a
+standard counting estimate applied to the classical construction gives
+$\log_2 f(N)\le (1+o(1))(\log_2N)^2$.
+We prove
+\[
+ \limsup_{N\to\infty}
+ \frac{\log_2 f(N)}{(\log_2N)^2}\le\frac12.
+\]
+The construction is a directionally specified iterated order-type blow-up.
+We give exact substitution formulas for the numbers of caps, cups, and
+convex subsets.  If a fixed $r$-point template has largest cap and cup of
+sizes $a$ and $b$, respectively, its iterates have normalized coefficient
+$(a+b-2)/(2\log_2r)$.  Balanced instances of the classical cup--cap
+construction make this coefficient tend to $1/2$.  The cup--cap theorem
+shows that $1/2$ is optimal among fixed-template iterations.  More strongly,
+we prove that every point set obtained by arbitrary recursive strong
+separations has logarithmic convex-subset count at least
+$(\log_2N)^2/2-O((\log N)^{3/2})$.  Thus the
+coefficient $1/2$ is sharp throughout this nonstationary class.
+\end{abstract}
+
+\section{Introduction}
+
+For a finite set $P\subset\mathbb R^2$ in general position, call a subset
+of $P$ \emph{convex} if all of its points are vertices of its convex hull.
+Subsets of size at most two are included; changing this convention, or
+including the empty set, has no effect on any normalized asymptotic below.
+Write $v(P)$ for the number of convex subsets of $P$.
+
+Erd\H{o}s~\cite{Erdos1978} recorded a question posed with Hammer: determine
+or estimate
+\[
+ f(N)=\min_{|P|=N}v(P),
+\]
+where the minimum is over planar point sets in general position.  The
+classical Erd\H{o}s--Szekeres construction and the convex-polygon theorem
+show that $f(N)=2^{\Theta((\log N)^2)}$; see, for example, the survey of
+Morris and Soltan~\cite{MorrisSoltan2000}.  The open problem asks in
+particular whether $\log f(N)/(\log N)^2$ has a limit.
+
+For context, Suk's bound $ES(k)=2^{k+o(k)}$~\cite{Suk2017} gives the
+following standard lower estimate.  Put $t=\lfloor N^{1/2}\rfloor$ and
+$k=(1-o(1))\log t$, so every $t$-point set contains a convex $k$-set.
+Double-counting pairs $(K,T)$ with $K\subseteq T\subseteq P$, $|K|=k$,
+$|T|=t$, gives
+\[
+ \#\{\text{convex $k$-subsets of $P$}\}
+ \ge \frac{\binom Nt}{\binom{N-k}{t-k}}
+ =\frac{\binom Nk}{\binom tk}.
+\]
+Consequently
+\[
+ \liminf_{N\to\infty}
+ \frac{\log f(N)}{(\log N)^2}\ge\frac14.
+\]
+Together with \cref{thm:main}, this places the normalized quantity in the
+interval $[1/4,1/2]$.
+
+Our result improves the coefficient in the classical upper bound.
+Throughout the paper, all logarithms are base two.
+
+\begin{theorem}\label{thm:main}
+One has
+\[
+ \limsup_{N\to\infty}
+ \frac{\log f(N)}{(\log N)^2}\le\frac12.
+\]
+\end{theorem}
+
+The construction is a special realization of an order-type blow-up.
+General blow-ups and their iteration appear in
+Han--Kohayakawa--Sales--Stagni~\cite{HanEtAl2019}; almost-vertical blow-ups
+tailored to the Erd\H{o}s--Szekeres problem appear in
+Baek--Balko~\cite{BaekBalko2026}.  Exact weighted identities for numbers of
+convex polygons are also known~\cite{HuemerEtAl2022}.  The feature used here
+is a prescribed orientation for triples meeting exactly two clusters.
+Those orientations give exact substitution identities for the three
+statistics in \cref{lem:composition}; iterating them is what produces the
+geometric coefficient $1/2$.  The same base-normalized coefficient occurs
+in Sz\'ekely's graph-theoretic analogue~\cite{Szekely1984}, but no transfer
+between the two settings is known.
+
+We also determine the asymptotic answer inside the much larger class of
+all recursively strongly separated point sets; see \cref{thm:strong-class}.
+The lower bound there uses a max-endpoint recurrence and a multiscale reset
+argument.  It does not extend to arbitrary order types, so the existence
+and value of the limit in the Erd\H{o}s--Hammer problem remain open.
+
+\section{A directional vertical composition}
+
+After a rotation, order every point set by increasing $x$-coordinate.  For
+three points $p<q<r$, let $\chi(p,q,r)\in\{-,+\}$ denote their orientation.
+A \emph{cap} is a nonempty set all of whose increasing triples have sign
+$-$, and a \emph{cup} is defined with sign $+$.  Singletons and pairs are
+both caps and cups.
+
+A sufficiently strong shear $(x,y)\mapsto(x,y+Mx)$ preserves orientations
+and makes the $y$-coordinates increase in the same order as the
+$x$-coordinates.  We shall therefore assume both coordinates increase.
+
+Let $S=(s_1,\ldots,s_r)$ and $Q=(q_1,\ldots,q_n)$ have this property, with
+$s_i=(X_i,Y_i)$ and $q_j=(x_j,y_j)$.  For $\varepsilon>0$, replace $s_i$ by
+the block
+\[
+ Q_i=\bigl\{(X_i+\varepsilon^2x_j,
+              Y_i+\varepsilon y_j):1\le j\le n\bigr\}.       \tag{2.1}
+\]
+For all sufficiently small $\varepsilon$, denote the resulting point set
+by $S[Q]$.
+
+\begin{lemma}[orientation rules]\label{lem:orientation}
+For sufficiently small positive $\varepsilon$, the following hold in
+$S[Q]$.
+\begin{enumerate}
+\item A triple in one block has its orientation from $Q$.
+\item A triple in three different blocks has its orientation from $S$.
+\item If the first two points of an increasing triple are in one block,
+      its orientation is $-$.
+\item If the last two points are in one block, its orientation is $+$.
+\end{enumerate}
+The parameter $\varepsilon$ may be chosen rational, and $S[Q]$ again has
+both coordinates strictly increasing.  If $S$ and $Q$ have rational
+coordinates, then so does $S[Q]$.
+\end{lemma}
+
+\begin{proof}
+The first assertion follows by scaling within a block, and the second by
+continuity from the corresponding triple of cluster centres.  If $p<q$
+are in one block and $z$ is in a later block, then
+\[
+ q-p=(\varepsilon^2\Delta x,\varepsilon\Delta y),
+ \qquad \Delta x,\Delta y>0.
+\]
+In the determinant $\det(q-p,z-p)$, the term
+$-\varepsilon\Delta y\,(z_x-p_x)$ dominates, proving the third assertion.
+The fourth is the reflected calculation.
+
+Only finitely many strict coordinate inequalities and nonzero determinant
+conditions are involved.  Hence they hold throughout some interval
+$0<\varepsilon<\varepsilon_0$; choose a rational value there.  Shrinking
+$\varepsilon_0$ if necessary also preserves the coordinate order.
+\end{proof}
+
+For a point set $R$, let $c_j(R),u_j(R),v_j(R)$ denote the numbers of
+$j$-point caps, cups, and convex subsets.  Put
+\[
+ C(R)=\sum_{j\ge1}c_j(R),\qquad
+ U(R)=\sum_{j\ge1}u_j(R),\qquad
+ W(R)=\sum_{j\ge1}v_j(R).                         \tag{2.2}
+\]
+
+\begin{lemma}[exact composition count]\label{lem:composition}
+If $|S|=r$ and $|Q|=n$, then
+\begin{align}
+ C(S[Q])&=C(Q)\sum_{j\ge1}c_j(S)n^{j-1},\tag{2.3}\label{eq:Ccomp}\\
+ U(S[Q])&=U(Q)\sum_{j\ge1}u_j(S)n^{j-1},\tag{2.4}\label{eq:Ucomp}\\
+ W(S[Q])&=rW(Q)+C(Q)U(Q)
+                 \sum_{j\ge2}v_j(S)n^{j-2}.\tag{2.5}\label{eq:Wcomp}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+Consider a cap meeting at least two blocks.  Only its first occupied block
+may contain more than one point: two points in any later block, together
+with a point in an earlier block, form a positive triple by
+\cref{lem:orientation}.  The first block contributes an arbitrary nonempty
+cap of $Q$, every other occupied block contributes one arbitrary point, and
+the occupied block indices form a cap of $S$.  The orientation rules also
+show these conditions are sufficient.  Summing over macro-caps proves
+\eqref{eq:Ccomp}; reflection proves \eqref{eq:Ucomp}.
+
+Now let $X\subseteq S[Q]$ be convex and meet at least two blocks.  Its upper
+and lower hull chains are respectively a cap and a cup with common
+endpoints.  The lower hull contains at most one point from the first
+occupied block: two such points followed by any selected point in a later
+block would have sign $+$ along the lower chain, contradicting
+\cref{lem:orientation}.  Since every selected point is a hull vertex, all
+remaining points of the first block lie on the upper chain.  Thus the first
+occupied block intersects $X$ in a cap.  The reflected argument makes the
+last-block intersection a cup.  We claim every intermediate block contains
+at most one point.
+
+Indeed, suppose selected points $a<b_1<b_2<c$ lie in that order, with
+$b_1,b_2$ in one intermediate block and $a,c$ in earlier and later blocks.
+For small $\varepsilon$, the points $b_1,b_2$ lie on the same side of the
+line $ac$: this is true of their common cluster centre, and all relevant
+determinants are strict.  If they lie above $ac$, convexity would put both
+on the upper chain from $a$ to $c$, forcing
+$\chi(a,b_1,b_2)=-$; if they lie below, both lie on the lower chain,
+forcing $\chi(b_1,b_2,c)=+$.  Both conclusions contradict
+\cref{lem:orientation}.
+
+Choose one representative from each occupied endpoint block and the unique
+point in every occupied intermediate block.  This is a subset of the
+convex set $X$, hence is convex, and its order type is the corresponding
+subset of $S$.  Thus the occupied block indices form a convex subset of
+$S$.
+
+Conversely, fix a convex $j$-subset of $S$, $j\ge2$.  Choose a nonempty cap
+of $Q$ in its first block, a nonempty cup of $Q$ in its last block, and one
+point in each intermediate block.  Along the upper macro-hull, insert the
+entire first-block cap and the rightmost point of the last-block cup; the
+orientation rules make the result a strict cap.  The reflected construction
+along the lower macro-hull is a strict cup containing the remaining chosen
+points.  These two chains share their endpoints, lie on opposite sides of
+their endpoint chord, and do not cross.  Their union is therefore the
+boundary of a convex polygon.  The choices are unique and contribute
+$C(Q)U(Q)n^{j-2}$.  Sets contained in a single block contribute $rW(Q)$,
+which proves \eqref{eq:Wcomp}.
+\end{proof}
+
+\section{Iteration of a fixed template}
+
+Fix a template $S$ of size $r\ge2$.  Let its largest cap and cup have sizes
+$a$ and $b$, and define
+\[
+ Q_0=\{\text{one point}\},\qquad Q_d=S[Q_{d-1}].              \tag{3.1}
+\]
+Thus $|Q_d|=r^d$.
+
+\begin{proposition}\label{prop:template-rate}
+The iterates satisfy
+\[
+ \lim_{d\to\infty}
+ \frac{\log W(Q_d)}{(\log|Q_d|)^2}
+ =\frac{a+b-2}{2\log r}.                          \tag{3.2}
+\]
+\end{proposition}
+
+\begin{proof}
+Define the fixed polynomials
+\[
+ A(z)=\sum_{j\ge1}c_j(S)z^{j-1},\quad
+ B(z)=\sum_{j\ge1}u_j(S)z^{j-1},\quad
+ D(z)=\sum_{j\ge2}v_j(S)z^{j-2}.                 \tag{3.3}
+\]
+Their degrees are $a-1$, $b-1$, and at most $r-2$, respectively; each has
+positive leading coefficient, and $D$ is nonzero because every pair is
+convex.  From \cref{lem:composition},
+\[
+ C(Q_d)=C(Q_{d-1})A(r^{d-1}),\qquad
+ U(Q_d)=U(Q_{d-1})B(r^{d-1}).                     \tag{3.4}\label{eq:CU-recurrence}
+\]
+Since a fixed positive polynomial $P$ of degree $e$ satisfies
+$\log P(r^t)=et\log r+O_S(1)$ uniformly for $t\ge0$, summing
+\eqref{eq:CU-recurrence} over the levels gives
+\begin{align}
+ \log C(Q_d)&=(a-1)\binom d2\log r+O_S(d),\tag{3.5}\label{eq:Citer}\\
+ \log U(Q_d)&=(b-1)\binom d2\log r+O_S(d).\tag{3.6}\label{eq:Uiter}
+\end{align}
+
+The third recurrence unrolls exactly as
+\[
+ W(Q_d)=r^dW(Q_0)+
+ \sum_{s=1}^d r^{d-s}C(Q_{s-1})U(Q_{s-1})D(r^{s-1}).          \tag{3.7}
+\]
+By \eqref{eq:Citer}--\eqref{eq:Uiter}, the logarithm of the $s$th summand is
+\[
+ (a+b-2)\binom{s-1}{2}\log r+O_S(s)+O_S(d-s).                 \tag{3.8}
+\]
+There are only $d$ summands, and the last one has the displayed quadratic
+term with $s=d$.  More explicitly, since
+$D(r^{d-1})\ge v_2(S)>0$, the last summand gives
+\[
+ W(Q_d)\ge v_2(S)C(Q_{d-1})U(Q_{d-1}).
+\]
+Hence upper-bounding the sum by $d$ times its largest quadratic-scale bound
+and using this explicit lower bound yields
+\[
+ \log W(Q_d)=\frac{a+b-2}{2}d^2\log r+O_S(d).                 \tag{3.9}
+\]
+Division by $(d\log r)^2$ proves the proposition.
+\end{proof}
+
+\section{Balanced cup--cap templates}
+
+We first record the geometric operation used in the classical recursive
+cup--cap construction.  Write $A\prec B$ when internal orientations are
+preserved and every increasing triple meeting both sides has sign $-$ if
+its first two points lie in $A$, and sign $+$ if its last two points lie in
+$B$.
+
+\begin{lemma}[strong separation]\label{lem:strong-glue}
+Given rational point sets $A$ and $B$ in general position, they have a
+rational realization $A\prec B$ in general position.  Moreover, a cap in
+$A\prec B$ meeting both sides consists of a cap of $A$ and one point of
+$B$, while a cup meeting both sides consists of one point of $A$ and a cup
+of $B$.
+\end{lemma}
+
+\begin{proof}
+First shear both sets so that their two coordinates increase.  Place a
+copy of $A$ in the block
+$(\varepsilon^2x,\varepsilon y)$ near $(0,0)$ and a copy of $B$ in the
+block $(1+\varepsilon^2x,1+\varepsilon y)$ near $(1,1)$.  The determinant
+calculation from \cref{lem:orientation} gives the two required mixed signs
+for all sufficiently small $\varepsilon>0$.  A rational $\varepsilon$ may
+be selected below all finitely many strict thresholds.  The cap and cup
+classifications follow immediately: two points of the later block forbid a
+cap, while two points of the earlier block forbid a cup; the mixed signs
+also prove the converse.
+\end{proof}
+
+Now let $T_{m,0}$ and $T_{m,m}$ be singletons, and for $0<i<m$ form
+\[
+ T_{m,i}=T_{m-1,i-1}\prec T_{m-1,i}.             \tag{4.1}\label{eq:pascal-glue}
+\]
+using \cref{lem:strong-glue}.  These are the standard cup--cap examples.
+
+\begin{lemma}\label{lem:pascal}
+The cell $T_{m,i}$ has $\binom mi$ points, largest cap of size $i+1$, and
+largest cup of size $m-i+1$.
+\end{lemma}
+
+\begin{proof}
+The size recurrence is Pascal's identity.  For caps, the rule in
+\eqref{eq:pascal-glue} gives the larger of the left-child cap size plus one and the
+right-child cap size.  Induction gives $i+1$ in either case.  Reflection
+gives the cup statement.  The boundary convention is consistent because
+the boundary cells are singletons.
+\end{proof}
+
+For $k\ge3$, take the central cell
+\[
+ S_k=T_{2k-4,k-2}.                                \tag{4.2}
+\]
+Then
+\[
+ r_k=|S_k|=\binom{2k-4}{k-2},\qquad a_k=b_k=k-1. \tag{4.3}
+\]
+
+\begin{proof}[Proof of \cref{thm:main}]
+Fix $k$ and iterate $S_k$.  By \cref{prop:template-rate}, configurations
+of size $r_k^d$ satisfy
+\[
+ \frac{\log W(Q_d)}{(\log|Q_d|)^2}
+ \longrightarrow
+ \frac{k-2}{\log\binom{2k-4}{k-2}}.              \tag{4.4}
+\]
+For arbitrary $N$, take the least $d$ with $r_k^d\ge N$ and retain any
+$N$ points.  Deletion creates no new convex subsets, while
+$r_k^d<r_kN$, so the normalized coefficient is unchanged.  Consequently
+\[
+ \limsup_{N\to\infty}
+ \frac{\log f(N)}{(\log N)^2}
+ \le \frac{k-2}{\log\binom{2k-4}{k-2}}.          \tag{4.5}
+\]
+Stirling's formula gives
+$\log\binom{2k-4}{k-2}=2k-O(\log k)$.  Letting $k\to\infty$ proves the
+theorem.
+\end{proof}
+
+The same calculation, together with the cup--cap theorem of Erd\H{o}s and
+Szekeres~\cite{ErdosSzekeres1935}, identifies the limitation of
+fixed-template iteration.
+
+\begin{proposition}\label{prop:barrier}
+For every fixed template $S$, the coefficient in
+\cref{prop:template-rate} is at least $1/2$.
+\end{proposition}
+
+\begin{proof}
+If the largest cap and cup have sizes $a$ and $b$, the cup--cap theorem
+applied with forbidden sizes $a+1$ and $b+1$ gives
+\[
+ r\le\binom{a+b-2}{a-1}\le2^{a+b-2}.
+\]
+Thus $(a+b-2)/(2\log r)\ge1/2$.
+\end{proof}
+
+\section{Optimality for arbitrary strong decompositions}
+
+Call a point set \emph{strongly decomposable} if it is a singleton, or if
+it has a realization $A\prec B$ in which $A$ and $B$ are strongly
+decomposable.  Equivalently, it is represented by an ordered full binary
+tree whose internal nodes are the operation in \cref{lem:strong-glue}.
+Let
+\[
+ g(N)=\min\{W(P): |P|=N,\ P\text{ strongly decomposable}\}.
+\]
+
+\begin{theorem}\label{thm:strong-class}
+Every $N$-point strongly decomposable set $P$ satisfies
+\begin{equation}
+ \log W(P)\ge \frac12(\log N)^2-O((\log N)^{3/2}),
+ \label{eq:strong-lower}
+\end{equation}
+with an absolute implicit constant.  Consequently
+\begin{equation}
+ \lim_{N\to\infty}\frac{\log g(N)}{(\log N)^2}=\frac12.
+ \label{eq:strong-limit}
+\end{equation}
+\end{theorem}
+
+We need two preparatory estimates.  At a node $T=A\prec B$, write
+$a=|A|$ and $b=|B|$.  The strong-separation classification gives
+\begin{align}
+ C(T)&=C(B)+(b+1)C(A),\label{eq:tree-C}\\
+ U(T)&=U(A)+(a+1)U(B).\label{eq:tree-U}
+\end{align}
+
+\begin{lemma}[cap--cup product]\label{lem:product-mass}
+Every $s$-point strongly decomposable set $S$ satisfies
+\[
+ \log C(S)+\log U(S)\ge\frac12(\log s)^2-\log s.
+\]
+\end{lemma}
+
+\begin{proof}
+Put $R(S)=\sqrt{C(S)U(S)}$.  The Cauchy--Schwarz inequality
+$\sqrt{(p+r)(q+t)}\ge\sqrt{pq}+\sqrt{rt}$ and
+\eqref{eq:tree-C}--\eqref{eq:tree-U} give
+\[
+ R(A\prec B)\ge \sqrt{b+1}\,R(A)+\sqrt{a+1}\,R(B).
+\]
+Starting at $S$, follow a larger child until reaching a leaf.  If the
+current subtree has $m_i$ points, the followed child has
+$m_{i+1}=m_i-s_i$ points, where $1\le s_i\le m_i/2$.  Iterating the last
+display gives
+\begin{equation}
+ \log R(S)\ge\frac12\sum_i\log(s_i+1).
+ \label{eq:R-path}
+\end{equation}
+Let $t_i=\log m_i$ and $d_i=t_i-t_{i+1}$.  Since $0<d_i\le1$, convexity of
+$x^d$ on $0\le d\le1$, with $x=m_i/2$, shows
+\[
+ (m_i/2)^{d_i}\le1+d_i(m_i/2-1)\le s_i+1;
+\]
+here we used $d_i=-\log(1-s_i/m_i)\le2s_i/m_i$.  Consequently
+\[
+ \sum_i\log(s_i+1)
+ \ge\sum_i d_i(t_i-1)
+ \ge\frac12(\log s)^2-\log s,
+\]
+because $\sum_i d_i=\log s$ and
+$\sum_i d_it_i=((\log s)^2+\sum_i d_i^2)/2$.  Combining this with
+\eqref{eq:R-path} gives
+$\log R(S)\ge\frac14(\log s)^2-\frac12\log s$; doubling proves
+the claim.
+\end{proof}
+
+We next refine the count by endpoints.  For $p<q$, let $c(p,q)$ and
+$u(p,q)$ be the numbers of caps and cups with endpoints $p,q$.  Let $x(p)$
+count caps with left endpoint $p$, including the singleton, and let $y(q)$
+count cups with right endpoint $q$, again including the singleton.  Set
+\[
+ X=\max_p x(p),\qquad Y=\max_q y(q),\qquad
+ M=\max\bigl(1,\max_{p<q}c(p,q)u(p,q)\bigr).
+\]
+For a leaf, $(X,Y,M)=(1,1,1)$.  Directly from strong separation,
+\begin{align}
+ X(A\prec B)&=\max\{(b+1)X(A),X(B)\},\label{eq:X-rec}\\
+ Y(A\prec B)&=\max\{Y(A),(a+1)Y(B)\},\label{eq:Y-rec}\\
+ M(A\prec B)&=\max\{M(A),M(B),X(A)Y(B)\}.\label{eq:M-rec}
+\end{align}
+Indeed, for crossing endpoints $p\in A$, $q\in B$, one has exactly
+$c(p,q)=x_A(p)$ and $u(p,q)=y_B(q)$.
+
+Every nonsingleton convex set has a unique upper cap and lower cup with the
+same endpoints, and conversely every such pair forms a convex set.  Hence
+\begin{equation}
+ W(S)=|S|+\sum_{p<q}c(p,q)u(p,q),
+ \qquad M(S)\le W(S)\le2|S|^2M(S).
+ \label{eq:WM}
+\end{equation}
+Also $x(p)=1+\sum_{q>p}c(p,q)$, and every two-point cup is available, so
+\begin{equation}
+ X(S)\le |S|M(S),\qquad Y(S)\le |S|M(S).
+ \label{eq:XY-ceiling}
+\end{equation}
+Finally, $C(S)\le |S|X(S)$ and $U(S)\le |S|Y(S)$.  Thus
+\cref{lem:product-mass} implies, writing lower-case letters for base-two
+logarithms,
+\begin{equation}
+ x(S)+y(S)\ge\frac12(\log|S|)^2-3\log|S|.
+ \label{eq:radial}
+\end{equation}
+
+\begin{proof}[Proof of \cref{thm:strong-class}]
+It is enough to consider all sufficiently large $N$; increase the absolute
+constant to absorb the remaining values.  Put $L=\log N$,
+$R=\lceil\sqrt L\rceil$, and $\lambda=\log L$.  In the decomposition tree
+of $P$, start at the root and repeatedly follow a larger child.  If $n_i$
+is the current size and $s_i$ the discarded sibling size, stop when first
+\[
+ n_i<N/2^{4R}.
+\]
+Call a level large when $s_i\ge n_i/L^2$.
+
+Suppose first that fewer than $R$ levels are large.  A nonlarge level loses
+at most $2/L^2$ bits of size, since
+$-\log(1-s_i/n_i)\le2/L^2$, while every level loses at most one bit.
+The total loss before stopping exceeds $4R$, so there are more than
+$\frac32RL^2$ nonlarge levels.  At least half have their discarded sibling
+on the same side of the path.  Fix one leaf in each such sibling and one
+leaf below the stopping node.  Choosing an arbitrary subset of the fixed
+sibling leaves, together with the terminal leaf, gives distinct caps if
+the siblings lie on the right, and distinct cups if they lie on the left.
+This follows inductively upward from the mixed signs in
+\cref{lem:strong-glue}.  Therefore
+\[
+ \log W(P)>\frac34RL^2,
+\]
+which is stronger than \eqref{eq:strong-lower}.
+
+Now suppose there are at least $R$ large levels.  At each of $R$ selected
+large nodes, both children have at least $2^{L-\Delta}$ leaves, where
+\[
+ \Delta=4R+2\lambda+1.
+\]
+Indeed, the followed child has at least $n_i/2$, the sibling at least
+$n_i/L^2$, and $n_i\ge N/2^{4R}$ before the stop.  Since
+$u\mapsto u^2/2-3u$ is increasing in the relevant range, \eqref{eq:radial}
+gives for each such child
+\[
+ x+y\ge F:=\frac12(L-\Delta)^2-3L.
+\]
+
+Let $\mu=\log M(P)$.  Equations \eqref{eq:X-rec}--\eqref{eq:M-rec} make
+$X,Y,M$ nondecreasing from a child to its parent.  By
+\eqref{eq:XY-ceiling}, every coordinate of every subtree is at most
+$\mu+L$.  If $\mu\ge F-L$, the desired estimate follows immediately.
+Otherwise put
+\[
+ D=F-\mu>L,\qquad \ell=D-L>0.
+\]
+Every coordinate of every child at a selected node is at least $\ell$, by
+\eqref{eq:radial} and the ceiling $\mu+L$.
+
+Order the $R$ selected nodes from deepest to highest.  At the deepest node
+$A\prec B$, the crossing term in \eqref{eq:M-rec} gives
+$x_A+y_B\le\mu$.  Together with the two radial bounds
+\eqref{eq:radial}, this implies
+\[
+ x_B,y_A\ge2D-L.
+\]
+Thus both coordinates of the parent are at least $h_0:=2D-L$.
+
+At a later selected node, let $H$ be the child containing the preceding
+selected node and $Q$ the opposite child.  If $H$ is the left child, then
+$x_H+y_Q\le\mu$ and $x_Q+y_Q\ge F$, whence
+\[
+ x_Q\ge x_H+D.
+\]
+The parent increases its $x$-coordinate by at least $D$ and preserves its
+$y$-coordinate.  If $H$ is the right child, the reflected argument
+increases $y$ by at least $D$ and preserves $x$.  Intermediate nodes cannot
+erase either gain, by monotonicity.
+
+Among the $R-1$ later attachments, one direction occurs $q_*$ times, where
+$q_*\ge\lceil(R-1)/2\rceil$.  At its final occurrence the forward product
+uses a path coordinate of at least $h_0+(q_*-1)D$ and an opposite-child
+coordinate of at least $\ell$.  Therefore
+\[
+ \mu\ge(q_*+2)D-2L,
+ \qquad
+ \mu\ge\frac{q_*+2}{q_*+3}F-\frac{2L}{q_*+3}.
+\]
+Since $\Delta=O(\sqrt L)$, $q_*=\Omega(\sqrt L)$, and
+$F=\frac12L^2-O(L^{3/2})$, both alternatives give
+\[
+ \mu\ge\frac12L^2-O(L^{3/2}).
+\]
+Now $W(P)\ge M(P)$, proving \eqref{eq:strong-lower}.
+
+For the limit in \eqref{eq:strong-limit}, observe that every $Q_d$
+constructed from the Pascal templates is strongly decomposable.  Indeed,
+at every internal split of the macro strong tree, triples whose two
+same-side points lie in one micro-block have the required sign by
+\cref{lem:orientation}(3)--(4), while triples using distinct micro-blocks
+inherit the sign of the macro split.  Induction therefore identifies the
+iterate with the strong tree obtained by substituting the micro strong tree
+at every macro leaf.  An induced subset is also strong after suppressing
+empty and unary nodes.  The arbitrary-$N$ deletion argument in the proof of
+\cref{thm:main} therefore gives
+$\limsup\log g(N)/(\log N)^2\le1/2$, while the first part gives the
+matching liminf.
+\end{proof}
+
+\section{Verification artifact}
+
+The accompanying exact-arithmetic program independently checks the finite
+combinatorics behind \cref{lem:composition}.  It constructs the abstract
+composition signs, realizes them with rational coordinates, counts caps and
+cups by a last-edge dynamic program, and counts convex subsets through
+upper/lower endpoint chains.  A $9$-point composition is additionally
+checked by enumerating all $2^9$ subsets.  On
+$S=Q=T_{4,2}$, the substitution formulas and independent dynamic programs
+both return
+\[
+ (C,U,W)=(14136,14136,441399)
+\]
+for the resulting $36$-point composition.  The artifact is described in
+the supplementary README and is not used as a premise of the proof.  A
+second exact-arithmetic program checks the one-reset inequalities used in
+\cref{thm:strong-class} over finite boxes of logarithmic states.  It is an
+algebraic smoke test, not a substitute for the multiscale argument.
+
+\begin{thebibliography}{HKSS19}
+
+\bibitem[BB26]{BaekBalko2026}
+J.~Baek and M.~Balko.
+The Erd\H{o}s--Szekeres conjecture revisited.
+\emph{J. Combin. Theory Ser. A}, 222:106195, 2026.
+
+\bibitem[EH78]{Erdos1978}
+P.~Erd\H{o}s.
+Some more problems on elementary geometry.
+\emph{Austral. Math. Soc. Gaz.}, 5(2):52--54, 1978.
+
+\bibitem[ES35]{ErdosSzekeres1935}
+P.~Erd\H{o}s and G.~Szekeres.
+A combinatorial problem in geometry.
+\emph{Compos. Math.}, 2:463--470, 1935.
+
+\bibitem[HKSS19]{HanEtAl2019}
+J.~Han, Y.~Kohayakawa, M.~T. Sales, and H.~Stagni.
+Extremal and probabilistic results for order types.
+In \emph{Proc. 30th ACM--SIAM Symposium on Discrete Algorithms},
+pages 426--435. SIAM, 2019.
+
+\bibitem[HOPTV22]{HuemerEtAl2022}
+C.~Huemer, D.~Oliveros, P.~P\'erez-Lantero, F.~Torra, and B.~Vogtenhuber.
+On weighted sums of numbers of convex polygons in point sets.
+\emph{Discrete Comput. Geom.}, 68:448--476, 2022.
+
+\bibitem[MS00]{MorrisSoltan2000}
+W.~Morris and V.~Soltan.
+The Erd\H{o}s--Szekeres problem on points in convex position---a survey.
+\emph{Bull. Amer. Math. Soc.}, 37(4):437--458, 2000.
+
+\bibitem[Suk17]{Suk2017}
+A.~Suk.
+On the Erd\H{o}s--Szekeres convex polygon problem.
+\emph{J. Amer. Math. Soc.}, 30(4):1047--1053, 2017.
+
+\bibitem[Sz84]{Szekely1984}
+L.~A. Sz\'ekely.
+On the number of homogeneous subgraphs of a graph.
+\emph{Combinatorica}, 4:363--372, 1984.
+
+\end{thebibliography}
+
+\end{document}
