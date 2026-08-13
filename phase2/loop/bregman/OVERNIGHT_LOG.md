@@ -39,3 +39,44 @@ it happens, so nothing depends on this process surviving.*
 - ids: `scripts/prove2_ids.json`
 
 *(subsequent waves appended below as they complete)*
+
+### Wave 2 — COMPLETE. **Both agents independently concluded (B): hypothesis (b) IS removable.**
+
+`proof_part2a_20260813.md` (19.5k) and `proof_part2b_20260813.md` (17.2k). Unrefereed.
+
+**This is convergence, not an echo.** `part2a` was told to CONSTRUCT a counterexample; it
+failed to and instead proved the impossibility, reaching the same key idea as `part2b`
+independently. `part2b` was given "attainment under (c)" as a suggested angle, so its route
+was partly primed; `part2a`'s was not.
+
+**The shared missing observation.** The right perturbation direction is NOT `q - p_x`; it is an
+**outward supporting normal `n` to `U*` at the ghost `q`**. Perturbing `x0 -> x0 + t n`:
+
+```
+for p in S:  phi_t(p) = phi_0(p) - t<n,p> >= m_0 - t<n,p> > m_0 - t<n,q> = phi_t(q)
+```
+
+(strict because `S subset U*` is open and `<n,p> < <n,q>` strictly at a supporting hyperplane).
+So every point of `S` is strictly worse than the ghost value — yet `q` is a limit of points of
+`S` and `f*` is continuous at `q` (finite height IS the ghost regime), so the infimum over `S`
+EQUALS the ghost value and is **not attained**. `x0 + t n in U = X` by (a), so (c) demands a
+singleton there. Contradiction. Hence no ghost face, hence by attempt 1's SOL.6(3), `S` convex.
+
+**My independent audit: the inequality chain is valid**, step by step (see session transcript;
+each of the six steps checked, including that interior points of an OPEN convex set lie
+strictly inside a supporting hyperplane at a boundary point).
+
+**`part2a` corrected one of MY briefing errors**, which is worth recording: I suggested the box
+kernel `Σ√(1+x_j²)` because a flat face of `[-1,1]^n` would make the tilt affine tangentially
+and ties easy. That is **wrong** — on the face `p_1 = 1` the remaining `-√(1-p_j²)` terms are
+still strictly convex, so the tilt stays strictly convex tangentially; flatness only makes the
+NORMAL functional constant on the face. My heuristic would have sent a prover down a dead end.
+
+**Consequence if this survives refereeing:** the result is no longer "counterexample for (a),
+partial progress on (b)". It becomes **Fact 3.2 strengthened — hypothesis (b) deleted outright,
+hypothesis (a) shown necessary by explicit counterexample.** That is a materially better paper.
+
+**Next: referee lanes.** Two agents agreeing is suggestive, not decisive — and this project has
+been burned by confident drafts all week. Wave 3 = two adversarial lanes, one a maths referee
+on the proof, one tasked specifically with CONSTRUCTING a configuration that evades the
+argument (the fastest way to find a hole if one exists).
