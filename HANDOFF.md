@@ -717,6 +717,33 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
+### ⭐ 2026-08-13 — ERDŐS #838 IS THE ALL-IN TARGET: READ `RESUME_838.md` FIRST
+**Entry point: `phase2/loop/erdos838/RESUME_838.md`.** It indexes every 838 document, states
+current truth, and lists corrections to earlier files. Read it before
+`INSTANCE_HANDOFF_20260813.md` (still the best deep dossier) or any campaign output.
+
+Why 838 got the all-in decision: we already own `limsup ≤ 1/2` (`paper/main.tex` Theorem 1.1,
+independently verified), so **one theorem — `liminf ≥ 1/2` — resolves the problem outright**, limit
+existence and value together. No other target in this repo has that property.
+
+State after the 2026-08-13 seven-lane campaign (`scripts/campaign_lower.py`):
+- **The correct target is the ENDPOINT-LOCALIZED product** `max_{p<q} c(p,q)u(p,q)`, i.e. Sol's
+  inequality `(EM)`. The *global* cap–cup product is provably insufficient: `C,U ≤ N²M` costs a
+  factor of two and lands back on the published `1/4`.
+- **Barrier proved:** all asymmetric cup–cap double counts obey `(c+u)H(c/(c+u)) ≥ 1/4`, so the
+  method behind the published bound **cannot exceed 1/4**. Clean, apparently novel, worth banking
+  independently of whether `(EM)` ever falls.
+- **Two routes closed:** canonical tree decompositions do not bridge to indecomposable order types;
+  Székely does not transfer *and was never evidence* — his normalized lower coefficient is ≈0.1577,
+  and `prior_art_20260812.md` now carries a correction.
+- **Premise survived:** nothing beat coefficient `1/2`.
+- **Still unverified:** the multiscale reset page inside Theorem 5.1. Do this first — its structure
+  is the template for `(EM)`.
+- **Submission gate:** the Baek–Balko clearance used the SoCG extended abstract, which omits the
+  proofs of its Theorem 8 and Lemma 14. Buy the JCTA 222 (2026) 106195 version before submitting.
+
+Nothing is running.
+
 ### ⭐ 2026-08-13 — ERDŐS #1208 EXPLICIT-EXPONENT CANDIDATE: EXTERNAL AUDIT BEFORE DRAFTING
 Read `phase2/loop/erdos1208/HANDOFF_20260813.md` completely, then run
 `python3 phase2/loop/erdos1208/verify_adaptive_rank17.py`.  The candidate

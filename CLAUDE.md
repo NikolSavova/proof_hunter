@@ -12,6 +12,11 @@ Every result ships a **verification artifact**. Phase I (problem-identification 
 `problem-id/`) is built and has run once. Full context: read `HANDOFF.md` first, then `META_GUIDE.md`.
 
 ## Active research pointers
+- **Erdős #838 — THE ALL-IN TARGET (2026-08-13).** Entry point:
+  `phase2/loop/erdos838/RESUME_838.md` (read before any other 838 file). We own `limsup ≤ 1/2`;
+  one theorem (`liminf ≥ 1/2`) resolves the problem. Correct target is the endpoint-localized
+  product `(EM)`, not the global cap–cup product. A proved barrier says all cup–cap double counts
+  are capped at `1/4`.
 - **Erdős #791** — additive 2-basis limit problem; open after three full attacks. Complete restart
   brief: `phase2/loop/erdos791/HANDOFF_20260813.md`; memory pointer: `memory/projects/erdos-791.md`.
 

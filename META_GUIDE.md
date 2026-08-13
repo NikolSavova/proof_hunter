@@ -449,6 +449,60 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: all-in decision, seven-lane lower-bound campaign, barrier proved (Sihao + Claude Opus 5)
+
+**Decision.** Went all in on #838 after comparing it with #669, #791 and #1208 on *"which can
+actually be finished"* rather than *"which is cheapest to advance"*. #838 is unique here: we
+already own `limsup ≤ 1/2`, so a single theorem (`liminf ≥ 1/2`) resolves existence and value
+together. #1208 has a polynomial gap in a crowded room; #669's headline `1/28` is prior art (Zhao
+Hui Du, 2019) with a factor-2 gap and no candidate value; #791 is open after three attacks.
+
+**Paper audit before the campaign.** Wrote `independent_check.py`, a from-scratch exact-rational
+rederivation that counts caps/cups/convex subsets from orientation determinants only, sharing no
+code path with the paper's substitution formulas. It reproduces `(C,U,W) = (14136,14136,441399)`
+on the 36-point composition. Also re-derived Lemma 2.1's determinant asymptotics, Prop 3.1's
+(3.5)–(3.9), Prop 4.4, Lemma 4.2 and all three steps of Lemma 5.2 by hand. Found and recorded that
+the `eps` threshold is load-bearing: at `eps = 1/1000` the set is in general position yet returns
+the wrong count.
+
+**Baek–Balko clearance.** Read the SoCG 2025 paper (committed as
+`refs_baek_balko_socg2025.pdf`). They never count convex subsets — Lemma 14 gives only
+non-existence of a `k`-gon and cardinality — so the substitution identities are genuinely ours.
+But their "decomposable" class is the paper's "strongly decomposable", and Sol then traced it
+correctly past them to **Balko–Kynčl–Langerman–Pilz, EJC 24(4) (2017) P4.24**, which is a better
+citation than the one I recommended. My claim that the conversion is a 180° rotation was **wrong**;
+Sol's `ρ(x,y)=(−x,y)` is right, verified numerically, and my review note now carries an erratum.
+
+**Campaign (7 Sol lanes, effort=max, `scripts/campaign_lower.py`).**
+- My stated target was **mis-specified** and two lanes caught it: the *global* cap–cup product is
+  insufficient, since `C,U ≤ N²M` costs a factor of two and returns the published `1/4`. The right
+  object is the **endpoint-localized** `max_{p<q} c(p,q)u(p,q)`, which Sol's
+  `INSTANCE_HANDOFF_20260813.md` had already named `(EM)` at 13:05 — before the campaign launched
+  without it having been read. Process lesson: read the folder's own handoff before designing an
+  attack.
+- **Barrier proved** (`attack_direct`): the optimal consequence of all asymmetric cup–cap double
+  counts is `(c+u)H(c/(c+u)) ≥ 1/4`. The standard method cannot exceed `1/4` even for the product.
+  Apparently novel; worth banking independently.
+- **Two routes closed**: canonical tree decompositions stop at arbitrarily large indecomposable
+  nodes; Székely does not transfer *and never supported `1/2`* — his normalized lower coefficient
+  is ≈0.1577, and the `1/2` in `prior_art_20260812.md` was his random-graph **upper** coefficient.
+  That file now carries a correction block; a strategic recommendation had rested on the misreading.
+- **Premise survived**: nothing beat `1/2`; every level-dependent uniform blow-up with
+  `max log|S_i| = o(log N)` satisfies `log v ≥ (1/2−o(1))(log N)²`.
+- **Prior art AMBER**: cite Holmsen–Nassajian Mojarrad–Pach–Tardos, Bárány–Valtr, ordered
+  monotone-path work; none gives `(EM)` or beats `1/4`.
+- Verified `break_lemma`'s exact dyadic Horton family with `check_candidate.py`: product ratio
+  1.792→1.073 over `N=4..64`, converging to 1 from above as claimed.
+
+**Artifacts added.** `RESUME_838.md` (entry point/index), `CAMPAIGN_SYNTHESIS_20260813.md`,
+`REVIEW_20260813_claude.md`, `independent_check.py`, `check_candidate.py` (exact adjudicator for
+any proposed point set), `scripts/campaign_lower.py`, seven raw lane outputs.
+
+**Honest status.** The upper theorem is real and defensible. The lower bound is genuinely hard;
+round 1 mapped the barrier rather than crossing it. Treat `1/2` as the best-supported conjecture,
+not a known value. Approximate API spend this session: Sol only, ~20 lanes at effort=max across
+838, the candidate sweeps, the Jacobian aftermath and the unit-distance work.
+
 ### 2026-08-13 — ERDŐS #838: complete future-instance restart brief (Sihao + Codex)
 
 - Added `phase2/loop/erdos838/INSTANCE_HANDOFF_20260813.md`, a self-contained restart document
