@@ -148,3 +148,32 @@ gets rejected, one that carries it does not). It will still need its own referee
 
 *(Ops note: two launches tonight failed because the shell cwd had drifted into the bregman
 directory and relative paths broke. Use absolute paths in every launch command.)*
+
+### Wave 4 COMPLETE — consolidated proof landed (30.4k chars), stronger than expected.
+
+`proof_part2_consolidated_20260813.md`. **Theorem 1** now reads:
+
+> Let `f` be Legendre on `X = R^n` with `dom f = X`. Let `C subset X` be **arbitrary**. If
+> `argmin_{y in C} D_f(x,y)` is a singleton for every `x in X`, then (1) `C` is automatically
+> nonempty and closed, and (2) `C* = grad f(C)` is convex.
+
+That is stronger than the target: repair R3 was satisfied not by restating hypotheses but by
+PROVING (its Lemma 4) that attainment forces nonemptiness and closedness — so `C` is now
+arbitrary, and Fact 3.2's hypothesis (b) is gone entirely rather than weakened.
+
+Its §14 repair audit marks R1-R4 all satisfied; §10 gives an example showing exactly why the
+hull height `k(q)` is indispensable (and notes it is NOT a counterexample to Theorem 1); §11
+reconciles the two source proofs; §15 identifies **no residual mathematical gap** for the stated
+finite-dimensional theorem, while listing what is outside scope: infinite dimensions,
+`dom f != X`, projections attained only on a proper subset of `U`, and LEFT projections.
+
+**I verified the referee's discontinuity example locally**: `g(u,v) = u^2 - sqrt(u) + v^2/u`
+approaches `0` along `v = cu` but `1` along `v = sqrt(u)` — finite yet discontinuous at the
+boundary point, confirming R1/R2 were genuinely necessary and not pedantry.
+
+### Wave 5 — final lanes on the CONSOLIDATED document, launched.
+
+`scripts/referee3.py` -> `referee3_ref_maths_*.md`, `referee3_ref_break_*.md`. Retargeted at the
+merged proof, with the new surfaces named: Lemma 4 (does attainment really force closedness for
+ARBITRARY `C`?), Lemma 6 (arbitrary-slope supercoercivity), §10, and whether the §11
+reconciliation is honest or quietly dropped a step in the merge.
