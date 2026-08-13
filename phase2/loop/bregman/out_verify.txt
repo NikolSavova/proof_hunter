@@ -2,11 +2,13 @@ Bregman right-Chebyshev counterexample — numeric harness (PROBLEM.md)
 [A] model sanity:
   D(2.0, 3.0),(1.0, 5.0) = 0.853817489822 | via definition 0.853817489822 | agree=True
   D(0.3, 4.1),(2.2, 0.7) = 5.149684812954 | via definition 5.149684812954 | agree=True
-  grad f(y) = (ln y_1, ln y_2) maps R^2_++ ONTO R^2, so U* = R^2.
+  grad f surjective at target (-30.0, 30.0): preimage in R^2_++ -> True
+  grad f surjective at target (0.0, 0.0): preimage in R^2_++ -> True
+  grad f surjective at target (1e-09, -1000000000.0): preimage in R^2_++ -> True
 [B] reduction to h(t,x):
-  x=(1.0, 1.0): D(x,c(t)) - h(t,x) constant in t (= -2.0000000000) -> True
-  x=(0.05, 7.3): D(x,c(t)) - h(t,x) constant in t (= 7.0116961278) -> True
-  x=(9.0, 0.02): D(x,c(t)) - h(t,x) constant in t (= 10.6767807359) -> True
+  x=(1.0, 1.0): D(x,c(t)) - h(t,x) = -2.0000000000 constant in t; equals f(x) = -2.0000000000 -> True
+  x=(0.05, 7.3): D(x,c(t)) - h(t,x) = 7.0116961278 constant in t; equals f(x) = 7.0116961278 -> True
+  x=(9.0, 0.02): D(x,c(t)) - h(t,x) = 10.6767807359 constant in t; equals f(x) = 10.6767807359 -> True
 [C] strict convexity (interval):
   CERTIFIED LOWER BOUND (interval, 4000 cells) = 3.453673 at t~1.0000
     [this is an enclosure bound, NOT the infimum; the true inf is e+2/e = 3.454040710802]
@@ -19,8 +21,9 @@ Bregman right-Chebyshev counterexample — numeric harness (PROBLEM.md)
   arc at t=1.5 is (1.5, -2.25): midpoint lies 0.2500 BELOW the arc
   => C* nonconvex -> PASS
 [F] hypothesis bookkeeping:
-  dom f = R^2_+ (f = +inf off the closed positive orthant) != R^2 = X
-    => the FULL-DOMAIN hypothesis of Fact 3.2 FAILS. This is the hypothesis under test.
-  U* = grad f(U) = R^2, and C* is compact, so cl C* = C* subset U*
-    => the OTHER hypothesis HOLDS, so the counterexample isolates full domain. PASS
+  (-1, 1) in X = R^2 but outside dom f = R^2_+ -> dom f != X : True
+    => the FULL-DOMAIN hypothesis of Fact 3.2 FAILS (this is the hypothesis under test).
+  C endpoints in R^2_++ : True; C* bounded (so cl C* = C*) : True
+    [ANALYTIC, not executed] U* = grad f(U) = R^2 since ln maps R_++ onto R (block [A] exhibits preimages), hence cl C* subset U*: the OTHER hypothesis HOLDS.
+  => the counterexample isolates full domain -> PASS
 # OVERALL: ALL CHECKS PASS

@@ -110,8 +110,16 @@ lost, so the uniqueness argument must be redone). Treat as **Part II**, not opti
   the first nonconvex entropy-Bregman example (Laude-Ochs-Cremers have a local one), but an
   explicit **globally** right D_f-Chebyshev set with nonconvex gradient image, showing (a) is
   not removable even when (b) holds.
-- [ ] `verify.py` numeric harness written before any prover runs
-- [ ] Part I **proof** (rigorous, no numerics load-bearing) — Sol running
+- [x] `verify.py` numeric harness written before any prover runs; strengthened per referee
+- [x] Part I **proof** — `proof_part1_20260813.md`, rigorous, no numerics load-bearing
+  (Lemma SOL.2 proves `inf q = e + 2/e > 41/12 > 17/5` from exponential series with explicit
+  rational constants; independently audited step by step this session)
 - [ ] Part II — is `cl C* subset U*` necessary? — Sol running
-- [ ] Two adversarial referee lanes
+- [x] **Two adversarial referee lanes on Part I — BOTH MINOR_REPAIRS, all findings applied**
+  (`referee_maths_part1_20260813.md`, `referee_numerics_part1_20260813.md`). Neither found an
+  error in the PROOF; all seven findings were against the supporting artifacts:
+  a rounding-direction error in this file (`>= 3.454041` was false, since `e + 2/e =
+  3.454040710802`), a mislabelled interval enclosure, an over-claimed uniqueness block, three
+  weak harness blocks, and one unsourced "verified to 30 digits" claim. All fixed.
+  **Part I therefore clears the house bar.**
 - [ ] Lean statement stub

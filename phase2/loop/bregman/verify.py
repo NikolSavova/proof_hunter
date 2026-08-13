@@ -71,7 +71,13 @@ def block_A(log_):
         ok &= agree
         log_(f"  D{tuple(float(v) for v in x)},{tuple(float(v) for v in y)} = {float(direct):.12f} "
              f"| via definition {float(viadef):.12f} | agree={agree}")
-    log_("  grad f(y) = (ln y_1, ln y_2) maps R^2_++ ONTO R^2, so U* = R^2.")
+    # surjectivity of grad f onto R^2: exhibit a preimage for adversarial targets
+    for tgt in ((mpf(-30), mpf(30)), (mpf(0), mpf(0)), (mpf("1e-9"), mpf("-1e9"))):
+        pre = (exp(tgt[0]), exp(tgt[1]))
+        back = grad_f(pre)
+        hit = all(abs(back[j] - tgt[j]) < mpf(10) ** -25 for j in (0, 1)) and all(p > 0 for p in pre)
+        ok &= hit
+        log_(f"  grad f surjective at target {tuple(float(u) for u in tgt)}: preimage in R^2_++ -> {hit}")
     return ok
 
 
@@ -84,8 +90,11 @@ def block_B(log_):
             if const is None:
                 const = d
             ok &= abs(d - const) < mpf(10) ** -28
-        log_(f"  x={tuple(float(v) for v in x)}: D(x,c(t)) - h(t,x) constant in t "
-             f"(= {float(const):.10f}) -> {ok}")
+        Kx = sum(x[j] * log(x[j]) - x[j] for j in (0, 1))   # the proof's claim: K(x) = f(x)
+        matches = abs(const - Kx) < mpf(10) ** -28
+        ok &= matches
+        log_(f"  x={tuple(float(v) for v in x)}: D(x,c(t)) - h(t,x) = {float(const):.10f} "
+             f"constant in t; equals f(x) = {float(Kx):.10f} -> {matches}")
     return ok
 
 
@@ -146,11 +155,26 @@ def block_E(log_):
 
 
 def block_F(log_):
-    log_("  dom f = R^2_+ (f = +inf off the closed positive orthant) != R^2 = X")
-    log_("    => the FULL-DOMAIN hypothesis of Fact 3.2 FAILS. This is the hypothesis under test.")
-    log_("  U* = grad f(U) = R^2, and C* is compact, so cl C* = C* subset U*")
-    log_("    => the OTHER hypothesis HOLDS, so the counterexample isolates full domain. PASS")
-    return True
+    """Executable checks where possible; analytic facts are labelled as such."""
+    ok = True
+    # dom f != X : exhibit a point of X outside dom f (f = +inf there)
+    outside = (mpf(-1), mpf(1))
+    off_domain = outside[0] < 0
+    ok &= off_domain
+    log_(f"  (-1, 1) in X = R^2 but outside dom f = R^2_+ -> dom f != X : {off_domain}")
+    log_("    => the FULL-DOMAIN hypothesis of Fact 3.2 FAILS (this is the hypothesis under test).")
+    # C compact in U : endpoints strictly positive, and C* bounded
+    ends = [c(mpf(T_LO)), c(mpf(T_HI))]
+    inU = all(u > 0 for e in ends for u in e)
+    ok &= inU
+    star = [(mpf(T_LO), -mpf(T_LO) ** 2), (mpf(T_HI), -mpf(T_HI) ** 2)]
+    bounded = max(abs(u) for s in star for u in s) < 10
+    ok &= bounded
+    log_(f"  C endpoints in R^2_++ : {inU}; C* bounded (so cl C* = C*) : {bounded}")
+    log_("    [ANALYTIC, not executed] U* = grad f(U) = R^2 since ln maps R_++ onto R (block [A]"
+         " exhibits preimages), hence cl C* subset U*: the OTHER hypothesis HOLDS.")
+    log_(f"  => the counterexample isolates full domain -> {'PASS' if ok else 'FAIL'}")
+    return ok
 
 
 BLOCKS = {"A": ("model sanity", block_A), "B": ("reduction to h(t,x)", block_B),
