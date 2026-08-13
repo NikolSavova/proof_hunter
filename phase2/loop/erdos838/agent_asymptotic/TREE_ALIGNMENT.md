@@ -1,5 +1,12 @@
 # Tree alignment: an audit of the slack-square route
 
+> **Superseded candidate (2026-08-13).**  The invariant `H` proposed in
+> Section 2 is false.  An exact counterexample is given in
+> `../agent_killsearch/H_COUNTEREXAMPLE.md`: iterating the first `2^35`
+> leaves of the Pascal cell `T(41,27)` thirteen times violates (6) by an
+> integer comparison.  The local-induction obstructions below remain valid,
+> but the finite evidence must not be read as support for a true theorem.
+
 All logarithms in this note are base two.  The conclusion is deliberately
 negative but fairly sharp: I did not obtain a proof of the tree alignment
 conjecture.  I found a promising strengthened invariant, together with good

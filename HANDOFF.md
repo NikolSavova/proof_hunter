@@ -942,8 +942,10 @@ dispatch, and writing — marginal value of more compute is ~zero.
    sweep is complete; its remaining novelty gate is MathSciNet/expert confirmation.
 2. **Build `phase2/loop/` for the remaining five survivors.** The `erdos:838` directory now has
    PROBLEM.md, a self-contained upper proof, exact geometry/DP/order-type verifiers, prior-art
-   record, and `FULL_ATTACK.md`. Its upper theorem's next gate is human review; the full problem's
-   next mathematical target is the weighted endpoint-alignment lemma in `FULL_ATTACK.md` §4.
+   record, and `FULL_ATTACK.md`. Its upper theorem's next gate is human review. For the full problem,
+   every strong-decomposition tree now has coefficient at least `1/3`; the exact remaining target
+   is the max-endpoint one-turn-path inequality in `agent_asymptotic/MAX_ENDPOINT_PROFILE.md`.
+   The global window remains `[1/4,1/2]`, and the strong-tree window is `[1/3,1/2]`.
 3. **Nikol's eyeball wanted (not blocking):** `1003.3127v1#2` — the skeptic verified the
    counterexample mathematics (Bregman projection uniqueness via g''>0 on [1,2] + ∇f(C) nonconvex);
    if she concurs after Bruhat, it's the fastest publishable-unit candidate we have.

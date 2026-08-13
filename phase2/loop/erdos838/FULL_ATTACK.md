@@ -251,6 +251,41 @@ Exact Pareto dynamic programming through \(N=19\) finds no counterexample
 and gives decreasing normalized minima, but finite sizes are too small to
 distinguish \(1/2\) from larger constants.
 
+There is nevertheless a new unconditional result in this class:
+
+\[
+\boxed{\quad
+\log W(T)\ge {1\over3}(\log N)^2-O(\log N\log\log N).
+\quad}                                             \tag{11c}
+\]
+
+The proof follows a larger child until the current subtree has lost a
+factor \((\log N)^4\).  If a discarded sibling has relative size at least
+\(1/(\log N)^2\), the two child product bounds and a one-node directional
+minimax give (11c).  Otherwise the path has more than
+\(2(\log N)^2\log\log N\) levels; a majority of the discarded siblings lie
+on one side, and arbitrary subchoices of fixed leaves from those siblings
+form distinct pure caps or cups.  Full constants are in
+`agent_geometry/TREE_AMORTIZED_AUDIT.md`.
+
+An exact max-endpoint reduction makes the remaining \(1/2\) target smaller.
+Let \(X\) be the largest number of caps with one fixed left endpoint, \(Y\)
+the reflected cup quantity, and \(M=\max_{s<t}c(s,t)u(s,t)\).  Then
+
+\[
+\begin{aligned}
+X_T&=\max\{(b+1)X_A,X_B\},\\
+Y_T&=\max\{Y_A,(a+1)Y_B\},\\
+M_T&=\max\{M_A,M_B,X_AY_B\},                       \tag{11d}
+\end{aligned}
+\]
+
+and \(M\le W\le N^2M\) for \(N\ge2\).  Thus tree alignment is exactly a
+weighted one-turn-path theorem for the three max-plus recurrences (11d).
+The imbalance function \(\phi(x,y)=(x-y)^2/(x+y)\) is quasiconvex under
+coordinatewise maximum, but the required multiscale inequality is not yet
+proved.
+
 There is now a sharp theorem for the *unoriented* product. Put
 \(R(T)=\sqrt{C(T)U(T)}\). Cauchy--Schwarz in (11) gives, when
 \(|A|=a,|B|=b\),

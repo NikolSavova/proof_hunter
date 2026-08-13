@@ -449,6 +449,33 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: proved `1/3` for strong trees; exact max-endpoint reduction (Sihao + Codex ultracode)
+- **New rigorous theorem.** Every ordered strong-decomposition tree with `n` leaves has
+  `log2 W >= (1/3)(log2 n)^2-O(log n log log n)`. Follow a larger child until losing a
+  `(log n)^4` factor. A sibling of relative size `>=1/(log n)^2` supplies two nearly full-scale
+  cap/cup product bounds and a one-node minimax keeps two thirds of their sum. If no such sibling
+  appears, the path has `Omega(log^2 n log log n)` levels; majority-side sibling choices give
+  vastly many pure caps/cups. Constants were independently audited in
+  `agent_geometry/TREE_AMORTIZED_AUDIT.md`.
+- **Exact three-variable reduction.** With `X` the maximum cap count at a fixed left endpoint,
+  `Y` the reflected cup maximum, and `M=max c(s,t)u(s,t)`, strong glue obeys
+  `X=max((b+1)X_A,X_B)`, `Y=max(Y_A,(a+1)Y_B)`, `M=max(M_A,M_B,X_A Y_B)`, and
+  `M<=W<=n^2M`. Thus the matching `1/2` theorem is exactly a weighted one-turn-path problem.
+  The imbalance penalty `(x-y)^2/(x+y)` is quasiconvex under coordinatewise maximum; a
+  Pinsker-calibrated max-endpoint profile survives exhaustive states through `n=17` and random
+  recursive tests, but its Bellman inequality remains unproved.
+- **Killed shortcuts.** The earlier imbalance-corrected `H` potential is false by an exact
+  `2^455`-leaf iterated-Pascal certificate. Global `CU/W` comparison, scalar/local quadratic
+  Bellman inductions, direct endpoint-caterpillar comparison, and capped-endpoint Bellman all fail
+  on explicit recursive families. Hinged histories can even realize an 8-point no-pentagon order
+  type, so any successful history compression must be nonlocal.
+- **Honest status.** Global Erdős 838 remains open with window `[1/4,1/2]`; inside the strong-tree
+  class the proved window is now `[1/3,1/2]`. Fixed or alternating Pascal templates cannot attain
+  `1/3`; a counterconstruction would need nonstationary macroscopic scale jumps. New artifacts:
+  `agent_asymptotic/{MAX_ENDPOINT_PROFILE.md,TREE_POLYNOMIAL_ANGLE.md,E_VS_W_COUNTEREXAMPLE.md}`;
+  `agent_geometry/{TREE_AMORTIZED_AUDIT.md,audit_history_obstructions.py}`;
+  `agent_killsearch/{H_COUNTEREXAMPLE.md,QUADRATIC_PROFILE.md}`. Spend approximately $0 direct API.
+
 ### 2026-08-13 — ERDŐS #838: independent `1/2` audit + sharp lower-frontier lemmas (Sihao + Codex ultracode)
 - **Upper theorem survived two independent audits.** The vertical blow-up geometry, exact
   `(C,U,W)` classifier, rational realizability, fixed-template asymptotics, and deletion to arbitrary

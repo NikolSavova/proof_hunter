@@ -115,6 +115,35 @@ Exact Pareto dynamic programming verifies (10) through `n=19`; a
 multiobjective beam continuation remains above the target through `n=64`.
 Those computations are evidence, not a proof.
 
+The following weaker theorem is now proved:
+
+\[
+\boxed{\quad
+\log W(T)\ge {1\over3}(\log n)^2-O(\log n\log\log n).
+\quad}                                           \tag{10a}
+\]
+
+Its stopping-time proof is in `agent_geometry/TREE_AMORTIZED_AUDIT.md`.
+Follow a larger child until losing a factor \((\log n)^4\).  A sibling of
+relative size at least \(1/(\log n)^2\) gives two nearly full-scale child
+product bounds, and a one-node directional minimax retains two thirds of
+their sum.  If every sibling is smaller, the path has
+\(\Omega((\log n)^2\log\log n)\) levels; the majority attachment direction
+then gives exponentially many pure combs.
+
+There is also an exact max-plus reduction.  Let `X` be the maximum number
+of caps with one fixed left endpoint, `Y` the reflected cup maximum, and
+`M=max c(s,t)u(s,t)`.  Then
+
+```
+X(T)=max((b+1)X(A),X(B)),
+Y(T)=max(Y(A),(a+1)Y(B)),
+M(T)=max(M(A),M(B),X(A)Y(B)),
+```
+
+and `M<=W<=n^2 M` for `n>=2`.  Hence (10) is exactly a weighted
+one-turn-path theorem for this three-variable recurrence.
+
 There is an exact pattern interpretation. For a leaf set `S`, suppress the
 unary vertices in its minimal spanning subtree. Then `S` is a cap iff this
 reduced ordered tree is a left comb, a cup iff it is a right comb, and convex
