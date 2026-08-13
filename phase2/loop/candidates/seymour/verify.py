@@ -137,36 +137,65 @@ def block_C(log_):
 
 
 def block_D(log_):
-    """How hard is it to make MANY vertices fail at once? A counterexample needs ALL of them."""
+    """DIFFICULTY GAUGE. Hill-climb to maximise the number of NON-Seymour vertices subject to
+    min out-degree >= delta. A counterexample needs all n of them. How close local search gets is
+    real signal on whether the CP-SAT search is worth running: if it stalls far from n, the
+    constraint is not merely hard to satisfy by luck, it is structurally resisted.
+
+    (The earlier version of this block sampled edges independently with p = (delta+2)/(n-1), which
+    gives expected out-degree p(n-1)/2 ~ delta/2 -- half the floor -- so nothing was ever sampled.
+    Orientations here are built from a random tournament and then thinned, which keeps degrees up.)
+    """
     rng = random.Random(20260813)
+
+    def random_start(n, delta):
+        out = [0] * n
+        for u, v in itertools.combinations(range(n), 2):     # random tournament: out-deg ~ (n-1)/2
+            if rng.random() < 0.5:
+                out[u] |= 1 << v
+            else:
+                out[v] |= 1 << u
+        return out
+
+    def degs(out, n):
+        return [bin(out[v]).count("1") for v in range(n)]
+
+    def score(out, n):
+        return sum(1 for x in margins(out, n) if x < 0)
+
     for n, delta in ((19, 8), (25, 8), (36, 8)):
-        best = None
-        trials = 20000
-        for _ in range(trials):
-            # random orientation biased to out-degree ~delta..delta+3
-            out = [0] * n
-            for u, v in itertools.combinations(range(n), 2):
-                r = rng.random()
-                p = min(0.95, (delta + 2) / (n - 1))
-                if r < p:
+        best_overall = 0
+        for _restart in range(6):
+            out = random_start(n, delta)
+            cur = score(out, n)
+            for _step in range(4000):
+                u, v = rng.randrange(n), rng.randrange(n)
+                if u == v:
+                    continue
+                # propose flipping/removing/adding the arc between u and v
+                has_uv, has_vu = (out[u] >> v) & 1, (out[v] >> u) & 1
+                new = [x for x in out]
+                if has_uv:
+                    new[u] &= ~(1 << v)
                     if rng.random() < 0.5:
-                        out[u] |= 1 << v
-                    else:
-                        out[v] |= 1 << u
-            m = margins(out, n)
-            degs = [bin(out[v]).count("1") for v in range(n)]
-            if min(degs) < delta:
-                continue
-            bad = sum(1 for x in m if x < 0)
-            if best is None or bad > best[0]:
-                best = (bad, min(degs), max(m))
-        if best:
-            log_(f"  n={n}, min out-degree >= {delta}: best over {trials:,} random graphs = "
-                 f"{best[0]}/{n} vertices non-Seymour (need {n}/{n}); "
-                 f"largest margin still {best[2]:+d}")
-        else:
-            log_(f"  n={n}: no random sample met the min-degree floor")
-    log_("  random probe is a difficulty gauge only; it proves nothing")
+                        new[v] |= 1 << u
+                elif has_vu:
+                    new[v] &= ~(1 << u)
+                    if rng.random() < 0.5:
+                        new[u] |= 1 << v
+                else:
+                    new[u] |= 1 << v
+                if min(degs(new, n)) < delta:
+                    continue
+                s = score(new, n)
+                if s >= cur:
+                    out, cur = new, s
+            best_overall = max(best_overall, cur)
+        gap = n - best_overall
+        log_(f"  n={n}, min out-degree >= {delta}: best local search reached "
+             f"{best_overall}/{n} non-Seymour vertices (need {n}/{n}; short by {gap})")
+    log_("  a difficulty gauge only -- it proves nothing either way, but a large residual gap is")
+    log_("  evidence the slice is structurally resistant rather than merely rare")
     return True
 
 

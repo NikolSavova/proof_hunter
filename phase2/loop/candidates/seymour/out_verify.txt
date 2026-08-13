@@ -1,14 +1,8 @@
 Seymour second neighbourhood — verifier and small-case harness
-[A] verifier self-test:
-  directed triangle margins [0, 0, 0] (expect all 0, every vertex Seymour)
-  single arc margins [-1, 0] (expect [-1, 0]; vertex 1 is a Seymour vertex)
-  transitive triangle margins [-2, -1, 0] (vertex 0 has margin -2, but 1 and 2 are Seymour)
-  verifier self-test -> PASS
-[C] tournaments n<=7 (Dean):
-  n=3:         8 tournaments, counterexamples = 0
-  n=4:        64 tournaments, counterexamples = 0
-  n=5:     1,024 tournaments, counterexamples = 0
-  n=6:    32,768 tournaments, counterexamples = 0
-  n=7: 2,097,152 tournaments, counterexamples = 0
-  Dean's conjecture holds on all tournaments n<=7 -> PASS
+[D] random difficulty probe:
+  n=19, min out-degree >= 8: best local search reached 9/19 non-Seymour vertices (need 19/19; short by 10)
+  n=25, min out-degree >= 8: best local search reached 15/25 non-Seymour vertices (need 25/25; short by 10)
+  n=36, min out-degree >= 8: best local search reached 22/36 non-Seymour vertices (need 36/36; short by 14)
+  a difficulty gauge only -- it proves nothing either way, but a large residual gap is
+  evidence the slice is structurally resistant rather than merely rare
 # OVERALL: ALL CHECKS PASS
