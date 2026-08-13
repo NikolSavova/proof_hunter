@@ -449,7 +449,7 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
-### 2026-08-11→12 — G2 CLOSURE CAMPAIGN, 5 waves ≈70 Fable agents: G2 collapsed from a 5-item ledger to 4 named open statements; Theorem A now CONDITIONAL with a fully-refereed reduction (Sihao + Claude, autonomous overnight)
+### 2026-08-11→12 — G2 CLOSURE CAMPAIGN (7 waves, Fable then Sol): Theorem A is CONDITIONAL on CL; CL's hypothesis count went 4 → 6 under scrutiny (one since proved); paper rewritten and shipped-ready (Sihao + Claude)
 - **Licenses decided + applied:** MIT for the repo (LICENSE at root, both authors);
   arXiv non-exclusive (not CC BY) for the preprint, keeping venue options open.
 - **Method:** blind-draft + adversarial-referee fleets (the F2-campaign pattern,
@@ -479,6 +479,55 @@ prior-art kill-search**; has a writeable-down win condition.
   on thin-margin statements where human judgment (relax constants? re-architect
   budget?) beats more compute.
 - Spend: ~20M subagent tokens API. All work committed + pushed per-wave.
+
+**CONTINUATION 2026-08-12 (waves 6-7, model switch, and the paper).** Fable credits ran out
+mid-wave-6b; work moved to OpenAI **gpt-5.6-sol at `effort=max`** (~$1-5/call vs hundreds per
+Fable wave), orchestrated with the same decompose/parallel/referee pattern via
+`g2_scripts/campaign_20260811/wave6_sol/{run_sol,verify_sol,orchestrate}.py` (Responses API,
+background, id-journalled, retry-hardened). Total spend across the two days ≈ $1500.
+- **(S1) PROVED** — Sol draft, two adversarial Claude lanes, certificate of record is the
+  referee's own rigorous interval computation. The first of the four to close.
+- **(S2)**: attempt 1 FATAL (proved none of seven bounds — largely a prompt defect: it was
+  never shown the band table). Attempt 2 retained the cancellation and hit all seven
+  (W1: 0.0258 vs 0.05, a ~45x improvement on the binding quantity); **its entire numerical
+  spine was then independently replayed locally**, finding one real defect (the prescribed
+  1/64 cell width does NOT certify W1; 1/128 does) and four unflagged thin margins.
+  Attempt 3 closed the maths lane, resolved the underivable `2w` (a weighted `u`-integral,
+  not a pointwise bound) — and **caught an invalid `1/12` L1 trapezoid constant in its own
+  attempt 2**, corrected to `1/8`, independently verified here (`sup|K| = h^2/8`).
+- **(S3)**: compact bands W1-W6b and `(SOL.5)` certified locally (the latter needing a Cauchy
+  bound on `|z|=6` for `[0,1]`, where the direct series diverges); the `B >= 0` sign gap
+  collapsed to `h_3` decreasing, i.e. `3(coth y - 1/y) > tanh y`; W7 certificates passed both
+  lanes; all consolidated into one self-contained document.
+- **(S4)**: seed proved only for `m >= 700`; `[561,699]` remains open.
+- **⚠️ THE CENTRAL FINDING: the composition itself was under-specified.** An adversarial pass
+  on `CL_composition` returned MAJOR_ISSUES with seven findings; the repair concluded
+  verbatim that *"closing the old statements (S1)-(S4) alone would not close CL"*, splitting
+  out **(S5)** (a `w`-continuum certificate — the W1 rung rested on a finite `w`-grid, and the
+  available monotonicity runs in a different variable so it cannot interpolate) and **(S6)**
+  (the bootstrap closure — convexity plus one endpoint does not give `G(t)<t` on the whole
+  interval; the argument was a fixed-point ansatz). (S5) has an unrefereed draft; **(S6) was
+  attempted and NOT closed**, reporting five named sub-gaps.
+- **Net: open statements 4 → 5** (six atomic, (S1) proved). Nothing was found FALSE all
+  campaign; every finding was "asserted rather than proved" or "certificate never run".
+- **TWO BRIEFING DEFECTS, both causing false-negative verdicts** (patched): agents were fed the
+  wave-5 ledger, so they reported (S1) open long after it was proved; and briefs *asserted*
+  certificates instead of attaching them — one FATAL was purely this. **Rule adopted: hand
+  over the artifact, never the assurance.**
+- **THE PAPER (the actual deliverable) was substantially rewritten and is ship-ready:** F2
+  upgraded from bare conjecture to theorem-conditional-on-CL with (S1)-(S6) displayed and
+  evidenced; the *false* claim "(S1)-(S4) imply CL" purged from four sites; a real
+  misattribution fixed (the q-integer factorization is **Gasharov 1998**, not Carrell 1994 —
+  Carrell-Peterson is palindromicity); "exact rational certificates" rescoped honestly;
+  hedged colon-free title; byline moved to a first-page footnote disclosing AI assistance;
+  significance argued without overselling; and a copyedit against a researched rulebook
+  (Tao's advice pages, Bertsekas's Ten Simple Rules, Halmos 1970, Tao's Erdős-discrepancy
+  paper as register model) — 47 edits, displayed math untouched throughout. Three adversarial
+  review passes (2x DO_NOT_SHIP) preceded the final state; ~13 author decisions remain,
+  listed in `paper/submission/change_log_20260812.md`.
+- **Recommendation of record:** ship the conditional paper and state (S2)-(S6) as explicit
+  open problems with their constants; do not resume fleet spending to chase unconditional
+  Theorem A — (S6) has never had a working argument.
 - **Decision:** ship the floor result (verification + F1 + F1-smooth +
   F2-as-conjecture + F3), not the G2 ceiling. G2 was assessed the prior
   session as a genuine, open-ended time sink; the floor result is already
