@@ -66,6 +66,88 @@ TARGETS = {
             + read("s2c_briefing.md", 25_000)
             + read("sol_s2b_20260812.md", 60_000)
             + read("referee_replay_sol_s2b_20260812.md", 30_000)),
+    # ---- parallel closure fleet, 2026-08-12 (Sol replaces the Fable fleet; always max) ----
+    "s3w7sign": ("""CLOSE THE (S3) W7 SIGN GAP. Context: the adversarial maths referee of sol_s3_20260812.md
+found its ONE genuinely mathematical hole (its issue 4), and it is the blocking item for (S3):
+
+  In SOL.4 the draft asserts 0 <= B <= m h_3(lam), where B = m h_3(lam) - sum_{j=1}^m h_3(j lam).
+  Nonnegativity of the summands gives only B <= m h_3(lam). The bound on B^2/A^2 in (SOL.12)
+  needs |B| <= m h_3, for which B >= 0 is LOAD-BEARING and is nowhere proved.
+
+A cross-model check has now reduced this to a single-variable inequality — your job is to prove it
+rigorously and assemble the consequence.
+
+  (i) B >= 0 follows IMMEDIATELY if h_3 is decreasing on (0, oo): j lam >= lam for j >= 1, so
+      h_3(j lam) <= h_3(lam), hence sum_j h_3(j lam) <= m h_3(lam).
+  (ii) h_3(x) = x^3 sum_{k>=1} k^2 e^{-kx} = 2 y^3 cosh(y)/sinh^3(y) with y = x/2. Then
+       (log h_3)'(y) = 3/y + tanh(y) - 3 coth(y), so h_3 is decreasing iff
+             3(coth y - 1/y) > tanh y      for all y > 0.
+       Series: 3(coth y - 1/y) = y - y^3/15 + 2y^5/315 - ...,  tanh y = y - y^3/3 + 2y^5/15 - ...,
+       so the difference is (4/15) y^3 + O(y^5) > 0 near 0. Numerically the inequality holds on the
+       whole half-line (checked: max of h_3' over a fine grid on (0,45] is -2.55e-15 < 0).
+  PROVE (ii) rigorously for ALL y > 0 (not just numerically) — a clean proof of
+  3(coth y - 1/y) - tanh y > 0 — then state (i) as a corollary and write out the corrected SOL.4
+  step with B >= 0 justified.
+
+ALSO in the same document, close the second, smaller referee item (its issue 5): (SOL.13)'s
+half-line application assumes the B_8 endpoint term vanishes. Prove it: h_n^(7)(0) = 0 for n = 2,3,4
+(h_n is EVEN, so all odd derivatives vanish at 0) and h_n^(7)(x) -> 0 as x -> oo (exponential decay).
+State it as a lemma with proof. NOTE it does NOT rescue the finite-w case, where h_n^(7)(w) != 0 —
+there the corrected kernel constant must be used (see Lemma EM' below).
+
+CORRECTED REMAINDER LEMMA you must use throughout (established, exact-arithmetic verified):
+  With the expansion retaining endpoint terms through B_6 and NO B_8 endpoint term,
+    |E_{n,8}| <= (17/10321920) lam^8 int_0^w |h_n^(8)|,   since sup_x |B_8({x}) - B_8| = 17/256
+    = (2 - 2^-7)|B_8|; the draft's 1/1209600 is the B_8-endpoint-term form and is NOT available.
+Also established and citable: |h_n^(8)| <= 10^12 on (0,40] is now CERTIFIED (Cauchy bound on
+|z|=6 for x in [0,1]; direct Leibniz series on [1,40]), and Lemma SOL.3's compact bands W1-W6b are
+certified at cell width 1/128."""),
+
+    "s3w7cert": ("""SUPPLY THE (S3) W7 CERTIFICATES. Context: referee finding F1 on sol_s3_20260812.md listed
+three unrun certificates. TWO ARE NOW DONE by a cross-model pass: Lemma SOL.3's compact bands
+W1-W6b (executed, all certified at cell width 1/128, using the corrected constant below), and
+(SOL.5) |h_n^(8)| <= 10^12 on (0,40] (certified). THE REMAINING ONE IS YOURS: band W7's
+(SOL.16)/(SOL.17), together with the W7 lemmas the referee listed as load-bearing-but-unsupported:
+    h_2 - dT_2 > 9/10,   h_4 - dT_4 > 49/10,   U_7 <= 12/5,   int_0^oo |h_n^(8)| < 10^12.
+W7 is the band 40 < w <= 0.89 m (so up to w = 499.29 at m = 561) — the compact-band cell method does
+not reach it; give an analytic treatment with explicit constants, or a certificate whose cell count
+is stated and finite.
+
+CORRECTED REMAINDER LEMMA you must use (established, exact-arithmetic verified): with endpoint terms
+through B_6 and no B_8 endpoint term, the kernel constant is 17/10321920 = (2 - 2^-7)|B_8|/8!, NOT
+the draft's 1/1209600 (sup_x |B_8({x}) - B_8| = 17/256, verified exactly and on a 2000-point grid).
+Every W7 bound you write must carry this constant. Note also that the W7 sign hypothesis B >= 0 is
+being closed separately (h_3 is decreasing) — you may assume it, but flag where you use it."""),
+
+    "s4seed": ("""PROVE THE (S4) SEED LEMMA — the last piece of (S4). Context: the first maths referee of
+wave4_sl4p_repaired_20260812.md established (its M2) that the INFL/QUADF self-consistency bootstrap
+CLOSES given one a-priori input, and supplied the closure argument itself:
+
+  G(x) = a(1+u) + b(1+u)/(1-u) with u = Theta + d is convex increasing; the two endpoint evaluations
+    G(20/m) = 0.0491712 < 20/m = 0.0498753   (W5 at m = 401)
+    G(20/m) = 0.0421217 < 20/m = 0.0431965   (W1 at m = 463)
+  give G < id on all of [20/m, 0.89] by a chord argument, and the monotone iteration
+  x_{n+1} = G(x_n) descends from any seed in the basin to a fixed point < 20/m. Measured basin:
+  x_seed = sup{x : G(x) <= x} = 0.90182 (W5) / 0.89412 (W1 @ 463).
+
+  THEREFORE the ONLY open input is the a-priori SEED BOUND:
+        |s2 (r(k) - 1) - 1| <= 0.89     on the deep-tilt band, for m >= 700.
+  (The obligation starts at m >= 700: the same referee's M3 finding closes [561, 699] outright by
+  per-cell floors — worst row bound 0.416537 at m = 561 — so you need only m >= 700.)
+
+PROVE THAT SEED BOUND. Notes that should make it easier than it looks:
+ * 0.89 is an ENORMOUSLY loose target — the truth is O(1/m), i.e. ~0.03 at m = 700 and shrinking.
+   You do not need sharpness, only a crude two-sided bound. Do not attempt a sharp estimate.
+ * The referee characterises it as "weak-CL-shaped": log-concavity of the tilted Mahonian law gives
+   the LOWER side (r >= 1, hence s2(r-1) >= 0) for free via Bona's classical result; the work is the
+   UPPER side, s2(r(k)-1) <= 1.89.
+ * Established, citable machinery: s2 = m A_1(lam) - sum_j j^2 A_1(j lam) with
+   A_1(z) = e^-z/(1-e^-z)^2; the tilted cumulant identity
+   L^(n)(lam) = (-1)^n (m A_{n-1}(lam) - sum_j j^n A_{n-1}(j lam)); the far-region bounds of wp1-c
+   (two-referee); Prop 3.5(ii) = Theorem T.9-final (CLOSED); and G(y) = y^2 A_1(y) is decreasing with
+   int_0^oo G = pi^2/3.
+If the 0.89 target is unreachable by crude means, prove the best constant you can and say exactly
+what it is — the bootstrap basin is ~0.90, so anything below that still closes M2."""),
     "s3": ("Prove (S3), the joint-cancellation statement J <= J0(W) (worst measured margin 32.6% at "
            "(561, 5.0)). Constraint: a refereed impossibility result (Prop E.3, excerpted below) shows "
            "the sign-lemma route CANNOT work — do not use it; find another route."
