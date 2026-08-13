@@ -1,0 +1,15 @@
+SELFTEST: all anchors pass
+selftest OK at dps=30
+SELFTEST: all anchors pass
+selftest OK at dps=50
+== W2: target 13/20, w in [5,6] ==
+W2: CERTIFIED | 199 certified leaves | sup J_upper <= 0.649941 | 2s
+== W3: target 9/10, w in [6,8] ==
+W3: CERTIFIED | 32 certified leaves | sup J_upper <= 0.824958 | 1s
+== W4: target 11/10, w in [8,10] ==
+W4: CERTIFIED | 15 certified leaves | sup J_upper <= 1.098155 | 0s
+== W5: target 3/2, w in [10,20] ==
+W5: CERTIFIED | 18 certified leaves | sup J_upper <= 1.493300 | 1s
+== W6b: target 17/10, w in [20,40] ==
+W6b: CERTIFIED | 17 certified leaves | sup J_upper <= 1.671614 | 0s
+# OVERALL: PASS — all bands certified (EM constant: corrected 2x per referee F2; method: mpmath.iv directed rounding, dps 40, selftests dual dps 30/50)
