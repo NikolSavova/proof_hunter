@@ -251,7 +251,14 @@ def main():
     # chooses epsilon afresh at every finite composition, so use separate
     # exact rational parameters here as well.
     template_eps = F(1, 97)
-    S = sorted_pts(T(4, 2, template_eps))
+    template_reports = []
+    S = sorted_pts(T_audited(4, 2, template_eps, template_reports))
+    print(f"Template glues at eps={template_eps}:")
+    for cell, a, b, report in template_reports:
+        ordered, zeros, bad = report
+        print(f"  T_{cell}: child sizes {a}+{b}, coordinate_order={ordered}, "
+              f"zeros={zeros}, mixed_mismatches={bad}")
+        assert ordered and zeros == 0 and bad == 0
     print(f"T_(4,2): {len(S)} points, general position: {general_position(S)}")
     cS, uS, wS = stats(S)
     print(f"  (C,U,W) of the 6-point template = ({cS}, {uS}, {wS})")
