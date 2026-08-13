@@ -55,6 +55,17 @@ TARGETS = {
             + read("s2b_briefing.md", 20_000)
             + read("sol_s2_20260812.md", 45_000)
             + read("referee_maths_sol_s2.md", 55_000)),
+    # Attempt 3: numerics fully replayed cross-model; this run closes the MATHS lane.
+    "s2c": ("CLOSE (S2) — attempt 3. Your brief is the first file below; follow it exactly. "
+            "Attempt 2's numbers have ALL been independently reproduced, so this run is not "
+            "about numerics: it must supply the missing DERIVATIONS, fix the five named "
+            "defects (cell width; the underivable 2w in SOL.7.8; the unaudited lemmas; the "
+            "four razor-thin margins incl. G(0.89) at 0.056% slack; the undefined G and F_1), "
+            "and produce ONE self-contained rigorous proof of (S2). The remaining files are "
+            "attempt 2 and the cross-model replay report that verified it."
+            + read("s2c_briefing.md", 25_000)
+            + read("sol_s2b_20260812.md", 60_000)
+            + read("referee_replay_sol_s2b_20260812.md", 30_000)),
     "s3": ("Prove (S3), the joint-cancellation statement J <= J0(W) (worst measured margin 32.6% at "
            "(561, 5.0)). Constraint: a refereed impossibility result (Prop E.3, excerpted below) shows "
            "the sign-lemma route CANNOT work — do not use it; find another route."
