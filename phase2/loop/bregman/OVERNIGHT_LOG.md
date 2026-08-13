@@ -258,3 +258,61 @@ judgement that has burned this project all week, and it needs a human who can re
 **Lesson recorded:** I ran the novelty sweep on the counterexample in the morning and only ran
 one on the THEOREM after proving it. Had wave 6 run before waves 2–5, the night would have been
 aimed differently. **Sweep every claim, not every project — and re-sweep when the claim changes.**
+
+## ADJUDICATION — Part II is TRUE but NOT NOVEL. Final answer, and the night's honest end.
+
+`adjudication_luo_20260813.md` (actual Luo theorem statements attached, not paraphrases).
+
+**My technical objection was correct on the letter and wrong on the substance.** The adjudicator
+confirms Chebyshev is genuinely *not* among Theorem 3.12's conditions (i)–(iv), and that the
+sweep's attribution "to Theorem 3.12 alone" is **inaccurate**. But it then closes the gap I
+thought was open:
+
+- **Theorem 3.13's bounded-compactness hypothesis is free in our setting.** Chebyshevness forces
+  `C` closed (the same `D_f(c̄, c_k) -> 0` argument our own proof uses for R3), and in `R^n`
+  every closed set is boundedly compact. So the hypothesis I thought was a real restriction
+  costs nothing.
+- **3.12(3)'s hypotheses are automatic** for Legendre `f`: Rockafellar Thm 26.5 gives
+  `grad f: U -> U*` bijective with `f*` Legendre, hence `grad f(U) = U*` and `f*` Gâteaux
+  differentiable and strictly convex on `U*`.
+- **3.13's total-convexity hypotheses are automatic in `R^n`** by compactness of spheres plus
+  strict convexity (though NOT in general Banach spaces).
+
+So the chain is:
+`C right Chebyshev => C closed => boundedly compact => (3.13) sun => (3.12(2), U=X) (i) => (3.12(3)) grad f(C) convex.`
+
+**Verdict: our Part II theorem is not strictly stronger than Luo et al.; it is a short corollary
+of their machinery.** The sweep's headline was right even though its route was wrong.
+
+### What this means, stated without spin
+
+- **Part II is TRUE, four-times adversarially verified, and NOT PUBLISHABLE as new.** It should
+  be cited to Luo et al. (2019), not claimed. Our proof is an independent derivation by a
+  different route (ghost/supporting-normal rather than sun-theoretic) — that is a nice sanity
+  check on both, and nothing more.
+- **Part I is UNAFFECTED and remains the result.** Luo et al. retain `U = X` throughout; the
+  survey's posed question — is full domain necessary? — is answered by our counterexample, which
+  is proved, independently audited, and cleared by two adversarial lanes. Sweep #1 cleared it and
+  sweep #2 re-confirms Luo "remove the dual-closure condition while retaining full domain".
+- The paper is therefore back to its pre-midnight shape: **a short note settling hypothesis (a),
+  which now must cite Luo et al. prominently and note that (b) was already known to be
+  removable.** That framing is stronger than the original plan, which would have presented (b)
+  as an open second half.
+
+### Cost of the night, and what it bought
+
+~8 Sol runs at max effort. It bought: a fully proved and quadruply-refereed Part II (worthless
+for novelty, valuable as certainty that the surrounding statement is not where the paper is
+wrong), a corrected understanding of what Luo et al. actually contains, and the discovery —
+BEFORE submission — that a claim we would otherwise have made was already published. That last
+item alone justifies the night; it is exactly the Erdősgate failure mode, caught in time.
+
+### The lesson, for the record
+
+I swept the counterexample in the morning, then spent the night proving a *different* claim and
+only swept it afterwards. **Sweep every claim, and re-sweep the moment the claim changes.** My
+first Luo clearance also asked the wrong question — "did they remove full domain?" — when what
+mattered was "did they remove the hypothesis WE are removing?". Read prior art against the claim
+you are actually going to make.
+
+**Nothing is running. No further agents launched.**

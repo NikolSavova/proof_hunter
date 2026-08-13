@@ -116,8 +116,14 @@ counterexample, (b) shown removable by theorem** — rather than a counterexampl
 - [x] Part I **proof** — `proof_part1_20260813.md`, rigorous, no numerics load-bearing
   (Lemma SOL.2 proves `inf q = e + 2/e > 41/12 > 17/5` from exponential series with explicit
   rational constants; independently audited step by step this session)
- - [x] **Part II — SETTLED, and the answer is stronger than a counterexample: hypothesis (b)
-  is REDUNDANT.** `proof_part2_consolidated_20260813.md` Theorem 1: for Legendre `f` with
+ - [x] **Part II — mathematically SETTLED (hypothesis (b) is redundant), but ⚠️ NOT NOVEL.**
+  Prior-art sweep #2 + a focused adjudication with Luo et al.'s theorem statements attached
+  conclude our theorem is a **short corollary of Luo–Meng–Wen–Yao (2019)**, via the chain
+  `Chebyshev => closed => boundedly compact (free in R^n) => (Thm 3.13) sun => (Thm 3.12(2),(3))
+  grad f(C) convex`, with 3.12(3)'s and 3.13's extra hypotheses all automatic for a Legendre `f`
+  with `dom f = X` in finite dimensions. **Do not claim Part II as a new theorem.** Details:
+  `sweep2_theorem_20260813.md`, `adjudication_luo_20260813.md`. Original claim retained below
+  for the record: `proof_part2_consolidated_20260813.md` Theorem 1: for Legendre `f` with
   `dom f = X` and **arbitrary** `C subset X`, a singleton right projection at every `x` forces
   `C` nonempty and closed AND `C*` convex. So Fact 3.2 holds with (b) deleted, and with
   closedness/nonemptiness derived rather than assumed. Route: dualise to tilt minimisation over

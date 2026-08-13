@@ -1,0 +1,65 @@
+ADJUDICATE ONE NARROW TECHNICAL QUESTION. Do not write a general essay.
+
+Two claims are in tension and a human needs the answer stated precisely.
+
+BACKGROUND. Bauschke-Macklem-Wang (arXiv:1003.3127) Fact 3.2: if (a) dom f = X, (b) C subset
+U = int dom f closed nonempty with cl C* subset U* (C* := grad f(C)), and (c) C is right
+D_f-Chebyshev (argmin_{y in C} D_f(x,y) a SINGLETON for every x in U; RIGHT = second argument
+varies), then C* is convex. Their Problem 2 asks which hypotheses are necessary.
+
+WE PROVED (four adversarial passes, no error found): for f Legendre on X = R^n with dom f = X
+and C subset X ARBITRARY, if argmin_{y in C} D_f(x,y) is a singleton for every x in X, then C is
+nonempty and closed and C* is convex. I.e. hypothesis (b) is redundant.
+
+A PRIOR-ART SWEEP NOW CLAIMS THIS IS ALREADY PUBLISHED, in Luo-Meng-Wen-Yao, "Bregman distances
+without coercive condition: suns, Chebyshev sets and Klee sets", Optimization 68(8) (2019),
+Theorem 3.12 — on the grounds that Theorem 3.12 imposes no dual-closure hypothesis.
+
+HERE ARE THE ACTUAL STATEMENTS, transcribed from the paper (not paraphrased):
+
+  Definition 3.3(b). C is right Chebyshev (resp. right proximinal) if for each x in U,
+  ->Pi^f_C(x) is a singleton (resp. non-empty).
+
+  THEOREM 3.12. Suppose that C is ->D_f-proximinal.
+   (1) In the following statements, (i) => (ii).
+       (i)  For each x in U and y in C:  y in ->Pi^f_C(x)  <=>  <grad f(y) - grad f(c), y - x> <= 0
+            for each c in C.
+       (ii) C is a ->D_f-sun.
+   (2) If U = X, then (i) <=> (ii), and each of them is equivalent to:
+       (iii) For each x in U and y in C, if y in ->Pi^f_C(x), then y in ->Pi^f_C(z_2).
+   (3) If grad f(U) = U*, and if f* is Gateaux differentiable and strictly convex on U*, then
+       (i) is equivalent to:
+       (iv) grad f(C) is convex;
+       consequently, if in addition U = X, then each of the above statements is equivalent
+       mutually.
+
+  THEOREM 3.13. Suppose that f is totally convex at any point of U, that grad f(U) = U*, and
+  that f* is locally uniformly totally convex at any point of U*. If C be a boundedly compact
+  ->D_f-Chebyshev set, then C is a ->D_f-sun.
+
+THE QUESTION, and answer ONLY this:
+
+  Does Luo et al. (Theorem 3.12, or 3.12 combined with 3.13, or anything else in these
+  statements) already establish
+
+      f Legendre, dom f = X, C right D_f-Chebyshev  ==>  grad f(C) convex
+
+  for ARBITRARY C — with no bounded-compactness assumption and no total-convexity assumptions?
+
+Points to settle explicitly:
+ 1. Is "right Chebyshev" one of the conditions (i)-(iv) of Theorem 3.12, or implied by any of
+    them? Note the standing hypothesis of 3.12 is PROXIMINAL, which is weaker than Chebyshev.
+    Uniqueness appears nowhere in (i)-(iv) as far as I can tell — confirm or refute.
+ 2. If Chebyshev is not among them, what exactly bridges "C is Chebyshev" to (i), (ii) or (iii)?
+    Is Theorem 3.13 the only bridge offered, and does it genuinely require bounded compactness?
+ 3. Are the extra hypotheses of 3.12(3) (grad f(U) = U*, f* Gateaux + strictly convex on U*)
+    AUTOMATIC for a Legendre f with dom f = X? (I believe yes, by Rockafellar Thm 26.5 and
+    because f* is then Legendre — verify.)
+ 4. Are 3.13's hypotheses (f totally convex on U; f* locally uniformly totally convex on U*)
+    automatic for Legendre f with dom f = X, or are they genuine extra assumptions?
+ 5. THEREFORE: is our theorem (arbitrary C, Legendre + full domain only) strictly stronger than
+    what Luo et al. state, an easy corollary of their machinery, or already contained in it?
+
+Be decisive and quote the statements you rely on. If our result is contained in theirs, say so
+plainly — that is the more useful answer. If the delta is real but trivial to obtain from their
+tools, say that too, and say how many lines it takes.
