@@ -1,0 +1,35 @@
+{
+  "anneal": {
+    "accepted": 51251,
+    "best_evaluation": [510, 510, 510],
+    "best_target_count": 510,
+    "elapsed_seconds": 19.265465083066374,
+    "evaluated": 250000,
+    "status": "NO_IMPROVEMENT_FOUND"
+  },
+  "anneal_requested_steps": 250000,
+  "anneal_restarts": 10,
+  "baseline": {
+    "best_nontrivial_evaluation": [509, 509, 509],
+    "coordinate_bound": 540,
+    "evaluated": 22080,
+    "replacements_preserving_seed_prefix": 0,
+    "seed_evaluation": [510, 510, 510]
+  },
+  "coordinate_bound": 540,
+  "exact_coverage_rule": "q in I+J or q in I+K or (q-1 in J+K and q in J+K)",
+  "horizon": 540,
+  "method": "exhaustive one-replacement, exhaustive bounded two-replacement, plus seeded simulated annealing",
+  "random_seed": 791,
+  "scope_warning": "Bounded heuristic search; NO_IMPROVEMENT_FOUND is not a nonexistence result.",
+  "target_m": 511,
+  "total_candidates_evaluated": 332498,
+  "total_elapsed_seconds": 25.133755499962717,
+  "two_move_baseline": {
+    "best_nontrivial_evaluation": [509, 509, 509],
+    "evaluated": 60418,
+    "move_radius": 6,
+    "replacements_preserving_seed_prefix": 0,
+    "seed_evaluation": [510, 510, 510]
+  }
+}

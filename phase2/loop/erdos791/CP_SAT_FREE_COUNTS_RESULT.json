@@ -1,0 +1,14 @@
+{
+  "branches": 66231305,
+  "conflicts": 64921,
+  "coordinate_bound": 510,
+  "ell": 42,
+  "fixed_type_counts": null,
+  "free_type_counts": true,
+  "max_replacements_from_seed": null,
+  "scope": "Exact for the sufficient three-tile coverage predicate and stated finite domain/count constraints.",
+  "solver_wall_seconds": 180.15560200000002,
+  "status": "UNKNOWN",
+  "target_m": 511,
+  "wall_seconds": 180.19582295801956
+}

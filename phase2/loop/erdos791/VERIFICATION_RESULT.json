@@ -1,0 +1,36 @@
+{
+  "certificate_sha256": "884fe0f20d7b3cb06896c40b33a33d0c4dc96b84eff8b8c108fc38d5aac75ebc",
+  "claimed_m": 510,
+  "direct_expansion_checks": [
+    {
+      "actual_sumset_prefix_through": 2041,
+      "basis_size": 91,
+      "required_through": 2039,
+      "t": 2
+    },
+    {
+      "actual_sumset_prefix_through": 4592,
+      "basis_size": 133,
+      "required_through": 4589,
+      "t": 3
+    },
+    {
+      "actual_sumset_prefix_through": 12754,
+      "basis_size": 217,
+      "required_through": 12749,
+      "t": 5
+    },
+    {
+      "actual_sumset_prefix_through": 51009,
+      "basis_size": 427,
+      "required_through": 50999,
+      "t": 10
+    }
+  ],
+  "ell": 42,
+  "exact_tile_prefix": 510,
+  "first_uncovered_square": 510,
+  "ratio_m_over_ell_squared": "85/294",
+  "status": "PASS",
+  "witnesses_sha256": "205517b2792e89468e3d4b340579ae0da67dace6f9b045abcec2ce49872598f4"
+}

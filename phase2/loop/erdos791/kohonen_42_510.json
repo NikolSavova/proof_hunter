@@ -1,0 +1,9 @@
+{
+  "name": "Kohonen-2017-generalized-Mrose-42-510",
+  "source": "Jukka Kohonen, An improved lower bound for finite additive 2-bases, arXiv:1606.04770v2, Theorem 1",
+  "ell": 42,
+  "m": 510,
+  "I": [0, 5, 112, 117, 122, 127, 132, 137],
+  "J": [10, 16, 22, 28, 34, 40, 46, 52, 58, 64, 70, 76, 82, 88, 94, 100, 106],
+  "K": [0, 1, 2, 3, 4, 224, 225, 226, 227, 228, 229, 367, 368, 369, 370, 371, 372]
+}
