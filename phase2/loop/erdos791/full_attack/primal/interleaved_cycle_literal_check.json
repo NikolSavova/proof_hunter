@@ -1,0 +1,30 @@
+{
+  "abstract_prefix": 400,
+  "certificate": "/Users/sihaohuang/Desktop/Coding/proof_hunter/phase2/loop/erdos791/full_attack/primal/interleaved_cycle_40_400.json",
+  "claimed_m": 400,
+  "direct_checks": [
+    {
+      "basis_size": 107,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 1599,
+      "t": 2
+    },
+    {
+      "basis_size": 188,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 6399,
+      "t": 4
+    },
+    {
+      "basis_size": 268,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 14399,
+      "t": 6
+    }
+  ],
+  "ell": 40,
+  "status": "PASS"
+}

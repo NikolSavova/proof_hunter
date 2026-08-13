@@ -1,0 +1,15 @@
+{
+  "coarse_mass_L": 20,
+  "ell": 40,
+  "ell_squared_over_4": "400",
+  "fine_mass_I_plus_K": 20,
+  "fine_times_coarse": 400,
+  "identity": "85/294 - 1/4 = 23/588",
+  "m": 400,
+  "off_role_square_indices": [],
+  "off_role_squares_in_prefix": 0,
+  "record_forces_more_than_off_role_squares": "9200/147",
+  "record_integer_minimum_off_role": 63,
+  "status": "PASS",
+  "unused_other_mass_J": 0
+}

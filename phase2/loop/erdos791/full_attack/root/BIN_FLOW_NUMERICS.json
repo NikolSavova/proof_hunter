@@ -1,0 +1,11 @@
+{
+  "status": "HEURISTIC_ONLY",
+  "interpretation": "Each value is a lower bound on the nonconvex relaxation optimum U_m, not a certified upper bound on the Erdos 791 constant.",
+  "runs": [
+    {"bins": 4, "restarts": 8, "steps_per_restart": 3000, "seed": 791, "best": 0.5},
+    {"bins": 8, "restarts": 8, "steps_per_restart": 3000, "seed": 792, "best": 0.487747772593793},
+    {"bins": 12, "restarts": 8, "steps_per_restart": 3000, "seed": 793, "best": 0.469545262276328},
+    {"bins": 16, "restarts": 10, "steps_per_restart": 5000, "seed": 794, "best": 0.467232775816797},
+    {"bins": 20, "restarts": 10, "steps_per_restart": 5000, "seed": 795, "best": 0.455966765597673}
+  ]
+}

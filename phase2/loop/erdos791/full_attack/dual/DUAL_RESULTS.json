@@ -1,0 +1,2878 @@
+{
+  "envelope_check": {
+    "cases": 249,
+    "ell_range": [
+      2,
+      250
+    ],
+    "sha256_of_ell_bound_pairs": "9e44c3ccbd37f6f91d6ab466737bfdfba17fcc82f8de383a33319d13ad9e424b",
+    "status": "PASS"
+  },
+  "exhaustive_set_check": {
+    "coordinate_domain": [
+      0,
+      5
+    ],
+    "equality_cases": 76,
+    "first_equality_cases": [
+      {
+        "I": [
+          0
+        ],
+        "J": [],
+        "K": [
+          0
+        ],
+        "m": 1
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [],
+        "K": [
+          0,
+          1
+        ],
+        "m": 2
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [],
+        "K": [
+          0,
+          1,
+          2
+        ],
+        "m": 3
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [],
+        "K": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "m": 4
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [],
+        "K": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "m": 5
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [],
+        "K": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "m": 6
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [
+          0
+        ],
+        "K": [],
+        "m": 1
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [
+          0
+        ],
+        "K": [
+          1
+        ],
+        "m": 2
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [
+          1
+        ],
+        "K": [
+          0
+        ],
+        "m": 2
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [
+          0,
+          1
+        ],
+        "K": [],
+        "m": 2
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [
+          0,
+          1
+        ],
+        "K": [
+          2
+        ],
+        "m": 4
+      },
+      {
+        "I": [
+          0
+        ],
+        "J": [
+          0,
+          1
+        ],
+        "K": [
+          2,
+          4
+        ],
+        "m": 6
+      }
+    ],
+    "normalized_triples_checked": 98304,
+    "status": "PASS"
+  },
+  "extra_both_zero_check": {
+    "coordinate_domain": [
+      0,
+      7
+    ],
+    "description": "all triples with 0 in I intersect J intersect K",
+    "status": "PASS",
+    "triples_checked": 2097152
+  },
+  "parity_relaxation_certificate": {
+    "conclusion": "parity/carry capacities alone cannot improve the asymptotic 1/3 ceiling",
+    "dual_sos": "1/3-(ij+ik+jk)=((i-j)^2+(i-k)^2+(j-k)^2)/6 >= 0",
+    "model": "two-state parity/carry capacity relaxation",
+    "primal": {
+      "I_even": "1/6",
+      "I_odd": "1/6",
+      "JK_even_capacity": "1/18",
+      "JK_odd_capacity": "1/18",
+      "J_even": "1/6",
+      "J_odd": "1/6",
+      "K_even": "1/6",
+      "K_odd": "1/6",
+      "consecutive_even_capacity": "1/18",
+      "consecutive_odd_capacity": "1/18",
+      "direct_even_capacity": "1/9",
+      "direct_odd_capacity": "1/9",
+      "required_each_parity": "1/6",
+      "rho": "1/3"
+    },
+    "status": "OPTIMUM_1/3_CERTIFIED"
+  },
+  "prefix_relaxation_counterexample": {
+    "I": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "J": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "K": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "actual_tile_prefix": 13,
+    "all_prefix_count_inequalities_hold_through": 127,
+    "conclusion": "prefix-count relaxation is necessary but not sufficient",
+    "ell": 20
+  },
+  "record_target_census": [
+    {
+      "canonical_positive_splits": 72,
+      "collision_bound_killed": 52,
+      "ell": 18,
+      "newly_killed": [
+        {
+          "collision_bound": 88,
+          "counts": [
+            2,
+            8,
+            8
+          ],
+          "raw_capacity": 95
+        },
+        {
+          "collision_bound": 88,
+          "counts": [
+            2,
+            9,
+            7
+          ],
+          "raw_capacity": 94
+        },
+        {
+          "collision_bound": 93,
+          "counts": [
+            3,
+            9,
+            6
+          ],
+          "raw_capacity": 98
+        },
+        {
+          "collision_bound": 90,
+          "counts": [
+            3,
+            10,
+            5
+          ],
+          "raw_capacity": 94
+        },
+        {
+          "collision_bound": 92,
+          "counts": [
+            4,
+            10,
+            4
+          ],
+          "raw_capacity": 95
+        },
+        {
+          "collision_bound": 92,
+          "counts": [
+            5,
+            10,
+            3
+          ],
+          "raw_capacity": 94
+        },
+        {
+          "collision_bound": 93,
+          "counts": [
+            7,
+            9,
+            2
+          ],
+          "raw_capacity": 94
+        },
+        {
+          "collision_bound": 93,
+          "counts": [
+            9,
+            7,
+            2
+          ],
+          "raw_capacity": 94
+        },
+        {
+          "collision_bound": 92,
+          "counts": [
+            10,
+            4,
+            4
+          ],
+          "raw_capacity": 95
+        },
+        {
+          "collision_bound": 92,
+          "counts": [
+            10,
+            5,
+            3
+          ],
+          "raw_capacity": 94
+        }
+      ],
+      "raw_capacity_killed": 42,
+      "remaining": 20,
+      "target_m": 94
+    },
+    {
+      "canonical_positive_splits": 81,
+      "collision_bound_killed": 58,
+      "ell": 19,
+      "newly_killed": [
+        {
+          "collision_bound": 98,
+          "counts": [
+            2,
+            9,
+            8
+          ],
+          "raw_capacity": 105
+        },
+        {
+          "collision_bound": 104,
+          "counts": [
+            3,
+            8,
+            8
+          ],
+          "raw_capacity": 111
+        },
+        {
+          "collision_bound": 104,
+          "counts": [
+            3,
+            9,
+            7
+          ],
+          "raw_capacity": 110
+        },
+        {
+          "collision_bound": 102,
+          "counts": [
+            3,
+            10,
+            6
+          ],
+          "raw_capacity": 107
+        },
+        {
+          "collision_bound": 104,
+          "counts": [
+            8,
+            9,
+            2
+          ],
+          "raw_capacity": 105
+        },
+        {
+          "collision_bound": 104,
+          "counts": [
+            9,
+            8,
+            2
+          ],
+          "raw_capacity": 105
+        }
+      ],
+      "raw_capacity_killed": 52,
+      "remaining": 23,
+      "target_m": 105
+    },
+    {
+      "canonical_positive_splits": 90,
+      "collision_bound_killed": 66,
+      "ell": 20,
+      "newly_killed": [
+        {
+          "collision_bound": 108,
+          "counts": [
+            2,
+            9,
+            9
+          ],
+          "raw_capacity": 116
+        },
+        {
+          "collision_bound": 115,
+          "counts": [
+            3,
+            9,
+            8
+          ],
+          "raw_capacity": 122
+        },
+        {
+          "collision_bound": 114,
+          "counts": [
+            3,
+            10,
+            7
+          ],
+          "raw_capacity": 120
+        },
+        {
+          "collision_bound": 111,
+          "counts": [
+            3,
+            11,
+            6
+          ],
+          "raw_capacity": 116
+        },
+        {
+          "collision_bound": 114,
+          "counts": [
+            4,
+            11,
+            5
+          ],
+          "raw_capacity": 118
+        },
+        {
+          "collision_bound": 115,
+          "counts": [
+            5,
+            11,
+            4
+          ],
+          "raw_capacity": 118
+        },
+        {
+          "collision_bound": 114,
+          "counts": [
+            6,
+            11,
+            3
+          ],
+          "raw_capacity": 116
+        },
+        {
+          "collision_bound": 115,
+          "counts": [
+            9,
+            9,
+            2
+          ],
+          "raw_capacity": 116
+        },
+        {
+          "collision_bound": 115,
+          "counts": [
+            11,
+            5,
+            4
+          ],
+          "raw_capacity": 118
+        },
+        {
+          "collision_bound": 114,
+          "counts": [
+            11,
+            6,
+            3
+          ],
+          "raw_capacity": 116
+        }
+      ],
+      "raw_capacity_killed": 56,
+      "remaining": 24,
+      "target_m": 116
+    },
+    {
+      "canonical_positive_splits": 100,
+      "collision_bound_killed": 70,
+      "ell": 21,
+      "newly_killed": [
+        {
+          "collision_bound": 126,
+          "counts": [
+            3,
+            9,
+            9
+          ],
+          "raw_capacity": 134
+        },
+        {
+          "collision_bound": 126,
+          "counts": [
+            3,
+            10,
+            8
+          ],
+          "raw_capacity": 133
+        },
+        {
+          "collision_bound": 124,
+          "counts": [
+            3,
+            11,
+            7
+          ],
+          "raw_capacity": 130
+        }
+      ],
+      "raw_capacity_killed": 67,
+      "remaining": 30,
+      "target_m": 128
+    },
+    {
+      "canonical_positive_splits": 110,
+      "collision_bound_killed": 76,
+      "ell": 22,
+      "newly_killed": [
+        {
+          "collision_bound": 138,
+          "counts": [
+            3,
+            10,
+            9
+          ],
+          "raw_capacity": 146
+        },
+        {
+          "collision_bound": 137,
+          "counts": [
+            3,
+            11,
+            8
+          ],
+          "raw_capacity": 144
+        },
+        {
+          "collision_bound": 134,
+          "counts": [
+            3,
+            12,
+            7
+          ],
+          "raw_capacity": 140
+        },
+        {
+          "collision_bound": 138,
+          "counts": [
+            4,
+            12,
+            6
+          ],
+          "raw_capacity": 143
+        },
+        {
+          "collision_bound": 138,
+          "counts": [
+            7,
+            12,
+            3
+          ],
+          "raw_capacity": 140
+        },
+        {
+          "collision_bound": 138,
+          "counts": [
+            12,
+            7,
+            3
+          ],
+          "raw_capacity": 140
+        }
+      ],
+      "raw_capacity_killed": 70,
+      "remaining": 34,
+      "target_m": 140
+    },
+    {
+      "canonical_positive_splits": 121,
+      "collision_bound_killed": 84,
+      "ell": 23,
+      "newly_killed": [
+        {
+          "collision_bound": 150,
+          "counts": [
+            3,
+            10,
+            10
+          ],
+          "raw_capacity": 159
+        },
+        {
+          "collision_bound": 150,
+          "counts": [
+            3,
+            11,
+            9
+          ],
+          "raw_capacity": 158
+        },
+        {
+          "collision_bound": 148,
+          "counts": [
+            3,
+            12,
+            8
+          ],
+          "raw_capacity": 155
+        },
+        {
+          "collision_bound": 148,
+          "counts": [
+            4,
+            13,
+            6
+          ],
+          "raw_capacity": 153
+        },
+        {
+          "collision_bound": 150,
+          "counts": [
+            5,
+            13,
+            5
+          ],
+          "raw_capacity": 154
+        },
+        {
+          "collision_bound": 150,
+          "counts": [
+            6,
+            13,
+            4
+          ],
+          "raw_capacity": 153
+        },
+        {
+          "collision_bound": 150,
+          "counts": [
+            13,
+            5,
+            5
+          ],
+          "raw_capacity": 154
+        },
+        {
+          "collision_bound": 150,
+          "counts": [
+            13,
+            6,
+            4
+          ],
+          "raw_capacity": 153
+        }
+      ],
+      "raw_capacity_killed": 76,
+      "remaining": 37,
+      "target_m": 153
+    },
+    {
+      "canonical_positive_splits": 132,
+      "collision_bound_killed": 90,
+      "ell": 24,
+      "newly_killed": [
+        {
+          "collision_bound": 163,
+          "counts": [
+            3,
+            11,
+            10
+          ],
+          "raw_capacity": 172
+        },
+        {
+          "collision_bound": 162,
+          "counts": [
+            3,
+            12,
+            9
+          ],
+          "raw_capacity": 170
+        },
+        {
+          "collision_bound": 164,
+          "counts": [
+            4,
+            13,
+            7
+          ],
+          "raw_capacity": 170
+        }
+      ],
+      "raw_capacity_killed": 87,
+      "remaining": 42,
+      "target_m": 167
+    },
+    {
+      "canonical_positive_splits": 144,
+      "collision_bound_killed": 102,
+      "ell": 25,
+      "newly_killed": [
+        {
+          "collision_bound": 176,
+          "counts": [
+            3,
+            11,
+            11
+          ],
+          "raw_capacity": 186
+        },
+        {
+          "collision_bound": 176,
+          "counts": [
+            3,
+            12,
+            10
+          ],
+          "raw_capacity": 185
+        },
+        {
+          "collision_bound": 174,
+          "counts": [
+            3,
+            13,
+            9
+          ],
+          "raw_capacity": 182
+        },
+        {
+          "collision_bound": 180,
+          "counts": [
+            4,
+            13,
+            8
+          ],
+          "raw_capacity": 187
+        },
+        {
+          "collision_bound": 175,
+          "counts": [
+            4,
+            14,
+            7
+          ],
+          "raw_capacity": 181
+        },
+        {
+          "collision_bound": 178,
+          "counts": [
+            5,
+            14,
+            6
+          ],
+          "raw_capacity": 183
+        },
+        {
+          "collision_bound": 179,
+          "counts": [
+            6,
+            14,
+            5
+          ],
+          "raw_capacity": 183
+        },
+        {
+          "collision_bound": 178,
+          "counts": [
+            7,
+            14,
+            4
+          ],
+          "raw_capacity": 181
+        },
+        {
+          "collision_bound": 180,
+          "counts": [
+            9,
+            13,
+            3
+          ],
+          "raw_capacity": 182
+        },
+        {
+          "collision_bound": 180,
+          "counts": [
+            13,
+            9,
+            3
+          ],
+          "raw_capacity": 182
+        },
+        {
+          "collision_bound": 179,
+          "counts": [
+            14,
+            6,
+            5
+          ],
+          "raw_capacity": 183
+        },
+        {
+          "collision_bound": 178,
+          "counts": [
+            14,
+            7,
+            4
+          ],
+          "raw_capacity": 181
+        }
+      ],
+      "raw_capacity_killed": 90,
+      "remaining": 42,
+      "target_m": 181
+    },
+    {
+      "canonical_positive_splits": 156,
+      "collision_bound_killed": 105,
+      "ell": 26,
+      "newly_killed": [
+        {
+          "collision_bound": 190,
+          "counts": [
+            3,
+            12,
+            11
+          ],
+          "raw_capacity": 200
+        },
+        {
+          "collision_bound": 189,
+          "counts": [
+            3,
+            13,
+            10
+          ],
+          "raw_capacity": 198
+        },
+        {
+          "collision_bound": 192,
+          "counts": [
+            4,
+            14,
+            8
+          ],
+          "raw_capacity": 199
+        }
+      ],
+      "raw_capacity_killed": 102,
+      "remaining": 51,
+      "target_m": 196
+    },
+    {
+      "canonical_positive_splits": 169,
+      "collision_bound_killed": 119,
+      "ell": 27,
+      "newly_killed": [
+        {
+          "collision_bound": 204,
+          "counts": [
+            3,
+            12,
+            12
+          ],
+          "raw_capacity": 215
+        },
+        {
+          "collision_bound": 204,
+          "counts": [
+            3,
+            13,
+            11
+          ],
+          "raw_capacity": 214
+        },
+        {
+          "collision_bound": 202,
+          "counts": [
+            3,
+            14,
+            10
+          ],
+          "raw_capacity": 211
+        },
+        {
+          "collision_bound": 209,
+          "counts": [
+            4,
+            14,
+            9
+          ],
+          "raw_capacity": 217
+        },
+        {
+          "collision_bound": 204,
+          "counts": [
+            4,
+            15,
+            8
+          ],
+          "raw_capacity": 211
+        },
+        {
+          "collision_bound": 208,
+          "counts": [
+            5,
+            15,
+            7
+          ],
+          "raw_capacity": 214
+        },
+        {
+          "collision_bound": 210,
+          "counts": [
+            6,
+            15,
+            6
+          ],
+          "raw_capacity": 215
+        },
+        {
+          "collision_bound": 210,
+          "counts": [
+            7,
+            15,
+            5
+          ],
+          "raw_capacity": 214
+        },
+        {
+          "collision_bound": 208,
+          "counts": [
+            8,
+            15,
+            4
+          ],
+          "raw_capacity": 211
+        },
+        {
+          "collision_bound": 209,
+          "counts": [
+            10,
+            14,
+            3
+          ],
+          "raw_capacity": 211
+        },
+        {
+          "collision_bound": 209,
+          "counts": [
+            14,
+            10,
+            3
+          ],
+          "raw_capacity": 211
+        },
+        {
+          "collision_bound": 210,
+          "counts": [
+            15,
+            6,
+            6
+          ],
+          "raw_capacity": 215
+        },
+        {
+          "collision_bound": 210,
+          "counts": [
+            15,
+            7,
+            5
+          ],
+          "raw_capacity": 214
+        },
+        {
+          "collision_bound": 208,
+          "counts": [
+            15,
+            8,
+            4
+          ],
+          "raw_capacity": 211
+        }
+      ],
+      "raw_capacity_killed": 105,
+      "remaining": 50,
+      "target_m": 211
+    },
+    {
+      "canonical_positive_splits": 182,
+      "collision_bound_killed": 125,
+      "ell": 28,
+      "newly_killed": [
+        {
+          "collision_bound": 219,
+          "counts": [
+            3,
+            13,
+            12
+          ],
+          "raw_capacity": 230
+        },
+        {
+          "collision_bound": 218,
+          "counts": [
+            3,
+            14,
+            11
+          ],
+          "raw_capacity": 228
+        },
+        {
+          "collision_bound": 226,
+          "counts": [
+            4,
+            14,
+            10
+          ],
+          "raw_capacity": 235
+        },
+        {
+          "collision_bound": 222,
+          "counts": [
+            4,
+            15,
+            9
+          ],
+          "raw_capacity": 230
+        },
+        {
+          "collision_bound": 222,
+          "counts": [
+            6,
+            16,
+            6
+          ],
+          "raw_capacity": 227
+        },
+        {
+          "collision_bound": 226,
+          "counts": [
+            11,
+            14,
+            3
+          ],
+          "raw_capacity": 228
+        },
+        {
+          "collision_bound": 226,
+          "counts": [
+            14,
+            11,
+            3
+          ],
+          "raw_capacity": 228
+        },
+        {
+          "collision_bound": 222,
+          "counts": [
+            16,
+            6,
+            6
+          ],
+          "raw_capacity": 227
+        }
+      ],
+      "raw_capacity_killed": 117,
+      "remaining": 57,
+      "target_m": 227
+    },
+    {
+      "canonical_positive_splits": 196,
+      "collision_bound_killed": 138,
+      "ell": 29,
+      "newly_killed": [
+        {
+          "collision_bound": 234,
+          "counts": [
+            3,
+            13,
+            13
+          ],
+          "raw_capacity": 246
+        },
+        {
+          "collision_bound": 234,
+          "counts": [
+            3,
+            14,
+            12
+          ],
+          "raw_capacity": 245
+        },
+        {
+          "collision_bound": 243,
+          "counts": [
+            4,
+            14,
+            11
+          ],
+          "raw_capacity": 253
+        },
+        {
+          "collision_bound": 240,
+          "counts": [
+            4,
+            15,
+            10
+          ],
+          "raw_capacity": 249
+        },
+        {
+          "collision_bound": 240,
+          "counts": [
+            5,
+            16,
+            8
+          ],
+          "raw_capacity": 247
+        },
+        {
+          "collision_bound": 243,
+          "counts": [
+            6,
+            16,
+            7
+          ],
+          "raw_capacity": 249
+        },
+        {
+          "collision_bound": 243,
+          "counts": [
+            8,
+            16,
+            5
+          ],
+          "raw_capacity": 247
+        },
+        {
+          "collision_bound": 243,
+          "counts": [
+            12,
+            14,
+            3
+          ],
+          "raw_capacity": 245
+        },
+        {
+          "collision_bound": 243,
+          "counts": [
+            14,
+            12,
+            3
+          ],
+          "raw_capacity": 245
+        },
+        {
+          "collision_bound": 243,
+          "counts": [
+            16,
+            8,
+            5
+          ],
+          "raw_capacity": 247
+        }
+      ],
+      "raw_capacity_killed": 128,
+      "remaining": 58,
+      "target_m": 244
+    },
+    {
+      "canonical_positive_splits": 210,
+      "collision_bound_killed": 150,
+      "ell": 30,
+      "newly_killed": [
+        {
+          "collision_bound": 250,
+          "counts": [
+            3,
+            14,
+            13
+          ],
+          "raw_capacity": 262
+        },
+        {
+          "collision_bound": 260,
+          "counts": [
+            4,
+            13,
+            13
+          ],
+          "raw_capacity": 272
+        },
+        {
+          "collision_bound": 260,
+          "counts": [
+            4,
+            14,
+            12
+          ],
+          "raw_capacity": 271
+        },
+        {
+          "collision_bound": 258,
+          "counts": [
+            4,
+            15,
+            11
+          ],
+          "raw_capacity": 268
+        },
+        {
+          "collision_bound": 254,
+          "counts": [
+            4,
+            16,
+            10
+          ],
+          "raw_capacity": 263
+        },
+        {
+          "collision_bound": 260,
+          "counts": [
+            5,
+            16,
+            9
+          ],
+          "raw_capacity": 268
+        },
+        {
+          "collision_bound": 256,
+          "counts": [
+            6,
+            17,
+            7
+          ],
+          "raw_capacity": 262
+        },
+        {
+          "collision_bound": 257,
+          "counts": [
+            7,
+            17,
+            6
+          ],
+          "raw_capacity": 262
+        },
+        {
+          "collision_bound": 260,
+          "counts": [
+            10,
+            16,
+            4
+          ],
+          "raw_capacity": 263
+        },
+        {
+          "collision_bound": 260,
+          "counts": [
+            13,
+            14,
+            3
+          ],
+          "raw_capacity": 262
+        },
+        {
+          "collision_bound": 260,
+          "counts": [
+            14,
+            13,
+            3
+          ],
+          "raw_capacity": 262
+        },
+        {
+          "collision_bound": 260,
+          "counts": [
+            16,
+            10,
+            4
+          ],
+          "raw_capacity": 263
+        },
+        {
+          "collision_bound": 257,
+          "counts": [
+            17,
+            7,
+            6
+          ],
+          "raw_capacity": 262
+        }
+      ],
+      "raw_capacity_killed": 137,
+      "remaining": 60,
+      "target_m": 261
+    },
+    {
+      "canonical_positive_splits": 225,
+      "collision_bound_killed": 155,
+      "ell": 31,
+      "newly_killed": [
+        {
+          "collision_bound": 266,
+          "counts": [
+            3,
+            14,
+            14
+          ],
+          "raw_capacity": 279
+        },
+        {
+          "collision_bound": 266,
+          "counts": [
+            3,
+            15,
+            13
+          ],
+          "raw_capacity": 278
+        },
+        {
+          "collision_bound": 277,
+          "counts": [
+            4,
+            14,
+            13
+          ],
+          "raw_capacity": 289
+        },
+        {
+          "collision_bound": 276,
+          "counts": [
+            4,
+            15,
+            12
+          ],
+          "raw_capacity": 287
+        },
+        {
+          "collision_bound": 273,
+          "counts": [
+            4,
+            16,
+            11
+          ],
+          "raw_capacity": 283
+        },
+        {
+          "collision_bound": 274,
+          "counts": [
+            5,
+            17,
+            9
+          ],
+          "raw_capacity": 282
+        },
+        {
+          "collision_bound": 276,
+          "counts": [
+            13,
+            15,
+            3
+          ],
+          "raw_capacity": 278
+        },
+        {
+          "collision_bound": 277,
+          "counts": [
+            14,
+            14,
+            3
+          ],
+          "raw_capacity": 279
+        },
+        {
+          "collision_bound": 276,
+          "counts": [
+            15,
+            13,
+            3
+          ],
+          "raw_capacity": 278
+        }
+      ],
+      "raw_capacity_killed": 146,
+      "remaining": 70,
+      "target_m": 278
+    },
+    {
+      "canonical_positive_splits": 240,
+      "collision_bound_killed": 170,
+      "ell": 32,
+      "newly_killed": [
+        {
+          "collision_bound": 294,
+          "counts": [
+            4,
+            14,
+            14
+          ],
+          "raw_capacity": 307
+        },
+        {
+          "collision_bound": 294,
+          "counts": [
+            4,
+            15,
+            13
+          ],
+          "raw_capacity": 306
+        },
+        {
+          "collision_bound": 292,
+          "counts": [
+            4,
+            16,
+            12
+          ],
+          "raw_capacity": 303
+        },
+        {
+          "collision_bound": 288,
+          "counts": [
+            4,
+            17,
+            11
+          ],
+          "raw_capacity": 298
+        },
+        {
+          "collision_bound": 295,
+          "counts": [
+            5,
+            17,
+            10
+          ],
+          "raw_capacity": 304
+        },
+        {
+          "collision_bound": 292,
+          "counts": [
+            6,
+            18,
+            8
+          ],
+          "raw_capacity": 299
+        },
+        {
+          "collision_bound": 294,
+          "counts": [
+            7,
+            18,
+            7
+          ],
+          "raw_capacity": 300
+        },
+        {
+          "collision_bound": 294,
+          "counts": [
+            8,
+            18,
+            6
+          ],
+          "raw_capacity": 299
+        },
+        {
+          "collision_bound": 295,
+          "counts": [
+            11,
+            17,
+            4
+          ],
+          "raw_capacity": 298
+        },
+        {
+          "collision_bound": 295,
+          "counts": [
+            17,
+            11,
+            4
+          ],
+          "raw_capacity": 298
+        },
+        {
+          "collision_bound": 294,
+          "counts": [
+            18,
+            7,
+            7
+          ],
+          "raw_capacity": 300
+        },
+        {
+          "collision_bound": 294,
+          "counts": [
+            18,
+            8,
+            6
+          ],
+          "raw_capacity": 299
+        }
+      ],
+      "raw_capacity_killed": 158,
+      "remaining": 70,
+      "target_m": 297
+    },
+    {
+      "canonical_positive_splits": 256,
+      "collision_bound_killed": 175,
+      "ell": 33,
+      "newly_killed": [
+        {
+          "collision_bound": 312,
+          "counts": [
+            4,
+            15,
+            14
+          ],
+          "raw_capacity": 325
+        },
+        {
+          "collision_bound": 311,
+          "counts": [
+            4,
+            16,
+            13
+          ],
+          "raw_capacity": 323
+        },
+        {
+          "collision_bound": 308,
+          "counts": [
+            4,
+            17,
+            12
+          ],
+          "raw_capacity": 319
+        },
+        {
+          "collision_bound": 310,
+          "counts": [
+            5,
+            18,
+            10
+          ],
+          "raw_capacity": 319
+        }
+      ],
+      "raw_capacity_killed": 171,
+      "remaining": 81,
+      "target_m": 315
+    },
+    {
+      "canonical_positive_splits": 272,
+      "collision_bound_killed": 191,
+      "ell": 34,
+      "newly_killed": [
+        {
+          "collision_bound": 330,
+          "counts": [
+            4,
+            15,
+            15
+          ],
+          "raw_capacity": 344
+        },
+        {
+          "collision_bound": 330,
+          "counts": [
+            4,
+            16,
+            14
+          ],
+          "raw_capacity": 343
+        },
+        {
+          "collision_bound": 328,
+          "counts": [
+            4,
+            17,
+            13
+          ],
+          "raw_capacity": 340
+        },
+        {
+          "collision_bound": 324,
+          "counts": [
+            4,
+            18,
+            12
+          ],
+          "raw_capacity": 335
+        },
+        {
+          "collision_bound": 332,
+          "counts": [
+            5,
+            18,
+            11
+          ],
+          "raw_capacity": 342
+        },
+        {
+          "collision_bound": 330,
+          "counts": [
+            6,
+            19,
+            9
+          ],
+          "raw_capacity": 338
+        },
+        {
+          "collision_bound": 333,
+          "counts": [
+            7,
+            19,
+            8
+          ],
+          "raw_capacity": 340
+        },
+        {
+          "collision_bound": 334,
+          "counts": [
+            8,
+            19,
+            7
+          ],
+          "raw_capacity": 340
+        },
+        {
+          "collision_bound": 333,
+          "counts": [
+            9,
+            19,
+            6
+          ],
+          "raw_capacity": 338
+        },
+        {
+          "collision_bound": 332,
+          "counts": [
+            12,
+            18,
+            4
+          ],
+          "raw_capacity": 335
+        },
+        {
+          "collision_bound": 332,
+          "counts": [
+            18,
+            12,
+            4
+          ],
+          "raw_capacity": 335
+        },
+        {
+          "collision_bound": 334,
+          "counts": [
+            19,
+            8,
+            7
+          ],
+          "raw_capacity": 340
+        },
+        {
+          "collision_bound": 333,
+          "counts": [
+            19,
+            9,
+            6
+          ],
+          "raw_capacity": 338
+        }
+      ],
+      "raw_capacity_killed": 178,
+      "remaining": 81,
+      "target_m": 335
+    },
+    {
+      "canonical_positive_splits": 289,
+      "collision_bound_killed": 202,
+      "ell": 35,
+      "newly_killed": [
+        {
+          "collision_bound": 349,
+          "counts": [
+            4,
+            16,
+            15
+          ],
+          "raw_capacity": 363
+        },
+        {
+          "collision_bound": 348,
+          "counts": [
+            4,
+            17,
+            14
+          ],
+          "raw_capacity": 361
+        },
+        {
+          "collision_bound": 345,
+          "counts": [
+            4,
+            18,
+            13
+          ],
+          "raw_capacity": 357
+        },
+        {
+          "collision_bound": 354,
+          "counts": [
+            5,
+            18,
+            12
+          ],
+          "raw_capacity": 365
+        },
+        {
+          "collision_bound": 348,
+          "counts": [
+            5,
+            19,
+            11
+          ],
+          "raw_capacity": 358
+        },
+        {
+          "collision_bound": 354,
+          "counts": [
+            6,
+            19,
+            10
+          ],
+          "raw_capacity": 363
+        },
+        {
+          "collision_bound": 348,
+          "counts": [
+            7,
+            20,
+            8
+          ],
+          "raw_capacity": 355
+        },
+        {
+          "collision_bound": 349,
+          "counts": [
+            8,
+            20,
+            7
+          ],
+          "raw_capacity": 355
+        },
+        {
+          "collision_bound": 354,
+          "counts": [
+            11,
+            19,
+            5
+          ],
+          "raw_capacity": 358
+        },
+        {
+          "collision_bound": 354,
+          "counts": [
+            13,
+            18,
+            4
+          ],
+          "raw_capacity": 357
+        },
+        {
+          "collision_bound": 354,
+          "counts": [
+            18,
+            13,
+            4
+          ],
+          "raw_capacity": 357
+        },
+        {
+          "collision_bound": 354,
+          "counts": [
+            19,
+            11,
+            5
+          ],
+          "raw_capacity": 358
+        },
+        {
+          "collision_bound": 349,
+          "counts": [
+            20,
+            8,
+            7
+          ],
+          "raw_capacity": 355
+        }
+      ],
+      "raw_capacity_killed": 189,
+      "remaining": 87,
+      "target_m": 355
+    },
+    {
+      "canonical_positive_splits": 306,
+      "collision_bound_killed": 210,
+      "ell": 36,
+      "newly_killed": [
+        {
+          "collision_bound": 368,
+          "counts": [
+            4,
+            16,
+            16
+          ],
+          "raw_capacity": 383
+        },
+        {
+          "collision_bound": 368,
+          "counts": [
+            4,
+            17,
+            15
+          ],
+          "raw_capacity": 382
+        },
+        {
+          "collision_bound": 366,
+          "counts": [
+            4,
+            18,
+            14
+          ],
+          "raw_capacity": 379
+        },
+        {
+          "collision_bound": 371,
+          "counts": [
+            5,
+            19,
+            12
+          ],
+          "raw_capacity": 382
+        },
+        {
+          "collision_bound": 370,
+          "counts": [
+            6,
+            20,
+            10
+          ],
+          "raw_capacity": 379
+        },
+        {
+          "collision_bound": 374,
+          "counts": [
+            7,
+            20,
+            9
+          ],
+          "raw_capacity": 382
+        },
+        {
+          "collision_bound": 374,
+          "counts": [
+            10,
+            20,
+            6
+          ],
+          "raw_capacity": 379
+        },
+        {
+          "collision_bound": 374,
+          "counts": [
+            20,
+            10,
+            6
+          ],
+          "raw_capacity": 379
+        }
+      ],
+      "raw_capacity_killed": 202,
+      "remaining": 96,
+      "target_m": 375
+    },
+    {
+      "canonical_positive_splits": 324,
+      "collision_bound_killed": 225,
+      "ell": 37,
+      "newly_killed": [
+        {
+          "collision_bound": 388,
+          "counts": [
+            4,
+            17,
+            16
+          ],
+          "raw_capacity": 403
+        },
+        {
+          "collision_bound": 387,
+          "counts": [
+            4,
+            18,
+            15
+          ],
+          "raw_capacity": 401
+        },
+        {
+          "collision_bound": 384,
+          "counts": [
+            4,
+            19,
+            14
+          ],
+          "raw_capacity": 397
+        },
+        {
+          "collision_bound": 394,
+          "counts": [
+            5,
+            19,
+            13
+          ],
+          "raw_capacity": 406
+        },
+        {
+          "collision_bound": 388,
+          "counts": [
+            5,
+            20,
+            12
+          ],
+          "raw_capacity": 399
+        },
+        {
+          "collision_bound": 395,
+          "counts": [
+            6,
+            20,
+            11
+          ],
+          "raw_capacity": 405
+        },
+        {
+          "collision_bound": 390,
+          "counts": [
+            7,
+            21,
+            9
+          ],
+          "raw_capacity": 398
+        },
+        {
+          "collision_bound": 392,
+          "counts": [
+            8,
+            21,
+            8
+          ],
+          "raw_capacity": 399
+        },
+        {
+          "collision_bound": 392,
+          "counts": [
+            9,
+            21,
+            7
+          ],
+          "raw_capacity": 398
+        },
+        {
+          "collision_bound": 395,
+          "counts": [
+            12,
+            20,
+            5
+          ],
+          "raw_capacity": 399
+        },
+        {
+          "collision_bound": 394,
+          "counts": [
+            14,
+            19,
+            4
+          ],
+          "raw_capacity": 397
+        },
+        {
+          "collision_bound": 394,
+          "counts": [
+            19,
+            14,
+            4
+          ],
+          "raw_capacity": 397
+        },
+        {
+          "collision_bound": 395,
+          "counts": [
+            20,
+            12,
+            5
+          ],
+          "raw_capacity": 399
+        },
+        {
+          "collision_bound": 392,
+          "counts": [
+            21,
+            8,
+            8
+          ],
+          "raw_capacity": 399
+        },
+        {
+          "collision_bound": 392,
+          "counts": [
+            21,
+            9,
+            7
+          ],
+          "raw_capacity": 398
+        }
+      ],
+      "raw_capacity_killed": 210,
+      "remaining": 99,
+      "target_m": 396
+    },
+    {
+      "canonical_positive_splits": 342,
+      "collision_bound_killed": 236,
+      "ell": 38,
+      "newly_killed": [
+        {
+          "collision_bound": 408,
+          "counts": [
+            4,
+            17,
+            17
+          ],
+          "raw_capacity": 424
+        },
+        {
+          "collision_bound": 408,
+          "counts": [
+            4,
+            18,
+            16
+          ],
+          "raw_capacity": 423
+        },
+        {
+          "collision_bound": 406,
+          "counts": [
+            4,
+            19,
+            15
+          ],
+          "raw_capacity": 420
+        },
+        {
+          "collision_bound": 417,
+          "counts": [
+            5,
+            19,
+            14
+          ],
+          "raw_capacity": 430
+        },
+        {
+          "collision_bound": 412,
+          "counts": [
+            5,
+            20,
+            13
+          ],
+          "raw_capacity": 424
+        },
+        {
+          "collision_bound": 412,
+          "counts": [
+            6,
+            21,
+            11
+          ],
+          "raw_capacity": 422
+        },
+        {
+          "collision_bound": 417,
+          "counts": [
+            7,
+            21,
+            10
+          ],
+          "raw_capacity": 426
+        },
+        {
+          "collision_bound": 417,
+          "counts": [
+            11,
+            21,
+            6
+          ],
+          "raw_capacity": 422
+        },
+        {
+          "collision_bound": 417,
+          "counts": [
+            15,
+            19,
+            4
+          ],
+          "raw_capacity": 420
+        },
+        {
+          "collision_bound": 417,
+          "counts": [
+            19,
+            15,
+            4
+          ],
+          "raw_capacity": 420
+        },
+        {
+          "collision_bound": 417,
+          "counts": [
+            21,
+            11,
+            6
+          ],
+          "raw_capacity": 422
+        }
+      ],
+      "raw_capacity_killed": 225,
+      "remaining": 106,
+      "target_m": 418
+    },
+    {
+      "canonical_positive_splits": 361,
+      "collision_bound_killed": 249,
+      "ell": 39,
+      "newly_killed": [
+        {
+          "collision_bound": 429,
+          "counts": [
+            4,
+            18,
+            17
+          ],
+          "raw_capacity": 445
+        },
+        {
+          "collision_bound": 428,
+          "counts": [
+            4,
+            19,
+            16
+          ],
+          "raw_capacity": 443
+        },
+        {
+          "collision_bound": 436,
+          "counts": [
+            5,
+            20,
+            14
+          ],
+          "raw_capacity": 449
+        },
+        {
+          "collision_bound": 430,
+          "counts": [
+            5,
+            21,
+            13
+          ],
+          "raw_capacity": 442
+        },
+        {
+          "collision_bound": 438,
+          "counts": [
+            6,
+            21,
+            12
+          ],
+          "raw_capacity": 449
+        },
+        {
+          "collision_bound": 434,
+          "counts": [
+            7,
+            22,
+            10
+          ],
+          "raw_capacity": 443
+        },
+        {
+          "collision_bound": 437,
+          "counts": [
+            8,
+            22,
+            9
+          ],
+          "raw_capacity": 445
+        },
+        {
+          "collision_bound": 438,
+          "counts": [
+            9,
+            22,
+            8
+          ],
+          "raw_capacity": 445
+        },
+        {
+          "collision_bound": 437,
+          "counts": [
+            10,
+            22,
+            7
+          ],
+          "raw_capacity": 443
+        },
+        {
+          "collision_bound": 438,
+          "counts": [
+            13,
+            21,
+            5
+          ],
+          "raw_capacity": 442
+        },
+        {
+          "collision_bound": 438,
+          "counts": [
+            21,
+            13,
+            5
+          ],
+          "raw_capacity": 442
+        },
+        {
+          "collision_bound": 438,
+          "counts": [
+            22,
+            9,
+            8
+          ],
+          "raw_capacity": 445
+        },
+        {
+          "collision_bound": 437,
+          "counts": [
+            22,
+            10,
+            7
+          ],
+          "raw_capacity": 443
+        }
+      ],
+      "raw_capacity_killed": 236,
+      "remaining": 112,
+      "target_m": 440
+    },
+    {
+      "canonical_positive_splits": 380,
+      "collision_bound_killed": 260,
+      "ell": 40,
+      "newly_killed": [
+        {
+          "collision_bound": 450,
+          "counts": [
+            4,
+            18,
+            18
+          ],
+          "raw_capacity": 467
+        },
+        {
+          "collision_bound": 450,
+          "counts": [
+            4,
+            19,
+            17
+          ],
+          "raw_capacity": 466
+        },
+        {
+          "collision_bound": 448,
+          "counts": [
+            4,
+            20,
+            16
+          ],
+          "raw_capacity": 463
+        },
+        {
+          "collision_bound": 460,
+          "counts": [
+            5,
+            20,
+            15
+          ],
+          "raw_capacity": 474
+        },
+        {
+          "collision_bound": 455,
+          "counts": [
+            5,
+            21,
+            14
+          ],
+          "raw_capacity": 468
+        },
+        {
+          "collision_bound": 456,
+          "counts": [
+            6,
+            22,
+            12
+          ],
+          "raw_capacity": 467
+        },
+        {
+          "collision_bound": 462,
+          "counts": [
+            7,
+            22,
+            11
+          ],
+          "raw_capacity": 472
+        },
+        {
+          "collision_bound": 462,
+          "counts": [
+            12,
+            22,
+            6
+          ],
+          "raw_capacity": 467
+        },
+        {
+          "collision_bound": 460,
+          "counts": [
+            16,
+            20,
+            4
+          ],
+          "raw_capacity": 463
+        },
+        {
+          "collision_bound": 460,
+          "counts": [
+            20,
+            16,
+            4
+          ],
+          "raw_capacity": 463
+        },
+        {
+          "collision_bound": 462,
+          "counts": [
+            22,
+            12,
+            6
+          ],
+          "raw_capacity": 467
+        }
+      ],
+      "raw_capacity_killed": 249,
+      "remaining": 120,
+      "target_m": 463
+    },
+    {
+      "canonical_positive_splits": 400,
+      "collision_bound_killed": 282,
+      "ell": 41,
+      "newly_killed": [
+        {
+          "collision_bound": 472,
+          "counts": [
+            4,
+            19,
+            18
+          ],
+          "raw_capacity": 489
+        },
+        {
+          "collision_bound": 471,
+          "counts": [
+            4,
+            20,
+            17
+          ],
+          "raw_capacity": 487
+        },
+        {
+          "collision_bound": 486,
+          "counts": [
+            5,
+            18,
+            18
+          ],
+          "raw_capacity": 503
+        },
+        {
+          "collision_bound": 486,
+          "counts": [
+            5,
+            19,
+            17
+          ],
+          "raw_capacity": 502
+        },
+        {
+          "collision_bound": 484,
+          "counts": [
+            5,
+            20,
+            16
+          ],
+          "raw_capacity": 499
+        },
+        {
+          "collision_bound": 480,
+          "counts": [
+            5,
+            21,
+            15
+          ],
+          "raw_capacity": 494
+        },
+        {
+          "collision_bound": 474,
+          "counts": [
+            5,
+            22,
+            14
+          ],
+          "raw_capacity": 487
+        },
+        {
+          "collision_bound": 483,
+          "counts": [
+            6,
+            22,
+            13
+          ],
+          "raw_capacity": 495
+        },
+        {
+          "collision_bound": 480,
+          "counts": [
+            7,
+            23,
+            11
+          ],
+          "raw_capacity": 490
+        },
+        {
+          "collision_bound": 484,
+          "counts": [
+            8,
+            23,
+            10
+          ],
+          "raw_capacity": 493
+        },
+        {
+          "collision_bound": 486,
+          "counts": [
+            9,
+            23,
+            9
+          ],
+          "raw_capacity": 494
+        },
+        {
+          "collision_bound": 486,
+          "counts": [
+            10,
+            23,
+            8
+          ],
+          "raw_capacity": 493
+        },
+        {
+          "collision_bound": 484,
+          "counts": [
+            11,
+            23,
+            7
+          ],
+          "raw_capacity": 490
+        },
+        {
+          "collision_bound": 483,
+          "counts": [
+            14,
+            22,
+            5
+          ],
+          "raw_capacity": 487
+        },
+        {
+          "collision_bound": 484,
+          "counts": [
+            17,
+            20,
+            4
+          ],
+          "raw_capacity": 487
+        },
+        {
+          "collision_bound": 486,
+          "counts": [
+            18,
+            19,
+            4
+          ],
+          "raw_capacity": 489
+        },
+        {
+          "collision_bound": 486,
+          "counts": [
+            19,
+            18,
+            4
+          ],
+          "raw_capacity": 489
+        },
+        {
+          "collision_bound": 484,
+          "counts": [
+            20,
+            17,
+            4
+          ],
+          "raw_capacity": 487
+        },
+        {
+          "collision_bound": 483,
+          "counts": [
+            22,
+            14,
+            5
+          ],
+          "raw_capacity": 487
+        },
+        {
+          "collision_bound": 486,
+          "counts": [
+            23,
+            9,
+            9
+          ],
+          "raw_capacity": 494
+        },
+        {
+          "collision_bound": 486,
+          "counts": [
+            23,
+            10,
+            8
+          ],
+          "raw_capacity": 493
+        },
+        {
+          "collision_bound": 484,
+          "counts": [
+            23,
+            11,
+            7
+          ],
+          "raw_capacity": 490
+        }
+      ],
+      "raw_capacity_killed": 260,
+      "remaining": 118,
+      "target_m": 487
+    },
+    {
+      "canonical_positive_splits": 420,
+      "collision_bound_killed": 294,
+      "ell": 42,
+      "newly_killed": [
+        {
+          "collision_bound": 494,
+          "counts": [
+            4,
+            19,
+            19
+          ],
+          "raw_capacity": 512
+        },
+        {
+          "collision_bound": 494,
+          "counts": [
+            4,
+            20,
+            18
+          ],
+          "raw_capacity": 511
+        },
+        {
+          "collision_bound": 509,
+          "counts": [
+            5,
+            19,
+            18
+          ],
+          "raw_capacity": 526
+        },
+        {
+          "collision_bound": 508,
+          "counts": [
+            5,
+            20,
+            17
+          ],
+          "raw_capacity": 524
+        },
+        {
+          "collision_bound": 505,
+          "counts": [
+            5,
+            21,
+            16
+          ],
+          "raw_capacity": 520
+        },
+        {
+          "collision_bound": 500,
+          "counts": [
+            5,
+            22,
+            15
+          ],
+          "raw_capacity": 514
+        },
+        {
+          "collision_bound": 510,
+          "counts": [
+            6,
+            22,
+            14
+          ],
+          "raw_capacity": 523
+        },
+        {
+          "collision_bound": 502,
+          "counts": [
+            6,
+            23,
+            13
+          ],
+          "raw_capacity": 514
+        },
+        {
+          "collision_bound": 509,
+          "counts": [
+            7,
+            23,
+            12
+          ],
+          "raw_capacity": 520
+        },
+        {
+          "collision_bound": 502,
+          "counts": [
+            8,
+            24,
+            10
+          ],
+          "raw_capacity": 511
+        },
+        {
+          "collision_bound": 504,
+          "counts": [
+            9,
+            24,
+            9
+          ],
+          "raw_capacity": 512
+        },
+        {
+          "collision_bound": 504,
+          "counts": [
+            10,
+            24,
+            8
+          ],
+          "raw_capacity": 511
+        },
+        {
+          "collision_bound": 509,
+          "counts": [
+            13,
+            23,
+            6
+          ],
+          "raw_capacity": 514
+        },
+        {
+          "collision_bound": 510,
+          "counts": [
+            15,
+            22,
+            5
+          ],
+          "raw_capacity": 514
+        },
+        {
+          "collision_bound": 508,
+          "counts": [
+            18,
+            20,
+            4
+          ],
+          "raw_capacity": 511
+        },
+        {
+          "collision_bound": 509,
+          "counts": [
+            19,
+            19,
+            4
+          ],
+          "raw_capacity": 512
+        },
+        {
+          "collision_bound": 508,
+          "counts": [
+            20,
+            18,
+            4
+          ],
+          "raw_capacity": 511
+        },
+        {
+          "collision_bound": 510,
+          "counts": [
+            22,
+            15,
+            5
+          ],
+          "raw_capacity": 514
+        },
+        {
+          "collision_bound": 509,
+          "counts": [
+            23,
+            13,
+            6
+          ],
+          "raw_capacity": 514
+        },
+        {
+          "collision_bound": 504,
+          "counts": [
+            24,
+            9,
+            9
+          ],
+          "raw_capacity": 512
+        },
+        {
+          "collision_bound": 504,
+          "counts": [
+            24,
+            10,
+            8
+          ],
+          "raw_capacity": 511
+        }
+      ],
+      "raw_capacity_killed": 273,
+      "remaining": 126,
+      "target_m": 511
+    }
+  ],
+  "sharpness_counterexample": {
+    "consequence": "even one further universal unit of loss is false",
+    "family": "I={0}, J=[0,b-1], K={b}",
+    "formula": "m=2b=collision_bound(1,b,1)",
+    "verified_examples": [
+      {
+        "b": 1,
+        "ell": 3,
+        "m": 2
+      },
+      {
+        "b": 2,
+        "ell": 4,
+        "m": 4
+      },
+      {
+        "b": 3,
+        "ell": 5,
+        "m": 6
+      },
+      {
+        "b": 4,
+        "ell": 6,
+        "m": 8
+      },
+      {
+        "b": 5,
+        "ell": 7,
+        "m": 10
+      },
+      {
+        "b": 6,
+        "ell": 8,
+        "m": 12
+      },
+      {
+        "b": 7,
+        "ell": 9,
+        "m": 14
+      },
+      {
+        "b": 8,
+        "ell": 10,
+        "m": 16
+      },
+      {
+        "b": 9,
+        "ell": 11,
+        "m": 18
+      },
+      {
+        "b": 10,
+        "ell": 12,
+        "m": 20
+      },
+      {
+        "b": 11,
+        "ell": 13,
+        "m": 22
+      },
+      {
+        "b": 12,
+        "ell": 14,
+        "m": 24
+      }
+    ]
+  },
+  "theorem": {
+    "scope": "all finite nonnegative I,J,K satisfying the three-tile prefix predicate",
+    "type_bound": "m <= ab+ac+bc-min(b,c)",
+    "type_free_envelope": "m <= floor(ell^2/3)-floor(ell/3)"
+  }
+}

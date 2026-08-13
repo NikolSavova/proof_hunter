@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "cylinders_checked": 10336000,
+  "max_M": 400,
+  "max_macro_bins": 16,
+  "max_modulus": 19,
+  "worst_absolute_discrepancy": "303/304",
+  "witness_M_m_q_s_r_count_expected": [
+    1,
+    16,
+    19,
+    0,
+    0,
+    1,
+    "1/304"
+  ],
+  "theorem_requirement": "for fixed m,q, discrepancy=o(M)"
+}
