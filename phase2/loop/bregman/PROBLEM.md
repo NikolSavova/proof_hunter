@@ -55,8 +55,13 @@ numerically. **Neither step is a proof**; that is what the Part I run is for.
 `C = {(e^t, e^{-t^2}) : t in [1,2]}` — compact, contained in `U`.
 
 - `D(x, c(t)) = const(x) + e^t + e^{-t^2} - x_1 t + x_2 t^2 =: h_x(t)`.
-- `h_x''(t) = e^t + (4t^2 - 2) e^{-t^2} + 2 x_2 >= 3.454041 > 0` on `[1,2]` for every
-  `x in R^2_++` (minimum at `t = 1`, verified to 30 digits this session).
+- `h_x''(t) = e^t + (4t^2 - 2) e^{-t^2} + 2 x_2 > e + 2/e > 17/5 > 0` on `[1,2]` for every
+  `x in R^2_++` (infimum at `t = 1`, `x_2 -> 0+`).
+  ⚠️ **Erratum 2026-08-13** (maths referee, finding 1): this file previously claimed
+  `>= 3.454041`, which is FALSE — `e + 2/e = 3.454040710802...`, so the stated bound was
+  rounded the WRONG WAY and fails at `t = 1` as `x_2 -> 0+`. Use the exact form `e + 2/e`,
+  or the safe decimal `> 3.45404`. Proof `proof_part1_20260813.md` (Lemma SOL.2) never made
+  this error: it states `inf q = e + 2/e > 41/12 > 17/5`.
 - Strict convexity on a compact interval ⇒ **unique** minimizer ⇒ `C` is right D-Chebyshev.
 - `C* = {(t, -t^2) : t in [1,2]}`, a strictly concave arc ⇒ **nonconvex**.
 - `cl C* = C* subset U* = R^2` holds, so **only** the full-domain hypothesis is dropped.

@@ -6,8 +6,8 @@ Written BEFORE any prover runs, per the Tier-2 loop design: the harness defines 
 claim the write-up will make; a draft that contradicts this harness is wrong, not the harness.
 
 Interval arithmetic (mpmath.iv, directed rounding) for the load-bearing bounds; exhaustive
-brute-force minimisation for the uniqueness claim (which is a statement about argmin sets,
-not just about the second derivative, so it deserves a direct test rather than an inference).
+brute-force sampling as a sanity check on the uniqueness claim (see Block D: it is a finite
+check and does NOT certify the universal quantifier — Lemma SOL.5 of the proof does).
 
 Usage: ./verify.py            (all blocks)
        ./verify.py A C        (selected blocks)
@@ -15,9 +15,12 @@ Usage: ./verify.py            (all blocks)
 Blocks
   [A] model sanity     D_f is the generalized KL divergence; grad f = log; U* = R^2
   [B] reduction        D(x, c(t)) == const(x) + h_x(t) with h_x as claimed
-  [C] strict convexity h_x'' >= 3.454 > 0 on [1,2], uniformly in x in R^2_++   (INTERVAL)
-  [D] uniqueness       direct argmin scan over a fine t-grid, over many adversarial x,
-                       confirming a single local minimum (the property actually claimed)
+  [C] strict convexity h_x'' > e + 2/e > 17/5 > 0 on [1,2], uniformly in x in R^2_++ (INTERVAL)
+  [D] uniqueness       FINITE numerical sanity check only: an argmin scan over a t-grid for a
+                       sample of x. It CANNOT certify the quantifier "for every x in U", and it
+                       counts only strict INTERIOR grid minima, so an endpoint minimiser yields
+                       zero. The universal singleton claim is proved by Lemma SOL.5 of
+                       proof_part1_20260813.md, NOT by this block.
   [E] nonconvexity     C* is a strictly concave arc; explicit midpoint witness
   [F] hypotheses       dom f != X (the hypothesis under test FAILS) and cl C* subset U* (HOLDS)
 """
@@ -99,13 +102,14 @@ def block_C(log_):
         if worst is None or lo < worst[0]:
             worst = (lo, float(a.a))
     good = worst[0] > 3.45
-    log_(f"  inf over [1,2] of e^t+(4t^2-2)e^-t^2 (interval, 4000 cells) = {worst[0]:.6f} at t~{worst[1]:.4f}")
-    log_(f"  claim h'' >= 3.454 > 0 uniformly in x_2 > 0 -> {'PASS' if good else 'FAIL'}")
+    log_(f"  CERTIFIED LOWER BOUND (interval, 4000 cells) = {worst[0]:.6f} at t~{worst[1]:.4f}")
+    log_(f"    [this is an enclosure bound, NOT the infimum; the true inf is e+2/e = 3.454040710802]")
+    log_(f"  tested: h'' > 3.45 uniformly in x_2 > 0 -> {'PASS' if good else 'FAIL'}")
     return good
 
 
 def block_D(log_):
-    """The claim is about argmin sets: scan directly rather than infer from convexity."""
+    """FINITE sanity check (see header). Not a certificate; Lemma SOL.5 carries the claim."""
     xs = [(mpf(a) / 10, mpf(b) / 10) for a in (1, 5, 20, 100, 400) for b in (1, 5, 20, 100, 400)]
     xs += [(mpf(10) ** -4, mpf(10) ** 4), (mpf(10) ** 4, mpf(10) ** -4)]  # adversarial corners
     N = 20000
@@ -150,7 +154,7 @@ def block_F(log_):
 
 
 BLOCKS = {"A": ("model sanity", block_A), "B": ("reduction to h(t,x)", block_B),
-          "C": ("strict convexity (interval)", block_C), "D": ("uniqueness by direct scan", block_D),
+          "C": ("strict convexity (interval)", block_C), "D": ("uniqueness — finite sanity check", block_D),
           "E": ("nonconvexity of C*", block_E), "F": ("hypothesis bookkeeping", block_F)}
 
 if __name__ == "__main__":

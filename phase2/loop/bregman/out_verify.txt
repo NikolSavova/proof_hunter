@@ -8,9 +8,10 @@ Bregman right-Chebyshev counterexample — numeric harness (PROBLEM.md)
   x=(0.05, 7.3): D(x,c(t)) - h(t,x) constant in t (= 7.0116961278) -> True
   x=(9.0, 0.02): D(x,c(t)) - h(t,x) constant in t (= 10.6767807359) -> True
 [C] strict convexity (interval):
-  inf over [1,2] of e^t+(4t^2-2)e^-t^2 (interval, 4000 cells) = 3.453673 at t~1.0000
-  claim h'' >= 3.454 > 0 uniformly in x_2 > 0 -> PASS
-[D] uniqueness by direct scan:
+  CERTIFIED LOWER BOUND (interval, 4000 cells) = 3.453673 at t~1.0000
+    [this is an enclosure bound, NOT the infimum; the true inf is e+2/e = 3.454040710802]
+  tested: h'' > 3.45 uniformly in x_2 > 0 -> PASS
+[D] uniqueness — finite sanity check:
   27 adversarial x, grid 20000: max argmin-span 0.00e+00 at x=(0.1, 0.1), interior local minima 0
   unique minimiser for every tested x -> PASS
 [E] nonconvexity of C*:
