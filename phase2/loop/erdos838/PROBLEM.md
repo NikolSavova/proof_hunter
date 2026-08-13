@@ -2,15 +2,15 @@
 
 ## Correct statement
 
-For a finite planar point set (P) in general position, let (v(P)) be the
-number of subsets of (P) that are in convex position.  Define
+For a finite planar point set \(P\) in general position, let \(v(P)\) be the
+number of subsets of \(P\) that are in convex position.  Define
 
 \[
 f(N)=\min\{v(P): |P|=N,\ P\subset\mathbb R^2\text{ in general position}\}.
 \]
 
-Equivalently, (f(N)) is the largest integer such that every (N)-point set
-in general position determines at least (f(N)) convex subsets.  Erdős and
+Equivalently, \(f(N)\) is the largest integer such that every \(N\)-point set
+in general position determines at least \(f(N)\) convex subsets.  Erdős and
 Hammer asked whether
 
 \[
@@ -20,7 +20,7 @@ Hammer asked whether
 has a limit and, if so, what it is.
 
 The old pipeline paraphrase in `problem-id/review/deeppass_remaining.md`
-incorrectly says "the maximum, over (N)-point sets".  Taken literally that
+incorrectly says "the maximum, over \(N\)-point sets".  Taken literally that
 version is trivial.  The extremal direction above is the one on the official
 problem page and in Erdős's original formulation.
 
@@ -37,9 +37,9 @@ window
 \leq 1.
 \]
 
-The lower constant uses Suk's (ES(k)=2^{k+o(k)}) theorem and a
+The lower constant uses Suk's \(ES(k)=2^{k+o(k)}\) theorem and a
 double-counting argument.  The upper constant counts all subsets of size at
-most (log_2 N+O(1)) in the classical Erdős--Szekeres construction.
+most \(\log_2 N+O(1)\) in the classical Erdős--Szekeres construction.
 
 ## Candidate new target
 
@@ -52,10 +52,10 @@ Prove the strict upper-window improvement
 }
 \]
 
-The construction is the standard (2^m)-point Morris--Soltan / Erdős--Szekeres
+The construction is the standard \(2^m\)-point Morris--Soltan / Erdős--Szekeres
 row construction.  The new ingredient is to count its convex subsets using
 the cap/cup recursion instead of bounding them by all subsets of size at most
-(m+1).
+\(m+1\).
 
 ## Verification / kill criteria
 
@@ -85,4 +85,3 @@ pointwise proof.  Items 1 and 3 still need line-by-line geometric refereeing.
 - Morris--Soltan survey: <https://doi.org/10.1090/S0273-0979-00-00877-6>
 - Eppstein's exposition of the Pascal-row construction:
   <https://11011110.github.io/blog/2017/07/01/pascals-triangle-points.html>
-

@@ -5,25 +5,25 @@
 > or classical-adjacent, but their exact orientation and the cap recurrence
 > are being independently refereed.  Novelty sweep is in flight.
 
-All logarithms in the theorem and proof are base (2).  Write
+All logarithms in the theorem and proof are base \(2\).  Write
 
 \[
 H(t)=-t\log_2t-(1-t)\log_2(1-t)
 \]
 
-for binary entropy, with (H(0)=H(1)=0).
+for binary entropy, with \(H(0)=H(1)=0\).
 
 ## Candidate theorem
 
-For the standard (2^m)-point Erdős--Szekeres row construction (P_m),
+For the standard \(2^m\)-point Erdős--Szekeres row construction \(P_m\),
 
 \[
 \log_2 V(P_m)=\left(\frac1{2\ln2}+o(1)\right)m^2,  \tag{T1}
 \]
 
-where (V(P_m)) is its number of convex-position subsets.  Consequently, if
-(f(N)) is the largest integer such that every (N)-point set in general
-position in the plane determines at least (f(N)) such subsets, then
+where \(V(P_m)\) is its number of convex-position subsets.  Consequently, if
+\(f(N)\) is the largest integer such that every \(N\)-point set in general
+position in the plane determines at least \(f(N)\) such subsets, then
 
 \[
 \limsup_{N\to\infty}
@@ -31,7 +31,8 @@ position in the plane determines at least (f(N)) such subsets, then
 \leq \frac1{2\ln2}.
 \]
 
-Thus the presently recorded base-2 window (1/4\leq\liminf\leq\limsup\leq1)
+Thus the presently recorded base-2 window
+\(1/4\leq\liminf\leq\limsup\leq1\)
 would improve to
 
 \[
@@ -41,8 +42,8 @@ would improve to
 
 ## 1. The Pascal cells
 
-Use the standard Pascal-triangle construction.  Its cell (T_{m,i}), for
-(0\leq i\leq m), has
+Use the standard Pascal-triangle construction.  Its cell \(T_{m,i}\), for
+\(0\leq i\leq m\), has
 
 \[
 |T_{m,i}|={m\choose i}.
@@ -50,24 +51,25 @@ Use the standard Pascal-triangle construction.  Its cell (T_{m,i}), for
 
 The boundary cells are singletons.  Use the orientation in the proof of
 Morris--Soltan Theorem 2.5: an interior cell is the separated union of a left
-copy (A=T_{m-1,i}) and a right copy (B=T_{m-1,i-1}), with every cross
+copy \(A=T_{m-1,i}\) and a right copy \(B=T_{m-1,i-1}\), with every cross
 slope larger than every slope internal to either child.  A cap meeting both
-children has at most one point in (A); its points in (B) form a cap.
+children has at most one point in \(A\); its points in \(B\) form a cap.
 (Reflecting the construction interchanges caps and cups.)
 
-Let (C_{m,i}) be the number of cap subsets of (T_{m,i}), counting the empty
-set and subsets of size one or two as caps.  The separation gives
+Let \(C_{m,i}\) be the number of **nonempty** cap subsets of \(T_{m,i}\), with
+subsets of size one or two counted as caps.  The separation gives the exact
+recurrence
 
 \[
-C_{m,i}\leq C_{m-1,i}
+C_{m,i}= C_{m-1,i}
  +(1+{m-1\choose i})C_{m-1,i-1}.                 \tag{1}
 \]
 
-Indeed, a cap is either contained in (A), or its intersection with (B) is
-a cap and it chooses at most one of the ({m-1\choose i}) points of (A).
-Boundary values are (C_{m,0}=C_{m,m}=2).
+Indeed, a cap is either contained in \(A\), or its intersection with \(B\) is
+a cap and it chooses at most one of the \({m-1\choose i}\) points of \(A\).
+Boundary values are \(C_{m,0}=C_{m,m}=1\).
 
-Let (U_{m,i}) count cups.  By reflection symmetry,
+Let \(U_{m,i}\) count cups.  By reflection symmetry,
 
 \[
 U_{m,i}=C_{m,m-i}.                               \tag{2}
@@ -75,17 +77,17 @@ U_{m,i}=C_{m,m-i}.                               \tag{2}
 
 ## 2. Exponential rate of the cap recurrence
 
-Expanding (1) along lattice paths, a diagonal step entering state ((r,j))
+Expanding (1) along lattice paths, a diagonal step entering state \((r,j)\)
 has weight
 
 \[
 q_{r,j}=1+{r-1\choose j},
 \]
 
-whereas a horizontal step has weight (1).  For fixed (j), (q_{r,j}) is
-nondecreasing in (r).  Among paths ending at ((m,i)), the product of
+whereas a horizontal step has weight \(1\).  For fixed \(j\), \(q_{r,j}\) is
+nondecreasing in \(r\).  Among paths ending at \((m,i)\), the product of
 diagonal weights is therefore largest when all diagonal steps are taken as
-late as possible, at (r=m-i+j).  There are at most (2^m) paths, so
+late as possible, at \(r=m-i+j\).  There are at most \(2^m\) paths, so
 
 \[
 C_{m,i}\leq 2^{O(m)}
@@ -93,8 +95,8 @@ C_{m,i}\leq 2^{O(m)}
  \left(1+{m-i+j-1\choose j}\right).              \tag{3}
 \]
 
-If (i/m\to x), the entropy estimate for binomial coefficients and a Riemann
-sum give, uniformly in (0\leq i\leq m),
+If \(i/m\to x\), the entropy estimate for binomial coefficients and a Riemann
+sum give, uniformly in \(0\leq i\leq m\),
 
 \[
 \log_2 C_{m,i}\leq m^2 A(x)+o(m^2),              \tag{4}
@@ -135,8 +137,9 @@ C_{m,k}U_{m,l}
 \prod_{r=k+1}^{l-1}\left(1+{m\choose r}\right).   \tag{6}
 \]
 
-Harmless conventions for subsets of size at most two change neither (6) nor
-its exponential rate.
+The empty set contributes one additional subset to the right-hand side of
+(6).  Harmless conventions for subsets of size at most two do not affect its
+exponential rate.
 
 For (k/m\to x) and (l/m\to y), (2), (4), and the entropy estimate yield
 
@@ -194,10 +197,8 @@ For arbitrary (N), take an (N)-point subset of (P_m), where
 
 ## 5. Sharpness for this construction
 
-The block centers in the Morris--Soltan row construction lie in convex
-position on a circular arc.  Choose each block copy sufficiently small that
-every transversal containing one point from each block has the same order
-type as the centers.  Every such transversal is therefore in convex position.
+The strong row orientation law says that every transversal containing one
+point from each block is a cap, hence is in convex position.
 There are
 
 \[

@@ -73,6 +73,7 @@ def audit(max_m: int, sample: set[int] | None = None) -> list[dict[str, float | 
 
         # The endpoint term chooses at most one point in every internal block.
         endpoint = prefix[m] // prefix[1] if m >= 1 else 1
+        transversal = math.prod(choose)
         rows.append(
             {
                 "m": m,
@@ -80,6 +81,7 @@ def audit(max_m: int, sample: set[int] | None = None) -> list[dict[str, float | 
                 "row_rate": log2_int(row_bound) / (m * m),
                 "max_rate": log2_int(max_term) / (m * m),
                 "endpoint_rate": log2_int(endpoint) / (m * m),
+                "transversal_rate": log2_int(transversal) / (m * m),
                 "max_k": max_pair[0],
                 "max_l": max_pair[1],
                 "cap_mid_rate": log2_int(cap[m // 2]) / (m * m),
@@ -107,7 +109,7 @@ def main() -> None:
 
     print(f"target base-2 coefficient = {TARGET:.12f}")
     print(
-        " m    log2(Row)    /m^2       max/m^2    endpoint/m^2"
+        " m    log2(Row)    /m^2       max/m^2    endpoint/m^2  transversal/m^2"
         "  maximizing(k,l)  log2 Cap(m,floor(m/2))/m^2"
     )
     for row in rows:
@@ -116,6 +118,7 @@ def main() -> None:
             print(
                 f"{m:3d}  {row['log2_row']:12.5f}  {row['row_rate']:.9f}"
                 f"  {row['max_rate']:.9f}  {row['endpoint_rate']:.9f}"
+                f"  {row['transversal_rate']:.9f}"
                 f"       ({row['max_k']},{row['max_l']})"
                 f"             {row['cap_mid_rate']:.9f}"
             )

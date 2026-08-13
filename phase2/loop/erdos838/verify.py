@@ -26,21 +26,21 @@ def log2_int(value: int) -> float:
 
 def cap_table(max_m: int) -> list[list[int]]:
     """Upper bounds C[m][i] from recurrence (1) in proof_draft.md."""
-    table: list[list[int]] = [[2]]
+    table: list[list[int]] = [[1]]
     for m in range(1, max_m + 1):
-        row = [2]
+        row = [1]
         for i in range(1, m):
             right_only = table[m - 1][i]
             crossing = (1 + math.comb(m - 1, i)) * table[m - 1][i - 1]
             row.append(right_only + crossing)
-        row.append(2)
+        row.append(1)
         table.append(row)
     return table
 
 
 def row_bound(m: int, caps: list[list[int]]) -> int:
     """The exact integer on the right side of row bound (6)."""
-    total = 0
+    total = 1  # empty subset
     for first in range(m + 1):
         middle_product = 1
         for last in range(first, m + 1):
@@ -99,4 +99,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

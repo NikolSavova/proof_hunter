@@ -66,6 +66,7 @@ gives `(1.5, -2.25) != (1.5, -2.5)`.
 
 ## Kill criteria — abandon or rescope if ANY of these fires
 
+0. ~~Luo et al. (2019) resolves it~~ — **CLEARED**, see above.
 1. **The sweep comes back RED** (`scripts/sweep.py` → `sweep_20260813.md`): the problem is
    resolved in the literature. The construction is a small variation on the survey's own
    Example 3.3, so this is the live risk.
@@ -93,7 +94,13 @@ lost, so the uniqueness argument must be redone). Treat as **Part II**, not opti
   **Two conditions carried forward:** (i) *Optimization* 68(8) 1599-1624, Luo-Meng-Wen-Yao,
   "Bregman distances without coercive condition: suns, Chebyshev sets and Klee sets" is
   paywalled and UNREAD — full domain of `f` corresponds by duality to supercoercivity of `f*`,
-  so it aims near this target; **a hard gate on submission**. (ii) The novelty claim must be
+  so it aims near this target; **a hard gate on submission** — **CLEARED 2026-08-13**, see
+  `luo2019_clearance_20260813.md`: their right-projection Theorem 3.12 carries `U = X`, which IS
+  the full-domain hypothesis, so they relax 1-coercivity and not full domain. Their Theorem
+  3.12(3) even applies to our example (its hypotheses `grad f(U) = U*`, `f*` strictly convex on
+  `U*` both hold), and predicts that our nonconvex `C*` forces their condition (i) to fail —
+  consistent, and it makes our example an illustration of their theorem rather than a
+  contradiction of it. (ii) The novelty claim must be
   stated narrowly: NOT the first nonconvex right KL-Chebyshev set (the survey has those), NOT
   the first nonconvex entropy-Bregman example (Laude-Ochs-Cremers have a local one), but an
   explicit **globally** right D_f-Chebyshev set with nonconvex gradient image, showing (a) is
