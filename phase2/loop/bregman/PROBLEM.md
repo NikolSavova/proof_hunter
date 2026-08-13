@@ -139,4 +139,41 @@ counterexample, (b) shown removable by theorem** — rather than a counterexampl
   3.454040710802`), a mislabelled interval enclosure, an over-claimed uniqueness block, three
   weak harness blocks, and one unsourced "verified to 30 digits" claim. All fixed.
   **Part I therefore clears the house bar.**
+- [x] **Part I VERIFICATION GATE, 2026-08-13** — three fresh Sol lanes at effort=max
+  (`scripts/verify_part1.py`), on top of the two lanes of 2026-08-12. This is the gate the Luo
+  clearance memo asked for and the gate the Part II post-mortem demands: the same reader wrote
+  both clearances, so Part I's novelty was re-derived from the paper text by a reader briefed on
+  exactly how the Part II clearance failed.
+  - `verify1_v1_maths_20260813.md` — **SURVIVES**, no defects. Re-derived every rational
+    certificate in Lemma SOL.2 and confirmed each series truncation is used in the correct
+    direction. Names Lemma SOL.2 as the most fragile step (uniqueness rests on positivity of `q`
+    as `x_2 -> 0+`). Useful aside: supercoercivity of `f*` is equivalent to `dom f = X` for
+    closed convex `f`, so it cannot be read in as a standing assumption without making the
+    problem vacuous.
+  - `verify1_v2_sun_20260813.md` — **CONFIRMED**, sharper claim stands, with two proof-writing
+    repairs (total convexity should be claimed on `U` only, not on `dom f`; the locally uniform
+    modulus needs JOINT compactness in `(u,v)`, not a bound for each fixed `u`) and two scope
+    repairs (say "cannot be deleted without replacement", not "necessary"; the prior-art
+    conclusion is text-internal to the attachment). Both scope repairs applied in the paper.
+  - **THE FRAGILE STEP IS NOW GONE.** Verifying Part I showed Lemma SOL.2 is unnecessary: on
+    `[1,2]`, `4t^2 - 2 >= 2 > 0`, so BOTH terms of `q(t) = e^t + (4t^2-2)e^{-t^2}` are positive
+    and `h_x'' > 0` is immediate. The three-interval monotonicity argument, the truncated
+    exponential series, and the rational certificates — the entire apparatus where the
+    2026-08-13 rounding error lived — are all deleted from the paper. The sharp constant
+    `e + 2/e` survives only as a remark. The construction also generalises for free: it works
+    for `C = {(e^t, e^{-t^2}) : t in [a,b]}` for ANY `1/sqrt(2) <= a < b`.
+  - **The Luo corollary is now self-contained**, which is a bigger change than it sounds. Lane
+    v2 supplied a DIRECT proof that `C` is a right `D_f`-sun: `h_w'(t)` is affine in `w` and
+    vanishes at `t = s` when `w = c(s)`, so `h'_{z_lambda}(s) = lambda * h_x'(s)` and the
+    endpoint trichotomy closes it in three lines. It also supplied an EXPLICIT witness that
+    Luo's condition (i) fails, with the closed form `<grad f(y) - grad f(c(t)), y - x> =
+    (s-t)^2 (e^{-s^2} - x_2) > 0`. So the corollary no longer depends on Theorem 3.13, on
+    Theorem 3.12(3), or on any total-convexity verification — only on the STATEMENT of Theorem
+    3.12(2), which is what it contradicts. Verified locally: `sun_check.py`.
+- [ ] `verify1_v3_novelty_20260813.md` — prior-art re-sweep, IN FLIGHT at the time of writing.
+  **Nothing ships until this returns**; it is the lane that killed Part II.
+- [x] **Write-up** — `paper/main.tex` (8pp, compiles clean, 0 unresolved refs) plus
+  `paper/DECISIONS.md` (14 human decisions, 4 blocking). Structure: Theorem 3.1 is the
+  counterexample, Corollary 4.4 is the Luo consequence, Proposition 5.1 records hypothesis (b)
+  as removable WITH ATTRIBUTION to Luo et al., and Section 6 states what remains open.
 - [ ] Lean statement stub

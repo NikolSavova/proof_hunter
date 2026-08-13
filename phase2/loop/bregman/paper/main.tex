@@ -1,0 +1,734 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{enumitem}
+
+% --- theorem environments ---
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- macros ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\intr}{\operatorname{int}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\D}{D_f}
+\newcommand{\Proj}{\overrightarrow{\Pi}}
+\newcommand{\Cstar}{C^{*}}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+
+\title[Full domain in a theorem on right Bregman--Chebyshev sets]
+{Full domain cannot be dropped from a theorem\\ on right Bregman--Chebyshev sets}
+
+\author{}
+
+\thanks{This investigation was carried out with substantial assistance from
+automated systems, and we omit a conventional byline rather than overstate the
+named researchers' personal contributions.
+\emph{Nikol Savova}, University of Oxford,
+\href{mailto:nikol.p.savova@gmail.com}{\texttt{nikol.p.savova@gmail.com}};
+\emph{Sihao Huang}, independent researcher,
+\href{mailto:sihao.c.huang@gmail.com}{\texttt{sihao.c.huang@gmail.com}}.}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+Bauschke, Macklem and Wang record the following fact: if $f$ is a Legendre
+function on $X$ with $\dom f = X$, if $C \subseteq U = \intr \dom f$ is closed,
+nonempty and satisfies $\cl \nabla f(C) \subseteq U^{*}$, and if $C$ is right
+$\D$-Chebyshev, then $\nabla f(C)$ is convex. They ask whether the hypothesis
+$\dom f = X$ is necessary. We show that it cannot be deleted. Taking $f$ to be
+the negative entropy on $\R^{2}$ and
+$C = \{(e^{t}, e^{-t^{2}}) : t \in [1,2]\}$, the set $C$ is compact and right
+$\D$-Chebyshev at every point of $U$, the closure hypothesis
+$\cl \nabla f(C) \subseteq U^{*}$ holds, and $\nabla f(C)$ is a strictly
+concave arc, hence nonconvex. The verification is elementary: the right
+Bregman projection onto $C$ reduces to minimising a one-variable function whose
+second derivative is a sum of manifestly positive terms on $[1,2]$.
+
+The same example bears on later work of Luo, Meng, Wen and Yao. Their
+Theorem~3.12(2) asserts, for $U = X$, the equivalence of a variational condition
+(i) with the property (ii) that $C$ is a right $\D$-sun. We show by direct
+computation that our $C$ is a right $\D$-sun while (i) fails for an explicit
+point, so the requirement $U = X$ cannot be deleted from their theorem either.
+The obstruction is visible: the ray along which the sun property is applied
+leaves $U$ after a bounded distance.
+
+We also record, with attribution, that the remaining hypothesis
+$\cl \nabla f(C) \subseteq U^{*}$ is redundant, as a short consequence of the
+results of Luo, Meng, Wen and Yao.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let $X = \R^{n}$ with the standard inner product, and let
+$f \colon X \to \left]-\infty, +\infty\right]$ be proper, lower semicontinuous
+and convex. Write $U = \intr \dom f$ and $U^{*} = \intr \dom f^{*}$, where
+$f^{*}$ is the Fenchel conjugate. Recall that $f$ is \emph{Legendre} if it is
+both essentially smooth and essentially strictly convex \cite{BBC2001,Rock1970}.
+For $x \in \dom f$ and $y \in U$, the \emph{Bregman distance} is
+\[
+  \D(x,y) = f(x) - f(y) - \ip{\nabla f(y)}{x - y}.
+\]
+It is not symmetric, so a set has two projection operators. Throughout, we use
+the \emph{right} one, in which the second argument varies:
+\[
+  \Proj_{C}(x) = \operatorname*{arg\,min}_{y \in C} \D(x,y),
+  \qquad x \in U .
+\]
+Following \cite[Definition 3.1]{BMW2010} we call $C$ \emph{right
+$\D$-Chebyshev} if $\Proj_{C}(x)$ is a singleton for every $x \in U$. We
+abbreviate
+\[
+  \Cstar := \nabla f(C).
+\]
+
+The starting point of this note is the following statement, recorded as
+Fact~3.2 of the survey of Bauschke, Macklem and Wang \cite{BMW2010}.
+
+\begin{fact}[{\cite[Fact 3.2]{BMW2010}}]\label{fact:BMW}
+Suppose that
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
+  \item $\dom f = X$;
+  \item $C \subseteq U$ is closed and nonempty, and $\cl \Cstar \subseteq U^{*}$;
+  \item $C$ is right $\D$-Chebyshev.
+\end{enumerate}
+Then $\Cstar$ is convex.
+\end{fact}
+
+The survey attaches an open problem to this fact, which we restate.
+
+\begin{problem}[{\cite[Problem 2]{BMW2010}}]\label{prob:2}
+Is the hypothesis $\dom f = X$ necessary? Either exhibit a Legendre $f$ with
+$\dom f \neq X$ and a closed nonempty right $\D$-Chebyshev $C \subseteq U$ with
+$\Cstar$ nonconvex, or show that the conclusion survives without full domain.
+\end{problem}
+
+We settle Problem~\ref{prob:2} in the first of the two directions.
+
+\begin{theorem}\label{thm:main}
+Let $X = \R^{2}$ and let $f$ be the negative entropy,
+\[
+  f(x) = g(x_{1}) + g(x_{2}),
+  \qquad
+  g(s) =
+  \begin{cases}
+    s \ln s - s, & s > 0,\\
+    0, & s = 0,\\
+    +\infty, & s < 0.
+  \end{cases}
+\]
+Fix real numbers $a, b$ with $1/\sqrt{2} \le a < b$ and put
+\[
+  C = \bigl\{ (e^{t}, e^{-t^{2}}) : t \in [a,b] \bigr\} .
+\]
+Then $f$ is Legendre with $\dom f = \R^{2}_{+} \neq X$, and:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+  \item $C$ is a nonempty compact subset of $U = \R^{2}_{++}$;
+  \item $\cl \Cstar = \Cstar \subseteq U^{*} = \R^{2}$, so hypothesis \textup{(b)} of
+        Fact~\textup{\ref{fact:BMW}} holds;
+  \item $C$ is right $\D$-Chebyshev, so hypothesis \textup{(c)} holds;
+  \item $\Cstar = \{ (t, -t^{2}) : t \in [a,b] \}$ is not convex.
+\end{enumerate}
+Consequently the implication of Fact~\textup{\ref{fact:BMW}} becomes false if
+hypothesis \textup{(a)} is deleted while \textup{(b)} and \textup{(c)} are retained.
+\end{theorem}
+
+Two features of the example are worth stating at the outset, because both are
+easy to lose in a more elaborate construction.
+
+First, hypothesis (b) is genuinely satisfied, not merely arranged to be
+vacuous. If $\cl \Cstar \subseteq U^{*}$ failed, the example would be deleting
+two hypotheses at once and would say nothing about (a) in particular. Here
+$U^{*} = \R^{2}$ and $\Cstar$ is compact, so (b) holds for the strongest reason
+available.
+
+Second, $C$ is right $\D$-Chebyshev at \emph{every} point of $U$, including
+points arbitrarily close to $\partial U$ and points far from $C$. Uniqueness is
+not a local or generic phenomenon here. It follows from a single inequality
+(Lemma~\ref{lem:convex}) which holds uniformly in $x \in U$.
+
+The verification is elementary throughout. In particular it uses no numerical
+computation: the one inequality that carries the argument is
+\[
+  4t^{2} - 2 \ \ge\ 0
+  \qquad\text{for } t \ge 1/\sqrt{2},
+\]
+after which the required second derivative is a sum of nonnegative terms plus a
+strictly positive one. We draw attention to this because it is the reason the
+example is checkable by hand, and because it explains the constraint
+$a \ge 1/\sqrt{2}$, which is the only role played by the choice of interval.
+
+Section~\ref{sec:luo} relates the example to subsequent work of Luo, Meng, Wen
+and Yao \cite{LMWY2019}, where it turns out to have a second use, and
+Section~\ref{sec:b} records what is known about the remaining hypothesis (b).
+Section~\ref{sec:open} states what we do \emph{not} claim, and what remains open.
+
+\subsection*{What is not claimed}
+
+Nonconvex sets that are Chebyshev for Bregman distances are not new, and
+neither are entropy kernels of non-full domain. The survey's own
+Example~3.3 \cite{BMW2010} takes place without full domain, and there the
+conclusion \emph{holds}: $\Cstar$ is convex. That is precisely why
+Problem~\ref{prob:2} was worth asking. Example~3.3 shows that full domain is not
+needed in every instance; it leaves open whether it can be deleted from the
+general statement. Theorem~\ref{thm:main} supplies the missing half, an instance
+in which the conclusion fails. Laude, Ochs and Cremers \cite{LOC2020} come
+closer still, with nonconvex examples for entropy-like kernels, but their
+single-valuedness results are local, holding on a neighbourhood under relative
+prox-regularity, rather than at every point of $U$; they record
+Problem~\ref{prob:2} as open.
+
+So we claim neither the first nonconvex right $\D$-Chebyshev set nor the first
+nonconvex entropy-Bregman example. The point of Theorem~\ref{thm:main} is
+narrower, and is exactly what Problem~\ref{prob:2} asks for: a set that is right
+$\D$-Chebyshev \emph{globally on $U$}, with nonconvex gradient image,
+\emph{while hypothesis \textup{(b)} holds}, so that full domain is the only
+hypothesis of Fact~\ref{fact:BMW} that fails.
+
+We also emphasise what Theorem~\ref{thm:main} does not say. It does not say
+that $\dom f = X$ is necessary for $\Cstar$ to be convex in any individual
+instance; convexity of $\Cstar$ certainly occurs for many $f$ of non-full
+domain. It says that $\dom f = X$ cannot be deleted from the \emph{universal}
+statement of Fact~\ref{fact:BMW}. Nor does it identify the weakest hypothesis
+that could replace full domain; see Section~\ref{sec:open}.
+
+\section{The example}\label{sec:ex}
+
+Throughout this section $f$, $C$, $a$ and $b$ are as in
+Theorem~\ref{thm:main}, and we write
+\[
+  c(t) = (e^{t}, e^{-t^{2}}), \qquad t \in [a,b],
+\]
+so that $C = c([a,b])$. All closures are taken in $X = \R^{2}$.
+
+\begin{lemma}\label{lem:legendre}
+The function $f$ is Legendre, with
+\[
+  \dom f = \R^{2}_{+},
+  \quad
+  U = \R^{2}_{++},
+  \quad
+  \nabla f(x) = (\ln x_{1}, \ln x_{2}) \ \text{ on } U,
+\]
+and
+\[
+  f^{*}(u) = e^{u_{1}} + e^{u_{2}},
+  \quad
+  \dom f^{*} = U^{*} = \R^{2}.
+\]
+Moreover $\nabla f \colon U \to U^{*}$ is a bijection with inverse
+$u \mapsto (e^{u_{1}}, e^{u_{2}})$.
+\end{lemma}
+
+\begin{proof}
+For $s > 0$ we have $g'(s) = \ln s$ and $g''(s) = 1/s > 0$, so $g$ is strictly
+convex on $\left]0,\infty\right[$. Strict convexity persists at the left
+endpoint: for $b_{0} > 0$ and $0 < \lambda < 1$,
+\[
+  g(\lambda b_{0})
+  = \lambda g(b_{0}) + \lambda b_{0} \ln \lambda
+  < \lambda g(b_{0}) + (1 - \lambda) g(0),
+\]
+since $\ln \lambda < 0$ and $g(0) = 0$. As
+$\lim_{s \downarrow 0} (s \ln s - s) = 0 = g(0)$, the function $g$ is lower
+semicontinuous on $\R$. Hence $f$ is proper, lower semicontinuous and convex,
+with $\dom f = \R^{2}_{+}$ and $U = \R^{2}_{++}$. Since
+$(-1,0) \notin \dom f$, we have $\dom f \neq X$.
+
+On $U$ the gradient is $\nabla f(x) = (\ln x_{1}, \ln x_{2})$, and the Hessian
+$\operatorname{diag}(1/x_{1}, 1/x_{2})$ is positive definite. If
+$x^{k} \in U$ converges to a boundary point of $\dom f$ then some coordinate
+tends to $0$, so the corresponding component of $\nabla f(x^{k})$ tends to
+$-\infty$ and $\lVert \nabla f(x^{k}) \rVert \to \infty$; thus $f$ is
+essentially smooth.
+
+No boundary point of $\dom f$ carries a subgradient. Indeed, suppose
+$x_{j} = 0$ and $p \in \partial f(x)$. Perturbing only the $j$-th coordinate to
+$s > 0$ in the subgradient inequality gives $s \ln s - s \ge p_{j} s$, hence
+$\ln s - 1 \ge p_{j}$ for every $s > 0$; taking $s = e^{p_{j}}$ yields
+$p_{j} - 1 \ge p_{j}$, a contradiction. Therefore
+$\dom \partial f = U$, and since $f$ is strictly convex on $U$ it is
+essentially strictly convex. So $f$ is Legendre.
+
+For the conjugate, fix $u \in \R$ and consider $s \mapsto us - g(s)$ on
+$[0,\infty[$. Its derivative on $\left]0,\infty\right[$ is $u - \ln s$ and its
+second derivative is $-1/s < 0$, so it is maximised uniquely at $s = e^{u}$,
+with value $e^{u}$; the boundary value at $s = 0$ is $0 < e^{u}$. Hence
+$g^{*}(u) = e^{u}$, and by separability $f^{*}(u) = e^{u_{1}} + e^{u_{2}}$, so
+$\dom f^{*} = U^{*} = \R^{2}$. Finally $x \mapsto (\ln x_{1}, \ln x_{2})$ maps
+$\R^{2}_{++}$ bijectively onto $\R^{2}$, with the coordinatewise exponential as
+inverse.
+\end{proof}
+
+\begin{lemma}\label{lem:C}
+$C$ is nonempty and compact, $C \subseteq U$, the map $c$ is injective, and
+\[
+  \Cstar = \{ (t, -t^{2}) : t \in [a,b] \},
+  \qquad
+  \cl \Cstar = \Cstar \subseteq U^{*} .
+\]
+\end{lemma}
+
+\begin{proof}
+The map $c$ is continuous on the compact interval $[a,b]$, so $C$ is compact,
+hence closed, and nonempty. Both coordinates of $c(t)$ are strictly positive, so
+$C \subseteq \R^{2}_{++} = U$. Injectivity holds because $t \mapsto e^{t}$ is
+strictly increasing. By Lemma~\ref{lem:legendre},
+$\nabla f(c(t)) = (\ln e^{t}, \ln e^{-t^{2}}) = (t, -t^{2})$, so $\Cstar$ is the
+stated arc; it is a continuous image of $[a,b]$, hence compact and closed, and
+$U^{*} = \R^{2}$ contains it.
+\end{proof}
+
+The next lemma is the computation that makes the example tractable: the right
+Bregman projection onto $C$ decouples into a one-variable problem, and the part
+depending on $x$ is an additive constant.
+
+\begin{lemma}\label{lem:reduce}
+For every $x \in U$ and every $t \in [a,b]$,
+\[
+  \D(x, c(t)) = f(x) + h_{x}(t),
+  \qquad\text{where}\qquad
+  h_{x}(t) = e^{t} + e^{-t^{2}} - x_{1} t + x_{2} t^{2}.
+\]
+\end{lemma}
+
+\begin{proof}
+For $x, y \in U$, expanding coordinatewise gives the familiar form
+\[
+  \D(x,y)
+  = \sum_{j=1}^{2}
+    \Bigl[ x_{j} \ln x_{j} - x_{j} - (y_{j} \ln y_{j} - y_{j})
+           - \ln(y_{j})(x_{j} - y_{j}) \Bigr]
+  = \sum_{j=1}^{2}
+    \Bigl[ x_{j} \ln \tfrac{x_{j}}{y_{j}} - x_{j} + y_{j} \Bigr].
+\]
+Substituting $y = c(t) = (e^{t}, e^{-t^{2}})$ and using
+$\ln(x_{1}/e^{t}) = \ln x_{1} - t$ and
+$\ln(x_{2}/e^{-t^{2}}) = \ln x_{2} + t^{2}$,
+\[
+  \D(x, c(t))
+  = \bigl( x_{1} \ln x_{1} - x_{1} + x_{2} \ln x_{2} - x_{2} \bigr)
+    + \bigl( e^{t} + e^{-t^{2}} - x_{1} t + x_{2} t^{2} \bigr),
+\]
+and the first bracket is exactly $f(x)$.
+\end{proof}
+
+\begin{lemma}\label{lem:convex}
+For every $x \in U$ the function $h_{x}$ is strictly convex on $[a,b]$. Indeed
+\[
+  h_{x}''(t) = e^{t} + (4t^{2} - 2) e^{-t^{2}} + 2 x_{2}
+  \ \ge\ e^{a} + 2 x_{2}
+  \ >\ 0
+  \qquad (t \in [a,b]).
+\]
+\end{lemma}
+
+\begin{proof}
+Differentiating $h_{x}$ twice gives
+\[
+  h_{x}'(t) = e^{t} - 2t e^{-t^{2}} - x_{1} + 2 x_{2} t,
+  \qquad
+  h_{x}''(t) = e^{t} + (4t^{2} - 2) e^{-t^{2}} + 2 x_{2} .
+\]
+Since $t \ge a \ge 1/\sqrt{2}$ we have $4t^{2} - 2 \ge 0$, so the middle term is
+nonnegative; and $e^{t} \ge e^{a}$ while $x_{2} > 0$ because $x \in U$. The
+displayed bound follows, and it is strictly positive.
+\end{proof}
+
+\begin{remark}\label{rem:sharp}
+Only positivity is used. For the record, on $[1,2]$ the exact infimum of
+$t \mapsto e^{t} + (4t^{2} - 2)e^{-t^{2}}$ is attained at $t = 1$ and equals
+$e + 2/e = 3.45404\ldots$, so $h_{x}'' > e + 2/e$ there, uniformly in $x \in U$.
+We do not need this sharper constant, and we note that establishing it requires
+a genuine monotonicity argument, whereas the bound of Lemma~\ref{lem:convex} does
+not.
+\end{remark}
+
+\begin{lemma}\label{lem:cheb}
+$C$ is right $\D$-Chebyshev: $\Proj_{C}(x)$ is a singleton for every $x \in U$.
+\end{lemma}
+
+\begin{proof}
+Fix $x \in U$. By Lemma~\ref{lem:reduce} the term $f(x)$ does not depend on $t$,
+so minimising $\D(x, \cdot)$ over $C$ is the same as minimising $h_{x}$ over
+$[a,b]$; and by injectivity of $c$ (Lemma~\ref{lem:C}) a unique minimising
+parameter yields a unique minimising point of $C$. The function $h_{x}$ is
+continuous on the compact interval $[a,b]$, so a minimiser exists. If $s \neq t$
+were both minimisers then strict convexity (Lemma~\ref{lem:convex}) would give
+\[
+  h_{x}\!\left( \tfrac{s+t}{2} \right)
+  < \tfrac{1}{2}\bigl( h_{x}(s) + h_{x}(t) \bigr)
+  = \min_{[a,b]} h_{x},
+\]
+which is absurd. Hence the minimiser is unique.
+\end{proof}
+
+\begin{remark}\label{rem:endpoint}
+The minimiser need not be interior, and no closed form for it is needed. Since
+$h_{x}'$ is strictly increasing by Lemma~\ref{lem:convex}, exactly one of three
+cases occurs: if $h_{x}'(a) \ge 0$ the minimiser is $t = a$; if
+$h_{x}'(b) \le 0$ it is $t = b$; otherwise $h_{x}'(a) < 0 < h_{x}'(b)$ and the
+minimiser is the unique zero of $h_{x}'$ in $\left]a,b\right[$. These cases are
+exhaustive because $h_{x}'(a) < h_{x}'(b)$. Uniqueness in
+Lemma~\ref{lem:cheb} is insensitive to which case obtains.
+\end{remark}
+
+\begin{lemma}\label{lem:nonconvex}
+$\Cstar$ is not convex.
+\end{lemma}
+
+\begin{proof}
+The points $(a, -a^{2})$ and $(b, -b^{2})$ lie in $\Cstar$, and their midpoint is
+$m = \bigl( \tfrac{a+b}{2}, -\tfrac{a^{2}+b^{2}}{2} \bigr)$. If $m$ belonged to
+$\Cstar$ its first coordinate would force the parameter $t = (a+b)/2$, and its
+second coordinate would then have to equal $-\bigl( \tfrac{a+b}{2} \bigr)^{2}$.
+But
+\[
+  \frac{a^{2}+b^{2}}{2} - \left( \frac{a+b}{2} \right)^{2}
+  = \frac{(a-b)^{2}}{4} > 0 ,
+\]
+so $-\tfrac{a^{2}+b^{2}}{2} < -\bigl( \tfrac{a+b}{2} \bigr)^{2}$ and
+$m \notin \Cstar$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\textup{\ref{thm:main}}]
+Lemma~\ref{lem:legendre} gives that $f$ is Legendre with
+$\dom f = \R^{2}_{+} \neq X$, so hypothesis (a) fails. Item (i) is
+Lemma~\ref{lem:C}, item (ii) is Lemma~\ref{lem:C}, item (iii) is
+Lemma~\ref{lem:cheb}, and item (iv) is Lemma~\ref{lem:nonconvex}. Since (b) and
+(c) hold while the conclusion of Fact~\ref{fact:BMW} fails, hypothesis (a)
+cannot be deleted.
+\end{proof}
+
+\begin{remark}[hypothesis audit]\label{rem:audit}
+For the reader checking that no hypothesis has been violated silently: $X$ is
+finite dimensional; $f$ is Legendre; $C$ is nonempty, compact, and contained in
+$U$; $\cl \Cstar \subseteq U^{*}$; and $C$ is right $\D$-Chebyshev on all of
+$U$. The only failure is the intended one, $\dom f \neq X$. If one reads
+Fact~\ref{fact:BMW} under an additional standing assumption of $1$-coercivity,
+the example still complies: $g \ge -1$ on $[0,\infty[$, so with
+$M = \max\{x_{1},x_{2}\}$ we have $f(x) \ge M \ln M - M - 1$ and
+$\lVert x \rVert_{2} \le \sqrt{2}\, M$ for $x \in \dom f$, whence
+$f(x)/\lVert x \rVert_{2} \to +\infty$; outside $\dom f$ the function is
+$+\infty$. One should not, however, read a standing assumption of
+supercoercivity for $f^{*}$ into the setting: for a closed convex $f$,
+supercoercivity of $f^{*}$ is equivalent to $\dom f = X$, which is exactly the
+hypothesis under test, so requiring it would make Problem~\ref{prob:2} vacuous.
+\end{remark}
+
+\begin{remark}\label{rem:C-nonconvex}
+The set $C$ itself is nonconvex, though nothing above requires this;
+Fact~\ref{fact:BMW} does not assume $C$ convex and concludes about $\Cstar$. In
+the variable $r = e^{t}$, $C$ is the graph of
+$\psi(r) = e^{-(\ln r)^{2}}$ over $[e^{a}, e^{b}]$, and with $L = \ln r$,
+\[
+  \psi''(r) = \frac{e^{-L^{2}}}{r^{2}} \bigl( 4L^{2} + 2L - 2 \bigr),
+\]
+which is strictly positive for $L \ge 1/\sqrt2$; so for $a \ge 1/\sqrt2$ the
+function $\psi$ is strictly convex and $C$ is a strictly convex arc, in
+particular not convex as a set.
+\end{remark}
+
+\section{A consequence for the theorem of Luo, Meng, Wen and Yao}\label{sec:luo}
+
+Luo, Meng, Wen and Yao \cite{LMWY2019} revisit the results surveyed in
+\cite{BMW2010} with the aim of removing coercivity assumptions. Their
+Theorem~3.12 concerns a right $\D$-proximinal set $C$ and the statements
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.2em]
+  \item for all $x \in U$ and $y \in C$: $y \in \Proj_{C}(x)$ if and only if
+        $\ip{\nabla f(y) - \nabla f(c)}{y - x} \le 0$ for every $c \in C$;
+  \item $C$ is a right $\D$-sun, that is, $y \in \Proj_{C}(x)$ implies
+        $y \in \Proj_{C}(\lambda x + (1-\lambda) y)$ for every $\lambda \ge 0$
+        with $\lambda x + (1-\lambda) y \in U$;
+  \setcounter{enumi}{3}
+  \item $\nabla f(C)$ is convex.
+\end{enumerate}
+They prove that (i) $\Rightarrow$ (ii) with no domain hypothesis; that
+(i) $\Leftrightarrow$ (ii) \emph{if $U = X$}; and that (i) $\Leftrightarrow$ (iv)
+if $\nabla f(U) = U^{*}$ and $f^{*}$ is G\^ateaux differentiable and strictly
+convex on $U^{*}$. Their Theorem~3.13 states that if $f$ is totally convex at
+every point of $U$, if $\nabla f(U) = U^{*}$, and if $f^{*}$ is locally uniformly
+totally convex at every point of $U^{*}$, then every boundedly compact right
+$\D$-Chebyshev set is a right $\D$-sun.
+
+Our example satisfies (ii) but not (i), and does not satisfy $U = X$. Both
+halves can be checked directly, without invoking either of their theorems, and
+we do so: the point is to exhibit a configuration their Theorem~3.12(2) would
+forbid, so it is better not to rely on their machinery to produce it.
+
+\begin{lemma}\label{lem:sun}
+Let $f$ and $C$ be as in Theorem~\textup{\ref{thm:main}}. Then $C$ is a right
+$\D$-sun.
+\end{lemma}
+
+\begin{proof}
+Write $y = c(s) \in \Proj_{C}(x)$ for some $x \in U$ and $s \in [a,b]$, and let
+$\lambda \ge 0$ satisfy $z_{\lambda} := \lambda x + (1-\lambda) y \in U$. By
+Lemma~\ref{lem:reduce}, the projection of any $w \in U$ is governed by $h_{w}$,
+and by Lemma~\ref{lem:convex} each $h_{w}$ is strictly convex on $[a,b]$, so
+$h_{w}'$ is strictly increasing.
+
+The essential observation is that
+\[
+  h_{w}'(t) = e^{t} - 2t e^{-t^{2}} - w_{1} + 2 w_{2} t
+\]
+is an \emph{affine} function of $w$. Moreover $h_{y}'(s) = 0$: substituting
+$w = y = c(s) = (e^{s}, e^{-s^{2}})$ gives
+\[
+  h_{y}'(s) = e^{s} - 2s e^{-s^{2}} - e^{s} + 2 e^{-s^{2}} s = 0 .
+\]
+Hence, by affinity,
+\[
+  h_{z_{\lambda}}'(s)
+  = \lambda h_{x}'(s) + (1-\lambda) h_{y}'(s)
+  = \lambda\, h_{x}'(s).
+\]
+Now use the three cases of Remark~\ref{rem:endpoint} for $x$. If
+$s \in \left]a,b\right[$ then $h_{x}'(s) = 0$, so $h_{z_{\lambda}}'(s) = 0$ and
+$s$ is the unique minimiser of $h_{z_{\lambda}}$. If $s = a$ then
+$h_{x}'(a) \ge 0$, so $h_{z_{\lambda}}'(a) = \lambda h_{x}'(a) \ge 0$ since
+$\lambda \ge 0$, and as $h_{z_{\lambda}}'$ is increasing the unique minimiser is
+$a$. If $s = b$ then $h_{x}'(b) \le 0$, so $h_{z_{\lambda}}'(b) \le 0$ and the
+unique minimiser is $b$. In all three cases
+$\Proj_{C}(z_{\lambda}) = \{c(s)\} = \{y\}$.
+\end{proof}
+
+\begin{lemma}\label{lem:i-fails}
+Let $f$ and $C$ be as in Theorem~\textup{\ref{thm:main}}, put $s = (a+b)/2$ and
+\[
+  x = \bigl( e^{s} - s e^{-s^{2}},\ \tfrac{1}{2} e^{-s^{2}} \bigr) .
+\]
+Then $x \in U$ and $y := c(s) \in \Proj_{C}(x)$, but for every $t \in [a,b]$ with
+$t \neq s$,
+\[
+  \ip{\nabla f(y) - \nabla f(c(t))}{y - x} = (s-t)^{2}\, \tfrac{1}{2} e^{-s^{2}} > 0 .
+\]
+Hence statement \textup{(i)} fails.
+\end{lemma}
+
+\begin{proof}
+Both coordinates of $x$ are positive, since $e^{s} > s e^{-s^{2}}$ for
+$s \ge 1/\sqrt2$, so $x \in U$. With $x_{2} = \tfrac12 e^{-s^{2}}$ we get
+$2s\bigl( e^{-s^{2}} - x_{2} \bigr) = s e^{-s^{2}} = e^{s} - x_{1}$, which
+rearranges to $h_{x}'(s) = e^{s} - 2s e^{-s^{2}} - x_{1} + 2 x_{2} s = 0$. As
+$s \in \left]a,b\right[$ and $h_{x}$ is strictly convex, $s$ is the unique
+minimiser, so $y = c(s)$ is the right projection of $x$.
+
+By Lemma~\ref{lem:legendre}, $\nabla f(c(r)) = (r, -r^{2})$, so
+\[
+  \nabla f(y) - \nabla f(c(t)) = (s - t,\ t^{2} - s^{2}) = (s-t)\,(1,\ -(s+t)),
+\]
+while $y - x = \bigl( e^{s} - x_{1},\ e^{-s^{2}} - x_{2} \bigr)$. Therefore
+\[
+  \ip{\nabla f(y) - \nabla f(c(t))}{y - x}
+  = (s-t) \Bigl[ (e^{s} - x_{1}) - (s+t)\bigl( e^{-s^{2}} - x_{2} \bigr) \Bigr].
+\]
+Substituting $e^{s} - x_{1} = 2s( e^{-s^{2}} - x_{2})$ from the stationarity
+relation above, the bracket becomes
+$(2s - s - t)( e^{-s^{2}} - x_{2}) = (s-t)( e^{-s^{2}} - x_{2})$, so the whole
+expression equals $(s-t)^{2}( e^{-s^{2}} - x_{2}) = (s-t)^{2} \cdot
+\tfrac12 e^{-s^{2}}$, which is strictly positive for $t \neq s$. Since $a < b$
+such a $t$ exists in $[a,b]$. Statement (i) requires this quantity to be
+$\le 0$ for every $c \in C$, so (i) fails.
+\end{proof}
+
+\begin{corollary}\label{cor:luo}
+Let $f$ and $C$ be as in Theorem~\textup{\ref{thm:main}}. Then \textup{(ii)}
+holds, \textup{(i)} and \textup{(iv)} fail, and $U \neq X$. Consequently the
+hypothesis $U = X$ in \textup{\cite[Theorem 3.12(2)]{LMWY2019}} cannot be
+deleted without replacement: the implication \textup{(ii)} $\Rightarrow$
+\textup{(i)} is false without it.
+\end{corollary}
+
+\begin{proof}
+Statement (ii) is Lemma~\ref{lem:sun}, statement (i) fails by
+Lemma~\ref{lem:i-fails}, and (iv) fails by Lemma~\ref{lem:nonconvex}. Finally
+$U = \R^{2}_{++} \neq \R^{2} = X$.
+\end{proof}
+
+We state the conclusion as non-omissibility rather than necessity. The example
+shows that $U = X$ cannot simply be struck from Theorem~3.12(2); it does not
+show that $U = X$ is the weakest hypothesis that would serve there, and some
+weaker ray-completeness condition may well suffice.
+
+\begin{remark}[where the obstruction lies]\label{rem:obstruction}
+The example locates the failure precisely. The proof of
+(ii) $\Rightarrow$ (i) in \cite[Theorem 3.12(2)]{LMWY2019} applies the sun
+property along $z_{\lambda}$ for arbitrarily large $\lambda$, divides by
+$\lambda$, and lets $\lambda \to \infty$. For the witness of
+Lemma~\ref{lem:i-fails} that limit is unavailable: with
+$\eta = e^{-s^{2}}$ we have $(z_{\lambda})_{2} = \lambda \tfrac{\eta}{2} +
+(1-\lambda)\eta = \eta\bigl( 1 - \tfrac{\lambda}{2} \bigr)$, so
+$z_{\lambda} \in U$ exactly for $0 \le \lambda < 2$. The ray leaves $U$ after a
+bounded distance, and it is this bounded reach, not the sun property itself,
+that $U = X$ was supplying.
+\end{remark}
+
+\begin{remark}
+No result of \cite{LMWY2019} is contradicted. Their Theorem~3.12(1) gives
+(i) $\Rightarrow$ (ii) unconditionally, which is consistent with (ii) holding and
+(i) failing. Their Theorem~3.12(3) gives (i) $\Leftrightarrow$ (iv) under
+hypotheses our example does satisfy, and indeed (i) and (iv) fail together here,
+as Lemmas~\ref{lem:nonconvex} and~\ref{lem:i-fails} confirm independently. Their
+Theorem~3.13 also applies to our example, by a routine verification that
+negative entropy is totally convex on $U$ and that $f^{*}$ is locally uniformly
+totally convex on $U^{*}$; it yields Lemma~\ref{lem:sun} again, and we gave the
+direct proof instead because it is shorter and does not depend on that
+verification. Their Corollary~3.14, which does conclude convexity of
+$\nabla f(C)$ from bounded compactness and right Chebyshevness, assumes total
+convexity at every point of $X$ and $\nabla f(X) = U^{*}$; both presuppose
+$U = X$ and therefore do not apply here.
+\end{remark}
+
+\begin{remark}
+It is instructive that the same example does duty twice. Both
+\cite[Fact 3.2]{BMW2010} and \cite[Theorem 3.12(2)]{LMWY2019} reach convexity of
+$\nabla f(C)$ from a Chebyshev-type hypothesis, and both require full domain at
+the corresponding step, one by assuming $\dom f = X$ outright and the other by
+requiring $U = X$. Theorem~\ref{thm:main} and Corollary~\ref{cor:luo} together
+show the requirement is not an artefact of either proof technique.
+\end{remark}
+
+\section{The remaining hypothesis}\label{sec:b}
+
+For completeness we record the status of hypothesis (b) of
+Fact~\ref{fact:BMW}, which is not ours to claim.
+
+\begin{proposition}[essentially {\cite[Theorems 3.12 and 3.13]{LMWY2019}}]
+\label{prop:b}
+Let $f$ be Legendre on $X = \R^{n}$ with $\dom f = X$, and let $C \subseteq X$
+be nonempty and closed. If $C$ is right $\D$-Chebyshev, then $\Cstar$ is convex.
+In particular hypothesis \textup{(b)} of Fact~\textup{\ref{fact:BMW}} is
+redundant.
+\end{proposition}
+
+\begin{proof}
+Since $\dom f = X$ we have $U = X$, and $C$, being closed in $\R^{n}$, is
+boundedly compact. By \cite[Theorem 26.5]{Rock1970}, $\nabla f$ is a bijection
+of $U = X$ onto $U^{*}$ with inverse $\nabla f^{*}$, and $f^{*}$ is Legendre; in
+particular $\nabla f(U) = U^{*}$, and $f^{*}$ is differentiable and strictly
+convex on $U^{*}$.
+
+The total-convexity hypotheses of \cite[Theorem 3.13]{LMWY2019} are automatic
+here. For $y \in X$ and $t > 0$ the set $\{z \in \dom f = X :
+\lVert z - y \rVert = t\}$ is compact, $\D(\cdot, y)$ is continuous on it, and
+$\D(z,y) > 0$ for $z \neq y$ by strict convexity, so
+$\nu_{f}(y,t) > 0$. For $f^{*}$, fix $u_{0} \in U^{*}$ and $t > 0$ and choose
+$\rho > 0$ with $\overline{B}(u_{0},\rho) \subseteq U^{*}$; the \emph{joint}
+set $K = \{(u,v) : \lVert u - u_{0}\rVert \le \rho,\ \lVert v - u \rVert = t\}$
+is compact and contains no pair with $v = u$, so $m := \min_{K} D_{f^{*}} > 0$
+and $\nu_{f^{*}}(u,t) \ge m$ for every $u \in \overline{B}(u_{0},\rho)$, whence
+$\nu^{\mathrm{loc}}_{f^{*}}(u_{0},t) \ge m > 0$. (A bound for each fixed $u$
+would not suffice, since such bounds could degenerate as $u \to u_{0}$.)
+
+So \cite[Theorem 3.13]{LMWY2019} gives that $C$ is a right $\D$-sun, which is
+(ii); \cite[Theorem 3.12(2)]{LMWY2019}, applicable since $U = X$, yields (i);
+and \cite[Theorem 3.12(3)]{LMWY2019} makes (i) equivalent to convexity of
+$\nabla f(C)$.
+\end{proof}
+
+Together with Theorem~\ref{thm:main}, this completes the account of
+Fact~\ref{fact:BMW}: hypothesis (a) is essential, and hypothesis (b) is not
+needed.
+
+\section{What remains open}\label{sec:open}
+
+Theorem~\ref{thm:main} answers Problem~\ref{prob:2} as posed, but leaves the
+more interesting half of the question untouched.
+
+\begin{enumerate}[leftmargin=2.2em]
+\item \emph{What replaces full domain?} Our example shows $\dom f = X$ cannot
+simply be deleted. It does not identify the weakest hypothesis under which the
+conclusion survives. A natural guess is a condition on how $\Cstar$ approaches
+$\partial U^{*}$, since by the duality of
+\cite[Lemma 3.2]{LMWY2019} the right projection onto $C$ for $f$ is the left
+projection onto $\Cstar$ for $f^{*}$, and the obstruction in our example lives
+entirely on the dual side.
+
+\item \emph{Problem 4 of \cite{BMW2010}} asks for a characterisation of the
+right $\D$-Chebyshev sets for the negative entropy. A solution would subsume
+Theorem~\ref{thm:main}, which exhibits one such set and computes its gradient
+image. We regard this as the natural next question, and note that our example
+is a member of a one-parameter family (any $1/\sqrt2 \le a < b$), which suggests
+such sets are not scarce.
+
+\item \emph{Dimension and geometry.} Our example is planar and our curve is an
+arc. We do not know whether the failure can be made worse, for instance with
+$\Cstar$ having nonempty interior in its convex hull, nor what the analogous
+picture is in $\R^{n}$ for $n \ge 3$.
+\end{enumerate}
+
+\section*{Verification}
+
+The claims of Theorem~\ref{thm:main} are elementary and were checked by hand,
+but they were also checked numerically before and after the proofs were written.
+A harness verifies, in directed-rounding interval arithmetic and to $40$ digits:
+that $\D$ agrees with its definition and with the generalised
+Kullback--Leibler form; that the reduction of Lemma~\ref{lem:reduce} holds with
+the constant equal to $f(x)$; that $h_{x}''$ is bounded below uniformly on
+$[1,2]$; that the minimiser of $h_{x}$ is unique for a spread of adversarial
+$x \in U$ including near-boundary and far-field points; and the nonconvexity
+witness of Lemma~\ref{lem:nonconvex}. A second harness tests
+Lemma~\ref{lem:sun} directly against the definition of a sun, over $1{,}038$
+pairs $(x, \lambda)$ with $\lambda$ ranging beyond $x$ to the boundary of $U$
+and including points constructed to project to the interior of the arc; the
+projection parameter is invariant to $4 \times 10^{-40}$. It also confirms the
+witness of Lemma~\ref{lem:i-fails}, both the closed form
+$(s-t)^{2}\bigl(e^{-s^{2}} - x_{2}\bigr)$ for the inner product and its
+positivity. These checks are finite and do not certify the universal
+quantifiers, which are carried by the proofs above.
+
+\begin{thebibliography}{9}
+
+\bibitem{BBC2001}
+H.~H. Bauschke, J.~M. Borwein, and P.~L. Combettes,
+\emph{Essential smoothness, essential strict convexity, and Legendre functions
+in Banach spaces},
+Commun. Contemp. Math. \textbf{3} (2001), 615--647.
+
+\bibitem{BMW2010}
+H.~H. Bauschke, M.~S. Macklem, and X.~Wang,
+\emph{Chebyshev sets, Klee sets, and Chebyshev centers with respect to Bregman
+distances: recent results and open problems},
+\href{https://arxiv.org/abs/1003.3127}{arXiv:1003.3127} (2010).
+
+\bibitem{LOC2020}
+E.~Laude, P.~Ochs, and D.~Cremers,
+\emph{Bregman proximal mappings and Bregman--Moreau envelopes under relative
+prox-regularity},
+J. Optim. Theory Appl. \textbf{184} (2020), 724--761.
+
+\bibitem{LMWY2019}
+X.-F. Luo, K.~Meng, C.-F. Wen, and J.-C. Yao,
+\emph{Bregman distances without coercive condition: suns, Chebyshev sets and
+Klee sets},
+Optimization \textbf{68} (2019), no.~8, 1599--1624.
+
+\bibitem{Rock1970}
+R.~T. Rockafellar,
+\emph{Convex Analysis},
+Princeton University Press, 1970.
+
+\end{thebibliography}
+
+\end{document}

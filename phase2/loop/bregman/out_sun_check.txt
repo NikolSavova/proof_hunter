@@ -1,0 +1,34 @@
+Right-D_f-SUN check for C = {(e^t, e^{-t^2}) : t in [1,2]}, f = negative entropy on R^2
+Definition 3.11 of Luo-Meng-Wen-Yao (2019). Content is lambda > 1; lambda in [0,1] is
+their Proposition 3.10(ii) and holds for any C.
+
+  106 points x in U; 1038 (x, lambda) pairs tested (58 of the x project to an ENDPOINT of the arc)
+  worst deviation overall:  |t(z_lambda) - t(x)| = 4.133e-40
+    at x = (2.98252, 0.5), lambda = 1000, t(x) = 1.000000100000000, t(z) = 1.000000100000000
+  worst deviation among INTERIOR projections (the sharp case): 4.133e-40
+    at x = (2.98252, 0.5), lambda = 1000, t(x) = 1.000000100000000
+
+  the projection is INVARIANT along the ray from y through x -> PASS: C behaves as a right-D_f-sun
+
+  Consequence if PASS: Luo et al.'s (ii) HOLDS for our C, while their (iv)
+  'grad f(C) is convex' FAILS (verify.py block [E]), hence their (i) fails by their
+  Theorem 3.12(3), whose hypotheses grad f(U) = U* and f* smooth+strictly convex on U*
+  we satisfy. Their Theorem 3.12(1) gives (i) => (ii) with no domain hypothesis, so no
+  contradiction arises; what fails is the CONVERSE (ii) => (i), which their Theorem
+  3.12(2) asserts under U = X. Our U = R^2_++ != R^2 = X. So U = X is essential there.
+
+  NOTE: this is a FINITE numerical check, exactly like block [D] of verify.py. It
+  supports the claim and would have refuted it cheaply; it does not certify the
+  universal quantifier. The paper's Lemma 4.1 carries the proof, and it is DIRECT:
+  h_w'(t) is affine in w and vanishes at t = s when w = c(s), so h'_{z_lambda}(s) =
+  lambda * h_x'(s), and the three cases of the endpoint trichotomy close it. That
+  argument does not go through Theorem 3.13 at all, so the total-convexity
+  hypotheses never have to be verified.
+
+WITNESS for the failure of condition (i) (Luo et al. eq. (34)):
+  s = 1.5, x = (4.323590233495, 0.052699612281) in U: True
+  h_x'(s) = 0.000e+00  (zero => c(s) is the right projection of x)
+  over 41 values of t in [1.0,2.0], the inner product matches
+  the closed form (s-t)^2 (e^-s^2 - x_2) and its SMALLEST value is 3.293726e-05 at t = 1.475
+  condition (i) requires this to be <= 0 for every c in C -> PASS: (i) FAILS, as claimed
+  the ray z_lambda leaves U at lambda = 2.000000, so the lambda -> infinity step in the proof of Theorem 3.12(2) is unavailable
