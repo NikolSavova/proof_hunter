@@ -1,0 +1,49 @@
+=== [C1] archived exact J0 (old, Lemma E.2) vs the draft's SOL.18 decimals ===
+  W1: exact J0 = 0.6829419319  draft prints 0.682942...  consistent: True
+  W2: exact J0 = 1.1026814224  draft prints 1.10268...  consistent: True
+  W3: exact J0 = 1.9156204226  draft prints 1.91562...  consistent: True
+  W4: exact J0 = 2.5364515485  draft prints 2.53645...  consistent: True
+  W5: exact J0 = 3.6679338561  draft prints 3.66793...  consistent: True
+  W6b: exact J0 = 4.1780605838  draft prints 4.17806...  consistent: True
+  W7: exact J0 = 4.5959698208  draft prints 4.59597...  consistent: True
+=== [C2] draft floors <= exact old J0 ===
+  W1: 17/25 <= J0 exact: True  (slack = 0.002942)
+  W2: 11/10 <= J0 exact: True  (slack = 0.002681)
+  W3: 19/10 <= J0 exact: True  (slack = 0.015620)
+  W4: 5/2 <= J0 exact: True  (slack = 0.036452)
+  W5: 18/5 <= J0 exact: True  (slack = 0.067934)
+  W6b: 41/10 <= J0 exact: True  (slack = 0.078061)
+  W7: 9/2 <= J0 exact: True  (slack = 0.095970)
+  ALL FLOORS VALID: True
+=== [C3] REM* upper-bound list of the draft ===
+  W1: J* = 0.7000  REM*_exact = 0.017058 <= ub 9/500: True; J* - ub >= floor: True
+  W2: J* = 1.1320  REM*_exact = 0.029319 <= ub 3/100: True; J* - ub >= floor: True
+  W3: J* = 1.9750  REM*_exact = 0.059380 <= ub 3/50: True; J* - ub >= floor: True
+  W4: J* = 2.6170  REM*_exact = 0.080548 <= ub 81/1000: True; J* - ub >= floor: True
+  W5: J* = 3.8000  REM*_exact = 0.132066 <= ub 133/1000: True; J* - ub >= floor: True
+  W6b: J* = 4.3230  REM*_exact = 0.144939 <= ub 29/200: True; J* - ub >= floor: True
+  W7: J* = 4.7520  REM*_exact = 0.156030 <= ub 157/1000: True; J* - ub >= floor: True
+  REM* recovery route valid: True
+=== [C4] stale-vs-grown J0 (scout recalibration) ===
+  W1: J0_old = 0.682942  J0_new = 0.834155  old < new: True
+  W2: J0_old = 1.102681  J0_new = 1.385849  old < new: True
+  W3: J0_old = 1.915620  J0_new = 2.449935  old < new: True
+  W4: J0_old = 2.536452  J0_new = 3.250942  old < new: True
+  W5: J0_old = 3.667934  J0_new = 4.672850  old < new: True
+  W6b: J0_old = 4.178061  J0_new = 5.383381  old < new: True
+  W7: J0_old = 4.595970  J0_new = 6.014761  old < new: True
+  DRAFT'S STALE TABLE IS THE SAFE DIRECTION ON EVERY BAND: True
+  (the draft proves J <= J0_old; since J0_old < J0_new bandwise, the grown-threshold form of (S3) follows a fortiori — but the draft nowhere says so)
+=== [C5] the seven final comparisons (claimed sup vs floor), exact ===
+  W1: 1/2 < 17/25: True
+  W2: 13/20 < 11/10: True
+  W3: 9/10 < 19/10: True
+  W4: 11/10 < 5/2: True
+  W5: 3/2 < 18/5: True
+  W6b: 17/10 < 41/10: True
+  W7: 12/5 < 9/2: True
+  ALL SEVEN STRICT: True
+=== [C6] box count ===
+  36*2048*256 = 18874368  == 18874368: True
+  (band w-lengths 1+1+2+2+10+20 = 36 units, 2048 cells/unit, 256 z-cells)
+DONE ref4

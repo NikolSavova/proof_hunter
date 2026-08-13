@@ -1,0 +1,85 @@
+[G] guards: byte-consistency with the wave-5 chain sentinels
+  old rows@561 (6 bands) vs compose-v1 quotes: True
+  old R.2(700) = 0.911407 [0.911407]; old cell rung(561) = 0.416537 [0.416537]; min floor = 0.0176601 [>= 0.0176]
+  ALL GUARDS OK: True
+
+[A] exact harness coverage (threshold shift) -- 5th independent parse
+  data rows honored/fresh union: 557;  PASS rows: 557;  non-PASS: 0
+  gaps in [4, 560]: NONE;  gaps in [401, 560]: NONE
+  OVERALL line (verbatim): # OVERALL: PASS -- all of C1..C6 hold exactly for 4 <= m <= 560 (C2/C3 with the known m=4 exception; rows split across this file and the honored prior file(s)).
+  [A] coverage m in [4, 560] exact-PASS, threshold shifts to m >= 561: True
+
+[B] W2-W7 ledger rows at the NEW targets (certification point m = 561)
+  m= 561:  W2=0.455366  W3=0.666046  W4=0.718169  W5=0.976193  W6b=0.978293  W7=0.977247
+  m= 601:  W2=0.432621  W3=0.652598  W4=0.705742  W5=0.951104  W6b=0.958647  W7=0.958568
+  m=1581:  W2=0.342146  W3=0.528123  W4=0.571056  W5=0.751978  W6b=0.75839  W7=0.755307
+  all W2-W7 rows at 561 <= 0.98 (designed reserve): True;  m-monotone spot (561 >= 601 >= 1581): True
+  worst W2-W7 row at m = 561: 0.978293 (W6b)
+
+[C] W1 closure ladder at the NEW targets
+  M3 cell rung (Lemma R.1's 548 floors, w-uniform, X-free), EVERY integer m in [561, 699]:
+    worst = 0.485067 at m = 561;  all <= 1: True  (<= 0.98: True)
+  Lemma R.2 tail (new dec): m=700: 0.976016  m=750: 0.630819  m=1000: 0.290501  m=1581: 0.258665   (B(m) nonincreasing for m >= 142.05)
+
+[D] the COMPOSED effective constant (ADOPTED architecture)
+  segment worsts: W2-W7@561 = 0.978293 | W1[561,699] = 0.485067 | W1[700,inf) = 0.976016
+  composed worst row bound on m >= 561 = 0.978293  ->  C*(m >= 561) = 19.5659 <= 20: True
+  (this covers [561, 1580] and beyond a fortiori; budget-20 clause verified)
+  m >= 1581: worst row = 0.75839  ->  C*(m >= 1581) = 15.1678 <= 136: True  (headroom 8.966x)
+
+[E] Theorem E re-certification at the new targets (exact Fractions; REM* re-derived)
+  W1 : J* = 0.85983  REM* = 0.0256747 J0_new = 0.834155  REM* <= 0.3 R31*^2: True  positivity: True  J0_new > J0_old(0.682942): True
+  W2 : J* = 1.43208  REM* = 0.0462312 J0_new = 1.38585   REM* <= 0.3 R31*^2: True  positivity: True  J0_new > J0_old(1.10268): True
+  W3 : J* = 2.54872  REM* = 0.0987854 J0_new = 2.44993   REM* <= 0.3 R31*^2: True  positivity: True  J0_new > J0_old(1.91562): True
+  W4 : J* = 3.38348  REM* = 0.132538  J0_new = 3.25094   REM* <= 0.3 R31*^2: True  positivity: True  J0_new > J0_old(2.53645): True
+  W5 : J* = 4.88932  REM* = 0.21647   J0_new = 4.67285   REM* <= 0.3 R31*^2: True  positivity: True  J0_new > J0_old(3.66793): True
+  W6b: J* = 5.63108  REM* = 0.247699  J0_new = 5.38338   REM* <= 0.3 R31*^2: True  positivity: True  J0_new > J0_old(4.17806): True
+  W7 : J* = 6.28823  REM* = 0.273469  J0_new = 6.01476   REM* <= 0.3 R31*^2: True  positivity: True  J0_new > J0_old(4.59597): True
+  exact J0 fractions archived in wave6_scout/out_scout_s1_targets.txt; this block
+  re-derives them independently -- decimal match at 6 sig figs on all 7 bands.
+  ALL Theorem-E side conditions at the new targets: True;  J0 grows bandwise (safe direction, s3-ref F3): True
+
+[S1] the DISCHARGED (S1) input (Theorem SOL.9, two-referee MINOR_REPAIRS)
+  W1 : certified ceilings 0.900/0.680 < consumed targets 1.19/0.87: True
+  W2 : certified ceilings 1.090/1.250 < consumed targets 1.44/1.62: True
+  W3 : certified ceilings 1.370/2.400 < consumed targets 1.82/3.11: True
+  W4 : certified ceilings 1.550/3.260 < consumed targets 2.04/4.27: True
+  W5 : certified ceilings 1.850/4.980 < consumed targets 2.38/6.38: True
+  W6b: certified ceilings 1.970/5.650 < consumed targets 2.56/7.33: True
+  W7 : geometric enclosures a(0.89) < 2.1304, b(0.89) < 6.4114 clear ADOPTED targets 2.71/8.17: True
+       ... and the (S2)-FALLBACK targets 2.42/7.28: True  (S1 survives either (S2) resolution)
+  [S1] all 14 adopted constants strictly dominated by refereed certificates: True
+
+[FB] the (S2)-FALLBACK chain (C5*(W7) = 0.80 kept; W7 targets 2.42/7.28)
+  fallback W7 row: m=561: 0.979015  m=601: 0.958342  m=1581: 0.733254
+  fallback W7 row at 561 <= 0.98: True (m-monotone spot: True)
+  FALLBACK composed C*(m >= 561) = 19.5803 <= 20: True;  C*(m >= 1581) = 15.1678 <= 136: True
+  [FB] fallback chain closes: True
+
+[B2] (S4)/bootstrap: referee-M2 chord/monotone-iteration at every NEW worst row
+  d = 0.0385273;  INFL/QUADF validity at m >= 561: 20/561 + d = 0.074178 <= min(0.0909, 0.09): True
+  W2 @ m=561: tot = 0.45537  G(20/m) = 0.0158509 < 20/m = 0.0356506: True (margin 55.54%);  x_seed = 0.92147 >= 0.89: True
+  W3 @ m=561: tot = 0.66605  G(20/m) = 0.0231874 < 20/m = 0.0356506: True (margin 34.96%);  x_seed = 0.92147 >= 0.89: True
+  W4 @ m=561: tot = 0.71817  G(20/m) = 0.0250007 < 20/m = 0.0356506: True (margin 29.87%);  x_seed = 0.92147 >= 0.89: True
+  W5 @ m=561: tot = 0.97619  G(20/m) = 0.0339589 < 20/m = 0.0356506: True (margin 4.745%);  x_seed = 0.92147 >= 0.89: True
+  W6b @ m=561: tot = 0.97829  G(20/m) = 0.0340279 < 20/m = 0.0356506: True (margin 4.552%);  x_seed = 0.92147 >= 0.89: True
+  W7 @ m=561: tot = 0.97725  G(20/m) = 0.0339854 < 20/m = 0.0356506: True (margin 4.671%);  x_seed = 0.92147 >= 0.89: True
+  W1 @ m=700 (R.2 row): tot = 0.97602  G(20/m) = 0.026723 < 20/m = 0.0285714: True (margin 6.47%);  x_seed = 0.92007 >= 0.89: True
+  W1 @ m=561 (cell rung): tot = 0.48507  G(20/m) = 0.0168402 < 20/m = 0.0356506: True (margin 52.76%);  x_seed = 0.92147 >= 0.89: True
+  W7 @ m=561 (FALLBACK): tot = 0.97902  G(20/m) = 0.0340101 < 20/m = 0.0356506: True (margin 4.602%);  x_seed = 0.92147 >= 0.89: True
+  BOOTSTRAP closes from the (S4) seed 0.89 at every worst row (incl. fallback): True
+
+[F] sliver far-entry headroom at the operative threshold + X.2 cap
+  far'(561, 4) = 4.556e-5  (slot 0.05; headroom 1097.6x)
+  tau_0(0.89)/0.89 = 1.07372378 <= 1.074 (Cor X.2 edge): True
+
+== COMPOSED-CHAIN v2 VERDICT ==
+  [G] guards: True  [A] harness: True  [B] rows@561: True  [C] W1 ladder: True  [D] C* budgets: True
+  [E] Theorem-E/J0: True  [S1] discharged input: True  [FB] fallback chain: True  [B2] bootstrap: True  [F] sliver/X.2: True
+  ALL CHECKS PASS: True
+  NOTE: this certifies the IMPLICATION chain and its constants only.
+  CL(79, 20, 0.89) at m >= 561 remains CONDITIONAL on the named open
+  hypotheses (S2')/(S3')/(S4) of CL_composition_v2_20260812.md sec 4;
+  (S1) is DISCHARGED (Theorem SOL.9, two-referee, certificate of record
+  wave6b_ref_s1/ref2+ref3).  The wave-6b (S2) attempt was FATAL, (S3)
+  MAJOR_ISSUES, (S4) MAJOR_ISSUES x2 -- none counts under house rules.

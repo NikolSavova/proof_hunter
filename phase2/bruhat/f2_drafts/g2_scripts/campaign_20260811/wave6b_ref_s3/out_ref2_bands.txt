@@ -1,0 +1,18 @@
+=== cross-validation: exact sums vs limit (w=5) ===
+  n=2: F(m=10000)=1.96103660822  G_n=1.96082939566  diff=0.000207
+  n=3: F(m=10000)=1.73648098178  G_n=1.73619729699  diff=0.000284
+  n=4: F(m=10000)=1.27163657594  G_n=1.27124741802  diff=0.000389
+=== binding point (m, w) = (561, 5) ===
+  r31 = 0.88636451   (draft 0.8864, scout 0.88636)
+  r42 = 0.6506471   (draft 0.6506, scout 0.65065)
+  J   = 0.46031849   (draft 0.4603)
+  J/J0(W1) = 0.67402288   (draft 0.6740)
+=== per-band scan (this is the SOL.7 attack) ===
+  W1: max J = 0.46031849 at (w, m) = (5.0, 561); claimed sup 0.5; J <= sup: True (headroom 7.936%); min F2 = 1.19878 > 1/10: True
+  W2: max J = 0.55031731 at (w, m) = (6.0, 561); claimed sup 0.65; J <= sup: True (headroom 15.34%); min F2 = 1.96731 > 1/10: True
+  W3: max J = 0.66462617 at (w, m) = (8.0, 561); claimed sup 0.9; J <= sup: True (headroom 26.15%); min F2 = 2.84144 > 1/10: True
+  W4: max J = 0.7235812 at (w, m) = (10.0, 561); claimed sup 1.1; J <= sup: True (headroom 34.22%); min F2 = 4.74529 > 1/10: True
+  W5: max J = 0.84252011 at (w, m) = (20.0, 561); claimed sup 1.5; J <= sup: True (headroom 43.83%); min F2 = 6.72345 > 1/10: True
+  W6b: max J = 0.92059223 at (w, m) = (40.0, 561); claimed sup 1.7; J <= sup: True (headroom 45.85%); min F2 = 16.7179 > 1/10: True
+ALL BAND CHECKS PASS (truth level, scan class): True
+DONE ref2

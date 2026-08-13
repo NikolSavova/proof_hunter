@@ -1,0 +1,78 @@
+== [A] exact cumulant checks, m = 700 (and 561), all bands ==
+cols: w | A/m | lam*k3/s2 (<=2.5?) | c4=k4*lam^2/s2 (|.|<=6.72?)
+  m=700 w= 4.0001: A/m=0.29884  lam*k3/s2=0.66802 (OK)  c4=0.19581 (OK)
+  m=700 w=      5: A/m=0.39275  lam*k3/s2=0.88618 (OK)  c4=0.65018 (OK)
+  m=700 w=     10: A/m=0.67226  lam*k3/s2=1.51822 (OK)  c4=3.16296 (OK)
+  m=700 w=     20: A/m=0.83615  lam*k3/s2=1.80344 (OK)  c4=4.82015 (OK)
+  m=700 w=     50: A/m=0.93449  lam*k3/s2=1.93050 (OK)  c4=5.58027 (OK)
+  m=700 w=    120: A/m=0.97085  lam*k3/s2=1.97679 (OK)  c4=5.84569 (OK)
+  m=700 w=    300: A/m=0.97458  lam*k3/s2=2.01959 (OK)  c4=6.02614 (OK)
+  m=700 w=    623: A/m=0.93196  lam*k3/s2=2.12528 (OK)  c4=6.37927 (OK)
+  m=561 w= 4.0001: A/m=0.29896  lam*k3/s2=0.66818 (OK)  c4=0.19607 (OK)
+  m=561 w= 499.29: A/m=0.93083  lam*k3/s2=2.12402 (OK)  c4=6.37130 (OK)
+
+== [B] the (SOL.14)/(SOL.15) remainder: TRUE R4 and ABS series, m=700 ==
+units: env := |R4| * 24*lam^2/(s2*t^4)  (so (SOL.15) claims env <= 6.72+0.72u/(1-u))
+(SOL.14) claims |R4| <= 0.0021 * s2^2 * t^4, i.e. env <= 0.0504*A
+  w= 4.0001 u=0.1000: env_true=  0.1978 env_absseries=  0.2163 | (SOL.15) claim=6.8000 [true fits: True; abs-series fits: True] | (SOL.14) cap=  10.543 [fits: True]
+  w= 4.0001 u=0.2000: env_true=  0.2038 env_absseries=  0.2390 | (SOL.15) claim=6.9000 [true fits: True; abs-series fits: True] | (SOL.14) cap=  10.543 [fits: True]
+  w= 4.0001 u=0.2857: env_true=  0.2118 env_absseries=  0.2603 | (SOL.15) claim=7.0080 [true fits: True; abs-series fits: True] | (SOL.14) cap=  10.543 [fits: True]
+  w=     20 u=0.1000: env_true=  4.8078 env_absseries=  5.1847 | (SOL.15) claim=6.8000 [true fits: True; abs-series fits: True] | (SOL.14) cap=  29.499 [fits: True]
+  w=     20 u=0.2000: env_true=  4.7713 env_absseries=  5.6103 | (SOL.15) claim=6.9000 [true fits: True; abs-series fits: True] | (SOL.14) cap=  29.499 [fits: True]
+  w=     20 u=0.2857: env_true=  4.7220 env_absseries=  6.0360 | (SOL.15) claim=7.0080 [true fits: True; abs-series fits: True] | (SOL.14) cap=  29.499 [fits: True]
+  w=    120 u=0.1000: env_true=  5.8261 env_absseries=  6.3479 | (SOL.15) claim=6.8000 [true fits: True; abs-series fits: True] | (SOL.14) cap=  34.252 [fits: True]
+  w=    120 u=0.2000: env_true=  5.7688 env_absseries=  6.9497 | (SOL.15) claim=6.9000 [true fits: True; abs-series fits: False] | (SOL.14) cap=  34.252 [fits: True]
+  w=    120 u=0.2857: env_true=  5.6922 env_absseries=  7.5704 | (SOL.15) claim=7.0080 [true fits: True; abs-series fits: False] | (SOL.14) cap=  34.252 [fits: True]
+  w=    623 u=0.1000: env_true=  6.3574 env_absseries=  6.9342 | (SOL.15) claim=6.8000 [true fits: True; abs-series fits: False] | (SOL.14) cap=  32.880 [fits: True]
+  w=    623 u=0.2000: env_true=  6.2933 env_absseries=  7.6007 | (SOL.15) claim=6.9000 [true fits: True; abs-series fits: False] | (SOL.14) cap=  32.880 [fits: True]
+  w=    623 u=0.2857: env_true=  6.2079 env_absseries=  8.2900 | (SOL.15) claim=7.0080 [true fits: True; abs-series fits: False] | (SOL.14) cap=  32.880 [fits: True]
+
+== [C] V1-V8 arithmetic of the draft, recomputed ==
+  s20 = 1960000/7921 = 247.443505 > 247.44: True
+  eps0 = 0.06357143 < 0.06358: True
+  M3=4.0 M4=7.519885 M5=16.0 M6=37.599424
+  E_loc[0] = 0.023273833  < 0.02328: True   (margin 6.17e-06)
+  E_loc[1] = 0.044819971  < 0.04482: True   (margin 2.87e-08)
+  E_loc[2] = 0.097397896  < 0.09741: True   (margin 1.21e-05)
+  E_mid[0] = 0.000710591  < 0.00071: False
+  E_mid[1] = 0.003079011  < 0.00308: True
+  E_mid[2] = 0.013412128  < 0.01342: True
+  exp(-12.32) = 4.4616e-06
+  E_cross[0] = 1.029536e-05  < 1.04e-05: True
+  E_cross[1] = 2.925466e-04  < 0.000294: True
+  E_cross[2] = 8.312818e-03  < 0.00832: True
+  E_far[2] = 9.707e-12  < 1.1e-11: True
+  E0 = 0.023994719  < 0.02401: True  < 0.04: True
+  E1 = 0.048191529  < 0.0482: True  < 0.06: True
+  E2 = 0.119122843  < 0.11916: True  < 0.13: True
+  g(eps0) = 0.398136966 > 0.39813: True  (margin 6.97e-06)
+  max|g'| = 0.025310136 < 0.02532: True
+  -g'' in (0.396527965, 0.398942280) vs (0.39652, 0.39895): True  (lo margin 7.96e-06, hi margin 7.72e-06)
+  H_min = 0.607176 > 0.607: True
+  H_max = 1.533735 < 1.535: True
+  X_max = 1.544552 < 1.545: True
+  final deviation bound max(1-0.607, X_max-1) = 0.544552 < 0.545 < 0.89: True
+
+== [D] (SOL.5) provenance fix: tier-2 crossover exponent on W2..W7 ==
+  (Lemma R.1 covers only w in (4,5]; tier-2 c2=0.0871 on 0<t<=1.074lam +
+   [A2] band floors c_A give |Phi| <= e^{-0.0871*0.64*c_A*m} on [0.8lam, t_0])
+  W2: 0.0871*0.64*0.35 = 0.019510 >= 0.0176: True
+  W3: 0.0871*0.64*0.42 = 0.023412 >= 0.0176: True
+  W4: 0.0871*0.64*0.52 = 0.028987 >= 0.0176: True
+  W5: 0.0871*0.64*0.60 = 0.033446 >= 0.0176: True
+  W6: 0.0871*0.64*0.70 = 0.039021 >= 0.0176: True
+  W7: 0.0871*0.64*0.80 = 0.044595 >= 0.0176: True
+
+== [E] scope: does the m=561 case work with the SAME constants? ==
+  A_min(561) = 0.28*561 = 157.08 < 196: True  -> (2/7)*sqrt(A) = 3.5809 < 4 (local range |y|<=4 NOT covered)
+  s2_min(561) = 198.3083;  eps(561) <= 0.071012 > 0.06358
+  E_cross[2](561) = 0.06887  (vs 0.00832 at 700: 8.3x bigger)
+  feasibility sketch at 561 (split y*=3.581, b=0.03325, rem-const=0.002246):
+    E0=0.02815 E1=0.06115 E2=0.21149
+    H_min=0.4318 H_max=1.7093 -> deviation bound 0.7241 < 0.89: True
+
+== [F] interface: seed vs basin ==
+  draft delivers 0.545; (S4) needs 0.89; M2 basins 0.90182/0.89412; wave6 basins >= 0.920
+  0.545 < 0.89 < 0.89412: True
+
+done.

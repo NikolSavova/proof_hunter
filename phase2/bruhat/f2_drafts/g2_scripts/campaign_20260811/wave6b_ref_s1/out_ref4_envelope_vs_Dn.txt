@@ -1,0 +1,11 @@
+probes: 104 (m,w) pairs x 3 cumulant orders
+check 1 -- pointwise L2 <= D2, D3 <= U3, D4 <= U4 at ALL probes: True
+check 2 -- |eps_n| <= w lam^2 M_n/12 with draft M=(1,4,20) at ALL probes: True
+          with ref2 measured M=(0.1686,0.1845,0.5301) at ALL probes: True
+worst |eps|/draft-cap ratio: 0.0408221 at (m,w,n)=(561, '4.001', 2)
+
+corner (m=561, w=5):  D3/D2 = 0.88636451,  D4/D2 = 0.6506471
+  r31 sentinel agreement: D3/D2 vs lam*k3/k2 -- both are the same object per (6)
+
+corner (m=561, w=40):  D3/D2 = 1.9113505,  D4/D2 = 5.4653371
+  r31 sentinel agreement: D3/D2 vs lam*k3/k2 -- both are the same object per (6)

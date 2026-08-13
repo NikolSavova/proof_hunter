@@ -1,0 +1,65 @@
+== [A] ENGINE VALIDATION ==
+  brute-force (m=6, lam=0.3): k2 rel err 2.709e-50  k3 rel err 1.477e-49  k4 rel err 5.211e-48
+  brute-force match (<=1e-38 rel): True
+  diff-of-logZ (m=50, lam=0.2): rel errs 7.527e-51 1.234e-50 1.628e-50
+  logZ-derivative match (<=1e-20 rel): True
+
+== [B] V1 SENTINELS (m=561, lam=w/561) vs draft table ==
+  w=  5: r31=0.88636451 (draft 0.88636, match True)   r42=0.6506471 (draft 0.65065, match True)
+  w=  6: r31=1.0738715 (draft 1.0739, match True)   r42=1.2057655 (draft 1.2058, match True)
+  w=  8: r31=1.3484805 (draft 1.3485, match True)   r42=2.3075471 (draft 2.3075, match True)
+  w= 10: r31=1.5183545 (draft 1.5184, match True)   r42=3.1636382 (draft 3.1636, match True)
+  w= 20: r31=1.8035605 (draft 1.8036, match True)   r42=4.820621 (draft 4.8206, match True)
+  w= 40: r31=1.9113505 (draft 1.9114, match True)   r42=5.4653371 (draft 5.4653, match True)
+  ALL SENTINELS MATCH: True
+
+== [C] V2 GEOMETRIC VALUES + enclosures the draft uses ==
+  a(0.89) = 2.1303060576444510159   in (2.1302, 2.1304): True   < 2.71: True
+  b(0.89) = 6.4112558488549645817   in (6.4111, 6.4114): True   < 8.17: True
+  zeta(2) = 1.644934066848226436472415   in (1.6449340668482264, 1.6449340668482265): True
+  e^-4 = 0.0183156388887 < 1/54 = 0.0185185185185: True
+
+== [D] D_n identity (5) + kappa3 >= 0 spot checks ==
+  (m=561, w=20): |D2-lam^3 k2|/D2=3.32e-50  |D3-lam^4 k3|/D3=3.83e-50  |D4-lam^5 k4|/D4=7.21e-50  k3>0: True
+  (m=561, w=5): |D2-lam^3 k2|/D2=3.47e-49  |D3-lam^4 k3|/D3=9.64e-49  |D4-lam^5 k4|/D4=5.94e-48  k3>0: True
+  (m=1000, w=8): |D2-lam^3 k2|/D2=4.06e-50  |D3-lam^4 k3|/D3=8.70e-50  |D4-lam^5 k4|/D4=8.80e-50  k3>0: True
+
+== [E] REFLECTION (SOL.9): lam -> -lam ==
+  lam=+/-0.03: k2 even 2.2e-50, k3 odd 3.8e-50, k4 even 5.0e-50
+  lam=+/-0.5: k2 even 2.5e-51, k3 odd 2.5e-51, k4 even 5.0e-51
+  lam=+/-0.89: k2 even 8.3e-51, k3 odd 1.0e-50, k4 even 1.2e-50
+  reflection identities hold to 1e-40: True
+
+== [F] SOL.3 ENVELOPE AT FINITE m (r31 <= a(lam), r42 <= b(lam)) ==
+  (m=561, lam=0.89, w=499.29): r31=2.124025 <= a=2.1303061; r42=6.3713008 <= b=6.4112558: True
+  (m=561, lam=0.5, w=280.5): r31=2.0298494 <= a=2.0414941; r42=6.0553093 <= b=6.1265471: True
+  (m=561, lam=0.2, w=112.2): r31=1.9765747 <= a=2.0066622; r42=5.8389294 <= b=6.0200399: True
+  (m=561, lam=0.0730838, w=41.0): r31=1.9137682 <= a=2.0008901; r42=5.4797098 <= b=6.0026713: True
+  (m=1581, lam=0.89, w=1407.09): r31=2.128086 <= a=2.1303061; r42=6.397134 <= b=6.4112558: True
+  (m=5000, lam=0.89, w=4450.0): r31=2.1296051 <= a=2.1303061; r42=6.4067971 <= b=6.4112558: True
+  (m=100000, lam=0.89, w=89000.0): r31=2.130271 <= a=2.1303061; r42=6.4110331 <= b=6.4112558: True
+  (m=561, lam=0.889, w=498.729): r31=2.1237282 <= a=2.1300172; r42=6.3702993 <= b=6.4102992: True
+  envelope holds at all probes: True
+
+== [G] ADVERSARIAL TRUTH SWEEP vs the SOL.6/SOL.7 CERTIFIED CEILINGS ==
+  band (4,5]: max r31=0.8863645 @ ('5', 561) (ceil 0.9, target 1.19); max r42=0.6506471 @ ('5', 561) (ceil 0.68, target 0.87)
+  band (5,6]: max r31=1.073872 @ ('6', 561) (ceil 1.09, target 1.44); max r42=1.205766 @ ('6', 561) (ceil 1.25, target 1.62)
+  band (6,8]: max r31=1.348481 @ ('8', 561) (ceil 1.37, target 1.82); max r42=2.307547 @ ('8', 561) (ceil 2.4, target 3.11)
+  band (8,10]: max r31=1.518354 @ ('10', 561) (ceil 1.55, target 2.04); max r42=3.163638 @ ('10', 561) (ceil 3.26, target 4.27)
+  band (10,20]: max r31=1.803561 @ ('20', 561) (ceil 1.85, target 2.38); max r42=4.820621 @ ('20', 561) (ceil 4.98, target 6.38)
+  band (20,40]: max r31=1.911351 @ ('40', 561) (ceil 1.97, target 2.56); max r42=5.465337 @ ('40', 561) (ceil 5.65, target 7.33)
+  truth <= certified ceilings at ALL sampled adversarial points: True
+  -- W7 (ceilings 2.71 / 8.17 via a(0.89), b(0.89)) --
+    (m=561, lam=0.0713014): r31=1.9113508  r42=5.4653386  ok=True
+    (m=561, lam=0.089): r31=1.9308905  r42=5.5811098  ok=True
+    (m=561, lam=0.6): r31=2.0500304  r42=6.1239048  ok=True
+    (m=561, lam=0.89): r31=2.124025  r42=6.3713008  ok=True
+    (m=562, lam=0.89): r31=2.1240362  r42=6.3713723  ok=True
+    (m=1581, lam=0.89): r31=2.128086  r42=6.397134  ok=True
+    (m=5000, lam=0.89): r31=2.1296051  r42=6.4067971  ok=True
+    (m=50000, lam=0.89): r31=2.130236  r42=6.4108103  ok=True
+    (m=561, lam=0.88999): r31=2.124022  r42=6.3712908  ok=True
+  W7 truth under 2.71/8.17 (and under a(0.89)/b(0.89)) at all probes: True
+
+== SUMMARY flags ==
+  A(engine) True  B(sentinels) True  E(reflection) True  F(envelope) True  G(truth<=ceilings) True

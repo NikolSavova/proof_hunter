@@ -1,0 +1,43 @@
+== CHECK 1: A_1/A_4 closed forms vs direct r-sums (dps 80) ==
+  x= 0.007130124  relerr A1=1.05e-80  A4=9.26e-80  tails=(7.5e-81,1.7e-67)  PASS=True
+  x= 0.050000000  relerr A1=9.45e-81  A4=3.32e-80  tails=(1.8e-83,1.2e-72)  PASS=True
+  x= 0.890000000  relerr A1=0.0  A4=0.0  tails=(1.6e-104,3.4e-97)  PASS=True
+  x= 2.670000000  relerr A1=0.0  A4=0.0  tails=(1.3e-144,2.7e-138)  PASS=True
+  x= 7.000000000  relerr A1=1.13e-81  A4=1.11e-81  tails=(5.1e-242,2.6e-236)  PASS=True
+== CHECK 2: s2/kappa3/kappa4 closed forms vs direct factor moments ==
+  [    2.6s] (m=561, w=4.3):  relerr s2=2.9e-39  kappa3=1.17e-38  kappa4=1.1e-37  mu=0.0
+      s2=3135597.22165  kappa3=301171963.0  kappa4=1.687992826e+10  s2>0=True
+  [    4.8s] (m=561, lam=0.89):  relerr s2=2.67e-40  kappa3=3.74e-40  kappa4=4.97e-40  mu=1.09e-39
+      s2=659.253365508  kappa3=1573.337749  kappa4=5302.741434  s2>0=True
+== CHECKS 3/4/5: R5 direct vs series, majorant, t->0 continuity ==
+  [    8.0s] m=  561 w=4.000000001          t=lam*0.5: |R5d-R5s|=5.27e-36 (tail bound 2.01e-31) PASS=True; |R5|<=B5: True (|R5|=0.04304, B5=7.055); Q=0.0082127 <= C_abs=1.3461: True
+  [   11.1s] m=  561 w=4.000000001          t=lam*0.2: |R5d-R5s|=1.34e-37 (tail bound 5.9e-33) PASS=True; |R5|<=B5: True (|R5|=0.0004351, B5=0.07224); Q=0.00810651 <= C_abs=1.3461: True
+           t->0: Q(t=lam*1e-4)=0.008085486 vs SOL.5.2 Q0=0.008085486  relgap=6.54e-10  PASS=True
+  [   14.1s] m=  561 w=4.3                  t=lam*0.5: |R5d-R5s|=5.37e-36 (tail bound 1.86e-31) PASS=True; |R5|<=B5: True (|R5|=0.04743, B5=7.059); Q=0.00823911 <= C_abs=1.22621: True
+  [   16.9s] m=  561 w=4.3                  t=lam*0.2: |R5d-R5s|=1.36e-37 (tail bound 5.46e-33) PASS=True; |R5|<=B5: True (|R5|=0.0004784, B5=0.07228); Q=0.0081149 <= C_abs=1.22621: True
+           t->0: Q(t=lam*1e-4)=0.0080900639 vs SOL.5.2 Q0=0.0080900639  relgap=7.73e-10  PASS=True
+  [   19.4s] m=  561 w=5                    t=lam*0.5: |R5d-R5s|=5.63e-36 (tail bound 1.61e-31) PASS=True; |R5|<=B5: True (|R5|=0.04489, B5=7.054); Q=0.00651678 <= C_abs=1.02411: True
+  [   21.9s] m=  561 w=5                    t=lam*0.2: |R5d-R5s|=1.43e-37 (tail bound 4.72e-33) PASS=True; |R5|<=B5: True (|R5|=0.0004316, B5=0.07223); Q=0.00611907 <= C_abs=1.02411: True
+           t->0: Q(t=lam*1e-4)=0.0060396657 vs SOL.5.2 Q0=0.0060396657  relgap=3.31e-9  PASS=True
+  [   23.5s] m=  561 w=8                    t=lam*0.5: |R5d-R5s|=6.14e-36 (tail bound 1.0e-31) PASS=True; |R5|<=B5: True (|R5|=0.345, B5=6.689); Q=0.0331795 <= C_abs=0.643395: True
+  [   25.1s] m=  561 w=8                    t=lam*0.2: |R5d-R5s|=1.56e-37 (tail bound 2.93e-33) PASS=True; |R5|<=B5: True (|R5|=0.003349, B5=0.0685); Q=0.0314554 <= C_abs=0.643395: True
+           t->0: Q(t=lam*1e-4)=0.031071467 vs SOL.5.2 Q0=0.031071467  relgap=3.16e-9  PASS=True
+  [   25.5s] m=  561 w=40.000000001         t=lam*0.5: |R5d-R5s|=6.43e-36 (tail bound 1.84e-32) PASS=True; |R5|<=B5: True (|R5|=2.586, B5=4.224); Q=0.160652 <= C_abs=0.262404: True
+  [   25.9s] m=  561 w=40.000000001         t=lam*0.2: |R5d-R5s|=1.63e-37 (tail bound 5.39e-34) PASS=True; |R5|<=B5: True (|R5|=0.02819, B5=0.04325); Q=0.170994 <= C_abs=0.262404: True
+           t->0: Q(t=lam*1e-4)=0.17322072 vs SOL.5.2 Q0=0.17322072  relgap=3.28e-9  PASS=True
+  [   26.0s] m=  561 lam=0.89               t=lam*0.5: |R5d-R5s|=3.58e-36 (tail bound 6.82e-34) PASS=True; |R5|<=B5: True (|R5|=3.178, B5=3.561); Q=0.194721 <= C_abs=0.218226: True
+  [   26.1s] m=  561 lam=0.89               t=lam*0.2: |R5d-R5s|=9.09e-38 (tail bound 2.0e-35) PASS=True; |R5|<=B5: True (|R5|=0.03484, B5=0.03647); Q=0.208517 <= C_abs=0.218226: True
+           t->0: Q(t=lam*1e-4)=0.21152994 vs SOL.5.2 Q0=0.21152994  relgap=3.65e-9  PASS=True
+  [   29.3s] m=  561 lam=(4/m)(1+1e-12)     t=lam*0.5: |R5d-R5s|=5.27e-36 (tail bound 2.01e-31) PASS=True; |R5|<=B5: True (|R5|=0.04304, B5=7.055); Q=0.0082127 <= C_abs=1.3461: True
+  [   32.4s] m=  561 lam=(4/m)(1+1e-12)     t=lam*0.2: |R5d-R5s|=1.34e-37 (tail bound 5.9e-33) PASS=True; |R5|<=B5: True (|R5|=0.0004351, B5=0.07224); Q=0.00810651 <= C_abs=1.3461: True
+           t->0: Q(t=lam*1e-4)=0.008085486 vs SOL.5.2 Q0=0.008085486  relgap=6.54e-10  PASS=True
+  [   36.5s] m=  700 w=4+1e-9               t=lam*0.5: |R5d-R5s|=6.55e-36 (tail bound 3.14e-31) PASS=True; |R5|<=B5: True (|R5|=0.05368, B5=8.803); Q=0.00821205 <= C_abs=1.34665: True
+  [   40.5s] m=  700 w=4+1e-9               t=lam*0.2: |R5d-R5s|=1.66e-37 (tail bound 9.19e-33) PASS=True; |R5|<=B5: True (|R5|=0.0005426, B5=0.09014); Q=0.0081059 <= C_abs=1.34665: True
+           t->0: Q(t=lam*1e-4)=0.008084875 vs SOL.5.2 Q0=0.008084875  relgap=6.54e-10  PASS=True
+  [   48.5s] m= 1581 w=5                    t=lam*0.5: |R5d-R5s|=1.6e-35 (tail bound 1.28e-30) PASS=True; |R5|<=B5: True (|R5|=0.1266, B5=19.88); Q=0.00652798 <= C_abs=1.02535: True
+  [   56.4s] m= 1581 w=5                    t=lam*0.2: |R5d-R5s|=4.05e-37 (tail bound 3.74e-32) PASS=True; |R5|<=B5: True (|R5|=0.001218, B5=0.2036); Q=0.00613307 <= C_abs=1.02535: True
+           t->0: Q(t=lam*1e-4)=0.0060542399 vs SOL.5.2 Q0=0.0060542399  relgap=3.28e-9  PASS=True
+  [   56.8s] m= 1581 lam=0.89               t=lam*0.5: |R5d-R5s|=1.01e-35 (tail bound 1.92e-33) PASS=True; |R5|<=B5: True (|R5|=9.043, B5=9.937); Q=0.19587 <= C_abs=0.215216: True
+  [   57.0s] m= 1581 lam=0.89               t=lam*0.2: |R5d-R5s|=2.57e-37 (tail bound 5.62e-35) PASS=True; |R5|<=B5: True (|R5|=0.09919, B5=0.1018); Q=0.209805 <= C_abs=0.215216: True
+           t->0: Q(t=lam*1e-4)=0.21284927 vs SOL.5.2 Q0=0.21284927  relgap=3.66e-9  PASS=True
+[   57.1s] == IDENTITIES OVERALL PASS: True ==

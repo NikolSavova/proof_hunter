@@ -1,0 +1,22 @@
+== [0] identity validation (SOL.9)/(SOL.10) vs mp.diff ==
+  lam=0.89, j=7: |d2 - v_j| = 0.0, |d3 - k3_j| = 4.59e-41  PASS
+  lam=0.05, j=40: |d2 - v_j| = 7.35e-39, |d3 - k3_j| = 2.23e-37  PASS
+  lam=0.4, j=3: |d2 - v_j| = 1.15e-40, |d3 - k3_j| = 9.87e-40  PASS
+== [1] termwise ratio scan: rho = lam*k3_j/v_j, positivity of k3_j ==
+  grid sup rho = 2.130306058 at (lam, j) = (0.89, 140)
+  any negative kappa_3 term: False
+== [2] j -> infinity limit rho_inf(lam) = lam coth(lam/2), sup over (0, 0.89] ==
+  rho_inf(0.89) = 2.130306058  (this is the campaign's W7 geometric limit r31geo)
+  rho_inf increasing on (0, 0.89] (grid): True
+  refined sup rho = 2.130306058
+  CHECK termwise sup <= 2.5: PASS  (headroom 14.79%)
+== [3] sum-level lam*|kappa_3|/s2 at corners ==
+  m=700, lam=0.89 (w=623.0): lam|k3|/s2 = 2.1252783  PASS
+  m=700, lam=0.00571571 (w=4.001): lam|k3|/s2 = 0.66822327  PASS
+  m=700, lam=0.0142857 (w=10.0): lam|k3|/s2 = 1.5182164  PASS
+  m=561, lam=0.89 (w=499.29): lam|k3|/s2 = 2.124025  PASS
+  m=561, lam=0.00713191 (w=4.001): lam|k3|/s2 = 0.66838892  PASS
+  m=2000, lam=0.89 (w=1780.0): lam|k3|/s2 = 2.1285519  PASS
+  m=700, lam=0.057143 (w=40.0001): lam|k3|/s2 = 1.9110185  PASS
+  m=700, lam=0.2 (w=140.0): lam|k3|/s2 = 1.982689  PASS
+  (SOL.12) sum-level at all corners <= 2.5: True

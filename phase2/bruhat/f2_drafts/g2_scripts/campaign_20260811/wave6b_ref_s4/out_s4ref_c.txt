@@ -1,0 +1,32 @@
+== (SOL.8)/(SOL.17)/alpha/(SOL.1) at adversarial corners ==
+  [PASS] m=700, w=4.001 (W1 edge, A near floor):
+      A/m = 0.298927 in [0.28, 1]: True;  |alpha| = 0.0076991 <= 0.0298: True
+      max |R(y)|/y^4 = 4.2043e-5 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=700, w=4.3 (W1 mid):
+      A/m = 0.328244 in [0.28, 1]: True;  |alpha| = 0.0080928 <= 0.0298: True
+      max |R(y)|/y^4 = 5.9713e-5 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=700, w=5.001 (W2 left edge):
+      A/m = 0.392842 in [0.28, 1]: True;  |alpha| = 0.0089087 <= 0.0298: True
+      max |R(y)|/y^4 = 0.00010045 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=700, w=10.0 (W4 right edge):
+      A/m = 0.672261 in [0.28, 1]: True;  |alpha| = 0.011664 <= 0.0298: True
+      max |R(y)|/y^4 = 0.00028006 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=700, w=40.001 (W7 left edge):
+      A/m = 0.918198 in [0.28, 1]: True;  |alpha| = 0.012563 <= 0.0298: True
+      max |R(y)|/y^4 = 0.00035423 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=700, w=623.0 (W7 deep corner):
+      A/m = 0.93196 in [0.28, 1]: True;  |alpha| = 0.013868 <= 0.0298: True
+      max |R(y)|/y^4 = 0.00040743 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=1000, w=4.001 (W1 edge, m=1000):
+      A/m = 0.29878 in [0.28, 1]: True;  |alpha| = 0.0064412 <= 0.0298: True
+      max |R(y)|/y^4 = 2.8786e-5 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=1000, w=890.0 (W7 deep, m=1000):
+      A/m = 0.933329 in [0.28, 1]: True;  |alpha| = 0.011603 <= 0.0298: True
+      max |R(y)|/y^4 = 0.00028521 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=561, w=4.001 (W1 edge, m=561 [informative]):
+      A/m = 0.299049 in [0.28, 1]: True;  |alpha| = 0.0086005 <= 0.0298: True
+      max |R(y)|/y^4 = 5.3394e-5 <= 0.0021: True;  (SOL.17) direct: True
+  [PASS] m=561, w=499.29 (W7 deep, m=561 [informative]):
+      A/m = 0.930828 in [0.28, 1]: True;  |alpha| = 0.015491 <= 0.0298: True
+      max |R(y)|/y^4 = 0.00050835 <= 0.0021: True;  (SOL.17) direct: True
+ALL m >= 700 corners PASS: True

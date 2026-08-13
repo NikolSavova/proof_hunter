@@ -1,0 +1,52 @@
+=== [B1] exact lam->0+ limits ===
+  lim (h2 - dT2) = 1 - zeta2/20 = 0.917753296658  (> 9/10: True, margin 1.934%)
+  lim (h4 - dT4) = 6 - 3*zeta2/5 = 5.01303955989  (> 49/10: True, margin 2.255%)
+  lim U7 = 2.24254490453  (<= 12/5: True, margin 6.561%)
+=== [B2] U7 / floors scan ===
+  scanned 20493 lam points on (0, 0.89]
+  min(h2 - d T2) = 0.9177533092 at lam = 1.0e-6  > 9/10: True
+  min(h4 - d T4) = 5.013039635 at lam = 1.0e-6  > 49/10: True
+  max U7 = 2.242544738 at lam = 1.0e-6  <= 12/5: True (margin 6.561%)
+=== [B3] h_3 decreasing (needed for 0 <= B <= m h_3) ===
+  max h_3'(x) on (0, 80] = -8.8943076e-30 at x = 80.0  (< 0: True)
+  max h_2'(x) on (0, 80] = -1.1262273e-31  (< 0: True)
+=== [B4] real-point W7 corners: J vs U7 vs 12/5 vs 9/2 ===
+  m=561 w=40.000488 lam=0.0713021: J=0.92059326  U7=2.2339536  J<=U7<=2.4<=4.5: True
+  m=561 w=40.5 lam=0.0721925: J=0.92163449  U7=2.2174826  J<=U7<=2.4<=4.5: True
+  m=561 w=41.0 lam=0.0730838: J=0.92265396  U7=2.2014331  J<=U7<=2.4<=4.5: True
+  m=561 w=45.0 lam=0.0802139: J=0.93007987  U7=2.0869128  J<=U7<=2.4<=4.5: True
+  m=561 w=50.0 lam=0.0891266: J=0.93788465  U7=1.9714242  J<=U7<=2.4<=4.5: True
+  m=561 w=60.0 lam=0.106952: J=0.95015521  U7=1.8018975  J<=U7<=2.4<=4.5: True
+  m=561 w=80.0 lam=0.142602: J=0.96744763  U7=1.5971126  J<=U7<=2.4<=4.5: True
+  m=561 w=100.0 lam=0.178253: J=0.98039263  U7=1.4795549  J<=U7<=2.4<=4.5: True
+  m=561 w=150.0 lam=0.26738: J=1.0078767  U7=1.3364547  J<=U7<=2.4<=4.5: True
+  m=561 w=200.0 lam=0.356506: J=1.0365482  U7=1.2816235  J<=U7<=2.4<=4.5: True
+  m=561 w=300.0 lam=0.534759: J=1.1084533  U7=1.2719902  J<=U7<=2.4<=4.5: True
+  m=561 w=400.0 lam=0.713012: J=1.2045448  U7=1.328784  J<=U7<=2.4<=4.5: True
+  m=561 w=499.29 lam=0.89: J=1.3258316  U7=1.427664  J<=U7<=2.4<=4.5: True
+  m=562 w=500.18 lam=0.89: J=1.3258436  U7=1.427664  J<=U7<=2.4<=4.5: True
+  m=1000 w=40.04 lam=0.04004: J=0.9191986  U7=2.2369132  J<=U7<=2.4<=4.5: True
+  m=1000 w=890.0 lam=0.89: J=1.3287928  U7=1.427664  J<=U7<=2.4<=4.5: True
+  m=5000 w=41.0 lam=0.0082: J=0.92040575  U7=2.2412207  J<=U7<=2.4<=4.5: True
+  m=5000 w=4450.0 lam=0.89: J=1.3318194  U7=1.427664  J<=U7<=2.4<=4.5: True
+  all corner chains hold: True
+=== [B5] (SOL.15) tail bound & (SOL.13) P_n approximation ===
+  lam=0.0713012 n=2: tail=1.45052e-27  SOL.15 bound=1.50492e-27  tail<=bound: True
+  lam=0.0713012 n=3: tail=1.07449e-25  SOL.15 bound=2.23062e-25  tail<=bound: True
+  lam=0.0713012 n=4: tail=7.96089e-24  SOL.15 bound=4.96036e-23  tail<=bound: True
+  lam=0.3 n=2: tail=2.69238e-129  SOL.15 bound=1.22158e-128  tail<=bound: True
+  lam=0.3 n=3: tail=8.27908e-127  SOL.15 bound=7.53691e-126  tail<=bound: True
+  lam=0.3 n=4: tail=2.54582e-124  SOL.15 bound=6.97523e-123  tail<=bound: True
+  lam=0.89 n=2: tail=5.43359e-391  SOL.15 bound=1.49279e-390  tail<=bound: True
+  lam=0.89 n=3: tail=4.95679e-388  SOL.15 bound=2.72653e-387  tail<=bound: True
+  lam=0.89 n=4: tail=4.52183e-385  SOL.15 bound=7.4699e-384  tail<=bound: True
+  lam=0.01 n=2: P_n = lam*T_n = 3.2848681337  [n! zeta2 - (n-1)! lam/2] = 3.2848681337  diff = 0.0
+  lam=0.01 n=3: P_n = lam*T_n = 9.85960440109  [n! zeta2 - (n-1)! lam/2] = 9.85960440109  diff = 0.0
+  lam=0.01 n=4: P_n = lam*T_n = 39.4484176044  [n! zeta2 - (n-1)! lam/2] = 39.4484176044  diff = 0.0
+  lam=0.05 n=2: P_n = lam*T_n = 3.2648681337  [n! zeta2 - (n-1)! lam/2] = 3.2648681337  diff = 3.55e-30
+  lam=0.05 n=3: P_n = lam*T_n = 9.81960440109  [n! zeta2 - (n-1)! lam/2] = 9.81960440109  diff = 3.94e-29
+  lam=0.05 n=4: P_n = lam*T_n = 39.3284176044  [n! zeta2 - (n-1)! lam/2] = 39.3284176044  diff = 2.59e-28
+  lam=0.0713 n=2: P_n = lam*T_n = 3.25421750981  [n! zeta2 - (n-1)! lam/2] = 3.25421750981  diff = -1.58e-30
+  lam=0.0713 n=3: P_n = lam*T_n = 9.79830315332  [n! zeta2 - (n-1)! lam/2] = 9.79830315332  diff = -3.47e-29
+  lam=0.0713 n=4: P_n = lam*T_n = 39.264513861  [n! zeta2 - (n-1)! lam/2] = 39.264513861  diff = -6.94e-29
+DONE ref3

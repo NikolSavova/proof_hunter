@@ -1,0 +1,68 @@
+=== [A1] Lambert closed forms of phi_n (q-series to q^30) ===
+  phi_2 = sum k^1 q^k  matches draft's closed form to q^30: True
+  phi_3 = sum k^2 q^k  matches draft's closed form to q^30: True
+  phi_4 = sum k^3 q^k  matches draft's closed form to q^30: True
+=== [A2]/[A3] exact series of h_n at 0 (Bernoulli formula) ===
+  h_2(0) = 1; all printed SOL.2 coeffs match: True; odd coeffs vanish: True
+  h_3(0) = 2; all printed SOL.2 coeffs match: True; odd coeffs vanish: True
+  h_4(0) = 6; all printed SOL.2 coeffs match: True; odd coeffs vanish: True
+  series(h_2)(0.5) vs closed form rel.err = 2.34e-41
+  series(h_3)(0.5) vs closed form rel.err = 2.3e-41
+  series(h_4)(0.5) vs closed form rel.err = 3.06e-41
+=== [A4] EM constants ===
+  2 zeta(8)/(2 pi)^8 = 1/1209600 == 1/1209600 : True
+  |B_8|/8! = 1/1209600  (draft's SOL.4 constant)
+  honest kernel constant without the B_8 boundary term: (2-2^-7)|B_8|/8! = 17/10321920 ~ 1.6470e-06; ratio to draft = 1.992188
+=== [A5] zeta(2) enclosure ===
+  zeta(2) = 1.644934066848226436472415;  lo < zeta(2) < hi : True
+=== [A6] P_n and the tail identity ===
+  P_2 == draft: True
+  P_3 == draft: True
+  P_4 == draft: True
+  n=2 w=4: int_w^inf h_n = 0.483201729133  quad rel.err = 0.0
+  n=2 w=7.5: int_w^inf h_n = 0.0405330947435  quad rel.err = 0.0
+  n=3 w=4: int_w^inf h_n = 2.66595446481  quad rel.err = 0.0
+  n=3 w=7.5: int_w^inf h_n = 0.355190072258  quad rel.err = 0.0
+  n=4 w=4: int_w^inf h_n = 15.7107659032  quad rel.err = 0.0
+  n=4 w=7.5: int_w^inf h_n = 3.17463020288  quad rel.err = 0.0
+=== [A7] Lemma SOL.1 vs brute force ===
+  m=6 lam=0.37: kappa_2,3,4 rel.err = 1.79e-51, 4.96e-50, 1.92e-49   (kappa_3 sign: 1.0)
+  m=9 lam=0.11: kappa_2,3,4 rel.err = 1.92e-50, 1.24e-48, 1.44e-47   (kappa_3 sign: 1.0)
+=== [A8] reflection claim ===
+  m=6: |k2+ - k2-|/k2 = 1.79e-51, |k3+ + k3-|/|k3| = 7.23e-50, |k4+ - k4-|/|k4| = 1.13e-49
+=== [A9] G_n via SOL.2 vs quadrature; G_4(4) guard ===
+  G_2(4) = 1.1933335954368820069  rel.err vs quad = 3.85e-41
+  G_2(5) = 1.960829395656144567  rel.err vs quad = 2.34e-41
+  G_2(20) = 16.710132777333450031  rel.err vs quad = 0.0
+  G_2(40) = 36.710131866303554273  rel.err vs quad = 0.0
+  G_3(4) = 0.79635006371978360882  rel.err vs quad = 5.77e-41
+  G_3(5) = 1.7361972969924407714  rel.err vs quad = 1.32e-41
+  G_3(20) = 30.130414821229397576  rel.err vs quad = 0.0
+  G_3(40) = 70.130395598910934713  rel.err vs quad = 0.0
+  G_4(4) = 0.23234829889039236846  rel.err vs quad = 7.9e-40
+  G_4(5) = 1.2712474180175081792  rel.err vs quad = 1.44e-40
+  G_4(20) = 80.52198906949989942  rel.err vs quad = 0.0
+  G_4(40) = 200.52158239565461464  rel.err vs quad = 0.0
+  G_4(4) = 0.2323482989  (scout guard 0.2323483)
+=== [A10]/[A11] 8th-derivative machinery ===
+  built derivatives for n=2
+  built derivatives for n=3
+  built derivatives for n=4
+=== [A10] EM remainder audit (SOL.3/SOL.4) ===
+  m=561 w=5 n=2: |E|=8.319e-27  b1(draft)=1.276e-23 (int|h8|=0.3877, sign changes=2)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~8.32e-27
+  m=561 w=5 n=3: |E|=2.647e-24  b1(draft)=7.443e-23 (int|h8|=2.261, sign changes=3)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~2.65e-24
+  m=561 w=5 n=4: |E|=5.721e-24  b1(draft)=3.939e-22 (int|h8|=11.97, sign changes=3)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~5.72e-24
+  m=561 w=10 n=2: |E|=9.455e-25  b1(draft)=3.375e-21 (int|h8|=0.4006, sign changes=3)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~9.46e-25
+  m=561 w=10 n=3: |E|=1.7e-23  b1(draft)=1.984e-20 (int|h8|=2.355, sign changes=4)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~1.7e-23
+  m=561 w=10 n=4: |E|=1.144e-22  b1(draft)=1.054e-19 (int|h8|=12.51, sign changes=5)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~1.14e-22
+  m=561 w=40 n=2: |E|=2.538e-30  b1(draft)=2.213e-16 (int|h8|=0.4008, sign changes=4)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~2.54e-30
+  m=561 w=40 n=3: |E|=8.265e-29  b1(draft)=1.302e-15 (int|h8|=2.357, sign changes=5)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~8.27e-29
+  m=561 w=40 n=4: |E|=2.671e-27  b1(draft)=6.918e-15 (int|h8|=12.53, sign changes=6)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~2.67e-27
+  m=1000 w=20 n=2: |E|=7.067e-27  b1(draft)=8.482e-21 (int|h8|=0.4008, sign changes=4)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~7.07e-27
+  m=1000 w=20 n=3: |E|=8.332e-26  b1(draft)=4.988e-20 (int|h8|=2.357, sign changes=5)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~8.33e-26
+  m=1000 w=20 n=4: |E|=9.091e-25  b1(draft)=2.651e-19 (int|h8|=12.53, sign changes=6)  |E|<=b1: True  |E|<=2b1: True  B8-bdry-term~9.09e-25
+=== [A11] true size of h_n^{(8)} ===
+  max|h_2^(8)| on (0,40] ~= 0.232482 at x=0.05; h_2^(8)(0) = 0.233333; int_0^60 |h^(8)| ~= 0.400753; both < 1e12: True
+  max|h_3^(8)| on (0,40] ~= 1.39319 at x=0.05; h_3^(8)(0) = -1.40000; int_0^60 |h^(8)| ~= 2.35697; both < 1e12: True
+  max|h_4^(8)| on (0,40] ~= 6.95234 at x=0.05; h_4^(8)(0) = 7.00000; int_0^60 |h^(8)| ~= 12.5265; both < 1e12: True
+DONE ref1

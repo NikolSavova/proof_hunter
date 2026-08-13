@@ -1,0 +1,14 @@
+== referee gap sizing: draft architecture at m in [561, 699], y_max = (2/7) sqrt(0.28 m) ==
+   (uses only inputs the draft already cites; R.1 floor is stated for m >= 561)
+  m=561: y_max=3.5809  E0=0.02651 E1=0.05766 E2=0.2033  H=(0.45276, 1.6749)  |s2(r-1)-1| < 0.68915  vs 0.89: CLOSES
+  m=575: y_max=3.6253  E0=0.02593 E1=0.05565 E2=0.1858  H=(0.49465, 1.6223)  |s2(r-1)-1| < 0.63533  vs 0.89: CLOSES
+  m=600: y_max=3.7033  E0=0.02501 E1=0.05258 E2=0.1612  H=(0.55413, 1.5477)  |s2(r-1)-1| < 0.55899  vs 0.89: CLOSES
+  m=625: y_max=3.7796  E0=0.0242 E1=0.05004 E2=0.1429  H=(0.59871, 1.4916)  |s2(r-1)-1| < 0.50174  vs 0.89: CLOSES
+  m=650: y_max=3.8545  E0=0.02349 E1=0.04791 E2=0.1291  H=(0.63252, 1.449)  |s2(r-1)-1| < 0.45817  vs 0.89: CLOSES
+  m=675: y_max=3.9279  E0=0.02285 E1=0.04611 E2=0.1187  H=(0.65854, 1.4161)  |s2(r-1)-1| < 0.42448  vs 0.89: CLOSES
+  m=699: y_max=3.9971  E0=0.0223 E1=0.0446 E2=0.1109  H=(0.67816, 1.3911)  |s2(r-1)-1| < 0.39892  vs 0.89: CLOSES
+  worst bound on the gap range: 0.689148 at m = 561  (the gap is repairable-in-kind)
+
+== same sizing at m = 700 (consistency with the draft's own numbers) ==
+  m=700: y_max=4.0  E0=0.02228 E1=0.04455 E2=0.1106  H=(0.67888, 1.3901)  bound 0.39797
+  (y_max = 4 exactly at m = 700; matches the draft's setup, modulo its rounded-up E budgets)

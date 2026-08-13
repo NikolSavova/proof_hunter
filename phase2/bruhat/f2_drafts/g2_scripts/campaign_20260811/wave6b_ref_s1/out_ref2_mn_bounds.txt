@@ -1,0 +1,25 @@
+symbolic (18) residual 2h2 - x h2' - h3 == 0: True
+symbolic (19) residual 3h3 - x h3' - h4 == 0: True
+series about 0:
+  h2: x**4/240 - x**2/12 + 1
+  h3: 2 - x**4/120
+  h4: x**4/120 + 6
+
+grid: x = step..40 with step 0.02 (plus x->0 limit values), dps 40
+  h2'': grid max |h''| = 0.1666666667 at x = 0.0; grid max |h'''| = 0.095979149; certified sup bound 0.1685862497 < 1.0: True
+  h3'': grid max |h''| = 0.1818229628 at x = 2.1862; grid max |h'''| = 0.13159776; certified sup bound 0.184454918 < 4.0: True
+  h4'': grid max |h''| = 0.5225279851 at x = 3.551; grid max |h'''| = 0.37570115; certified sup bound 0.5300420082 < 20.0: True
+
+cross-check sympy d2 vs mpmath.diff (rel err):
+  h2''(0.5): -0.15447169 vs -0.15447169  rel 4.64e-39
+  h2''(3.0): 0.039708008 vs 0.039708008  rel 3.07e-40
+  h2''(17.0): 9.2320646e-6 vs 9.2320646e-6  rel 5.69e-41
+  h2''(39.0): 1.5786422e-14 vs 1.5786422e-14  rel 2.07e-41
+  h3''(0.5): -0.023789782 vs -0.023789782  rel 3.73e-38
+  h3''(3.0): -0.13301208 vs -0.13301208  rel 6.47e-41
+  h3''(17.0): 0.00013583147 vs 0.00013583147  rel 6.19e-41
+  h3''(39.0): 5.823423e-13 vs 5.823423e-13  rel 1.79e-41
+  h4''(0.5): 0.021428039 vs 0.021428039  rel 3.82e-37
+  h4''(3.0): -0.4554546 vs -0.4554546  rel 2.02e-39
+  h4''(17.0): 0.0019741329 vs 0.0019741329  rel 4.54e-41
+  h4''(39.0): 2.1446681e-11 vs 2.1446681e-11  rel 6.23e-41

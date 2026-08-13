@@ -1,0 +1,2 @@
+(SOL.11) grid check on (0, 0.445], 44500 points: violations = 0 (PASS)
+  endpoint x = 0.445: x coth x - 1 = 0.065153029 vs cap 0.066891411

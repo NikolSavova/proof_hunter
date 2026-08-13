@@ -1,0 +1,35 @@
+== [1] exact coverage chain for (SOL.5) on W2-W7: c2*0.64*c_A >= 0.0176 ==
+  W2: c2*0.64*c_A = 0.0195185 >= 0.0176: PASS  (margin 10.9%)
+  W3: c2*0.64*c_A = 0.0234222 >= 0.0176: PASS  (margin 33.08%)
+  W4: c2*0.64*c_A = 0.0289989 >= 0.0176: PASS  (margin 64.77%)
+  W5: c2*0.64*c_A = 0.0334603 >= 0.0176: PASS  (margin 90.12%)
+  W6b: c2*0.64*c_A = 0.039037 >= 0.0176: PASS  (margin 121.8%)
+  W7: c2*0.64*c_A = 0.0446137 >= 0.0176: PASS  (margin 153.5%)
+  NOTE: W1 (w in (4,5]) is NOT covered by this chain (0.0871362*0.64*0.28 = 0.015615 < 0.0176) -- it needs Lemma R.1, as the draft cites.
+== [2] truth spot-checks ==
+  m=700, w=623.0 (W7 deep): t0/lam = 1.07372
+    (SOL.4) min -log|Phi|/(s2 t^2) on (0, 0.8lam] = 0.379088  (>=0.32: PASS)
+    (SOL.5) min -log|Phi|/m on [0.8lam, t0]     = 0.226109  (>=0.0176: PASS)
+    (SOL.6) min -log|Phi|/m on [t0, pi]         = 0.345434  (>=0.0741: PASS)
+  m=700, w=4.0001 (W1 open edge): t0/lam = 1.0
+    (SOL.4) min -log|Phi|/(s2 t^2) on (0, 0.8lam] = 0.492872  (>=0.32: PASS)
+    (SOL.5) min -log|Phi|/m on [0.8lam, t0]     = 0.0942649  (>=0.0176: PASS)
+    (SOL.6) min -log|Phi|/m on [t0, pi]         = 0.145562  (>=0.0741: PASS)
+  m=700, w=5.0001 (W2 left edge): t0/lam = 1.0
+    (SOL.4) min -log|Phi|/(s2 t^2) on (0, 0.8lam] = 0.47947  (>=0.32: PASS)
+    (SOL.5) min -log|Phi|/m on [0.8lam, t0]     = 0.120523  (>=0.0176: PASS)
+    (SOL.6) min -log|Phi|/m on [t0, pi]         = 0.18284  (>=0.0741: PASS)
+  m=700, w=40.0001 (W7 left edge): t0/lam = 1.00027
+    (SOL.4) min -log|Phi|/(s2 t^2) on (0, 0.8lam] = 0.393757  (>=0.32: PASS)
+    (SOL.5) min -log|Phi|/m on [0.8lam, t0]     = 0.23139  (>=0.0176: PASS)
+    (SOL.6) min -log|Phi|/m on [t0, pi]         = 0.326254  (>=0.0741: PASS)
+  m=561, w=4.0001 (W1 open edge, m=561): t0/lam = 1.0
+    (SOL.4) min -log|Phi|/(s2 t^2) on (0, 0.8lam] = 0.492864  (>=0.32: PASS)
+    (SOL.5) min -log|Phi|/m on [0.8lam, t0]     = 0.0943017  (>=0.0176: PASS)
+    (SOL.6) min -log|Phi|/m on [t0, pi]         = 0.145618  (>=0.0741: PASS)
+  m=561, w=499.29 (W7 deep, m=561): t0/lam = 1.07372
+    (SOL.4) min -log|Phi|/(s2 t^2) on (0, 0.8lam] = 0.379194  (>=0.32: PASS)
+    (SOL.5) min -log|Phi|/m on [0.8lam, t0]     = 0.225897  (>=0.0176: PASS)
+    (SOL.6) min -log|Phi|/m on [t0, pi]         = 0.345151  (>=0.0741: PASS)
+== [3] Cor X.2 cap sanity: t0(0.89)/0.89 ==
+  t0(0.89)/0.89 = 1.07372378 <= 1.074: PASS

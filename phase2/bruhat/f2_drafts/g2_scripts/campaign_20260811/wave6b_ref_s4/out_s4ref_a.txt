@@ -1,0 +1,58 @@
+== [V1] basic scale (exact rationals) ==
+  [PASS] A0 = 196 exactly  A0 = 196
+  [PASS] s20 = 1960000/7921 > 247.44  s20 = 247.443505
+  [PASS] eps0 < 0.06358  eps0 = 0.06357142857
+  [PASS] 4/sqrt(196) = 2/7 exactly (Taylor domain edge)  
+  [PASS] mid range nonempty: 0.8*sqrt(196) = 11.2 > 4  
+== [SOL.13] alpha cap ==
+  [PASS] 5/168 < 0.0298  5/168 = 0.02976190
+== [SOL.15/16] remainder coefficient at A = 196, t/lam = 2/7 ==
+  [PASS] (6.72 + 0.72*(2/7)/(5/7))/4704 = 876/588000 < 0.00149  = 0.00148980 (exact 73/49000)
+  [PASS] 0.00149 < 0.0021 (stated slack)  
+== [V2] local moments and E_loc ==
+  [PASS] M4 = 2^(5/2)Gamma(5/2)  
+  [PASS] M6 = 2^(7/2)Gamma(7/2)  
+  [PASS] 0.0021*4^4 = 0.5376  
+  [PASS] (e^0.5376 - 1)/0.5376 <= e^0.5376  ((SOL.25) is valid, lossy)  sharp mult 1.3242064 vs used 1.7118934
+  [PASS] c = 0.0021 e^0.5376 < 0.003596  c = 0.0035949761
+  [PASS] E_loc[0] < 0.02328  computed 0.0232738331  (margin 6.17e-6)
+  [PASS] E_loc[1] < 0.04482  computed 0.0448199713  (margin 2.87e-8)
+  [PASS] E_loc[2] < 0.09741  computed 0.0973978964  (margin 1.21e-5)
+== [V3] mid integrals (erfc, dps 60) ==
+  [FAIL] E_mid[0] < 0.00071  computed 0.000710590935  (margin -5.91e-7)
+  [PASS] E_mid[1] < 0.00308  computed 0.00307901102  (margin 9.89e-7)
+  [PASS] E_mid[2] < 0.01342  computed 0.013412128  (margin 7.87e-6)
+== [V4] crossover at m = 700 ==
+  [PASS] e^-12.32 ~ 4.46e-6  = 4.46161e-6
+  [PASS] E_cross[0] < 1.04e-5  computed 1.0295364e-5
+  [PASS] E_cross[1] < 2.94e-4  computed 0.00029254656
+  [PASS] E_cross[2] < 0.00832  computed 0.0083128185
+  [PASS] monotone decr in m (worst j=2): 3/(2*700) < 0.0176  0.002143 < 0.0176
+== [V5] far at m = 700 ==
+  [PASS] E_far[2] < 1.1e-11  computed 9.707e-12
+  [PASS] E_far[0], E_far[1] smaller than E_far[2]  = 1.376e-19, 1.001e-15
+  [PASS] far monotone decr: 4.5/700 < 0.0741  
+== [V6] totals ==
+  [PASS] E0 < 0.02401 < 0.04  computed 0.0239947194  (margin to displayed 1.53e-5)
+  [PASS] E1 < 0.04820 < 0.06  computed 0.0481915289  (margin to displayed 8.47e-6)
+  [PASS] E2 < 0.11916 < 0.13  computed 0.119122843  (margin to displayed 3.72e-5)
+== [V7] normal bounds on |z| <= eps0 = 0.06358 and f-interval ==
+  [PASS] g_min = g(0.06358) > 0.39813  = 0.398136749
+  [PASS] g_max = g(0) < 0.39895  = 0.39894228
+  [PASS] |g'| max = z g(z) < 0.02532  = 0.0253135345
+  [PASS] -g'' in (0.39652, 0.39895)  min = 0.396527315, max = 0.39894228
+  [PASS] f in (0.35813, 0.43895)  (0.35813, 0.43895)
+  [PASS] |f'| < 0.08532  = 0.08532
+  [PASS] -f'' in (0.26652, 0.52895)  (0.26652, 0.52895)
+  [PASS] H_min > 0.607  = 0.607176216
+  [PASS] H_max < 1.535  = 1.53373475
+== [V8] final conversion ==
+  [PASS] X_max = 1.535 e^(1.535/247.44) < 1.545  = 1.54455201
+  [PASS] max(1-0.607, X_max-1) < 0.545 < 0.89  = 0.544552007
+  [PASS] 2 int_0^eps (eps - t) dt = eps^2 (exact, Fraction check at eps=1)  
+
+== margin ledger (distance of computed value to the draft's displayed cap) ==
+  E_loc[0]: 6.17e-6   E_mid[0]: -5.91e-7   E_cross[0]: 1.05e-7
+  E_loc[1]: 2.87e-8   E_mid[1]: 9.89e-7   E_cross[1]: 1.45e-6
+  E_loc[2]: 1.21e-5   E_mid[2]: 7.87e-6   E_cross[2]: 7.18e-6
+  S4 recipe arithmetic: FAILURES PRESENT

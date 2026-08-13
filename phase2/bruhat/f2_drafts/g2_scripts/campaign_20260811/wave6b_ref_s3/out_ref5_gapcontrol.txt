@@ -1,0 +1,12 @@
+=== [D1] band-scan gap control ===
+  W1: max|dJ/dw| ~= 0.1202; m-spread <= 0.00047467; worst unsampled excursion (2x safety) = 0.0014137 vs headroom 0.039682; spike-proof at scan resolution: True
+  W2: max|dJ/dw| ~= 0.10182; m-spread <= 0.00047468; worst unsampled excursion (2x safety) = 0.0012701 vs headroom 0.099683; spike-proof at scan resolution: True
+  W3: max|dJ/dw| ~= 0.078001; m-spread <= 0.00045141; worst unsampled excursion (2x safety) = 0.0016702 vs headroom 0.23537; spike-proof at scan resolution: True
+  W4: max|dJ/dw| ~= 0.039824; m-spread <= 0.00035483; worst unsampled excursion (2x safety) = 0.00097708 vs headroom 0.37642; spike-proof at scan resolution: True
+  W5: max|dJ/dw| ~= 0.021854; m-spread <= 0.0006458; worst unsampled excursion (2x safety) = 0.0023531 vs headroom 0.65748; spike-proof at scan resolution: True
+  W6b: max|dJ/dw| ~= 0.0071872; m-spread <= 0.0021784; worst unsampled excursion (2x safety) = 0.0033014 vs headroom 0.77941; spike-proof at scan resolution: True
+=== [D2] W7 gap control ===
+  max|dU7/dlam| ~= 13.332; half-cell = 2.498e-5; excursion (2x safety) = 0.00066619 vs margin to 12/5 (~0.156): True
+  max|d(h2-dT2)/dlam| ~= 0.82845; excursion = 4.1397e-5 vs floor margin (~0.0177): True
+  max|d(h4-dT4)/dlam| ~= 10.108; excursion = 0.0005051 vs floor margin (~0.11): True
+DONE ref5
