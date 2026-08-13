@@ -449,6 +449,19 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: original paper formatting restored (Sihao + Codex)
+
+- **Presentation restored without reverting substance.**  At the user's request, switched the
+  manuscript from `amsart` back to its original `article` typography, restored the original title
+  presentation and `maketitle`-before-abstract flow, and retained every mathematical,
+  terminology, citation, prior-art, and verification change from the Claude/JCTA review.
+- **Disclosure preserved.**  The conventional author field remains blank, while the same Bregman
+  paper disclosure, affiliations, and both contact emails now appear through an article-native
+  first-page date footnote.
+- **Fresh QA passed.**  Tectonic produces a warning-free 10-page PDF, and all ten rendered pages
+  were visually inspected for clipping, overlaps, glyph problems, and bad page breaks.  Updated
+  deliverable: `output/pdf/erdos838_counting_convex_subsets.pdf`.  Approximate API spend: `$0`.
+
 ### 2026-08-13 — ERDŐS #838: Claude-review response, full JCTA clearance, and final byline (Sihao + Codex ultracode)
 
 - **Claude review triaged and incorporated.**  The mathematical checks were positive.  Accepted

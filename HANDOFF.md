@@ -134,13 +134,14 @@ The iterated vertical blow-up proves
 `limsup log2(f(N))/(log2 N)^2 <= 1/2`.  For a fixed `r`-point template with
 largest cap/cup sizes `a,b`, exact substitution identities give coefficient
 `(a+b-2)/(2 log2 r)`; balanced Pascal templates approach `1/2`, and the cap--cup theorem makes
-`1/2` the fixed-template optimum.  A 9-page submission-oriented draft is now at
+`1/2` the fixed-template optimum.  A 10-page submission-oriented draft is now at
 `phase2/loop/erdos838/paper/main.tex` (rendered deliverable:
 `output/pdf/erdos838_counting_convex_subsets.pdf`).  It contains the rational realization,
 exact `C,U,W` identities, asymptotics, arbitrary-`N` step, self-contained Pascal construction,
-and final bibliography.  Its front matter now exactly follows the Bregman paper's `amsart`
-structure: blank conventional byline plus a first-page AI-assistance/contact footnote for Nikol
-Savova (University of Oxford) and Sihao Huang (independent researcher).  `lexicographic_blowup.py`
+and final bibliography.  It retains the original `article` typography and title-page flow, with a
+blank conventional byline and the same Bregman-paper AI-assistance/contact disclosure in an
+article-native first-page footnote for Nikol Savova (University of Oxford) and Sihao Huang
+(independent researcher).  `lexicographic_blowup.py`
 verifies a 9-point brute-force case and the
 36-point count `(14136,14136,441399)` by unrelated endpoint DPs; the 16-point nonconvex-macro
 exhaustion and reset arithmetic checker also pass.  Two mathematical referees plus a dedicated
