@@ -1,5 +1,11 @@
 # Erdős #791 — finite generalized-Mrose placement prototype
 
+> **Fresh-instance entry point (2026-08-13):** read
+> [`HANDOFF_20260813.md`](HANDOFF_20260813.md) for the complete state after
+> three full attacks: all proved results, failed routes, audit traps,
+> speculative ideas, and prioritized next experiments.  The problem remains
+> open; the newest synthesis is `full_attack3/FULL_ATTACK3_RESULT.md`.
+
 This directory independently reproduces the finite certificate in Jukka
 Kohonen, *An improved lower bound for finite additive 2-bases*,
 [arXiv:1606.04770v2](https://arxiv.org/abs/1606.04770), Theorem 1, and makes a

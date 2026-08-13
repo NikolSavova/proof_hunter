@@ -65,6 +65,20 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-13 — ERDŐS #791: THREE FULL ATTACKS; COMPLETE CONTEXT HANDOFF WRITTEN (Sihao + Codex ultracode).**
+The limit problem remains open and no numerical record was improved, but the latest attack removes
+the previous finite-chromatic obstruction.  For every fixed `r`, an exact lattice construction gives
+`r` tiles of size `t+O_r(1)` whose pairwise modular-cover graph is `K_r`; an optimized `K7` clears the
+entire known density interval at the static-color level.  The decisive gap is now **temporal carry-state
+compatibility**: at `t=251` that `K7` has only 25/441 ordered transitions, and tested larger scales retain
+only the 21 self-loops.  Separate results prove a compactness/Fourier no-go for efficient raw-pair
+triangles, an exact carry triangle that escapes it, a rank-one absorber, and a proof-certified finite
+vertex-critical `chi=7` graph.  Independent audit found no mathematical downgrade after two short proof-
+presentation repairs.  Latest synthesis: `phase2/loop/erdos791/full_attack3/FULL_ATTACK3_RESULT.md`;
+audit: `full_attack3/AUDIT.md`; **complete restart context, including failed routes, traps, speculative
+ideas, and prioritized next experiments:** `phase2/loop/erdos791/HANDOFF_20260813.md`.  Commits:
+`2613093`, `d609e7c`.
+
 **⚡ 2026-08-11→12 — G2 CLOSURE CAMPAIGN + PAPER REWRITE (Sihao + Claude, ~$1500).**
 Full chronology in `META_GUIDE.md` §8; authoritative ledger in
 `phase2/bruhat/f2_drafts/g2_campaign_20260811/CLOSURE_PLAN_v2_20260812.md`.
@@ -462,6 +476,16 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 ## 4. WHAT STILL NEEDS TO BE BUILT
 
+**Erdős #791 full-solution frontier.**  Do not restart with another static role clique: arbitrary
+fixed `K_r` is now constructed exactly.  The live obligation is one of: (i) a temporal
+representation/role-assignment theorem giving `k+o(k)` cost while consecutive targets follow legal
+carry transitions; (ii) a new choice of integer lifts with an asymptotically mixing state automaton;
+or (iii) a carry-rectangle theorem placing all remaining holes in `U+V` with
+`|U|+|V|=o(k)`, after which the proved absorber closes `alpha_-=alpha_+`.  First computational step:
+jointly optimize target representation choice, coordinate roles, and ordered transition legality on
+finite extremal bases; role-only CP models now discard the critical information.  Full specifications
+and audit traps: `phase2/loop/erdos791/HANDOFF_20260813.md` §§10–15.
+
 **CURRENT OBLIGATION LIST for Theorem A (supersedes the older Bruhat items below).**
 `Theorem A = G1 (closed 08-02) + G2`; `G2 = Prop 3.5(ii) (CLOSED) + 3.5(i)`; `3.5(i)` reduces
 to `CL`, which holds by exact computation for `m <= 560` and needs, for `m >= 561`:
@@ -591,6 +615,15 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
+
+### ⭐ 2026-08-13 — ERDŐS #791 HANDOFF / NEXT SOLUTION ATTACK
+Read `phase2/loop/erdos791/HANDOFF_20260813.md` completely, then
+`full_attack3/FULL_ATTACK3_RESULT.md` and `full_attack3/AUDIT.md`.  The next instance should build a
+**transition-aware** representation optimizer or optimize alternative integer lifts by additive-
+rectangle complexity of the cross-state residuals.  Do not spend another round merely finding more
+static colors: the unbounded `K_r` theorem has closed that subproblem.  Before publicizing the tile
+construction as novel, run a dedicated literature-priority search on cyclic factorizations/Hajós--de
+Bruijn theory and carry-aware additive-basis constructions.  No process is currently running.
 
 ### ⭐ 2026-08-13 — ERDŐS #838 CANDIDATE `1/2` UPPER RESULT
 Read `phase2/loop/erdos838/proof_blowup_half.md` and run

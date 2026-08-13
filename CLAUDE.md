@@ -11,6 +11,10 @@ lemma / quantitative-extension; **B** = evolutionary/SAT search for explicit con
 Every result ships a **verification artifact**. Phase I (problem-identification pipeline in
 `problem-id/`) is built and has run once. Full context: read `HANDOFF.md` first, then `META_GUIDE.md`.
 
+## Active research pointers
+- **Erdős #791** — additive 2-basis limit problem; open after three full attacks. Complete restart
+  brief: `phase2/loop/erdos791/HANDOFF_20260813.md`; memory pointer: `memory/projects/erdos-791.md`.
+
 ## Collaborators (work from different machines, sync via GitHub)
 - **Nikol** — Oxford maths undergrad · proof / problem-selection / verification lead.
 - **Sihao** (sihao.c.huang@gmail.com) — MIT physics grad · infra / Engine-B / QIT lead.

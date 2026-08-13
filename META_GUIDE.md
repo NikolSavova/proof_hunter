@@ -449,6 +449,26 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #791: durable full-context handoff after third full attack (Sihao + Codex ultracode)
+
+- **Wrote the complete restart brief** at
+  `phase2/loop/erdos791/HANDOFF_20260813.md`.  It consolidates all three full attacks and the
+  construction/SAT campaigns: exact normalization and literature status; Kohonen predicate and
+  certificate; corrected SAT/DRAT results; closed staircase/product/triangle-free routes; carry-bin
+  and profinite relaxations; amplifier/role-defect theorems; the unbounded `K_r` carry construction;
+  projective carry triangle; Fourier stability theorem; rank-one absorber; finite `chi=7` proof;
+  every known audit trap; speculative ideas; exact reproduction commands; and a prioritized first-day
+  plan for a fresh instance.
+- **Latest mathematical frontier stated explicitly.**  Static chromatic compatibility is no longer
+  the obstacle: efficient `K_r` tile languages exist for every fixed `r`.  The live gap is temporal
+  state compatibility.  A full solution would follow from either a `k+o(k)` transition-compatible
+  role assignment on limsup-extremal bases or an `o(k)` additive-rectangle description of all holes.
+  The next computational model must jointly choose target representations, roles, and ordered carry
+  transitions; role-only optimization is obsolete for this purpose.
+- **Updated the live `HANDOFF.md`** in §§3, 4, and 7 so another collaborator lands on this frontier
+  rather than restarting a closed subproblem.  No theorem changed in this context-writing pass; no
+  process is running.  Approximate incremental spend: `$0`.
+
 ### 2026-08-13 — ERDŐS #838: original paper formatting restored (Sihao + Codex)
 
 - **Presentation restored without reverting substance.**  At the user's request, switched the
