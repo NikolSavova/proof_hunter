@@ -64,6 +64,41 @@
 ---
 
 ## 3. WHAT WE'VE DONE
+
+**⚡ 2026-08-11→12 — G2 CLOSURE CAMPAIGN + PAPER REWRITE (Sihao + Claude, ~$1500).**
+Full chronology in `META_GUIDE.md` §8; authoritative ledger in
+`phase2/bruhat/f2_drafts/g2_campaign_20260811/CLOSURE_PLAN_v2_20260812.md`.
+- **Method:** 7 waves. Waves 1-6 = Fable blind-draft/adversarial-referee fleets (~90 agents)
+  until credits ran out; then **OpenAI gpt-5.6-sol at `effort=max`** via
+  `g2_scripts/campaign_20260811/wave6_sol/{run_sol,verify_sol,orchestrate,orchestrate_verify}.py`
+  (Responses API, background, id-journalled, retry-hardened) at ~$1-5/call.
+- **CLOSED this campaign:** Prop 3.5(ii); Prop 3.5(i) reduced gap-free by Theorem S to the
+  single lemma CL(79,20,0.89); **(S1) PROVED** (two-referee); exact harness extended
+  m=150 → **560** (shrinking CL's obligation to `m >= 561` and closing G4's part-(c) band);
+  T2's referee debt discharged.
+- **(S2)** attempt 3 = self-contained proof, **entire numerical spine independently replayed
+  locally** (found a real cell-width defect and 4 unflagged thin margins; provenance recorded
+  in `s2_provenance_20260812.md`). **(S3)** consolidated into one self-contained document
+  carrying its certificates. **(S4)** proved only `m >= 700`.
+- **⚠️ THE CENTRAL FINDING — the composition was under-specified.** Adversarial review of
+  `CL_composition` returned MAJOR_ISSUES (7 findings) and its repair concluded verbatim:
+  *"closing the old statements (S1)-(S4) alone would not close CL."* Two further atomic
+  obligations were split out: **(S5)** a `w`-continuum certificate, **(S6)** the bootstrap
+  closure. (S5) has an unrefereed draft; **(S6) was attempted and NOT closed** (five named
+  sub-gaps). **Net: open statements 4 → 5.** Nothing was found FALSE all campaign.
+- **THE PAPER was substantially rewritten and is ship-ready** (`paper/submission/main.pdf`,
+  14pp): F2 now a theorem CONDITIONAL on CL with (S1)-(S6) displayed and evidenced; the FALSE
+  claim "(S1)-(S4) imply CL" purged from four sites; misattribution fixed (`q`-integer
+  factorization is **Gasharov 1998**, not Carrell 1994); provenance language rescoped;
+  hedged colon-free title; byline moved to a first-page footnote disclosing AI assistance;
+  significance argued without overselling; 47-edit copyedit against a researched rulebook
+  (Tao / Bertsekas / Halmos, `style_references_20260812.md`). Three adversarial review passes
+  (2x DO_NOT_SHIP) preceded the final state. **Displayed mathematics untouched throughout.**
+- **Two briefing defects found and patched** (both caused false-negative verdicts): agents
+  were fed the stale wave-5 ledger; and briefs *asserted* certificates instead of attaching
+  them (one FATAL was purely this). **Rule adopted: hand over the artifact, never the
+  assurance.**
+
 **Phase 0 — strategy (done).** Two adversarial deep-research runs established the AI-leveraged thesis,
 case studies (GPT-5 Erdős #848, Erdős #728 via Aristotle/Lean, the peer-reviewed Malliavin–Stein
 quantitative-extension, Liam Price's amateur Erdős #1196, AlphaEvolve/ShinkaEvolve), the credibility
@@ -376,6 +411,34 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
    duality attack with rational certificates.
 
 ## 4. WHAT STILL NEEDS TO BE BUILT
+
+**CURRENT OBLIGATION LIST for Theorem A (supersedes the older Bruhat items below).**
+`Theorem A = G1 (closed 08-02) + G2`; `G2 = Prop 3.5(ii) (CLOSED) + 3.5(i)`; `3.5(i)` reduces
+to `CL`, which holds by exact computation for `m <= 560` and needs, for `m >= 561`:
+
+| | statement | status |
+|---|---|---|
+| (S1) | banded cumulant scales | **PROVED** (two-referee) |
+| (S2) | fifth-order remainder `R5` | proof + full independent numeric replay; maths-lane MINOR_REPAIRS unapplied |
+| (S3) | joint cancellation | consolidated document, **0 referee lanes** |
+| (S4) | a-priori ratio seed | proved only `m >= 700`; `[561,699]` carried by (S5) |
+| (S5) | `w`-continuum certificate | drafted, **0 referee lanes** |
+| (S6) | bootstrap closure | **NOT CLOSED** — five named sub-gaps |
+
+- [ ] **Referee lanes owed on four documents** (all unciteable until they land):
+  `sol_comprepair`, `sol_s3consol`, `sol_s5cont`, `sol_s6boot`. Cheap via
+  `wave6_sol/orchestrate_verify.py <file>:maths <file>:numerics` (Sol, ~$1-5 each).
+- [ ] **Hygiene-overlay verifier** — gates the `m >= 561` finite-range splice.
+- [ ] **Exact-rational redo** of the interval certificates — the last standing methodological
+  objection ("rigorous modulo `mpmath.iv`", not the advertised exact-rational). Margins are
+  wide (worst 0.056%), so a coarse rational envelope for `exp`/`cos`/`sin` would clear it.
+- [ ] **(S6)** is the real mathematics and has never had a working argument. If a seventh
+  obligation appears anywhere, the ledger's own read says it appears here.
+
+**RECOMMENDATION OF RECORD (Claude's; humans may overrule):** ship the conditional paper and
+state (S2)-(S6) in it as explicit open problems with their constants; do not resume fleet
+spending to chase unconditional Theorem A.
+
 **Pipeline scale-up (the "bigger intake" — now at 3284, goal tens-of-thousands):**
 - [x] ✅ **Compilation-expansion pass** — DONE (`corpus/expand_compilations.py`, +1301 children) + the
   **research-grade gate** (`triage/research_grade_gate.py`) to de-noise it. See §3.
