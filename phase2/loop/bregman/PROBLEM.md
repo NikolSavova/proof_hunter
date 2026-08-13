@@ -84,12 +84,14 @@ gives `(1.5, -2.25) != (1.5, -2.5)`.
 5. A referee lane finds the `U*` computation wrong (if `cl C* subset U*` failed, we would be
    dropping two hypotheses, not one, and the counterexample would not isolate full domain).
 
-## Scope note — what a COMPLETE note needs
+## Scope note — RESOLVED 2026-08-13
 
-The Tier-2 skeptic flagged that this settles only the full-domain half. Fact 3.2 carries a
-second hypothesis, `cl C* subset U*`. A referee-proof note should also address whether THAT
-is necessary — requiring a second construction where `cl C*` escapes `U*` (compactness is
-lost, so the uniqueness argument must be redone). Treat as **Part II**, not optional polish.
+The Tier-2 skeptic flagged that Part I settles only the full-domain half, and that a
+referee-proof note must also address the second hypothesis `cl C* subset U*`. **It now does,
+and in the opposite direction to what was expected:** no second counterexample was needed
+because hypothesis (b) turns out to be redundant outright (Part II). The paper's shape is
+therefore a complete analysis of Fact 3.2's hypotheses — **(a) shown necessary by explicit
+counterexample, (b) shown removable by theorem** — rather than a counterexample plus a gap.
 
 ## Status
 
@@ -114,7 +116,16 @@ lost, so the uniqueness argument must be redone). Treat as **Part II**, not opti
 - [x] Part I **proof** — `proof_part1_20260813.md`, rigorous, no numerics load-bearing
   (Lemma SOL.2 proves `inf q = e + 2/e > 41/12 > 17/5` from exponential series with explicit
   rational constants; independently audited step by step this session)
-- [ ] Part II — is `cl C* subset U*` necessary? — Sol running
+ - [x] **Part II — SETTLED, and the answer is stronger than a counterexample: hypothesis (b)
+  is REDUNDANT.** `proof_part2_consolidated_20260813.md` Theorem 1: for Legendre `f` with
+  `dom f = X` and **arbitrary** `C subset X`, a singleton right projection at every `x` forces
+  `C` nonempty and closed AND `C*` convex. So Fact 3.2 holds with (b) deleted, and with
+  closedness/nonemptiness derived rather than assumed. Route: dualise to tilt minimisation over
+  `S = C*`; a nonconvex `S` yields a hull ghost on `bd U*`; perturbing along an outward
+  supporting normal empties the argmin, contradicting attainment under (c).
+  Provenance: attempt 1 isolated the obstruction; two independent agents (one told to CONSTRUCT
+  a counterexample) converged on the proof; a dedicated break-agent failed on three routes;
+  consolidated with four referee repairs.
 - [x] **Two adversarial referee lanes on Part I — BOTH MINOR_REPAIRS, all findings applied**
   (`referee_maths_part1_20260813.md`, `referee_numerics_part1_20260813.md`). Neither found an
   error in the PROOF; all seven findings were against the supporting artifacts:

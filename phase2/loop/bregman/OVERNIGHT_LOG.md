@@ -177,3 +177,36 @@ boundary point, confirming R1/R2 were genuinely necessary and not pedantry.
 merged proof, with the new surfaces named: Lemma 4 (does attainment really force closedness for
 ARBITRARY `C`?), Lemma 6 (arbitrary-slope supercoercivity), §10, and whether the §11
 reconciliation is honest or quietly dropped a step in the merge.
+
+### Wave 5 COMPLETE — **BOTH LANES: SURVIVES.** Part II is closed.
+
+`referee3_ref_maths_20260813.md` / `referee3_ref_break_20260813.md`. SURVIVES is the top of the
+scale — no repairs demanded. Both engaged substantively rather than rubber-stamping:
+
+- **Maths lane** re-derived the duality from Fenchel equality itself (`g(p) = <p,y> - f(y)`,
+  giving `D_f(x,y) = f(x) + g(p) - <x,p>`) and concluded: *"The continuity-based version of the
+  key step is false, but the consolidated proof has genuinely repaired it. I do not find a
+  counterexample to Theorem 1 or a fatal gap in the ghost reduction."*
+- **Break lane**: *"I could not construct the requested counterexample. The strongest
+  boundary-discontinuity candidate satisfies full domain, closedness, nonemptiness, and
+  nonconvexity of `C*`, but it necessarily fails projection existence. The consolidated proof's
+  replacement of boundary continuity by the hull recovery sequence closes the proposed escape
+  route."* It pushed the §10 function as hard as it could and it still died on attainment.
+
+**Cumulative adversarial record on Part II:** 1 construct-agent (failed, proved impossibility
+instead) + 1 prove-agent (proved it) + 1 break-agent v1 (SURVIVES) + 1 maths lane v1
+(MINOR_REPAIRS, three load-bearing steps certified) + consolidation with all repairs + 1 maths
+lane v2 (SURVIVES) + 1 break-agent v2 (SURVIVES). **No agent has found an error in the
+mathematics at any stage.** Every defect found all night was in a restatement, and several of
+those were mine.
+
+### Wave 6 — prior-art sweep on the NEW THEOREM, launched.
+
+`scripts/sweep2.py` -> `sweep2_theorem_20260813.md`. Sweep #1 cleared the Part I
+COUNTEREXAMPLE; Part II is a DIFFERENT and stronger claim — it strengthens a published Fact —
+so the Erdosgate rule applies to it independently. It is told to check specifically: anyone
+stating Fact 3.2 without (b) or calling (b) redundant; later work by the original authors;
+whether Luo et al. or its citers remove the DUAL-CLOSURE hypothesis (a different question from
+the one we cleared them on); Themelis-Wang's domain-aware framework; whether "attainment forces
+closedness" is folklore needing citation rather than claiming; and whether
+perturbation-along-a-supporting-normal is a known named device.
