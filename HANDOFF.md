@@ -515,6 +515,18 @@ Theorem A is now exactly THREE statements: (S2'), (S3'), (S4)** — see
 STATUS_wave6 §human-steps for the ordered path ((S3') is closest: its 18.9M-box
 certificate just needs to actually be RUN — a free local computation).
 
+**(S3) PROGRESS 2026-08-12 (local compute, $0):** the central unexecuted
+certificate — Lemma SOL.3's band bounds, referee finding F1 — has been **RUN and
+PASSES**: all six compact bands W1–W6b certified by adaptive interval arithmetic
+(1,591 leaves vs the draft's asserted 18.9M uniform boxes, zero hard failures,
+selftested dps 30/50 against the referee's own anchors), using the F2-corrected
+(doubled) Euler–Maclaurin constant. Errata F2/F3 recorded. Script
+`g2_scripts/campaign_20260811/wave6_sol/s3_certificate/s3_cert.py`, note
+`s3_certificate_20260812.md` — read its §4 for the honest residue: method is
+directed-rounding intervals (not the draft's claimed exact rationals); (SOL.5)
+is consumed not certified (11 orders of slack per referee measurement);
+W7's (SOL.16)/(SOL.17) unrun; the (S3) maths-referee lane still owed.
+
 **⚠️ BUDGET (2026-08-12, binding):** Sihao spent >$1000 in one day on the
 campaign; Fable credits ran OUT mid-wave-6b. **Standing policy: NO Fable
 proof/referee fleets without Sihao's explicit go-ahead.** Verification runs
