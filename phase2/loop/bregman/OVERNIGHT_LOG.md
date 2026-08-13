@@ -110,3 +110,41 @@ would have to relax full tilt admissibility or attainment."*
 proved the impossibility instead; one prove-agent proved it; one dedicated break-agent attacked
 three ways and failed. The maths lane is the remaining check — it server-errored
 (`wfr_019ffa12a42f76ac96af5f8a5ed51c0b`) and has been relaunched with its journal entry cleared.
+
+### Wave 3 complete — maths lane **MINOR_REPAIRS**. The question is settled; proving stops.
+
+`referee2_ref_maths_20260813.md`. Its findings 5-7 are not repairs but CERTIFICATIONS of the
+three most load-bearing steps:
+
+- **5. The duality** (right projection over `C` <-> tilt minimisation over `S = C*`): *"Correct;
+  argmin sets and their cardinalities are preserved."* This is what makes the contradiction bite.
+- **6. The supporting normal**: *"Correct in finite dimensions; unboundedness and flat faces do
+  not affect strictness for interior points."* — which also retires my flat-face worry entirely.
+- **7. Perturbation admissibility and infinite height**: *"Correct once the ghost height is k(q)
+  and recovery sequences are used."*
+
+Four repairs demanded (R1-R4):
+1. Drop the false "finite height => `f*` continuous at `q`" (referee's own Legendre counterexample
+   `g(u,v) = u^2 - sqrt(u) + v^2/u`); benchmark against `k = cl_lsc(f* + iota_S)` with a recovery
+   sequence. *(This was MY imprecision, propagated into both briefs — see wave 3 above.)*
+2. State the tie at the HULL height: `k(q) - <x_0,q> = m_0`, since SOL.6 yields an epigraph ghost
+   at height `k(q)` which may strictly EXCEED `f*(q)`.
+3. The written theorems still assume `C` closed and nonempty, so the headline "under (a) and (c)
+   alone" overstates. Either prove attainment forces those, or state hypotheses honestly.
+4. `part2b`'s SOL.2 unit-slope bound gives coercivity, not supercoercivity; use an
+   arbitrary-slope bound via a sphere of radius `R + L`.
+
+**Scoreboard:** construct-agent failed and proved impossibility instead; prove-agent proved it;
+break-agent attacked three ways and failed (SURVIVES); maths lane MINOR_REPAIRS with the three
+dangerous steps certified. Under the standing stopping rules this counts as SETTLED, so no
+further proving waves are being launched.
+
+### Wave 4 — CONSOLIDATION, launched (`resp_06d50561...`). Not a proving run.
+
+`scripts/consolidate.py` -> `proof_part2_consolidated_20260813.md`. Merges both wave-2 proofs,
+applies R1-R4, and must be SELF-CONTAINED — carrying the duality and ghost reduction rather than
+citing them (the `s3consol` lesson from the Bruhat campaign: a document that cites its evidence
+gets rejected, one that carries it does not). It will still need its own referee lane afterwards.
+
+*(Ops note: two launches tonight failed because the shell cwd had drifted into the bregman
+directory and relative paths broke. Use absolute paths in every launch command.)*
