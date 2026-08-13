@@ -449,6 +449,84 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: unrestricted attack and exact route barriers (Sihao + Codex ultracode)
+
+- **Honest headline:** unrestricted #838 remains open with rigorous base-two window `[1/4,1/2]`.
+  The integrated map is `phase2/loop/erdos838/UNRESTRICTED_ATTACK_20260813.md`. This pass did not
+  move an endpoint; it rigorously eliminated the main upper/lower shortcuts and isolated an
+  incremental theorem that would move the lower endpoint.
+- **Finite-state upper barrier.** Every finite-state almost-vertical blow-up has liminf coefficient
+  at least `1/2`, even with parent-dependent macros, reflections, periodic rules, state-dependent
+  branching, and unequal child sizes. The proof uses a maximal-growth recurrent SCC, Perron growth,
+  maximum-cycle-mean cap/cup exponents, cup--cap, and a recurrent two-block term. An independent
+  audit accepted it after explicit SCC/periodicity repairs. Artifacts:
+  `agent_upper_multitype/{FINITE_STATE_BARRIER.md,multitype_search.py,heterogeneous_audit.py}` and
+  `agent_asymptotic/FINITE_STATE_BARRIER_AUDIT.md`.
+- **Baek--Balko construction counted.** The canonical `x`-blow-up cannot beat `1/2`. Layer
+  transversals and a canonical score-two Pascal cell give a conservative cover `0.5021396326...`;
+  the fully canonical `m=3` endpoint is covered by the sharp decomposable theorem. An independent
+  referee accepted this after an endpoint repair and expanded score induction. The transversal
+  alone covers arbitrary cells through `x/k=0.21616144...`; noncanonical extremal cells above this
+  remain a precise loophole. Artifacts: `agent_asymptotic/{BAEK_BLOWUP_COUNT.md,
+  bb_xblowup_barrier.py}` and `agent_geometry/BAEK_BLOWUP_COUNT_AUDIT.md`.
+- **Lower-method ceilings.** Fixed-`k` induced-subset chains telescope to one scale; ideal same-type
+  transversals and recursive use of `1/4` stay at `1/4`. A hereditary `N^alpha` structured
+  extraction with internal coefficient `c` transfers at best `c alpha^2` for `alpha>=1/2`, even
+  aggregating all witnesses. Separate cap/cup marginals do not control their forward product. The
+  exact escape target is growing-`k` supersaturation: any `eta>0` in
+  `mu_k(2^{2k+o(k)})>=2^{(1+eta-o(1))k^2}` improves the lower coefficient to `(1+eta)/4`.
+- **Global history route decisively falsified.** The one-endpoint formula gives split-path count
+  `44`, not true count `50`, on `T_(4,2)`. Stronger, `H_q<=2^{O(q log q)}V` is false on its
+  directional iterates. At `q=floor(log N)`, an explicit `sqrt(d)`-scale cap-branch spine gives
+  history coefficient exactly `1`, versus convex coefficient `2/log2(6)=0.773705...`; already at
+  depth 18, `H_47>47!V`. Artifacts:
+  `agent_claude_review_audit/{GLOBAL_HISTORY_AUDIT.md,history_global_test.py}`.
+- **Further structure.** Convex sets are cliques in the convex-quadruple 4-graph, but a random
+  4-graph barrier shows fixed hereditary flag densities cannot force `k=Theta(log N)` cliques
+  without growing-order planar constraints. Exact Pascal fixed-point exponents rise from `0.168`
+  at `k=10` to `0.390` at `k=120`, so these examples do not falsify a uniform multiplicity gain.
+  Hull fibres yield many nested cages, while exact nested triangles kill naive multiplication.
+- **Verification:** exact integer/rational-coordinate programs pass; the Baek barrier received an
+  independent proof audit; `git diff --check` passes. Approximate direct API spend: `$0`.
+
+### 2026-08-13 — ERDŐS #1208: rank-17 prime-power upper bound candidate and exhaustive restart handoff (Sihao + Codex ultracode)
+
+- **Prior-art status corrected first.**  The public problem page is stale.
+  Clemen--Führer--Roche-Newton already prove `F_2(n)>>n^(1/3)`, and
+  Lee--Pohoata--Zhu already prove `F_2(n)<<n^(1/2-epsilon)` with a stronger
+  robust theorem, validating Sungchul Lee's independent June draft.  The bare
+  polynomial saving was killed as a novelty target before construction work.
+- **Apparently new explicit partial result.**  Prime-power valuation flags
+  replace the two squarefree isotropic choices by `K+1` local patterns.  Exact
+  divisor switching and Minkowski box packing yield a master bound.  A rank-17
+  tame totally-real pro-2 tower with 55 split primes and 27 phase-adaptive
+  depth vectors gives the candidate theorem `F_2(n)<<n^0.49815`.
+- **Verification shipped.**  `verify_adaptive_rank17.py` checks all finite
+  arithmetic data: 55 primes, 935 Legendre symbols, rank 17, root discriminant
+  `3929160775540133527939545`, and `4(17+55)=288<289`; it also checks the 27
+  overlapping exponent intervals at 80 decimal digits.  A 150-digit replay
+  preserves every sign.  Two independent adversarial audits reconstructed the
+  local-to-global proof and found no defect, conditional on the declared
+  Shafarevich presentation theorem and symbolic master inequality.  The
+  rank-16 `0.49826`/`0.4991` certificates remain independent fallbacks.
+- **Full-gap attack recorded honestly.**  The binary local-lattice flags are
+  completely classified, giving a continuous entropy floor `0.411408...` for
+  this method, far above `1/3`.  Any power saving in four-distinct distance
+  energy would improve the lower exponent, but the square grid has the same
+  edge/codegree profile as a random 4-graph at cube-root scale.  This kills
+  generic containers/nibbles/LLL, raw DRC, additive BSG, simple grid
+  occupancy/modular arguments, semialgebraic Ramsey machinery, tensor/polar/
+  finite-group constructions, and further fixed-modulus tuning as complete
+  routes.  The credible next inputs are an inverse Guth--Katz/Elekes--Sharir
+  stability theorem or a rainbow principal-submatrix theorem for rank-4
+  Euclidean distance matrices.
+- **Claim discipline.**  This is not a full solution and not yet an externally
+  established theorem.  Human proof review, directed-interval/rational
+  hardening of the Decimal certificate, and MathSciNet/zbMATH/author novelty
+  clearance are mandatory before a paper claim.  The complete restart package
+  is `phase2/loop/erdos1208/HANDOFF_20260813.md`.  No process is running.
+  Approximate direct API spend: `$0`.
+
 ### 2026-08-13 — ERDŐS #669: zonotope lower-bound theorem and exhaustive handoff (Sihao + Codex ultracode)
 
 - **Problem identity repaired.** The repository shortlist had guessed that #669 was a

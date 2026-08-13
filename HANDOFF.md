@@ -65,6 +65,34 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-13 — ERDŐS #1208: EXPLICIT CANDIDATE UPPER EXPONENT `0.49815` + FULL-GAP BARRIER MAP (Sihao + Codex ultracode).**
+The live literature window is `n^(1/3) << F_2(n) << n^(1/2-epsilon)`; the
+Erdős Problems page is stale because CFRN (arXiv:2606.05841) and LPZ
+(arXiv:2607.05374) changed both endpoints in June--July 2026.  This attack's
+apparently new ingredient is a prime-power valuation-pattern amplification of
+the Minkowski-grid sieve.  A rank-17 totally real pro-2 tower with 55 certified
+split primes and a 27-modulus adaptive phase cover yields the candidate
+explicit theorem `F_2(n) << n^0.49815`.  The finite certificate checks 55
+primes, 935 Legendre symbols, square-class rank 17, root discriminant
+`3929160775540133527939545`, the knife-edge GS inequality `288<289`, and all
+exponent intervals at 80 digits; an independent 150-digit replay and an
+adversarial mathematical audit both pass.  This is **not a full solution and
+not yet an externally established result**: the Shafarevich/class-tower input,
+master sieve inequality, numerical interval hardening, and specialist novelty
+clearance remain human gates.
+
+The full-problem attack also proves a local entropy barrier showing that the
+entire binary norm-lattice framework cannot reach exponent `1/3`; derives a
+conditional lower improvement from any power saving in all-distinct distance
+energy; and shows the square grid matches random 4-hypergraph edge/codegree
+statistics at the cube-root barrier.  Generic containers, DRC, additive BSG,
+semialgebraic Ramsey bounds, simple grid occupancy, tensor products,
+finite-group orbits, polar layers, and dense-degree tower variants were all
+audited and do not close the gap.  The durable restart brief—including proof
+architecture, every meaningful dead end, exact commands, claim discipline,
+and prioritized next steps—is
+`phase2/loop/erdos1208/HANDOFF_20260813.md`.  No process is running.
+
 **⭐ 2026-08-13 — ERDŐS #669: FULL ATTACK + PROOF-GRADE ZONOTOPE LOWER BOUNDS (Sihao + Codex ultracode).**
 The problem was first corrected in the repository: #669 is the generalized orchard/rich-lines
 problem, not the Heilbronn/fixed-area-triangle problem previously guessed in the shortlist. For
@@ -213,10 +241,28 @@ the exact counterexamples in `agent_geometry/HISTORY_ATTACK.md`; simple containe
 `2^{Theta((log N)^2)}` fibres.  `agent_asymptotic/FULL_REGULARIZATION_TRANSFER.md` quantifies the
 remaining barrier: extracting an `N^alpha` strong subset squares the exponent (`1/2` becomes
 `alpha^2/2`); current mutually-avoiding extraction has `alpha=1/2`, and even a perfect
-one-witness same-type pipeline is capped at the old `1/4`.  **Immediate next gate:** obtain human MathSciNet/Zentralblatt and
-geometer novelty clearance for the paper; mathematically, prove a quantitative regularization /
-decomposition lemma for arbitrary order types or a nonlocal endpoint-reset analogue.  Do not claim
-the full problem solved.
+one-witness same-type pipeline is capped at the old `1/4`.
+
+**2026-08-13 unrestricted follow-up.**  The detailed current map is
+`phase2/loop/erdos838/UNRESTRICTED_ATTACK_20260813.md`.  Three further routes are now rigorously
+closed.  First, every finite-state vertical blow-up system---including state-dependent macro types,
+reflections, unequal branching, and unequal child sizes---has liminf coefficient at least `1/2`;
+see `agent_upper_multitype/FINITE_STATE_BARRIER.md` and the independent audit.  Second, the canonical
+Baek--Balko `x`-blow-up is also blocked at `1/2`: explicit layer transversals and a canonical
+score-two Pascal cluster give a conservative cover `>=0.5021396`; arbitrary noncanonical extremal
+microcells for `x/k>0.21616...` remain a precise loophole.  Third, even the global inequality
+`H_q<=2^{O(q log q)}V` for hinged histories is false: on the six-point-template iterates at
+`q=floor(log N)`, the history coefficient is exactly `1` while the convex coefficient is
+`2/log2(6)=0.773705...`; see `agent_claude_review_audit/GLOBAL_HISTORY_AUDIT.md`.
+
+On the lower side, all chains of hereditary fixed-`k` double counts telescope exactly, ideal
+same-type transversals remain capped at `1/4`, and fixed-order convex-quadruple densities cannot
+force `k=Theta(log N)` cliques.  The clean incremental target is growing-`k` supersaturation:
+showing `mu_k(2^{2k+o(k)})>=2^{(1+eta-o(1))k^2}` for any `eta>0` improves the unrestricted lower
+coefficient to `(1+eta)/4`.  The clean full target remains the exact common-two-endpoint inequality
+`sum_{s<t}c(s,t)u(s,t)>=2^{(1/2-o(1))log^2 N}`.  **Immediate next gate:** human
+MathSciNet/Zentralblatt/geometer clearance for the paper; mathematically, attack one of these two
+growing-order/common-endpoint statements.  Do not claim the full problem solved.
 
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good
@@ -501,6 +547,23 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 ## 4. WHAT STILL NEEDS TO BE BUILT
 
+**Erdős #1208 candidate-result obligations.**
+
+- [ ] Obtain a human number-theory audit of the rank-17 tame totally-real
+  Shafarevich/Golod--Shafarevich specialization and a separate geometric-
+  combinatorics audit of master inequality (3.5).
+- [ ] Replace the high-precision Decimal endpoint checks by directed interval
+  or exact rational transcendental bounds; current 80/150-digit runs agree
+  with minimum transformed margin `4.25e-5`.
+- [ ] Run MathSciNet/zbMATH/forward-citation and author clearance for the
+  prime-power and adaptive-modulus ideas.  Only then draft a short note around
+  the candidate `F_2(n) << n^0.49815` theorem.
+- [ ] For the full problem, do not optimize more tower dimensions or generic
+  codegrees.  The live lower targets are an inverse/stability theorem for
+  near-extremal Elekes--Sharir configurations or a rainbow principal-submatrix
+  theorem for rank-at-most-four Euclidean distance matrices.  See the dedicated
+  handoff §§8--14.
+
 **Erdős #669 candidate-result obligations.**
 
 - [ ] Run a specialist-grade MathSciNet/zbMATH/citation clearance of the general orchard deduction
@@ -651,6 +714,17 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
+
+### ⭐ 2026-08-13 — ERDŐS #1208 EXPLICIT-EXPONENT CANDIDATE: EXTERNAL AUDIT BEFORE DRAFTING
+Read `phase2/loop/erdos1208/HANDOFF_20260813.md` completely, then run
+`python3 phase2/loop/erdos1208/verify_adaptive_rank17.py`.  The candidate
+result is `F_2(n) << n^0.49815`, not a full solution.  Before circulating it,
+obtain the two human proof audits, replace Decimal by directed interval/rational
+bounds, and clear prime-power/adaptive-modulus priority with MathSciNet/zbMATH
+and the LPZ authors.  For a new full-solution attempt, start from the two
+structural lower targets in §11 of the dedicated handoff; do not restart the
+now-exhausted fixed-modulus, generic-container, DRC, BSG, or tower-rank lanes.
+No process is running.
 
 ### ⭐ 2026-08-13 — ERDŐS #669 ZONOTOPE RESULT: CLEAR NOVELTY BEFORE DRAFTING
 Read `phase2/loop/erdos669/HANDOFF_2026-08-13.md` first, then rerun the two exact verifiers listed
