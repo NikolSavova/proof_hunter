@@ -1,0 +1,51 @@
+{
+  "status": "COUNTEREXAMPLE",
+  "checked_before_failure": 160,
+  "n": 9,
+  "basis": [
+    0,
+    1,
+    3,
+    4,
+    5
+  ],
+  "unique_diagonals": [
+    0,
+    1
+  ],
+  "bound": 7,
+  "model_audits": {
+    "ordinary_five_list": {
+      "solver_status": "INFEASIBLE",
+      "wall_time": 0.016336,
+      "role_cost_if_feasible": null
+    },
+    "triangle_enhanced": {
+      "solver_status": "INFEASIBLE",
+      "wall_time": 0.014262,
+      "role_cost_if_feasible": null
+    },
+    "three_tile": {
+      "solver_status": "INFEASIBLE",
+      "wall_time": 0.006409000000000001,
+      "role_cost_if_feasible": null
+    }
+  },
+  "bound_plus_one_audits": {
+    "ordinary_five_list": {
+      "solver_status": "OPTIMAL",
+      "wall_time": 0.015117,
+      "role_cost_if_feasible": 8
+    },
+    "triangle_enhanced": {
+      "solver_status": "OPTIMAL",
+      "wall_time": 0.013183,
+      "role_cost_if_feasible": 8
+    },
+    "three_tile": {
+      "solver_status": "OPTIMAL",
+      "wall_time": 0.006104,
+      "role_cost_if_feasible": 8
+    }
+  }
+}

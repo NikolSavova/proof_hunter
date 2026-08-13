@@ -1,0 +1,19 @@
+{
+  "status": "COUNTEREXAMPLE",
+  "checked_before_failure": 160,
+  "n": 9,
+  "basis": [
+    0,
+    1,
+    3,
+    4,
+    5
+  ],
+  "unique_diagonals": [
+    0,
+    1
+  ],
+  "bound": 7,
+  "solver_status": "INFEASIBLE",
+  "wall_time": 0.021231
+}

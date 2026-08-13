@@ -1,0 +1,227 @@
+{
+  "status": "PASS",
+  "scope": "finite theorem checks only",
+  "exhaustive_interval_factorizations": {
+    "2": {
+      "normalized_pairs_checked": 9,
+      "number_of_factorizations": 2,
+      "factorizations": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      ]
+    },
+    "3": {
+      "normalized_pairs_checked": 784,
+      "number_of_factorizations": 2,
+      "factorizations": [
+        [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            3,
+            6
+          ]
+        ],
+        [
+          [
+            0,
+            3,
+            6
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ]
+      ]
+    },
+    "4": {
+      "normalized_pairs_checked": 207025,
+      "number_of_factorizations": 6,
+      "factorizations": [
+        [
+          [
+            0,
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            4,
+            8,
+            12
+          ]
+        ],
+        [
+          [
+            0,
+            1,
+            4,
+            5
+          ],
+          [
+            0,
+            2,
+            8,
+            10
+          ]
+        ],
+        [
+          [
+            0,
+            1,
+            8,
+            9
+          ],
+          [
+            0,
+            2,
+            4,
+            6
+          ]
+        ],
+        [
+          [
+            0,
+            2,
+            4,
+            6
+          ],
+          [
+            0,
+            1,
+            8,
+            9
+          ]
+        ],
+        [
+          [
+            0,
+            2,
+            8,
+            10
+          ],
+          [
+            0,
+            1,
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            0,
+            4,
+            8,
+            12
+          ],
+          [
+            0,
+            1,
+            2,
+            3
+          ]
+        ]
+      ]
+    }
+  },
+  "canonical_factorization_primes_checked": [
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19
+  ],
+  "repair_capacity_set_pairs_checked": 65536,
+  "block_absorber_parameter_pairs_checked": 3321,
+  "diffuse_rounding_bounds": [
+    {
+      "c": "1/4",
+      "eta": "1/100",
+      "certified_expected_hole_fraction_lower_bound": 0.13395513401825507,
+      "limiting_eta_to_zero_bound": 0.1353352832366127
+    },
+    {
+      "c": "85/294",
+      "eta": "1/100",
+      "certified_expected_hole_fraction_lower_bound": 0.1755844668914472,
+      "limiting_eta_to_zero_bound": 0.17738872559497715
+    },
+    {
+      "c": "2/5",
+      "eta": "1/100",
+      "certified_expected_hole_fraction_lower_bound": 0.2836042925934118,
+      "limiting_eta_to_zero_bound": 0.2865047968601901
+    },
+    {
+      "c": "9/20",
+      "eta": "1/100",
+      "certified_expected_hole_fraction_lower_bound": 0.3258648450917454,
+      "limiting_eta_to_zero_bound": 0.32919298780790557
+    }
+  ],
+  "growing_modulus_target_equidistribution": [
+    {
+      "M": 100,
+      "q_floor_sqrt_M": 10,
+      "macro_bins": 8,
+      "normalized_l1_cell_discrepancy": 0.3,
+      "general_upper_order": "O(m*q/M)"
+    },
+    {
+      "M": 400,
+      "q_floor_sqrt_M": 20,
+      "macro_bins": 8,
+      "normalized_l1_cell_discrepancy": 0.2,
+      "general_upper_order": "O(m*q/M)"
+    },
+    {
+      "M": 900,
+      "q_floor_sqrt_M": 30,
+      "macro_bins": 8,
+      "normalized_l1_cell_discrepancy": 0.1,
+      "general_upper_order": "O(m*q/M)"
+    },
+    {
+      "M": 1600,
+      "q_floor_sqrt_M": 40,
+      "macro_bins": 8,
+      "normalized_l1_cell_discrepancy": 0.0,
+      "general_upper_order": "O(m*q/M)"
+    },
+    {
+      "M": 2500,
+      "q_floor_sqrt_M": 50,
+      "macro_bins": 8,
+      "normalized_l1_cell_discrepancy": 0.06,
+      "general_upper_order": "O(m*q/M)"
+    }
+  ]
+}

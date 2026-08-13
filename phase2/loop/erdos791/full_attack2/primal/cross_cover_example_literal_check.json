@@ -1,0 +1,30 @@
+{
+  "abstract_prefix": 5,
+  "certificate": "/Users/sihaohuang/Desktop/Coding/proof_hunter/phase2/loop/erdos791/full_attack2/primal/cross_cover_example.json",
+  "claimed_m": 5,
+  "direct_checks": [
+    {
+      "basis_size": 9,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 19,
+      "t": 2
+    },
+    {
+      "basis_size": 21,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 79,
+      "t": 4
+    },
+    {
+      "basis_size": 33,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 179,
+      "t": 6
+    }
+  ],
+  "ell": 6,
+  "status": "PASS"
+}

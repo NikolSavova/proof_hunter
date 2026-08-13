@@ -1,0 +1,32 @@
+{
+  "status": "VERIFIED",
+  "scope": "ordinary five-list predicate only",
+  "claim": "No phased role assignment of cost at most 15 covers targets 0 through 26 on the fixed basis.",
+  "basis": [0, 1, 3, 4, 9, 10, 12, 13],
+  "target_n": 26,
+  "max_role_cost": 15,
+  "generator_command": "problem-id/.venv/bin/python phase2/loop/erdos791/full_attack2/computation/role_cnf.py --basis 0 1 3 4 9 10 12 13 --target-n 26 --max-cost 15 --output k8_bad_cost15.cnf",
+  "cnf": {
+    "variables": 1587,
+    "clauses": 5223,
+    "sha256": "9e48179a28b0c33bb66e616919e6c739c75cef36db89da0a16c6cbc7eba44cea"
+  },
+  "drat": {
+    "compressed_file": "k8_bad_cost15.drat.gz",
+    "compressed_sha256": "1241d76bcfb2f499668d96a48b6cacf98d37f46e6c378c9b13b268bdecae44fc",
+    "decompressed_sha256": "58ec0583b0434832a889b6a0824069d0ec979ed2efa0c53380e4a93d03e3f663"
+  },
+  "checker": {
+    "program": "drat-trim",
+    "exit_code": 0,
+    "verdict": "s VERIFIED",
+    "core_lemmas": 93224,
+    "resolution_steps": 2897307
+  },
+  "notes": [
+    "The CNF was regenerated from role_cnf.py and its SHA-256 independently rechecked in the root lane.",
+    "The compressed and decompressed trace SHA-256 values were independently rechecked in the root lane.",
+    "The fresh drat-trim verification was run and reported by the exact-search lane.",
+    "Triangle-enhanced and three-tile lower bounds are supplied by the symbolic essential-plus-unique-diagonal theorem, not by this trace."
+  ]
+}

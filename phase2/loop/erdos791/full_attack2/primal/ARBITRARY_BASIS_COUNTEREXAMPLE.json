@@ -1,0 +1,22 @@
+{
+  "basis": [0, 1, 3, 4, 5],
+  "target_n": 9,
+  "m": 10,
+  "unique_diagonal_vertices": [0, 1],
+  "unique_diagonal_lower_bound_on_role_cost": 7,
+  "triangle_enabled_optimum_role_cost": 8,
+  "optimum_status": "OPTIMAL",
+  "placement": {
+    "I": [0, 1],
+    "J": [4, 5],
+    "K": [],
+    "L0": [0, 1, 3, 5],
+    "L1": []
+  },
+  "verified_prefix": 11,
+  "literal_checks": [
+    {"t": 2, "pass": true, "required_through": 39},
+    {"t": 4, "pass": true, "required_through": 159}
+  ],
+  "interpretation": "Unique diagonal count is a lower bound, not an optimum formula."
+}

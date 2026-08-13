@@ -1,0 +1,129 @@
+{
+  "rows": [
+    {
+      "J": [
+        0
+      ],
+      "K": [
+        1
+      ],
+      "L": [
+        1
+      ],
+      "density_n_over_cost_squared": 0.2222222222222222,
+      "minimum_role_cost": 3,
+      "n": 2,
+      "triples_checked": 5
+    },
+    {
+      "J": [
+        0
+      ],
+      "K": [
+        0,
+        1
+      ],
+      "L": [
+        0,
+        1
+      ],
+      "density_n_over_cost_squared": 0.12,
+      "minimum_role_cost": 5,
+      "n": 3,
+      "triples_checked": 112
+    },
+    {
+      "J": [
+        0
+      ],
+      "K": [
+        1,
+        3
+      ],
+      "L": [
+        1,
+        3
+      ],
+      "density_n_over_cost_squared": 0.16,
+      "minimum_role_cost": 5,
+      "n": 4,
+      "triples_checked": 407
+    },
+    {
+      "J": [
+        0,
+        1
+      ],
+      "K": [
+        0,
+        2
+      ],
+      "L": [
+        0,
+        2
+      ],
+      "density_n_over_cost_squared": 0.1388888888888889,
+      "minimum_role_cost": 6,
+      "n": 5,
+      "triples_checked": 4520
+    },
+    {
+      "J": [
+        0,
+        2
+      ],
+      "K": [
+        1,
+        3
+      ],
+      "L": [
+        1,
+        3
+      ],
+      "density_n_over_cost_squared": 0.16666666666666666,
+      "minimum_role_cost": 6,
+      "n": 6,
+      "triples_checked": 14187
+    },
+    {
+      "J": [
+        0,
+        2
+      ],
+      "K": [
+        0,
+        3
+      ],
+      "L": [
+        0,
+        1,
+        3
+      ],
+      "density_n_over_cost_squared": 0.14285714285714285,
+      "minimum_role_cost": 7,
+      "n": 7,
+      "triples_checked": 112797
+    },
+    {
+      "J": [
+        0,
+        2
+      ],
+      "K": [
+        1,
+        5
+      ],
+      "L": [
+        1,
+        3,
+        5
+      ],
+      "density_n_over_cost_squared": 0.16326530612244897,
+      "minimum_role_cost": 7,
+      "n": 8,
+      "triples_checked": 321051
+    }
+  ],
+  "scope": "Exhaustive cyclic macro triangle search; not an integer lift.",
+  "status": "PASS"
+}

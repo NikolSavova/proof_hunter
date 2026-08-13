@@ -1,0 +1,52 @@
+{
+  "asymptotic_ratio": "5/36",
+  "certified_macro_squares": 5,
+  "direct_checks": [
+    {
+      "basis_size": 9,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 19,
+      "t": 2
+    },
+    {
+      "basis_size": 21,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 79,
+      "t": 4
+    },
+    {
+      "basis_size": 33,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 179,
+      "t": 6
+    }
+  ],
+  "m": 5,
+  "macro_basis": [
+    0,
+    1,
+    3
+  ],
+  "macro_basis_size": 3,
+  "macro_range": 4,
+  "placement": {
+    "I": [
+      0,
+      1,
+      3
+    ],
+    "J": [
+      0,
+      1,
+      3
+    ],
+    "K": [],
+    "L0": [],
+    "L1": []
+  },
+  "role_cost": 6,
+  "status": "PASS"
+}

@@ -1,0 +1,575 @@
+{
+  "rows": [
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 1,
+      "status": "INFEASIBLE",
+      "wall_time": 0.0010270000000000001
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 2,
+      "status": "INFEASIBLE",
+      "wall_time": 3.4e-05
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 3,
+      "status": "INFEASIBLE",
+      "wall_time": 2.6000000000000002e-05
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 4,
+      "status": "INFEASIBLE",
+      "wall_time": 0.00025100000000000003
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 5,
+      "status": "INFEASIBLE",
+      "wall_time": 0.0009830000000000001
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 6,
+      "status": "INFEASIBLE",
+      "wall_time": 0.000652
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 7,
+      "status": "INFEASIBLE",
+      "wall_time": 0.000746
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 8,
+      "status": "INFEASIBLE",
+      "wall_time": 0.00084
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 9,
+      "status": "INFEASIBLE",
+      "wall_time": 0.002007
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 10,
+      "status": "INFEASIBLE",
+      "wall_time": 0.001376
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 11,
+      "status": "INFEASIBLE",
+      "wall_time": 0.001879
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 12,
+      "status": "INFEASIBLE",
+      "wall_time": 0.0021780000000000002
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 13,
+      "status": "INFEASIBLE",
+      "wall_time": 0.006961
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 14,
+      "status": "INFEASIBLE",
+      "wall_time": 0.007374
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 15,
+      "status": "INFEASIBLE",
+      "wall_time": 0.005148000000000001
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 16,
+      "status": "INFEASIBLE",
+      "wall_time": 0.012583
+    },
+    {
+      "branches": 0,
+      "clique_size": 5,
+      "conflicts": 0,
+      "n": 17,
+      "status": "INFEASIBLE",
+      "wall_time": 0.013009000000000001
+    },
+    {
+      "branches": 324,
+      "clique_size": 5,
+      "conflicts": 48,
+      "n": 18,
+      "status": "INFEASIBLE",
+      "wall_time": 0.030279
+    },
+    {
+      "branches": 582,
+      "clique_size": 5,
+      "conflicts": 169,
+      "n": 19,
+      "status": "INFEASIBLE",
+      "wall_time": 0.018859
+    },
+    {
+      "branches": 679,
+      "clique_size": 5,
+      "conflicts": 214,
+      "n": 20,
+      "status": "INFEASIBLE",
+      "wall_time": 0.041440000000000005
+    },
+    {
+      "branches": 740,
+      "clique_size": 5,
+      "conflicts": 220,
+      "n": 21,
+      "status": "INFEASIBLE",
+      "wall_time": 0.029726000000000002
+    },
+    {
+      "branches": 880,
+      "clique_size": 5,
+      "conflicts": 290,
+      "n": 22,
+      "status": "INFEASIBLE",
+      "wall_time": 0.036298000000000004
+    },
+    {
+      "branches": 2481,
+      "clique_size": 5,
+      "conflicts": 149,
+      "n": 23,
+      "status": "INFEASIBLE",
+      "wall_time": 0.06328600000000001
+    },
+    {
+      "branches": 1157,
+      "clique_size": 5,
+      "conflicts": 118,
+      "n": 24,
+      "status": "INFEASIBLE",
+      "wall_time": 0.035917000000000004
+    },
+    {
+      "branches": 2871,
+      "clique_size": 5,
+      "conflicts": 102,
+      "n": 25,
+      "status": "INFEASIBLE",
+      "wall_time": 0.054134
+    },
+    {
+      "branches": 1491,
+      "clique_size": 5,
+      "conflicts": 582,
+      "n": 26,
+      "status": "INFEASIBLE",
+      "wall_time": 0.06345400000000001
+    },
+    {
+      "branches": 1637,
+      "clique_size": 5,
+      "conflicts": 715,
+      "n": 27,
+      "status": "INFEASIBLE",
+      "wall_time": 0.055880000000000006
+    },
+    {
+      "branches": 1741,
+      "clique_size": 5,
+      "conflicts": 734,
+      "n": 28,
+      "status": "INFEASIBLE",
+      "wall_time": 0.06742300000000001
+    },
+    {
+      "branches": 2111,
+      "clique_size": 5,
+      "conflicts": 938,
+      "n": 29,
+      "status": "INFEASIBLE",
+      "wall_time": 0.07558000000000001
+    },
+    {
+      "branches": 2315,
+      "clique_size": 5,
+      "conflicts": 1198,
+      "n": 30,
+      "status": "INFEASIBLE",
+      "wall_time": 0.086484
+    },
+    {
+      "branches": 4251,
+      "clique_size": 5,
+      "conflicts": 114,
+      "n": 31,
+      "status": "INFEASIBLE",
+      "wall_time": 0.07294
+    },
+    {
+      "branches": 5148,
+      "clique_size": 5,
+      "conflicts": 801,
+      "n": 32,
+      "status": "INFEASIBLE",
+      "wall_time": 0.097483
+    },
+    {
+      "branches": 3931,
+      "clique_size": 5,
+      "conflicts": 2192,
+      "n": 33,
+      "status": "INFEASIBLE",
+      "wall_time": 0.10928500000000001
+    },
+    {
+      "branches": 6197,
+      "clique_size": 5,
+      "conflicts": 1250,
+      "n": 34,
+      "status": "INFEASIBLE",
+      "wall_time": 0.10962000000000001
+    },
+    {
+      "branches": 6358,
+      "clique_size": 5,
+      "conflicts": 288,
+      "n": 35,
+      "status": "INFEASIBLE",
+      "wall_time": 0.14192400000000002
+    },
+    {
+      "branches": 7181,
+      "clique_size": 5,
+      "conflicts": 1626,
+      "n": 36,
+      "status": "INFEASIBLE",
+      "wall_time": 0.131769
+    },
+    {
+      "branches": 8773,
+      "clique_size": 5,
+      "conflicts": 2407,
+      "n": 37,
+      "status": "INFEASIBLE",
+      "wall_time": 0.160108
+    },
+    {
+      "basis": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        9,
+        14,
+        17,
+        18,
+        24,
+        28
+      ],
+      "basis_size": 11,
+      "branches": 9353,
+      "clique": [
+        0,
+        1,
+        9,
+        14,
+        24
+      ],
+      "clique_size": 5,
+      "clique_sums": {
+        "1": [
+          [
+            0,
+            1
+          ]
+        ],
+        "10": [
+          [
+            1,
+            9
+          ]
+        ],
+        "14": [
+          [
+            0,
+            14
+          ]
+        ],
+        "15": [
+          [
+            1,
+            14
+          ]
+        ],
+        "23": [
+          [
+            9,
+            14
+          ]
+        ],
+        "24": [
+          [
+            0,
+            24
+          ]
+        ],
+        "25": [
+          [
+            1,
+            24
+          ]
+        ],
+        "33": [
+          [
+            9,
+            24
+          ]
+        ],
+        "38": [
+          [
+            14,
+            24
+          ]
+        ],
+        "9": [
+          [
+            0,
+            9
+          ]
+        ]
+      },
+      "conflicts": 1819,
+      "n": 38,
+      "status": "OPTIMAL",
+      "wall_time": 0.189726
+    },
+    {
+      "basis": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        9,
+        14,
+        17,
+        18,
+        24,
+        28,
+        39
+      ],
+      "basis_size": 12,
+      "branches": 8340,
+      "clique": [
+        0,
+        1,
+        9,
+        14,
+        24
+      ],
+      "clique_size": 5,
+      "clique_sums": {
+        "1": [
+          [
+            0,
+            1
+          ]
+        ],
+        "10": [
+          [
+            1,
+            9
+          ]
+        ],
+        "14": [
+          [
+            0,
+            14
+          ]
+        ],
+        "15": [
+          [
+            1,
+            14
+          ]
+        ],
+        "23": [
+          [
+            9,
+            14
+          ]
+        ],
+        "24": [
+          [
+            0,
+            24
+          ]
+        ],
+        "25": [
+          [
+            1,
+            24
+          ]
+        ],
+        "33": [
+          [
+            9,
+            24
+          ]
+        ],
+        "38": [
+          [
+            14,
+            24
+          ]
+        ],
+        "9": [
+          [
+            0,
+            9
+          ]
+        ]
+      },
+      "conflicts": 1081,
+      "n": 39,
+      "status": "OPTIMAL",
+      "wall_time": 0.204541
+    },
+    {
+      "basis": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        9,
+        14,
+        17,
+        18,
+        24,
+        28,
+        39
+      ],
+      "basis_size": 12,
+      "branches": 11237,
+      "clique": [
+        0,
+        1,
+        9,
+        14,
+        24
+      ],
+      "clique_size": 5,
+      "clique_sums": {
+        "1": [
+          [
+            0,
+            1
+          ]
+        ],
+        "10": [
+          [
+            1,
+            9
+          ]
+        ],
+        "14": [
+          [
+            0,
+            14
+          ]
+        ],
+        "15": [
+          [
+            1,
+            14
+          ]
+        ],
+        "23": [
+          [
+            9,
+            14
+          ]
+        ],
+        "24": [
+          [
+            0,
+            24
+          ]
+        ],
+        "25": [
+          [
+            1,
+            24
+          ]
+        ],
+        "33": [
+          [
+            9,
+            24
+          ]
+        ],
+        "38": [
+          [
+            14,
+            24
+          ]
+        ],
+        "9": [
+          [
+            0,
+            9
+          ]
+        ]
+      },
+      "conflicts": 3127,
+      "n": 40,
+      "status": "OPTIMAL",
+      "wall_time": 0.24380400000000002
+    }
+  ]
+}

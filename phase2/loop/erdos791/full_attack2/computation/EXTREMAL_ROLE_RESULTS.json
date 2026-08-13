@@ -1,0 +1,4918 @@
+{
+  "rows": [
+    {
+      "R_k": 0,
+      "bases": [
+        {
+          "basis": [
+            0
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [],
+              "K": [
+                0
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 1,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0007875419687479734
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0
+            ],
+            "minimum_role_cost": 2,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 1
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 2,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [
+                0
+              ],
+              "K": [],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 1,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0003827079199254513
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0
+            ],
+            "minimum_role_cost": 2,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ]
+            },
+            "verified_prefix": 1
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [],
+              "K": [
+                0
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 1,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00034195801708847284
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0
+            ],
+            "minimum_role_cost": 2,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 1
+          },
+          "unique_diagonal_elements": [
+            0
+          ]
+        }
+      ],
+      "five_list_costs": [
+        2
+      ],
+      "k": 1,
+      "number_of_extremal_bases": 1,
+      "three_tile_costs": [
+        2
+      ],
+      "triangle_enhanced_costs": [
+        2
+      ]
+    },
+    {
+      "R_k": 2,
+      "bases": [
+        {
+          "basis": [
+            0,
+            1
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                1
+              ],
+              "J": [],
+              "K": [
+                1
+              ],
+              "L0": [
+                0
+              ],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0011782090878114104
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0012004999443888664
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1
+            ],
+            "minimum_role_cost": 4,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 3
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 4,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                1
+              ],
+              "J": [
+                0,
+                1
+              ],
+              "K": [],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0005456659710034728
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00040854199323803186
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1
+            ],
+            "minimum_role_cost": 4,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "I",
+                "J"
+              ]
+            },
+            "verified_prefix": 3
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [
+                1
+              ],
+              "K": [],
+              "L0": [
+                0,
+                1
+              ],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0010696250246837735
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0015994590939953923
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1
+            ],
+            "minimum_role_cost": 4,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "J",
+                "L0"
+              ]
+            },
+            "verified_prefix": 3
+          },
+          "unique_diagonal_elements": [
+            0,
+            1
+          ]
+        }
+      ],
+      "five_list_costs": [
+        4
+      ],
+      "k": 2,
+      "number_of_extremal_bases": 1,
+      "three_tile_costs": [
+        4
+      ],
+      "triangle_enhanced_costs": [
+        4
+      ]
+    },
+    {
+      "R_k": 4,
+      "bases": [
+        {
+          "basis": [
+            0,
+            1,
+            2
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [
+                2
+              ],
+              "K": [
+                0,
+                1,
+                2
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0013709159102290869
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.010530709056183696
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0014989159535616636
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2
+            ],
+            "minimum_role_cost": 5,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "K"
+              ],
+              "2": [
+                "J",
+                "K"
+              ]
+            },
+            "verified_prefix": 5
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 5,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                2
+              ],
+              "J": [
+                0,
+                1
+              ],
+              "K": [
+                2
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0008085420122370124
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.0031841659219935536
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0007595419883728027
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2
+            ],
+            "minimum_role_cost": 5,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J"
+              ],
+              "2": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 5
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                1,
+                2
+              ],
+              "J": [
+                0
+              ],
+              "K": [],
+              "L0": [],
+              "L1": [
+                2
+              ]
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004304583068005741
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.015585666988044977
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.002286209026351571
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2
+            ],
+            "minimum_role_cost": 5,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "I"
+              ],
+              "2": [
+                "I",
+                "L1"
+              ]
+            },
+            "verified_prefix": 5
+          },
+          "unique_diagonal_elements": [
+            0,
+            2
+          ]
+        },
+        {
+          "basis": [
+            0,
+            1,
+            3
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                1
+              ],
+              "J": [
+                0
+              ],
+              "K": [],
+              "L0": [],
+              "L1": [
+                1,
+                3
+              ]
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.002062708023004234
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0013466250384226441
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.011963709024712443
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1
+            ],
+            "minimum_role_cost": 5,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "I",
+                "L1"
+              ],
+              "3": [
+                "L1"
+              ]
+            },
+            "verified_prefix": 5
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 5,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [
+                1,
+                3
+              ],
+              "K": [
+                0,
+                1
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0013442090712487698
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.001287874998524785
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.004906667047180235
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1
+            ],
+            "minimum_role_cost": 5,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "3": [
+                "J"
+              ]
+            },
+            "verified_prefix": 5
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                1
+              ],
+              "J": [],
+              "K": [
+                0
+              ],
+              "L0": [
+                1
+              ],
+              "L1": [
+                3
+              ]
+            },
+            "defect_cost_minus_basis_size": 2,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0013541250955313444
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0014560000272467732
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.012139083002693951
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1
+            ],
+            "minimum_role_cost": 5,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "I",
+                "L0"
+              ],
+              "3": [
+                "L1"
+              ]
+            },
+            "verified_prefix": 5
+          },
+          "unique_diagonal_elements": [
+            0,
+            1
+          ]
+        }
+      ],
+      "five_list_costs": [
+        5,
+        5
+      ],
+      "k": 3,
+      "number_of_extremal_bases": 2,
+      "three_tile_costs": [
+        5,
+        5
+      ],
+      "triangle_enhanced_costs": [
+        5,
+        5
+      ]
+    },
+    {
+      "R_k": 8,
+      "bases": [
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                3,
+                4
+              ],
+              "J": [
+                1
+              ],
+              "K": [
+                0,
+                1,
+                4
+              ],
+              "L0": [
+                3
+              ],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0023036670172587037
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0021777079673483968
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.002286250004544854
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005583584075793624
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4
+            ],
+            "minimum_role_cost": 8,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "3": [
+                "I",
+                "L0"
+              ],
+              "4": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 9
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 8,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                1,
+                3,
+                4
+              ],
+              "J": [
+                0
+              ],
+              "K": [
+                1,
+                3,
+                4
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0012865000171586871
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003336083027534187
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0022819170262664557
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0012868329649791121
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4
+            ],
+            "minimum_role_cost": 8,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "I",
+                "K"
+              ],
+              "3": [
+                "I",
+                "K"
+              ],
+              "4": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 9
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                4
+              ],
+              "J": [
+                0,
+                1
+              ],
+              "K": [
+                1,
+                3
+              ],
+              "L0": [
+                4
+              ],
+              "L1": [
+                3
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006181166972965002
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.002358167083002627
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00230637495405972
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.002182082971557975
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4
+            ],
+            "minimum_role_cost": 8,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "3": [
+                "K",
+                "L1"
+              ],
+              "4": [
+                "I",
+                "L0"
+              ]
+            },
+            "verified_prefix": 9
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            3,
+            4
+          ]
+        }
+      ],
+      "five_list_costs": [
+        8
+      ],
+      "k": 4,
+      "number_of_extremal_bases": 1,
+      "three_tile_costs": [
+        8
+      ],
+      "triangle_enhanced_costs": [
+        8
+      ]
+    },
+    {
+      "R_k": 12,
+      "bases": [
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            5,
+            6
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                3,
+                5,
+                6
+              ],
+              "J": [],
+              "K": [
+                1,
+                6
+              ],
+              "L0": [
+                0,
+                5
+              ],
+              "L1": [
+                1
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0032179589616134763
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004351916024461389
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.03526287502609193
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00696129200514406
+              },
+              {
+                "element": 6,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0034050410613417625
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              5,
+              6
+            ],
+            "minimum_role_cost": 9,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "K",
+                "L1"
+              ],
+              "3": [
+                "I"
+              ],
+              "5": [
+                "I",
+                "L0"
+              ],
+              "6": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 13
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 9,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [
+                1,
+                3,
+                5,
+                6
+              ],
+              "K": [
+                0,
+                1,
+                5,
+                6
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00349049991928041
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0017125000013038516
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.007596708019264042
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0018494169926270843
+              },
+              {
+                "element": 6,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.001728750066831708
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              5,
+              6
+            ],
+            "minimum_role_cost": 9,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "3": [
+                "J"
+              ],
+              "5": [
+                "J",
+                "K"
+              ],
+              "6": [
+                "J",
+                "K"
+              ]
+            },
+            "verified_prefix": 13
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                1
+              ],
+              "J": [
+                1,
+                3,
+                5
+              ],
+              "K": [
+                0,
+                6
+              ],
+              "L0": [
+                5,
+                6
+              ],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0035417909966781735
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0034158750204369426
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.025647834059782326
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003517583943903446
+              },
+              {
+                "element": 6,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0033825410064309835
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              5,
+              6
+            ],
+            "minimum_role_cost": 9,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "I",
+                "J"
+              ],
+              "3": [
+                "J"
+              ],
+              "5": [
+                "J",
+                "L0"
+              ],
+              "6": [
+                "K",
+                "L0"
+              ]
+            },
+            "verified_prefix": 13
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            5,
+            6
+          ]
+        }
+      ],
+      "five_list_costs": [
+        9
+      ],
+      "k": 5,
+      "number_of_extremal_bases": 1,
+      "three_tile_costs": [
+        9
+      ],
+      "triangle_enhanced_costs": [
+        9
+      ]
+    },
+    {
+      "R_k": 16,
+      "bases": [
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                3,
+                5,
+                7,
+                8
+              ],
+              "J": [
+                1
+              ],
+              "K": [],
+              "L0": [
+                0,
+                1,
+                8
+              ],
+              "L1": [
+                7
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005110375001095235
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005986791918985546
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.050385541981086135
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.03706558293197304
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009794583078473806
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0047432080609723926
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              7,
+              8
+            ],
+            "minimum_role_cost": 10,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "J",
+                "L0"
+              ],
+              "3": [
+                "I"
+              ],
+              "5": [
+                "I"
+              ],
+              "7": [
+                "I",
+                "L1"
+              ],
+              "8": [
+                "I",
+                "L0"
+              ]
+            },
+            "verified_prefix": 17
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 10,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                1
+              ],
+              "J": [
+                0,
+                1,
+                3,
+                5,
+                7,
+                8
+              ],
+              "K": [
+                7,
+                8
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0056556250201538205
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.002387374988757074
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.013569041970185935
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.012002124916762114
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0025089579867199063
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.002236749976873398
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              7,
+              8
+            ],
+            "minimum_role_cost": 10,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "I",
+                "J"
+              ],
+              "3": [
+                "J"
+              ],
+              "5": [
+                "J"
+              ],
+              "7": [
+                "J",
+                "K"
+              ],
+              "8": [
+                "J",
+                "K"
+              ]
+            },
+            "verified_prefix": 17
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [],
+              "K": [
+                1,
+                3,
+                5,
+                7,
+                8
+              ],
+              "L0": [
+                0,
+                8
+              ],
+              "L1": [
+                1,
+                7
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005334957968443632
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00606391706969589
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.03860220802016556
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04324695805553347
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004913375014439225
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00472629105206579
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              7,
+              8
+            ],
+            "minimum_role_cost": 10,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "K",
+                "L1"
+              ],
+              "3": [
+                "K"
+              ],
+              "5": [
+                "K"
+              ],
+              "7": [
+                "K",
+                "L1"
+              ],
+              "8": [
+                "K",
+                "L0"
+              ]
+            },
+            "verified_prefix": 17
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            7,
+            8
+          ]
+        }
+      ],
+      "five_list_costs": [
+        10
+      ],
+      "k": 6,
+      "number_of_extremal_bases": 1,
+      "three_tile_costs": [
+        10
+      ],
+      "triangle_enhanced_costs": [
+        10
+      ]
+    },
+    {
+      "R_k": 20,
+      "bases": [
+        {
+          "basis": [
+            0,
+            1,
+            2,
+            5,
+            8,
+            9,
+            10
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                10
+              ],
+              "J": [
+                0,
+                1,
+                2,
+                8,
+                9,
+                10
+              ],
+              "K": [
+                2,
+                5,
+                8
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005627957987599075
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.045391540974378586
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006080916034989059
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04615475004538894
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0063678749138489366
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06312562501989305
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005803791922517121
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              8,
+              10
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J"
+              ],
+              "10": [
+                "I",
+                "J"
+              ],
+              "2": [
+                "J",
+                "K"
+              ],
+              "5": [
+                "K"
+              ],
+              "8": [
+                "J",
+                "K"
+              ],
+              "9": [
+                "J"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 11,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                8,
+                9,
+                10
+              ],
+              "J": [
+                2,
+                5,
+                10
+              ],
+              "K": [
+                0,
+                1,
+                2,
+                8
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0030862499261274934
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.015007707988843322
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003991959034465253
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.02423662506043911
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0030739170033484697
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.01290754193905741
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007863792008720338
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              8,
+              10
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "K"
+              ],
+              "10": [
+                "I",
+                "J"
+              ],
+              "2": [
+                "J",
+                "K"
+              ],
+              "5": [
+                "J"
+              ],
+              "8": [
+                "I",
+                "K"
+              ],
+              "9": [
+                "I"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                5,
+                8
+              ],
+              "J": [
+                1
+              ],
+              "K": [
+                0,
+                2,
+                10
+              ],
+              "L0": [
+                2,
+                8,
+                10
+              ],
+              "L1": [
+                9
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005967000033706427
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04321649996563792
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006092082941904664
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.038537333952263
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0061700420919805765
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04295470903161913
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006237083929590881
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              8,
+              10
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "J"
+              ],
+              "10": [
+                "K",
+                "L0"
+              ],
+              "2": [
+                "K",
+                "L0"
+              ],
+              "5": [
+                "I"
+              ],
+              "8": [
+                "I",
+                "L0"
+              ],
+              "9": [
+                "L1"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "unique_diagonal_elements": [
+            0,
+            2,
+            8,
+            10
+          ]
+        },
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            4,
+            8,
+            9,
+            11
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                3,
+                4,
+                8
+              ],
+              "J": [
+                9,
+                11
+              ],
+              "K": [
+                1,
+                8,
+                9
+              ],
+              "L0": [
+                0
+              ],
+              "L1": [
+                1,
+                3
+              ]
+            },
+            "defect_cost_minus_basis_size": 5,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.013220541994087398
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008156290976330638
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.013723167008720338
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04007770796306431
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005871749948710203
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0060963749419897795
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.041826791944913566
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              8,
+              9
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "K",
+                "L1"
+              ],
+              "11": [
+                "J"
+              ],
+              "3": [
+                "I",
+                "L1"
+              ],
+              "4": [
+                "I"
+              ],
+              "8": [
+                "I",
+                "K"
+              ],
+              "9": [
+                "J",
+                "K"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 12,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                3,
+                4,
+                8,
+                9
+              ],
+              "J": [
+                0,
+                1,
+                3,
+                8
+              ],
+              "K": [
+                1,
+                9,
+                11
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 5,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0039025420555844903
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003310375032015145
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005018416093662381
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.012453082948923111
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004311707918532193
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005147207994014025
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.022426916984841228
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              8,
+              9
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "11": [
+                "K"
+              ],
+              "3": [
+                "I",
+                "J"
+              ],
+              "4": [
+                "I"
+              ],
+              "8": [
+                "I",
+                "J"
+              ],
+              "9": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                1,
+                3
+              ],
+              "J": [
+                0,
+                1,
+                8,
+                9,
+                11
+              ],
+              "K": [],
+              "L0": [],
+              "L1": [
+                3,
+                4,
+                8,
+                9
+              ]
+            },
+            "defect_cost_minus_basis_size": 5,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0057703329948708415
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006223166943527758
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009165249997749925
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.05290662497282028
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009947915910743177
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0058383329305797815
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.03892091696616262
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              8,
+              9
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "I",
+                "J"
+              ],
+              "11": [
+                "J"
+              ],
+              "3": [
+                "I",
+                "L1"
+              ],
+              "4": [
+                "L1"
+              ],
+              "8": [
+                "J",
+                "L1"
+              ],
+              "9": [
+                "J",
+                "L1"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            3,
+            8,
+            9
+          ]
+        },
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            4,
+            9,
+            11,
+            16
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                3,
+                9,
+                11,
+                16
+              ],
+              "J": [],
+              "K": [
+                1,
+                4,
+                9
+              ],
+              "L0": [
+                0,
+                3
+              ],
+              "L1": [
+                1,
+                4
+              ]
+            },
+            "defect_cost_minus_basis_size": 5,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005545750027522445
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005297042080201209
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006069333991035819
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005269625107757747
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005224708002060652
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.03890870790928602
+              },
+              {
+                "element": 16,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.0489096250385046
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4,
+              9
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "K",
+                "L1"
+              ],
+              "11": [
+                "I"
+              ],
+              "16": [
+                "I"
+              ],
+              "3": [
+                "I",
+                "L0"
+              ],
+              "4": [
+                "K",
+                "L1"
+              ],
+              "9": [
+                "I",
+                "K"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 12,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                1,
+                3,
+                9,
+                11,
+                16
+              ],
+              "J": [
+                1,
+                3,
+                4,
+                9
+              ],
+              "K": [
+                0,
+                4
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 5,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003081957926042378
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0028929170221090317
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0029862079536542296
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0029837919864803553
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0027266250690445304
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.02144379203673452
+              },
+              {
+                "element": 16,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.01639787503518164
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4,
+              9
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "I",
+                "J"
+              ],
+              "11": [
+                "I"
+              ],
+              "16": [
+                "I"
+              ],
+              "3": [
+                "I",
+                "J"
+              ],
+              "4": [
+                "J",
+                "K"
+              ],
+              "9": [
+                "I",
+                "J"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                1,
+                3,
+                4
+              ],
+              "J": [
+                1,
+                9,
+                11
+              ],
+              "K": [
+                9,
+                16
+              ],
+              "L0": [
+                0,
+                3
+              ],
+              "L1": [
+                4
+              ]
+            },
+            "defect_cost_minus_basis_size": 5,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.011843041982501745
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009557791985571384
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0065289579797536135
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008723124978132546
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008085999987088144
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04338812502101064
+              },
+              {
+                "element": 16,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04324079200159758
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4,
+              9
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "I",
+                "J"
+              ],
+              "11": [
+                "J"
+              ],
+              "16": [
+                "K"
+              ],
+              "3": [
+                "I",
+                "L0"
+              ],
+              "4": [
+                "I",
+                "L1"
+              ],
+              "9": [
+                "J",
+                "K"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            3,
+            4,
+            9
+          ]
+        },
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            5,
+            6,
+            13,
+            14
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                1,
+                5,
+                6
+              ],
+              "J": [
+                5,
+                13,
+                14
+              ],
+              "K": [],
+              "L0": [
+                0,
+                3
+              ],
+              "L1": [
+                1,
+                6
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005442166933789849
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005512707983143628
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.037360416958108544
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005925083998590708
+              },
+              {
+                "element": 6,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006903375033289194
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06320812494959682
+              },
+              {
+                "element": 14,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.045856624958105385
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              5,
+              6
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "I",
+                "L1"
+              ],
+              "13": [
+                "J"
+              ],
+              "14": [
+                "J"
+              ],
+              "3": [
+                "L0"
+              ],
+              "5": [
+                "I",
+                "J"
+              ],
+              "6": [
+                "I",
+                "L1"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 11,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                13,
+                14
+              ],
+              "J": [
+                0,
+                1,
+                5,
+                6
+              ],
+              "K": [
+                1,
+                3,
+                5,
+                6
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003047207952477038
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00288604199886322
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.014673541998490691
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.002998500014655292
+              },
+              {
+                "element": 6,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008657542057335377
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.020818083896301687
+              },
+              {
+                "element": 14,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.024041333934292197
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              5,
+              6
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "13": [
+                "I"
+              ],
+              "14": [
+                "I"
+              ],
+              "3": [
+                "K"
+              ],
+              "5": [
+                "J",
+                "K"
+              ],
+              "6": [
+                "J",
+                "K"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                13,
+                14
+              ],
+              "J": [
+                5,
+                6
+              ],
+              "K": [
+                1,
+                3,
+                5
+              ],
+              "L0": [
+                0,
+                6
+              ],
+              "L1": [
+                1
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005455457954667509
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006163583020679653
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04256970901042223
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006205749930813909
+              },
+              {
+                "element": 6,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005797749967314303
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.046108000096865
+              },
+              {
+                "element": 14,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.049566333065740764
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              5,
+              6
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "K",
+                "L1"
+              ],
+              "13": [
+                "I"
+              ],
+              "14": [
+                "I"
+              ],
+              "3": [
+                "K"
+              ],
+              "5": [
+                "J",
+                "K"
+              ],
+              "6": [
+                "J",
+                "L0"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            5,
+            6
+          ]
+        },
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [
+                0,
+                1,
+                9,
+                10
+              ],
+              "K": [],
+              "L0": [
+                10
+              ],
+              "L1": [
+                1,
+                3,
+                5,
+                7,
+                9
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009640041971579194
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005713374936021864
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.050490583991631866
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.050265375059098005
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.035211707931011915
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.01095570798497647
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.013508792035281658
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              9,
+              10
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "L1"
+              ],
+              "10": [
+                "J",
+                "L0"
+              ],
+              "3": [
+                "L1"
+              ],
+              "5": [
+                "L1"
+              ],
+              "7": [
+                "L1"
+              ],
+              "9": [
+                "J",
+                "L1"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 11,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                5,
+                7,
+                9
+              ],
+              "J": [
+                0,
+                1,
+                9,
+                10
+              ],
+              "K": [
+                1,
+                3,
+                10
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0031686669681221247
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003027708036825061
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.024596375063993037
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.01834558299742639
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.011893459013663232
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0031069170217961073
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0031216669594869018
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              9,
+              10
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "10": [
+                "J",
+                "K"
+              ],
+              "3": [
+                "K"
+              ],
+              "5": [
+                "I"
+              ],
+              "7": [
+                "I"
+              ],
+              "9": [
+                "I",
+                "J"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                1
+              ],
+              "J": [],
+              "K": [
+                1,
+                3,
+                5,
+                7,
+                9,
+                10
+              ],
+              "L0": [
+                0,
+                10
+              ],
+              "L1": [
+                9
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00869699998293072
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006229250109754503
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04065629106480628
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04508491698652506
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04346262488979846
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006058417027816176
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006150208995677531
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              9,
+              10
+            ],
+            "minimum_role_cost": 11,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "I",
+                "K"
+              ],
+              "10": [
+                "K",
+                "L0"
+              ],
+              "3": [
+                "K"
+              ],
+              "5": [
+                "K"
+              ],
+              "7": [
+                "K"
+              ],
+              "9": [
+                "K",
+                "L1"
+              ]
+            },
+            "verified_prefix": 21
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            9,
+            10
+          ]
+        }
+      ],
+      "five_list_costs": [
+        11,
+        12,
+        12,
+        11,
+        11
+      ],
+      "k": 7,
+      "number_of_extremal_bases": 5,
+      "three_tile_costs": [
+        11,
+        12,
+        12,
+        11,
+        11
+      ],
+      "triangle_enhanced_costs": [
+        11,
+        12,
+        12,
+        11,
+        11
+      ]
+    },
+    {
+      "R_k": 26,
+      "bases": [
+        {
+          "basis": [
+            0,
+            1,
+            2,
+            5,
+            8,
+            11,
+            12,
+            13
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                2,
+                5,
+                8,
+                11,
+                13
+              ],
+              "J": [
+                0,
+                1,
+                2,
+                11,
+                12,
+                13
+              ],
+              "K": [],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.01494124997407198
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.09784512501209974
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007460833992809057
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.059276583953760564
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06623837491497397
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.01067200000397861
+              },
+              {
+                "element": 12,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.07672366697806865
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008438750053755939
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              11,
+              13
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J"
+              ],
+              "11": [
+                "I",
+                "J"
+              ],
+              "12": [
+                "J"
+              ],
+              "13": [
+                "I",
+                "J"
+              ],
+              "2": [
+                "I",
+                "J"
+              ],
+              "5": [
+                "I"
+              ],
+              "8": [
+                "I"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 12,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                2,
+                5,
+                11
+              ],
+              "J": [
+                0,
+                1,
+                2,
+                11,
+                12,
+                13
+              ],
+              "K": [
+                8,
+                13
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004010125063359737
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.022393791005015373
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004181917058303952
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.01811854203697294
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.017741792020387948
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.012003749958239496
+              },
+              {
+                "element": 12,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.01906187506392598
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006855375017039478
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              11,
+              13
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J"
+              ],
+              "11": [
+                "I",
+                "J"
+              ],
+              "12": [
+                "J"
+              ],
+              "13": [
+                "J",
+                "K"
+              ],
+              "2": [
+                "I",
+                "J"
+              ],
+              "5": [
+                "I"
+              ],
+              "8": [
+                "K"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                11
+              ],
+              "J": [
+                0,
+                1,
+                2,
+                11,
+                12,
+                13
+              ],
+              "K": [],
+              "L0": [],
+              "L1": [
+                2,
+                5,
+                8,
+                13
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008270374964922667
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.05808758293278515
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007892791996710002
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.052171124960295856
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.047917749965563416
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007929624989628792
+              },
+              {
+                "element": 12,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.09378037496935576
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007789290975779295
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              11,
+              13
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J"
+              ],
+              "11": [
+                "I",
+                "J"
+              ],
+              "12": [
+                "J"
+              ],
+              "13": [
+                "J",
+                "L1"
+              ],
+              "2": [
+                "J",
+                "L1"
+              ],
+              "5": [
+                "L1"
+              ],
+              "8": [
+                "L1"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "unique_diagonal_elements": [
+            0,
+            2,
+            11,
+            13
+          ]
+        },
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            4,
+            9,
+            10,
+            12,
+            13
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                4
+              ],
+              "J": [
+                0,
+                1,
+                3,
+                12,
+                13
+              ],
+              "K": [
+                9,
+                10,
+                13
+              ],
+              "L0": [
+                3,
+                9,
+                12
+              ],
+              "L1": [
+                1,
+                4,
+                10
+              ]
+            },
+            "defect_cost_minus_basis_size": 8,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007361958036199212
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.010033915983512998
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009044750011526048
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00852349994238466
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007848249981179833
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008818707894533873
+              },
+              {
+                "element": 12,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008890165947377682
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00801920797675848
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4,
+              9,
+              10,
+              12,
+              13
+            ],
+            "minimum_role_cost": 16,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "L1"
+              ],
+              "10": [
+                "K",
+                "L1"
+              ],
+              "12": [
+                "J",
+                "L0"
+              ],
+              "13": [
+                "J",
+                "K"
+              ],
+              "3": [
+                "J",
+                "L0"
+              ],
+              "4": [
+                "I",
+                "L1"
+              ],
+              "9": [
+                "K",
+                "L0"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 16,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                3,
+                4,
+                9,
+                10,
+                12,
+                13
+              ],
+              "J": [
+                0,
+                1,
+                3,
+                4,
+                9,
+                10
+              ],
+              "K": [
+                1,
+                12,
+                13
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 8,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004034334095194936
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0039635420544072986
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003822874976322055
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003778916085138917
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003670374979265034
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0037001660093665123
+              },
+              {
+                "element": 12,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009629708947613835
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.014287542086094618
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4,
+              9,
+              10,
+              12,
+              13
+            ],
+            "minimum_role_cost": 16,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "10": [
+                "I",
+                "J"
+              ],
+              "12": [
+                "I",
+                "K"
+              ],
+              "13": [
+                "I",
+                "K"
+              ],
+              "3": [
+                "I",
+                "J"
+              ],
+              "4": [
+                "I",
+                "J"
+              ],
+              "9": [
+                "I",
+                "J"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                3,
+                4,
+                10,
+                12
+              ],
+              "J": [
+                0,
+                1,
+                13
+              ],
+              "K": [
+                4,
+                9
+              ],
+              "L0": [
+                1,
+                3,
+                12,
+                13
+              ],
+              "L1": [
+                9,
+                10
+              ]
+            },
+            "defect_cost_minus_basis_size": 8,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008297875057905912
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.012211750028654933
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.011476417072117329
+              },
+              {
+                "element": 4,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.010442499886266887
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007902499986812472
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008200542069971561
+              },
+              {
+                "element": 12,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007815042044967413
+              },
+              {
+                "element": 13,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008816124987788498
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              3,
+              4,
+              9,
+              10,
+              12,
+              13
+            ],
+            "minimum_role_cost": 16,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "L0"
+              ],
+              "10": [
+                "I",
+                "L1"
+              ],
+              "12": [
+                "I",
+                "L0"
+              ],
+              "13": [
+                "J",
+                "L0"
+              ],
+              "3": [
+                "I",
+                "L0"
+              ],
+              "4": [
+                "I",
+                "K"
+              ],
+              "9": [
+                "K",
+                "L1"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            3,
+            4,
+            9,
+            10,
+            12,
+            13
+          ]
+        },
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8,
+            17,
+            18
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                1,
+                8
+              ],
+              "J": [
+                7,
+                8,
+                17,
+                18
+              ],
+              "K": [
+                0,
+                1,
+                3,
+                5,
+                7
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0067142919870093465
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.015268500079400837
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.04746441694442183
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.048336958047002554
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007407625089399517
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.006957334000617266
+              },
+              {
+                "element": 17,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.05871045798994601
+              },
+              {
+                "element": 18,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.062346375081688166
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              7,
+              8
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "I",
+                "K"
+              ],
+              "17": [
+                "J"
+              ],
+              "18": [
+                "J"
+              ],
+              "3": [
+                "K"
+              ],
+              "5": [
+                "K"
+              ],
+              "7": [
+                "J",
+                "K"
+              ],
+              "8": [
+                "I",
+                "J"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 12,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                7,
+                8
+              ],
+              "J": [
+                1,
+                3,
+                5,
+                7,
+                8
+              ],
+              "K": [
+                0,
+                1,
+                17,
+                18
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.008263833005912602
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003813583985902369
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.01880883297417313
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.022486332920379937
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.003885374986566603
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007482875022105873
+              },
+              {
+                "element": 17,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.028365166974253953
+              },
+              {
+                "element": 18,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.0173094579949975
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              7,
+              8
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "17": [
+                "K"
+              ],
+              "18": [
+                "K"
+              ],
+              "3": [
+                "J"
+              ],
+              "5": [
+                "J"
+              ],
+              "7": [
+                "I",
+                "J"
+              ],
+              "8": [
+                "I",
+                "J"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                1
+              ],
+              "J": [
+                7,
+                8,
+                17,
+                18
+              ],
+              "K": [],
+              "L0": [
+                0,
+                3,
+                5,
+                7,
+                8
+              ],
+              "L1": [
+                1
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.011568584013730288
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.01563708297908306
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.0661726250546053
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06818483304232359
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007470000069588423
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.007631292100995779
+              },
+              {
+                "element": 17,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.08155754196923226
+              },
+              {
+                "element": 18,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06221804197411984
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              7,
+              8
+            ],
+            "minimum_role_cost": 12,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "I",
+                "L1"
+              ],
+              "17": [
+                "J"
+              ],
+              "18": [
+                "J"
+              ],
+              "3": [
+                "L0"
+              ],
+              "5": [
+                "L0"
+              ],
+              "7": [
+                "J",
+                "L0"
+              ],
+              "8": [
+                "J",
+                "L0"
+              ]
+            },
+            "verified_prefix": 27
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            7,
+            8
+          ]
+        }
+      ],
+      "five_list_costs": [
+        12,
+        16,
+        12
+      ],
+      "k": 8,
+      "number_of_extremal_bases": 3,
+      "three_tile_costs": [
+        12,
+        16,
+        12
+      ],
+      "triangle_enhanced_costs": [
+        12,
+        16,
+        12
+      ]
+    },
+    {
+      "R_k": 32,
+      "bases": [
+        {
+          "basis": [
+            0,
+            1,
+            2,
+            5,
+            8,
+            11,
+            14,
+            15,
+            16
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                5,
+                8,
+                11,
+                14,
+                16
+              ],
+              "J": [],
+              "K": [
+                2
+              ],
+              "L0": [
+                0,
+                2,
+                15
+              ],
+              "L1": [
+                1,
+                14,
+                16
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009134624968282878
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.11064208403695375
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009537750040180981
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06096516689285636
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.07217495806980878
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.07545725000090897
+              },
+              {
+                "element": 14,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.01071795797906816
+              },
+              {
+                "element": 15,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.05749495897907764
+              },
+              {
+                "element": 16,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009391124942339957
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              14,
+              16
+            ],
+            "minimum_role_cost": 13,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "L1"
+              ],
+              "11": [
+                "I"
+              ],
+              "14": [
+                "I",
+                "L1"
+              ],
+              "15": [
+                "L0"
+              ],
+              "16": [
+                "I",
+                "L1"
+              ],
+              "2": [
+                "K",
+                "L0"
+              ],
+              "5": [
+                "I"
+              ],
+              "8": [
+                "I"
+              ]
+            },
+            "verified_prefix": 33
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 13,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                2,
+                5,
+                11,
+                14
+              ],
+              "J": [
+                2,
+                8,
+                16
+              ],
+              "K": [
+                0,
+                1,
+                14,
+                15,
+                16
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0076887080213055015
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.035301542025990784
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005359667004086077
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.02322408393956721
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.023213292006403208
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.021810167003422976
+              },
+              {
+                "element": 14,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005048708990216255
+              },
+              {
+                "element": 15,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.03210270905401558
+              },
+              {
+                "element": 16,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004845291026867926
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              14,
+              16
+            ],
+            "minimum_role_cost": 13,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "K"
+              ],
+              "1": [
+                "K"
+              ],
+              "11": [
+                "I"
+              ],
+              "14": [
+                "I",
+                "K"
+              ],
+              "15": [
+                "K"
+              ],
+              "16": [
+                "J",
+                "K"
+              ],
+              "2": [
+                "I",
+                "J"
+              ],
+              "5": [
+                "I"
+              ],
+              "8": [
+                "J"
+              ]
+            },
+            "verified_prefix": 33
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0,
+                14,
+                15,
+                16
+              ],
+              "J": [
+                0,
+                1,
+                2
+              ],
+              "K": [
+                11,
+                14
+              ],
+              "L0": [
+                16
+              ],
+              "L1": [
+                2,
+                5,
+                8
+              ]
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009341208031401038
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.11038683296646923
+              },
+              {
+                "element": 2,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.021190291037783027
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.09358854091260582
+              },
+              {
+                "element": 8,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.11421916692052037
+              },
+              {
+                "element": 11,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.08891545899678022
+              },
+              {
+                "element": 14,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.019067749963141978
+              },
+              {
+                "element": 15,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.08971529209520668
+              },
+              {
+                "element": 16,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.010062417015433311
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              2,
+              14,
+              16
+            ],
+            "minimum_role_cost": 13,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J"
+              ],
+              "11": [
+                "K"
+              ],
+              "14": [
+                "I",
+                "K"
+              ],
+              "15": [
+                "I"
+              ],
+              "16": [
+                "I",
+                "L0"
+              ],
+              "2": [
+                "J",
+                "L1"
+              ],
+              "5": [
+                "L1"
+              ],
+              "8": [
+                "L1"
+              ]
+            },
+            "verified_prefix": 33
+          },
+          "unique_diagonal_elements": [
+            0,
+            2,
+            14,
+            16
+          ]
+        },
+        {
+          "basis": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            9,
+            10,
+            21,
+            22
+          ],
+          "five_list": {
+            "certificate": {
+              "I": [
+                0,
+                1,
+                9,
+                10,
+                21,
+                22
+              ],
+              "J": [
+                5
+              ],
+              "K": [
+                1,
+                7,
+                10
+              ],
+              "L0": [
+                0,
+                3,
+                9
+              ],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.014241207973100245
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009091666084714234
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.0996438330039382
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.0786493340274319
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.057607124908827245
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.019717707997187972
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.02103387506213039
+              },
+              {
+                "element": 21,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.08227058395277709
+              },
+              {
+                "element": 22,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.09530325001105666
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              9,
+              10
+            ],
+            "minimum_role_cost": 13,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "I",
+                "K"
+              ],
+              "10": [
+                "I",
+                "K"
+              ],
+              "21": [
+                "I"
+              ],
+              "22": [
+                "I"
+              ],
+              "3": [
+                "L0"
+              ],
+              "5": [
+                "J"
+              ],
+              "7": [
+                "K"
+              ],
+              "9": [
+                "I",
+                "L0"
+              ]
+            },
+            "verified_prefix": 33
+          },
+          "symbolic_lower_bound_k_plus_unique_diagonals": 13,
+          "three_tile": {
+            "certificate": {
+              "I": [
+                0,
+                10
+              ],
+              "J": [
+                0,
+                1,
+                9,
+                10,
+                21,
+                22
+              ],
+              "K": [
+                1,
+                3,
+                5,
+                7,
+                9
+              ],
+              "L0": [],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.01115220901556313
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.005036959075368941
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.024661040981300175
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.02020704105962068
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.023602292058058083
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.0049197080079466105
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.004381124977953732
+              },
+              {
+                "element": 21,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.022550499998033047
+              },
+              {
+                "element": 22,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.023806374985724688
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              9,
+              10
+            ],
+            "minimum_role_cost": 13,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "J"
+              ],
+              "1": [
+                "J",
+                "K"
+              ],
+              "10": [
+                "I",
+                "J"
+              ],
+              "21": [
+                "J"
+              ],
+              "22": [
+                "J"
+              ],
+              "3": [
+                "K"
+              ],
+              "5": [
+                "K"
+              ],
+              "7": [
+                "K"
+              ],
+              "9": [
+                "J",
+                "K"
+              ]
+            },
+            "verified_prefix": 33
+          },
+          "triangle_enhanced": {
+            "certificate": {
+              "I": [
+                0
+              ],
+              "J": [
+                1,
+                3,
+                5,
+                7,
+                9,
+                10
+              ],
+              "K": [
+                9,
+                10,
+                21,
+                22
+              ],
+              "L0": [
+                0,
+                1
+              ],
+              "L1": []
+            },
+            "defect_cost_minus_basis_size": 4,
+            "forced_duplicate_audit": [
+              {
+                "element": 0,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.012781750061549246
+              },
+              {
+                "element": 1,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.00967875006608665
+              },
+              {
+                "element": 3,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.1153154579224065
+              },
+              {
+                "element": 5,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06282395799644291
+              },
+              {
+                "element": 7,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06577158300206065
+              },
+              {
+                "element": 9,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009620915981940925
+              },
+              {
+                "element": 10,
+                "status_with_at_most_one_role": "INFEASIBLE",
+                "wall_seconds": 0.009652291075326502
+              },
+              {
+                "element": 21,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06102279096376151
+              },
+              {
+                "element": 22,
+                "status_with_at_most_one_role": "OPTIMAL",
+                "wall_seconds": 0.06834133295342326
+              }
+            ],
+            "forced_duplicated_elements_in_every_optimum": [
+              0,
+              1,
+              9,
+              10
+            ],
+            "minimum_role_cost": 13,
+            "optimum_status": "OPTIMAL",
+            "roles_per_element": {
+              "0": [
+                "I",
+                "L0"
+              ],
+              "1": [
+                "J",
+                "L0"
+              ],
+              "10": [
+                "J",
+                "K"
+              ],
+              "21": [
+                "K"
+              ],
+              "22": [
+                "K"
+              ],
+              "3": [
+                "J"
+              ],
+              "5": [
+                "J"
+              ],
+              "7": [
+                "J"
+              ],
+              "9": [
+                "J",
+                "K"
+              ]
+            },
+            "verified_prefix": 33
+          },
+          "unique_diagonal_elements": [
+            0,
+            1,
+            9,
+            10
+          ]
+        }
+      ],
+      "five_list_costs": [
+        13,
+        13
+      ],
+      "k": 9,
+      "number_of_extremal_bases": 2,
+      "three_tile_costs": [
+        13,
+        13
+      ],
+      "triangle_enhanced_costs": [
+        13,
+        13
+      ]
+    }
+  ],
+  "scope": "all interval-range extremal bases for 1<=k<=9",
+  "status": "PASS"
+}

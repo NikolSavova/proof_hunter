@@ -1,0 +1,116 @@
+{
+  "rows": [
+    {
+      "abstract_prefix": 2042,
+      "claimed_m_510t2_plus_t": 2042,
+      "coordinate_size": 91,
+      "expected_coordinate_size_42t_plus_7": 91,
+      "expected_role_cost_42t_plus_8": 92,
+      "pass": true,
+      "role_cost": 92,
+      "role_defect": 1,
+      "t": 2
+    },
+    {
+      "abstract_prefix": 8164,
+      "claimed_m_510t2_plus_t": 8164,
+      "coordinate_size": 175,
+      "expected_coordinate_size_42t_plus_7": 175,
+      "expected_role_cost_42t_plus_8": 176,
+      "pass": true,
+      "role_cost": 176,
+      "role_defect": 1,
+      "t": 4
+    },
+    {
+      "abstract_prefix": 18366,
+      "claimed_m_510t2_plus_t": 18366,
+      "coordinate_size": 259,
+      "expected_coordinate_size_42t_plus_7": 259,
+      "expected_role_cost_42t_plus_8": 260,
+      "pass": true,
+      "role_cost": 260,
+      "role_defect": 1,
+      "t": 6
+    },
+    {
+      "abstract_prefix": 32648,
+      "claimed_m_510t2_plus_t": 32648,
+      "coordinate_size": 343,
+      "expected_coordinate_size_42t_plus_7": 343,
+      "expected_role_cost_42t_plus_8": 344,
+      "pass": true,
+      "role_cost": 344,
+      "role_defect": 1,
+      "t": 8
+    },
+    {
+      "abstract_prefix": 51010,
+      "claimed_m_510t2_plus_t": 51010,
+      "coordinate_size": 427,
+      "expected_coordinate_size_42t_plus_7": 427,
+      "expected_role_cost_42t_plus_8": 428,
+      "pass": true,
+      "role_cost": 428,
+      "role_defect": 1,
+      "t": 10
+    },
+    {
+      "abstract_prefix": 73452,
+      "claimed_m_510t2_plus_t": 73452,
+      "coordinate_size": 511,
+      "expected_coordinate_size_42t_plus_7": 511,
+      "expected_role_cost_42t_plus_8": 512,
+      "pass": true,
+      "role_cost": 512,
+      "role_defect": 1,
+      "t": 12
+    },
+    {
+      "abstract_prefix": 99974,
+      "claimed_m_510t2_plus_t": 99974,
+      "coordinate_size": 595,
+      "expected_coordinate_size_42t_plus_7": 595,
+      "expected_role_cost_42t_plus_8": 596,
+      "pass": true,
+      "role_cost": 596,
+      "role_defect": 1,
+      "t": 14
+    },
+    {
+      "abstract_prefix": 130576,
+      "claimed_m_510t2_plus_t": 130576,
+      "coordinate_size": 679,
+      "expected_coordinate_size_42t_plus_7": 679,
+      "expected_role_cost_42t_plus_8": 680,
+      "pass": true,
+      "role_cost": 680,
+      "role_defect": 1,
+      "t": 16
+    },
+    {
+      "abstract_prefix": 165258,
+      "claimed_m_510t2_plus_t": 165258,
+      "coordinate_size": 763,
+      "expected_coordinate_size_42t_plus_7": 763,
+      "expected_role_cost_42t_plus_8": 764,
+      "pass": true,
+      "role_cost": 764,
+      "role_defect": 1,
+      "t": 18
+    },
+    {
+      "abstract_prefix": 204020,
+      "claimed_m_510t2_plus_t": 204020,
+      "coordinate_size": 847,
+      "expected_coordinate_size_42t_plus_7": 847,
+      "expected_role_cost_42t_plus_8": 848,
+      "pass": true,
+      "role_cost": 848,
+      "role_defect": 1,
+      "t": 20
+    }
+  ],
+  "scope": "all even t through 20",
+  "status": "PASS"
+}
