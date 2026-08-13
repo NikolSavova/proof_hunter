@@ -1,0 +1,14 @@
+Seymour second neighbourhood — verifier and small-case harness
+[A] verifier self-test:
+  directed triangle margins [0, 0, 0] (expect all 0, every vertex Seymour)
+  single arc margins [-1, 0] (expect [-1, 0]; vertex 1 is a Seymour vertex)
+  transitive triangle margins [-2, -1, 0] (vertex 0 has margin -2, but 1 and 2 are Seymour)
+  verifier self-test -> PASS
+[C] tournaments n<=7 (Dean):
+  n=3:         8 tournaments, counterexamples = 0
+  n=4:        64 tournaments, counterexamples = 0
+  n=5:     1,024 tournaments, counterexamples = 0
+  n=6:    32,768 tournaments, counterexamples = 0
+  n=7: 2,097,152 tournaments, counterexamples = 0
+  Dean's conjecture holds on all tournaments n<=7 -> PASS
+# OVERALL: ALL CHECKS PASS
