@@ -1,0 +1,25 @@
+Bregman right-Chebyshev counterexample — numeric harness (PROBLEM.md)
+[A] model sanity:
+  D(2.0, 3.0),(1.0, 5.0) = 0.853817489822 | via definition 0.853817489822 | agree=True
+  D(0.3, 4.1),(2.2, 0.7) = 5.149684812954 | via definition 5.149684812954 | agree=True
+  grad f(y) = (ln y_1, ln y_2) maps R^2_++ ONTO R^2, so U* = R^2.
+[B] reduction to h(t,x):
+  x=(1.0, 1.0): D(x,c(t)) - h(t,x) constant in t (= -2.0000000000) -> True
+  x=(0.05, 7.3): D(x,c(t)) - h(t,x) constant in t (= 7.0116961278) -> True
+  x=(9.0, 0.02): D(x,c(t)) - h(t,x) constant in t (= 10.6767807359) -> True
+[C] strict convexity (interval):
+  inf over [1,2] of e^t+(4t^2-2)e^-t^2 (interval, 4000 cells) = 3.453673 at t~1.0000
+  claim h'' >= 3.454 > 0 uniformly in x_2 > 0 -> PASS
+[D] uniqueness by direct scan:
+  27 adversarial x, grid 20000: max argmin-span 0.00e+00 at x=(0.1, 0.1), interior local minima 0
+  unique minimiser for every tested x -> PASS
+[E] nonconvexity of C*:
+  C* endpoints (1.0, -1.0), (2.0, -4.0); midpoint (1.5, -2.5)
+  arc at t=1.5 is (1.5, -2.25): midpoint lies 0.2500 BELOW the arc
+  => C* nonconvex -> PASS
+[F] hypothesis bookkeeping:
+  dom f = R^2_+ (f = +inf off the closed positive orthant) != R^2 = X
+    => the FULL-DOMAIN hypothesis of Fact 3.2 FAILS. This is the hypothesis under test.
+  U* = grad f(U) = R^2, and C* is compact, so cl C* = C* subset U*
+    => the OTHER hypothesis HOLDS, so the counterexample isolates full domain. PASS
+# OVERALL: ALL CHECKS PASS
