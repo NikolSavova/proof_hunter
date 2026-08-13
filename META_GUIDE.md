@@ -449,6 +449,58 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: sharp `1/2` theorem for all strong trees + submission draft (Sihao + Codex ultracode)
+
+- **New theorem (independently reconstructed twice).**  For every ordered full binary
+  strong-decomposition tree with `N` leaves,
+  `log2 W >= (1/2)(log2 N)^2 - O((log N)^(3/2))`.  This closes the alignment gap left by the
+  earlier cap--cup product estimate and upgrades the previous `1/3` bound.  The proof follows a
+  heavy child through a `4 sqrt(log N)`-bit window.  Fewer than `sqrt(log N)` macroscopic siblings
+  force `Omega((log N)^(5/2))` same-side pure-comb choices; otherwise nested macroscopic siblings
+  give a uniform radial endpoint bound, and every hidden forward product resets both reverse
+  endpoint coordinates.  Repeated attachments add a fixed amount to one persistent coordinate,
+  forcing the full `1/2` coefficient.  Artifacts:
+  `phase2/loop/erdos838/agent_asymptotic/{NEXT_ENDPOINT_ATTACK.md,endpoint_reset_certificate.py}`;
+  adversarial audits:
+  `agent_geometry/NEXT_ENDPOINT_AUDIT.md` and
+  `agent_killsearch/STRONG_TREE_HALF_REFEREE.md`.  All found the theorem valid.
+- **Class characterized exactly.**  Combining that lower bound with the iterated balanced-Pascal
+  construction gives
+  `lim log2 g(N)/(log2 N)^2 = 1/2` for the minimum over all strongly decomposable `N`-point sets.
+  Thus no stationary, periodic, nonstationary, or heterogeneous strong-tree construction can beat
+  the new upper coefficient.
+- **Paper shipped locally.**  Built a self-contained 10-page draft,
+  `phase2/loop/erdos838/paper/main.tex`, containing the directional rational realization, exact
+  substitution identities, fixed-template asymptotics, arbitrary-`N` argument, Pascal templates,
+  fixed-template barrier, and the new strong-class theorem.  Final rendered artifact:
+  `output/pdf/erdos838_counting_convex_subsets.pdf`.  Tectonic build has no undefined references,
+  overfull boxes, or warnings after reruns; key pages were rendered and visually inspected.
+  Independent exact checks all pass: 9-point brute force, 36-point endpoint DP
+  `(C,U,W)=(14136,14136,441399)`, all `2^16` subsets of a nonconvex-macro composition, and 24,578
+  first-reset integer states plus increment/closed-form boxes.
+- **Final novelty/referee status.**  `SUBMISSION_NOVELTY.md` gives a primary-source audit.
+  General iterated order-type blow-ups (Han et al.) and almost-vertical Erdős--Szekeres blow-ups
+  (Baek--Balko) are prior art.  The narrow apparently novel contribution is the prescribed `2+1`
+  orientations, exact unweighted `C,U,W` substitution identities, geometric limsup coefficient
+  `1/2`, and sharp strong-class theorem.  Huemer et al.'s weighted enumeration and Székely's graph
+  analogue are now cited.  Three final integrated-paper audits found no mathematical defect after
+  minor repairs.  Authors are deliberately marked “omitted for circulation”; human authorship and
+  a MathSciNet/Zentralblatt/geometer clearance remain required before submission.
+- **Honest scope / next attack.**  Unrestricted Erdős 838 is **not solved**; the rigorous window
+  remains `[1/4,1/2]`.  The tree alignment issue is closed.  The sole conceptual gap is now a
+  structural transfer: extract near-full-scale approximate strong pieces from an arbitrary planar
+  order type, or reproduce the endpoint-reset mechanism nonlocally.  Hinged-history contained maps
+  provably lose `Theta((log N)^2)` bits, so that naive route is dead.  Next target is a quantitative
+  order-type regularization/decomposition lemma with explicitly tracked exponent loss.  The new
+  `agent_asymptotic/FULL_REGULARIZATION_TRANSFER.md` makes the threshold exact: an `N^alpha` strong
+  extraction transfers coefficient `1/2` only as `alpha^2/2`, so it beats `1/4` only for
+  `alpha>1/sqrt(2)` and preserves `1/2` only at `alpha=1-o(1)`.  Current `Theta(sqrt N)` mutually
+  avoiding extraction would give only `1/8`; recursive black-box use builds merely `Theta(log N)`
+  strong leaves.  A one-witness same-type pipeline is capped at `1/4` even with perfect retention,
+  so any full solution needs weighted multiplicity across many pieces or approximate-strong error
+  charging.
+- **Approximate spend:** local Codex ultracode orchestration; no new paid API batch recorded.
+
 ### 2026-08-13 — ERDŐS #838: proved `1/3` for strong trees; exact max-endpoint reduction (Sihao + Codex ultracode)
 - **New rigorous theorem.** Every ordered strong-decomposition tree with `n` leaves has
   `log2 W >= (1/3)(log2 n)^2-O(log n log log n)`. Follow a larger child until losing a

@@ -17,7 +17,7 @@
 \newcommand{\cV}{\mathcal V}
 
 \title{Counting convex subsets in iterated order-type blow-ups}
-\author{}
+\author{Authors omitted for circulation}
 \date{Draft of August 13, 2026}
 
 \begin{document}
@@ -47,7 +47,8 @@ shows that $1/2$ is optimal among fixed-template iterations.  More strongly,
 we prove that every point set obtained by arbitrary recursive strong
 separations has logarithmic convex-subset count at least
 $(\log_2N)^2/2-O((\log N)^{3/2})$.  Thus the
-coefficient $1/2$ is sharp throughout this nonstationary class.
+optimal universal coefficient $1/2$ is attained within this nonstationary
+class.
 \end{abstract}
 
 \section{Introduction}
@@ -57,6 +58,7 @@ of $P$ \emph{convex} if all of its points are vertices of its convex hull.
 Subsets of size at most two are included; changing this convention, or
 including the empty set, has no effect on any normalized asymptotic below.
 Write $v(P)$ for the number of convex subsets of $P$.
+Throughout the paper, all logarithms are base two.
 
 Erd\H{o}s~\cite{Erdos1978} recorded a question posed with Hammer: determine
 or estimate
@@ -68,6 +70,14 @@ classical Erd\H{o}s--Szekeres construction and the convex-polygon theorem
 show that $f(N)=2^{\Theta((\log N)^2)}$; see, for example, the survey of
 Morris and Soltan~\cite{MorrisSoltan2000}.  The open problem asks in
 particular whether $\log f(N)/(\log N)^2$ has a limit.
+
+For completeness, the standard coefficient-$1$ upper estimate is immediate.
+Take $k=\lceil\log N\rceil+2$ and retain $N$ points from the classical
+$2^{k-2}$-point construction with no convex $k$-set.  Then
+\[
+ v(P)\le\sum_{j<k}\binom Nj\le kN^{k-1}
+      =2^{(1+o(1))(\log N)^2}.
+\]
 
 For context, Suk's bound $ES(k)=2^{k+o(k)}$~\cite{Suk2017} gives the
 following standard lower estimate.  Put $t=\lfloor N^{1/2}\rfloor$ and
@@ -84,11 +94,13 @@ Consequently
  \liminf_{N\to\infty}
  \frac{\log f(N)}{(\log N)^2}\ge\frac14.
 \]
-Together with \cref{thm:main}, this places the normalized quantity in the
-interval $[1/4,1/2]$.
+Together with \cref{thm:main}, this gives the rigorous window
+\[
+ \frac14\le\liminf\frac{\log f(N)}{(\log N)^2}
+ \le\limsup\frac{\log f(N)}{(\log N)^2}\le\frac12.
+\]
 
 Our result improves the coefficient in the classical upper bound.
-Throughout the paper, all logarithms are base two.
 
 \begin{theorem}\label{thm:main}
 One has
@@ -108,8 +120,8 @@ is a prescribed orientation for triples meeting exactly two clusters.
 Those orientations give exact substitution identities for the three
 statistics in \cref{lem:composition}; iterating them is what produces the
 geometric coefficient $1/2$.  The same base-normalized coefficient occurs
-in Sz\'ekely's graph-theoretic analogue~\cite{Szekely1984}, but no transfer
-between the two settings is known.
+in Sz\'ekely's graph-theoretic analogue~\cite{Szekely1984}, but that argument
+does not directly yield the geometric statement here.
 
 We also determine the asymptotic answer inside the much larger class of
 all recursively strongly separated point sets; see \cref{thm:strong-class}.
@@ -170,6 +182,8 @@ Only finitely many strict coordinate inequalities and nonzero determinant
 conditions are involved.  Hence they hold throughout some interval
 $0<\varepsilon<\varepsilon_0$; choose a rational value there.  Shrinking
 $\varepsilon_0$ if necessary also preserves the coordinate order.
+In an iteration, this choice is made afresh at every finite stage; no
+uniform perturbation parameter is asserted or needed.
 \end{proof}
 
 For a point set $R$, let $c_j(R),u_j(R),v_j(R)$ denote the numbers of
@@ -541,8 +555,9 @@ large nodes, both children have at least $2^{L-\Delta}$ leaves, where
 \]
 Indeed, the followed child has at least $n_i/2$, the sibling at least
 $n_i/L^2$, and $n_i\ge N/2^{4R}$ before the stop.  Since
-$u\mapsto u^2/2-3u$ is increasing in the relevant range, \eqref{eq:radial}
-gives for each such child
+$L-\Delta>3$ for all sufficiently large $L$ and
+$u\mapsto u^2/2-3u$ is then increasing in the relevant range,
+\eqref{eq:radial} gives uniformly for each such child
 \[
  x+y\ge F:=\frac12(L-\Delta)^2-3L.
 \]
@@ -627,14 +642,15 @@ second exact-arithmetic program checks the one-reset inequalities used in
 \cref{thm:strong-class} over finite boxes of logarithmic states.  It is an
 algebraic smoke test, not a substitute for the multiscale argument.
 
-\begin{thebibliography}{HKSS19}
+\small
+\begin{thebibliography}{HOPTV22}
 
 \bibitem[BB26]{BaekBalko2026}
 J.~Baek and M.~Balko.
 The Erd\H{o}s--Szekeres conjecture revisited.
 \emph{J. Combin. Theory Ser. A}, 222:106195, 2026.
 
-\bibitem[EH78]{Erdos1978}
+\bibitem[Erd78]{Erdos1978}
 P.~Erd\H{o}s.
 Some more problems on elementary geometry.
 \emph{Austral. Math. Soc. Gaz.}, 5(2):52--54, 1978.
@@ -671,5 +687,6 @@ On the number of homogeneous subgraphs of a graph.
 \emph{Combinatorica}, 4:363--372, 1984.
 
 \end{thebibliography}
+\normalsize
 
 \end{document}

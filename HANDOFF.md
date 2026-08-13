@@ -129,40 +129,45 @@ this file; CLOSE = write the handoff + commit/push), plus `/load` (run the openi
 `/handoff` (run the close protocol) slash commands in `.claude/commands/`. API key relocated out of the
 repo (§0). SSH auth configured per-machine. **Run `/handoff` at the end of every working session.**
 
-**⭐ ERDŐS #838: CANDIDATE UPPER COEFFICIENT NOW `1/2` (2026-08-12→13, Sihao + Codex).**
-The earlier audited central-Pascal-cell bound `0.6393262398...` has been superseded by an iterated
-vertical lexicographic blow-up. For a fixed template `S` of size `r`, largest cap `a`, and largest
-cup `b`, the exact substitution formulas give asymptotic convex-subset coefficient
-`(a+b-2)/(2 log2 r)`. The cap--cup theorem makes this at least `1/2` for every fixed template;
-balanced Pascal cells approach equality. Hence the new self-contained candidate theorem is
-`limsup log2(f(N))/(log2 N)^2 <= 1/2`. The proof and exact formulas are in
-`phase2/loop/erdos838/proof_blowup_half.md`. `lexicographic_blowup.py` independently constructs
-the abstract order type, realizes it with exact rational coordinates, directly enumerates a
-9-point composition, and verifies a 36-point composition by unrelated endpoint DPs; both routes
-give `(C,U,W)=(14136,14136,441399)` in the 36-point test. The old `proof_central.md` remains useful
-as an audited single-cell lemma. Two independent fresh audits found no geometric, recurrence,
-rational-realizability, asymptotic, or arbitrary-`N` flaw; a separate 16-point exhaustive test with
-a nonconvex macro skeleton classified all `2^16` subsets exactly. Generic order-type blow-ups are
-prior art (Han--Kohayakawa--Sales--Stagni; Baek--Balko), but no public source for this mixed-sign
-enumerator or the `1/2` convex-subset bound was found. **Status: apparently novel partial result,
-not externally refereed, and NOT a full solution.**
+**⭐ ERDŐS #838: SUBMISSION DRAFT + SHARP STRONG-TREE THEOREM (2026-08-12→13, Sihao + Codex).**
+The iterated vertical blow-up proves
+`limsup log2(f(N))/(log2 N)^2 <= 1/2`.  For a fixed `r`-point template with
+largest cap/cup sizes `a,b`, exact substitution identities give coefficient
+`(a+b-2)/(2 log2 r)`; balanced Pascal templates approach `1/2`, and the cap--cup theorem makes
+`1/2` the fixed-template optimum.  A 9-page submission-oriented draft is now at
+`phase2/loop/erdos838/paper/main.tex` (rendered deliverable:
+`output/pdf/erdos838_counting_convex_subsets.pdf`).  It contains the rational realization,
+exact `C,U,W` identities, asymptotics, arbitrary-`N` step, self-contained Pascal construction,
+and final bibliography.  `lexicographic_blowup.py` verifies a 9-point brute-force case and the
+36-point count `(14136,14136,441399)` by unrelated endpoint DPs; the 16-point nonconvex-macro
+exhaustion and reset arithmetic checker also pass.  Two mathematical referees plus a dedicated
+primary-source novelty sweep found no proof flaw or prior occurrence.  Generic/iterated blow-ups
+are prior art (Han et al.; Baek--Balko); the defensible apparent novelty is the prescribed mixed
+orientations, exact unweighted substitution identities, and geometric coefficient `1/2`.
 
-**Full-problem state.** The rigorous base-2 window is now `[1/4,1/2]`. `FULL_ATTACK.md` proves the
-exact endpoint identity `V(P)=1+N+sum_{s<t} c(s,t)u(s,t)`, explains the black-box `1/4` barrier,
-and isolates a matching `1/2` endpoint-multiplicity conjecture for realizable rank-3 signotopes.
-For every strong-decomposition tree, the new sharp product theorem is
-`CU >= 2^((log N)^2/2-log N)`; only left-cap/right-cup alignment is missing. Its exact one-node
-slack square and the self-contained ordered-tree reformulation (count induced one-turn combs) are
-in `lower_bound_frontier.md`. Nonstationary homogeneous blow-ups with no macroscopic scale jump
-cannot beat `1/2`, and polynomial thinning also preserves the coefficient. Separately, a rigorous
-nested-bag lemma produces `2^((log N)^2/2-O(log N log log N))` hinged histories in every point set,
-but exact rational examples kill the naive compression to caps, cups, or split polygons; see
-`agent_geometry/HISTORY_ATTACK.md`. Literature transfer searches found no theorem closing either
-gap. The graph analogue (Székely 1984) is itself open between coefficients `1/4` and `1/2`.
-Complete small-order-type minima remain `45,73,114,169` for `N=6,7,8,9`. **Immediate next gate:**
-external expert/MathSciNet novelty clearance for the upper theorem; mathematically, prove an
-amortized imbalance-reset lemma for one-turn combs or a full-order-type compression of hinged
-histories with only `2^{O(log N log log N)}` fibre loss.
+**New sharp theorem for the whole strong-decomposition class.**  The earlier `1/3` lower bound is
+superseded.  For every ordered binary strong tree with `N` leaves, the exact endpoint recurrence
+and a multiscale reset argument prove
+`log2 W >= (1/2)(log2 N)^2 - O((log N)^(3/2))`.  Hence arbitrary stationary or nonstationary strong
+compositions have asymptotic coefficient exactly `1/2`.  The proof follows a heavy path through a
+`4 sqrt(log N)`-bit window: either many tiny same-side siblings give exponentially many pure combs,
+or `sqrt(log N)` macroscopic siblings force repeated endpoint-coordinate resets.  Two independent
+adversarial reconstructions accepted the proof; see
+`agent_asymptotic/NEXT_ENDPOINT_ATTACK.md`, `agent_geometry/NEXT_ENDPOINT_AUDIT.md`, and
+`agent_killsearch/STRONG_TREE_HALF_REFEREE.md`.  The integrated proof is Section 5 of the paper.
+
+**Full-problem state.**  General Erdős 838 remains open with rigorous base-2 window `[1/4,1/2]`.
+The strong-tree alignment gap is now closed, so the remaining obstacle is structural: transfer the
+reset mechanism to arbitrary rank-3 order types, or extract sufficiently large approximate strong
+pieces without losing the quadratic exponent.  Naive hinged-history compression is impossible by
+the exact counterexamples in `agent_geometry/HISTORY_ATTACK.md`; simple contained maps have
+`2^{Theta((log N)^2)}` fibres.  `agent_asymptotic/FULL_REGULARIZATION_TRANSFER.md` quantifies the
+remaining barrier: extracting an `N^alpha` strong subset squares the exponent (`1/2` becomes
+`alpha^2/2`); current mutually-avoiding extraction has `alpha=1/2`, and even a perfect
+one-witness same-type pipeline is capped at the old `1/4`.  **Immediate next gate:** obtain human MathSciNet/Zentralblatt and
+geometer novelty clearance for the paper; mathematically, prove a quantitative regularization /
+decomposition lemma for arbitrary order types or a nonlocal endpoint-reset analogue.  Do not claim
+the full problem solved.
 
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good

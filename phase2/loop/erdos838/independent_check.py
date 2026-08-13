@@ -26,6 +26,7 @@ with c(p,q), u(p,q) the numbers of caps / cups having first point p and last poi
 Usage: ./independent_check.py
 """
 from fractions import Fraction as F
+from itertools import combinations
 
 
 def orient(p, q, r):
@@ -48,9 +49,89 @@ def T(m, i, eps):
     return prec(T(m - 1, i - 1, eps), T(m - 1, i, eps), eps)
 
 
+def strong_rule_report(A, B, eps):
+    """Check coordinate order, general position, and mixed signs in A <- B."""
+    P = prec(A, B, eps)
+    cut = len(A)
+    coordinate_order = all(
+        P[t][0] < P[t + 1][0] and P[t][1] < P[t + 1][1]
+        for t in range(len(P) - 1)
+    )
+    zeros = 0
+    mixed_mismatches = 0
+    for a, b, c in combinations(range(len(P)), 3):
+        got = orient(P[a], P[b], P[c])
+        if got == 0:
+            zeros += 1
+        sides = (a < cut, b < cut, c < cut)
+        if sides[0] == sides[1] == sides[2]:
+            continue
+        expected = -1 if sides[0] == sides[1] else 1
+        if got != expected:
+            mixed_mismatches += 1
+    return coordinate_order, zeros, mixed_mismatches
+
+
+def T_audited(m, i, eps, reports):
+    """Build a Pascal cell while auditing every nontrivial recursive glue."""
+    if i == 0 or i == m:
+        return [(F(0), F(0))]
+    A = T_audited(m - 1, i - 1, eps, reports)
+    B = T_audited(m - 1, i, eps, reports)
+    reports.append(((m, i), len(A), len(B), strong_rule_report(A, B, eps)))
+    return prec(A, B, eps)
+
+
 def blowup(S, Q, eps):
     """S[Q] of (2.1): replace s_i = (X_i, Y_i) by the block (X_i + eps^2 x_j, Y_i + eps y_j)."""
     return [(X + eps * eps * x, Y + eps * y) for (X, Y) in S for (x, y) in Q]
+
+
+def composition_rule_report(S, Q, eps):
+    """Audit the labelled composition against all four orientation rules.
+
+    General position is not enough: a moderately small epsilon may give no
+    zero determinant while blocks still overlap or mixed signs have not yet
+    reached their limiting values.
+    """
+    labelled = []
+    for i, (X, Y) in enumerate(S):
+        for j, (x, y) in enumerate(Q):
+            labelled.append(((X + eps * eps * x, Y + eps * y), i, j))
+
+    coordinate_order = all(
+        labelled[t][0][0] < labelled[t + 1][0][0]
+        and labelled[t][0][1] < labelled[t + 1][0][1]
+        for t in range(len(labelled) - 1)
+    )
+    zeros = 0
+    mismatches = 0
+    by_kind = {}
+    for a, b, c in combinations(range(len(labelled)), 3):
+        pa, ia, ja = labelled[a]
+        pb, ib, jb = labelled[b]
+        pc, ic, jc = labelled[c]
+        got = orient(pa, pb, pc)
+        if ia == ic:
+            expected = orient(Q[ja], Q[jb], Q[jc])
+            kind = "one block"
+        elif ia < ib < ic:
+            expected = orient(S[ia], S[ib], S[ic])
+            kind = "three blocks"
+        elif ia == ib:
+            expected = -1
+            kind = "first two in one block"
+        elif ib == ic:
+            expected = 1
+            kind = "last two in one block"
+        else:
+            raise AssertionError((ia, ib, ic))
+        if got == 0:
+            zeros += 1
+        if got != expected:
+            mismatches += 1
+            by_kind[kind] = by_kind.get(kind, 0) + 1
+    return coordinate_order, zeros, mismatches, by_kind
 
 
 def sorted_pts(P):
@@ -150,11 +231,10 @@ def graded_convex(P):
                     if acc:
                         f[(i, j)] = acc
             for (i, j), d in f.items():
-                if i == s or True:
-                    key = (s, j)
-                    tgt = store.setdefault(key, {})
-                    for L, cnt in d.items():
-                        tgt[L] = tgt.get(L, 0) + cnt
+                key = (s, j)
+                tgt = store.setdefault(key, {})
+                for L, cnt in d.items():
+                    tgt[L] = tgt.get(L, 0) + cnt
     out = {1: n}
     for k in set(caps) | set(cups):
         for L1, a in caps.get(k, {}).items():
@@ -165,8 +245,13 @@ def graded_convex(P):
 
 
 def main():
-    eps = F(1, 97)
-    S = sorted_pts(T(4, 2, eps))
+    # The strict determinant threshold depends on the input coordinates.
+    # In particular, the already nested Pascal cell has a much smaller
+    # feature scale than the one-point inputs used to build it.  The proof
+    # chooses epsilon afresh at every finite composition, so use separate
+    # exact rational parameters here as well.
+    template_eps = F(1, 97)
+    S = sorted_pts(T(4, 2, template_eps))
     print(f"T_(4,2): {len(S)} points, general position: {general_position(S)}")
     cS, uS, wS = stats(S)
     print(f"  (C,U,W) of the 6-point template = ({cS}, {uS}, {wS})")
@@ -174,7 +259,24 @@ def main():
     print(f"  caps by size {gc}\n  cups by size {gu}\n  convex by size {gv}")
     print(f"  largest cap = {max(gc)}, largest cup = {max(gu)}   (paper: a=b=3 for T_(4,2))")
 
-    B = blowup(S, S, eps)
+    print("\nSearching outer scales and auditing every orientation rule:")
+    composition_eps = None
+    for candidate in (
+        F(1, 97), F(1, 1000), F(1, 5000), F(1, 9000),
+        F(1, 9500), F(1, 9750), F(1, 10000), F(1, 16384),
+    ):
+        ordered, zeros, bad, kinds = composition_rule_report(S, S, candidate)
+        print(
+            f"  eps={candidate}: coordinate_order={ordered}, zeros={zeros}, "
+            f"rule_mismatches={bad}{' ' + str(kinds) if kinds else ''}"
+        )
+        if composition_eps is None and ordered and zeros == 0 and bad == 0:
+            composition_eps = candidate
+    if composition_eps is None:
+        raise AssertionError("no tested outer epsilon realizes the composition rules")
+
+    B = blowup(S, S, composition_eps)
+    print(f"\nUsing the first successful tested outer scale eps={composition_eps}")
     print(f"\nS[Q] with S=Q=T_(4,2): {len(B)} points, general position: {general_position(B)}")
     C, U, W = stats(B)
     print(f"  DIRECT count from orientations only: (C,U,W) = ({C}, {U}, {W})")
