@@ -7,7 +7,7 @@
  "W2": {
   "leaves": 199,
   "supJ_upper": 0.6499412423693607,
-  "secs": 2
+  "secs": 1
  },
  "W3": {
   "leaves": 32,
@@ -22,7 +22,7 @@
  "W5": {
   "leaves": 18,
   "supJ_upper": 1.493300185884557,
-  "secs": 1
+  "secs": 0
  },
  "W6b": {
   "leaves": 17,

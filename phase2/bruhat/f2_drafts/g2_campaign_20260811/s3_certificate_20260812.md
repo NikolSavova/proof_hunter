@@ -1,4 +1,11 @@
-# (S3) — Lemma SOL.3 certificate EXECUTED, plus the F2/F3 text repairs
+# Lemma SOL.3, compact bands W1-W6b — certificate EXECUTED, plus the F2/F3 text repairs
+
+> ⚠️ **SCOPE (amended 2026-08-12 after cross-model review).** This certifies the
+> **W1–W6b component of Lemma SOL.3 only** (`4 <= w <= 40`). It is NOT a certificate
+> for (S3): band W7 (`40 < w <= 0.89m`, i.e. up to `w = 499.29` at `m = 561`) is
+> untouched, and the Sol maths pass found an unproved sign hypothesis inside it.
+> Adversarial review of THIS note: `solref_maths_s3_certificate_20260812.md`
+> (MAJOR_ISSUES, no mathematical error found); repairs: `s3_certificate_response_20260812.md`.
 
 *Written 2026-08-12 (Sihao + Claude, local compute only — no API spend). This
 note discharges finding **F1** of `referee_numerics_sol_s3.md` ("the load-bearing

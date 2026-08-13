@@ -174,10 +174,11 @@ def box_ok(wlo, whi, zlo, zhi, target_iv):
     z = hull(ivfr(zlo), ivfr(zhi))
     lam = w * z / iv.mpf(561)
     F = {n: Fn(n, w, lam, G, hd) + Erad(w, lam) for n in (2, 3, 4)}
+    f2lo = float(F[2].a)
     if not (F[2].a > 0.1):
-        return False, None
+        return False, None, f2lo
     J = (F[3] / F[2]) ** 2 - F[4] / (2 * F[2])
-    return (J.b <= target_iv.a), J
+    return (J.b <= target_iv.a), J, f2lo
 
 
 def certify_band(name, log):
@@ -186,14 +187,20 @@ def certify_band(name, log):
     stack = [(wlo, whi, Fr(0), Fr(1), 0)]
     leaves = fails = 0
     supJ = -1e9
+    worst_box = None
+    minF2 = 1e9
+    minF2_box = None
     t0 = time.time()
     while stack:
         bw0, bw1, bz0, bz1, d = stack.pop()
-        ok, J = box_ok(bw0, bw1, bz0, bz1, target)
+        ok, J, f2lo = box_ok(bw0, bw1, bz0, bz1, target)
+        if f2lo is not None and f2lo < minF2:
+            minF2, minF2_box = f2lo, (bw0, bw1, bz0, bz1)
         if ok:
             leaves += 1
-            if J is not None:
-                supJ = max(supJ, float(J.b))
+            if J is not None and float(J.b) > supJ:
+                supJ = float(J.b)
+                worst_box = (bw0, bw1, bz0, bz1)
             if leaves % 5000 == 0:
                 log(f"  {name}: {leaves} leaves, {len(stack)} pending, depth~{d}, {time.time()-t0:.0f}s")
             continue
@@ -211,7 +218,7 @@ def certify_band(name, log):
         else:
             mid = (bz0 + bz1) / 2
             stack += [(bw0, bw1, bz0, mid, d + 1), (bw0, bw1, mid, bz1, d + 1)]
-    return leaves, fails, supJ, time.time() - t0
+    return leaves, fails, supJ, time.time() - t0, worst_box, minF2, minF2_box
 
 
 def selftest(log):
@@ -260,10 +267,14 @@ def main():
             continue
         log(f"== {name}: target {BANDS[name][2]}/{BANDS[name][3]}, "
             f"w in [{BANDS[name][0]},{BANDS[name][1]}] ==")
-        leaves, fails, supJ, dt = certify_band(name, log)
+        leaves, fails, supJ, dt, wbox, minF2, mbox = certify_band(name, log)
         verdict = "CERTIFIED" if fails == 0 else f"FAILED ({fails} hard-fail boxes)"
-        log(f"{name}: {verdict} | {leaves} certified leaves | sup J_upper <= {supJ:.6f} "
-            f"| {dt:.0f}s")
+        log(f"{name}: {verdict} | {leaves} certified leaves | max J_upper over leaves = "
+            f"{supJ:.9f} (target {BANDS[name][2]}/{BANDS[name][3]} = "
+            f"{BANDS[name][2]/BANDS[name][3]:.9f}) | {dt:.0f}s")
+        log(f"   worst leaf (max J_upper): w in [{wbox[0]},{wbox[1]}] z in [{wbox[2]},{wbox[3]}]")
+        log(f"   min F2_lower over all boxes = {minF2:.9f} (predicate needs > 0.1) at "
+            f"w in [{mbox[0]},{mbox[1]}] z in [{mbox[2]},{mbox[3]}]")
         total_fails += fails
         if fails == 0:
             done[name] = {"leaves": leaves, "supJ_upper": supJ, "secs": round(dt)}

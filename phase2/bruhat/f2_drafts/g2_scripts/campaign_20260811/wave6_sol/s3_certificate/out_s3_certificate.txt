@@ -2,14 +2,28 @@ SELFTEST: all anchors pass
 selftest OK at dps=30
 SELFTEST: all anchors pass
 selftest OK at dps=50
+== W1: target 1/2, w in [4,5] ==
+W1: CERTIFIED | 1310 certified leaves | max J_upper over leaves = 0.499999729 (target 1/2 = 0.500000000) | 5s
+   worst leaf (max J_upper): w in [629/128,315/64] z in [5/16,3/8]
+   min F2_lower over all boxes = 0.886221379 (predicate needs > 0.1) at w in [4,5] z in [0,1]
 == W2: target 13/20, w in [5,6] ==
-W2: CERTIFIED | 199 certified leaves | sup J_upper <= 0.649941 | 2s
+W2: CERTIFIED | 199 certified leaves | max J_upper over leaves = 0.649941242 (target 13/20 = 0.650000000) | 1s
+   worst leaf (max J_upper): w in [173/32,87/16] z in [3/4,1]
+   min F2_lower over all boxes = 1.801976152 (predicate needs > 0.1) at w in [5,6] z in [0,1]
 == W3: target 9/10, w in [6,8] ==
-W3: CERTIFIED | 32 certified leaves | sup J_upper <= 0.824958 | 1s
+W3: CERTIFIED | 32 certified leaves | max J_upper over leaves = 0.824957912 (target 9/10 = 0.900000000) | 1s
+   worst leaf (max J_upper): w in [127/16,8] z in [0,1]
+   min F2_lower over all boxes = 2.726773720 (predicate needs > 0.1) at w in [6,8] z in [0,1]
 == W4: target 11/10, w in [8,10] ==
-W4: CERTIFIED | 15 certified leaves | sup J_upper <= 1.098155 | 0s
+W4: CERTIFIED | 15 certified leaves | max J_upper over leaves = 1.098154878 (target 11/10 = 1.100000000) | 0s
+   worst leaf (max J_upper): w in [39/4,10] z in [0,1]
+   min F2_lower over all boxes = 4.713589760 (predicate needs > 0.1) at w in [8,10] z in [0,1]
 == W5: target 3/2, w in [10,20] ==
-W5: CERTIFIED | 18 certified leaves | sup J_upper <= 1.493300 | 1s
+W5: CERTIFIED | 18 certified leaves | max J_upper over leaves = 1.493300186 (target 3/2 = 1.500000000) | 0s
+   worst leaf (max J_upper): w in [45/4,95/8] z in [0,1]
+   min F2_lower over all boxes = 6.707927493 (predicate needs > 0.1) at w in [10,20] z in [0,1]
 == W6b: target 17/10, w in [20,40] ==
-W6b: CERTIFIED | 17 certified leaves | sup J_upper <= 1.671614 | 0s
+W6b: CERTIFIED | 17 certified leaves | max J_upper over leaves = 1.671614346 (target 17/10 = 1.700000000) | 0s
+   worst leaf (max J_upper): w in [85/4,45/2] z in [0,1]
+   min F2_lower over all boxes = 16.649009994 (predicate needs > 0.1) at w in [20,40] z in [0,1]
 # OVERALL: PASS — all bands certified (EM constant: corrected 2x per referee F2; method: mpmath.iv directed rounding, dps 40, selftests dual dps 30/50)
