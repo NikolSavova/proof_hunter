@@ -179,3 +179,24 @@ reproducible defect is a resolution spec error that costs nothing downstream.
 That is a strictly better position than any other open statement in the campaign — (S3)
 has a known unproved sign hypothesis in W7, and (S4) has a circular sub-argument — but it
 is not closure.
+
+---
+
+## 6. Addendum — attempt 3's corrected constants re-run (2026-08-12)
+
+The Sol numerics referee on `sol_s2c` correctly objected that this replay was performed
+against **attempt 2**, so the corrected `1/8` trapezoid constant introduced in attempt 3
+had never been re-run through the assembly. Done now:
+
+```
+e_b = h^2(w/12 + 7/4)          E_b = 49h/2 + 375 h^2 + w h^6/200     [375 <- the 1/8 form]
+W1 : U_b <= 0.025937 < 0.05    (1.928x)      W4 : U_b <= 0.090994 < 0.10  (1.099x)
+W2 : U_b <= 0.018898 < 0.06    (3.175x)      W5 : U_b <= 0.143768 < 0.15  (1.043x)
+W3 : U_b <= 0.037858 < 0.08    (2.113x)      W6b: U_b <= 0.176094 < 0.25  (1.420x)
+```
+
+All six reproduce attempt 3's stated band bounds, and the margins are essentially
+unchanged from the `1/12` run (W5 stays the tightest at 4.3%). **The invalid constant did
+not threaten any target** — it inflated `E_b` by ~10-35% and the assembly absorbed it.
+The referee's provenance objection stands regardless: the certificates need archiving with
+their scripts, which is a recording task, not a mathematical one.
