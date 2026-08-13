@@ -33,8 +33,19 @@
 \newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
 
 \title[Log-concavity of Bruhat intervals in Weyl groups]
-{Bruhat-interval log-concavity in Weyl groups: verification and conjectures%
-\thanks{This investigation was carried out with substantial assistance from automated systems; a conventional byline is omitted to avoid overstating the named researchers' personal contributions. Nikol Panayotova Savova, University of Oxford (\href{mailto:nikol.p.savova@gmail.com}{\texttt{nikol.p.savova@gmail.com}}), and Sihao Huang, independent researcher (\href{mailto:sihao.c.huang@gmail.com}{\texttt{sihao.c.huang@gmail.com}}), directed the work and take responsibility for it; correspondence may be sent to either address.}}
+{Verification and conjectures for log-concavity\\ of Bruhat intervals in Weyl groups}
+
+\author{}
+
+\thanks{This investigation was carried out with substantial assistance from
+automated systems, and we omit a conventional byline rather than overstate the
+named researchers' personal contributions.
+\emph{Nikol Panayotova Savova}, University of Oxford,
+\href{mailto:nikol.p.savova@gmail.com}{\texttt{nikol.p.savova@gmail.com}};
+\emph{Sihao Huang}, independent researcher,
+\href{mailto:sihao.c.huang@gmail.com}{\texttt{sihao.c.huang@gmail.com}}.
+They directed the work and take responsibility for it, and correspondence may be
+sent to either address.}
 
 \date{\today}
 
@@ -42,8 +53,10 @@
 
 \begin{abstract}
 Brenti conjectured that the rank sequence of every Bruhat interval in a
-finite Weyl group is log-concave; the statement fails for the
-non-crystallographic Coxeter group $H_3$. We verify the conjecture
+finite Weyl group is log-concave. The restriction to Weyl groups is not
+incidental: the same statement is false for finite Coxeter groups in
+general, and Brenti gives a counterexample in the non-crystallographic
+group $H_3$. We verify the conjecture
 computationally for the Weyl groups of types $A_2$--$A_7$, $B_2$--$B_6$,
 $D_4$--$D_6$, $E_6$, $F_4$, and $G_2$. We checked
 $1{,}079{,}490{,}991$ Bruhat intervals in exact integer arithmetic, and no
@@ -55,8 +68,8 @@ near-top slab sweeps in $A_8$--$A_{10}$, $D_7$--$D_8$, and $E_7$, together
 with $124{,}944$ sampled and seeded intervals in $B_7$, $B_8$, $D_7$, and
 $E_7$.
 
-These computations support, but do not prove, an extremal conjecture: in
-every irreducible, simply-laced Weyl group, the global minimum of the
+These computations support, but do not prove, an extremal conjecture that in every irreducible,
+simply-laced Weyl group the global minimum of the
 log-concavity ratio over all Bruhat intervals is attained by the full
 interval $[e,w_0]$. We show that both irreducibility and the simply-laced
 restriction are necessary. We prove the corresponding statement for
