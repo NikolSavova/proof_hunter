@@ -1,0 +1,37 @@
+{
+  "certificate": "/Users/sihaohuang/Desktop/Coding/proof_hunter/phase2/loop/erdos791/campaign/theory/family_20_115.json",
+  "certificate_sha256": "e7268873667f62d43b56ee04a51449b4b199089ded22f171f18991756420d325",
+  "claimed_m": 115,
+  "direct_expansion_checks": [
+    {
+      "actual_sumset_prefix_through": 461,
+      "basis_size": 45,
+      "required_through": 459,
+      "t": 2
+    },
+    {
+      "actual_sumset_prefix_through": 1037,
+      "basis_size": 65,
+      "required_through": 1034,
+      "t": 3
+    },
+    {
+      "actual_sumset_prefix_through": 2879,
+      "basis_size": 105,
+      "required_through": 2874,
+      "t": 5
+    },
+    {
+      "actual_sumset_prefix_through": 11509,
+      "basis_size": 205,
+      "required_through": 11499,
+      "t": 10
+    }
+  ],
+  "ell": 20,
+  "exact_tile_prefix": 115,
+  "first_uncovered_square": 115,
+  "ratio_m_over_ell_squared": "23/80",
+  "status": "PASS",
+  "witnesses_sha256": "9da7d8ac19087b139139f036dca4ab31ff6dcde52a83892de46a43bcd729eea9"
+}

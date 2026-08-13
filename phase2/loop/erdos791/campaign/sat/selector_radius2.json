@@ -1,0 +1,20 @@
+{
+  "branches": 473138,
+  "conflicts": 30230,
+  "coordinate_bound": 510,
+  "ell": 42,
+  "fixed_type_counts": [
+    8,
+    17,
+    17
+  ],
+  "formulation": "sorted-coordinate selectable-witness CP-SAT",
+  "max_replacements_from_seed": 2,
+  "random_seed": 792,
+  "scope": "Exact for the sufficient three-tile predicate and stated finite domain/count/radius constraints; no external UNSAT proof is emitted.",
+  "solver_wall_seconds": 135.27072900000002,
+  "status": "INFEASIBLE",
+  "target_m": 511,
+  "wall_seconds": 135.4362600420136,
+  "workers": 8
+}

@@ -1,0 +1,19 @@
+{
+  "status": "NO_SOLUTION_FOUND",
+  "target": 196,
+  "bound": 195,
+  "counts": [8, 9, 9],
+  "seed": 1817,
+  "random_start": true,
+  "proposals": 5000000,
+  "accepted": 287094,
+  "elapsed_seconds": 7.21069,
+  "best_target_coverage": 186,
+  "best_prefix": 103,
+  "placement": {
+  "I": [0, 8, 13, 18, 23, 28, 33, 38],
+  "J": [0, 1, 2, 3, 41, 42, 43, 44, 45],
+  "K": [4, 84, 88, 92, 96, 140, 144, 148, 152]
+},
+  "scope_warning": "Heuristic search; failure is not nonexistence."
+}

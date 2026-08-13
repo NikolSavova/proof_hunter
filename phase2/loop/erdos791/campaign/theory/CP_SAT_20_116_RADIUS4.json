@@ -1,0 +1,13 @@
+{
+  "status": "UNKNOWN",
+  "m": 116,
+  "counts": [
+    6,
+    7,
+    7
+  ],
+  "radius": 4,
+  "seconds": 119.97132091701496,
+  "branches": 3085209,
+  "conflicts": 326833
+}

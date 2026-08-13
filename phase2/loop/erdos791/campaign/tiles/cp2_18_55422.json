@@ -1,0 +1,19 @@
+{
+  "bound": 93,
+  "branches": 3919506,
+  "conflicts": 308279,
+  "counts": {
+    "I": 5,
+    "J": 5,
+    "K": 4,
+    "L0": 2,
+    "L1": 2
+  },
+  "ell": 18,
+  "scope": "Exact conservative four-tile predicate for fixed counts and coordinate box.",
+  "seed": 18002,
+  "solver_wall_seconds": 180.025133,
+  "status": "UNKNOWN",
+  "target": 94,
+  "wall_seconds": 180.04864237492438
+}

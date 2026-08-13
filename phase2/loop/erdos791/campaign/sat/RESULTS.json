@@ -1,0 +1,161 @@
+{
+  "date": "2026-08-13",
+  "objective": "Find or exclude an ell=42,m=511 generalized-Mrose three-tile placement, prioritizing the fixed (8,17,17) split near Kohonen's seed.",
+  "record_improvement_found": false,
+  "encoding_validation": {
+    "test": "DIMACS target m=510, radius=0, fixed counts (8,17,17)",
+    "solver_status": "SATISFIABLE",
+    "decoded_placement": "smoke_radius0_m510_certificate.json",
+    "independent_verifier": "PASS at the exact tile level and by literal A_t+A_t expansion for t=2,3,5,10"
+  },
+  "ell20_corrected_local_closure": {
+    "seed": "family_20_115.json with (I,J,K)=([0,3,34,37,40,43],[6,10,14,18,22,26,30],[0,1,2,68,69,70,71]) before normalization",
+    "normalized_seed": {
+      "I": [0, 3, 34, 37, 40, 43],
+      "J": [0, 1, 2, 68, 69, 70, 71],
+      "K": [6, 10, 14, 18, 22, 26, 30]
+    },
+    "coordinate_domain": [0, 115],
+    "fixed_type_counts": [6, 7, 7],
+    "positive_sanity": {
+      "instance": "target m=115, radius=0",
+      "status": "SATISFIABLE",
+      "decoded_certificate": "ell20_smoke_r0_m115_certificate.json",
+      "independent_verifier": "PASS at exact tile level and literal A_t+A_t for t=2,3,5,10"
+    },
+    "target_m_116": {
+      "radius_1": {
+        "status": "UNSATISFIABLE",
+        "cnf_variables": 23684,
+        "cnf_clauses": 92147,
+        "cadical_conflicts": 59,
+        "drat_trim_status": "VERIFIED",
+        "drat_trim_resolution_steps": 22949,
+        "cnf_sha256": "47f32e359fe79451d8483334acd1fecd43c9e66e66efd48f213d9d98d6d84661",
+        "drat_sha256": "3c6c3f65149343a8d5af0794a0395059cca8d7f328f63e2938ccd98d8c75034a"
+      },
+      "radius_2": {
+        "status": "UNSATISFIABLE",
+        "cnf_variables": 23702,
+        "cnf_clauses": 92218,
+        "cadical_conflicts": 2740,
+        "drat_trim_status": "VERIFIED",
+        "drat_trim_resolution_steps": 597420,
+        "cnf_sha256": "bf13a2d2e855475277ae2f38f5a8bfa0552a903aabeca8dc6d9fe493d3a1d85e",
+        "drat_sha256": "a5d9b2f4699522b2230d641989ecba5045ead76805fe447bc9642fd908cfc4a2"
+      },
+      "radius_3": {
+        "status": "UNSATISFIABLE",
+        "cnf_variables": 23719,
+        "cnf_clauses": 92285,
+        "cadical_process_seconds": 3.35,
+        "cadical_conflicts": 24068,
+        "drat_trim_status": "VERIFIED",
+        "drat_trim_resolution_steps": 4658313,
+        "cnf_sha256": "bcd11d7b3e1808e16f258f11c5d9997177d4b6fe85ebc9dbb9270dd2033d966e",
+        "drat_sha256": "6d0cc312022f75ab168fa543bbde8bd5cebe07026eeaf17d7bfda0e2e3914f2d"
+      },
+      "radius_4": {
+        "status": "UNSATISFIABLE",
+        "cnf_variables": 23735,
+        "cnf_clauses": 92348,
+        "cadical_process_seconds": 18.3,
+        "cadical_conflicts": 173085,
+        "drat_trim_status": "VERIFIED",
+        "drat_trim_verification_seconds": 20.155,
+        "drat_trim_core_lemmas": 109349,
+        "drat_trim_resolution_steps": 35576353,
+        "cnf_sha256": "1b3d9e653f16526522048c34ea3bbb7e1777c09645bc0580c3a3167cbf303c06",
+        "drat_sha256": "6cf7aeda9ff17b38b920ed47f517af0d5898a1535a0d6c854811a2b07fd1e712"
+      }
+    },
+    "invalidated_prior_claim": "campaign/theory/CP_SAT_20_116_RADIUS3.json is not valid evidence for radius-3 closure around the family seed: sat_lean.py forces 0 in J but measures distance from the unswapped seed, where 0 is in K. The corrected result above independently re-establishes radius-3 UNSAT after swapping J/K consistently and adds a checked DRAT proof. The old radius-4 run was merely UNKNOWN; the corrected proof-producing formulation now closes radius 4 as UNSAT as well."
+  },
+  "corrected_local_closure": {
+    "coordinate_domain": [0, 510],
+    "target_m": 511,
+    "fixed_type_counts": [8, 17, 17],
+    "distance_definition": "Number of seed coordinates absent from the candidate after normalizing the interchangeable J/K labels so that 0 is in J. With fixed counts this equals coordinate replacements.",
+    "radius_1": {
+      "status": "UNSATISFIABLE",
+      "cnf_variables": 418250,
+      "cnf_clauses": 1661677,
+      "cadical_conflicts": 857,
+      "drat_trim_status": "VERIFIED",
+      "drat_trim_core_lemmas": 1338,
+      "drat_trim_resolution_steps": 1129144,
+      "cnf_sha256": "aa2a4f2a0733e7afb5d98eacbad76ae758735d327810c18bd705086b69fd564a",
+      "drat_sha256": "356b983c07b745d22914be6e7812f32048c2613d9831ce7ca96efba182562ec3"
+    },
+    "radius_2": {
+      "status": "UNSATISFIABLE",
+      "cnf_variables": 418290,
+      "cnf_clauses": 1661836,
+      "cadical_conflicts": 14747,
+      "drat_trim_status": "VERIFIED",
+      "drat_trim_core_lemmas": 16049,
+      "drat_trim_resolution_steps": 9604309,
+      "cnf_sha256": "4996d90edd79cf6e027c2fb52ca955a816b74d3c8ce1fb902025edb46ae0d6e7",
+      "drat_sha256": "fe4e78f3104da2910d777becec834a7c76b3b36719649ec0644420cc922ab84f"
+    },
+    "radius_3": {
+      "status": "UNSATISFIABLE",
+      "cnf_variables": 418329,
+      "cnf_clauses": 1661991,
+      "cadical_process_seconds": 293.93,
+      "cadical_conflicts": 156720,
+      "cadical_decisions": 760311,
+      "drat_trim_status": "VERIFIED",
+      "drat_trim_verification_seconds": 549.18,
+      "drat_trim_core_lemmas": 110568,
+      "drat_trim_resolution_steps": 108746580,
+      "cnf_sha256": "f980505e5e137e7f0b444f53fb716f07c285824185b1bd21a868b1e6d0931c02",
+      "drat_sha256": "dda52026cb960500b980b8a975f646183bc4c40e02c6c4f3e760e4e1aafd1bd0"
+    }
+  },
+  "bounded_global_searches": [
+    {
+      "instance": "ell=20,m=116, counts=(6,7,7), coordinate domain [0,115], unrestricted",
+      "formulation": "DIMACS Tseitin/unary-cardinality SAT",
+      "limit_seconds": 135,
+      "status": "UNKNOWN",
+      "conflicts": 1431127,
+      "decisions": 3424318,
+      "note": "Manually stopped after a bounded global run. The 1,392,184,489-byte partial ASCII DRAT trace is not an UNSAT proof and was discarded."
+    },
+    {
+      "instance": "ell=42,m=511, counts=(14,14,14), coordinate domain [0,510]",
+      "formulation": "sorted-coordinate selectable-witness CP-SAT",
+      "limit_seconds": 300,
+      "status": "UNKNOWN",
+      "branches": 61995,
+      "conflicts": 29278
+    },
+    {
+      "instance": "ell=18,m=94, counts=(6,6,6), coordinate domain [0,93]",
+      "formulation": "sorted-coordinate selectable-witness CP-SAT",
+      "limit_seconds": 300,
+      "status": "UNKNOWN",
+      "branches": 828815,
+      "conflicts": 378802
+    },
+    {
+      "instance": "ell=18,m=94, counts=(6,6,6), coordinate domain [0,93]",
+      "formulation": "DIMACS Tseitin/unary-cardinality SAT",
+      "limit_seconds": 600,
+      "status": "UNKNOWN",
+      "conflicts": 4343355,
+      "note": "Time limit reached. The partial DRAT trace is not an UNSAT proof and was discarded."
+    },
+    {
+      "instance": "ell=42,m=511, counts=(8,17,17), coordinate domain [0,510], unrestricted",
+      "formulation": "DIMACS Tseitin/unary-cardinality SAT",
+      "limit_seconds": 238,
+      "status": "UNKNOWN",
+      "conflicts": 333214,
+      "note": "Manually stopped to prioritize radius-3 certification; no conclusion."
+    }
+  ],
+  "important_correction": "The previous cp_sat_search.py forces 0 in J as a J/K symmetry normalization, but computes replacement distance against Kohonen's unswapped labels (where 0 is in K). Therefore its old radius-2 result did not justify the stated exhaustive radius-2 conclusion. The new CNF and sorted-coordinate models swap the seed J/K labels before imposing radius. The corrected radius-2 conclusion agrees, and now has a checked DRAT proof.",
+  "scope": "All UNSAT claims concern only the sufficient three-tile predicate, the named fixed counts, and stated local replacement radius. Restricting nonnegative coordinates to [0,m-1] is without loss for certifying q<m: a larger coordinate contributes no relevant pair sum and can be moved to an unused coordinate in-domain without destroying coverage or increasing seed distance. The ell=42 claims do not rule out radius >=4; the ell=20 claims do not rule out radius >=5. Neither rules out another count split, another template, or a solution of Erdos #791 by other means."
+}

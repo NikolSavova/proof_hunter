@@ -1,0 +1,30 @@
+{
+  "abstract_prefix": 14,
+  "certificate": "/Users/sihaohuang/Desktop/Coding/proof_hunter/phase2/loop/erdos791/campaign/tiles/cp_validation_7_14.json",
+  "claimed_m": 14,
+  "direct_checks": [
+    {
+      "basis_size": 15,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 55,
+      "t": 2
+    },
+    {
+      "basis_size": 29,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 223,
+      "t": 4
+    },
+    {
+      "basis_size": 43,
+      "first_missing": -1,
+      "pass": true,
+      "required_through": 503,
+      "t": 6
+    }
+  ],
+  "ell": 7,
+  "status": "PASS"
+}

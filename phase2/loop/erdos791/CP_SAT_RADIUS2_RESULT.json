@@ -1,4 +1,6 @@
 {
+  "superseded": true,
+  "validity_warning": "This run normalized 0 into J but measured distance from Kohonen's unswapped J/K labels, so it did NOT encode the claimed radius-2 ball. Use campaign/sat/RESULTS.json for the corrected, DRAT-verified result.",
   "branches": 114484,
   "conflicts": 5827,
   "coordinate_bound": 510,

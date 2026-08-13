@@ -71,13 +71,13 @@ python3 -m venv .search-venv
 
 The recorded fixed-count `(8,17,17)`, `ell=42`, `m=511` run searched for three
 minutes and returned `UNKNOWN` after 2,613,105 branches; this is neither a
-construction nor a nonexistence result (`CP_SAT_42_511_RESULT.json`).  Adding
-`--max-replacements-from-seed 2` returned `INFEASIBLE` in 24 seconds, so the
-solver found no improvement obtainable from Kohonen's certificate by replacing
-at most two arbitrary coordinates in `[0,510]`
-(`CP_SAT_RADIUS2_RESULT.json`).  The radius-three run was still `UNKNOWN` after
-three minutes (`CP_SAT_RADIUS3_RESULT.json`).  These are rerunnable solver
-results, not independently checkable UNSAT certificates.
+construction nor a nonexistence result (`CP_SAT_42_511_RESULT.json`).  The
+original `--max-replacements-from-seed 2` result is **superseded**: that
+model normalized `0` into `J` but measured distance from Kohonen's unswapped
+`J/K` labels, so it did not encode the claimed radius ball.  The corrected
+model in `campaign/sat/` re-establishes radii 1, 2, and 3 as UNSAT and includes
+independently checked DRAT-proof hashes and statistics.  See
+`campaign/sat/RESULTS.json`.
 
 Finally, `--free-type-counts` (42 total segments, no fixed split) also returned
 `UNKNOWN` after three minutes, having explored 66,231,305 branches

@@ -1,0 +1,64 @@
+{
+  "record": "85/294",
+  "exception_rows": [
+    {
+      "s": 2,
+      "a_max_checked": 3,
+      "maximum": "32/121",
+      "at": {
+        "a": 3,
+        "L": 11,
+        "m": 32
+      }
+    },
+    {
+      "s": 3,
+      "a_max_checked": 9,
+      "maximum": "15/52",
+      "at": {
+        "a": 5,
+        "L": 26,
+        "m": 195
+      }
+    },
+    {
+      "s": 4,
+      "a_max_checked": 12,
+      "maximum": "85/294",
+      "at": {
+        "a": 6,
+        "L": 42,
+        "m": 510
+      }
+    },
+    {
+      "s": 5,
+      "a_max_checked": 5,
+      "maximum": "553/1936",
+      "at": {
+        "a": 5,
+        "L": 44,
+        "m": 553
+      }
+    },
+    {
+      "s": 6,
+      "a_max_checked": 2,
+      "maximum": "3/11",
+      "at": {
+        "a": 2,
+        "L": 22,
+        "m": 132
+      }
+    }
+  ],
+  "equality_cases": [
+    {
+      "s": 4,
+      "a": 6,
+      "L": 42,
+      "m": 510
+    }
+  ],
+  "large_parameter_bound": "Equation (2) in THEORY_NOTES.md"
+}

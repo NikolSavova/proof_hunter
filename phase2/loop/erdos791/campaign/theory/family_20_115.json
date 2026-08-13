@@ -1,0 +1,9 @@
+{
+  "name": "block-family-20-115",
+  "source": "campaign/theory/THEORY_NOTES.md, parameters h=3,b=4,n=7,r=1",
+  "ell": 20,
+  "m": 115,
+  "I": [0, 3, 34, 37, 40, 43],
+  "J": [6, 10, 14, 18, 22, 26, 30],
+  "K": [0, 1, 2, 68, 69, 70, 71]
+}

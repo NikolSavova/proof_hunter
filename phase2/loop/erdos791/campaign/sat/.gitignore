@@ -1,0 +1,7 @@
+.venv/
+.cadical-src/
+__pycache__/
+*.cnf
+*.drat
+*.sol
+drat-trim

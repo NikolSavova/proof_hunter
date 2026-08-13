@@ -1,0 +1,15 @@
+{
+  "superseded": true,
+  "validity_warning": "Invalid as a radius-3 exclusion: the model forces J[0]=1 but measures radius from an unswapped seed with 0 in K. The known m=115 seed fails this model at radius 0.",
+  "status": "INFEASIBLE",
+  "m": 116,
+  "counts": [
+    6,
+    7,
+    7
+  ],
+  "radius": 3,
+  "seconds": 21.62632370798383,
+  "branches": 1001976,
+  "conflicts": 99166
+}

@@ -1,0 +1,53 @@
+{
+  "accepted_moves": 2424224,
+  "bound": 93,
+  "certified_prefix": 70,
+  "counts": {
+    "I": 5,
+    "J": 5,
+    "K": 4,
+    "L0": 2,
+    "L1": 2
+  },
+  "covered_in_window": 77,
+  "ell": 18,
+  "limit": 94,
+  "placement": {
+    "I": [
+      0,
+      21,
+      24,
+      37,
+      40
+    ],
+    "J": [
+      0,
+      1,
+      10,
+      11,
+      12
+    ],
+    "K": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "L0": [
+      53,
+      63
+    ],
+    "L1": [
+      52,
+      60
+    ]
+  },
+  "record_threshold": 94,
+  "restarts": 4,
+  "scope": "Heuristic search in the conservative reflected-diagonal certificate language.",
+  "score": 15754,
+  "seed": 18003,
+  "status": "NO_RECORD",
+  "steps_per_restart": 1000000,
+  "wall_seconds": 120.19623191701248
+}

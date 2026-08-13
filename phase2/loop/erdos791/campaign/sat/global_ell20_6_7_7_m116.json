@@ -1,0 +1,16 @@
+{
+  "date": "2026-08-13",
+  "instance": "ell=20,m=116,counts=(6,7,7),coordinate domain [0,115],unrestricted",
+  "formulation": "generate_cnf.py Tseitin pair sums with exact unary cardinality",
+  "variables": 23645,
+  "clauses": 92012,
+  "solver": "CaDiCaL 3.0.1",
+  "status": "UNKNOWN",
+  "process_seconds": 133.53,
+  "real_seconds": 135.28,
+  "conflicts": 1431127,
+  "decisions": 3424318,
+  "termination": "manual SIGINT after bounded run",
+  "proof": "The 1392184489-byte partial ASCII DRAT trace is not an UNSAT proof and was discarded.",
+  "conclusion": "No feasibility or nonexistence conclusion."
+}
