@@ -1,0 +1,9 @@
+[D-refined] 512 cells total (width 1/128), cancellation-retaining certificate:
+  W1: max V(I) = 0.024174220  vs recipe ceiling 0.03  -> PASS  (worst cell (Fraction(4, 1), Fraction(513, 128)), inf H = 1.189518, 128 cells, 6s)
+  W2: max V(I) = 0.017550592  vs recipe ceiling 0.04  -> PASS  (worst cell (Fraction(5, 1), Fraction(641, 128)), inf H = 1.958868, 128 cells, 6s)
+  W3: max V(I) = 0.036526655  vs recipe ceiling 0.065  -> PASS  (worst cell (Fraction(1023, 128), Fraction(8, 1)), inf H = 4.729788, 256 cells, 12s)
+[E] finite-m assembly with the REPLAYED B values:
+  W1: L = 1.193334, e_b = 1.257728e-04, E_b = 0.238219 -> U_b <= 0.025840  vs C5* = 0.05  -> PASS  (margin 1.935x)
+  W2: L = 1.960829, e_b = 1.906450e-04, E_b = 0.290629 -> U_b <= 0.018788  vs C5* = 0.06  -> PASS  (margin 3.194x)
+  W3: L = 2.834331, e_b = 3.728170e-04, E_b = 0.400215 -> U_b <= 0.037708  vs C5* = 0.08  -> PASS  (margin 2.122x)
+# OVERALL: PASS
