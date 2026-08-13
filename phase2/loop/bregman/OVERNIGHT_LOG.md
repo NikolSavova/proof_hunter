@@ -210,3 +210,51 @@ whether Luo et al. or its citers remove the DUAL-CLOSURE hypothesis (a different
 the one we cleared them on); Themelis-Wang's domain-aware framework; whether "attainment forces
 closedness" is folklore needing citation rather than claiming; and whether
 perturbation-along-a-supporting-normal is a known named device.
+
+## ⚠️ WAVE 6 — PRIOR-ART SWEEP #2 RETURNS **RED**. READ THIS BEFORE ANYTHING ELSE.
+
+`sweep2_theorem_20260813.md`. The sweep names **Luo–Meng–Wen–Yao, Optimization 68(8) (2019),
+Theorem 3.12** — the very paper I "cleared" earlier tonight — as already containing the
+substantive content of our Part II theorem, because **Theorem 3.12 imposes no dual-closure
+hypothesis**. It also finds that "attainment forces closedness" is essentially
+**Bauschke–Wang–Ye–Yuan (JAT 2009) Lemma 7.2** in the left orientation, so that half is not new
+either.
+
+**The sweep is right about the important thing and I was wrong about it.** My clearance memo
+concluded Luo et al. "relax 1-coercivity, not full domain" and stopped there. True — but it is
+the wrong axis. Our Part II removes the *dual-closure* hypothesis (b), and **Theorem 3.12 never
+assumed (b) in the first place.** I checked the wrong hypothesis.
+
+**However, the sweep's kill is overstated, and the difference decides whether anything survives.**
+I have re-read Theorem 3.12 in the PDF. Its hypothesis is that `C` is `->D_f`-**PROXIMINAL**
+(nonempty argmin), and its four equivalent statements are:
+
+  (i) the variational characterisation (34);  (ii) `C` is a `->D_f`-sun;
+  (iii) the `z_2` condition;                  (iv) `grad f(C)` is convex.
+
+**"Chebyshev" is NOT among (i)–(iv), and is not the hypothesis.** So Theorem 3.12 does not, as
+written, give `singleton right projections => grad f(C) convex`. The missing link —
+Chebyshev implies one of (i)–(iii) — is supplied by Luo's **Theorem 3.13**, which requires `C`
+**boundedly compact**, plus `f` totally convex on `U` and `f*` locally uniformly totally convex
+on `U*`.
+
+**So the residual question, which is THE question for the morning:**
+
+> Luo's chain yields "right-Chebyshev => `grad f(C)` convex" for **boundedly compact** `C` under
+> extra total-convexity hypotheses. Our Part II yields it for **arbitrary** `C` assuming only
+> Legendre + `dom f = X`. Is that delta (a) real and worth stating, (b) an easy exercise given
+> their machinery, or (c) already known elsewhere?
+
+I am **not** resolving this autonomously. It is precisely the kind of hypothesis-matching
+judgement that has burned this project all week, and it needs a human who can read both papers.
+
+**Status I am recording, and will not overstate in either direction:**
+- Part II's mathematics is proved and has survived four adversarial passes. Nothing is retracted.
+- Its **novelty is now in serious doubt** and must be treated as unresolved.
+- **Part I is unaffected.** The counterexample answers the survey's posed question about full
+  domain; Luo et al. retain `U = X` throughout and do not touch it. Sweep #1 cleared it, and this
+  sweep re-confirms Luo "later remove the dual-closure condition while retaining full domain".
+
+**Lesson recorded:** I ran the novelty sweep on the counterexample in the morning and only ran
+one on the THEOREM after proving it. Had wave 6 run before waves 2–5, the night would have been
+aimed differently. **Sweep every claim, not every project — and re-sweep when the claim changes.**
