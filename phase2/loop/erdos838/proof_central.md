@@ -38,8 +38,41 @@ to
 
 ## 1. The Pascal cells
 
-We use the classical Erdős--Szekeres Pascal construction. For
-\(0\leq i\leq m\), let \(T_{m,i}\) be its cell of
+We first make the geometric operation self-contained. Put points in
+increasing \(x\)-order and write \(\chi(p,q,r)\) for the sign of their
+oriented area. Call \(A\prec B\) a **strong glue** if every point of \(A\)
+is left of and below every point of \(B\), and
+
+\[
+\chi(a_1,a_2,b)=-1,\qquad \chi(a,b_1,b_2)=+1                 \tag{G}
+\]
+
+whenever the displayed points are ordered and distinct. Such a glue always
+exists, with rational coordinates if the input coordinates are rational.
+Indeed, positive diagonal affine maps let us normalize each nonsingleton
+input into \([0,1]^2\). Let \(\mu>0\) be the smallest internal pair-slope in
+the two normalized copies, ignoring singleton copies, and take
+
+\[
+\varepsilon=\min\left\{\frac14,\frac{\mu}{8+2\mu}\right\};
+\]
+
+if both copies are singletons take \(\varepsilon=1/4\). Send
+
+\[
+(x,y)\in A\mapsto(\varepsilon x,y),\qquad
+(x,y)\in B\mapsto(1+\varepsilon x,2+y).
+\]
+
+Every internal slope is then greater than \(8\), while every slope joining
+the copies is at most \(3/(1-\varepsilon)\leq4\). Comparing slopes proves
+(G), and also proves that no new collinear triple is introduced. Starting
+from singletons, this operation therefore gives point sets in general
+position, with both coordinates strictly increasing, at every recursive
+step.
+
+Now use this operation for the classical Erdős--Szekeres Pascal construction.
+For \(0\leq i\leq m\), let \(T_{m,i}\) be its cell of
 
 \[
 n_{m,i}={m\choose i}
@@ -53,12 +86,9 @@ T_{m,i}=A\prec B,\qquad
 A=T_{m-1,i-1},\quad B=T_{m-1,i}.
 \]
 
-Here \(A\) lies to the left of \(B\), and the copies are placed so that a cap
-meeting both children consists of a cap in \(A\) and at most one point of
-\(B\). Reflecting the statement exchanges caps and cups. This is the
-separated-union construction in the proof of Morris--Soltan Theorem 2.5.
-The accompanying geometry audit gives an explicit exact-rational
-realization.
+The preceding construction supplies the required copy at each step. A
+**cap** is a nonempty subset all of whose triples have sign \(-1\), and a
+**cup** is defined with sign \(+1\); sets of size one or two count as both.
 
 Let \(C_{m,i}\) be the number of nonempty cap subsets of \(T_{m,i}\), counting
 sets of one or two points as caps. Strong separation gives the exact
@@ -96,11 +126,11 @@ M_{m,i}=\prod_{j=1}^i
 \left(1+{m-i+j-1\choose j}\right).
 \]
 
-This latest-diagonal path is itself a summand, and there are at most \(2^m\)
-paths. Hence
+This latest-diagonal path is itself a summand, and there are
+\({m\choose i}\) paths. Hence
 
 \[
-M_{m,i}\leq C_{m,i}\leq2^mM_{m,i}.                \tag{3}
+M_{m,i}\leq C_{m,i}\leq {m\choose i}M_{m,i}.      \tag{3}
 \]
 
 Write
@@ -109,8 +139,18 @@ Write
 H(x)=-x\log_2x-(1-x)\log_2(1-x).
 \]
 
-The standard entropy estimate for binomial coefficients, summed in (3), and
-a uniform Riemann-sum estimate give, when \(i/m\to x\),
+For completeness, the uniform entropy estimate
+
+\[
+R H(j/R)-\log_2(R+1)
+\leq\log_2{R\choose j}\leq R H(j/R)
+\]
+
+shows that replacing every logarithm in \(M_{m,i}\) by its entropy term costs
+only \(O(m\log m)\). Replacing \(\log_2(1+{R\choose j})\) by
+\(\log_2{R\choose j}\) costs another \(O(m)\). The resulting sum is a
+Riemann sum; its endpoint logarithmic singularities contribute
+\(O(m\log m)\) as well. Thus, when \(i/m\to x\),
 
 \[
 \log_2C_{m,i}=m^2A(x)+O(m\log m),                 \tag{4}

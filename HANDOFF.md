@@ -148,6 +148,18 @@ and human line-by-line proof review before public claim.** Main draft: `proof_ce
 geometry: `agent_geometry/`; asymptotics: `agent_asymptotic/`; search:
 `prior_art_20260812.md`.
 
+**Follow-up 2026-08-13 — full-problem attack, honest stopping point.** The upper proof is now
+self-contained down to an explicit rational strong-glue construction. `FULL_ATTACK.md` proves the
+exact endpoint identity
+`V(P)=1+N+sum_{s<t} c(s,t)u(s,t)`, gives an integer DP for those endpoint counts, and shows why
+every black-box ES/double-counting bootstrap is stuck at coefficient `1/4`. The missing full-solution
+lemma is now precise: a weighted endpoint-alignment inequality for realizable rank-3 signotopes.
+A complete Aichholzer order-type census gives exact minima `45,73,114,169` for `N=6,7,8,9`, below
+all decomposable constructions already at `N=6`; this kills the naive claim that Pascal cells are
+globally extremal. New artifacts: `order_type_audit.py`, `decomposable_dp.py`, `explore_lower.py`.
+**Still not a solution of the original limit question.** Best next attacks: weighted Baek--Balko
+down-set labels, SAT/CP-SAT signotope optimization, and enumeration of their generalized blow-ups.
+
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good
   problem."** Nikol owns/edits it; the automated gates approximate it. **Key principle (Nikol, this
@@ -921,8 +933,9 @@ dispatch, and writing — marginal value of more compute is ~zero.
    candidate counterexample in hand, may be an hours-scale note). The `erdos:838` public-source
    sweep is complete; its remaining novelty gate is MathSciNet/expert confirmation.
 2. **Build `phase2/loop/` for the remaining five survivors.** The `erdos:838` directory now has
-   PROBLEM.md, proof, exact geometry and DP verifiers, and prior-art record; its next gate is
-   human review, not another blind draft.
+   PROBLEM.md, a self-contained upper proof, exact geometry/DP/order-type verifiers, prior-art
+   record, and `FULL_ATTACK.md`. Its upper theorem's next gate is human review; the full problem's
+   next mathematical target is the weighted endpoint-alignment lemma in `FULL_ATTACK.md` §4.
 3. **Nikol's eyeball wanted (not blocking):** `1003.3127v1#2` — the skeptic verified the
    counterexample mathematics (Bregman projection uniqueness via g''>0 on [1,2] + ∇f(C) nonconvex);
    if she concurs after Bruhat, it's the fastest publishable-unit candidate we have.

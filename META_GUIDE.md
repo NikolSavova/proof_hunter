@@ -449,6 +449,27 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838 FULL-PROBLEM ATTACK: exact endpoint reduction; original limit still open (Sihao + Codex)
+- **Upper theorem hardened:** `proof_central.md` now constructs the rational strong glue explicitly,
+  proves its orientation signs by a `>8` versus `<=4` slope separation, uses the exact
+  `binom(m,i)` path count, and spells out the uniform entropy error. Geometry enumeration and
+  arbitrary-precision DP were rerun successfully.
+- **Exact full-problem reduction:** proved
+  `V(P)=1+N+sum_{s<t}c(s,t)u(s,t)`, where `c,u` count cap/cup chains with the same two endpoints.
+  This identifies the missing result as a weighted endpoint-alignment theorem for realizable
+  rank-3 signotopes. `FULL_ATTACK.md` contains the proof, path DP, and conditional route to the
+  constant `kappa=1-1/(4 ln 2)`.
+- **Barrier:** derived that ES-threshold double counting gives `alpha(1-alpha)<=1/4`; recursively
+  feeding `f(t)` into the same scheme preserves rather than improves its coefficient. A new
+  multiplicity/stability input is necessary.
+- **Falsification:** enumerated all realizable order types through `N=9` from Aichholzer's database.
+  Exact minima including the empty set are `45,73,114,169`; decomposable minima are
+  `46,76,121,185`. Thus Pascal/decomposable sets are not finite global minimizers. The data files
+  stayed in `/tmp` and were not redistributed.
+- **Artifacts:** `FULL_ATTACK.md`, `order_type_audit.py`; also retained the sampling and exact
+  decomposable Pareto DPs. **Honest status:** strict upper improvement proved; Erdős 838 itself
+  remains open at one explicit weighted signotope lemma. Spend approximately $0 direct API.
+
 ### 2026-08-12 — ERDŐS #838: central Pascal cell gives candidate upper coefficient 0.639326 (Sihao + Codex ultracode)
 - **Result:** for the minimum number `f(N)` of convex-position subsets forced in an `N`-point
   general-position planar set, obtained the candidate partial theorem

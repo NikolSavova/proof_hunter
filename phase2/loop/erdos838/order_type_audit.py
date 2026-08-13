@@ -43,6 +43,43 @@ def cap_cup_counts(points: list[tuple[int, int]]) -> tuple[int, int]:
     return n + sum(map(sum, cap)), n + sum(map(sum, cup))
 
 
+def convex_count_by_endpoint_factorization(points: list[tuple[int, int]]) -> int:
+    """Count nonempty convex subsets by their two monotone hull chains.
+
+    For each pair of left/right endpoints ``s,t``, independently count caps
+    and cups starting at ``s`` and ending at ``t``.  Their product counts the
+    convex subsets with these extreme points.  This is deliberately separate
+    from ``cap_cup_counts``: its two-index DP counts chains with arbitrary
+    starting points, whereas endpoint factorization requires fixing both
+    endpoints.
+    """
+    points = sorted(points)
+    n = len(points)
+    total = n
+    for start in range(n):
+        cap = [[0] * n for _ in range(n)]
+        cup = [[0] * n for _ in range(n)]
+        for end in range(start + 1, n):
+            cap[start][end] = cup[start][end] = 1
+        for middle in range(start + 1, n):
+            for end in range(middle + 1, n):
+                cap[middle][end] = sum(
+                    cap[previous][middle]
+                    for previous in range(start, middle)
+                    if orientation(points[previous], points[middle], points[end]) < 0
+                )
+                cup[middle][end] = sum(
+                    cup[previous][middle]
+                    for previous in range(start, middle)
+                    if orientation(points[previous], points[middle], points[end]) > 0
+                )
+        for end in range(start + 1, n):
+            caps = sum(cap[previous][end] for previous in range(start, end))
+            cups = sum(cup[previous][end] for previous in range(start, end))
+            total += caps * cups
+    return total
+
+
 def coordinate_records(path: Path, n: int):
     width = 1 if path.suffix == ".b08" else 2
     code = "B" if width == 1 else "H"
@@ -100,12 +137,19 @@ def main() -> None:
         records += 1
 
     assert best_convex is not None and best_chain is not None
+    endpoint_product = convex_count_by_endpoint_factorization(best_convex[3])
+    if endpoint_product != best_convex[0] - 1:
+        raise AssertionError(
+            f"chain factorization failed on convex minimizer: "
+            f"{endpoint_product=} versus nonempty={best_convex[0] - 1}"
+        )
     print(f"n={n} records={records}")
     print(
         "minimum all convex subsets (empty included): "
         f"{best_convex[0]}, index={best_convex[1]}, k-profile={best_convex[2]}"
     )
     print(f"  coordinates={best_convex[3]}")
+    print(f"  endpoint cap/cup product identity={endpoint_product}")
     print(
         "minimum cap/cup union (empty excluded): "
         f"{best_chain[0]}, index={best_chain[1]}, caps={best_chain[2]}, cups={best_chain[3]}"
