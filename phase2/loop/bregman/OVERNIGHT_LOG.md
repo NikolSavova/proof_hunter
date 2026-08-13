@@ -80,3 +80,33 @@ hypothesis (a) shown necessary by explicit counterexample.** That is a materiall
 been burned by confident drafts all week. Wave 3 = two adversarial lanes, one a maths referee
 on the proof, one tasked specifically with CONSTRUCTING a configuration that evades the
 argument (the fastest way to find a hole if one exists).
+
+### Wave 3 — the BREAK lane failed to break it: **SURVIVES**. Maths lane hit a server error, relaunched.
+
+`referee2_ref_break_20260813.md`. Tasked not with critique but with actually CONSTRUCTING a
+counterexample. It tried three distinct routes and all three failed:
+
+1. **Discontinuity attack.** It DID find a real flaw — but in my informal summary, not in the
+   proofs. It constructed an explicit Legendre `g`, finite at a boundary point `q` yet
+   **discontinuous** there (`g(q) = 0` while the relevant hull height is `k(q) = 1`). So
+   "finite height ⟹ `f*` continuous at `q`" is **FALSE**, and my wave-2 log entry and my own
+   audit both used that phrasing. **Correction of record:** the ghost relation must be stated
+   via `k = cl(f* + iota_S)` with a recovery sequence satisfying `f*(s_j) -> k(q)`, not via
+   continuity of `f*`. The break lane confirms **the full wave-2 proofs already do this**; only
+   the informal restatement (mine, and the brief I wrote) was loose.
+2. **Does discontinuity save a counterexample?** No. It prevents convergence to `f*(q)` but not
+   to the lower-hull value `k(q)`, and the perturbation argument runs on `k(q)`. Its own
+   candidate has an EMPTY argmin at every `x_0 + t(-1,0)`, `t > 0` — i.e. the attack reproduces
+   the contradiction rather than escaping it.
+3. **Infinite-height attack.** Also fails, for a clean reason: infinite height gives
+   `k(q) = +infinity`, so such a `q` cannot be a minimising ghost at all; and if EVERY boundary
+   accumulation has infinite height then `f* + iota_S` is lsc and the convexification argument
+   forces `S` convex regardless. So attempt 1's finite-height restriction was not a gap.
+
+Its own summary of where a counterexample would have to live: *"None under (a) and (c); one
+would have to relax full tilt admissibility or attainment."*
+
+**Status of the claim after wave 3:** one construct-agent failed to build a counterexample and
+proved the impossibility instead; one prove-agent proved it; one dedicated break-agent attacked
+three ways and failed. The maths lane is the remaining check — it server-errored
+(`wfr_019ffa12a42f76ac96af5f8a5ed51c0b`) and has been relaunched with its journal entry cleared.
