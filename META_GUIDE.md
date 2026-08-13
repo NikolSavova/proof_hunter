@@ -466,8 +466,9 @@ prior-art kill-search**; has a writeable-down win condition.
   transversals and a canonical score-two Pascal cell give a conservative cover `0.5021396326...`;
   the fully canonical `m=3` endpoint is covered by the sharp decomposable theorem. An independent
   referee accepted this after an endpoint repair and expanded score induction. The transversal
-  alone covers arbitrary cells through `x/k=0.21616144...`; noncanonical extremal cells above this
-  remain a precise loophole. Artifacts: `agent_asymptotic/{BAEK_BLOWUP_COUNT.md,
+  rigorously covers arbitrary cells through `x/k=0.21` (computed crossing `0.21616144...`);
+  noncanonical extremal cells above this remain a precise loophole. Artifacts:
+  `agent_asymptotic/{BAEK_BLOWUP_COUNT.md,
   bb_xblowup_barrier.py}` and `agent_geometry/BAEK_BLOWUP_COUNT_AUDIT.md`.
 - **Lower-method ceilings.** Fixed-`k` induced-subset chains telescope to one scale; ideal same-type
   transversals and recursive use of `1/4` stay at `1/4`. A hereditary `N^alpha` structured

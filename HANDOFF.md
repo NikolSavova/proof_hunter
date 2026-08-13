@@ -250,7 +250,8 @@ reflections, unequal branching, and unequal child sizes---has liminf coefficient
 see `agent_upper_multitype/FINITE_STATE_BARRIER.md` and the independent audit.  Second, the canonical
 Baek--Balko `x`-blow-up is also blocked at `1/2`: explicit layer transversals and a canonical
 score-two Pascal cluster give a conservative cover `>=0.5021396`; arbitrary noncanonical extremal
-microcells for `x/k>0.21616...` remain a precise loophole.  Third, even the global inequality
+microcells are covered through `x/k=0.21` (computed crossing `0.21616...`) and remain a precise
+loophole above it.  Third, even the global inequality
 `H_q<=2^{O(q log q)}V` for hinged histories is false: on the six-point-template iterates at
 `q=floor(log N)`, the history coefficient is exactly `1` while the convex coefficient is
 `2/log2(6)=0.773705...`; see `agent_claude_review_audit/GLOBAL_HISTORY_AUDIT.md`.

@@ -267,9 +267,15 @@ def search(r: int, samples: int, depth: int, seed: int, top: int, mirror: bool) 
             la = bits(ma, r)
             for mb in range(1 << r):
                 lb = bits(mb, r)
-                _, _, _, ratios = iterate((macro, macro_b), (la, lb), depth)
-                est = extrapolate(ratios)
-                item = (est, pts, ma, mb, ratios[-1])
+                lab = (la, lb)
+                est = tropical_coefficient((macro, macro_b), lab)
+                if len(winners) < top or est < winners[-1][0]:
+                    # The last finite-depth ratio is retained as an
+                    # independent numerical check of the max-plus value.
+                    ratios = iterate((macro, macro_b), lab, depth)[3]
+                    item = (est, pts, ma, mb, ratios[-1])
+                else:
+                    continue
                 if len(winners) < top:
                     winners.append(item)
                     winners.sort(key=lambda z: z[0])

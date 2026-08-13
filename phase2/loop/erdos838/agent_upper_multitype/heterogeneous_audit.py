@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Exact coordinate audit of heterogeneous vertical blow-up identities.
 
-The macro set is nonconvex, the two three-point child types have opposite
-orientations, and the four blocks receive the mixed labels A,B,B,A.  We find
-a rational epsilon realizing the intended mixed signs, enumerate every subset
-of the resulting 12-point set from exact coordinates, and compare with the
-heterogeneous substitution formulas.
+The macro set is nonconvex, the two child types have unequal sizes and opposite
+orientation profiles, and the four blocks receive the mixed labels A,B,B,A.
+We find a rational epsilon realizing the intended mixed signs, enumerate every
+subset of the resulting 14-point set from exact coordinates, and compare with
+the heterogeneous substitution formulas.
 """
 
 from __future__ import annotations
@@ -90,7 +90,7 @@ def main() -> None:
     # The shear terms make both coordinates increase without changing signs.
     macro = ((0, 0), (1, 13), (2, 21), (3, 30))
     child_a = ((0, 0), (1, 1), (2, 4))       # cup
-    child_b = ((0, 0), (1, 3), (2, 4))       # cap
+    child_b = ((0, 0), (1, 9), (2, 16), (3, 21))  # 4-cap
     labels = (child_a, child_b, child_b, child_a)
     points, eps = realize(macro, labels)
     macro_data = classify(macro)
