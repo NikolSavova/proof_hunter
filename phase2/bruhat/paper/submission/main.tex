@@ -533,7 +533,14 @@ i.e.\ every $v$ for which the Poincar\'e polynomial $P_{[e,v]}(q)$ factors
 as a product of $q$-integers~\cite{carrell1994}, we have
 $\rho([e,v])\ge\rho([e,w_0])$, with equality iff $v=w_0$. Using the
 classical rational-smoothness factorization result cited above, the same
-conclusion holds for every $m$ in type $A_{m-1}$ with $m\le17$. Our
+conclusion holds for every $m$ in type $A_{m-1}$ with $m\le17$.
+\TODO{Content edit pending, needs an author check. The copy-edit pass flagged that
+the working notes verify the required factorization only through $m\le7$, with the
+range $8\le m\le17$ resting on \cite{carrell1994}. Confirm that the cited theorem
+yields exactly this factorization and equality conclusion through $m\le17$; if it
+does not, the scope or status of this clause must change (a mathematical edit, not
+a wording one).}
+Our
 working notes verify that factorization computationally only through
 $m\le7$; for the remaining cases we rely on the cited result rather than
 re-derive it.
@@ -822,6 +829,16 @@ explicit constants. The repository contains the complete chain and a
 machine re-verification of the resulting constant, using exact rational
 certificates and high-precision numerical evaluation.
 
+\TODO{Content edit pending, not a style issue. This remark and the surrounding
+apparatus (Conjecture~\ref{conj:S}, Table of per-band constants,
+Proposition~\ref{prop:CLred}, and the abstract/introduction sentences saying
+``four explicitly stated open cumulant statements'') are STALE as of 2026-08-12:
+(S1) has since been proved and independently refereed, and an adversarial review of
+the composition step indicates a further hypothesis (a $w$-continuum certificate)
+may be required, so the operative count is not four. The per-band constants also
+moved to a re-architected generation. Do not renumber until the composition-v2
+referee findings are resolved; the (S1)-to-theorem upgrade is separately available
+now and is known to discharge the existing table a fortiori.}
 \begin{remark}[Status and evidence for (S1)--(S4)]
 \label{rem:S-evidence}
 All four statements remain open, and the proof of
