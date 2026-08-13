@@ -499,14 +499,28 @@ proof; the C* budget has slack (18.23 vs 20; 136 from m ≥ 1581) to spend on th
 (S3) exists because a twice-refereed impossibility result killed the previously
 recorded plan — do not resurrect the sign-lemma route.
 
-**DECISION NEEDED (Sihao paused the autonomous cascade here deliberately):**
-(a) commission a wave 6 at (S1)-(S4) — needs a decomposed SL1' design (that
-package blew even a 128k output cap; split per-band) and possibly relaxed
-constants; (b) ship the paper upgraded to the CONDITIONAL theorem claim (exact
-sentence in STATUS_wave5 §4) + finite companions 5 ≤ m ≤ 560 — already a real
-upgrade over F2-as-conjecture; or (c) Nikol human-ratifies the campaign chain
-first (assembly §8 checklist, ex-flip) before any further spend. Small
-referee debt if proceeding: composition note + hygiene overlay are unrefereed.
+**UPDATE 2026-08-12 (later): waves 6/6b ran — read STATUS_wave6.md, it
+supersedes wave5's ledger.** (b) was done first: the PAPER now carries the
+conditional theorem (Thm 6.5 mod Conj 6.3 = CL) + unconditional finite theorem
+5 ≤ m ≤ 560 (Thm 6.2), 3 adversarial review passes, change log at
+`paper/submission/change_log_20260812.md` — **both authors still owe it a
+read.** Then (a), with a twist: a constants scout re-architected (S1)'s
+targets (worst margin 2.94% → 27.21%), and the four statements were attacked
+CROSS-MODEL by OpenAI gpt-5.6-sol (runner `g2_scripts/campaign_20260811/
+wave6_sol/run_sol.py`), then refereed by Claude agents. **Result: (S1) —
+previously the scariest — is DISCHARGED two-referee** (Sol's proof; the
+referee's own rigorous interval computation is the certificate of record).
+(S2) FATAL, (S3)/(S4) MAJOR_ISSUES with fully-sized repairs. **Residue for
+Theorem A is now exactly THREE statements: (S2'), (S3'), (S4)** — see
+STATUS_wave6 §human-steps for the ordered path ((S3') is closest: its 18.9M-box
+certificate just needs to actually be RUN — a free local computation).
+
+**⚠️ BUDGET (2026-08-12, binding):** Sihao spent >$1000 in one day on the
+campaign; Fable credits ran OUT mid-wave-6b. **Standing policy: NO Fable
+proof/referee fleets without Sihao's explicit go-ahead.** Verification runs
+via gpt-5.6-sol (`wave6_sol/verify_sol.py`, ~$1-5/pass). Referee debt open:
+composition v2 (unit referee), hygiene overlay, the 2 credit-killed lanes
+(s2-numerics, s3-maths).
 
 ### 📄 2026-08-06 (Nikol + Claude session) — FIRST FULL SUBMISSION-READY DRAFT
 of the Bruhat log-concavity paper written, reviewed, and pushed. **Neither
