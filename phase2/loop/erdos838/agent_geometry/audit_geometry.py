@@ -197,6 +197,23 @@ def dp_counts(nmax: int) -> tuple[list[list[int]], list[list[int]]]:
     return caps, cups
 
 
+def dp_convex_counts(nmax: int, caps: list[list[int]],
+                     cups: list[list[int]]) -> list[list[int]]:
+    """Exact nonempty convex-subset counts in individual Pascal cells.
+
+    In T(n,i)=A prec B, every spanning convex subset is uniquely a nonempty
+    cap in A union a nonempty cup in B; the converse is also true.
+    """
+    convex = [[0] * (n + 1) for n in range(nmax + 1)]
+    convex[0][0] = 1
+    for n in range(1, nmax + 1):
+        convex[n][0] = convex[n][n] = 1
+        for i in range(1, n):
+            convex[n][i] = (convex[n - 1][i - 1] + convex[n - 1][i]
+                            + caps[n - 1][i - 1] * cups[n - 1][i])
+    return convex
+
+
 def row_bound(n: int, caps: list[list[int]], cups: list[list[int]]) -> int:
     total = 1  # empty set
     for k in range(n + 1):
@@ -241,6 +258,7 @@ def audit(n: int, max_subset_size: int | None) -> None:
         convex_count += nr
 
     caps, cups = dp_counts(n)
+    cell_convex = dp_convex_counts(n, caps, cups)
     bound = row_bound(n, caps, cups)
     print(f"row m={n}: N={len(points)}, checked sizes 0..{max_subset_size}")
     print(f"  convex subsets checked: {convex_count}; by size: {sizes}")
@@ -259,8 +277,10 @@ def audit(n: int, max_subset_size: int | None) -> None:
             c, u, v = cap_cup_counts(pts)
             assert c == caps[n][i], (n, i, c, caps[n][i])
             assert u == cups[n][i], (n, i, u, cups[n][i])
+            assert v == cell_convex[n][i], (n, i, v, cell_convex[n][i])
             assert v <= c * u, (n, i, v, c, u)
-        print("  exact cell cap recurrence and V<=Cap*Cup: PASS")
+        print("  exact cell cap/convex recurrences and V<=Cap*Cup: PASS")
+        print(f"  cell convex counts: {cell_convex[n]}")
 
 
 def main() -> None:

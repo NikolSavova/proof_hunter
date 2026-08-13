@@ -48,14 +48,15 @@ Prove the strict upper-window improvement
 \[
 \boxed{
 \limsup_{N\to\infty}\frac{\log_2 f(N)}{(\log_2 N)^2}
-\leq \frac{1}{2\ln 2}=0.7213475204\ldots .
+\leq 1-\frac{1}{4\ln 2}=0.6393262398\ldots .
 }
 \]
 
-The construction is the standard \(2^m\)-point Morris--Soltan / Erdős--Szekeres
-row construction.  The new ingredient is to count its convex subsets using
-the cap/cup recursion instead of bounding them by all subsets of size at most
-\(m+1\).
+The construction uses the central cell
+\(T_{m,\lfloor m/2\rfloor}\) of the standard Morris--Soltan /
+Erdős--Szekeres Pascal construction. It has \(2^{m-o(m)}\) points. The new
+ingredient is to count its caps and cups recursively, then use the fact that
+every convex subset is determined by its upper cap and lower cup.
 
 ## Verification / kill criteria
 
@@ -64,19 +65,19 @@ The candidate bound dies if any of the following fails.
 1. A cap in a recursively glued Pascal cell can use an unrestricted cap in
    one child and at most one point from the other child, giving the recurrence
    in `proof_draft.md`.
-2. A convex subset spanning row blocks decomposes into a cap in its first
-   occupied block, a cup in its last occupied block, and at most one point in
-   each intermediate block.
-3. Convex subsets contained in one block are bounded by the product of that
-   block's cap and cup counts.
-4. The maximum exponential rate of the resulting row sum is at most
-   \(\int_0^1 H_2(t)\,dt=1/(2\ln2)\).
+2. Convex subsets contained in one cell are bounded by the product of that
+   cell's cap and cup counts.
+3. The central cap rate is
+   \(A(1/2)=1/2-1/(8\ln2)\).
+4. The passage from \({m\choose\lfloor m/2\rfloor}\) points to arbitrary
+   \(N\) changes the leading coefficient.
 5. A fresh literature sweep finds the same or a stronger count already in
    print or in public notes.
 
-Items 2 and the underlying construction are stated in Morris--Soltan,
-*Bull. AMS* 37 (2000), Theorem 2.6 and its proof.  Item 4 has a short
-pointwise proof.  Items 1 and 3 still need line-by-line geometric refereeing.
+The underlying separated-union construction is stated in Morris--Soltan,
+*Bull. AMS* 37 (2000), Theorem 2.5 and its proof. The new proof is in
+proof_central.md; the independently audited row calculation remains in
+proof_draft.md as a weaker \(0.721347\ldots\) route.
 
 ## Primary links
 

@@ -15,20 +15,23 @@ for binary entropy, with \(H(0)=H(1)=0\).
 
 ## Candidate theorem
 
-For the standard \(2^m\)-point Erdős--Szekeres row construction \(P_m\),
+Let \(Q_m=T_{m,\lfloor m/2\rfloor}\) be the central cell of the standard
+Pascal construction, and let \(V(Q_m)\) be its number of convex-position
+subsets.  Then
 
 \[
-\log_2 V(P_m)=\left(\frac1{2\ln2}+o(1)\right)m^2,  \tag{T1}
+\log_2 V(Q_m)\leq
+\left(1-\frac1{4\ln2}+o(1)\right)m^2.             \tag{T1}
 \]
 
-where \(V(P_m)\) is its number of convex-position subsets.  Consequently, if
-\(f(N)\) is the largest integer such that every \(N\)-point set in general
-position in the plane determines at least \(f(N)\) such subsets, then
+Consequently, if \(f(N)\) is the largest integer such that every \(N\)-point
+set in general position in the plane determines at least \(f(N)\) such
+subsets, then
 
 \[
 \limsup_{N\to\infty}
 \frac{\log_2 f(N)}{(\log_2N)^2}
-\leq \frac1{2\ln2}.
+\leq 1-\frac1{4\ln2}=0.6393262398\ldots .
 \]
 
 Thus the presently recorded base-2 window
@@ -37,7 +40,7 @@ would improve to
 
 \[
 \frac14\leq\liminf\leq\limsup\leq
-\frac1{2\ln2}=0.7213475204\ldots .
+1-\frac1{4\ln2}=0.6393262398\ldots .
 \]
 
 ## 1. The Pascal cells
@@ -109,7 +112,58 @@ A(x)=\int_0^x(1-x+s)
 H\!\left(\frac{s}{1-x+s}\right)\,ds.             \tag{5}
 \]
 
-## 3. Count the convex subsets of one row
+## 3. The central cell gives the stronger bound
+
+Put \(i=\lfloor m/2\rfloor\) and \(Q_m=T_{m,i}\).  Stirling's formula gives
+
+\[
+|Q_m|={m\choose\lfloor m/2\rfloor}
+=2^{m-O(\log m)}.                                 \tag{6}
+\]
+
+Every convex-position subset of an \(x\)-generic point set is the union of
+its upper hull chain, which is a cap, and its lower hull chain, which is a
+cup.  The ordered pair of hull chains determines the subset.  Thus, using
+(2),
+
+\[
+V(Q_m)\leq 1+C_{m,i}U_{m,i}
+=1+C_{m,i}C_{m,m-i}.                              \tag{7}
+\]
+
+Equations (4)--(5), with \(i/m\to1/2\), imply
+
+\[
+\log_2V(Q_m)\leq 2A(1/2)m^2+o(m^2).              \tag{8}
+\]
+
+The integral is elementary.  At \(x=1/2\),
+
+\[
+\begin{aligned}
+A(1/2)
+&=\int_0^{1/2}\left[
+(s+\tfrac12)\log_2(s+\tfrac12)-s\log_2s+\tfrac12
+\right]\,ds\\
+&=\frac12-\frac1{8\ln2}.
+\end{aligned}                                     \tag{9}
+\]
+
+Therefore
+
+\[
+\log_2V(Q_m)\leq
+\left(1-\frac1{4\ln2}+o(1)\right)m^2.             \tag{10}
+\]
+
+For arbitrary \(N\), take the least \(m\) for which
+\({m\choose\lfloor m/2\rfloor}\geq N\), and retain any \(N\) points of
+\(Q_m\).  Deleting points cannot create new subsets of the remaining point
+set, while (6) gives
+\(m=\log_2N+O(\log\log N)\).  This proves (T1) and the claimed full limsup
+bound.
+
+## 4. Secondary result: count the convex subsets of one row
 
 Glue the cells
 

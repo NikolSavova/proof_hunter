@@ -11,7 +11,8 @@ import argparse
 import math
 
 
-TARGET = 1.0 / (2.0 * math.log(2.0))
+ROW_TARGET = 1.0 / (2.0 * math.log(2.0))
+CENTRAL_TARGET = 1.0 - 1.0 / (4.0 * math.log(2.0))
 
 
 def log2_int(value: int) -> float:
@@ -33,6 +34,23 @@ def cap_table(max_m: int) -> list[list[int]]:
             right_only = table[m - 1][i]
             crossing = (1 + math.comb(m - 1, i)) * table[m - 1][i - 1]
             row.append(right_only + crossing)
+        row.append(1)
+        table.append(row)
+    return table
+
+
+def convex_cell_table(max_m: int, caps: list[list[int]]) -> list[list[int]]:
+    """Exact nonempty convex-subset counts for the strong-glue cells."""
+    table: list[list[int]] = [[1]]
+    for m in range(1, max_m + 1):
+        row = [1]
+        for i in range(1, m):
+            cup_right = caps[m - 1][(m - 1) - i]
+            row.append(
+                table[m - 1][i - 1]
+                + table[m - 1][i]
+                + caps[m - 1][i - 1] * cup_right
+            )
         row.append(1)
         table.append(row)
     return table
@@ -79,6 +97,7 @@ def main() -> None:
         raise SystemExit("--max-m must be positive")
 
     caps = cap_table(args.max_m)
+    convex_cells = convex_cell_table(args.max_m, caps)
     requested = sorted({int(item) for item in args.rows.split(",") if item})
 
     print("m  log2(row_bound)  log2(row_bound)/m^2")
@@ -88,12 +107,28 @@ def main() -> None:
             log_bound = log2_int(bound)
             print(f"{m:3d} {log_bound:17.9f} {log_bound / (m*m):22.12f}")
 
+    print()
+    print("m  central N  exact/log2(N)^2  cap*cup/log2(N)^2")
+    for m in requested:
+        if 1 <= m <= args.max_m:
+            i = m // 2
+            size = math.comb(m, i)
+            log_size = log2_int(size)
+            exact = 1 + convex_cells[m][i]
+            product_bound = 1 + caps[m][i] * caps[m][m - i]
+            print(
+                f"{m:3d} {size:10d} "
+                f"{log2_int(exact) / (log_size * log_size):16.12f} "
+                f"{log2_int(product_bound) / (log_size * log_size):21.12f}"
+            )
+
     integral = simpson_entropy()
     print()
     print(f"Simpson integral of H_2 on [0,1] : {integral:.12f}")
-    print(f"Exact 1/(2 ln 2)                : {TARGET:.12f}")
-    print(f"Absolute quadrature error        : {abs(integral - TARGET):.3e}")
-    if abs(integral - TARGET) > 2e-8:
+    print(f"Exact 1/(2 ln 2)                : {ROW_TARGET:.12f}")
+    print(f"Absolute quadrature error        : {abs(integral - ROW_TARGET):.3e}")
+    print(f"Central target 1-1/(4 ln 2)      : {CENTRAL_TARGET:.12f}")
+    if abs(integral - ROW_TARGET) > 2e-8:
         raise SystemExit("entropy integral audit failed")
 
 

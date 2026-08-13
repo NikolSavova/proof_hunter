@@ -129,6 +129,107 @@ exact recurrence
 The cup count is `U(n,i)=C(n,n-i)` by the symmetric recurrence (no coordinate
 symmetry assumption is needed).
 
+### Converse: every cap-left/cup-right union is convex
+
+The converse needed to count convex subsets of one cell is also exact.  If
+`T=A prec B`, X is a nonempty cap in A, and Y is a nonempty cup in B, then
+`X union Y` is in convex position.
+
+One transparent proof runs the monotone-chain hull algorithm.  On the upper
+hull, every point of X is retained because triples in X and triples of type
+`A,A,B` are negative.  As the points of Y are scanned, each previous Y-point
+is popped because triples of type `A,B,B` and triples in Y are positive.  Thus
+the upper hull is
+
+`X union {rightmost point of Y}`.
+
+On the lower hull, the negative turns pop all but the leftmost X-point, while
+all Y-points are retained.  Thus the lower hull is
+
+`{leftmost point of X} union Y`.
+
+Their union is exactly `X union Y`, proving convexity.  This proof includes
+all endpoint cases: a singleton is both a cap and a cup, and if X or Y is a
+singleton the same hull description remains valid.
+
+Let `W(n,i)` count nonempty convex subsets in `T(n,i)`.  The decomposition and
+its converse give the exact recurrence
+
+```
+W(n,i) = W(n-1,i-1) + W(n-1,i)
+         + C(n-1,i-1) U(n-1,i).
+```
+
+Direct enumeration agrees with this recurrence in every cell through `n=5`:
+
+```
+n=3:  1, 7,   7, 1
+n=4:  1, 15, 50, 15, 1
+n=5:  1, 31, 375, 375, 31, 1
+```
+
+It also agrees in the three nontrivial interior cells `i=2,3,4` at `n=6`:
+
+```
+i:          2     3     4
+Cap:      266  1281  1051
+Cup:     1051  1281   266
+W:       2956 10951  2956
+```
+
+### Consequence for the central cell
+
+For even `n=2m`, the product term in the central recurrence is exactly
+
+`C(2m-1,m-1) U(2m-1,m) = C(2m-1,m-1)^2`.
+
+On the other hand, the upper/lower-hull injection gives
+
+`W(2m,m) <= C(2m,m)U(2m,m) = C(2m,m)^2`.
+
+Therefore, once the exact cap recurrence has established
+
+`log2 C(n,n/2) = (A(1/2)+o(1))n^2`,
+
+the two displays squeeze the **actual**, not merely upper-bounded, central-cell
+count to
+
+`log2 W(n,n/2) = (2A(1/2)+o(1))n^2`.
+
+For completeness, the needed cap asymptotic follows directly from the exact
+recurrence, without a relaxation.  Unrolling it expresses `C(n,i)` as a sum
+over `1 <= r_1 < ... < r_i <= n`, with path weight
+
+`product_{j=1}^i (1+binom(r_j-1,j))`.
+
+Every such sequence has `r_j <= n-i+j`, and every factor is nondecreasing in
+`r_j`.  Thus the delayed path `r_j=n-i+j` is the largest one, giving
+
+```
+P(n,i) <= C(n,i) <= binom(n,i) P(n,i),
+P(n,i) = product_{j=1}^i (1+binom(n-i+j-1,j)).
+```
+
+The logarithm of the multiplicative gap is only `O(n)`.  Stirling's formula
+and a Riemann sum therefore give, for `i/n -> x`,
+
+`log2 C(n,i)/n^2 -> A(x)`
+
+with exactly the integral A used in the proposal.
+
+The same argument works for either middle cell when n is odd.  Direct
+integration gives
+
+`A(1/2) = 1/2 - 1/(8 ln 2) = 0.319663119888880...`,
+
+hence the central-cell rate is
+
+`2A(1/2) = 1 - 1/(4 ln 2) = 0.639326239777759...`.
+
+Since
+`log2 binom(n,floor(n/2)) = n-o(n)`, this is also the coefficient of
+`(log2 N)^2` for the number N of points in the central cell.
+
 ## 5. Why the row DP counts all convex subsets
 
 For `k<l`, the decomposition gives at most
@@ -170,7 +271,7 @@ count:  1  32  496  4960  23220  49884  39648  0
 ```
 
 For every cell through `m=5`, direct enumeration also agrees exactly with the
-cap recurrence and verifies `V(n,i) <= C(n,i)U(n,i)`.
+cap and convex-subset recurrences and verifies `V(n,i) <= C(n,i)U(n,i)`.
 
 Reproduce with:
 

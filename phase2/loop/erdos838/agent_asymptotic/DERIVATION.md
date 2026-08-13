@@ -7,27 +7,45 @@ Assume the two geometric facts about the standard strongly glued Pascal row:
 1. the cap recurrence and its reflected cup recurrence; and
 2. the first-cap / last-cup / at-most-one-intermediate decomposition.
 
-Then the proposed count is correct, with the following sharp conclusion for
-this particular construction.  If `P_m` is the row of `2^m` points and `V_m`
-is its number of convex-position subsets, then
+Then the proposed row count is correct, but it is not the strongest immediate
+consequence of the Pascal construction.  There are two sharp conclusions.
+
+If `P_m` is the full row of `2^m` points and `V(P_m)` is its number of
+convex-position subsets, then
 
 \[
- \log_2 V_m=\left(\frac1{2\ln2}+o(1)\right)m^2.       \tag{A}
+ \log_2 V(P_m)=\left(\frac1{2\ln2}+o(1)\right)m^2.    \tag{A}
 \]
 
-Thus the construction proves
+However, the single central cell
+
+\[
+ Q_m=T_{m,\lfloor m/2\rfloor},\qquad
+ |Q_m|={m\choose\lfloor m/2\rfloor}=2^{m-o(m)},
+\]
+
+has the strictly smaller sharp rate
+
+\[
+ \log_2V(Q_m)=
+ \left(1-\frac1{4\ln2}+o(1)\right)m^2.             \tag{B}
+\]
+
+It therefore gives the stronger Erdős-838 bound
 
 \[
  \limsup_{N\to\infty}
  \frac{\log_2 f(N)}{(\log_2N)^2}
- \leq \frac1{2\ln2}=0.721347520444\ldots .           \tag{B}
+ \leq 1-\frac1{4\ln2}
+ =0.639326239778\ldots .                             \tag{C}
 \]
 
-The word **sharp** in (A) matters.  The same strong row-orientation law makes
+The word **sharp** in (A) matters.  The strong row-orientation law makes
 every transversal (one point from every block) a cap.  There are
 `prod_i binom(m,i)` such transversals, and that product already has the rate
-in (A).  No refinement of the cap recurrence can lower the leading constant
-for this construction.
+in (A).  Likewise, the top strong-glue split of the central cell realizes all
+cap/cup cross-pairs and supplies a matching lower bound in (B).  Better
+bookkeeping alone cannot improve either construction's leading constant.
 
 ## 1. Solve the cap recurrence
 
@@ -35,15 +53,14 @@ Use nonempty cap counts, so the boundary values are `C[m,0]=C[m,m]=1`.
 This convention is the one for which the finite recurrence in the geometry
 verifier is exact.  Adding the empty set once at the end is immaterial.
 
-The recurrence to audit is
+For the standard strong glue, the recurrence is in fact exact:
 
 \[
- C_{m,i}\leq C_{m-1,i}+
+ C_{m,i}= C_{m-1,i}+
  \left(1+{m-1\choose i}\right)C_{m-1,i-1}.           \tag{1}
 \]
 
-Let `D[m,i]` be the array obtained by replacing (1) with equality.  Expand
-`D[m,i]` as a sum over lattice paths.  A horizontal step has weight one.  If
+Expand `C[m,i]` as a sum over lattice paths.  A horizontal step has weight one.  If
 the `j`-th diagonal step is made at time `t_j`, its weight is
 
 \[
@@ -58,18 +75,20 @@ the largest path weight is attained by taking all diagonal steps last:
  \prod_{j=1}^i\left(1+{m-i+j-1\choose j}\right).
 \]
 
-There are at most `2^m` paths, so
+The latest-step path occurs as one summand and there are exactly `binom(m,i)`
+paths, so, writing `M[m,i]` for its product,
 
 \[
- C_{m,i}\leq D_{m,i}\leq
- 2^m\prod_{j=1}^i\left(1+{m-i+j-1\choose j}\right). \tag{2}
+ M_{m,i}\leq C_{m,i}\leq{m\choose i}M_{m,i},\qquad
+ M_{m,i}=\prod_{j=1}^i
+ \left(1+{m-i+j-1\choose j}\right).                \tag{2}
 \]
 
 Put `i/m -> x`.  The entropy bound for binomial coefficients, summed over
 the `i` factors in (2), gives uniformly in `i`
 
 \[
- \log_2 C_{m,i}\leq m^2A(x)+O(m\log m),              \tag{3}
+ \log_2 C_{m,i}=m^2A(x)+O(m\log m),                  \tag{3}
 \]
 
 where
@@ -90,10 +109,10 @@ form, useful for numerical checks, is
 The limiting middle-cell rate is, for example,
 `A(1/2)=0.319663119889...`.
 
-The `O(m log m)` in (3) is more than enough.  It follows directly by using
-`log_2 binom(a,b) <= a H_2(b/a)`, paying `O(1)` for each `1+binom`, and using
-a uniform Riemann-sum estimate (or crude endpoint truncation followed by
-uniform continuity).  No delicate Stirling expansion is needed.
+The `O(m log m)` in (3) is more than enough.  It follows from the standard
+two-sided entropy estimate for binomial coefficients, paying `O(1)` for each
+`1+binom`, and a uniform Riemann-sum estimate (or crude endpoint truncation
+followed by uniform continuity).  No delicate Stirling expansion is needed.
 
 ## 2. Optimize the row bound
 
@@ -176,31 +195,122 @@ Equations (10)--(12) prove (A), not merely its upper bound.  The endpoint
 summand `(k,ell)=(0,m)` in (6), with optional singleton choices in the
 intermediate blocks, visibly has the same rate.
 
-## 4. Log bases and conversion from `m` to `N`
+## 4. A stronger construction: use one central cell
 
-For `N=2^m`, put `L=log_2 N=m` and
-`kappa=1/(2 ln 2)`.  The equivalent forms are
+Take `i=floor(m/2)` and `Q_m=T[m,i]`.  Every convex-position subset is
+uniquely determined by its upper and lower hull chains.  The upper chain is a
+cap and the lower chain a cup.  Reflection of the recurrence gives
+`U[m,i]=C[m,m-i]`, and hence
 
 \[
- \log_2V_m=(\kappa+o(1))L^2,
+ V(Q_m)\leq C_{m,i}C_{m,m-i}.                       \tag{13}
+\]
+
+Since `i/m -> 1/2`, (3) yields
+
+\[
+ \log_2V(Q_m)\leq
+ \bigl(2A(1/2)+o(1)\bigr)m^2.                       \tag{14}
+\]
+
+Formula (5) gives
+
+\[
+ A(1/2)=\frac12-\frac1{8\ln2},\qquad
+ 2A(1/2)=1-\frac1{4\ln2}=0.639326239778\ldots .     \tag{15}
+\]
+
+This upper rate is attained inside the cell.  In the top split
+`T[m,i]=A prec B`, the union of any cap in the left child with any cup in the
+right child is in convex position.  More explicitly, its upper hull is the
+left cap together with the rightmost point of the right cup, while its lower
+hull is the leftmost point of the left cap together with the right cup; their
+union contains every selected point.
+The product of the two relevant child counts has rate `2A(1/2)m^2`.
+Equivalently, if `W[m,i]` counts nonempty convex subsets, strong gluing gives
+the exact recurrence
+
+\[
+ W_{m,i}=W_{m-1,i-1}+W_{m-1,i}
+          +C_{m-1,i-1}U_{m-1,i}.                   \tag{16}
+\]
+
+Thus (B) is an equality for the actual count of the central cell, not just
+the rate of a convenient upper bound.
+
+The center is also optimal among all fixed-density single cells under this
+analysis.  For `i/m -> x`, the number of points has rate `H_2(x)m`, while a
+short simplification of (5) gives
+
+\[
+ A(x)+A(1-x)=H_2(x)-\frac{x(1-x)}{\ln2}.            \tag{17}
+\]
+
+The coefficient relative to `(log_2 |T[m,i]|)^2` is therefore
+
+\[
+ K(x)=\frac{H_2(x)-x(1-x)/\ln2}{H_2(x)^2}.          \tag{18}
+\]
+
+To see rigorously that its minimum is at `x=1/2`, write
+`h=-x ln x-(1-x)ln(1-x)` and `q=x(1-x)`.  Then
+`K=ln(2)(h-q)/h^2`.  On `0<x<1/2`,
+
+\[
+ h'=\ln\frac{1-x}{x}>0,\qquad q'=1-2x>0,
+ \qquad h\geq2q,
+\]
+
+where the last inequality follows by applying `-ln u >= 1-u` to `u=x`
+and `u=1-x`.  Hence
+
+\[
+ K'(x)=\ln2\,\frac{h'(2q-h)-hq'}{h^3}<0.           \tag{19}
+\]
+
+Symmetry finishes the minimization.
+
+## 5. Log bases and conversion from `m` to `N`
+
+For the full row `N=2^m`, put `L=log_2 N=m` and
+`kappa_row=1/(2 ln 2)`.  The equivalent forms are
+
+\[
+ \log_2V(P_m)=(\kappa_{\rm row}+o(1))L^2,
  \qquad
- V_m=N^{(\kappa+o(1))\log_2N}.                     \tag{13}
+ V(P_m)=N^{(\kappa_{\rm row}+o(1))\log_2N}.        \tag{20}
 \]
 
-With natural logarithms, the coefficient is **not** `kappa`:
+With natural logarithms, the coefficient is **not** `kappa_row`:
 
 \[
- \frac{\ln V_m}{(\ln N)^2}
- \longrightarrow \frac{\kappa}{\ln2}
- =\frac1{2(\ln2)^2}=1.040684490503\ldots .          \tag{14}
+ \frac{\ln V(P_m)}{(\ln N)^2}
+ \longrightarrow \frac{\kappa_{\rm row}}{\ln2}
+ =\frac1{2(\ln2)^2}=1.040684490503\ldots .          \tag{21}
 \]
 
-For arbitrary `N`, choose `m=ceil(log_2 N)` and delete `2^m-N` points from
-`P_m`.  Deletion cannot create additional subsets of the remaining point
-set, and `m=log_2N+O(1)`, so (B) holds for the full limsup, not just along
-powers of two.
+For the stronger central-cell bound, let
+`kappa_cell=1-1/(4 ln 2)`.  Since
 
-## 5. Exact finite-DP evidence
+\[
+ \log_2{m\choose\lfloor m/2\rfloor}
+ =m-\tfrac12\log_2m+O(1),                           \tag{22}
+\]
+
+the same coefficient `kappa_cell` appears when (14) is normalized by the
+square of the log of the actual number of points.  Given arbitrary `N`, take
+the least `m` for which the central binomial coefficient is at least `N` and
+delete excess points.  Here `m=log_2N+O(log log N)`.  Deletion cannot create
+additional subsets of the remaining point set, proving (C) for the full
+limsup.  In natural logarithms the improved coefficient is
+
+\[
+ \frac{\kappa_{\rm cell}}{\ln2}
+ =\frac1{\ln2}-\frac1{4(\ln2)^2}
+ =0.922352795638\ldots .                            \tag{23}
+\]
+
+## 6. Exact finite-DP evidence
 
 `dp_audit.py` uses Python integers for (1) and (6).  The displayed row bound
 excludes the empty set; adding one does not change the printed digits.
@@ -221,6 +331,26 @@ The target is `0.721347520444...`; the midpoint cap target is
 boundary layer rather than exactly at `(0,m)`, which is compatible with the
 unique scaled maximizer `(0,1)`.
 
+The same integer run also evaluates the exact strong-glue recurrence (16)
+for the central cell.  These rates are normalized by the square of the log
+of the **actual** cell size, not by `m^2`.
+
+| m | log2 central-cell size | exact cell recurrence / (log2 size)^2 | Cap*Cup upper bound / (log2 size)^2 |
+|---:|---:|---:|---:|
+| 4 | 2.58496 | 0.844631831 | 1.482841434 |
+| 8 | 6.12928 | 0.679099040 | 0.960173583 |
+| 16 | 13.65172 | 0.652167052 | 0.788186554 |
+| 32 | 29.16298 | 0.646779160 | 0.713010264 |
+| 64 | 60.66862 | 0.643917627 | 0.676340224 |
+| 96 | 92.37801 | 0.642753181 | 0.664168989 |
+| 128 | 124.17143 | 0.642100314 | 0.658077364 |
+| 192 | 187.87989 | 0.641378104 | 0.651966544 |
+| 256 | 251.67284 | 0.640979821 | 0.648895070 |
+
+Both columns converge to the sharp central-cell target
+`0.639326239778...`.  The exact recurrence converges much faster than the
+coarse `Cap*Cup` product, but the two have the same quadratic rate.
+
 Reproduce, for example, with
 
 ```sh
@@ -228,26 +358,30 @@ python3 phase2/loop/erdos838/agent_asymptotic/dp_audit.py \
   --max-m 128 --show 4,8,16,32,48,64,96,128
 ```
 
-## 6. Audit findings and stronger-route assessment
+## 7. Audit findings and stronger-route assessment
 
 1. **Count convention:** the shared draft currently says cap counts include
    the empty set and therefore gives boundary value two.  The exact recurrence
    and the geometry verifier use nonempty counts with boundary value one.
    Normalize the proof to the latter convention and add the empty subset once.
    This is a finite bookkeeping issue, not an asymptotic failure.
-2. **The constant survives:** `1/(2 ln 2)` is the correct base-2 coefficient.
-   The short inequality (8)--(10) is rigorous and avoids a fragile
-   two-variable derivative calculation.
-3. **The same construction cannot beat it:** transversal caps give the
+2. **The row constant survives:** `1/(2 ln 2)` is the correct base-2
+   coefficient for the `2^m`-point full row.  The short inequality (8)--(10)
+   is rigorous and avoids a fragile two-variable derivative calculation.
+3. **But the row is not the best construction:** one central Pascal cell
+   immediately improves the upper coefficient to
+   `1-1/(4 ln 2)=0.639326...`, using only the already-audited cap recurrence
+   and upper/lower-hull injection.
+4. **Neither count can be sharpened at quadratic scale:** transversal caps give the
    matching lower bound (11)--(12).  Sharpening cap/cup counts, or improving
    the treatment of the `k=ell` case, cannot affect the leading term because
-   the leading term comes from the intermediate singleton product.
-4. **What a stronger upper bound would require:** either a different bad point
-   construction whose block sizes have a smaller entropy integral, or a row
-   geometry in which exponentially many transversals fail to be convex while
-   the Erdős--Szekeres obstruction is retained.  Merely strengthening (1) is
-   asymptotically powerless.
-5. **Geometric dependency:** the asymptotic argument is complete conditional
+   the full-row leading term comes from the intermediate singleton product.
+   For the cell, the cross-child cap/cup family attains (15).
+5. **What a still stronger upper bound would require:** a different recursive
+   order type or a nontrivial thinning in which the large cross-product
+   families disappear while the point count retains exponent one.  Merely
+   strengthening (1) is asymptotically powerless.
+6. **Geometric dependency:** the asymptotic argument is complete conditional
    on the exact strong-gluing orientation and decomposition.  Those are the
    only genuinely geometric inputs; `dp_audit.py` intentionally does not
    certify them.

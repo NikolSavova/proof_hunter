@@ -32,12 +32,14 @@ def log2_int(n: int) -> float:
 def audit(max_m: int, sample: set[int] | None = None) -> list[dict[str, float | int]]:
     choose_prev = [1]
     cap_prev = [1]
+    convex_prev = [1]
     rows: list[dict[str, float | int]] = []
 
     for m in range(max_m + 1):
         if m == 0:
             choose = choose_prev
             cap = cap_prev
+            convex = convex_prev
         else:
             choose = [1]
             for i in range(1, m):
@@ -45,11 +47,20 @@ def audit(max_m: int, sample: set[int] | None = None) -> list[dict[str, float | 
             choose.append(1)
 
             cap = [1] * (m + 1)
+            convex = [1] * (m + 1)
             for i in range(1, m):
                 cap[i] = cap_prev[i] + (1 + choose_prev[i]) * cap_prev[i - 1]
+                # Exact for strong gluing: a spanning convex subset is a cap
+                # in the left child joined to a cup in the right child.
+                cup_right = cap_prev[(m - 1) - i]
+                convex[i] = (
+                    convex_prev[i - 1]
+                    + convex_prev[i]
+                    + cap_prev[i - 1] * cup_right
+                )
 
         if m == 0 or (sample is not None and m not in sample):
-            choose_prev, cap_prev = choose, cap
+            choose_prev, cap_prev, convex_prev = choose, cap, convex
             continue
 
         # prefix[j] = product_{0 <= r < j} (1 + binom(m,r)).
@@ -74,6 +85,9 @@ def audit(max_m: int, sample: set[int] | None = None) -> list[dict[str, float | 
         # The endpoint term chooses at most one point in every internal block.
         endpoint = prefix[m] // prefix[1] if m >= 1 else 1
         transversal = math.prod(choose)
+        mid = m // 2
+        cell_log_n = log2_int(choose[mid])
+        cell_product = cap[mid] * cap[m - mid]
         rows.append(
             {
                 "m": m,
@@ -84,11 +98,20 @@ def audit(max_m: int, sample: set[int] | None = None) -> list[dict[str, float | 
                 "transversal_rate": log2_int(transversal) / (m * m),
                 "max_k": max_pair[0],
                 "max_l": max_pair[1],
-                "cap_mid_rate": log2_int(cap[m // 2]) / (m * m),
+                "cap_mid_rate": log2_int(cap[mid]) / (m * m),
+                "cell_log_n": cell_log_n,
+                "cell_exact_rate": (
+                    log2_int(convex[mid]) / (cell_log_n * cell_log_n)
+                    if cell_log_n else 0.0
+                ),
+                "cell_product_rate": (
+                    log2_int(cell_product) / (cell_log_n * cell_log_n)
+                    if cell_log_n else 0.0
+                ),
             }
         )
 
-        choose_prev, cap_prev = choose, cap
+        choose_prev, cap_prev, convex_prev = choose, cap, convex
 
     return rows
 
@@ -122,6 +145,17 @@ def main() -> None:
                 f"       ({row['max_k']},{row['max_l']})"
                 f"             {row['cap_mid_rate']:.9f}"
             )
+    print()
+    print("central-cell target coefficient = "
+          f"{1.0 - 1.0 / (4.0 * math.log(2.0)):.12f}")
+    print(" m    log2 |cell|   exact-cell-DP/(log2 |cell|)^2"
+          "  Cap*Cup/(log2 |cell|)^2")
+    for row in rows:
+        print(
+            f"{int(row['m']):3d}  {row['cell_log_n']:12.5f}"
+            f"         {row['cell_exact_rate']:.9f}"
+            f"                  {row['cell_product_rate']:.9f}"
+        )
 
 
 if __name__ == "__main__":
