@@ -1,0 +1,17 @@
+Jacobian conjecture counterexample — independent verification (exact arithmetic)
+
+[1] det DF = -2   (constant and nonzero: True)
+    component total degrees: [7, 6, 4]
+
+[2] collision:
+    F('0', '0', '-1/4') = ('-1/4', '0', '0')
+    F('1', '-3/2', '13/2') = ('-1/4', '0', '0')
+    F('-1', '3/2', '13/2') = ('-1/4', '0', '0')
+    three DISTINCT points: True; identical images: True
+
+[3] consequence: det DF is a nonzero constant, so F is everywhere locally invertible;
+    injectivity fails globally. Hence the Jacobian conjecture is FALSE in dimension 3,
+    and in every higher dimension by appending identity coordinates. The PLANE case
+    (n = 2) is untouched by this and remains open.
+
+# OVERALL: MAP VERIFIED AS TRANSCRIBED
