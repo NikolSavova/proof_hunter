@@ -1,0 +1,34 @@
+Independent replay of sol_s2b_20260812.md — mpmath.iv, dps 30, RMAX=200, NMAX=64
+[A] model check (s2 closed form vs brute-force variance sum):
+  m=  7 lam= 0.37: s2_closed = 8.894884447334 | s2_direct = 8.894884447334 | agree=True s2>0=True
+  m= 11 lam=  0.9: s2_closed = 8.809549476280 | s2_direct = 8.809549476280 | agree=True s2>0=True
+  m= 23 lam= 0.13: s2_closed = 278.845697964710 | s2_direct = 278.845697964710 | agree=True s2>0=True
+[B] scalar constants (sup y^5 A_4 < 25 grid; F values; 40000/81960):
+  sup over [1/4,6] grid of b^5 A_4(a) = 24.854113 at y~3.7246  (< 25 required)
+  y= 0.001: y^5 A_4(y) = 24.000000000
+  y=  0.01: y^5 A_4(y) = 24.000000000
+  y=  0.05: y^5 A_4(y) = 24.000000000
+  y=   0.1: y^5 A_4(y) = 24.000000004
+  y=  0.25: y^5 A_4(y) = 24.000000958
+  F(  6) = 20.048884
+  F(  8) = 11.051541
+  F( 10) = 4.543292
+  F( 14) = 0.447222
+  F( 20) = 0.006596
+  recipe: F(8) < 12 -> True (value <= 11.051541)
+  recipe: F(10) < 5 -> True (value <= 4.543292)
+  recipe: F(14) < 1 -> True (value <= 0.447222)
+  40000/81960 = 0.488042948 < 0.50 -> True
+[C] H and T at the recipe abscissae:
+  H( 4) = [1.193334, 1.193334]  expected (1.193, 1.194) -> True
+  H( 5) = [1.960829, 1.960829]  expected (1.96, 1.962) -> True
+  H( 6) = [2.834331, 2.834331]  expected (2.834, 2.835) -> True
+  H( 8) = [4.737648, 4.737648]  expected (4.737, 4.739) -> True
+  H(10) = [6.715671, 6.715671]  expected (6.715, 6.717) -> True
+  H(20) = [16.710133, 16.710133]  expected (16.71, 16.711) -> True
+  T( 8) = 2.298988e+01  expected < 23.01 -> True
+  T(10) = 8.052473e+00  expected < 8.06 -> True
+  T(14) = 6.638496e-01  expected < 0.665 -> True
+  T(20) = 8.629061e-03  expected < 0.0087 -> True
+  T(40) = 4.952770e-10  expected < 1e-08 -> True
+# OVERALL: ALL REPLAYED CHECKS PASS
