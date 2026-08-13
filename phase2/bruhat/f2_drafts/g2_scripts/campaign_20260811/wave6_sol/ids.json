@@ -7,5 +7,6 @@
  "s2c": "resp_02896640e2a6eca0006a7d20c818c48198b36219e370e98efc",
  "s3w7sign": "resp_0527132b835d9b70006a7d2419daa0819a8c890bf3dd0c101c",
  "s3w7cert": "resp_07e696341e238cb2006a7d241cbe6c8198ac6df5b40f1f988c",
- "s4seed": "resp_0b6e2582eafad2ae006a7d241fb04c8198afd0caf3ad3bb0c6"
+ "s4seed": "resp_0b6e2582eafad2ae006a7d241fb04c8198afd0caf3ad3bb0c6",
+ "comprepair": "resp_084be2b3faf88133006a7d2e4555e4819a8df23a957683da33"
 }

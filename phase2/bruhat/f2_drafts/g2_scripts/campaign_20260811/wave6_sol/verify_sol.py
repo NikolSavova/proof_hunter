@@ -24,7 +24,9 @@ CTX = ("You are an adversarial referee on a mathematics campaign (Mahonian distr
        "Theorem A: sigma^2(r_m(k)-1) -> 1; the remaining lemma CL(79,20,0.89) at m >= 561 "
        "hangs on statements (S1)-(S4)). DEFAULT TO REFUTATION — your job is to kill the "
        "draft; it survives only if you fail. Campaign ledger for context:\n"
-       + (CAMP / "STATUS_wave5.md").read_text()[:50_000])
+       + (CAMP / "STATUS_wave5.md").read_text()[:40_000]
+       + ((CAMP / "STATUS_wave6.md").read_text()[:40_000]
+          if (CAMP / "STATUS_wave6.md").exists() else ""))
 
 BRIEF = {
     "maths": ("MATHS REFEREE: recompute the key algebra by hand, lemma by lemma; hunt "

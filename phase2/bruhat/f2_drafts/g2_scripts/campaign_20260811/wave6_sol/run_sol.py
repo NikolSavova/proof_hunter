@@ -33,6 +33,9 @@ BASE_CTX = (
     "ledger below states them precisely, with measured numerical margins. Everything the "
     "ledger marks two-referee/citable you may use as established; everything marked open is open."
     + read("STATUS_wave5.md")
+    # NOTE 2026-08-12: wave5 predates (S1)'s proof. wave6 is the current ledger —
+    # agents briefed on wave5 alone wrongly report (S1) as open.
+    + read("STATUS_wave6.md", 40_000)
     + read("CL_composition_20260812.md", 40_000)
 )
 
@@ -148,6 +151,54 @@ PROVE THAT SEED BOUND. Notes that should make it easier than it looks:
    int_0^oo G = pi^2/3.
 If the 0.89 target is unreachable by crude means, prove the best constant you can and say exactly
 what it is — the bootstrap basin is ~0.90, so anything below that still closes M2."""),
+    "comprepair": ("""REPAIR THE COMPOSITION. Context: `CL_composition_20260812.md` is the document that
+converts the four statements (S1)-(S4) into CL(79, 20, 0.89) for m >= 561. Its adversarial maths
+referee returned MAJOR_ISSUES with seven findings (full report attached). Two of them are NEW
+MATHEMATICS, not bookkeeping, and they are the reason closing (S1)-(S4) would NOT by itself close
+CL. Your job is to produce a corrected composition that answers all seven.
+
+THE TWO SUBSTANTIVE ONES:
+
+ (a) FINDING 1 — a MISSING w-CONTINUUM CERTIFICATE (effectively a fifth hypothesis).
+     Fact R.G's universal W1 rung rests on 25,122 = 237*106 probes, i.e. a FINITE w-grid.
+     Theorem X.1 gives monotonicity in tau, NOT in w, so it does not interpolate between the 106
+     sampled w-values; and probing w = 4 + 1e-9 does not cover 4 < w < 4 + 1e-9. The proposed M3
+     replacement (per-cell floors from Lemma R.1) is asserted but never reproduced: no bound, cell
+     formula, endpoint argument, or landed lemma. EITHER write out the M3 per-cell-floor argument
+     in full as a proved w-uniform statement on (4, 5], OR supply a genuine w-continuum interval
+     certificate, OR state it explicitly as a fifth hypothesis. Do not leave it as probes.
+
+ (b) FINDING 2 — the (S4) BOOTSTRAP CLOSURE IS INSUFFICIENT AS STATED.
+     With x = |s2(r-1) - 1| and a = 20/m, deducing x <= a needs BOTH x <= G(x) and G(t) < t for
+     all a < t <= 0.89. Convexity plus G(a) < a does NOT give the second: a convex increasing
+     function can cross the diagonal later. A chord argument additionally needs a rigorous
+     G(0.89) < 0.89, the correct inequality direction, and a reduction showing the two thinnest
+     rows dominate every band and every m >= 561. Note 0.89 sits only ~0.00412 below the quoted
+     worst basin, so directed rounding matters. State this as a lemma with G, its domain, endpoint
+     signs, and uniformity — a citation to an unlanded referee construction is not enough.
+     (The (S4) seed lemma itself has now been drafted separately — attached — for m >= 700.)
+
+THE FIVE BOOKKEEPING ONES (fix each explicitly):
+ 3. The band table W1-W7 is never defined in the composition: import it with open/closed endpoint
+    conventions, and give the EXACT rational J_0(W) values, not decimals.
+ 4. Theorem E is invoked by substituting (S1)+(S3), but its hypotheses are (E-A2)+(E1)+(E2)+(E3):
+    identify them clause by clause, and check whether E2 needs a signed or absolute fourth-cumulant
+    bound and whether its band-edge conventions match S1's.
+ 5. `min(m, s2) = m` is used but NOT established: the only universal floor stated is
+    s2 >= 1122800/7921 = 141.749779..., which is LESS than every m >= 561. Quote the exact bandwise
+    formula proving s2/m >= 1 and check its worst band edge.
+ 6. Input I3 consumes the hygiene overlay's M_H = 560 repair, but that overlay has zero referees.
+    Either stop consuming it or mark the dependency honestly; the claim that every input is
+    two-referee is currently false.
+ 7. Prop E.3 shows the OLD route insufficient; it does not show the joint bound is logically
+    unavoidable. Reword.
+
+DELIVERABLE: a corrected composition document that states, at the end, exactly which hypotheses CL
+now rests on and their status — with no silent omissions. If the honest count is five rather than
+four, say five."""
+                   + read("solref_maths_CL_composition_20260812.md", 40_000)
+                   + read("CL_composition_20260812.md", 45_000)
+                   + read("sol_s4seed_20260812.md", 20_000)),
     "s3": ("Prove (S3), the joint-cancellation statement J <= J0(W) (worst measured margin 32.6% at "
            "(561, 5.0)). Constraint: a refereed impossibility result (Prop E.3, excerpted below) shows "
            "the sign-lemma route CANNOT work — do not use it; find another route."
