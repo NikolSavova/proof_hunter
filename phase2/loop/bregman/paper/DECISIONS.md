@@ -24,11 +24,36 @@ eyes on a physical source. Written 2026-08-13.*
    numbers its open problems differently, every reference to Problem 2 in the note is wrong.
    This is cheap to check and embarrassing to get wrong.
 
-4. **Read Example 3.3 of the survey.** The note's "What is not claimed" paragraph asserts that
-   the survey already contains nonconvex Chebyshev examples and that ours is distinguished by
-   being *globally* Chebyshev with (b) holding. If Example 3.3 is already global and already
-   satisfies (b), our contribution shrinks to almost nothing and the note should be withdrawn or
-   substantially reframed. This is the single highest-risk unverified statement in the paper.
+4. **Read Example 7.5 of Bauschke–Wang–Ye–Yuan (2009), and Example 3.3 of the survey, which
+   reproduces it.** This is the closest prior art and the note's whole positioning rests on one
+   claim about it: that its dual set is the *convex* segment `{(λ,2λ)}`, so that its `C*` is
+   convex and it therefore does not bear on Problem 2. The comparison table in the introduction
+   encodes exactly this. If that reading is wrong — if Example 7.5's gradient image is already
+   nonconvex — the note collapses. The prior-art lane read it and reported the convex-segment
+   reading; **a human should confirm it against the paper.** Highest-risk unverified statement in
+   the paper.
+
+4a. **Check the survey's Fact 3.1 and the supercoercivity remark.** The introduction now observes
+   that, since `dom f = X` is dual to supercoercivity of `f*`, the example also shows a
+   supercoercivity hypothesis cannot be deleted from the corresponding left-projection statement.
+   The duality itself is safe, but the survey's Fact 3.1 has not been read, so the note
+   deliberately does *not* name it. If Fact 3.1 is indeed that statement, say so explicitly and
+   gain a third small corollary; if not, leave the remark as is. Make no priority claim here
+   until the no-coercivity literature has been checked.
+
+4b. **Luo et al. (2019) — mostly discharged 2026-08-13, one item left.** The prior-art lane could
+   not retrieve the paywalled text and named it the highest-risk unchecked source. We have the
+   PDF (`../refs_luo2019.pdf`) and searched the full extraction:
+   - **zero** occurrences of *nonconvex*, *non-convex*, *entropy*, or *exponential*;
+   - the paper's only examples are 3.15 and 3.16, both `l^p`/Banach-space constructions about
+     Fréchet differentiability — neither is a Chebyshev-set example;
+   - no remark anywhere asserts that `U = X` is essential, and no counterexample appears. The one
+     necessity-flavoured remark, Remark 3.1, concerns strict convexity in the LEFT case
+     (Theorem 3.7) and does not touch Corollary 4.4.
+   **Still to do:** read the *typeset* Theorems 3.12 and 3.13 and confirm their hypothesis lists
+   against what Corollary 4.4 and Proposition 5.1 claim. Our reading came from a `pdftotext`
+   extraction in which the over-arrow notation on `Pi` and `D` renders as separated glyphs, so a
+   misparse is possible even though the surrounding prose is clear.
 
 ## Verification carried out, and its limits
 

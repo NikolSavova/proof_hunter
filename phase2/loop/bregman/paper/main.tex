@@ -95,9 +95,8 @@ the \emph{right} one, in which the second argument varies:
   \Proj_{C}(x) = \operatorname*{arg\,min}_{y \in C} \D(x,y),
   \qquad x \in U .
 \]
-Following \cite[Definition 3.1]{BMW2010} we call $C$ \emph{right
-$\D$-Chebyshev} if $\Proj_{C}(x)$ is a singleton for every $x \in U$. We
-abbreviate
+Following \cite{BMW2010} we call $C$ \emph{right $\D$-Chebyshev} if
+$\Proj_{C}(x)$ is a singleton for every $x \in U$. We abbreviate
 \[
   \Cstar := \nabla f(C).
 \]
@@ -167,8 +166,8 @@ points arbitrarily close to $\partial U$ and points far from $C$. Uniqueness is
 not a local or generic phenomenon here. It follows from a single inequality
 (Lemma~\ref{lem:convex}) which holds uniformly in $x \in U$.
 
-The verification is elementary throughout. In particular it uses no numerical
-computation: the one inequality that carries the argument is
+The verification is elementary throughout, and the proofs below use no numerical
+computation. The one inequality that carries the argument is
 \[
   4t^{2} - 2 \ \ge\ 0
   \qquad\text{for } t \ge 1/\sqrt{2},
@@ -183,34 +182,72 @@ and Yao \cite{LMWY2019}, where it turns out to have a second use, and
 Section~\ref{sec:b} records what is known about the remaining hypothesis (b).
 Section~\ref{sec:open} states what we do \emph{not} claim, and what remains open.
 
-\subsection*{What is not claimed}
+\subsection*{Relation to earlier examples, and what is not claimed}
 
-Nonconvex sets that are Chebyshev for Bregman distances are not new, and
-neither are entropy kernels of non-full domain. The survey's own
-Example~3.3 \cite{BMW2010} takes place without full domain, and there the
-conclusion \emph{holds}: $\Cstar$ is convex. That is precisely why
-Problem~\ref{prob:2} was worth asking. Example~3.3 shows that full domain is not
-needed in every instance; it leaves open whether it can be deleted from the
-general statement. Theorem~\ref{thm:main} supplies the missing half, an instance
-in which the conclusion fails. Laude, Ochs and Cremers \cite{LOC2020} come
-closer still, with nonconvex examples for entropy-like kernels, but their
-single-valuedness results are local, holding on a neighbourhood under relative
-prox-regularity, rather than at every point of $U$; they record
-Problem~\ref{prob:2} as open.
+The example is a variation on a template that is not ours. Bauschke, Wang, Ye
+and Yuan \cite[Example 7.5]{BWYY2009}, reproduced as Example~3.3 of the survey
+\cite{BMW2010}, work on the exponential side with
+$h(u) = e^{u_{1}} + e^{u_{2}}$ and the segment
+$A = \{ (\lambda, 2\lambda) : 0 \le \lambda \le 1 \}$, whose image under
+$\nabla h$ is the nonconvex curve $\{ (e^{\lambda}, e^{2\lambda}) \}$. Since the
+right projection for $f$ corresponds to the left projection for $f^{*}$
+\cite[Lemma 3.2]{LMWY2019}, that curve is a nonconvex right $\D$-Chebyshev set
+for the negative entropy, and full domain already fails there. But its gradient
+image is $A$ itself, which is \emph{convex}: the conclusion of
+Fact~\ref{fact:BMW} survives, and full domain is not challenged. That is exactly
+why Problem~\ref{prob:2} was worth asking.
 
-So we claim neither the first nonconvex right $\D$-Chebyshev set nor the first
-nonconvex entropy-Bregman example. The point of Theorem~\ref{thm:main} is
-narrower, and is exactly what Problem~\ref{prob:2} asks for: a set that is right
-$\D$-Chebyshev \emph{globally on $U$}, with nonconvex gradient image,
-\emph{while hypothesis \textup{(b)} holds}, so that full domain is the only
-hypothesis of Fact~\ref{fact:BMW} that fails.
+Our construction changes one thing. Where \cite[Example 7.5]{BWYY2009} takes the
+dual set to be a convex segment, we take it to be a nonconvex parabolic arc, and
+the work is in checking that global Chebyshevness survives the change.
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+ & \cite[Example 7.5]{BWYY2009} & Theorem~\ref{thm:main} \\
+\hline
+dual set $A$ & $\{ (\lambda, 2\lambda) \}$ & $\{ (t, -t^{2}) \}$ \\
+$A$ convex? & yes & no \\
+$C = \exp(A)$ right $\D$-Chebyshev? & yes & yes \\
+$\Cstar = \nabla f(C) = A$ convex? & yes & no \\
+bears on Problem~\ref{prob:2}? & no & yes \\
+\hline
+\end{tabular}
+\end{center}
+
+Stated on the dual side, Theorem~\ref{thm:main} says that the parabolic arc
+$\{ (t,-t^{2}) : t \in [a,b] \}$ is a compact nonconvex set that is globally
+left Chebyshev for the Bregman distance of $h(u) = e^{u_{1}} + e^{u_{2}}$. This
+is the more transparent phrasing, and it makes clear that the obstruction lives
+entirely on the dual side. It is worth noting that $h$ is not supercoercive.
+Since $\dom f = X$ is equivalent to supercoercivity of $f^{*}$ for closed convex
+$f$, the dual reading of Theorem~\ref{thm:main} is that a supercoercivity
+hypothesis cannot be deleted from the corresponding left-projection statement
+either.
+
+We therefore claim neither the first nonconvex right $\D$-Chebyshev set for the
+negative entropy --- that is \cite[Example 7.5]{BWYY2009} --- nor the duality
+template, nor any new theory. Laude, Ochs and Cremers \cite{LOC2020} also give
+nonconvex examples for entropy-like kernels, though their single-valuedness is
+local, holding on a neighbourhood under relative prox-regularity rather than at
+every point of $U$; they record Problem~\ref{prob:2} as open. Themelis and Wang
+\cite{TW2025} develop Bregman operators on their natural domains, which is the
+setting in which a statement like Theorem~\ref{thm:main} is naturally expressed.
+
+The point of Theorem~\ref{thm:main} is narrower than any of these, and is
+exactly what Problem~\ref{prob:2} asks for: a set that is right $\D$-Chebyshev
+\emph{globally on $U$}, with \emph{nonconvex} gradient image, \emph{while
+hypothesis \textup{(b)} holds}, so that full domain is the only hypothesis of
+Fact~\ref{fact:BMW} that fails. We are not aware of an earlier example with this
+combination of properties.
 
 We also emphasise what Theorem~\ref{thm:main} does not say. It does not say
 that $\dom f = X$ is necessary for $\Cstar$ to be convex in any individual
 instance; convexity of $\Cstar$ certainly occurs for many $f$ of non-full
-domain. It says that $\dom f = X$ cannot be deleted from the \emph{universal}
-statement of Fact~\ref{fact:BMW}. Nor does it identify the weakest hypothesis
-that could replace full domain; see Section~\ref{sec:open}.
+domain, \cite[Example 7.5]{BWYY2009} being one. It says that $\dom f = X$ cannot
+be deleted from the \emph{universal} statement of Fact~\ref{fact:BMW}. Nor does
+it identify the weakest hypothesis that could replace full domain; see
+Section~\ref{sec:open}.
 
 \section{The example}\label{sec:ex}
 
@@ -706,6 +743,11 @@ H.~H. Bauschke, J.~M. Borwein, and P.~L. Combettes,
 in Banach spaces},
 Commun. Contemp. Math. \textbf{3} (2001), 615--647.
 
+\bibitem{BWYY2009}
+H.~H. Bauschke, X.~Wang, J.~Ye, and X.~Yuan,
+\emph{Bregman distances and Chebyshev sets},
+J. Approx. Theory \textbf{159} (2009), no.~1, 3--25.
+
 \bibitem{BMW2010}
 H.~H. Bauschke, M.~S. Macklem, and X.~Wang,
 \emph{Chebyshev sets, Klee sets, and Chebyshev centers with respect to Bregman
@@ -723,6 +765,11 @@ X.-F. Luo, K.~Meng, C.-F. Wen, and J.-C. Yao,
 \emph{Bregman distances without coercive condition: suns, Chebyshev sets and
 Klee sets},
 Optimization \textbf{68} (2019), no.~8, 1599--1624.
+
+\bibitem{TW2025}
+A.~Themelis and Z.~Wang,
+\emph{On the natural domain of Bregman operators},
+\href{https://arxiv.org/abs/2506.00465}{arXiv:2506.00465} (2025).
 
 \bibitem{Rock1970}
 R.~T. Rockafellar,

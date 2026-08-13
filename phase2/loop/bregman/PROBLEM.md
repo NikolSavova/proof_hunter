@@ -170,8 +170,27 @@ counterexample, (b) shown removable by theorem** — rather than a counterexampl
     (s-t)^2 (e^{-s^2} - x_2) > 0`. So the corollary no longer depends on Theorem 3.13, on
     Theorem 3.12(3), or on any total-convexity verification — only on the STATEMENT of Theorem
     3.12(2), which is what it contradicts. Verified locally: `sun_check.py`.
-- [ ] `verify1_v3_novelty_20260813.md` — prior-art re-sweep, IN FLIGHT at the time of writing.
-  **Nothing ships until this returns**; it is the lane that killed Part II.
+  - `verify1_v3_novelty_20260813.md` — **AMBER, no kill.** No published source has the decisive
+    combination (globally right-Chebyshev, `cl C* subset U*` retained, `C*` NONCONVEX), and no
+    solution of Problem 4 exists. But it found a **mandatory citation the draft was missing
+    entirely**: Bauschke–Wang–Ye–Yuan, *Bregman distances and Chebyshev sets*, J. Approx. Theory
+    159 (2009) 3–25, **Example 7.5** — reproduced as the survey's Example 3.3. That is the
+    closest prior art and it uses the SAME duality template: dual set `A = {(lambda, 2lambda)}`,
+    a convex segment, giving a nonconvex right-Chebyshev `C = exp(A)` for negative entropy whose
+    gradient image `C* = A` is CONVEX. So the broad claim "first nonconvex right-Chebyshev set
+    for entropy" is false and already published; the narrow claim survives. Our change is to
+    swap the convex segment for a nonconvex parabolic arc while keeping global Chebyshevness.
+    A comparison table is now in the paper's introduction, and the priority language is
+    "we are not aware of an earlier example with this combination".
+    Also flagged: by duality the example shows a supercoercivity hypothesis cannot be deleted
+    from the corresponding left-projection statement (`dom f = X` is dual to supercoercivity of
+    `f*`). Recorded in the paper without naming the survey's Fact 3.1, which we have not read.
+  - **Luo et al. re-checked directly, 2026-08-13.** The lane called the paywalled full text its
+    highest-risk unchecked source. We have the PDF and searched the extraction: ZERO occurrences
+    of *nonconvex*, *entropy*, or *exponential*; the only examples (3.15, 3.16) are `l^p`/Banach
+    constructions; no remark claims `U = X` is essential. Remark 3.1 is about strict convexity in
+    the LEFT case and does not touch our corollary. The residual is to read the TYPESET Theorems
+    3.12/3.13 rather than the `pdftotext` rendering.
 - [x] **Write-up** — `paper/main.tex` (8pp, compiles clean, 0 unresolved refs) plus
   `paper/DECISIONS.md` (14 human decisions, 4 blocking). Structure: Theorem 3.1 is the
   counterexample, Corollary 4.4 is the Luo consequence, Proposition 5.1 records hypothesis (b)
