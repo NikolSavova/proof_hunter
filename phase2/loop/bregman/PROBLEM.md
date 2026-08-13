@@ -40,7 +40,13 @@ singleton property (analytic proof or certified numerics), and an explicit nonco
 witness (two points of `C*` whose midpoint is not in `C*`). Alternatively a short formalizable
 theorem removing the hypothesis.
 
-## Candidate answer (verified independently 2026-08-13, before any drafting)
+## Candidate answer
+
+**Provenance:** this construction was built by a Fable *skeptic* agent on 2026-07-09 during the
+Tier-2 re-tag — an agent tasked with refuting the problem's tractability, which failed to refute
+it and produced the counterexample instead. It supplied the reduced formula and the `h''` bound.
+This session reconstructed the explicit curve `c(t)` from that formula and verified everything
+numerically. **Neither step is a proof**; that is what the Part I run is for.
 
 `f` = negative entropy on `R^2`: `f(x) = sum_j (x_j ln x_j - x_j)`, `dom f = R^2_+ != R^2`
 — **full domain fails, which is the hypothesis under test**. Then `U = R^2_++`,
@@ -82,9 +88,18 @@ lost, so the uniqueness argument must be redone). Treat as **Part II**, not opti
 ## Status
 
 - [x] Statement frozen; candidate verified independently (this file)
-- [ ] Prior-art sweep — **RUNNING**, blocks everything downstream
+- [x] Prior-art sweep — **AMBER** (`sweep_20260813.md`): no published resolution found.
+  Laude-Ochs-Cremers (JOTA 184, 2020) independently confirm Problem 2 was still open in 2019.
+  **Two conditions carried forward:** (i) *Optimization* 68(8) 1599-1624, Luo-Meng-Wen-Yao,
+  "Bregman distances without coercive condition: suns, Chebyshev sets and Klee sets" is
+  paywalled and UNREAD — full domain of `f` corresponds by duality to supercoercivity of `f*`,
+  so it aims near this target; **a hard gate on submission**. (ii) The novelty claim must be
+  stated narrowly: NOT the first nonconvex right KL-Chebyshev set (the survey has those), NOT
+  the first nonconvex entropy-Bregman example (Laude-Ochs-Cremers have a local one), but an
+  explicit **globally** right D_f-Chebyshev set with nonconvex gradient image, showing (a) is
+  not removable even when (b) holds.
 - [ ] `verify.py` numeric harness written before any prover runs
-- [ ] Part I write-up (full-domain necessity)
-- [ ] Part II (necessity of `cl C* subset U*`)
+- [ ] Part I **proof** (rigorous, no numerics load-bearing) — Sol running
+- [ ] Part II — is `cl C* subset U*` necessary? — Sol running
 - [ ] Two adversarial referee lanes
 - [ ] Lean statement stub
