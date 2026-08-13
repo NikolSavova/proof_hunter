@@ -30,7 +30,6 @@
 \newcommand{\Wq}{W(q)}
 \DeclareMathOperator{\inv}{inv}
 \DeclareMathOperator{\Var}{Var}
-\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
 
 \title[Log-concavity of Bruhat intervals in Weyl groups]
 {Verification and conjectures for log-concavity\\ of Bruhat intervals in Weyl groups}
@@ -87,7 +86,8 @@ $\sigma_m^2(r_m-1) = 1-\tfrac{27}{25}m^{-1}+O(m^{-2})$ is conditional on a
 single explicitly stated core lemma for the exponentially tilted Mahonian
 distribution. This lemma is needed only for $m\ge561$, and we reduce it,
 with explicit constants throughout, to six explicitly stated statements
-about the tilted law, one of which we prove here.
+about the tilted law, one of which we have proved (the proof is recorded
+in the accompanying repository).
 
 Finally, our computations find equality only in rank-two dihedral parabolic
 patterns of order $m\in\{4,6\}$. We state this as an empirical
@@ -198,7 +198,9 @@ stated lemma about the exponentially tilted Mahonian distribution
 $\sigma_m^2(r_m-1)=1-\tfrac{27}{25}m^{-1}+O(m^{-2})$. The lemma is needed
 only for $m\ge561$. We give a complete reduction with every constant
 explicit, and reduce the lemma in turn to six explicitly stated
-statements about the tilted law, one of which we prove here (Section~\ref{sec:F2}).
+statements about the tilted law, one of which we have proved
+(Section~\ref{sec:F2}; the proof and its interval certificate are recorded
+in the accompanying repository).
 
 \item We give an empirical classification of the observed equality cases,
 in which log-concavity holds with equality, as rank-two dihedral parabolic
@@ -211,9 +213,12 @@ from crystallographic reflection groups (Section~\ref{sec:F3}).
 \subsection*{Related work} In type $A$, the ratio for $[e,w_0]$ is a
 Mahonian ratio, linking the Bruhat-order question to a classical
 probability distribution. Log-concavity of the Mahonian numbers is
-classical: B\'ona~\cite{bona2004} proved it, and it also follows from the
+classical: B\'ona~\cite{bona2004} gave a combinatorial proof, and it also
+follows from the
 product-closure results of~\cite{hoggar1974,kook2006}. We do not claim that
-result here. Canfield, Janson, and Zeilberger~\cite{cjz2011} already obtain
+result here. For the related $q$-log-concavity of Gaussian binomial
+coefficients and of more general coefficient sequences,
+see~\cite{butler1990,sagan1992,suwangyeh2011}. Canfield, Janson, and Zeilberger~\cite{cjz2011} already obtain
 the central-ratio leading term $1+\sigma^{-2}$ for Gaussian binomial
 coefficients. Our contribution is the $S_m$ case: exact determination of
 the global minimum over the Mahonian ratios for every $4\le m\le560$, an
@@ -295,7 +300,7 @@ $m(s_1,s_2)=5$ and $m(s_2,s_3)=3$, and let $u=s_3$,
 $v=s_1s_2s_3s_2s_1s_2s_1s_3$. Then~\cite[Conjecture~2.11]{brenti2024open}
 records the rank generating function of $[u,v]$ as
 \[
-1+3t+5t^2+7t^3+10t^4+10t^5+5t^6+t^7,
+1+3t+5t^2+7t^3+10t^4+10t^5+5t^6+t^7.
 \]
 Thus the rank sequence is
 $(a_0,\dots,a_7)=(1,3,5,7,10,10,5,1)$. It is unimodal but not
@@ -313,10 +318,15 @@ Section~\ref{sec:F3}.
 \section{Computational methodology}
 \label{sec:methods}
 
-All computations use exact integer (arbitrary-precision) arithmetic; no
-claim labeled a theorem uses floating point. We used three independent
-implementations and compared them with one another and with known
-invariants:
+The Bruhat-interval computations reported in Section~\ref{sec:results},
+and the finite-range Mahonian computation of Theorem~\ref{thm:finite560},
+use exact integer (arbitrary-precision) arithmetic throughout. The
+analytic certificates supporting the Section~\ref{sec:F2} reduction use
+directed-rounding interval arithmetic together with exact integer and
+rational arithmetic where stated; they are rigorous modulo the interval
+library (see the discussion following Proposition~\ref{prop:CLred}). We
+used three independent implementations and compared them with one another
+and with known invariants:
 
 \begin{itemize}
 \item The generic Cartan-matrix engine \texttt{weyl.py} builds any finite
@@ -480,7 +490,7 @@ conjecture beyond the stated slab.
 \centering
 \caption{Sampling / seeded tier (not exhaustive; coverage counts).}
 \label{tab:sampling}
-\small
+\footnotesize
 \begin{tabular}{@{}llrlll@{}}
 \toprule
 Probe & Group & \#intervals & design & min ratio & note \\
@@ -489,8 +499,8 @@ random (seed 7) & $B_7$ & 20{,}000 & $4\le\ell(u,v)\le12$ & 1.000000 & $(1,2,2,2
 random (seed 7) & $D_7$ & 20{,}000 & same & $1.157143=81/70$ & proper, $k{=}4$ \\
 random (seed 7) & $E_7$ & 20{,}000 & same & $1.142400=14641/12816$ & proper, $k{=}5$ \\
 seeded (seed 3) & $B_7$ & 1{,}324 & $m{=}4$ core $+$ 0--6 covers & 1.000000 only at pure core & 28 ratio-1 hits \\
-seeded (seed 4) & $B_7$ & 32{,}458 & $m{=}4$ core $+$ 0--10 covers & pert.$\ge1$: $\ge 1.079153$ & margins 4--8 \\
-seeded (seed 4) & $B_8$ & 31{,}162 & $m{=}4$ core $+$ 0--10 covers & pert.$\ge1$: $\ge 1.087990$ & margins 4--8 \\
+seeded (seed 4) & $B_7$ & 32{,}458 & $m{=}4$ core $+$ 0--10 covers & pert.$\ge1$: $\ge 1.079153$ & margins 4--8\% \\
+seeded (seed 4) & $B_8$ & 31{,}162 & $m{=}4$ core $+$ 0--10 covers & pert.$\ge1$: $\ge 1.087990$ & margins 4--8\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -569,7 +579,7 @@ $\rho([e,w_0(\W)])=58^2/(51\cdot58)=58/51=1.1372549\ldots$ Since
 $392\cdot51=19992<20010=345\cdot58$,
 \[
 \rho([e,v]) \;=\; \frac{392}{345} \;<\; \frac{58}{51} \;=\; \rho([e,w_0(\W)]),
-\qquad \text{gap } \frac{58}{51}-\frac{392}{345}=\frac{2}{1955}\approx0.00102,
+\qquad \text{gap } \frac{58}{51}-\frac{392}{345}=\frac{2}{1955}\approx0.00102.
 \]
 Thus a \emph{proper} Bruhat interval of the reducible simply-laced group
 $A_1\times D_4$ has a smaller ratio than $[e,w_0]$. The extremal principle
@@ -598,10 +608,10 @@ conjecture in general rank.
 Let $\W$ be a finite irreducible simply-laced Weyl group of rank $\le 6$
 ($A_1,\dots,A_6,D_4,D_5,D_6,E_6$). For every rationally smooth $v\in\W$,
 i.e.\ every $v$ for which the Poincar\'e polynomial $P_{[e,v]}(q)$ factors
-as a product of $q$-integers~\cite{carrell1994}, we have
+as a product of $q$-integers~\cite{carrell1994,gasharov1998}, we have
 $\rho([e,v])\ge\rho([e,w_0])$, with equality iff $v=w_0$. Granting the
-classical rational-smoothness factorization result cited above, the same
-conclusion holds in type $A_{m-1}$ for $m\le17$.
+classical type-$A$ factorization result of Gasharov~\cite{gasharov1998},
+the same conclusion holds in type $A_{m-1}$ for $m\le17$.
 Our
 working notes verify that factorization computationally only through
 $m\le7$; for the remaining cases we rely on the cited result rather than
@@ -650,7 +660,8 @@ $B_m:=(S_4-m)/(240\sigma^4)$ where $S_r=\sum_{j=1}^m j^r$, so $B_m=\tfrac{27}{25
 We prove the following local limit theorem for the log-concavity ratio, in
 the classical style of~\cite{petrov1975}, near the center for \emph{every}
 $m$. Every constant is explicit. The proof combines an analytic argument
-with exact finite checks, and two independent review passes examined the
+with machine-verified finite checks, and two independent automated review
+passes (an adversarial mathematics lane and a numerics lane) examined the
 mathematics and numerics separately.
 
 \begin{theorem}[Pointwise and window law for the Mahonian ratio]
@@ -671,10 +682,11 @@ m_1(y_0)$ and every $k$ with $|y|\le y_0$,
 \sigma^2\log r_m(k) \;=\; 1+B_m(y^2-1)+E_1(k), \qquad |E_1(k)|\le
 \frac{C_2(y_0)}{m^2}.
 \]
-We also verified (a), with the same displayed constant, directly in exact
-arithmetic for every $4\le m\le109$. We verified the window law in (b),
+We also verified (a), with the same displayed constant, directly in
+directed-rounding interval arithmetic over the exact integer Mahonian
+coefficients, for every $4\le m\le109$. We verified the window law in (b),
 with the same displayed constants, for every $4\le m\le229$. The analytic
-argument covers all remaining values of $m$. Thus these exact-arithmetic
+argument covers all remaining values of $m$. Thus these finite
 ranges are independent checks rather than thresholds, and the window law
 in (b) is unconditional throughout every range used below.
 \end{enumerate}
@@ -684,7 +696,7 @@ Theorem~\ref{thm:G1} determines the central ratio exactly to the stated
 order: at $y=0$, part (b) gives
 \begin{equation}
 \label{eq:central-ratio}
-\sigma^2\bigl(r_m(\lfloor N/2\rfloor)-1\bigr) \;=\; 1-\tfrac{27}{25}m^{-1}+O(m^{-2}),
+\sigma^2\bigl(r_m(\lfloor N/2\rfloor)-1\bigr) \;=\; 1-\tfrac{27}{25}m^{-1}+O(m^{-2}).
 \end{equation}
 Exact Mahonian data at $m=50$ agree with this expansion to four significant
 digits.
@@ -785,7 +797,8 @@ the upper bound holding unconditionally for every $m\ge180$.
 \begin{remark}[Shape of the reduction, and where the conjecture enters]
 \label{rem:reduction}
 We summarize the reduction; the repository contains the explicit constants
-and machine-verified certificates for each step. Let $m\ge561$. By
+and machine-verified certificates for each step (directed-rounding
+interval arithmetic together with exact rational arithmetic where stated). Let $m\ge561$. By
 palindromy, take $k\le N/2$. We divide the interior indices into four
 regions according to $k$ and $\omega(k)=m\lambda(k)$, with
 $K_c:=\min(\tfrac7{10}m,\,m-1)$ for $m<1581$ and $K_c:=m-1$ beyond:
@@ -796,7 +809,7 @@ $r_m(1)-1\ge\tfrac{m-1}{2(m+1)}$, hence $\sigma^2(r_m(1)-1)\ge10^5$;
 $r_m(k)-1\ge\tfrac{m-1}{2k(m+k)}$, hence $\sigma^2(r_m(k)-1)\ge1879$;
 \item $k>K_c$ with $\omega(k)>4$ (the deep-tilt region): here
 $\min(m,s^2)\ge79.5$, $s^2\le0.72711\,\sigma^2$, and
-$\lambda(k)\le\log(17/7)<0.89$, all proved; This is the only point at which we use
+$\lambda(k)\le\log(17/7)<0.89$, all proved. This is the only point at which we use
 Conjecture~\ref{conj:CL}; it gives
 $\sigma^2(r_m(k)-1)\ge\bigl(1-\tfrac{20}{79.5}\bigr)/0.72711\ge1.0293$;
 \item $k>K_c$ with $\omega(k)\le4$: the window law of
@@ -813,7 +826,7 @@ dominant contribution near $5$. Any fixed constant suffices for the sharp
 asymptotic.
 \end{remark}
 
-\subsection*{Reduction of the core lemma to four cumulant statements}
+\subsection*{Reduction of the core lemma to six statements}
 We reduce Conjecture~\ref{conj:CL}, with explicit constants throughout, to
 six statements about the tilted law, five of which remain open.
 Partition the deep-tilt values $\omega=m\lambda\in(4,\,0.89\,m]$ into
@@ -884,8 +897,8 @@ $20/m<t\le0.89$, uniformly in $m$, in the band, and in $\lambda$.
 \begin{proposition}[Reduction of the core lemma]
 \label{prop:CLred}
 Statements (S1)--(S6) of Conjecture~\ref{conj:S} imply
-Conjecture~\ref{conj:CL}, with a composed constant strictly below $20$ for
-every $m\ge561$.
+Conjecture~\ref{conj:CL} --- that is, the composed chain delivers exactly
+the constant $20$ of $\mathrm{CL}(79,20,0.89)$ --- for every $m\ge561$.
 \end{proposition}
 
 The proof of Proposition~\ref{prop:CLred} proceeds band by band through
@@ -895,16 +908,21 @@ self-consistency argument that closes, by (S6), through strict contraction.
 Statement (S5) supplies the continuum certificate for the lowest band. All other
 ingredients, including the variance floors and caps, the far-region decay
 of $\varphi$, and the crossover and mid-range bounds, are proved with
-explicit constants. The repository contains the complete chain and a machine
-re-verification of the resulting constant. Those computations use
+explicit constants. The reduction argument is not reproduced here. The
+repository contains the band constants, the per-band certificates, and the
+composition document; the bootstrap map of (S6) is not yet specified in
+closed form there, which is part of why (S6) remains open, and the
+assembled composition has not yet been independently refereed. Those
+computations use
 directed-rounding interval arithmetic together with exact integer and
 rational arithmetic where stated; they are rigorous modulo the interval
 library, and we do not claim they are exact-rational throughout.
 
-\begin{remark}[Status and evidence for (S1)--(S4)]
+\begin{remark}[Status and evidence for (S1)--(S6)]
 \label{rem:S-evidence}
 Statement (S1) has since been proved, by a bandwise argument with a
-rigorous interval certificate; we record it here as part of the reduction
+rigorous interval certificate; the argument and its certificate are
+recorded in the accompanying repository. We record it here as part of the reduction
 because the remaining statements are stated relative to the same bands and
 constants. The other five remain open, and the proof of
 Proposition~\ref{prop:CLred} uses each of them. The list has changed as the
@@ -932,7 +950,8 @@ separate treatment of the two cumulants does not suffice.
 \item (S4): This is a weak a-priori form of the conclusion, with constant
 $0.89$ where Conjecture~\ref{conj:CL} gives
 $20/\min(m,s^2)\le0.036$, since $s^2\ge m$ on this range. We state it
-separately because it has not been proved. Exact checks of the inequality
+separately because it has not been proved. Machine checks, in
+directed-rounding interval arithmetic, of the inequality
 in Conjecture~\ref{conj:CL} at $m=401$ and $m=402$, below its stated
 range, cover $260$ adversarially chosen interior indices and have a
 $17\times$ margin. Every tilted ratio computed in this project also lies
@@ -943,10 +962,13 @@ missing is not margin but coverage: the available checks are a finite
 $\omega$-grid, and the monotonicity available to us runs in a different
 variable, so it does not interpolate between sampled points.
 \item (S6): The map satisfies $G(20/m)<20/m$ at the two thinnest rows
-($0.0492<0.0499$ and $0.0421<0.0432$), and the measured basin extends to
-about $0.90$. Convexity of the branches, directed bounds at both endpoints,
-and a reduction showing that those two rows dominate every band and every
-$m\ge561$ are all still required.
+checked ($0.0492<0.0499$ and $0.0421<0.0432$); both rows lie below the
+range in which (S6) is needed, so a domination argument to the stated
+range is among what is missing. The measured basin extends to about
+$0.90$. An explicit closed form for the map $G$, convexity of the
+branches, directed bounds at both endpoints, and a reduction showing that
+the thinnest rows dominate every band and every $m\ge561$ are all still
+required.
 \end{itemize}
 \end{remark}
 
@@ -954,10 +976,11 @@ $m\ge561$ are all still required.
 Theorems~\ref{thm:G1} and~\ref{thm:finite560} are unconditional, as is the
 upper-bound half of Theorem~\ref{thm:F2}. The sharp asymptotic in
 Theorem~\ref{thm:F2} assumes only Conjecture~\ref{conj:CL}.
-Proposition~\ref{prop:CLred} proves that (S1)--(S4) imply
-Conjecture~\ref{conj:CL}. Five of the six remain open. In particular,
-the numerical margins in Remark~\ref{rem:S-evidence}, one of which is
-under $4\%$, do not constitute a proof.
+Proposition~\ref{prop:CLred} proves that (S1)--(S6) imply
+Conjecture~\ref{conj:CL}. Statement (S1) is proved; (S2)--(S6) remain
+open. In particular, the numerical margins in
+Remark~\ref{rem:S-evidence} do not constitute proofs of the open
+statements; for (S5) the gap is coverage rather than margin.
 \end{remark}
 
 \begin{remark}[Location and explicit constant]
@@ -992,7 +1015,7 @@ $\ell(u,v)\ge2$, and $a_k^2=a_{k-1}a_{k+1}$ for some interior $k$. In
 every observed case, the full rank sequence of $[u,v]$ is
 \[
 (a_0,\dots,a_{\ell(u,v)}) \;=\; (1,2,2,\dots,2,1) \qquad (m-1 \text{ interior
-2's}, \ m\ge4),
+2's}, \ m\ge4).
 \]
 Each observed interval is therefore poset-isomorphic to the full Bruhat
 interval of the dihedral group $I_2(m)$ and arises from a rank-two
@@ -1043,7 +1066,7 @@ is log-concave.
 We separate the conclusions by logical status.
 
 \begin{description}
-\item[Proved unconditionally.] Theorem~\ref{thm:V1} verifies
+\item[Proved unconditionally] Theorem~\ref{thm:V1} verifies
 log-concavity for every Bruhat interval in
 $A_2$--$A_7$, $B_2$--$B_6$, $D_4$--$D_6$, $E_6$, $F_4$, and $G_2$, a
 total of $1{,}079{,}490{,}991$ intervals. Theorem~\ref{thm:V2} and
@@ -1055,16 +1078,16 @@ Theorem~\ref{thm:finite560} determines the global minimum exactly for every
 $4\le m\le560$. Theorem~\ref{thm:F1-smooth} proves the extremal inequality
 for rationally smooth lower intervals in irreducible simply-laced Weyl
 groups of rank $\le6$, and in type $A_{m-1}$ for $m\le17$ using the cited
-factorization result. Proposition~\ref{prop:CLred} proves that (S1)--(S4)
+factorization result. Proposition~\ref{prop:CLred} proves that (S1)--(S6)
 imply Conjecture~\ref{conj:CL}.
 
-\item[Proved conditionally.] Assuming Conjecture~\ref{conj:CL},
+\item[Proved conditionally] Assuming Conjecture~\ref{conj:CL},
 Theorem~\ref{thm:F2} proves
 $\sigma^2(r_m-1)=1-\tfrac{27}{25}m^{-1}+O(m^{-2})$ and the stated
 two-sided finite-$m$ bound. Its upper-bound half is unconditional for every
 $m\ge180$.
 
-\item[Conjectured or empirical.] Brenti's conjecture remains open in
+\item[Conjectured or empirical] Brenti's conjecture remains open in
 general. Conjecture~\ref{conj:F1} is supported by exhaustive low-rank and
 near-top computations but is not proved for any infinite family of
 arbitrary intervals; Theorem~\ref{thm:F1-smooth} is its proved finite-range
@@ -1072,7 +1095,7 @@ subclass. Conjecture~\ref{conj:staircase} is also unproved in general.
 Observation~\ref{obs:F3} is an empirical equality classification, and the
 proposed explanation of the $H_3$ failure is not a proof.
 
-\item[Open.] Conjecture~\ref{conj:CL} and the statements (S2)--(S6)
+\item[Open] Conjecture~\ref{conj:CL} and the statements (S2)--(S6)
 remain open. Also open are Conjecture~\ref{conj:F1} in general rank, the
 rationally smooth cases beyond the stated ranges, a proved equality
 classification, the stronger central-location statement for the Mahonian
@@ -1098,17 +1121,20 @@ removing the condition from Theorem~\ref{thm:F2}.
 We next list several directions for further work.
 
 \begin{enumerate}
-\item \textbf{Prove statements (S1)--(S4) of
+\item \textbf{Prove statements (S2)--(S6) of
 Conjecture~\ref{conj:S}, and hence Conjecture~\ref{conj:CL}.}
-Proposition~\ref{prop:CLred} gives this implication, and
-Theorem~\ref{thm:F2} would then make the sharp asymptotic unconditional.
-The far-region decay, crossover and mid-range bounds, variance floors and
-caps, reduction, and the whole range $4\le m\le560$ are already proved
-with explicit constants. The smallest computed margins occur in the
-cumulant bounds of (S1) in the deepest band, where they are under $4\%$.
-A proof or counterexample search should begin there.
+Proposition~\ref{prop:CLred} gives this implication (together with the
+proved (S1)), and Theorem~\ref{thm:F2} would then make the sharp
+asymptotic unconditional. The far-region decay, crossover and mid-range
+bounds, variance floors and caps, reduction, and the whole range
+$4\le m\le560$ are already proved with explicit constants. The smallest
+computed margins occurred in the cumulant bounds of (S1) in the deepest
+band, where they are under $4\%$; that statement is now proved. Among the
+open statements, the missing $\omega$-continuum coverage in (S5) and the
+uniform closure requirements of (S6) are where a proof effort should
+begin.
 \item \textbf{Extend Theorem~\ref{thm:F1-smooth} beyond rank 6.}
-Proving Conjecture~\ref{conj:staircase} would also remove the $m=17$
+Proving Conjecture~\ref{conj:staircase} would also remove the $m\le17$
 restriction in type $A$. The cases $D_n$ for $n\ge7$ and $E_7,E_8$ remain
 open even under the rationally-smooth restriction.
 \item \textbf{Self-dual and rank-symmetric Bruhat intervals}
@@ -1143,7 +1169,8 @@ Automated systems, principally Claude (Anthropic) in an agentic coding
 environment, wrote most of the verification code, drafted proof arguments
 for Sections~\ref{sec:F1} and \ref{sec:F2}, and helped assemble the
 manuscript from working notes. We subjected the draft proofs and numerical
-results to independent review passes, including a from-scratch numerical
+results to independent automated adversarial review passes (separate
+mathematics and numerics lanes), including a from-scratch numerical
 audit. These checks found and corrected at least three errors in automated
 drafts: a sign error, a false finite-range certificate, and a fabricated
 verification result.
@@ -1154,7 +1181,6 @@ conjectures, and independently checked the disclosed constants and
 counterexamples. They take responsibility for every claim and for any
 remaining error.
 
-% Add acknowledgment of specific colleagues/advisors here if applicable.
 
 \begin{thebibliography}{99}
 
@@ -1181,8 +1207,8 @@ S.~G.~Hoggar, \emph{Chromatic polynomials and logarithmic concavity}, J.
 Combin. Theory Ser. B \textbf{16} (1974).
 
 \bibitem{kook2006}
-W.~Kook, \emph{On the product of log-concave polynomials} (elementary note
-on product-closure of log-concavity), 2006.
+W.~Kook, \emph{On the product of log-concave polynomials}, unpublished
+note, 2006.
 
 \bibitem{butler1990}
 L.~M.~Butler, \emph{The $q$-log-concavity of $q$-binomial coefficients}, J.
@@ -1205,6 +1231,10 @@ lower Bruhat intervals via the Brunn--Minkowski inequality}, arXiv:2311.17980.
 J.~B.~Carrell, \emph{The Bruhat order, algebraic cell decompositions and
 rationally smooth Schubert varieties}, Proc. Sympos. Pure Math.
 \textbf{56} (1994).
+
+\bibitem{gasharov1998}
+V.~Gasharov, \emph{Factoring the Poincar\'e polynomials for the Bruhat
+order on $S_n$}, J. Combin. Theory Ser. A \textbf{83} (1998), 159--164.
 
 \bibitem{short-intervals}
 E.~Akhmedova, \emph{On Bruhat intervals of small lengths for Weyl groups},
@@ -1230,11 +1260,11 @@ C.~Gaetz and Y.~Gao, \emph{Self-dual intervals in the Bruhat order}, Selecta
 Math. (2020). arXiv:2003.06710.
 
 \bibitem{kessouri2024}
-K.~Kessouri, M.~Ahmia, A.~Arslan, and A.~Mesbahi, \emph{Combinatorics of
+A.~Kessouri, M.~Ahmia, H.~Arslan, and S.~Mesbahi, \emph{Combinatorics of
 $q$-Mahonian numbers of type B and log-concavity}, arXiv:2408.02424.
 
 \bibitem{chapelier-fromentin}
-L.~Chapelier-Laget and G.~Fromentin, \emph{A counterexample to a
+N.~Chapelier-Laget and J.~Fromentin, \emph{A counterexample to a
 Brenti--Carnevale conjecture}, arXiv:2412.19593.
 
 \end{thebibliography}

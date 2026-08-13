@@ -450,3 +450,138 @@ Tectonic 0.17.0, `tectonic -X compile main.tex`: exit 0, 13 pages,
 overfull-hbox warnings (lines 363/443/503/517, sections 3-5, untouched).
 Numbering unchanged (aux-verified: 6.2/6.3/6.5/6.6/6.7/6.8/6.9, Table
 4). `main.pdf` regenerated in place.
+
+---
+
+## Ship review fixes (2026-08-12, post ship-review fix pass)
+
+Applied after the three ship reviews (`ship_review_accuracy_20260812.md` DO_NOT_SHIP,
+`ship_review_overclaim_20260812.md` DO_NOT_SHIP, `ship_review_consistency_20260812.md`
+MINOR_FIXES). Each applied item was re-verified against the campaign artifacts
+(`CLOSURE_PLAN_v2_20260812.md`, `sol_comprepair_20260812.md` + reader's note,
+`sol_s6boot_20260812.md`) or against the live arXiv records before editing.
+Constraint honored: no mathematical statement, constant, numeral, or scope condition
+was changed; findings requiring such changes are recorded below as author decisions.
+Pre-edit source backed up to the session scratchpad
+(`main_backup_prefix_20260812.tex`).
+
+### Applied
+
+1. **Stale "(S1)--(S4) imply CL" restatements** (accuracy A1 / overclaim B1 /
+   consistency B1-B2; verified against sol_comprepair's boxed six-statement
+   implication and its withdrawal line): Remark "What is claimed" and Discussion
+   "Proved unconditionally" now say (S1)--(S6); Further-work item (1) retitled
+   "Prove statements (S2)--(S6)...". The Remark also now reads "Statement (S1) is
+   proved; (S2)--(S6) remain open."
+2. **Stale heading/title counts** (A3 / B1 / consistency B3-B4): subsection heading
+   "Reduction of the core lemma to four cumulant statements" -> "...to six
+   statements"; Remark title "(S1)--(S4)" -> "(S1)--(S6)".
+3. **Weakest-link misdirection at proved (S1)** (A2 / consistency B6; (S1) proved
+   per wave 6b, both referee lanes): the under-4% margins are now attributed to the
+   proved (S1); "A proof or counterexample search should begin there" replaced by a
+   pointer to (S5)'s missing omega-continuum coverage and (S6)'s uniform closure
+   (per CLOSURE_PLAN_v2 "Honest read on difficulty"); the "one of which is under 4%"
+   clause in Remark "What is claimed" replaced by "for (S5) the gap is coverage
+   rather than margin".
+4. **"Repository contains the complete chain" overstatement** (A5 / overclaim B2;
+   verified against sol_s6boot SOL.2 "The exact bootstrap function is absent" and
+   CLOSURE_PLAN_v2 item C): replaced by an accurate inventory (band constants,
+   per-band certificates, composition document), plus disclosures that the (S6)
+   bootstrap map is not yet in closed form there, that the reduction argument is not
+   reproduced in the paper, and that the assembled composition has not yet been
+   independently refereed.
+5. **"one of which we prove here"** (accuracy B2 / overclaim B3): abstract and
+   contributions now say "one of which we have proved" with an explicit pointer to
+   the accompanying repository; Remark 6.9 now points at the recorded argument and
+   certificate.
+6. **(S6) evidence provenance** (accuracy B1(B-section) / consistency P10; verified
+   against sol_s6boot V1/SOL.7: the two rows are m=401 (W5) and m=463 (W1), outside
+   (S6)'s domain): bullet now says the two thinnest rows *checked* lie below the
+   range in which (S6) is needed and that a domination argument is missing; "an
+   explicit closed form for the map G" added to the still-required list.
+7. **Arithmetic-provenance rescoping** (accuracy B3 / overclaim N1 / consistency
+   T4): Section 3's blanket "All computations use exact integer arithmetic; no claim
+   labeled a theorem uses floating point" rescoped to the enumeration +
+   Theorem finite560 tier, with the directed-rounding interval provenance of the
+   Section-6 certificates stated up front; Theorem G1's "directly in exact
+   arithmetic" -> "directed-rounding interval arithmetic over the exact integer
+   Mahonian coefficients" (the checked quantity is transcendental); "exact finite
+   checks" -> "machine-verified finite checks"; Remark 6.6 certificates annotated
+   with interval provenance; (S4)'s "Exact checks" at m=401/402 -> "Machine checks,
+   in directed-rounding interval arithmetic". Theorem finite560's exact
+   integer/rational claims left untouched (genuinely exact).
+8. **Gasharov citation** (overclaim B4; verified via web: Gasharov, JCTA 83 (1998)
+   159-164): new bibitem `gasharov1998`; the load-bearing type-A m<=17 clause now
+   cites Gasharov by name; the factorization cite in the theorem now reads
+   \cite{carrell1994,gasharov1998}. The theorem's own wording of the
+   rational-smoothness characterization was NOT reworded (math statement — see
+   author decisions).
+9. **Bibliography initials** (overclaim B5; verified via arXiv abs pages):
+   chapelier-fromentin -> N. Chapelier-Laget and J. Fromentin (arXiv:2412.19593);
+   kessouri2024 -> A. Kessouri, M. Ahmia, H. Arslan, S. Mesbahi (arXiv:2408.02424).
+   kook2006 reformatted as "unpublished note, 2006" (real note; no journal venue
+   verifiable, so none invented).
+10. **Uncited references [7]-[9]** (overclaim N9 / consistency P4): butler1990,
+    sagan1992, suwangyeh2011 now cited in the Related-work q-log-concavity sentence.
+11. **Bona attribution** (overclaim N10): "proved it" -> "gave a combinatorial
+    proof" (matches the cited paper's own title).
+12. **"independent review passes" qualifier** (overclaim N3): both the Theorem-G1
+    lead-in and the Acknowledgments now say the review passes were automated
+    (adversarial mathematics and numerics lanes).
+13. **Polish** (consistency P1-P3, P5, P8, P9, T3): four displays' trailing commas
+    -> periods; "all proved; This" -> "all proved. This"; Discussion label periods
+    dropped (matches Section 3's description style); "the m=17 restriction" ->
+    "the m<=17 restriction" (matches Theorem 5.5); unused \TODO macro and the
+    acknowledgments placeholder comment deleted; Table 3 set in \footnotesize
+    (its 33pt overfull is gone); "margins 4--8" -> "margins 4--8\%" in both seeded
+    rows (unit stated in Section 7).
+
+### Author decisions required (findings verified but NOT applied — each would change
+### a mathematical statement, constant, numeral, or scope condition, or is unverifiable)
+
+- **A4 / consistency B5 — Proposition 6.8 still claims "a composed constant strictly
+  below 20".** sol_comprepair explicitly withdraws 18.2281<20 and sets
+  C*(m>=561)=20. Recommended replacement: "...imply Conjecture 6.3 with composed
+  constant 20, i.e. exactly CL(79,20,0.89), for every m>=561." Blocking per two
+  reviews; left because it changes a constant claim in a Proposition.
+- **Accuracy B4 / overclaim N2 — the m>=561 splice** ("needed only for m>=561", three
+  sites): CLOSURE_PLAN_v2 item D says the hygiene-overlay verifier has not landed, so
+  the splice is not yet citable. Land the verifier or add the recommended qualifier.
+- **Accuracy B5 — W4/W5 band boundary** (paper (8,10]/(10,20] vs sol_comprepair
+  (8,12]/(12,20]): paper matches every other artifact; sol_comprepair is the likely
+  outlier, but the composition document must be reconciled before print.
+- **Accuracy B6 — W7 margin pair 2.2/6.6 vs referee-adopted 2.71/8.17 (or 2.42/7.28):**
+  confirm which pair the current composition consumes.
+- **Consistency T1/T2 — tie-list and A3 row annotation:** Table 1 annotates D4, D5
+  as ties but the two prose lists say only "A5,A6,A7,D6"; the A3 row's [e,12321]
+  (length 5, proper) carries no "(ties [e,w0])" tag although the reviewer's
+  computation confirms rho([e,w0(A3)])=25/18 at k=2. Fixing either changes stated
+  data claims; authors should reconcile (recommended: add A3,D4,D5 to both lists and
+  tag the A3 row as a tie).
+- **Overclaim N4 — "independently checked the disclosed constants and
+  counterexamples":** confirm this human-ratification sentence is literally true
+  before submission.
+- **Overclaim N5/N6 — Observation 7.1's "therefore" (rank sequence -> parabolic
+  structure) and Prop 4.7's "uniformly":** each asserts more than the recorded data;
+  reword only if the stronger checks were in fact performed.
+- **Overclaim N7/N8 — abstract framing of the classical leading term; scope of the
+  "alarming trend" paragraph:** optional rhetorical hedges; touch the presentation of
+  mathematical claims, so left to authors.
+- **Consistency P6/P7 — A1 in Theorem 5.5's group list (rho undefined there);
+  Theorem 6.2 stated for 5<=m<=560 but cited as 4<=m<=560:** theorem-statement/scope
+  edits.
+- **Overclaim N11 — empty \author{} (venue compatibility) and the two
+  "[repository URL to be added on submission]" placeholders:** must be resolved at
+  submission time; the repository must exist since several fixes above point to it.
+- **Not applied, rejected:** accuracy C-nit suggesting the paper's (S6) match
+  sol_comprepair's Omega_B domain — the paper's uniform version is strictly stronger
+  (safe direction); changing it would alter a stated conjecture. xcolor package left
+  in place (harmless).
+
+### Build after fixes
+
+`tectonic -X compile main.tex`: exit 0, 14 pages, 0 unresolved "??"
+references, authorship footnote present on page 1 (verified in extracted
+text). Remaining warnings: the two small pre-existing overfull hboxes
+(7.8pt / 14.6pt; rewording risk, left) and one cosmetic underfull vbox.
+Table 3's 33pt overfull is fixed.
