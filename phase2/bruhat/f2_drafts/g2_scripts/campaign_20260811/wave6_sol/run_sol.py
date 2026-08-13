@@ -199,6 +199,77 @@ four, say five."""
                    + read("solref_maths_CL_composition_20260812.md", 40_000)
                    + read("CL_composition_20260812.md", 45_000)
                    + read("sol_s4seed_20260812.md", 20_000)),
+    # ---- wave 7: the two NEW atomic obligations surfaced by the composition repair ----
+    "s5cont": ("""PROVE (S5) — the w-CONTINUUM CERTIFICATE for the W1 rung. This is a NEW named obligation,
+split out by the composition repair (attached). It is the reason closing the older statements does not
+close CL, so it is now on the critical path.
+
+THE DEFECT IT REPLACES: Fact R.G's universal W1 rung currently rests on 25,122 = 237*106 probes, i.e.
+a FINITE w-grid. Theorem X.1 gives monotonicity in tau, NOT in w, so it cannot interpolate between the
+106 sampled w-values; and probing w = 4 + 1e-9 does not cover 4 < w < 4 + 1e-9. Finite sampling is not
+a certificate.
+
+THE ROUTE THAT LOOKS RIGHT (from the SL4' maths referee's M3 finding — reproduce and PROVE it, do not
+merely cite it): bound the X slot by PER-CELL upper sums using Lemma R.1's own 548 cell floors
+POINTWISE, requiring no tau-monotonicity at all. After the exact w-cancellation (same algebra as R.2)
+the bound is claimed w-UNIFORM on (4, 5]:
+    Xn <= (sqrt(2pi)/pi) m^(5/2) sum_i h tau_{2,i}^2 e^(-m fl_i)
+    Xd <= (sqrt(2pi)/pi) m^(3/2) sum_i h e^(-m fl_i)
+Measured (finite, not a proof): W1 row bound 0.416537 at m = 561, 0.260103 at m = 699; the same
+construction also passes on [463, 560] with worst 0.961058 at m = 463.
+
+YOUR CERTIFICATE MUST (verbatim requirements from the composition repair's V4):
+ 1. cover every integer m = 561, ..., 699;
+ 2. cover the ENTIRE real interval (4, 5], not selected points;
+ 3. include a proved right-continuous or interval extension at w = 4;
+ 4. give directed interval bounds for every cell;
+ 5. conclude upper_bound(Row_W1(m, cell)) <= 1 on every cell;
+ 6. archive the cell-union check (state it so a referee can script it exactly).
+If you claim the stronger bound, the required directed conclusion is
+upper_bound(Row_W1) <= 416537/1000000 or another explicitly stated safe rational — a floating-point
+maximum near 0.416537 is NOT enough.
+
+Note the stake: (S4)'s seed proof covers only m >= 700, and the range 561 <= m <= 699 is bypassed
+precisely by this M3 closure. So (S5) also carries (S4)'s missing range."""
+                + read("sol_comprepair_20260812.md", 45_000)
+                + read("referee_maths_sl4p_repaired.md", 35_000)),
+
+    "s6boot": ("""PROVE (S6) — the BOOTSTRAP CLOSURE. This is a NEW named obligation split out by the
+composition repair (attached), and it is the second reason closing the older statements does not close CL.
+
+THE DEFECT: with x = |s2(r(k)-1) - 1| and a = 20/m, concluding x <= a requires BOTH
+    x <= G(x)   and   G(t) < t for ALL a < t <= b := 0.89.
+Convexity plus a single endpoint evaluation G(a) < a does NOT give the second condition — a convex
+increasing function can cross the diagonal later. The campaign's current argument is a fixed-point
+ANSATZ dressed as a proof, and 0.89 sits only about 0.00412 below the quoted worst basin, so directed
+rounding matters.
+
+WHAT YOU MUST DELIVER (verbatim requirements from the composition repair's V5):
+ * the EXACT bootstrap function G (it appears as INFL = 1/(1 - Theta - d_He - d_q) and
+   QUADF = Theta + d_He + d_q pricing, evaluated self-consistently at Theta = 20/m), stated with its
+   domain and every parameter;
+ * for each exact branch and every parameter cell, archived DIRECTED bounds showing
+       upper(G(a) - a) < 0    and    upper(G(b) - b) < 0,   with a = 20/m, b = 89/100;
+ * convexity on the WHOLE interval: lower(G''(t)) >= 0 for a <= t <= b, or an equivalent analytic
+   proof. If G = max(G_INFL, G_QUADF), prove convexity of EACH branch and use that a maximum of
+   convex functions is convex;
+ * a UNIFORM EXTREMAL-ROW REDUCTION: any reduction to finitely many "thinnest rows" must separately
+   prove those rows dominate, i.e.
+       G_{m,W,lambda}(a) - a <= max(extremal left-endpoint residuals)
+       G_{m,W,lambda}(b) - b <= max(extremal seed-endpoint residuals)
+   for EVERY m >= 561, every band W, and every lambda. Rounded basin roots are not substitutes for
+   these directed inequalities.
+
+Measured values you may use as targets, NOT as proof (they are the two thinnest rows):
+    G(20/m) = 0.0491712 < 20/m = 0.0498753   (W5 at m = 401)
+    G(20/m) = 0.0421217 < 20/m = 0.0431965   (W1 at m = 463)
+    x_seed = sup{x : G(x) <= x} = 0.90182 (W5) / 0.89412 (W1 @ 463)
+
+Note the interface: the a-priori seed |s2(r-1)-1| <= 0.89 is (S4), drafted separately (attached) for
+m >= 700. (S6) is the SEPARATE obligation of showing the iteration actually descends from that seed to
+below 20/m, uniformly."""
+                + read("sol_comprepair_20260812.md", 45_000)
+                + read("wave4_sl4p_repaired_20260812.md", 30_000)),
     "s3": ("Prove (S3), the joint-cancellation statement J <= J0(W) (worst measured margin 32.6% at "
            "(561, 5.0)). Constraint: a refereed impossibility result (Prop E.3, excerpted below) shows "
            "the sign-lemma route CANNOT work — do not use it; find another route."
