@@ -1,0 +1,10 @@
+  W1 : ceil r31 0.9 < old 1.0: True  (margin 10.00%) | ceil r42 0.68 < old 0.8: True  (margin 15.00%)
+  W2 : ceil r31 1.09 < old 1.2: True  (margin 9.17%) | ceil r42 1.25 < old 1.4: True  (margin 10.71%)
+  W3 : ceil r31 1.37 < old 1.5: True  (margin 8.67%) | ceil r42 2.4 < old 2.6: True  (margin 7.69%)
+  W4 : ceil r31 1.55 < old 1.7: True  (margin 8.82%) | ceil r42 3.26 < old 3.5: True  (margin 6.86%)
+  W5 : ceil r31 1.85 < old 2.0: True  (margin 7.50%) | ceil r42 4.98 < old 5.2: True  (margin 4.23%)
+  W6b: ceil r31 1.97 < old 2.1: True  (margin 6.19%) | ceil r42 5.65 < old 6.0: True  (margin 5.83%)
+  W7 : ceil r31 2.1304 < old 2.2: True  (margin 3.16%) | ceil r42 6.4114 < old 6.6: True  (margin 2.86%)
+  certified ceilings clear ALL 14 OLD (wave-5/Table-4) targets: True
+  certified ceilings clear ALL 14 NEW (wave-6) targets: True
+  worst old-target margin: 2.86% (W7 r42)

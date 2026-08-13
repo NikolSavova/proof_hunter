@@ -1,0 +1,116 @@
+[A] SOL.1 closed forms / rewrites / recurrences
+  OK  g2/g3/g4 closed forms at x=0.3 (max REL err 2.7e-31)
+  OK  g2/g3/g4 closed forms at x=1.7 (max REL err 4.1e-31)
+  OK  g2/g3/g4 closed forms at x=5.0 (max REL err 3.3e-31)
+  OK  g2/g3/g4 closed forms at x=0.008913 (max REL err 1.0e-29)
+  OK  h2(0)=1, h3(0)=2, h4(0)=6 (got 1.0, 2.0, 6.0)
+  OK  hyperbolic rewrites of h2/h3/h4, a=h3/h2, b=h4/h2=x^2+6h2 at x=0.6
+  OK  hyperbolic rewrites of h2/h3/h4, a=h3/h2, b=h4/h2=x^2+6h2 at x=3.3
+  OK  hyperbolic rewrites of h2/h3/h4, a=h3/h2, b=h4/h2=x^2+6h2 at x=11.0
+  OK  (18)/(19) recurrences at x=0.4 (err 1.6e-30)
+  OK  (18)/(19) recurrences at x=2.1 (err 7.9e-31)
+  OK  (18)/(19) recurrences at x=7.7 (err 5.9e-31)
+[B] SOL.1 representation vs brute-force law; D_n identity
+  OK  kappa_2 formula vs brute force (err 1.1e-29)
+  OK  kappa_3 formula vs brute force (err 6.6e-29)
+  OK  kappa_4 formula vs brute force (err 2.3e-27)
+  OK  draft sign convention: kappa_3(lam>0) >= 0 here (k3 = 8.9393063)
+  OK  D_2 = lam^3 kappa_2 at (561, w=5) (rel err 2.7e-29)
+  OK  D_3 = lam^4 kappa_3 at (561, w=5) (rel err 9.8e-29)
+  OK  D_4 = lam^5 kappa_4 at (561, w=5) (rel err 5.0e-28)
+[C] SOL.2/SOL.3 monotonicity attacks (dense grids)
+  OK  h2'<0, h3'<0, F>0, a'>0, b'>0, bracket>0 on grid (0.01..40] (0 violations)
+[D] SOL.5 (17): sup |h_n''| on [0, 40] (dense scan)
+  observed sup|h2''| = 0.16664667 at x = 0.02
+  observed sup|h3''| = 0.18181968 at x = 2.18
+  observed sup|h4''| = 0.52251029 at x = 3.56
+  OK  M_2 < 1 claim consistent (observed 0.166647)
+  OK  M_3 < 4 claim consistent (observed 0.18182)
+  OK  M_4 < 20 claim consistent (observed 0.52251)
+  OK  h2''(0+) -> -1/6 (got -0.16666667)
+[E] SOL.4 (13): G_n series vs quadrature; guard G_4(4)
+  OK  G_2(4): series vs quadrature (err 2.0e-31)
+  OK  G_2(20): series vs quadrature (err 0.0e+00)
+  OK  G_3(5): series vs quadrature (err 1.2e-30)
+  OK  G_3(40): series vs quadrature (err 1.3e-29)
+  OK  G_4(4): series vs quadrature (err 4.7e-30)
+  OK  G_4(10): series vs quadrature (err 3.2e-30)
+  OK  campaign guard G_4(4) = 0.2323483 (got 0.2323483)
+  tail sum_{nu>=33} e^{-4nu}E_4(4nu)/nu^2 = 5.754e-54 (negligible)
+  OK  nu=32 truncation harmless (tail < 1e-40)
+[F] SOL.5 (15): residual eps_n vs claimed w lam^2 M_n / 12
+  OK  (m=561, w=5.0) n=2: |eps|=6.93e-07 <= claimed bound 3.31e-05
+  OK  (m=561, w=5.0) n=3: |eps|=2.45e-06 <= claimed bound 1.32e-04
+  OK  (m=561, w=5.0) n=4: |eps|=7.46e-06 <= claimed bound 6.62e-04
+  OK  (m=561, w=40.0) n=2: |eps|=2.74e-18 <= claimed bound 1.69e-02
+  OK  (m=561, w=40.0) n=3: |eps|=1.07e-16 <= claimed bound 6.78e-02
+  OK  (m=561, w=40.0) n=4: |eps|=4.15e-15 <= claimed bound 3.39e-01
+  OK  (m=1000, w=17.0) n=2: |eps|=2.54e-10 <= claimed bound 4.09e-04
+  OK  (m=1000, w=17.0) n=3: |eps|=4.03e-09 <= claimed bound 1.64e-03
+  OK  (m=1000, w=17.0) n=4: |eps|=6.37e-08 <= claimed bound 8.19e-03
+[G] SOL.6 table: dense (w, lam) scan of L_2, U_3/L_2, U_4/L_2
+  band [4.0, 5.0]: min L2 = 1.1933336 (at w=4.0), max U3/L2 = 0.8864459, max U4/L2 = 0.65099147
+  OK      claimed floor 1.15 <= observed min L2
+  OK      observed max U3/L2 < claimed ceiling 0.9 (margin 1.53%)
+  OK      observed max U4/L2 < claimed ceiling 0.68 (margin 4.46%)
+  band [5.0, 6.0]: min L2 = 1.9608294 (at w=5.0), max U3/L2 = 1.073973, max U4/L2 = 1.2061891
+  OK      claimed floor 1.9 <= observed min L2
+  OK      observed max U3/L2 < claimed ceiling 1.09 (margin 1.49%)
+  OK      observed max U4/L2 < claimed ceiling 1.25 (margin 3.63%)
+  band [6.0, 8.0]: min L2 = 2.8343312 (at w=6.0), max U3/L2 = 1.348633, max U4/L2 = 2.3081822
+  OK      claimed floor 2.75 <= observed min L2
+  OK      observed max U3/L2 < claimed ceiling 1.37 (margin 1.58%)
+  OK      observed max U4/L2 < claimed ceiling 2.4 (margin 3.98%)
+  band [8.0, 10.0]: min L2 = 4.737648 (at w=8.0), max U3/L2 = 1.5185717, max U4/L2 = 3.1645493
+  OK      claimed floor 4.65 <= observed min L2
+  OK      observed max U3/L2 < claimed ceiling 1.55 (margin 2.07%)
+  OK      observed max U4/L2 < claimed ceiling 3.26 (margin 3.02%)
+  band [10.0, 20.0]: min L2 = 6.7156709 (at w=10.0), max U3/L2 = 1.8042956, max U4/L2 = 4.8237649
+  OK      claimed floor 6.6 <= observed min L2
+  OK      observed max U3/L2 < claimed ceiling 1.85 (margin 2.53%)
+  OK      observed max U4/L2 < claimed ceiling 4.98 (margin 3.24%)
+  band [20.0, 40.0]: min L2 = 16.710133 (at w=20.0), max U3/L2 = 1.9140792, max U4/L2 = 5.4770919
+  OK      claimed floor 16.5 <= observed min L2
+  OK      observed max U3/L2 < claimed ceiling 1.97 (margin 2.92%)
+  OK      observed max U4/L2 < claimed ceiling 5.65 (margin 3.16%)
+[H] SOL.8: a(0.89), b(0.89) enclosures
+  a(0.89) = 2.1303060576444510159
+  b(0.89) = 6.4112558488549645817
+  OK  (26): 2.1302 < a(0.89) < 2.1304
+  OK  (27): 6.4111 < b(0.89) < 6.4114
+  OK  plan geo limits 2.13031/6.41126 consistent
+  OK  a(0.89) < 2.71 target
+  OK  b(0.89) < 8.17 target
+[I] V1 sentinels at m = 561 (exact factor sums, dps 30)
+  w= 5: r31 = 0.8863645 (table 0.88636), r42 = 0.6506471 (table 0.65065)
+  OK      matches draft/plan to quoted digits
+  w= 6: r31 = 1.073872 (table 1.0739), r42 = 1.205766 (table 1.2058)
+  OK      matches draft/plan to quoted digits
+  w= 8: r31 = 1.348481 (table 1.3485), r42 = 2.307547 (table 2.3075)
+  OK      matches draft/plan to quoted digits
+  w=10: r31 = 1.518354 (table 1.5184), r42 = 3.163638 (table 3.1636)
+  OK      matches draft/plan to quoted digits
+  w=20: r31 = 1.803561 (table 1.8036), r42 = 4.820621 (table 4.8206)
+  OK      matches draft/plan to quoted digits
+  w=40: r31 = 1.911351 (table 1.9114), r42 = 5.465337 (table 5.4653)
+  OK      matches draft/plan to quoted digits
+  (561, lam=0.89): r31 = 2.124025 (plan 2.12402), r42 = 6.371301 (plan 6.3713)
+  OK    W7 finite-m point matches plan
+  OK    W7 finite-m below geometric limit (SOL.3/SOL.8 domination)
+[J] interface with the re-architected chain
+  OK  W1: proved ceilings (0.9, 0.68) < targets (1.19, 0.87)
+  OK  W2: proved ceilings (1.09, 1.25) < targets (1.44, 1.62)
+  OK  W3: proved ceilings (1.37, 2.4) < targets (1.82, 3.11)
+  OK  W4: proved ceilings (1.55, 3.26) < targets (2.04, 4.27)
+  OK  W5: proved ceilings (1.85, 4.98) < targets (2.38, 6.38)
+  OK  W6b: proved ceilings (1.97, 5.65) < targets (2.56, 7.33)
+  OK  W7: proved ceilings (2.13031, 6.41126) < targets (2.71, 8.17)
+  OK  e^{-4} < 1/54 (e^4 = 54.59815)
+  OK  (24): zeta(2) enclosure valid
+  OK  chain: 0.978293 * 20 = 19.56586 -> 19.5659 <= 20
+  OK  chain (m>=1581): 0.75839 * 20 = 15.1678 <= 136
+  OK  (S2)-fallback W7 targets 2.42/7.28 ALSO cleared by geometric bound
+[K] adversarial truth attack on (S1-new) itself
+  OK  (S1-new) truth attack: 0 violations in 90 probes
+
+ALL CHECKS OK: True

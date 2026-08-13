@@ -1,0 +1,62 @@
+[A] SOL.2 scalar identities
+  x= 0.30:  relerr A1 = 1.47e-60   relerr A4 = 2.58e-61
+  x= 0.89:  relerr A1 = 3.95e-61   relerr A4 = 1.16e-61
+  x= 2.00:  relerr A1 = 4.3e-61   relerr A4 = 6.19e-61
+
+[B] SOL.1/SOL.2 cumulants vs brute force  (m=7, lam=0.37)
+  mu : brute 6.690635065628285359  formula 6.690635065628285359  diff 6.22e-61
+  s2 : brute 8.8948844473341866017  SOL.2.1 8.8948844473341866017  diff 1.49e-59
+  k3 : brute 9.7035743059840714753  formula 9.7035743059840714753  diff 6.22e-59
+  k4 : brute -7.2103903477682792539  formula -7.2103903477682792539  diff 8.38e-58
+
+[C] SOL.3: R5 three ways
+  (m,lam,t)=(7,0.37,0.185):
+    R5_direct   = (0.000014865290567799151047 - 0.00018390151515594218542j)
+    R5_series   = (0.000014865290567799151047 - 0.00018390151515594218542j)   |d-s| = 4.62e-61
+    R5_integral = (0.000014865290567799151047 - 0.00018390151515594218542j)   |d-i| = 4.16e-61
+  (m,lam,t)=(60,0.075,0.0375):
+    R5_direct   = (0.0021828517822206809928 - 0.0047797447239234667393j)
+    R5_series   = (0.0021828517822210855458 - 0.0047797447239235377467j)   |d-s| = 4.11e-16
+    R5_integral = (0.0021828517822206809928 - 0.0047797447239234667393j)   |d-i| = 7.19e-59
+
+[D] SOL.4 majorant + size of C_abs vs targets
+  W1 corner  (m=561, w=4.5): |R5(lam/2)| = 0.0486954  <= B5 t^5 = 7.06008 : True
+      C_abs = 1.15907   vs C5* = 0.05   (ratio 23.181x)
+      measured Q(t=lam/2) = 0.00799447
+  W1 rt edge (m=561, w=5.0): |R5(lam/2)| = 0.0448876  <= B5 t^5 = 7.0541 : True
+      C_abs = 1.02411   vs C5* = 0.05   (ratio 20.482x)
+      measured Q(t=lam/2) = 0.00651678
+  W7 deep    (m=561, lam=0.89): |R5(lam/2)| = 3.17756  <= B5 t^5 = 3.56113 : True
+      C_abs = 0.218226   vs C5* = 0.8   (ratio 0.27278x)
+      measured Q(t=lam/2) = 0.194721
+
+[E] SOL.6 constant and convergence
+  a = -0.0021967756571048778831   (draft: -0.002196775657104877)
+  b = 0.0053142756674727828809   (draft:  0.00531427566747278)
+  32 sqrt(a^2+b^2) = 0.184013492813225   (draft: 0.18401349...)
+  Q_inf(1/2) via formula = 0.184013492813225   match: True
+  N=  20: (m,lam,t)=(400,1/20,1/40)  w=20  Q = 0.1326818484
+  N=  50: (m,lam,t)=(2500,1/50,1/100)  w=50  Q = 0.1655819615
+  N= 100: (m,lam,t)=(10000,1/100,1/200)  w=100  Q = 0.1751044078
+  N= 200: (m,lam,t)=(40000,1/200,1/400)  w=200  Q = 0.1796320505
+  N= 320: (m,lam,t)=(102400,1/320,1/640)  w=320  Q = 0.1812918596
+
+[F] W7 C5 comparison: Q_inf(1/2) = 0.184013 vs old C5*(W7)=0.80, scout C5*(W7)=0.50
+  0.184013 <= 0.50: True   0.184013 <= 0.80: True
+  scout-quoted W7 corner truth 0.2104/0.21153: measured Q at (561, 0.89, lam/2) printed in [D]
+  scout-quoted W7 corner truth 0.2104/0.21153: measured Q at (561, 0.89, lam/2) printed in [D]
+
+[G] supplementary: C_abs over W7/W6b sample + SOL.5.2 Q(0) at the W7 corner
+  W7 sample (m=561, w=40.001, lam=0.071303): C_abs = 0.262403
+  W7 sample (m=561, w=45.0, lam=0.0802139): C_abs = 0.254922
+  W7 sample (m=561, w=100.0, lam=0.178253): C_abs = 0.224034
+  W7 sample (m=2000, w=41.0, lam=0.0205): C_abs = 0.260953
+  W7 sample (m=10000, w=41.0, lam=0.0041): C_abs = 0.261044
+  W7 sample (m=100000, w=41.0, lam=0.00041): C_abs = 0.261066
+  W7 sample (m=2000, w=1780.0, lam=0.89): C_abs = 0.214871
+  W7 sample (m=561, w=499.29, lam=0.89): C_abs = 0.218226
+  W6b sample (m=561, w=20.001, lam=0.0356524): C_abs = 0.337272  (target 0.25)
+  W6b sample (m=561, w=40.0, lam=0.0713012): C_abs = 0.262404  (target 0.25)
+  W6b sample (m=100000, w=20.001, lam=0.00020001): C_abs = 0.337799  (target 0.25)
+  W6b sample (m=100000, w=40.0, lam=0.0004): C_abs = 0.26273  (target 0.25)
+  Q(561, 0.89, t=0) per SOL.5.2 = 0.21152994   (scout block [S2] leading order: 0.21153)
