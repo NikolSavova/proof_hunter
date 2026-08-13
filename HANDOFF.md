@@ -243,7 +243,8 @@ remaining barrier: extracting an `N^alpha` strong subset squares the exponent (`
 `alpha^2/2`); current mutually-avoiding extraction has `alpha=1/2`, and even a perfect
 one-witness same-type pipeline is capped at the old `1/4`.
 
-**2026-08-13 unrestricted follow-up.**  The detailed current map is
+**2026-08-13 unrestricted follow-up.**  A fresh instance should first read the self-contained
+`phase2/loop/erdos838/INSTANCE_HANDOFF_20260813.md`, then the detailed current map
 `phase2/loop/erdos838/UNRESTRICTED_ATTACK_20260813.md`.  Three further routes are now rigorously
 closed.  First, every finite-state vertical blow-up system---including state-dependent macro types,
 reflections, unequal branching, and unequal child sizes---has liminf coefficient at least `1/2`;

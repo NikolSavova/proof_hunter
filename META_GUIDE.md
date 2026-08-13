@@ -449,6 +449,18 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: complete future-instance restart brief (Sihao + Codex)
+
+- Added `phase2/loop/erdos838/INSTANCE_HANDOFF_20260813.md`, a self-contained restart document
+  covering the exact problem and normalization, the coefficient-`1/2` paper proof, the sharp
+  mirror-decomposable theorem, the unrestricted common-endpoint reduction, every major proved
+  barrier and exact counterexample, prior-art/claim boundaries, paper-format decisions,
+  verification commands, repository map, git state, and ranked next attacks.
+- The brief explicitly separates theorems, computational evidence, conjectural targets, and
+  apparent novelty.  It records durable proof-relevant reasoning rather than private model
+  chain-of-thought.  New instances should read it before `UNRESTRICTED_ATTACK_20260813.md`.
+- No mathematical claim or paper content was changed.  Approximate direct API spend: `$0`.
+
 ### 2026-08-13 — ERDŐS #838: unrestricted attack and exact route barriers (Sihao + Codex ultracode)
 
 - **Honest headline:** unrestricted #838 remains open with rigorous base-two window `[1/4,1/2]`.
