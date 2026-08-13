@@ -129,7 +129,7 @@ this file; CLOSE = write the handoff + commit/push), plus `/load` (run the openi
 `/handoff` (run the close protocol) slash commands in `.claude/commands/`. API key relocated out of the
 repo (§0). SSH auth configured per-machine. **Run `/handoff` at the end of every working session.**
 
-**⭐ ERDŐS #838: SUBMISSION DRAFT + SHARP STRONG-TREE THEOREM (2026-08-12→13, Sihao + Codex).**
+**⭐ ERDŐS #838: SUBMISSION DRAFT + SHARP DECOMPOSABLE-CLASS THEOREM (2026-08-12→13, Sihao + Codex).**
 The iterated vertical blow-up proves
 `limsup log2(f(N))/(log2 N)^2 <= 1/2`.  For a fixed `r`-point template with
 largest cap/cup sizes `a,b`, exact substitution identities give coefficient
@@ -138,14 +138,17 @@ largest cap/cup sizes `a,b`, exact substitution identities give coefficient
 `phase2/loop/erdos838/paper/main.tex` (rendered deliverable:
 `output/pdf/erdos838_counting_convex_subsets.pdf`).  It contains the rational realization,
 exact `C,U,W` identities, asymptotics, arbitrary-`N` step, self-contained Pascal construction,
-and final bibliography.  `lexicographic_blowup.py` verifies a 9-point brute-force case and the
+and final bibliography.  Its front matter now exactly follows the Bregman paper's `amsart`
+structure: blank conventional byline plus a first-page AI-assistance/contact footnote for Nikol
+Savova (University of Oxford) and Sihao Huang (independent researcher).  `lexicographic_blowup.py`
+verifies a 9-point brute-force case and the
 36-point count `(14136,14136,441399)` by unrelated endpoint DPs; the 16-point nonconvex-macro
 exhaustion and reset arithmetic checker also pass.  Two mathematical referees plus a dedicated
 primary-source novelty sweep found no proof flaw or prior occurrence.  Generic/iterated blow-ups
 are prior art (Han et al.; Baek--Balko); the defensible apparent novelty is the prescribed mixed
 orientations, exact unweighted substitution identities, and geometric coefficient `1/2`.
 
-**New sharp theorem for the whole strong-decomposition class.**  The earlier `1/3` lower bound is
+**New sharp theorem for the whole decomposable class.**  The earlier `1/3` lower bound is
 superseded.  For every ordered binary strong tree with `N` leaves, the exact endpoint recurrence
 and a multiscale reset argument prove
 `log2 W >= (1/2)(log2 N)^2 - O((log N)^(3/2))`.  Hence arbitrary stationary or nonstationary strong
@@ -155,6 +158,12 @@ or `sqrt(log N)` macroscopic siblings force repeated endpoint-coordinate resets.
 adversarial reconstructions accepted the proof; see
 `agent_asymptotic/NEXT_ENDPOINT_ATTACK.md`, `agent_geometry/NEXT_ENDPOINT_AUDIT.md`, and
 `agent_killsearch/STRONG_TREE_HALF_REFEREE.md`.  The integrated proof is Section 5 of the paper.
+The literature terminology has now been corrected: Balko--Kynčl--Langerman--Pilz (2017) introduced
+decomposable point sets via recursive left/deep-below splits, and our `A≺B` convention is exactly
+their mirror under `(x,y)↦(-x,y)`, with child order reversed.  Baek--Balko's full open-access JCTA
+paper was checked: Theorem 7 is an existence theorem for this class, while Lemma 14 contains the
+endpoint-cluster structural precursor to our count but neither sums all convex subsets nor derives
+the `1/2` total-count theorem.  Both sources are now cited at the relevant definitions/lemma.
 
 **Full-problem state.**  General Erdős 838 remains open with rigorous base-2 window `[1/4,1/2]`.
 The strong-tree alignment gap is now closed, so the remaining obstacle is structural: transfer the

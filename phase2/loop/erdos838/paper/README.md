@@ -28,7 +28,6 @@ asymptotic bound; it does not encode the heavy-path part of the proof.
 
 Before submission:
 
-1. add the authors and affiliations;
-2. have a geometer run the final MathSciNet/Zentralblatt similarity check;
-3. archive the code and record its persistent URL/DOI here;
-4. remove the draft date after venue formatting.
+1. have a geometer run the final MathSciNet/Zentralblatt similarity check;
+2. archive the code and record its persistent URL/DOI here;
+3. adapt the date and front matter to the target venue.

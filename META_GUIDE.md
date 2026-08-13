@@ -449,6 +449,32 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: Claude-review response, full JCTA clearance, and final byline (Sihao + Codex ultracode)
+
+- **Claude review triaged and incorporated.**  The mathematical checks were positive.  Accepted
+  the central citation correction, the finite-`k` “approaches `1/2` from above” clarification, and
+  the need to state `x(A)<x(B)` explicitly in the strong split.  The epsilon observation is useful
+  but not a proof gap: the finite strict-determinant argument is rigorous, and the hardened exact
+  checker demonstrates that the perturbation must be chosen afresh (first tested success for its
+  unnormalized nested coordinates is `1/9750`; the normalized verifier accepts `1/128`).
+- **Prior-art relation made exact.**  The full open-access Baek--Balko JCTA 2026 article was audited,
+  not only its SoCG abstract.  Journal Theorem 7 proves an existence threshold on decomposable
+  sets; Lemma 14 contains the endpoint-cluster classification underlying the crossing term, but it
+  does not enumerate all convex subsets or derive the coefficient `1/2`.  The class itself comes
+  from Balko--Kynčl--Langerman--Pilz (2017).  Our convention is its mirror under
+  `(x,y)↦(-x,y)`, not a 180-degree rotation.  The paper now uses “mirror-decomposable,” cites both
+  sources at the definition/lemma, and identifies `T_(m,i)` with the reflected classical
+  `P(i+2,m-i+2)` cell.
+- **Front matter matched to the Bregman paper exactly.**  Switched to `amsart`, retained a blank
+  conventional `author` field, and copied the same first-page AI-assistance/contact footnote:
+  Nikol Savova (University of Oxford) and Sihao Huang (independent researcher), with both emails.
+  The abstract precedes `maketitle`, as in the Bregman source.
+- **Fresh QA passed.**  Tectonic produces a warning-free 9-page PDF; all pages were rendered and
+  visually inspected.  All four verification programs pass, including the direct exact
+  `(C,U,W)=(14136,14136,441399)` count, 16-point exhaustive classification, and reset certificate.
+  Updated deliverable: `output/pdf/erdos838_counting_convex_subsets.pdf`.  Approximate API spend:
+  `$0` (local tools plus existing web access).
+
 ### 2026-08-13 — ERDŐS #838: sharp `1/2` theorem for all strong trees + submission draft (Sihao + Codex ultracode)
 
 - **New theorem (independently reconstructed twice).**  For every ordered full binary

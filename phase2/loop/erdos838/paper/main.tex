@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{amsart}
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
@@ -16,12 +16,22 @@
 \newcommand{\cU}{\mathcal U}
 \newcommand{\cV}{\mathcal V}
 
-\title{Counting convex subsets in iterated order-type blow-ups}
-\author{Authors omitted for circulation}
-\date{Draft of August 13, 2026}
+\title[Counting convex subsets in order-type blow-ups]
+{Counting convex subsets in iterated order-type blow-ups}
+
+\author{}
+
+\thanks{This investigation was carried out with substantial assistance from
+automated systems, and we omit a conventional byline rather than overstate the
+named researchers' personal contributions.
+\emph{Nikol Savova}, University of Oxford,
+\href{mailto:nikol.p.savova@gmail.com}{\texttt{nikol.p.savova@gmail.com}};
+\emph{Sihao Huang}, independent researcher,
+\href{mailto:sihao.c.huang@gmail.com}{\texttt{sihao.c.huang@gmail.com}}.}
+
+\date{\today}
 
 \begin{document}
-\maketitle
 
 \begin{abstract}
 For a planar point set $P$ in general position, let $v(P)$ be the number
@@ -44,12 +54,14 @@ sizes $a$ and $b$, respectively, its iterates have normalized coefficient
 $(a+b-2)/(2\log_2r)$.  Balanced instances of the classical cup--cap
 construction make this coefficient tend to $1/2$.  The cup--cap theorem
 shows that $1/2$ is optimal among fixed-template iterations.  More strongly,
-we prove that every point set obtained by arbitrary recursive strong
-separations has logarithmic convex-subset count at least
+we prove that every mirror-decomposable point set has logarithmic
+convex-subset count at least
 $(\log_2N)^2/2-O((\log N)^{3/2})$.  Thus the
-optimal universal coefficient $1/2$ is attained within this nonstationary
-class.
+optimal universal coefficient $1/2$ is attained within the entire
+decomposable class.
 \end{abstract}
+
+\maketitle
 
 \section{Introduction}
 
@@ -114,7 +126,14 @@ The construction is a special realization of an order-type blow-up.
 General blow-ups and their iteration appear in
 Han--Kohayakawa--Sales--Stagni~\cite{HanEtAl2019}; almost-vertical blow-ups
 tailored to the Erd\H{o}s--Szekeres problem appear in
-Baek--Balko~\cite{BaekBalko2026}.  Exact weighted identities for numbers of
+Baek--Balko~\cite{BaekBalko2026}.  Recursively separated point sets were
+studied under the name \emph{decomposable} by Balko, Kyn\v{c}l, Langerman,
+and Pilz~\cite{BalkoEtAl2017}.  Baek and Balko proved the Erd\H{o}s--Szekeres
+conjecture for that class~\cite[Theorem~7]{BaekBalko2026}.  Our final result
+is enumerative: in the mirrored convention we determine the asymptotic
+minimum total number of convex subsets in the same class.
+
+Exact weighted identities for numbers of
 convex polygons are also known~\cite{HuemerEtAl2022}.  The feature used here
 is a prescribed orientation for triples meeting exactly two clusters.
 Those orientations give exact substitution identities for the three
@@ -123,8 +142,8 @@ geometric coefficient $1/2$.  The same base-normalized coefficient occurs
 in Sz\'ekely's graph-theoretic analogue~\cite{Szekely1984}, but that argument
 does not directly yield the geometric statement here.
 
-We also determine the asymptotic answer inside the much larger class of
-all recursively strongly separated point sets; see \cref{thm:strong-class}.
+We also determine the asymptotic answer throughout the class of
+mirror-decomposable point sets; see \cref{thm:strong-class}.
 The lower bound there uses a max-endpoint recurrence and a multiscale reset
 argument.  It does not extend to arbitrary order types, so the existence
 and value of the limit in the Erd\H{o}s--Hammer problem remain open.
@@ -137,7 +156,7 @@ A \emph{cap} is a nonempty set all of whose increasing triples have sign
 $-$, and a \emph{cup} is defined with sign $+$.  Singletons and pairs are
 both caps and cups.
 
-A sufficiently strong shear $(x,y)\mapsto(x,y+Mx)$ preserves orientations
+A suitable shear $(x,y)\mapsto(x,y+Mx)$ preserves orientations
 and makes the $y$-coordinates increase in the same order as the
 $x$-coordinates.  We shall therefore assume both coordinates increase.
 
@@ -193,6 +212,11 @@ $j$-point caps, cups, and convex subsets.  Put
  U(R)=\sum_{j\ge1}u_j(R),\qquad
  W(R)=\sum_{j\ge1}v_j(R).                         \tag{2.2}
 \]
+
+The same endpoint-cluster phenomenon is used by Baek and
+Balko~\cite[Lemma~14]{BaekBalko2026} to control the largest convex subset of
+an almost-vertical blow-up.  In the present uniform setting, retaining all
+choices gives the following exact identities.
 
 \begin{lemma}[exact composition count]\label{lem:composition}
 If $|S|=r$ and $|Q|=n$, then
@@ -320,10 +344,10 @@ Division by $(d\log r)^2$ proves the proposition.
 \section{Balanced cup--cap templates}
 
 We first record the geometric operation used in the classical recursive
-cup--cap construction.  Write $A\prec B$ when internal orientations are
-preserved and every increasing triple meeting both sides has sign $-$ if
-its first two points lie in $A$, and sign $+$ if its last two points lie in
-$B$.
+cup--cap construction.  Write $A\prec B$ when every point of $A$ precedes
+every point of $B$ in $x$-order, internal orientations are preserved, and
+every increasing triple meeting both sides has sign $-$ if its first two
+points lie in $A$, and sign $+$ if its last two points lie in $B$.
 
 \begin{lemma}[strong separation]\label{lem:strong-glue}
 Given rational point sets $A$ and $B$ in general position, they have a
@@ -351,6 +375,9 @@ Now let $T_{m,0}$ and $T_{m,m}$ be singletons, and for $0<i<m$ form
  T_{m,i}=T_{m-1,i-1}\prec T_{m-1,i}.             \tag{4.1}\label{eq:pascal-glue}
 \]
 using \cref{lem:strong-glue}.  These are the standard cup--cap examples.
+Up to the reflection $\rho(x,y)=(-x,y)$, they are the classical
+Erd\H{o}s--Szekeres sets $P(i+2,m-i+2)$ in the notation of Baek and
+Balko~\cite[Section~4]{BaekBalko2026}.
 
 \begin{lemma}\label{lem:pascal}
 The cell $T_{m,i}$ has $\binom mi$ points, largest cap of size $i+1$, and
@@ -390,6 +417,8 @@ $r_k^d<r_kN$, so the normalized coefficient is unchanged.  Consequently
  \frac{\log f(N)}{(\log N)^2}
  \le \frac{k-2}{\log\binom{2k-4}{k-2}}.          \tag{4.5}
 \]
+The right-hand side is strictly larger than $1/2$ for every finite $k$,
+since $\binom{2k-4}{k-2}<2^{2k-4}$, and tends to $1/2$ from above.
 Stirling's formula gives
 $\log\binom{2k-4}{k-2}=2k-O(\log k)$.  Letting $k\to\infty$ proves the
 theorem.
@@ -413,19 +442,35 @@ applied with forbidden sizes $a+1$ and $b+1$ gives
 Thus $(a+b-2)/(2\log r)\ge1/2$.
 \end{proof}
 
-\section{Optimality for arbitrary strong decompositions}
+\section{Optimality for decomposable point sets}
 
-Call a point set \emph{strongly decomposable} if it is a singleton, or if
-it has a realization $A\prec B$ in which $A$ and $B$ are strongly
-decomposable.  Equivalently, it is represented by an ordered full binary
-tree whose internal nodes are the operation in \cref{lem:strong-glue}.
+Following Balko, Kyn\v{c}l, Langerman, and Pilz~\cite{BalkoEtAl2017}, a
+point set is \emph{decomposable} if it is a singleton, or if it has a
+partition into decomposable sets $L$ and $R$ such that $L$ lies to the left
+of and deep below $R$.  Here deep below means that every point of $L$ lies
+below every line through two points of $R$, while every point of $R$ lies
+above every line through two points of $L$.
+
+We use the mirrored convention.  If $L$ lies to the left of and deep below
+$R$, then for $\rho(x,y)=(-x,y)$ one has $\rho(R)\prec\rho(L)$.
+Conversely, reflecting a split $A\prec B$ gives such a deep-below split.
+The reflection $\rho$ preserves cap and cup sizes and the number of convex
+subsets.  We therefore call a point set \emph{mirror-decomposable} if it is
+a singleton, or if it has a realization $A\prec B$ in which $A$ and $B$ are
+mirror-decomposable.  These are precisely the $\rho$-images of decomposable
+sets.  Equivalently, they are represented by ordered full binary trees whose
+internal nodes are the operation in \cref{lem:strong-glue}.
+
+Baek and Balko's theorem controls the largest convex subset in this
+class~\cite[Theorem~7]{BaekBalko2026}; the following theorem instead
+determines the asymptotic minimum of the total convex-subset count.
 Let
 \[
- g(N)=\min\{W(P): |P|=N,\ P\text{ strongly decomposable}\}.
+ g(N)=\min\{W(P): |P|=N,\ P\text{ mirror-decomposable}\}.
 \]
 
 \begin{theorem}\label{thm:strong-class}
-Every $N$-point strongly decomposable set $P$ satisfies
+Every $N$-point mirror-decomposable set $P$ satisfies
 \begin{equation}
  \log W(P)\ge \frac12(\log N)^2-O((\log N)^{3/2}),
  \label{eq:strong-lower}
@@ -445,7 +490,7 @@ $a=|A|$ and $b=|B|$.  The strong-separation classification gives
 \end{align}
 
 \begin{lemma}[cap--cup product]\label{lem:product-mass}
-Every $s$-point strongly decomposable set $S$ satisfies
+Every $s$-point mirror-decomposable set $S$ satisfies
 \[
  \log C(S)+\log U(S)\ge\frac12(\log s)^2-\log s.
 \]
@@ -610,7 +655,7 @@ $F=\frac12L^2-O(L^{3/2})$, both alternatives give
 Now $W(P)\ge M(P)$, proving \eqref{eq:strong-lower}.
 
 For the limit in \eqref{eq:strong-limit}, observe that every $Q_d$
-constructed from the Pascal templates is strongly decomposable.  Indeed,
+constructed from the Pascal templates is mirror-decomposable.  Indeed,
 at every internal split of the macro strong tree, triples whose two
 same-side points lie in one micro-block have the required sign by
 \cref{lem:orientation}(3)--(4), while triples using distinct micro-blocks
@@ -649,6 +694,14 @@ algebraic smoke test, not a substitute for the multiscale argument.
 J.~Baek and M.~Balko.
 The Erd\H{o}s--Szekeres conjecture revisited.
 \emph{J. Combin. Theory Ser. A}, 222:106195, 2026.
+\href{https://doi.org/10.1016/j.jcta.2026.106195}
+{doi:10.1016/j.jcta.2026.106195}.
+
+\bibitem[BKLP17]{BalkoEtAl2017}
+M.~Balko, J.~Kyn\v{c}l, S.~Langerman, and A.~Pilz.
+Induced Ramsey-type results and binary predicates for point sets.
+\emph{Electron. J. Combin.}, 24(4):Paper No.~P4.24, 22 pp., 2017.
+\href{https://doi.org/10.37236/7039}{doi:10.37236/7039}.
 
 \bibitem[Erd78]{Erdos1978}
 P.~Erd\H{o}s.

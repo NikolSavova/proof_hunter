@@ -136,6 +136,11 @@ Conjecture Revisited,” *Journal of Combinatorial Theory, Series A* **222**
 - [ScienceDirect article](https://www.sciencedirect.com/science/article/pii/S0097316526000385)
 - DOI: [10.1016/j.jcta.2026.106195](https://doi.org/10.1016/j.jcta.2026.106195)
 
+The full open-access journal text, not only the conference version, was
+checked on 2026-08-13.  The relevant existence result is Theorem 7 in the
+journal numbering (Theorem 8 in the preliminary version), with its proof in
+Section 7.  The full proof of Lemma 14 is also present.
+
 **Preliminary conference version.** *41st International Symposium on
 Computational Geometry (SoCG 2025)*, LIPIcs 332, article 13, pp. 13:1--13:15.
 
@@ -147,8 +152,19 @@ Definition 13 of the conference version is an \((X,Y)\)-blow-up obtained by
 replacing skeleton points with rotated, almost-vertical Pascal-type clusters
 in small neighborhoods. Lemma 14 controls the largest possible convex subset
 and gives an exact formula for the **number of points** in the constructed
-set. The paper says that known \(2^{k-2}\)-point constructions arise as
-special cases.
+set. Its full journal proof contains the endpoint-cluster classification that
+underlies our count: the occupied macro points are convex, intermediate
+clusters contribute at most one point, and only the first and last occupied
+clusters can contribute chains with more than one point. The paper says that
+known \(2^{k-2}\)-point constructions arise as special cases.
+
+The decomposable class itself predates Baek--Balko.  Balko, Kynčl,
+Langerman, and Pilz, “Induced Ramsey-Type Results and Binary Predicates for
+Point Sets,” *Electron. J. Combin.* **24**(4) (2017), P4.24, introduced the
+recursive left/deep-below definition.  Our \(A\prec B\) convention is its
+mirror under \(\rho(x,y)=(-x,y)\), with the child order reversed.  The paper
+now credits the 2017 source at the class definition and positions its
+total-count theorem against Baek--Balko's Theorem 7.
 
 **Collision.** Almost-vertical cluster replacement tailored to the
 Erdős--Szekeres problem is emphatically prior art. Baek--Balko is the closest
@@ -156,9 +172,10 @@ geometric citation and should be discussed, not merely listed.
 
 **Non-collision.** Their objective is to maximize the size of a point set
 with no \(k\) points in convex position. Their exact formula counts points;
-it is not an enumerator for all convex subsets. No formula matching the
-candidate \(C,U,W\) recurrences or base-two \(1/2\) total-count bound appears
-in the paper.
+it is not an enumerator for all convex subsets. Lemma 14 supplies an important
+structural precursor to the crossing term, but the journal paper does not sum
+all endpoint-chain choices, state the \(C,U,W\) recurrences, or derive the
+base-two \(1/2\) total-count bound.
 
 **Bibliographic recommendation.** Cite the 2026 journal article as the main
 source and identify SoCG 2025 as the preliminary version if desired. Do not
@@ -290,7 +307,9 @@ changes:
    and important.
 3. **“Almost-vertical blow-ups tailored to Erdős--Szekeres appear in
    Baek--Balko.”** Correct. Prefer the JCTA 2026 citation, with the SoCG paper
-   identified as preliminary.
+   identified as preliminary.  Credit Balko--Kynčl--Langerman--Pilz (2017)
+   for the decomposable class and Baek--Balko Lemma 14 for the endpoint-cluster
+   structure.
 4. **“The feature used here is a prescribed orientation for triples meeting
    exactly two clusters.”** Defensible relative to the sources checked.
 5. **“Those orientations give the exact enumerator ...; iterating it produces
