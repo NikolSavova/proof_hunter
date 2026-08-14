@@ -1,0 +1,134 @@
+{
+  "normalization": "F(z)=1+n*z+<A(z),B(z)>-n",
+  "records": [
+    {
+      "H": [
+        4879,
+        3056
+      ],
+      "H_decimal": 1.5965314136125655,
+      "coordinate_source": "phase2/loop/erdos838/agent_dual_number_amortization/half_weight_search_records.json",
+      "half_mean_minus_log2_n_plus_1": 0.04835270035756478,
+      "n": 20,
+      "reflection_order_scope": "fixed_x_integer_planar_certificate",
+      "root_sequence_valid": true,
+      "source": "planar_seed_n20.json",
+      "specializations": {
+        "half": {
+          "F": [
+            24395,
+            64
+          ],
+          "Q": [
+            24971,
+            64
+          ],
+          "mu": [
+            82218,
+            24395
+          ]
+        },
+        "one": {
+          "F": [
+            4775,
+            1
+          ],
+          "Q": [
+            4774,
+            1
+          ],
+          "mu": [
+            18676,
+            4775
+          ]
+        }
+      }
+    },
+    {
+      "H": [
+        584943,
+        346912
+      ],
+      "H_decimal": 1.6861423069827506,
+      "coordinate_source": "phase2/loop/erdos838/agent_dual_number_amortization/half_weight_search_records.json",
+      "half_mean_minus_log2_n_plus_1": -0.022594885415049504,
+      "n": 24,
+      "reflection_order_scope": "fixed_x_integer_planar_certificate",
+      "root_sequence_valid": true,
+      "source": "planar_seed_n24.json",
+      "specializations": {
+        "half": {
+          "F": [
+            194981,
+            256
+          ],
+          "Q": [
+            197797,
+            256
+          ],
+          "mu": [
+            694594,
+            194981
+          ]
+        },
+        "one": {
+          "F": [
+            10841,
+            1
+          ],
+          "Q": [
+            10840,
+            1
+          ],
+          "mu": [
+            44358,
+            10841
+          ]
+        }
+      }
+    },
+    {
+      "H": [
+        226845,
+        131108
+      ],
+      "H_decimal": 1.7302147847576044,
+      "coordinate_source": "phase2/loop/erdos838/agent_dual_number_amortization/half_weight_search_records.json",
+      "half_mean_minus_log2_n_plus_1": -0.08257085084888116,
+      "n": 30,
+      "reflection_order_scope": "fixed_x_integer_planar_certificate",
+      "root_sequence_valid": true,
+      "source": "planar_seed_n30.json",
+      "specializations": {
+        "half": {
+          "F": [
+            15123,
+            8
+          ],
+          "Q": [
+            15235,
+            8
+          ],
+          "mu": [
+            925363,
+            241968
+          ]
+        },
+        "one": {
+          "F": [
+            32777,
+            1
+          ],
+          "Q": [
+            32776,
+            1
+          ],
+          "mu": [
+            144570,
+            32777
+          ]
+        }
+      }
+    }
+  ]
+}

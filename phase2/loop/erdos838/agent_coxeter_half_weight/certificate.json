@@ -1,0 +1,134 @@
+{
+  "normalization": "F(z)=1+n*z+<A(z),B(z)>-n",
+  "records": [
+    {
+      "H": [
+        9355,
+        5856
+      ],
+      "H_decimal": 1.5975068306010929,
+      "coordinate_source": null,
+      "half_mean_minus_log2_n_plus_1": 0.04624194992618813,
+      "n": 20,
+      "reflection_order_scope": "all_type_A; stretchability_not_claimed",
+      "root_sequence_valid": true,
+      "source": "seeded_n20.json",
+      "specializations": {
+        "half": {
+          "F": [
+            24323,
+            64
+          ],
+          "Q": [
+            24899,
+            64
+          ],
+          "mu": [
+            81924,
+            24323
+          ]
+        },
+        "one": {
+          "F": [
+            4758,
+            1
+          ],
+          "Q": [
+            4757,
+            1
+          ],
+          "mu": [
+            6205,
+            1586
+          ]
+        }
+      }
+    },
+    {
+      "H": [
+        582891,
+        344704
+      ],
+      "H_decimal": 1.6909899507983661,
+      "coordinate_source": null,
+      "half_mean_minus_log2_n_plus_1": -0.026400093684506132,
+      "n": 24,
+      "reflection_order_scope": "all_type_A; stretchability_not_claimed",
+      "root_sequence_valid": true,
+      "source": "seeded_n24.json",
+      "specializations": {
+        "half": {
+          "F": [
+            194297,
+            256
+          ],
+          "Q": [
+            197113,
+            256
+          ],
+          "mu": [
+            691418,
+            194297
+          ]
+        },
+        "one": {
+          "F": [
+            10772,
+            1
+          ],
+          "Q": [
+            10771,
+            1
+          ],
+          "mu": [
+            11008,
+            2693
+          ]
+        }
+      }
+    },
+    {
+      "H": [
+        3618075,
+        2085376
+      ],
+      "H_decimal": 1.7349748918180703,
+      "coordinate_source": null,
+      "half_mean_minus_log2_n_plus_1": -0.08630644519704278,
+      "n": 30,
+      "reflection_order_scope": "all_type_A; stretchability_not_claimed",
+      "root_sequence_valid": true,
+      "source": "seeded_n30.json",
+      "specializations": {
+        "half": {
+          "F": [
+            241205,
+            128
+          ],
+          "Q": [
+            242997,
+            128
+          ],
+          "mu": [
+            921544,
+            241205
+          ]
+        },
+        "one": {
+          "F": [
+            32584,
+            1
+          ],
+          "Q": [
+            32583,
+            1
+          ],
+          "mu": [
+            17950,
+            4073
+          ]
+        }
+      }
+    }
+  ]
+}

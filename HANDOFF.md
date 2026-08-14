@@ -322,6 +322,42 @@ coefficient at least `1/2`.  Thus both upper and lower recursive escape routes r
 macroscopic template jump, heterogeneous children, or different mixed-triple geometry.  **The
 unrestricted problem is still open with window `[1/4,1/2]`; do not claim otherwise.**
 
+**2026-08-13 half-weight attack (latest state).**  The current primary dossier is
+`phase2/loop/erdos838/HALF_WEIGHT_ATTACK_20260813.md`.  Put
+`Z_P(z)=sum_{A convex}z^|A|` and `H(P)=n Z_P(1/2)/Z_P(1)`.  Proving only
+`H(P)=n^o(1)` for minimum-count configurations implies
+`E|A|>=(1-o(1))log2 n`; the exact deletion inequality then matches the upper
+coefficient and solves the full problem with limit `1/2`.  The attractive finite conjecture
+`H(P)<=2` survives all tests, but is still open.
+
+The main new exact reduction is a random-prefix stopping time.  For a uniform permutation let `R`
+be the last prefix in convex position.  For every hereditary face complex,
+`Z_P(z)=E[sum_{k<=R} binom(n,k)z^k]`.  After tilting the law of `R` by the value of this partial sum
+at `z=1`, the full target becomes `E_* 2^-R <= n^(-1+o(1))`.  In rank three the first failed prefix
+contains a rooted four-circuit involving the arriving point.  This is now the preferred attack:
+a **multistep, tilt-preserving first-circuit switch** with subpolynomial fibres.  A one-step version
+cannot work: canonical visible-flip fibres have half-weight `((3/2)^m-1)/4`, and even a permissive
+fractional one-step flow fails on the exact `n=20` record by `893/4`.
+
+Two other corrections are load-bearing.  First, the sufficient shortcut
+`mu_(1/2)>=log2 n-1` is false for exact integer planar configurations at `n=24,30` (deficits
+`-0.022595,-0.082571`), although their actual `H` values remain only `1.686142,1.730215`.
+The viable Coxeter statement is the integrated activity inequality
+`integral_(1/2)^1 mu_t dlog2(t) >= log2(n/2)`, not endpoint control.  Second, individual
+trace-descending braids can increase `Z(1/2)`, so matrix proofs must amortize absolute boundary
+states.  A constant-loss weighted endpoint cup--cap inequality remains a plausible intermediate
+lemma; its factor-one version is false.
+
+The finite and construction audits also advanced.  Complete reflection/order-type scans give the
+official empty-inclusive values `f(8)=114` and `f(9)=169`; the `n=9` minimizer is unique in the
+database but has no lex-minimum deletion, killing hereditary lex induction.  A new exact `n=20`
+configuration has profile `(1,20,190,1140,2415,866,135,8)` and `V=4775`, independently checked over
+all `2^20` subsets.  The natural cyclic three-cluster continuation of the `n=9` minimizer is now
+rigorously dead: an explicit binary subsystem forms a convex chain of size `2^r` at depth `2r+1`,
+forcing stretched-exponential `V>=2^((N/3)^(log_9 2))`.  Immediate next work is the tilted
+first-circuit switch, in parallel with an integrated deletion potential and constant-loss weighted
+cup--cap recursion.  **No unrestricted proof or counterconstruction is claimed.**
+
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good
   problem."** Nikol owns/edits it; the automated gates approximate it. **Key principle (Nikol, this

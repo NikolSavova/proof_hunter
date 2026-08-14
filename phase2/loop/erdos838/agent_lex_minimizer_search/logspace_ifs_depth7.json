@@ -1,0 +1,9 @@
+[
+  {"depth":1,"n":3,"log2_trace":2.80735492205760417,"mean_size":1.71428571428571441,"mean_minus_log2_n":0.129323213564558337,"normalized_log_trace":1.11753038217340084,"maximum_convex_subset_size":3},
+  {"depth":2,"n":9,"log2_trace":7.39231742277876069,"mean_size":2.92857142857142794,"mean_minus_log2_n":-0.241353572870884214,"normalized_log_trace":0.735669299392519682,"maximum_convex_subset_size":5},
+  {"depth":3,"n":27,"log2_trace":14.4806639976193043,"mean_size":4.65930364797478713,"mean_minus_log2_n":-0.0955838541886810944,"normalized_log_trace":0.64048355601908058,"maximum_convex_subset_size":9},
+  {"depth":4,"n":81,"log2_trace":25.6990130651322808,"mean_size":7.83139989255768398,"mean_minus_log2_n":1.49154988967305968,"normalized_log_trace":0.639379164051046223,"maximum_convex_subset_size":16},
+  {"depth":5,"n":243,"log2_trace":44.4835194655727904,"mean_size":13.7397338976496339,"mean_minus_log2_n":5.81492139404385266,"normalized_log_trace":0.708306372210950941,"maximum_convex_subset_size":28},
+  {"depth":6,"n":729,"log2_trace":77.6601999148150099,"mean_size":24.380281617791546,"mean_minus_log2_n":14.8705066134646096,"normalized_log_trace":0.858732738546570395,"maximum_convex_subset_size":50},
+  {"depth":7,"n":2187,"log2_trace":134.797795100920723,"mean_size":42.2082510426083815,"mean_minus_log2_n":31.1135135375602871,"normalized_log_trace":1.09508725718326261,"maximum_convex_subset_size":88}
+]

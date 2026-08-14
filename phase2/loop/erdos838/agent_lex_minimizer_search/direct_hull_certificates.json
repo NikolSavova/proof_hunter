@@ -1,0 +1,113 @@
+{
+  "8": {
+    "coordinates": [
+      [
+        15,
+        11
+      ],
+      [
+        5,
+        203
+      ],
+      [
+        118,
+        187
+      ],
+      [
+        93,
+        140
+      ],
+      [
+        112,
+        166
+      ],
+      [
+        106,
+        120
+      ],
+      [
+        189,
+        207
+      ],
+      [
+        251,
+        246
+      ]
+    ],
+    "empty_inclusive_count": 114,
+    "first_moment_nonempty": 316,
+    "minimum_absolute_orientation_determinant": 150,
+    "n": 8,
+    "nonempty_count": 113,
+    "profile_nonempty": [
+      0,
+      8,
+      28,
+      56,
+      21,
+      0,
+      0,
+      0,
+      0
+    ],
+    "second_raw_moment_nonempty": 960
+  },
+  "9": {
+    "coordinates": [
+      [
+        62614,
+        7322
+      ],
+      [
+        2922,
+        4014
+      ],
+      [
+        10209,
+        14386
+      ],
+      [
+        20660,
+        24299
+      ],
+      [
+        33336,
+        29017
+      ],
+      [
+        30137,
+        33324
+      ],
+      [
+        15334,
+        45211
+      ],
+      [
+        14934,
+        55621
+      ],
+      [
+        10934,
+        61521
+      ]
+    ],
+    "empty_inclusive_count": 169,
+    "first_moment_nonempty": 492,
+    "minimum_absolute_orientation_determinant": 374774,
+    "n": 9,
+    "nonempty_count": 168,
+    "profile_nonempty": [
+      0,
+      9,
+      36,
+      84,
+      36,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "second_raw_moment_nonempty": 1560
+  }
+}

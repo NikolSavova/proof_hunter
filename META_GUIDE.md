@@ -449,6 +449,42 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: exact half-weight/stopping-time attack (Sihao + Codex ultracode)
+
+- **Honest outcome:** unrestricted #838 remains open with rigorous base-two window `[1/4,1/2]`.
+  The new primary synthesis is `phase2/loop/erdos838/HALF_WEIGHT_ATTACK_20260813.md`.
+- **Full-strength scalar target isolated.**  For
+  `Z_P(z)=sum_(A convex) z^|A|`, proving
+  `H(P)=n Z_P(1/2)/Z_P(1)=n^o(1)` for minimizers implies
+  `E|A|>=(1-o(1))log2 n`; the exact deletion recurrence then proves the missing lower coefficient
+  `1/2`.  The clean stronger conjecture `H<=2` survives all exact and heuristic tests.
+- **New random-prefix identity.**  If `R` is the last convex prefix of a uniform random
+  permutation, then exactly
+  `Z_P(z)=E[sum_(k<=R) binom(n,k)z^k]`.  Tilting `R` by the partial sum at `z=1` reduces the theorem
+  to `E_*2^-R<=n^(-1+o(1))`.  In a planar order the first failure contains a rooted four-circuit
+  involving the arriving point, producing a concrete tilt-preserving switching target.
+- **Local shortcuts rigorously killed.**  Exact integer planar records at `n=24,30` refute
+  `mu_(1/2)>=log2 n-1`, while retaining `H=1.686142,1.730215<2`.  A realizable long braid can
+  improve `(V,M)` while worsening `Z(1/2)`.  Canonical visible-flip inverse fibres have half-weight
+  `((3/2)^m-1)/4`, and a permissive one-step fractional flow fails on the exact `n=20` record by
+  `893/4`.  The factor-one endpoint-span inequality also fails (`48/7<7`); constant-loss weighted
+  cup--cap remains open.
+- **Exact finite progress.**  Complete higher-Bruhat enumeration at `n=8` plus complete realizable
+  order-type database scans through `n=9` certify the official values `f(8)=114`, `f(9)=169`
+  (empty included).  The `n=9` minimizer has no lex-minimum child, killing hereditary lex induction.
+  A new exact integer `n=20` set has profile `(1,20,190,1140,2415,866,135,8)` and `V=4775`, checked
+  by both reverse products and direct enumeration of all `2^20` subsets.
+- **Cyclic construction closed.**  The natural self-affine continuation of the exact `n=9`
+  minimizer contains an all-depth binary convex-chain subsystem: at depth `2r+1` it has a convex
+  `2^r`-set, hence `V>=2^((N/3)^(log_9 2))`.  Its temporary sub-`1/2` finite dip is therefore a
+  stretched-exponential mirage.
+- **Next gate:** multistep, tilt-preserving first-circuit switching for the random-prefix law;
+  parallel targets are an integrated-activity deletion potential and a constant-loss weighted
+  endpoint cup--cap recursion plus localization.  All exact checkers in `agent_half_weight/`,
+  `agent_visible_flip_hw/`, `agent_coxeter_half_weight/`, `agent_cyclic_ifs_kill/`,
+  `agent_dual_number_amortization/`, and `agent_lex_minimizer_search/` passed. Approximate direct
+  API spend: `$0`.
+
 ### 2026-08-13 — ERDŐS #838: eleven-lane reflection/mean/cut campaign (Sihao + Codex ultracode)
 
 - **Honest outcome:** unrestricted #838 is not resolved; the rigorous base-two window remains

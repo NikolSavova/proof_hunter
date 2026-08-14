@@ -1,0 +1,30 @@
+{
+  "8": {
+    "lex_minimum_first_moment": 316,
+    "lex_minimum_record_count": 4,
+    "lex_minimum_record_index_zero_based": 3022,
+    "minimum_nonempty_count": 113,
+    "minimum_profile_histogram_k3_onward": {
+      "56,19,2,0,0,0": 2,
+      "56,20,1,0,0,0": 6,
+      "56,21,0,0,0,0": 4
+    },
+    "minimum_trace_record_count": 12,
+    "n": 8,
+    "official_empty_inclusive_count": 114,
+    "record_count": 3315
+  },
+  "9": {
+    "lex_minimum_first_moment": 492,
+    "lex_minimum_record_count": 1,
+    "lex_minimum_record_index_zero_based": 151740,
+    "minimum_nonempty_count": 168,
+    "minimum_profile_histogram_k3_onward": {
+      "84,36,3,0,0,0,0": 1
+    },
+    "minimum_trace_record_count": 1,
+    "n": 9,
+    "official_empty_inclusive_count": 169,
+    "record_count": 158817
+  }
+}

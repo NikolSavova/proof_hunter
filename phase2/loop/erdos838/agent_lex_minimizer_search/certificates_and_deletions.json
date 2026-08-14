@@ -1,0 +1,858 @@
+{
+  "known_lex_minima_V_M": {
+    "2": [
+      3,
+      4
+    ],
+    "3": [
+      7,
+      12
+    ],
+    "4": [
+      14,
+      28
+    ],
+    "5": [
+      26,
+      59
+    ],
+    "6": [
+      44,
+      108
+    ],
+    "7": [
+      72,
+      190
+    ],
+    "8": [
+      113,
+      316
+    ],
+    "9": [
+      168,
+      492
+    ]
+  },
+  "mode": "exact_rational_certificate_and_deletion_analysis",
+  "n8": {
+    "coordinates_sorted": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "1",
+        "-8786"
+      ],
+      [
+        "2",
+        "-19571"
+      ],
+      [
+        "3",
+        "-55024"
+      ],
+      [
+        "4",
+        "-81143"
+      ],
+      [
+        "5",
+        "-23929"
+      ],
+      [
+        "6",
+        "-5381"
+      ],
+      [
+        "7",
+        "3167"
+      ]
+    ],
+    "deletion_summary": {
+      "lex_minimum_child_count": 3,
+      "lex_pair_histogram": {
+        "72,190": 3,
+        "74,198": 4,
+        "76,206": 1
+      },
+      "minimum_possible_sum": 576,
+      "sum_deletion_traces": 588,
+      "total_excess_over_minimum": 12,
+      "trace_histogram": {
+        "72": 3,
+        "74": 4,
+        "76": 1
+      }
+    },
+    "deletions": [
+      {
+        "excess_over_global_minimum": 2,
+        "first_moment": 198,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "0",
+          "0"
+        ],
+        "omitted_sorted_index": 0,
+        "profile": [
+          0,
+          7,
+          21,
+          35,
+          11
+        ],
+        "trace": 74
+      },
+      {
+        "excess_over_global_minimum": 2,
+        "first_moment": 198,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "1",
+          "-8786"
+        ],
+        "omitted_sorted_index": 1,
+        "profile": [
+          0,
+          7,
+          21,
+          35,
+          11
+        ],
+        "trace": 74
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 190,
+        "is_lex_minimum_child": true,
+        "omitted_point": [
+          "2",
+          "-19571"
+        ],
+        "omitted_sorted_index": 2,
+        "profile": [
+          0,
+          7,
+          21,
+          35,
+          9
+        ],
+        "trace": 72
+      },
+      {
+        "excess_over_global_minimum": 2,
+        "first_moment": 198,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "3",
+          "-55024"
+        ],
+        "omitted_sorted_index": 3,
+        "profile": [
+          0,
+          7,
+          21,
+          35,
+          11
+        ],
+        "trace": 74
+      },
+      {
+        "excess_over_global_minimum": 4,
+        "first_moment": 206,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "4",
+          "-81143"
+        ],
+        "omitted_sorted_index": 4,
+        "profile": [
+          0,
+          7,
+          21,
+          35,
+          13
+        ],
+        "trace": 76
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 190,
+        "is_lex_minimum_child": true,
+        "omitted_point": [
+          "5",
+          "-23929"
+        ],
+        "omitted_sorted_index": 5,
+        "profile": [
+          0,
+          7,
+          21,
+          35,
+          9
+        ],
+        "trace": 72
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 190,
+        "is_lex_minimum_child": true,
+        "omitted_point": [
+          "6",
+          "-5381"
+        ],
+        "omitted_sorted_index": 6,
+        "profile": [
+          0,
+          7,
+          21,
+          35,
+          9
+        ],
+        "trace": 72
+      },
+      {
+        "excess_over_global_minimum": 2,
+        "first_moment": 198,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "7",
+          "3167"
+        ],
+        "omitted_sorted_index": 7,
+        "profile": [
+          0,
+          7,
+          21,
+          35,
+          11
+        ],
+        "trace": 74
+      }
+    ],
+    "evaluation": {
+      "cap_total": 55,
+      "cup_total": 92,
+      "endpoint_max": 11,
+      "first_moment": 316,
+      "graded": [
+        0,
+        8,
+        28,
+        56,
+        21
+      ],
+      "mean_minus_log2_n": -0.20353982300884965,
+      "mean_size": 2.7964601769911503,
+      "n": 8,
+      "normalized_log_trace": 0.7577976624905765,
+      "trace": 113
+    },
+    "mu_minus_weighted_deletion_mean": [
+      44,
+      339
+    ],
+    "n": 8,
+    "root_sequence_zero_based": [
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "second_raw_moment_sum_k2_vk": 960,
+    "variance": [
+      8624,
+      12769
+    ],
+    "variance_decimal": 0.6753856997415616,
+    "weighted_deletion_mean": [
+      8,
+      3
+    ],
+    "word_zero_based": [
+      2,
+      3,
+      2,
+      1,
+      2,
+      0,
+      1,
+      3,
+      2,
+      3,
+      4,
+      3,
+      2,
+      5,
+      6,
+      4,
+      5,
+      3,
+      4,
+      3,
+      2,
+      1,
+      2,
+      3,
+      2,
+      0,
+      1,
+      2
+    ]
+  },
+  "n9": {
+    "coordinates_sorted": [
+      [
+        "2922",
+        "4014"
+      ],
+      [
+        "10209",
+        "14386"
+      ],
+      [
+        "10934",
+        "61521"
+      ],
+      [
+        "14934",
+        "55621"
+      ],
+      [
+        "15334",
+        "45211"
+      ],
+      [
+        "20660",
+        "24299"
+      ],
+      [
+        "30137",
+        "33324"
+      ],
+      [
+        "33336",
+        "29017"
+      ],
+      [
+        "62614",
+        "7322"
+      ]
+    ],
+    "deletion_summary": {
+      "lex_minimum_child_count": 0,
+      "lex_pair_histogram": {
+        "113,317": 3,
+        "113,318": 3,
+        "114,321": 3
+      },
+      "minimum_possible_sum": 1017,
+      "sum_deletion_traces": 1020,
+      "total_excess_over_minimum": 3,
+      "trace_histogram": {
+        "113": 6,
+        "114": 3
+      }
+    },
+    "deletions": [
+      {
+        "excess_over_global_minimum": 1,
+        "first_moment": 321,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "2922",
+          "4014"
+        ],
+        "omitted_sorted_index": 0,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          21,
+          1
+        ],
+        "trace": 114
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 317,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "10209",
+          "14386"
+        ],
+        "omitted_sorted_index": 1,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          20,
+          1
+        ],
+        "trace": 113
+      },
+      {
+        "excess_over_global_minimum": 1,
+        "first_moment": 321,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "10934",
+          "61521"
+        ],
+        "omitted_sorted_index": 2,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          21,
+          1
+        ],
+        "trace": 114
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 317,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "14934",
+          "55621"
+        ],
+        "omitted_sorted_index": 3,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          20,
+          1
+        ],
+        "trace": 113
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 318,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "15334",
+          "45211"
+        ],
+        "omitted_sorted_index": 4,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          19,
+          2
+        ],
+        "trace": 113
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 318,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "20660",
+          "24299"
+        ],
+        "omitted_sorted_index": 5,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          19,
+          2
+        ],
+        "trace": 113
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 318,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "30137",
+          "33324"
+        ],
+        "omitted_sorted_index": 6,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          19,
+          2
+        ],
+        "trace": 113
+      },
+      {
+        "excess_over_global_minimum": 0,
+        "first_moment": 317,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "33336",
+          "29017"
+        ],
+        "omitted_sorted_index": 7,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          20,
+          1
+        ],
+        "trace": 113
+      },
+      {
+        "excess_over_global_minimum": 1,
+        "first_moment": 321,
+        "is_lex_minimum_child": false,
+        "omitted_point": [
+          "62614",
+          "7322"
+        ],
+        "omitted_sorted_index": 8,
+        "profile": [
+          0,
+          8,
+          28,
+          56,
+          21,
+          1
+        ],
+        "trace": 114
+      }
+    ],
+    "evaluation": {
+      "cap_total": 115,
+      "cup_total": 90,
+      "endpoint_max": 14,
+      "first_moment": 492,
+      "graded": [
+        0,
+        9,
+        36,
+        84,
+        36,
+        3
+      ],
+      "mean_minus_log2_n": -0.24135357287088377,
+      "mean_size": 2.9285714285714284,
+      "n": 9,
+      "normalized_log_trace": 0.7356692993925197,
+      "trace": 168
+    },
+    "mu_minus_weighted_deletion_mean": [
+      139,
+      1190
+    ],
+    "n": 9,
+    "root_sequence_zero_based": [
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "second_raw_moment_sum_k2_vk": 1560,
+    "variance": [
+      139,
+      196
+    ],
+    "variance_decimal": 0.7091836734693877,
+    "weighted_deletion_mean": [
+      239,
+      85
+    ],
+    "word_zero_based": [
+      3,
+      4,
+      3,
+      2,
+      3,
+      4,
+      5,
+      4,
+      6,
+      5,
+      4,
+      7,
+      6,
+      3,
+      4,
+      5,
+      4,
+      3,
+      2,
+      1,
+      0,
+      3,
+      2,
+      1,
+      3,
+      4,
+      3,
+      2,
+      3,
+      4,
+      5,
+      6,
+      4,
+      7,
+      5,
+      6
+    ]
+  }
+}

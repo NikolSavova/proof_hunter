@@ -1,0 +1,175 @@
+{
+  "n8": {
+    "coordinates_sorted": [
+      [
+        5,
+        203
+      ],
+      [
+        15,
+        11
+      ],
+      [
+        93,
+        140
+      ],
+      [
+        106,
+        120
+      ],
+      [
+        112,
+        166
+      ],
+      [
+        118,
+        187
+      ],
+      [
+        189,
+        207
+      ],
+      [
+        251,
+        246
+      ]
+    ],
+    "decomposition_count": 1,
+    "decompositions": [
+      {
+        "clusters_by_sorted_point_index": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            6,
+            7
+          ]
+        ],
+        "projection_certificates": [
+          {
+            "direction": [
+              295323350,
+              955397362
+            ],
+            "middle_cluster": 0,
+            "outer_order": "first,middle,third"
+          },
+          {
+            "direction": [
+              778487412,
+              -627660218
+            ],
+            "middle_cluster": 1,
+            "outer_order": "first,middle,third"
+          },
+          {
+            "direction": [
+              528284522,
+              -849067408
+            ],
+            "middle_cluster": 2,
+            "outer_order": "first,middle,third"
+          }
+        ]
+      }
+    ],
+    "status": "balanced_3_3_2_projection_analogue_not_standard_3_decomposability"
+  },
+  "n9": {
+    "coordinates_sorted": [
+      [
+        2922,
+        4014
+      ],
+      [
+        10209,
+        14386
+      ],
+      [
+        10934,
+        61521
+      ],
+      [
+        14934,
+        55621
+      ],
+      [
+        15334,
+        45211
+      ],
+      [
+        20660,
+        24299
+      ],
+      [
+        30137,
+        33324
+      ],
+      [
+        33336,
+        29017
+      ],
+      [
+        62614,
+        7322
+      ]
+    ],
+    "decomposition_count": 1,
+    "decompositions": [
+      {
+        "clusters_by_sorted_point_index": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            6,
+            7,
+            8
+          ]
+        ],
+        "projection_certificates": [
+          {
+            "direction": [
+              867574037,
+              -497308043
+            ],
+            "middle_cluster": 0,
+            "outer_order": "first,middle,third"
+          },
+          {
+            "direction": [
+              910323393,
+              413897717
+            ],
+            "middle_cluster": 1,
+            "outer_order": "first,middle,third"
+          },
+          {
+            "direction": [
+              505573743,
+              862783397
+            ],
+            "middle_cluster": 2,
+            "outer_order": "first,middle,third"
+          }
+        ]
+      }
+    ],
+    "status": "standard_equal_size_3_decomposability"
+  }
+}

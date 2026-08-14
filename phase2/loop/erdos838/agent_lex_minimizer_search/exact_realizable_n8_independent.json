@@ -1,0 +1,14 @@
+{
+  "mode": "exhaustive_realizable_order_type_database",
+  "n": 8,
+  "record_count": 3315,
+  "minimum_trace": 113,
+  "minimum_trace_count_in_database": 12,
+  "lex_minimum_first_moment": 316,
+  "lex_minimum_count_in_database": 4,
+  "lex_minimum_record_index_zero_based": 3022,
+  "second_raw_moment_numerator": 960,
+  "profile": [0,8,28,56,21,0,0,0,0],
+  "minimum_trace_profile_histogram": {"8,28,56,19,2":2,"8,28,56,20,1":6,"8,28,56,21":4},
+  "coordinates_as_stored": [[15,11],[5,203],[118,187],[93,140],[112,166],[106,120],[189,207],[251,246]]
+}
