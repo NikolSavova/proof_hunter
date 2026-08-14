@@ -14,8 +14,9 @@ to read, in what order, and which statements in them are now superseded.*
 | 2 | `paper/main.tex` | the proved upper theorem; 10pp, compiles clean |
 | 3 | `INSTANCE_HANDOFF_20260813.md` (35 KB, Sol) | the deep dossier: barriers, counterexamples, exact data. **Still the best single document.** |
 | 4 | `CAMPAIGN_SYNTHESIS_20260813.md` | round-1 campaign results |
-| 5 | `REVIEW_20260813_claude.md` | independent audit of the paper + Baek–Balko clearance |
-| 6 | `UNRESTRICTED_ATTACK_20260813.md`, `FULL_ATTACK.md`, `SUBMISSION_NOVELTY.md` | prior attack records |
+| 5 | `PLAN_OF_ATTACK_20260813.md` | the post-campaign strategy and exact matrix target |
+| 6 | `REVIEW_20260813_claude.md` | independent audit of the paper + Baek–Balko clearance |
+| 7 | `UNRESTRICTED_ATTACK_20260813.md`, `FULL_ATTACK.md`, `SUBMISSION_NOVELTY.md` | prior attack records |
 
 Raw campaign outputs: `campaign_lower_<lane>_20260813.md` for lanes `verify51`, `attack_direct`,
 `attack_szekely`, `attack_tree`, `break_lemma`, `break_target`, `priorart`.
@@ -47,8 +48,9 @@ Rigorous window today:
 1. **Theorem 1.1**: `limsup ≤ 1/2`. Solid.
 2. **Proposition 4.4**: no *fixed-template* iteration beats `1/2` (cup–cap theorem:
    `r ≤ C(a+b−2,a−1) ≤ 2^{a+b−2}`). Solid.
-3. **Theorem 5.1**: `1/2` sharp on the *decomposable* class. Lemma 5.2 verified by hand; **the
-   multiscale reset argument in the main proof is still not independently verified** — see §5.
+3. **Theorem 5.1**: `1/2` sharp on the *decomposable* class. Lemma 5.2 and the full multiscale
+   reset were independently reconstructed and audited; `campaign_lower_verify51_20260813.md`
+   supplies a further line-by-line check.
 4. **Lemma 2.2** composition identities — verified twice, independently (§3).
 
 **Class terminology:** "decomposable" is due to **Balko–Kynčl–Langerman–Pilz**, Electron. J.
@@ -74,21 +76,34 @@ convex subsets from **orientation determinants only**. On `S=Q=T_{4,2}` it retur
 product, `log W`, and the endpoint-localized `max_{p<q} c(p,q)u(p,q)` separately.
 
 ⚠️ **The `eps` threshold is load-bearing.** At `eps = 1/1000` the 36-point composition *is* in
-general position but returns the **wrong** count (14058). It stabilises only from `1/10⁵` down.
-Any new composition code must re-check general position and stability.
+general position but returns the **wrong** count (14058).  In the unnormalized exact audit the
+first tested successful outer scale was `1/9750`; `1/10000` and `1/16384` also pass.  The separately
+normalized verifier accepts `1/128`.  Any new composition code must choose the scale afresh and
+re-check every orientation rule, not merely general position.
 
 ---
 
 ## 4. THE TARGET — and a correction that cost a campaign round
 
-The right quantity is the **endpoint-localized product**:
+The exact right quantity is the **common-endpoint sum**:
 
 ```
-max_{p<q} c(p,q)·u(p,q)  ≥  2^{(1/2 − o(1))(log N)²}
+sum_{p<q} c(p,q)·u(p,q)  ≥  2^{(1/2 − o(1))(log N)²}.
 ```
 
-where `c(p,q)`, `u(p,q)` count caps/cups with endpoints exactly `p,q`. This is Sol's inequality
-**`(EM)`**, already identified in `INSTANCE_HANDOFF_20260813.md` §"Priority B".
+Here `c(p,q)`, `u(p,q)` count caps/cups with endpoints exactly `p,q`.  This is inequality **`(EM)`**
+from `INSTANCE_HANDOFF_20260813.md`.  Replacing the sum by `max c(p,q)u(p,q)` is asymptotically
+equivalent at the quadratic scale, since there are fewer than `N^2` endpoint pairs.
+
+`PLAN_OF_ATTACK_20260813.md` gives an exact algebraic form.  If the chord edges `e_1,...,e_M` are
+ordered by slope and `T_(i,j)=I+E_(j,i)`, then the forward and reverse products `A,B` have entries
+equal to the fixed-endpoint cup and cap counts, and
+
+```
+v(P) = <A,B>_F = trace(A^T B).
+```
+
+Thus `(EM)` is a reverse-product trace inequality for stretchable type-A reflection orders.
 
 **The global cap–cup product is NOT sufficient.** On 2026-08-13 I launched a seven-lane campaign
 aimed at `log C + log U ≥ (1/2−o(1))(log N)²`, briefing every lane that it would resolve the
@@ -124,7 +139,7 @@ own handoff before designing an attack.
 
 ## 6. What still supports `1/2` being the answer
 
-- Theorem 5.1: sharp on the whole decomposable class (modulo §5's unverified page).
+- Theorem 5.1: sharp on the whole decomposable class, including the audited multiscale reset.
 - Proposition 4.4: sharp for fixed-template iteration.
 - `break_target` (round 1) found **nothing** beating `1/2` and proved every level-dependent
   *uniform* directional blow-up with `max_i log|S_i| = o(log N)` satisfies
@@ -144,13 +159,11 @@ gives `(EM)` or improves the `1/4` universal coefficient. Its summary line:
 > *"fixed-size convex-set multiplicity and monotone-path threshold theory exist; all-sizes cap–cup
 > product multiplicity apparently does not."*
 
-**Open gate:** the Baek–Balko clearance was done against the **SoCG 2025 extended abstract**, which
-states outright that the proofs of its Theorem 8 and Lemma 14 are omitted. The full version is
-JCTA **222** (2026) 106195, paywalled. **Read it before submitting anything.** Also: the paper cites
-`\cite[Theorem 7]{BaekBalko2026}` twice; in SoCG the decomposable result is **Theorem 8**
-(Theorem 7 there is `C_weak(7) > 33`). Verify against the version actually cited.
-
-Local copy: `refs_baek_balko_socg2025.pdf`.
+**Resolved gate:** the full open-access JCTA article, volume **222** (2026), 106195, was read.  The
+decomposable result is Theorem 7 in the journal version (Theorem 8 in the SoCG preliminary
+version), and Lemma 14 contains the endpoint-cluster structural precursor but not the total-count
+identity or coefficient-`1/2` theorem.  The paper and `SUBMISSION_NOVELTY.md` use the journal
+numbering.
 
 ---
 
@@ -174,17 +187,18 @@ reaches `0.5`), so it is a **sanity family, not a candidate minimizer.**
 
 ## 9. Next actions, ranked
 
-1. **Verify Theorem 5.1's multiscale reset.** Still the one unchecked page, and its structure is
-   the template for any `(EM)` proof. If it is broken, support for `1/2` drops to one item.
-2. **Attack `(EM)` directly**, using extension/overlap structure — barrier §5.1 proves nothing
-   weaker can work. Must handle **indecomposable** order types head-on (§5.2).
-3. **Bank the barrier.** `(c+u)H(c/(c+u)) ≥ 1/4` is clean, apparently novel, and a real
+1. **Run Gate A in `PLAN_OF_ATTACK_20260813.md`.**  Build the reduced-word/graded evaluator and
+   test the reverse-product trace target first on all small reflection orders, then by braid-move
+   search.  This attacks `(EM)` while retaining both endpoints and indecomposable order types.
+2. **Derive the exact contiguous-cut transfer formula** for the slope-filtered boundary vectors.
+   This is the proposed arbitrary-order-type replacement for the strong-tree crossing term.
+3. **Test the graded supersaturation target in the diagonal regime** `k about (log n)/2`.  Any
+   surviving fixed gain improves the lower coefficient even if the full trace theorem remains open.
+4. **Bank the barrier.** `(c+u)H(c/(c+u)) ≥ 1/4` is clean, apparently novel, and a real
    contribution independent of whether `(EM)` ever falls. Consider writing it up as a short note or
    a section of the existing paper.
-4. **Paper hygiene** (from `REVIEW_20260813_claude.md`): the `Theorem 7` citation; add the JCTA
-   read to `paper/README.md`'s "Before submission" list; the abstract's "optimal universal
-   coefficient" phrasing can be misread as optimality for the *problem* rather than within the
-   class.
+5. **Paper hygiene:** retain the original `article` formatting and make sure the abstract cannot be
+   read as claiming unrestricted optimality.
 
 ---
 

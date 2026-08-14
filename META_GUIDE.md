@@ -449,6 +449,30 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: post-campaign reflection-order plan (Sihao + Codex)
+
+- Read and reconciled all seven new Sol lower-campaign reports with the earlier unrestricted
+  dossier.  The durable corrections are: global cap--cup mass loses a factor two; every
+  asymmetric cup--cap double-counting scheme is capped at `1/4`; canonical module trees stop at
+  asymptotically complete indecomposable nodes; and the decomposable multiscale reset has now been
+  independently audited and passes.
+- Found an exact endpoint-preserving algebraic formulation.  If chord edges are ordered by slope
+  and `T_(i,j)(z)=I+zE_(j,i)`, the opposite products `A(z),B(z)` enumerate cups and caps by their
+  two endpoints.  Consequently
+  `Z_P(z)=Nz+<A(z),B(z)>_F-N` and, at `z=1`,
+  `V(P)=trace(A^T B)`.  The full lower bound becomes a reverse-product trace inequality for
+  stretchable type-A reflection orders.  The six-point Pascal cell independently checks
+  `(C,U,V,M)=(31,31,50,9)`.
+- Added `phase2/loop/erdos838/PLAN_OF_ATTACK_20260813.md`, with gated reduced-word search,
+  stretchability checks, an exact slope-filtered contiguous-cut lemma as the primary proof target,
+  graded growing-`k` supersaturation as the incremental fallback, explicit kill tests, and a
+  one-week execution schedule.  Added the first exact checker `reflection_trace.py` and corrected
+  stale statements in `RESUME_838.md` about the reset audit, epsilon thresholds, and the completed
+  full-JCTA clearance.
+- A narrow web search found the standard reflection-order/reduced-word and PBW/Lusztig literature,
+  but no direct reverse-product Frobenius inequality; this is not yet a publication-grade novelty
+  search.  Approximate direct API spend: `$0`.
+
 ### 2026-08-13 — ERDŐS #838: all-in decision, seven-lane lower-bound campaign, barrier proved (Sihao + Claude Opus 5)
 
 **Decision.** Went all in on #838 after comparing it with #669, #791 and #1208 on *"which can

@@ -266,6 +266,20 @@ coefficient to `(1+eta)/4`.  The clean full target remains the exact common-two-
 MathSciNet/Zentralblatt/geometer clearance for the paper; mathematically, attack one of these two
 growing-order/common-endpoint statements.  Do not claim the full problem solved.
 
+**Post-campaign attack plan (2026-08-13).**  The concrete next programme is now
+`phase2/loop/erdos838/PLAN_OF_ATTACK_20260813.md`.  Order the chord edges `e_1,...,e_M` by slope,
+put `T_(i,j)(z)=I+zE_(j,i)`, and form the opposite products
+`A=T_(e_M)...T_(e_1)` and `B=T_(e_1)...T_(e_M)`.  Their entries are the two-endpoint cup and cap
+path polynomials, giving the exact new formulation
+`V(P)=<A(1),B(1)>_F=trace(A(1)^T B(1))`.  The full lower bound is therefore a reverse-product
+trace inequality for **stretchable type-A reflection orders**.  First gate: enumerate/search
+reduced words and test the stronger all-reflection-order statement; then derive the exact
+slope-filtered transfer formula across a contiguous cut and seek an arbitrary-order-type analogue
+of the audited reset.  The same matrices with a variable `z` give the graded fallback
+`[z^k]Z_P(z)=v_k(P)`, so the diagonal growing-`k` supersaturation target can be tested against the
+actual upper construction before proof effort.  Initial exact checker:
+`phase2/loop/erdos838/reflection_trace.py` (six-point self-test `(C,U,V,M)=(31,31,50,9)`).
+
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good
   problem."** Nikol owns/edits it; the automated gates approximate it. **Key principle (Nikol, this
