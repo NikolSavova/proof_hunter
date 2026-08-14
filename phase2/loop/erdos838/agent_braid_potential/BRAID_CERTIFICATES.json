@@ -1,0 +1,54 @@
+{
+  "schema": "zero-based reduced words; graded arrays include degree zero",
+  "n5_same_triple_context_reversal": [
+    {
+      "triple": [0, 1, 2],
+      "plus_word": [0, 1, 0, 2, 1, 0, 3, 2, 1, 0],
+      "minus_word": [1, 0, 1, 2, 1, 0, 3, 2, 1, 0],
+      "plus_trace": 31,
+      "minus_trace": 28,
+      "phi": 4,
+      "psi": 1
+    },
+    {
+      "triple": [0, 1, 2],
+      "plus_word": [2, 1, 0, 3, 2, 1, 0, 2, 3, 2],
+      "minus_word": [2, 1, 0, 3, 2, 1, 0, 3, 2, 3],
+      "plus_trace": 28,
+      "minus_trace": 31,
+      "phi": 1,
+      "psi": 4
+    }
+  ],
+  "n8_trace_tie_mean_change_mod_commutation": {
+    "first_word": [2, 1, 0, 3, 2, 1, 4, 3, 2, 3, 4, 3, 5, 4, 6, 5, 4, 3, 2, 1, 0, 4, 3, 2, 1, 3, 2, 3],
+    "first_graded": [0, 8, 28, 56, 20, 1],
+    "first_trace": 113,
+    "first_moment": 317,
+    "second_word": [2, 1, 0, 3, 2, 1, 4, 3, 2, 3, 4, 3, 5, 4, 6, 5, 4, 3, 2, 1, 0, 2, 4, 3, 2, 1, 2, 3],
+    "second_graded": [0, 8, 28, 56, 21],
+    "second_trace": 113,
+    "second_first_moment": 316,
+    "relation": "one long braid after short commutations, certified by braid_neighbors_mod_commutation"
+  },
+  "n9_strict_trace_mean_conflict": {
+    "triple": [0, 6, 7],
+    "plus_word": [3, 4, 5, 3, 6, 2, 1, 0, 1, 2, 7, 3, 4, 5, 4, 6, 3, 7, 5, 4, 3, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 0, 3, 1, 2],
+    "plus_graded": [0, 9, 36, 84, 62, 13],
+    "plus_trace": 204,
+    "plus_first_moment": 646,
+    "plus_mean": "323/102",
+    "minus_word": [3, 4, 5, 3, 6, 2, 1, 0, 1, 2, 7, 3, 5, 4, 5, 6, 3, 7, 5, 4, 3, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 0, 3, 1, 2],
+    "minus_graded": [0, 9, 36, 84, 64, 12],
+    "minus_trace": 205,
+    "minus_first_moment": 649,
+    "minus_mean": "649/205",
+    "base_trace": 200,
+    "base_first_moment": 630,
+    "phi": 4,
+    "phi_derivative": 8,
+    "psi": 5,
+    "psi_derivative": 9,
+    "conclusion": "minus-to-plus lowers trace 205 to 204 but raises mean 649/205 to 323/102"
+  }
+}

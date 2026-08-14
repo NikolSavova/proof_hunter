@@ -280,6 +280,48 @@ of the audited reset.  The same matrices with a variable `z` give the graded fal
 actual upper construction before proof effort.  Initial exact checker:
 `phase2/loop/erdos838/reflection_trace.py` (six-point self-test `(C,U,V,M)=(31,31,50,9)`).
 
+**2026-08-13 ultracode reflection/mean/cut campaign.**  The durable synthesis is
+`phase2/loop/erdos838/ULTRACODE_CAMPAIGN_20260813.md`.  Eleven parallel lanes established the
+following.  All type-A reflection-order commutation classes through `n=7` were exhausted
+(`24698` classes at `n=7`); the exact trace minima for `n=2,...,7` are
+`3,7,14,26,44,72`, and every minimizer is rationally stretchable.  The exact mean-size deletion
+identity reduces the full `1/2` lower bound to the conjecture that a uniformly random convex subset
+of an `n`-point set has mean size at least `log2 n-O(1)` (only minimizers are needed).  Its closure-
+lattice version is an average down-degree statement for realizable rank-three affine convex
+geometries.  The tempting universal quadratic mean/count inequality is false on balanced Pascal
+cells, but a low-mean minimizer dichotomy remains sufficient and live.
+
+The reverse-product trace now has an exact contiguous-cut factorization through an ordered pair of
+hull bridges and an exact rank-one long-braid switch formula.  These calculations also killed the
+easy proofs: same-bridge reset is trivial; local braid descent and trace-compatible scalar
+potentials fail; polynomial collision fails exponentially; and even capping only the crossing
+trace fails with ratio `N^{-Theta(log log N)}`.  Every known collision counterexample hides enormous
+convex mass inside one-sided blocks, so the correct surviving cut statement must be capped by the
+*total* `V(P)`.  Earlier cut notes advertised a conditional `1/3` calculation using a
+`(1/2-o(1))log^2 n` cap--cup product bound.  That product bound is **not known for arbitrary order
+types** (it is itself a central missing theorem), so collision and tangent estimates alone do not
+currently justify `1/3`.  Reaching `1/2` requires both stronger directional mass and a multiscale
+endpoint-history reset.
+
+The corrected total-cap theorem is quantitative but modest.  With
+`E(x,y)=x log((x+y)/x)+y log((x+y)/y)`, if
+`log V(P)<=(w+o(1))L^2` and `Q⊂P` has `|Q|=N^(alpha+o(1))`, then both `C(Q)` and `U(Q)` have
+logarithmic coefficient at least the root `beta` of `E(w,beta)=alpha^2/4`.  At the target
+`w=1/2,alpha=1`, `beta=0.0524142083...`.  This forbids polynomially one-sided macroscopic blocks
+but does not improve `1/4`.  The conjectural square-root collision inequality survives exact tests,
+yet its simplest injection is false.  Separately, weak long-braid sink rigidity and toggle-CDE were
+killed by exact `n=8` and `n=7` certificates.  The braid route now has to address global
+lexicographic `(V,M)` minimizers using full boundary-vector amortization.
+
+The sharp fixed-size target
+`log2 v_k(P)>=(3/2-o(1))k^2` at `log2|P|=2k+o(k)` remains open and would improve the unrestricted
+lower coefficient to `3/8`.  It is now proved for every fine-grained, arbitrarily nonstationary
+homogeneous vertical tower.  Separately, every vertical tower with arbitrary nonrepeating,
+unbounded, possibly indecomposable macros and vanishing logarithmic mesh still has total
+coefficient at least `1/2`.  Thus both upper and lower recursive escape routes require a
+macroscopic template jump, heterogeneous children, or different mixed-triple geometry.  **The
+unrestricted problem is still open with window `[1/4,1/2]`; do not claim otherwise.**
+
 **⭐ LEVER A — corpus broadened + de-noised (2026-06-29). Corpus 900 → 2206; Erdős bias broken.**
 - **`PROBLEM_CRITERIA.md` (NEW, repo root) — the human-owned, strict spec of what counts as a "good
   problem."** Nikol owns/edits it; the automated gates approximate it. **Key principle (Nikol, this

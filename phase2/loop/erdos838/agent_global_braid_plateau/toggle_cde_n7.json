@@ -1,0 +1,80 @@
+{
+  "augmented_rank": 9,
+  "closed_set_count": 73,
+  "design_rank": 8,
+  "down_degree_profile": [
+    1,
+    7,
+    21,
+    35,
+    9,
+    0,
+    0,
+    0
+  ],
+  "interpretation": "dd lies in span of constant and signed element-toggle statistics iff ranks agree",
+  "n": 7,
+  "non_tCDE_witness": {
+    "down_degree_pairing": 1,
+    "nonzero_mask_weights": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        -2
+      ],
+      [
+        4,
+        -4
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        8,
+        -2
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "sum_weights": 0,
+    "toggle_pairings": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "use": "uniform probability plus/minus epsilon times this signed vector gives two toggle-symmetric laws with different expected down-degree for sufficiently small epsilon"
+  },
+  "toggle_cde_identity_exists": false,
+  "total_down_degree": 190,
+  "uniform_mean": [
+    190,
+    73
+  ],
+  "uniform_toggle_sums": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

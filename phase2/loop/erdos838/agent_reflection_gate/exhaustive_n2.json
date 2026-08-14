@@ -1,0 +1,123 @@
+{
+  "certificate": {
+    "caps": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "cups": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "evaluation": {
+      "cap_total": 3,
+      "cup_total": 3,
+      "endpoint_max": 1,
+      "first_moment": 4,
+      "graded": [
+        0,
+        2,
+        1
+      ],
+      "mean_minus_log2_n": 0.33333333333333326,
+      "mean_size": 1.3333333333333333,
+      "n": 2,
+      "normalized_log_trace": 1.584962500721156,
+      "trace": 3
+    },
+    "fixed_x_rational_y": [
+      "0",
+      "0"
+    ],
+    "fixed_x_status": "rational_certificate",
+    "n": 2,
+    "root_sequence_zero_based": [
+      [
+        0,
+        1
+      ]
+    ],
+    "word_zero_based": [
+      0
+    ]
+  },
+  "distinct_trace_count": 1,
+  "elapsed_seconds": 7.091602310538292e-05,
+  "minimum_endpoint_max_among_min_trace": 1,
+  "minimum_mean_certificate": {
+    "caps": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "cups": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "evaluation": {
+      "cap_total": 3,
+      "cup_total": 3,
+      "endpoint_max": 1,
+      "first_moment": 4,
+      "graded": [
+        0,
+        2,
+        1
+      ],
+      "mean_minus_log2_n": 0.33333333333333326,
+      "mean_size": 1.3333333333333333,
+      "n": 2,
+      "normalized_log_trace": 1.584962500721156,
+      "trace": 3
+    },
+    "fixed_x_rational_y": [
+      "0",
+      "0"
+    ],
+    "fixed_x_status": "rational_certificate",
+    "n": 2,
+    "root_sequence_zero_based": [
+      [
+        0,
+        1
+      ]
+    ],
+    "word_zero_based": [
+      0
+    ]
+  },
+  "minimum_mean_minus_log2_n": 0.33333333333333326,
+  "minimum_mean_size": 1.3333333333333333,
+  "minimum_mean_word_count": 1,
+  "minimum_normalized_log_trace": 1.584962500721156,
+  "minimum_trace": 3,
+  "minimum_word_count": 1,
+  "mode": "exhaustive_reduced_words",
+  "n": 2,
+  "reduced_word_count": 1,
+  "trace_histogram": {
+    "3": 1
+  }
+}

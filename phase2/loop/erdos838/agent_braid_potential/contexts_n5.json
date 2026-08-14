@@ -1,0 +1,438 @@
+{
+  "counters": {
+    "trace_added_mean_sign_-1,-1": 112,
+    "trace_added_mean_sign_0,0": 160,
+    "trace_added_mean_sign_1,1": 112,
+    "trace_first_moment_sign_-1,-1": 112,
+    "trace_first_moment_sign_0,0": 160,
+    "trace_first_moment_sign_1,1": 112,
+    "trace_mean_sign_-1,-1": 112,
+    "trace_mean_sign_0,0": 160,
+    "trace_mean_sign_1,1": 112
+  },
+  "examples": {
+    "same_triple_context_reversal_negative": {
+      "alpha": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "base_first_moment": 64,
+      "base_trace": 27,
+      "beta": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gamma": [
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "minus_first_moment": 80,
+      "minus_mean": 2.5806451612903225,
+      "minus_roots": [
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "minus_trace": 31,
+      "minus_word": [
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        0,
+        3,
+        2,
+        3
+      ],
+      "n": 5,
+      "phi": 1,
+      "phi_added_mean": 3.0,
+      "phi_derivative": 1,
+      "plus_first_moment": 67,
+      "plus_mean": 2.392857142857143,
+      "plus_roots": [
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "plus_trace": 28,
+      "plus_word": [
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        0,
+        2,
+        3,
+        2
+      ],
+      "psi": 4,
+      "psi_added_mean": 4.0,
+      "psi_derivative": 8,
+      "triple": [
+        0,
+        1,
+        2
+      ]
+    },
+    "same_triple_context_reversal_positive": {
+      "alpha": [
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "base_first_moment": 64,
+      "base_trace": 27,
+      "beta": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gamma": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "minus_first_moment": 67,
+      "minus_mean": 2.392857142857143,
+      "minus_roots": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "minus_trace": 28,
+      "minus_word": [
+        1,
+        0,
+        1,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        0
+      ],
+      "n": 5,
+      "phi": 4,
+      "phi_added_mean": 4.0,
+      "phi_derivative": 8,
+      "plus_first_moment": 80,
+      "plus_mean": 2.5806451612903225,
+      "plus_roots": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "plus_trace": 31,
+      "plus_word": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        3,
+        2,
+        1,
+        0
+      ],
+      "psi": 1,
+      "psi_added_mean": 3.0,
+      "psi_derivative": 1,
+      "triple": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  "individual_braid_edges": 384,
+  "mode": "all_reduced_words_direct_braid_context_scan",
+  "n": 5,
+  "triple_trace_delta_signs": {
+    "(0, 1, 2)": [
+      -1,
+      0,
+      1
+    ],
+    "(0, 1, 3)": [
+      -1,
+      0,
+      1
+    ],
+    "(0, 1, 4)": [
+      -1,
+      0,
+      1
+    ],
+    "(0, 2, 3)": [
+      -1,
+      0,
+      1
+    ],
+    "(0, 2, 4)": [
+      -1,
+      0,
+      1
+    ],
+    "(0, 3, 4)": [
+      -1,
+      0,
+      1
+    ],
+    "(1, 2, 3)": [
+      -1,
+      0,
+      1
+    ],
+    "(1, 2, 4)": [
+      -1,
+      0,
+      1
+    ],
+    "(1, 3, 4)": [
+      -1,
+      0,
+      1
+    ],
+    "(2, 3, 4)": [
+      -1,
+      0,
+      1
+    ]
+  },
+  "triples_with_both_nonzero_trace_directions": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      1,
+      3,
+      4
+    ],
+    [
+      0,
+      3,
+      4
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      0,
+      2,
+      3
+    ],
+    [
+      1,
+      2,
+      4
+    ],
+    [
+      0,
+      2,
+      4
+    ],
+    [
+      0,
+      1,
+      3
+    ],
+    [
+      0,
+      1,
+      4
+    ]
+  ]
+}

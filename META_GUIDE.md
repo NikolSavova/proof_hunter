@@ -449,6 +449,50 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-13 — ERDŐS #838: eleven-lane reflection/mean/cut campaign (Sihao + Codex ultracode)
+
+- **Honest outcome:** unrestricted #838 is not resolved; the rigorous base-two window remains
+  `[1/4,1/2]`.  Eleven parallel proof/search lanes produced exact reductions, new barrier
+  theorems, and several stretchable counterfamilies.  Consolidated report:
+  `phase2/loop/erdos838/ULTRACODE_CAMPAIGN_20260813.md`.
+- **Reflection-order gate passed.** Exhausted all type-A commutation classes through `n=7`
+  (`24698` at `n=7`). Exact minimum nonempty traces for `n=2,...,7` are
+  `3,7,14,26,44,72`; every minimizer has a rational fixed-`x` realization. No finite threat to
+  coefficient `1/2` was found.
+- **Mean-size reduction.** For a uniform random convex subset, mean size `mu`, exact deletion of a
+  point from a minimizer reduces the full lower bound to `mu>=log2 n-O(1)`.  Equivalently this is
+  an average down-degree bound for realizable rank-three affine convex geometries.  The Boolean
+  interval identity `(1+t)^n=sum_K t^|ext K|(1+t)^(|K|-|ext K|)` is exact.  Universal quadratic
+  mean/count control is false on balanced Pascal cells; a minimizer-only low-mean dichotomy remains
+  sufficient and open.
+- **Exact endpoint algebra, with easy routes killed.** The contiguous-cut trace factors through a
+  pair of hull bridges, while one long braid transfers an explicit rank-one polynomial term.
+  Same-bridge reset is trivial; context-free braid descent, trace-compatible scalar potentials,
+  and polynomial collision are false.  A strengthened rational heterogeneous family has
+  subquadratic crossing trace and collision ratio `N^{-Theta(log log N)}`, but necessarily has
+  enormous internal `V`.  Therefore the live statement must be capped by total `V(P)`, not the
+  selected-cut trace.
+- **Cap-audit correction and replacement theorem.** Two first-wave cut notes incorrectly called
+  `log C+log U>=(1/2-o(1))log^2 n` a standard arbitrary-order product bound; it is open. Correction
+  blocks were added, so their conditional `1/3` must not be quoted. What is proved is a global-cap
+  directional floor: if `log V(P)<=(w+o(1))L^2` and `|Q|=N^(alpha+o(1))`, then both directions in
+  `Q` have exponent at least the root `beta` of `E(w,beta)=alpha^2/4`. At `w=1/2,alpha=1`,
+  `beta=0.0524142083...`. The stronger square-root collision inequality remains conjectural and,
+  with only these entropy marginals, would not improve the known `1/4`.
+- **Two recursive barriers.** Every homogeneous vertical tower with arbitrary nonrepeating,
+  unbounded, possibly indecomposable macros and vanishing logarithmic mesh has coefficient at least
+  `1/2`.  At the graded level, every fine-grained nonstationary homogeneous tower satisfies the
+  sharp `log v_k>=(3/2-o(1))k^2` when `log|P|=2k+o(k)`.  The unrestricted `3/2` theorem remains open;
+  it would improve the global lower coefficient to `3/8`.
+- **Global braid shortcut also closed.** Exact weak-sink plateau quotients were computed through
+  `n=7`, but a seven-class `n=8`, `V=113` sink plateau has three different first moments
+  `316,317,318`; graded sink rigidity is false. The seven-point minimizing closure lattice is not
+  toggle-CDE, with an exact sparse witness. The surviving braid target is restricted to global
+  lexicographic `(V,M)` minimizers and requires full boundary-vector amortization.
+- **Verification:** exact reflection orders, rational determinants, cut kernels, braid identities,
+  moment recurrences, Pascal profiles, and growing-macro certificates were independently replayed.
+  No shared paper theorem was altered.  Approximate direct API spend: `$0`.
+
 ### 2026-08-13 — ERDŐS #838: post-campaign reflection-order plan (Sihao + Codex)
 
 - Read and reconciled all seven new Sol lower-campaign reports with the earlier unrestricted

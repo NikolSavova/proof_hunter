@@ -1,0 +1,111 @@
+{
+  "cases": [
+    {
+      "exact": {
+        "C_L": 54,
+        "C_R": 59,
+        "E": 64,
+        "S_L": 4416,
+        "S_R": 12688,
+        "U_L": 103,
+        "U_R": 87,
+        "X": 2525,
+        "collision_log2": -2.4376338399556285,
+        "collision_ratio": "10100/54717",
+        "cut": 8,
+        "n": 16,
+        "tangent_left_ratio": "23/18",
+        "tangent_right_ratio": "793/236"
+      },
+      "parameters": {
+        "h": 4,
+        "r": 3
+      },
+      "proved_bounds": {
+        "S_L_lower": 1152,
+        "S_R_lower": 972,
+        "X_upper": 933120,
+        "collision_ratio_upper": "10240/3",
+        "side_size": 8
+      },
+      "realization": {
+        "epsilon": "2^-43",
+        "orientation_triples_checked": 560,
+        "stretchable": true
+      },
+      "status": "PASS"
+    },
+    {
+      "exact": {
+        "C_L": 149,
+        "C_R": 197,
+        "E": 144,
+        "S_L": 39600,
+        "S_R": 267660,
+        "U_L": 595,
+        "U_R": 373,
+        "X": 28782,
+        "collision_log2": -4.15052561042916,
+        "collision_ratio": "115128/2044625",
+        "cut": 12,
+        "n": 24,
+        "tangent_left_ratio": "275/149",
+        "tangent_right_ratio": "7435/788"
+      },
+      "parameters": {
+        "h": 6,
+        "r": 4
+      },
+      "proved_bounds": {
+        "S_L_lower": 9216,
+        "S_R_lower": 16384,
+        "X_upper": 47185920,
+        "collision_ratio_upper": "6480",
+        "side_size": 12
+      },
+      "realization": {
+        "epsilon": "2^-71",
+        "orientation_triples_checked": 2024,
+        "stretchable": true
+      },
+      "status": "PASS"
+    },
+    {
+      "exact": {
+        "C_L": 337,
+        "C_R": 561,
+        "E": 256,
+        "S_L": 240384,
+        "S_R": 3762112,
+        "U_L": 2995,
+        "U_R": 1297,
+        "X": 253402,
+        "collision_log2": -5.767024330676456,
+        "collision_ratio": "34952/1903353",
+        "cut": 16,
+        "n": 32,
+        "tangent_left_ratio": "939/337",
+        "tangent_right_ratio": "58783/2244"
+      },
+      "parameters": {
+        "h": 8,
+        "r": 5
+      },
+      "proved_bounds": {
+        "S_L_lower": 51200,
+        "S_R_lower": 200000,
+        "X_upper": 1280000000,
+        "collision_ratio_upper": "8192",
+        "side_size": 16
+      },
+      "realization": {
+        "epsilon": "2^-101",
+        "orientation_triples_checked": 4960,
+        "stretchable": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "family": "padded_alternating",
+  "status": "PASS"
+}

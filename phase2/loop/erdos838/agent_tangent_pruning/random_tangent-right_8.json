@@ -1,0 +1,30 @@
+{
+  "objective": "tangent-right",
+  "summary": {
+    "C_L": 11,
+    "C_R": 12,
+    "S_L": 204,
+    "S_R": 160,
+    "U_L": 13,
+    "U_R": 12,
+    "X": 104,
+    "collision_den": 32640,
+    "collision_num": 26624,
+    "collision_ratio": "208/255",
+    "cut": 4,
+    "n": 8,
+    "tangent_left_ratio": "51/44",
+    "tangent_right_ratio": "5/6"
+  },
+  "trial": 379,
+  "ys": [
+    434767827,
+    75734020,
+    -297221259,
+    142409574,
+    -128832382,
+    357519061,
+    -763291440,
+    891649170
+  ]
+}

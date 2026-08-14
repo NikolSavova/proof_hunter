@@ -1,0 +1,177 @@
+{
+  "certificate": {
+    "caps": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "cups": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1
+      ]
+    ],
+    "evaluation": {
+      "cap_total": 6,
+      "cup_total": 7,
+      "endpoint_max": 2,
+      "first_moment": 12,
+      "graded": [
+        0,
+        3,
+        3,
+        1
+      ],
+      "mean_minus_log2_n": 0.12932321356455811,
+      "mean_size": 1.7142857142857142,
+      "n": 3,
+      "normalized_log_trace": 1.1175303821734008,
+      "trace": 7
+    },
+    "fixed_x_rational_y": [
+      "0",
+      "-1000",
+      "0"
+    ],
+    "fixed_x_status": "rational_certificate",
+    "n": 3,
+    "root_sequence_zero_based": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "word_zero_based": [
+      0,
+      1,
+      0
+    ]
+  },
+  "commutation_class_count": 2,
+  "distinct_trace_count": 1,
+  "elapsed_seconds": 0.00010304199531674385,
+  "flip_degree_histogram": {
+    "1": 2
+  },
+  "minimum_class_count": 2,
+  "minimum_mean_certificate": {
+    "caps": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "cups": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1
+      ]
+    ],
+    "evaluation": {
+      "cap_total": 6,
+      "cup_total": 7,
+      "endpoint_max": 2,
+      "first_moment": 12,
+      "graded": [
+        0,
+        3,
+        3,
+        1
+      ],
+      "mean_minus_log2_n": 0.12932321356455811,
+      "mean_size": 1.7142857142857142,
+      "n": 3,
+      "normalized_log_trace": 1.1175303821734008,
+      "trace": 7
+    },
+    "fixed_x_rational_y": [
+      "0",
+      "-1000",
+      "0"
+    ],
+    "fixed_x_status": "rational_certificate",
+    "n": 3,
+    "root_sequence_zero_based": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "word_zero_based": [
+      0,
+      1,
+      0
+    ]
+  },
+  "minimum_mean_class_count": 2,
+  "minimum_mean_minus_log2_n": 0.12932321356455811,
+  "minimum_mean_size": 1.7142857142857142,
+  "minimum_normalized_log_trace": 1.1175303821734008,
+  "minimum_trace": 7,
+  "mode": "exhaustive_commutation_classes",
+  "n": 3,
+  "trace_histogram": {
+    "7": 2
+  }
+}

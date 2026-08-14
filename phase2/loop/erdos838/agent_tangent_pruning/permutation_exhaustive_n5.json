@@ -1,0 +1,82 @@
+{
+  "accepted": 56,
+  "minima": {
+    "collision_ratio": {
+      "summary": {
+        "C_L": 3,
+        "C_R": 6,
+        "S_L": 27,
+        "S_R": 31,
+        "U_L": 3,
+        "U_R": 7,
+        "X": 18,
+        "collision_den": 837,
+        "collision_num": 648,
+        "collision_ratio": "24/31",
+        "cut": 2,
+        "n": 5,
+        "tangent_left_ratio": "1",
+        "tangent_right_ratio": "31/24"
+      },
+      "ys": [
+        0,
+        4,
+        2,
+        1,
+        3
+      ]
+    },
+    "tangent_left_ratio": {
+      "summary": {
+        "C_L": 3,
+        "C_R": 7,
+        "S_L": 27,
+        "S_R": 28,
+        "U_L": 3,
+        "U_R": 6,
+        "X": 21,
+        "collision_den": 756,
+        "collision_num": 756,
+        "collision_ratio": "1",
+        "cut": 2,
+        "n": 5,
+        "tangent_left_ratio": "1",
+        "tangent_right_ratio": "7/6"
+      },
+      "ys": [
+        0,
+        2,
+        1,
+        4,
+        3
+      ]
+    },
+    "tangent_right_ratio": {
+      "summary": {
+        "C_L": 3,
+        "C_R": 6,
+        "S_L": 27,
+        "S_R": 24,
+        "U_L": 3,
+        "U_R": 7,
+        "X": 18,
+        "collision_den": 648,
+        "collision_num": 648,
+        "collision_ratio": "1",
+        "cut": 2,
+        "n": 5,
+        "tangent_left_ratio": "1",
+        "tangent_right_ratio": "1"
+      },
+      "ys": [
+        0,
+        3,
+        4,
+        2,
+        1
+      ]
+    }
+  },
+  "n": 5,
+  "rejected_collinear": 64
+}

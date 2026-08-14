@@ -1,0 +1,170 @@
+{
+  "alternating_least_index": [
+    {
+      "S_L": 54,
+      "S_R": 71,
+      "X": 31,
+      "analytic_upper": "4608",
+      "collision_ratio": "93/142",
+      "m": 3,
+      "n": 6
+    },
+    {
+      "S_L": 176,
+      "S_R": 300,
+      "X": 92,
+      "analytic_upper": "4096",
+      "collision_ratio": "368/825",
+      "m": 4,
+      "n": 8
+    },
+    {
+      "S_L": 450,
+      "S_R": 986,
+      "X": 235,
+      "analytic_upper": "6400",
+      "collision_ratio": "5875/17748",
+      "m": 5,
+      "n": 10
+    },
+    {
+      "S_L": 1044,
+      "S_R": 3087,
+      "X": 552,
+      "analytic_upper": "4608",
+      "collision_ratio": "2208/9947",
+      "m": 6,
+      "n": 12
+    },
+    {
+      "S_L": 2156,
+      "S_R": 8531,
+      "X": 1227,
+      "analytic_upper": "6272",
+      "collision_ratio": "60123/375364",
+      "m": 7,
+      "n": 14
+    },
+    {
+      "S_L": 4288,
+      "S_R": 23280,
+      "X": 2636,
+      "analytic_upper": "4096",
+      "collision_ratio": "10544/97485",
+      "m": 8,
+      "n": 16
+    },
+    {
+      "S_L": 7938,
+      "S_R": 59130,
+      "X": 5531,
+      "analytic_upper": "5184",
+      "collision_ratio": "5531/71540",
+      "m": 9,
+      "n": 18
+    },
+    {
+      "S_L": 14500,
+      "S_R": 149575,
+      "X": 11432,
+      "analytic_upper": "3200",
+      "collision_ratio": "45728/867535",
+      "m": 10,
+      "n": 20
+    },
+    {
+      "S_L": 25168,
+      "S_R": 361683,
+      "X": 23379,
+      "analytic_upper": "3872",
+      "collision_ratio": "942953/25076688",
+      "m": 11,
+      "n": 22
+    },
+    {
+      "S_L": 43632,
+      "S_R": 873180,
+      "X": 47484,
+      "analytic_upper": "2304",
+      "collision_ratio": "21104/816585",
+      "m": 12,
+      "n": 24
+    },
+    {
+      "S_L": 72670,
+      "S_R": 2044894,
+      "X": 95971,
+      "analytic_upper": "2704",
+      "collision_ratio": "16219099/879304420",
+      "m": 13,
+      "n": 26
+    },
+    {
+      "S_L": 121716,
+      "S_R": 4785487,
+      "X": 193352,
+      "analytic_upper": "1568",
+      "collision_ratio": "773408/60648723",
+      "m": 14,
+      "n": 28
+    },
+    {
+      "S_L": 197100,
+      "S_R": 10958123,
+      "X": 388651,
+      "analytic_upper": "1800",
+      "collision_ratio": "29148825/3199771916",
+      "m": 15,
+      "n": 30
+    }
+  ],
+  "lossless_T_counterexample": {
+    "points": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        6,
+        0
+      ]
+    ],
+    "summary": {
+      "C_L": 6,
+      "C_R": 12,
+      "S_L": 112,
+      "S_R": 98,
+      "U_L": 7,
+      "U_R": 12,
+      "X": 69,
+      "collision_den": 10976,
+      "collision_num": 9936,
+      "collision_ratio": "621/686",
+      "cut": 3,
+      "n": 7,
+      "tangent_left_ratio": "7/6",
+      "tangent_right_ratio": "49/54"
+    }
+  },
+  "status": "PASS"
+}
