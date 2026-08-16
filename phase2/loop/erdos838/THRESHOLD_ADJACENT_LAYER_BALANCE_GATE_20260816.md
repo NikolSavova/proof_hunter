@@ -288,14 +288,65 @@ namely that the extra support required to move from (19) to the certified
 threshold must create enough mixed extensions.  A size-only embedding of
 the cap-promoted core is not a counterexample.
 
-### 3.5 What the tests do not prove
+### 3.5 Asymmetric padding shows the same threshold split
+
+The symmetric substitution above might conceal the real obstruction: the
+new child could have a large cap profile exactly where the promoted core
+needs it.  The verifier therefore also glues **every** Pascal cell
+$T(m,i)$ in a finite triangle to the left of the promoted core.  These
+include strongly asymmetric cells whose facing cap rank is much smaller
+than their cup rank.
+
+For $4\le h\le12$, $j=2h-4$, and $1\le m<2j+12$, it exhausts every
+$0\le i\le m$ for which the resulting support has the exact integer lower
+bound
+
+\[
+                       |T(m,i)\prec P_h^+|
+                         \ge 2^{j+\lfloor\sqrt j\rfloor}.       \tag{24}
+\]
+
+Every one of these exact graded substitutions satisfies
+
+\[
+                         v_j<v_{j+1}.                           \tag{25}
+\]
+
+The largest ratio in the whole finite audit is reported by the verifier.
+Below (24), asymmetric paddings can preserve or amplify the original
+cliff.  Thus the experiment separates the two regimes in the direction
+needed by (2): the dangerous profile is real, but in this construction
+class it disappears precisely after genuine oversaturation.
+
+Again, (25) is a finite construction audit, not a theorem about arbitrary
+point sets.  It motivates a more economical target than a size-blind
+extension bound: a proof should charge a large $j$-face basin either to
+support below the certified threshold or to mixed extensions created by
+the extra support.
+
+### 3.6 What the tests do not prove
 
 The internal-layer checks exclude the currently known recursive and
 threshold obstructions at the selected rows.  They do not imply (2) for
 arbitrary planar point sets.  The cap-promoted family shows in addition
 that the exact sampling size, not merely its leading exponent, must enter.
-In
-particular, fixed-$j$ supersaturation theorems do not provide uniform
+
+There is already an exact warning inside the strong-decomposition class.
+Exhausting every ordered binary strong tree on nine leaves gives
+
+\[
+             \max {v_4\over v_5}=66,
+             \qquad (v_4,v_5)=(66,1)\text{ at a maximizer}.      \tag{26}
+\]
+
+Thus the bare threshold information $v_{j+1}>0$ is wholly insufficient,
+even in a recursively structured planar class.  The conjectural content
+is an **oversaturation theorem** at the particular sequence $q_j$ in
+(1).  A proof must use the quantitative gap between a forcing threshold
+and $q_j$; if that gap is not present in the chosen upper-bound sequence,
+then (2) needs a different formulation.
+
+In particular, fixed-$j$ supersaturation theorems do not provide uniform
 constants when $j\to\infty$, and the scalar weighted-polygon identities
 admit fake truncated rank shelves.  A proof must use genuine cross-rank
 geometry.
@@ -339,5 +390,7 @@ reconstructs the cap-promoted Pascal extension and recurrence through
 $h=20$, including exact rational coordinates in the first nontrivial row.
 It also substitutes an oversaturated central-Pascal child at every physical
 leaf in the five rows $4\le h\le8$ and checks (23) exactly.
+It exhausts all ordered binary strong trees on nine leaves and checks the
+bare-threshold cliff (26).
 It verifies the reduction and the stated regressions, not the conjectural
 balance inequality (2) at the certified upper sequence.

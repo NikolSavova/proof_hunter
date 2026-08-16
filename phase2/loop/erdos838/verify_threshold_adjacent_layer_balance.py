@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from fractions import Fraction
 import importlib.util
-from math import comb, floor
+from math import comb, floor, isqrt
 from pathlib import Path
 import sys
 
@@ -377,6 +377,47 @@ def audit_promoted_pascal_leaf_padding() -> tuple[int, Fraction]:
     return checks, maximum
 
 
+def audit_promoted_pascal_asymmetric_padding() -> tuple[int, Fraction]:
+    """Stress the cliff against an adversarial facing-profile padding.
+
+    Glue every Pascal cell T(m,i) on the left of the promoted core.  This
+    includes highly asymmetric cells whose facing cap rank is much smaller
+    than their cup rank.  We retain only rows whose total support is at least
+    2^(j+floor(sqrt(j))); the audit is finite and makes no asymptotic claim.
+    """
+    graded = load(
+        "graded_balanced_for_promoted_pascal_asymmetric_padding",
+        HERE / "agent_graded_supersat" / "graded_balanced.py",
+    )
+    checks = 0
+    maximum = Fraction()
+    for h in range(4, 13):
+        rank = 2 * h - 4
+        cutoff = rank + 1
+        split_row = graded.pascal_row(rank - 1, cutoff)
+        promoted_core = glue_cells(
+            promoted_cap_cell(rank - 1, h - 3, cutoff),
+            split_row[h - 2],
+            cutoff,
+        )
+        threshold = 2 ** (rank + isqrt(rank))
+
+        # The range is deliberately explicit: this is an exact finite
+        # regression over every Pascal cell in the indicated triangle.
+        for m in range(1, 2 * rank + 12):
+            for padding in graded.pascal_row(m, cutoff):
+                parent = glue_cells(padding, promoted_core, cutoff)
+                if parent[0] < threshold:
+                    continue
+                ratio = Fraction(parent[3][rank], parent[3][rank + 1])
+                assert ratio < 1
+                maximum = max(maximum, ratio)
+                checks += 1
+
+    assert checks > 1000
+    return checks, maximum
+
+
 def audit_alternating_comb() -> tuple[int, Fraction, Fraction]:
     trees = load(
         "uniform_caterpillar_for_threshold_balance",
@@ -401,6 +442,33 @@ def audit_alternating_comb() -> tuple[int, Fraction, Fraction]:
     return checks, first, last
 
 
+def audit_bare_threshold_strong_tree_cliff() -> tuple[int, int, int]:
+    """Exhaust the first strong-tree threshold row.
+
+    Every nine-leaf ordered binary strong tree has at least one convex
+    five-set.  Nevertheless the worst adjacent layers are (v4,v5)=(66,1),
+    so mere nonvanishing of the next layer is far from a balance theorem.
+    """
+    trees = load(
+        "uniform_caterpillar_for_bare_threshold_cliff",
+        HERE / "verify_uniform_growing_rank_caterpillar.py",
+    )
+    maximum = Fraction()
+    witness = (0, 0)
+    checks = 0
+    for tree in trees.trees(9):
+        profile = trees.ordinary_profiles(tree)[2]
+        assert profile[5] > 0
+        ratio = Fraction(profile[4], profile[5])
+        if ratio > maximum:
+            maximum = ratio
+            witness = (profile[4], profile[5])
+        checks += 1
+    assert witness == (66, 1)
+    assert maximum == 66
+    return checks, *witness
+
+
 def audit_abstract_hereditary_barrier() -> int:
     checks = 0
     for rank in range(4, 13):
@@ -420,7 +488,13 @@ def main() -> None:
     promoted_checks, promoted_last_cap, promoted_last_ratio = audit_promoted_pascal()
     promoted_geometry = audit_promoted_pascal_geometry()
     padding_checks, padding_maximum = audit_promoted_pascal_leaf_padding()
+    asymmetric_checks, asymmetric_maximum = (
+        audit_promoted_pascal_asymmetric_padding()
+    )
     comb_checks, comb_first, comb_last = audit_alternating_comb()
+    threshold_tree_checks, threshold_tree_v4, threshold_tree_v5 = (
+        audit_bare_threshold_strong_tree_cliff()
+    )
     abstract_checks = audit_abstract_hereditary_barrier()
     print(
         "PASS: threshold adjacent-layer reduction and exact regressions; "
@@ -428,7 +502,9 @@ def main() -> None:
         f"double_chain={double_checks}; Pascal={pascal_checks}; "
         f"promoted_Pascal={promoted_checks}/{promoted_geometry}; "
         f"promoted_padding={padding_checks}; "
-        f"comb={comb_checks}; abstract={abstract_checks}; "
+        f"asymmetric_padding={asymmetric_checks}; "
+        f"comb={comb_checks}; threshold_trees={threshold_tree_checks}; "
+        f"abstract={abstract_checks}; "
         f"double_kill={double_kill}; "
         f"double_threshold_max={float(double_threshold):.6f}; "
         f"Pascal_max={float(pascal_maximum):.6f}; "
@@ -436,6 +512,8 @@ def main() -> None:
         f"promoted_last_cap_bits={promoted_last_cap.bit_length()}; "
         f"promoted_last_ratio_bits={promoted_last_ratio.numerator.bit_length() - promoted_last_ratio.denominator.bit_length()}; "
         f"padding_max={float(padding_maximum):.6f}; "
+        f"asymmetric_max={float(asymmetric_maximum):.6f}; "
+        f"threshold_tree=({threshold_tree_v4},{threshold_tree_v5}); "
         f"comb=({float(comb_first):.6f},{float(comb_last):.6f})"
     )
 
