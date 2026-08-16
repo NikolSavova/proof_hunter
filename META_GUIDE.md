@@ -449,6 +449,28 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-16 — ERDŐS #838: progress bar checkpoint and cyclic-stem audit (Sihao + Codex)
+
+- Preserved the original seven-component progress-bar breakdown in
+  `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Current architecture
+  estimates are `100/95/95/95/100/60/not-yet` for prior art, recursive
+  threats, minimizer/root reduction, local structure, canonical $E(k,k)$
+  decoder, arbitrary global decoder, and assembled proof.
+- Kept the two metrics separate: approximately `80%` of the obstruction and
+  proof architecture is mapped, while the unrestricted coefficient remains
+  rigorously unchanged at `[1/4,1/2]`.  The document uses about `40%` only as
+  a conservative planning estimate for the completed proof, not as a
+  mathematical invariant.
+- Audited the proposed cyclic-minimal-stem continuation against the existing
+  antimatroid/Tutte packages.  Gordon's one-root exposure formula, the
+  bivariate Boolean-interval identity, and the random-hull exponential-moment
+  formulation were already banked.  Exact nested-triangle and outer-shell
+  barriers kill the scalar/onion/Kraft versions.  No new theorem or renamed
+  reduction was added.
+- The only honest coefficient-bearing exits remain direct averaged P1d, or a
+  multi-point minimizer mutation/profile inequality with a checked fixed
+  gain.  Approximate direct API spend: `$0`; no process left running.
+
 ### 2026-08-16 — ERDŐS #838: concentrated-pocket splice killed; global all-delete gate isolated (Sihao + Codex)
 - **Exact gain ledger:** at `N=4^k`, partial replacement of a rank-`alpha k`
   source after deleting `delta k` labels has exponent

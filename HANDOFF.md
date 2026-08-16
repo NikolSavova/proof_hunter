@@ -65,6 +65,27 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
+The apples-to-apples component bar is now preserved in
+`phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier
+breakdown, construction threats are about `95%` mapped, minimizer/root
+reduction `95%`, local cap/cup/history structure `95%`, and the arbitrary
+cross-chart/global decoder `60%`; the proof-architecture map is about `80%`.
+These are navigation estimates, not theorem percentages.  The rigorous
+coefficient window is still `[1/4,1/2]`, with zero unconditional gain beyond
+the quarter lower bound; a conservative full-proof planning estimate is only
+about `40%` because the unrestricted lower bridge remains missing.
+
+The latest direct check of the antimatroid route recovered Gordon's cyclic
+minimal-stem exposure formula and the bivariate/Kraft identities already
+proved in `agent_cyclic_stem_hw/REPORT.md` and
+`agent_planar_tutte/REPORT.md`.  It produced no new inequality: scalar
+expected-rank, hull-root, onion-layer, and one-variable Kraft potentials are
+all already killed by exact planar examples.  The only viable cyclic-stem
+use would retain a multi-root tangent interval and prove a genuine
+positive-rank-interval estimate, which is P1d-level work rather than a new
+local surrogate.  No proof process is currently running.
+
 **⭐ 2026-08-16 — ERDŐS #838: CONCENTRATED-POCKET P1d SPLICE KILLED; GLOBAL ALL-DELETE GATE IS NOW EXPLICIT.**
 The next bounded P1d operation had genuinely favorable arithmetic.  At the
 canonical scale `N=4^k`, a rank-`alpha k` source, deletion of `delta k`
