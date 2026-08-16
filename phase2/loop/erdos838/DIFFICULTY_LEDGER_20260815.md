@@ -22,7 +22,7 @@ progress.
 | U1 | Explicit iterated upper construction | `limsup <= 1/2` | GAIN | Proved and previously audited | Bank/publish |
 | S1 | Strong-tree/decomposable lower theorem | coefficient `1/2` for that class | GAIN on a proper class | Proved and previously audited | Bank/publish |
 | C1 | Hinged Kraft plus finite/variable-menu grammar closure | rules out broad recursive sub-half constructions | ROUTE | Internal proof + exact verifier | Independent audit; no deeper reduction |
-| C2 | Square-mesh Bellman inequality with controlled accumulated loss | would close a wider nonstrong construction class | ROUTE, not unrestricted gain | CONJECTURAL; `(WH)` is false | One bounded attack only; kill if loss cannot telescope |
+| C2 | Threshold square-mesh Bellman inequality with harmonic loss | local bound loses only `O(log N log log(m+1))`; a controlled global sum would close a wider nonstrong construction class | ROUTE, not unrestricted gain | Local theorem proved; accumulated loss/geometric promotion open; `(WH)` is false | Bank local theorem; attack only a genuine global charge, not witness nesting |
 | M1 | Universal/minimizer half-weight `H(P)=n^{o(1)}` | full coefficient `1/2` | EQUIVALENT/FULL | Open | Park as headline, not active reduction |
 | M2 | Peak mean `mu >= log_2 n-O(log log n)` for minimizers | full coefficient `1/2` | EQUIVALENT/FULL | Open | Park as headline, not active reduction |
 | M3 | Hull-root Pareto curvature at the sharp cumulative scale | full coefficient `1/2` | Near-full; exact recurrence known | AUDIT + open curvature | Verify recurrence; attack only a strict sparse subcase |
@@ -36,6 +36,7 @@ progress.
 | P1 | At canonical size `4^k`, fixed-size supersaturation with any `eta>0` | improves unrestricted lower coefficient from `1/4` to `(1+eta)/4` by the exact bridge | STRICT, direct GAIN | Open | Sole primary proof target; bridge proved in `FIXED_SIZE_GAIN_BRIDGE_20260815.md` |
 | P1a | Strong-tree fixed-rank diffuse branch | removes all diffuse heavy-path trees from P1; survivor has a `4^k/poly(k)` by `4^k/poly(k)` seam | STRICT construction-class reduction | Proved | `STRONG_TREE_FIXED_RANK_COMB_OR_SEAM_GATE.md`; exact verifier PASS |
 | P1b | Near-full strong-seam graded profile alignment | would prove the `3/2` diagonal for all strong trees | STRICT construction-class gain | Open, narrowed | Exact plane one-turn caterpillar formulation; fixed-`k` unordered inducibility has the right main exponent but nonuniform error and wrong orientation (`FIXED_RANK_STRONG_TREE_CATERPILLAR_AUDIT_20260815.md`) |
+| P1c | Standard fixed-size literature mechanisms | hoped-for gain in P1 from fixed-`k` counts, one positive-fraction box, or scalar weighted polygon identities | BARRIER | Audited: all have coefficient-one ceiling or admit a zero-high-rank fake ledger | Do not revisit without a cross-rank geometric compatibility input; see `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md` |
 
 ## Mandatory rule for new entries
 

@@ -51,8 +51,10 @@ ones still require independent cross-model reconstruction before publication.
   sub-half construction.  The exact scalar Bellman ramp can mimic half only
   if its low-face children are genuinely non-strong-decomposable.
 - The stronger weighted-hinge inequality `(WH)` was disproved by an exact
-  stretchable five-point example.  A square-mesh Bellman inequality survives
-  extensive finite tests but remains conjectural.
+  stretchable five-point example. Thresholding the hinged Kraft theorem now
+  proves a square-mesh Bellman inequality with explicit harmonic loss
+  `O(log N log log(m+1))`; the exact zero-loss form remains conjectural, but
+  witness nesting is no longer a local proof obligation.
 
 Primary sources:
 
@@ -60,6 +62,7 @@ Primary sources:
 - `agent_nonstrong_ramp_search/NONSTATIONARY_HOMOGENEOUS_HALF_CLOSURE.md`
 - `agent_nonstrong_ramp_search/WEIGHTED_HINGE_FALSE_SQUARE_SURVIVES.md`
 - `agent_many_class_partner_reset/RECURSIVE_ES_RAMP_HALF_CLOSURE.md`
+- `HETEROGENEOUS_THRESHOLD_SQUARE_MESH_GATE_20260816.md`
 
 ### B. Minimizer and root reductions
 
@@ -129,6 +132,22 @@ and local profile multiplication.  These are useful negative results.  They
 must not be narrated as steps of a proof once the residual target is shown to
 be coefficient-equivalent to the unrestricted problem.
 
+### E. Fixed-size prior-art ceiling
+
+- Fixed-`k` convex-polygon counts do not apply uniformly at
+  `k=Theta(log N)`.
+- At `N=4^k`, ordinary Erdős--Szekeres double counting gives only
+  `2^(k^2-o(k^2))`.
+- A single positive-fraction transversal box would need block fraction
+  `2^{-(1-eta)k+o(k)}` to give a fixed gain, while the optimal universal
+  fraction is at most `2^{-k+o(k)}`.
+- At every cutoff, the exact weighted convex-polygon identities admit a
+  nonnegative integral fake ledger with maximal counts at every lower rank
+  and no faces above the cutoff. Scalar hull identities therefore cannot
+  supply the missing growing-rank compatibility.
+
+Source: `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md`.
+
 ## 3. What remains open
 
 Three broad gates survive.  None is presently a theorem.
@@ -158,8 +177,9 @@ one minor repair, and V2--V5 passed.
 ## 5. Progress accounting
 
 - Obstruction/architecture map: approximately `75--80%` mature.
-- Construction-side recursive threat map: highly constrained, but the general
-  nonstrong square-mesh route remains open.
+- Construction-side recursive threat map: highly constrained. The local
+  heterogeneous square mesh is proved up to a harmonic lower-order loss; its
+  accumulation and the unrestricted geometric promotion remain open.
 - Unconditional lower-bound progress beyond `1/4`: **none yet**.
 - Full proof completion cannot responsibly be assigned the earlier `78%`
   number; the final bridge may contain most of the theorem's difficulty.

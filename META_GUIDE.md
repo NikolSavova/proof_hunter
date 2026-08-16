@@ -449,6 +449,42 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-16 — ERDŐS #838: fixed-size prior-art ceiling + harmonic square mesh (Sihao + Codex)
+
+- **Prior-art kill-search completed for the live P1 target.** Aichholzer et
+  al.'s `Theta(N^k)` count is explicitly fixed-`k`; ordinary
+  Erdős--Szekeres double counting gives only `2^(k^2-o(k^2))` at `N=4^k`;
+  and a single positive-fraction transversal box cannot cross that main
+  coefficient because the optimal universal block fraction is at most
+  `2^{-k+o(k)}` (Bárány--Valtr; Pór--Valtr).
+- **Exact algebraic ceiling:** for every cutoff `r`, the Huemer--Oliveros--
+  Pérez-Lantero--Torra--Vogtenhuber weighted polygon identity admits the
+  integral nonnegative ledger `X_(j,0)=C(N,j)` for `3<=j<r`,
+  `X_(r,l)=C(N-l-1,r-1)`, and zero above `r`. It has maximal counts at every
+  rank through `r` but no higher face. Scalar hull identities cannot force
+  the growing-rank gain; a new input must encode cross-rank planar
+  compatibility.
+- **New proved local theorem:** threshold the exact hinged Kraft theorem by
+  the `j` largest children. With weighted endpoint rewards `R_i`, total `N`,
+  and `H_m=sum_(j<=m)1/j`,
+  `max_i((log n_i)^2/2+R_i)>=(log N-log H_m)^2/2-(log m)^2/2`.
+  Different thresholds may use completely different witnesses; their total
+  switching cost is only `O(log N log log(m+1))`. This replaces the
+  conjectural local square mesh up to a lower-order harmonic term, but does
+  not charge the term recursively or promote arbitrary point sets to a
+  same-chart decomposition.
+- **Artifacts and verification:**
+  `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md` plus verifier
+  (`238,560` fake-ledger rows, `631` geometric rows, `27,066` exponent rows),
+  and `HETEROGENEOUS_THRESHOLD_SQUARE_MESH_GATE_20260816.md` plus verifier
+  (`450,000` weighted instances, `1.8M` threshold checks, `50,000` arithmetic
+  rows). Both PASS; pycompile and diff checks pass. Approximate API spend `$0`.
+- **Honest status / next action:** unrestricted Erdős 838 remains open with
+  coefficient window `[1/4,1/2]`. Attack the selected-family convex-four-set
+  circuit geometry above the quarter-log decoder boundary. Do not revisit
+  fixed-`k` asymptotics, one same-type box, scalar weighted identities, or
+  nested threshold witnesses.
+
 ### 2026-08-16 — ERDŐS #838: explicit quarter-log decoder boundary (Sihao + Codex)
 
 - **New exact range theorem:** if `ES(k)<=2^(k+G_k)`, then at `n=4^k` all

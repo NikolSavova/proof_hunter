@@ -62,7 +62,7 @@ then Boolean-layer inversion gives
 Thus (2) supplies
 
 \[
- {K_{n,1}\over f(n)}ge(c+o(1)){\log n\over n}.         \tag{8}
+ {K_{n,1}\over f(n)}\ge(c+o(1)){\log n\over n}.       \tag{8}
 \]
 
 The exact cumulative half criterion needs coefficient one on the right of

@@ -80,6 +80,44 @@ is V1 in the independent audit queue.
 
 Source: `agent_nonstrong_ramp_search/HINGED_DIAGONAL_FLOOR_LOG.md`.
 
+## 2a. Heterogeneous threshold square mesh
+
+Let an ordered macro chart have positive child sizes `n_i`, total `N`, and
+exact weighted endpoint reward `R_i`, where a used sibling `j` contributes
+`log(1+n_j)`. Put
+
+\[
+       \mathcal B=\max_i\left\{\frac12(\log n_i)^2+R_i\right\},
+       \qquad H_m=\sum_{j=1}^m\frac1j.
+\]
+
+**Theorem 2a.**
+
+\[
+ \mathcal B\geq\frac12(\log N-\log H_m)^2
+                   -\frac12(\log m)^2.
+\]
+
+**Proof.** Sort the children by decreasing size. On the first `j` children,
+Theorem 2 gives an anchor with at least `ceil(log j)` total endpoint edges.
+The same paths exist in the full chart, every used sibling has size at least
+`n_j`, and the anchor is also at least that large. Hence
+
+\[
+ \mathcal B\geq\frac12(\log n_j)^2+(\log n_j)\log j.
+\]
+
+Writing `q=log m` and `T=sqrt(2*B+q^2)`, where `B=mathcal B`, gives
+`n_j<=2^T/j`. Therefore `N<=2^T H_m`, which rearranges to the claimed
+inequality. \(\square\)
+
+The loss from changing witnesses across thresholds is only
+`O(log N log log(m+1))`; no nesting lemma is required. This is a local
+construction theorem, not an unrestricted lower bound, because recursive
+loss accumulation and promotion of arbitrary point sets remain open.
+
+Source: `HETEROGENEOUS_THRESHOLD_SQUARE_MESH_GATE_20260816.md`.
+
 ## 3. Macroscopic regeneration penalty
 
 **Proposition 3 (conditional support calculus).**  Consider a heterogeneous

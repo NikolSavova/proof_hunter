@@ -89,6 +89,17 @@ new geometric nomenclature:
 The theorem must be tested on the saved Pascal, matching-star, nested-cage,
 one-exception, and vertical-substitution regressions before promotion.
 
+The standard fixed-size literature has now been audited and must not be used
+as a black-box substitute for this dichotomy. At `N=4^k`, ordinary
+Erdős--Szekeres double counting gives only `2^(k^2-o(k^2))`; one
+positive-fraction transversal box cannot cross that coefficient because the
+optimal universal block fraction is at most `2^{-k+o(k)}`; and, at every
+cutoff, the exact weighted polygon identities admit a nonnegative integral
+ledger with maximal counts below the cutoff and no faces above it. See
+`FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md`. A viable Stage C
+lemma must therefore use cross-rank planar compatibility or an actual
+mixed/profile output bank.
+
 ### Stage D: independent audit before recursion
 
 If a candidate lemma survives exact tests, send its complete statement,

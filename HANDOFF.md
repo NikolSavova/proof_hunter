@@ -140,6 +140,31 @@ only `(c+o(1))f(n)log n/n`, while half needs coefficient one, so summed
 one-root moments are now quantitatively exhausted rather than mistaken for
 closure.
 
+**⭐ 2026-08-16 — ERDŐS #838: FIXED-SIZE PRIOR ART AUDITED; LOCAL HETEROGENEOUS SQUARE MESH PROVED WITH HARMONIC LOSS.**
+The growing-rank target `v_k(4^k)>=2^((1+eta-o(1))k^2)` is not supplied by
+the standard fixed-size literature. Ordinary Erdős--Szekeres double counting
+has coefficient one; one positive-fraction transversal box cannot cross it
+because the optimal universal cluster fraction is at most `2^{-k+o(k)}`;
+and, at every cutoff, the exact weighted convex-polygon identities admit an
+integral nonnegative fake ledger with maximal counts at all lower ranks and
+no rank above the cutoff. The report and exact verifier are
+`FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md` and
+`verify_fixed_size_supersaturation_prior_art_audit.py`.
+
+Separately, the hinged Kraft theorem now gives an exact heterogeneous local
+bound. For `m` children of total size `N`, exact weighted endpoint rewards
+`R_i`, and `H_m=sum_(j<=m)1/j`,
+`max_i((log n_i)^2/2+R_i) >= (log N-log H_m)^2/2-(log m)^2/2`.
+The proof thresholds by the `j` largest children, allows a different hinged
+witness at every threshold, and sums the resulting `n_j<=2^T/j` bounds.
+Thus witness switching costs only `O(log N log log(m+1))`; the false nested
+maximizer lemma is unnecessary. See
+`HETEROGENEOUS_THRESHOLD_SQUARE_MESH_GATE_20260816.md` and its verifier
+(`450,000` weighted instances, `1.8M` threshold checks). This is local
+construction progress only: unrestricted geometric promotion and recursive
+loss charging remain open, so the rigorous coefficient window is still
+`[1/4,1/2]`.
+
 **⭐ 2026-08-13 — ERDŐS #1208: EXPLICIT CANDIDATE UPPER EXPONENT `0.49815` + FULL-GAP BARRIER MAP (Sihao + Codex ultracode).**
 The live literature window is `n^(1/3) << F_2(n) << n^(1/2-epsilon)`; the
 Erdős Problems page is stale because CFRN (arXiv:2606.05841) and LPZ
@@ -729,6 +754,14 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   pooled-capacity estimate stops at its `r=(1/4)log n` boundary; the next
   lemma must use a larger configuration-specific bank, selected-family
   sparsity, mixed geometry, or a profile charge.
+- [x] Audit standard fixed-size counting inputs. Fixed-`k` asymptotics, one
+  positive-fraction transversal box, and scalar weighted polygon identities
+  all stop at the coefficient-one boundary or fail to encode high-rank
+  compatibility.
+- [x] Replace the conjectural local heterogeneous square mesh by the exact
+  threshold theorem with harmonic loss. Do not spend further work on nesting
+  the maximizing paths; the remaining task is a global loss charge or an
+  unrestricted geometric promotion.
 - [ ] For the strong-tree subcase, do not cite fixed-`k` unordered
   caterpillar inducibility as closure. The exact survivor is the growing-rank
   plane one-turn caterpillar count after the proved comb-or-seam split.
@@ -910,7 +943,7 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
-### ⭐ 2026-08-16 — ERDŐS #838: EXPLICIT BOUNDARY PROVED; ATTACK ONLY ABOVE IT
+### ⭐ 2026-08-16 — ERDŐS #838: STANDARD SHORTCUTS EXHAUSTED; ATTACK CROSS-RANK GEOMETRY
 
 Read, in order:
 
@@ -924,11 +957,20 @@ The full `FULL_ATTACK_20260814.md` and all agent artifacts remain preserved
 for lookup. All V1--V5 packages now have independent audits. The
 exact fixed-size bridge, strong-tree comb/seam theorem, caterpillar audit, and
 explicit-boundary literal pooling theorem are the current positive additions.
+Also read `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md` and
+`HETEROGENEOUS_THRESHOLD_SQUARE_MESH_GATE_20260816.md`: the former excludes
+the standard counting shortcuts, while the latter removes the local
+weighted-witness conjecture up to a harmonic lower-order loss.
+
 Next attack only selected histories in
 `1/4 log n-O(sqrt(log n log log n)) < r < log n`: the universal rank-`k`
 bank cannot cross the quarter-log capacity boundary, so require a larger
-configuration-specific bank or an explicit sparsity, mixed-face, or profile
-alternative.
+configuration-specific bank or an explicit cross-rank circuit, sparsity,
+mixed-face, or profile alternative. The most concrete formulation is the
+convex-four-set hypergraph plus planar circuit elimination: force either the
+P1 rank-`k` gain or a same-size mixed/profile bank. Do not restart fixed-`k`
+asymptotics, a single same-type transversal box, scalar hull identities, or
+threshold-path nesting.
 If the next bounded attack produces neither an explicit `eta>0` nor another
 proved rank range, stop and package the `1/2` upper/strong-tree theorem plus
 the audited construction and barrier results. Nothing is currently running.
