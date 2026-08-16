@@ -151,8 +151,9 @@ the next reduction layer.
 The directory contains hundreds of exact verifier/certificate scripts and
 many rational finite configurations. That is substantial author-side
 verification, but it is not a substitute for independent proof
-reconstruction. V1 and V3--V5 in `VERIFICATION_QUEUE_20260815.md` now have
-such reconstructions; only V2 remains frozen pending the same treatment.
+reconstruction. All V1--V5 packages in
+`VERIFICATION_QUEUE_20260815.md` now have such reconstructions: V1 required
+one minor repair, and V2--V5 passed.
 
 ## 5. Progress accounting
 

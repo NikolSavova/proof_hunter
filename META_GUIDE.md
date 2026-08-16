@@ -487,6 +487,12 @@ prior-art kill-search**; has a writeable-down win condition.
   weight; only sparse child-excess or a genuinely larger ordinary-output bank
   remains. Both exact transport/max-flow suites passed. V2 is now the sole
   frozen verification package.
+- **V2 independent audit / freeze cleared:** proved that every permitted
+  separated `E(r,s)`, reflection, perfect-reset power, and arbitrary recursive
+  substitution expands by grafting to one ordered strong tree. The already
+  audited all-tree theorem therefore forces coefficient `1/2` throughout
+  that construction class. The exact rank/profile/nonstationary/Pareto suite
+  passed. All five V1--V5 packages are now independently reconstructed.
 
 ### 2026-08-15 — ERDŐS #838: fixed-size bridge, V1/V5 audits, and quarter-log pooling gain (Sihao + Codex)
 

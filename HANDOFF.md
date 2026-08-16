@@ -101,15 +101,14 @@ Dossou-Olory's fixed-`k` unordered caterpillar theorem has the right
 does not retain the plane itinerary; see
 `FIXED_RANK_STRONG_TREE_CATERPILLAR_AUDIT_20260815.md`.
 
-Independent audits are complete for V1 and V3--V5. V1 received one explicit
-finite-grammar splice repair and then passed; V3--V5 passed as stated. See
-`V1_INDEPENDENT_AUDIT_20260815.md`, `V3_INDEPENDENT_AUDIT_20260816.md`,
-`V4_INDEPENDENT_AUDIT_20260816.md`, and `V5_INDEPENDENT_AUDIT_20260815.md`.
-Using V5 plus Suk's `ES(k)=2^(k+o(k))`,
-`FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md` gives a load-one,
-fibre-one pooled replacement for every literal history of rank
-`r<=(1/4-epsilon)log n` at `n=4^k`. The unresolved literal window is now
-`(1/4-o(1))log n <= r < log n`, rather than starting at `sqrt(log n)`.
+Independent audits are complete for all V1--V5. V1 received one explicit
+finite-grammar splice repair and then passed; V2--V5 passed as stated. See
+the five `V*_INDEPENDENT_AUDIT_*.md` reports indexed in the verification
+queue.
+Using V5 plus the current Erdős--Szekeres threshold,
+`FIXED_SIZE_LITERAL_EXPLICIT_BOUNDARY_20260816.md` gives a load-one,
+fibre-one pooled replacement for every literal history through rank
+`1/4 log n-O(sqrt(log n log log n))` at `n=4^k`.
 This is a genuine range gain, but it does **not** yet improve the
 unconditional coefficient: the honest window remains `[1/4,1/2]`.
 
@@ -719,10 +718,10 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 **Erdős #838 post-critique obligations (current priority).**
 
-- [ ] Finish independent reconstruction of V2 in
-  `phase2/loop/erdos838/VERIFICATION_QUEUE_20260815.md`. V1 is repaired and
-  passed; V3--V5 passed. Exact author-side scripts alone are not enough for
-  the one remaining frozen package.
+- [x] Finish independent reconstruction of V1--V5 in
+  `phase2/loop/erdos838/VERIFICATION_QUEUE_20260815.md`. V1 required one
+  minor repair; V2--V5 passed. All five formerly frozen packages now have
+  proof reconstructions as well as exact verifier replays.
 - [x] Prove and verify the exact implication
   `(P1 at n=4^k) => liminf >= (1+eta)/4`.
 - [ ] Continue `(P1)` only through the narrowed range
@@ -922,7 +921,7 @@ Read, in order:
 5. `phase2/loop/erdos838/PROVED_GAIN_STRATEGY_20260815.md`.
 
 The full `FULL_ATTACK_20260814.md` and all agent artifacts remain preserved
-for lookup. V1 and V3--V5 now have independent audits; only V2 remains frozen. The
+for lookup. All V1--V5 packages now have independent audits. The
 exact fixed-size bridge, strong-tree comb/seam theorem, caterpillar audit, and
 explicit-boundary literal pooling theorem are the current positive additions.
 Next attack only selected histories in

@@ -1,9 +1,10 @@
 # Erdős 838: independent verification queue
 
-The recent campaign has extensive exact author-side verification but has not
-received comparable independent cross-model proof reconstruction.  Freeze
-publication claims resting on the following packages until each receives a
-fresh proof attempt from another model with the source artifact attached.
+The recent campaign began with extensive exact author-side verification but
+without comparable independent proof reconstruction. As of 2026-08-16 the
+queue is complete: V1 required one minor repair and then passed; V2--V5
+passed. The package entries below preserve the individual reconstruction
+scope and verifier provenance.
 
 **Local integrity rerun, 2026-08-15:** all nine verifier suites associated
 with V1--V5 passed, including `16,142,517` exact nonstationary ledgers,
@@ -38,6 +39,12 @@ Artifacts:
 - `agent_nonstrong_ramp_search/NONSTATIONARY_HOMOGENEOUS_HALF_CLOSURE.md`
 
 ### V2. Recursive separated-template construction closure
+
+**Independent status, 2026-08-16:** `PASS`. The binary profile/rank
+recurrences, macro substitution degrees, stationary coefficient, reflection
+and grafting closure, and dependency on the previously audited all-tree
+theorem were reconstructed. The full exact suite passed. See
+`V2_INDEPENDENT_AUDIT_20260816.md`.
 
 Claims to reconstruct:
 
