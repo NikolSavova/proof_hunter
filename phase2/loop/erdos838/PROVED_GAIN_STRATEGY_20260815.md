@@ -51,11 +51,13 @@ Use the existing literal-history results only after V5 is audited:
 
 - `r=o(sqrt(log n))`: global ES replacement;
 - at the canonical size `n=4^k`, every literal
-  `r<=(1/2-delta)k=(1/4-delta/2)log n` is now jointly replaceable with
-  load/fibre one by `FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md`;
+  `r<=k/2-O(sqrt(k log k))=1/4 log n-O(sqrt(log n log log n))` is now
+  jointly replaceable with load/fibre one by
+  `FIXED_SIZE_LITERAL_EXPLICIT_BOUNDARY_20260816.md`;
 - `r>=log n`: identity/no replacement;
 - focus exclusively on
-  `(1/4-o(1))log n <= r < log n` in the fixed-size attack.
+  `1/4 log n-O(sqrt(log n log log n)) < r < log n` in the fixed-size
+  attack.
 
 No unrestricted recursive call on a comparably sized arbitrary child is
 allowed; that would be marked `EQUIVALENT` in the difficulty ledger.

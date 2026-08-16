@@ -449,6 +449,25 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-16 — ERDŐS #838: explicit quarter-log decoder boundary (Sihao + Codex)
+
+- **New exact range theorem:** if `ES(k)<=2^(k+G_k)`, then at `n=4^k` all
+  literal histories through rank `floor((k-G_k)/2)-3` pool simultaneously
+  into actual convex `k`-faces with physical load and recovery fibre one.
+- **Best current threshold inserted:** Holmsen--Nassajian Mojarrad--Pach--Tardos
+  give `G_k=O(sqrt(k log k))`, so the covered range is now
+  `r<=1/4 log n-O(sqrt(log n log log n))`. This replaces the previous
+  fixed-epsilon statement by an explicit approach to the structural
+  quarter-log capacity boundary.
+- **Honest status:** no coefficient gain; the unrestricted window remains
+  `[1/4,1/2]`. Crossing the boundary requires selected-family sparsity, a
+  larger configuration-specific bank, or a mixed/profile charge; improving
+  `ES(k)` alone cannot do it.
+- **Artifacts:** `FIXED_SIZE_LITERAL_EXPLICIT_BOUNDARY_20260816.md` and
+  `verify_fixed_size_literal_explicit_boundary.py`. Exact verifier PASS:
+  `exact=314821, improvement=677417, base_change=11910, blocks=8126`.
+  Approximate direct API spend: `$0`.
+
 ### 2026-08-15 — ERDŐS #838: fixed-size bridge, V1/V5 audits, and quarter-log pooling gain (Sihao + Codex)
 
 - **Exact gain bridge:** proved and verified that

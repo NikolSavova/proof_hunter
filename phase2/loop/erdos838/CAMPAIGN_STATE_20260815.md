@@ -91,12 +91,17 @@ Primary sources:
   every literal rank-three history and, more generally, ranks
   `r=o(sqrt(log n))` with subpolynomial overhead.
 - At the canonical fixed-size scale `n=4^k`, pooling into the ordinary
-  rank-`k` bank and using Suk's `ES(k)=2^(k+o(k))` strengthens this to
-  load/fibre one for every literal `r<=(1/4-epsilon)log n`.
+  rank-`k` bank and using the Holmsen--Nassajian Mojarrad--Pach--Tardos
+  bound `ES(k)<=2^(k+O(sqrt(k log k)))` gives load/fibre one for every
+  literal
+
+  \[
+    r\le {1\over4}\log n-O(\sqrt{\log n\log\log n}).
+  \]
 - Identity is adequate at `r >= log n`.  The literal-history window
 
   \[
-     (1/4-o(1))\log n\le r<\log n
+     {1\over4}\log n-O(\sqrt{\log n\log\log n})<r<\log n
   \]
 
   remains open, as does nonliteral path multiplicity not determined by the
@@ -108,6 +113,7 @@ Primary sources:
 - `agent_coxeter_global_half/JOINT_DETACHED_BANK_RANK_PROMOTION.md`
 - `agent_coxeter_global_half/GLOBAL_RANK_THREE_ES4_REPLACEMENT_CODE.md`
 - `FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md`
+- `FIXED_SIZE_LITERAL_EXPLICIT_BOUNDARY_20260816.md`
 
 ### D. Barrier and equivalence results
 

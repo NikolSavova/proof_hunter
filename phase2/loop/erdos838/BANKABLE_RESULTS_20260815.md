@@ -139,7 +139,30 @@ global decoder: bank incidence and recovery must both be charged.
 
 Source: `agent_coxeter_global_half/ABSTRACT_MIXED_HALL_ASSEMBLY.md`.
 
-## 5. Sharp scope and publication package
+## 5. Explicit fixed-size literal pooling boundary
+
+Let `N=4^k` and suppose `ES(k)<=2^(k+G_k)`. The universal rank-`k` face
+bank has size at least `2^(k(k-G_k-2))`. Pooling the amplified demand of all
+literal supports through rank
+
+\[
+                 R=\left\lfloor{k-G_k\over2}\right\rfloor-3
+\]
+
+uses at most that many slots. Canonical disjoint blocks therefore give
+physical load and recovery fibre one. The current
+Holmsen--Nassajian Mojarrad--Pach--Tardos bound yields
+
+\[
+ R={1\over4}\log N-O(\sqrt{\log N\log\log N}).
+\]
+
+The leading quarter is a capacity boundary for this universal bank, not an
+artifact of the threshold error term.
+
+Source: `FIXED_SIZE_LITERAL_EXPLICIT_BOUNDARY_20260816.md`.
+
+## 6. Sharp scope and publication package
 
 The preceding statements support a short paper section containing:
 

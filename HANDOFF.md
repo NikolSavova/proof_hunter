@@ -112,6 +112,19 @@ fibre-one pooled replacement for every literal history of rank
 This is a genuine range gain, but it does **not** yet improve the
 unconditional coefficient: the honest window remains `[1/4,1/2]`.
 
+**⭐ 2026-08-16 — ERDŐS #838: LITERAL POOLING REACHES THE EXPLICIT QUARTER-LOG BOUNDARY.**
+The parametric pooling calculation is now exact up to the error term in the
+best Erdős--Szekeres threshold. If `ES(k)<=2^(k+G_k)`, every literal history
+through rank `floor((k-G_k)/2)-3` is jointly coded into actual convex
+`k`-faces with load and recovery fibre one. The theorem of
+Holmsen--Nassajian Mojarrad--Pach--Tardos therefore gives, at `n=4^k`,
+the explicit range
+`r<=1/4 log n-O(sqrt(log n log log n))`. See
+`FIXED_SIZE_LITERAL_EXPLICIT_BOUNDARY_20260816.md` and its verifier
+(`PASS`, 1,012,274 combined exact rows). This removes the former unspecified
+`o(log n)` approach to the boundary, but does not cross the structural
+quarter-log capacity ceiling or improve the coefficient `[1/4,1/2]`.
+
 **⭐ 2026-08-13 — ERDŐS #1208: EXPLICIT CANDIDATE UPPER EXPONENT `0.49815` + FULL-GAP BARRIER MAP (Sihao + Codex ultracode).**
 The live literature window is `n^(1/3) << F_2(n) << n^(1/2-epsilon)`; the
 Erdős Problems page is stale because CFRN (arXiv:2606.05841) and LPZ
@@ -697,7 +710,7 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 - [x] Prove and verify the exact implication
   `(P1 at n=4^k) => liminf >= (1+eta)/4`.
 - [ ] Continue `(P1)` only through the narrowed range
-  `(1/4-o(1))log n <= r < log n`. The current universal
+  `1/4 log n-O(sqrt(log n log log n)) < r < log n`. The current universal
   pooled-capacity estimate stops at its `r=(1/4)log n` boundary; the next
   lemma must use a larger configuration-specific bank, selected-family
   sparsity, mixed geometry, or a profile charge.
@@ -882,7 +895,7 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
-### ⭐ 2026-08-15 — ERDŐS #838: TWO AUDITS PASS; ATTACK THE NARROWED P1 WINDOW
+### ⭐ 2026-08-16 — ERDŐS #838: EXPLICIT BOUNDARY PROVED; ATTACK ONLY ABOVE IT
 
 Read, in order:
 
@@ -895,11 +908,12 @@ Read, in order:
 The full `FULL_ATTACK_20260814.md` and all agent artifacts remain preserved
 for lookup. V1 and V5 now have independent audits; V2--V4 remain frozen. The
 exact fixed-size bridge, strong-tree comb/seam theorem, caterpillar audit, and
-quarter-log literal pooling theorem are the current positive additions. Next
-attack only selected histories in
-`(1/4-o(1))log n <= r < log n`: the current universal total-capacity estimate
-cannot cross the lower boundary, so require a larger configuration-specific
-bank or an explicit sparsity, mixed-face, or profile alternative.
+explicit-boundary literal pooling theorem are the current positive additions.
+Next attack only selected histories in
+`1/4 log n-O(sqrt(log n log log n)) < r < log n`: the universal rank-`k`
+bank cannot cross the quarter-log capacity boundary, so require a larger
+configuration-specific bank or an explicit sparsity, mixed-face, or profile
+alternative.
 If the next bounded attack produces neither an explicit `eta>0` nor another
 proved rank range, stop and package the `1/2` upper/strong-tree theorem plus
 the audited construction and barrier results. Nothing is currently running.
