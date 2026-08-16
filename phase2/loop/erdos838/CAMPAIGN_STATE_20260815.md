@@ -165,13 +165,38 @@ Source: `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md`.
   `r=alpha k` and any `c<2`, proves fixed-size gain
   `eta=(1-c/2)(1-alpha^2)>0`. The constant `c=2` is exactly the ordinary
   double-count ceiling. This is the current strict Stage-C target.
-- The stronger pointwise guess `p_(j+1)>=2^-j p_j` fails below threshold
-  and, if imposed near `N=2^j`, would itself substantially improve the
-  Erdős--Szekeres number. It is therefore parked as full-strength rather
-  than treated as an easy extension lemma.
+- The exact no-slack guess `p_(j+1)>=2^-j p_j` is false at its first
+  nontrivial threshold row: the rational 16-point double chain has
+  `(v4,v5)=(924,112)` and `p5/p4=5/99<1/16`. This does not kill the active
+  supersaturated asymptotic form with `2^-o(k)` slack: the row lies outside
+  the canonical `N=4^k,j<=k` interval, and all later double-chain rows lose
+  only a constant density factor. The averaged positive-interval `c<2`
+  gate and its asymptotic pointwise strengthening remain live.
+- A single near-threshold balance lemma now implies that gate.  Fix one
+  explicit certified sequence `ES(j+1)<=q_j=2^(j+o(j))`. If every
+  `q_j`-point induced configuration satisfies
+  `v_j<=2^((lambda+o(1))j)v_(j+1)` for a fixed `lambda<1`, exact averaging
+  gives global decay constant `c=1+lambda`.  The resulting unrestricted
+  coefficient is
+  `1/4+(1-lambda)(1-alpha^2)/8`.
+- **Quantifier correction.** The same statement is catastrophically false
+  if asserted at every size `2^(j+o(j))`. A rational cap-promoted central
+  Pascal family on `C(j,j/2)+1=2^(j-o(j))` points has
+  `v_j/v_(j+1)>=2^Omega(j^2)`. Thus the active lemma lives only at the fixed
+  certified upper sequence; its proof must quantitatively exploit that
+  sequence's oversaturation slack. A kill must also occur at that same
+  sequence (or rule out every possible certified choice). This is now the
+  sole active Stage-C sublemma; see
+  `THRESHOLD_ADJACENT_LAYER_BALANCE_GATE_20260816.md`.
+- The obvious attempt to move the promoted barrier onto the oversaturated
+  side fails in exact graded tests: replacing each physical leaf by a
+  larger central-Pascal child gives `v_j/v_(j+1)<0.0112` in all `1277`
+  substitutions through `h=8`. This is evidence, not a theorem; the missing
+  positive statement is a general support-to-mixed-extension bound.
 
 Sources: `UNIFORM_GROWING_RANK_ROOTED_CATERPILLAR_THEOREM_20260816.md`,
 `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`.
+`THRESHOLD_ADJACENT_LAYER_BALANCE_GATE_20260816.md`.
 
 ## 3. What remains open
 

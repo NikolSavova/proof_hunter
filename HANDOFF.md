@@ -184,10 +184,45 @@ The unrestricted Stage-C target now has an exact coefficient ledger. With
 `p_j=v_j/C(N,j)`, `N=4^k`, and `r=alpha k`, any average decay bound
 `log(p_r/p_k)<=(c/2)(k^2-r^2)+o(k^2)` with `c<2` yields
 `eta=(1-c/2)(1-alpha^2)>0` and hence a strict unconditional coefficient
-gain. The pointwise `c=1` guess survives all saved admissible regressions
-but is full-strength near the Erdős--Szekeres threshold and is not claimed.
+gain. The exact no-slack inequality `p_(j+1)>=2^-j p_j` is disproved at its
+natural threshold by the rational 16-point double chain:
+`(v4,v5)=(924,112)` and `p5/p4=5/99<1/16`. This does **not** kill the active
+supersaturated asymptotic `c=1` form: the bad row lies outside the canonical
+`N=4^k,j<=k` interval, its constant loss is absorbed by `2^-o(k)`, and all
+later double-chain ranks have `p_(j+1)/p_j=(m-j)/(2m-j)`. The averaged
+`c<2` gate and its asymptotic pointwise strengthening remain live.
 See `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`. The honest coefficient
 window remains `[1/4,1/2]`.
+
+**⭐ 2026-08-16 — ERDŐS #838: ADJACENT-LAYER GATE CORRECTED TO A FIXED CERTIFIED SIZE; UNIFORM SIZE WINDOW IS FALSE.**
+Fix an explicit certified sequence `ES(j+1)<=q_j=2^(j+o(j))`. If every
+`q_j`-point configuration obeys
+`v_j<=2^((lambda+o(1))j)v_(j+1)` for one fixed `lambda<1`, then exact
+averaging over induced `q_j`-subsets gives
+`p_(j+1)/p_j>=2^(-(1+lambda)j-o(j))`. The successive-rank theorem therefore
+improves the unrestricted coefficient to
+`1/4+(1-lambda)(1-alpha^2)/8`. This is one strict reduction below the live
+fixed-size target. Its kill criterion must be evaluated at that same fixed
+sequence, not at an arbitrary size with the same leading exponent.
+
+The quantifier correction is forced by a new exact stretchable barrier.
+For even `j`, a cap-promoted central Pascal cell has
+`C(j,j/2)+1=2^(j-o(j))` points and
+`v_j/v_(j+1)>=2^Omega(j^2)`. Thus the uniform statement over all sizes
+`2^(j+o(j))`, and the former size-free kill criterion, are false by a huge
+margin. Internal central-Pascal layers and alternating combs remain safe at
+the previously selected rows; the failure is a one-point top-rank
+promotion. Any proof at the certified `q_j` must quantitatively use the
+extra oversaturation slack, rather than only `log q_j=j+o(j)`. Heredity
+alone is also hopeless: an abstract complex can contain every face through
+rank `j` and only one `(j+1)`-face. See
+`THRESHOLD_ADJACENT_LAYER_BALANCE_GATE_20260816.md` and its exact verifier.
+There is positive finite evidence that the fixed-size distinction is real:
+substituting a larger central-Pascal child at every physical leaf of the
+promoted cliff, in all `1277` substitutions for `4<=h<=8`, forces
+`v_j/v_(j+1)<0.0112`. Thus the obvious strong-glue padding does not move the
+counterexample to the oversaturated side; its mixed `(j+1)` layer repairs
+the cliff. A general support-to-mixed-extension theorem is still missing.
 
 **⭐ 2026-08-13 — ERDŐS #1208: EXPLICIT CANDIDATE UPPER EXPONENT `0.49815` + FULL-GAP BARRIER MAP (Sihao + Codex ultracode).**
 The live literature window is `n^(1/3) << F_2(n) << n^(1/2-epsilon)`; the
@@ -794,7 +829,11 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 - [ ] For unrestricted P1, beat the successive-rank density-decay constant
   `c=2` on one fixed interval `alpha k<=j<k` at `N=4^k`. Any fixed
   `c<2` gives the explicit gain recorded in
-  `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`.
+  `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`. The most concrete child
+  is P1e at one fixed certified `q_j`; the exact no-slack `c=1` inequality
+  and the uniform `2^(j+o(j))` size-window version are false. Any P1e proof
+  must use the certified sequence's oversaturation to force mixed
+  `(j+1)`-faces.
 - [ ] Enforce `DIFFICULTY_LEDGER_20260815.md`: mark coefficient-equivalent
   reductions `EQUIVALENT` and stop them; cap new chains at three reductions
   without an explicit coefficient/range gain.

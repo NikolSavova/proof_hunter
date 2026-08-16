@@ -59,6 +59,15 @@ def face_profile(points) -> list[int]:
     return profile
 
 
+def face_count(points, rank: int) -> int:
+    if rank <= 2:
+        return comb(len(points), rank)
+    return sum(
+        hull_size(points, subset) == rank
+        for subset in combinations(range(len(points)), rank)
+    )
+
+
 def density_ratio(profile: list[int], size: int, rank: int) -> Fraction:
     """Return p_(rank+1)/p_rank exactly."""
     return Fraction(
@@ -124,6 +133,62 @@ def audit_finite_point_sets() -> tuple[Fraction, Fraction, int]:
     return minimum_ratio, density_ratio(profile_five, 5, 4), checks
 
 
+def double_chain(m: int):
+    """A rational, general-position double chain on 2m points."""
+    denominator = 4 * m * m
+    upper = [
+        (Fraction(2 * index),
+         Fraction(2) + Fraction(index * index, denominator))
+        for index in range(m)
+    ]
+    lower = [
+        (Fraction(2 * index + 1),
+         -Fraction(2) - Fraction(index * index, denominator))
+        for index in range(m)
+    ]
+    return upper + lower
+
+
+def audit_double_chain() -> tuple[int, Fraction, Fraction]:
+    checks = 0
+    first_ratio = None
+    minimum_later_ratio = None
+    for m in range(5, 13):
+        points = double_chain(m)
+        counts = {
+            rank: face_count(points, rank)
+            for rank in range(4, min(m, 8) + 1)
+        }
+        assert counts[4] == 2 * comb(m, 4) + comb(m, 2) ** 2
+        assert counts[5] == 2 * comb(m, 5)
+        for rank in range(6, min(m, 8) + 1):
+            assert counts[rank] == 2 * comb(m, rank)
+        checks += 1
+
+        if m == 8:
+            assert (counts[4], counts[5]) == (924, 112)
+            first_ratio = Fraction(
+                5 * counts[5], (2 * m - 4) * counts[4]
+            )
+            assert first_ratio == Fraction(5, 99)
+            assert 16 * first_ratio == Fraction(80, 99) < 1
+            assert first_ratio > Fraction(1, 64)  # c=3/2 still works.
+
+        for rank in range(5, min(m, 8)):
+            ratio = Fraction(
+                (rank + 1) * counts[rank + 1],
+                (2 * m - rank) * counts[rank],
+            )
+            assert ratio == Fraction(m - rank, 2 * m - rank)
+            minimum_later_ratio = ratio if minimum_later_ratio is None else min(
+                minimum_later_ratio, ratio
+            )
+            checks += 1
+
+    assert first_ratio is not None and minimum_later_ratio is not None
+    return checks, first_ratio, minimum_later_ratio
+
+
 def audit_strong_trees() -> tuple[int, Fraction]:
     trees_module = load(
         "uniform_caterpillar_for_density",
@@ -181,13 +246,16 @@ def audit_pascal() -> tuple[int, Fraction]:
 def main() -> None:
     bridge_checks = audit_bridge()
     finite_minimum, threshold_kill, finite_checks = audit_finite_point_sets()
+    double_checks, double_kill, double_later = audit_double_chain()
     tree_checks, tree_minimum = audit_strong_trees()
     pascal_checks, pascal_minimum = audit_pascal()
     print(
         "PASS: successive-rank density gain gate; "
         f"bridge_checks={bridge_checks}; finite_checks={finite_checks}; "
+        f"double_chain_checks={double_checks}; "
         f"tree_checks={tree_checks}; pascal_checks={pascal_checks}; "
-        f"threshold_kill={threshold_kill}; "
+        f"threshold_kill={threshold_kill}; double_chain_kill={double_kill}; "
+        f"double_chain_later_min={double_later}; "
         f"minimum_ratios=({finite_minimum},{tree_minimum},{pascal_minimum})"
     )
 

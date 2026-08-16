@@ -130,10 +130,57 @@ The strict target is instead (2) only at the highly supersaturated ambient
 scale $N=4^k$ and only over $\alpha k\le j<k$.  It neither asserts nor
 requires a new near-threshold Erd\H{o}s--Szekeres theorem.
 
-## 3. Exact evidence and scope
+## 3. The exact no-slack form is false at its natural threshold
 
-The pointwise $c=1$ inequality survives the following exact regressions in
-its admissible range $N\ge2^j$:
+The exact inequality (11) is false, not merely when $N<2^j$.  Consider the
+rational double-chain family with $m$ upper and $m$ lower points, so
+$N=2m$.  Its first two relevant layer counts are
+
+\[
+ v_4=2\binom m4+\binom m2^2,
+ \qquad
+ v_5=2\binom m5.                                      \tag{13}
+\]
+
+At $m=8$, hence $N=16=2^4$, this gives
+
+\[
+ (v_4,v_5)=(924,112),
+ \qquad {p_5\over p_4}={5\over99}<{1\over16}.          \tag{14}
+\]
+
+Equivalently, the normalized left side of (11) is $80/99<1$.  Thus the
+first nontrivial threshold row already kills the exact no-slack conjecture.
+
+This counterexample does **not** kill either the strict gate (2) or the
+asymptotic pointwise condition (5).  Its effective one-row exponent is
+
+\[
+ {1\over4}\log {99\over5}=1.076\ldots<2,              \tag{15}
+\]
+
+and it even satisfies the weaker pointwise bound with $c=3/2$.  Moreover,
+every convex set of rank $j\ge5$ in this family lies wholly in one chain,
+so
+
+\[
+ v_j=2\binom mj,
+ \qquad {p_{j+1}\over p_j}={m-j\over2m-j}\qquad(j\ge5).
+                                                               \tag{16}
+\]
+
+The bad drop is therefore concentrated at the entry $4\to5$, rather than
+persisting across a positive fraction of the growing-rank interval.  Also,
+this example is at the natural threshold $N=2^j$: when the campaign uses
+$N=4^k$ and $j\le k$, the offending $N=16,j=4$ row is outside the active
+interval.  A constant factor such as $80/99$ is in any case absorbed by the
+$2^{-o(k)}$ allowance in (5).  The durable targets are therefore the
+averaged condition (2) and, as a convenient still-live strengthening, the
+supersaturated asymptotic form of (5); only the exact universal form (11)
+is refuted.
+
+The exact inequality (11) nevertheless survives the following regressions
+in their admissible range $N\ge2^j$:
 
 1. the stored globally minimizing order types at $N=8,9$;
 2. every ordered full binary strong-decomposition tree through eleven
@@ -142,11 +189,10 @@ its admissible range $N\ge2^j$:
 4. the vertically iterated balanced Pascal cell $T(4,2)$ through depth
    fourteen, at every $j\le\lfloor\log N\rfloor$.
 
-These are tests, not a proof.  The inequality would imply a substantial
-part of the desired theorem, so finite survival should not be treated as
-evidence that a short argument exists.  The useful conclusion is the exact
-constant in (4): a future promotion or circuit argument need only beat the
-decay coefficient two on a fixed rank interval.  A statement that merely
+They are now retained only as regression tests showing where the failure
+does *not* occur.  The useful conclusion is still the exact constant in
+(4): a future promotion or circuit argument need only beat the decay
+coefficient two on a fixed rank interval.  A statement that merely
 reproduces $c=2$, or that hides an unrestricted fixed-size lower bound in
 its hypothesis, is not progress.
 
@@ -159,7 +205,9 @@ python3 phase2/loop/erdos838/verify_successive_rank_density_gain.py
 ~~~
 
 The verifier checks (3)--(4) with exact rational arithmetic on a grid of
-$(\alpha,c)$, verifies the five-point threshold counterexample from exact
-rational coordinates, checks the stored $N=8,9$ minimizers, exhausts all
-ordered binary trees through eleven leaves, and checks the vertical Pascal
-hierarchy.  It does not claim to verify (2) for arbitrary point sets.
+$(\alpha,c)$, verifies both the five-point threshold counterexample and the
+$16$-point admissible double-chain counterexample from exact rational
+coordinates, checks (13) on a finite family, checks the stored $N=8,9$
+minimizers, exhausts all ordered binary trees through eleven leaves, and
+checks the vertical Pascal hierarchy.  It does not claim to verify (2) for
+arbitrary point sets.

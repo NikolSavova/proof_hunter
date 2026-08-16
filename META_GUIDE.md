@@ -449,6 +449,57 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-16 — ERDŐS #838: adjacent-layer quantifier correction and exact Pascal barrier (Sihao + Codex)
+
+- **Correction.** The adjacent-layer lemma must be stated at one fixed
+  certified sequence `ES(j+1)<=q_j=2^(j+o(j))`; the earlier uniform-in-size
+  reading and its proposed kill criterion were false.
+- **Exact stretchable barrier.** For `j=2h-4`, a one-point cap promotion of
+  the central Pascal cell has `C(j,j/2)+1=2^(j-o(j))` labels and
+  `v_j/v_(j+1)>=a_h=2^Omega(j^2)`. Exact first ratios are `7`, `2713/46`,
+  and `12410783/3421`; a verified Pascal recurrence continues through
+  `h=20` and exact rational geometry is checked at `h=4,5`.
+- **Consequence.** Any positive proof must use the actual oversaturation
+  slack in the chosen Erdős--Szekeres upper-bound sequence, not merely the
+  asymptotic statement `log q_j=j+o(j)`. Any disproof must hit that same
+  sequence or all possible certified choices.
+- **Padding stress.** Replacing every physical leaf of the promoted cliff,
+  one at a time, by a larger central-Pascal child repairs the adjacent layer
+  in all `1277` exact substitutions for `4<=h<=8`; the maximum surviving
+  ratio is below `0.0112`. This is finite evidence for an
+  oversaturation-to-mixed-extension theorem, not such a theorem.
+- **Artifacts:** corrected
+  `THRESHOLD_ADJACENT_LAYER_BALANCE_GATE_20260816.md`, its exact verifier,
+  and the corresponding handoff/campaign/ledger entries. Approximate direct
+  API spend `$0`.
+
+### 2026-08-16 — ERDŐS #838: adjacent-layer balance reduced to one signed-planar lemma (Sihao + Codex)
+
+- **Exact induced-subset averaging.** If every `q`-point restriction has
+  `v_j<=L_jv_(j+1)`, then globally
+  `p_(j+1)/p_j>=(j+1)/(L_j(q-j))`. Consequently, at
+  `q_j=2^(j+o(j))`, any balance exponent `L_j=2^((lambda+o(1))j)` with
+  fixed `lambda<1` yields the Stage-C decay constant `c=1+lambda<2` and
+  unrestricted coefficient
+  `1/4+(1-lambda)(1-alpha^2)/8>1/4`.
+- **Kill-search survived.** Exact central Pascal profiles through parameter
+  50, alternating combs through 1024 leaves, and the threshold double chain
+  all have bounded/decreasing `v_j/v_(j+1)`, far below the forbidden
+  `2^((1-o(1))j)` scale. The rational 16-point double chain still kills only
+  the exact no-slack finite inequality, not this asymptotic gate.
+- **Scope:** hereditary complexes fail catastrophically, so the missing
+  input is specifically signed planar circuit geometry. The current route
+  is an extension/one-hidden-vertex flip graph: prove that direct extensions
+  or pocket-charged flip basins have congestion `2^((1-epsilon)j+o(j))` for
+  some `epsilon>0`.
+- **Artifacts:** `THRESHOLD_ADJACENT_LAYER_BALANCE_GATE_20260816.md` and
+  `verify_threshold_adjacent_layer_balance.py` (`PASS`: 3,567 averaging
+  identities plus exact construction regressions). Approximate direct API
+  spend `$0`.
+- **Honest status:** coefficient window remains `[1/4,1/2]`; P1e is
+  conjectural and is now the sole active child of P1d. Park it if the next
+  geometric reduction does not produce an explicit saving.
+
 ### 2026-08-16 — ERDŐS #838: mass-truncated square mesh + uniform caterpillars + exact rank-density gate (Sihao + Codex)
 
 - **Local heterogeneous loss sharpened.** Ordinary hinged Kraft on one
@@ -467,10 +518,14 @@ prior-art kill-search**; has a writeable-down win condition.
   and `r=alpha k`, an average density-decay coefficient `c<2` between ranks
   `r` and `k` gives
   `eta=(1-c/2)(1-alpha^2)>0` and unrestricted coefficient
-  `1/4+eta/4`. The pointwise `c=1` inequality survives exact minimizer,
-  ordered-tree, and vertical-Pascal regressions in its admissible range, but
-  is explicitly not claimed; near `N=2^j` it would itself improve the
-  Erdős--Szekeres number.
+  `1/4+eta/4`. The exact no-slack inequality
+  `p_(j+1)>=2^-j p_j` survives the saved minimizer, ordered-tree, and
+  vertical-Pascal regressions, but an exact rational 16-point double chain
+  kills it at the natural threshold: `(v4,v5)=(924,112)` and
+  `p5/p4=5/99<1/16`. This does not kill the active supersaturated
+  asymptotic form with `2^-o(k)` slack: the row lies outside
+  `N=4^k,j<=k`, and later double-chain rows have constant-size density
+  loss. The averaged strict `c<2` target remains live.
 - **Artifacts:** `TRUNCATED_WEIGHTED_KRAFT_SQUARE_MESH_20260816.md`,
   `WEIGHTED_NORMALIZED_KRAFT_BARRIER_20260816.md`,
   `UNIFORM_GROWING_RANK_ROOTED_CATERPILLAR_THEOREM_20260816.md`,
