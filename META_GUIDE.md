@@ -468,6 +468,19 @@ prior-art kill-search**; has a writeable-down win condition.
   `exact=314821, improvement=677417, base_change=11910, blocks=8126`.
   Approximate direct API spend: `$0`.
 
+- **V3 independent audit:** reconstructed and passed the exact hull-root
+  recurrence, weighted increment `K_{n,1}`, cumulative half-growth
+  normalization, endpoint moment/Pareto gate, and corrected projective
+  `n=8,9` reset. The two exact suites passed, including the full `B(8,2)`
+  scan and all 483 root charts/6,984 shellings of the true nine-point
+  minimizer. V2 and V4 are now the only frozen verification packages.
+- **New minimizer increment theorem:** for the exact weighted root optimizer,
+  `K_(n,1)>=ceil(m_n(f(n))/n)+n-1`. The verifier passed 1,755,273 exact
+  rank/ledger/asymptotic rows. At coefficient `c` this supplies only
+  `(c+o(1))f(n)log n/n`, so it does not move `[1/4,1/2]`; it proves that a
+  successful root proof needs cross-chart/profile correlation beyond summed
+  deletion moments.
+
 ### 2026-08-15 — ERDŐS #838: fixed-size bridge, V1/V5 audits, and quarter-log pooling gain (Sihao + Codex)
 
 - **Exact gain bridge:** proved and verified that

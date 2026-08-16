@@ -26,6 +26,7 @@ progress.
 | M1 | Universal/minimizer half-weight `H(P)=n^{o(1)}` | full coefficient `1/2` | EQUIVALENT/FULL | Open | Park as headline, not active reduction |
 | M2 | Peak mean `mu >= log_2 n-O(log log n)` for minimizers | full coefficient `1/2` | EQUIVALENT/FULL | Open | Park as headline, not active reduction |
 | M3 | Hull-root Pareto curvature at the sharp cumulative scale | full coefficient `1/2` | Near-full; exact recurrence known | AUDIT + open curvature | Verify recurrence; attack only a strict sparse subcase |
+| M3a | Hull-root increment rank-moment floor | `K_(n,1)>=ceil(m_n(f(n))/n)+n-1`, asymptotically `(c+o(1))f(n)log n/n` at coefficient `c` | STRICT exact increment theorem, but quantitatively below half | Proved after V3 audit | Bank; any continuation must add cross-chart/profile correlation rather than another scalar deletion sum |
 | E1 | Fixed-power EIC/product extraction | conditional `3/8-o(1)` route | STRICT at entry | Many subcases closed; final residue became EQUIVALENT | Park equivalent residue; retain proved subcases |
 | D1 | Local natural two-tangent Hall decoder | hoped-for subpolynomial load | BARRIER | False by matching-star examples | Closed permanently |
 | D2 | Global pooled Hall assembly | converts local codes to global codes with rank load | ROUTE | Internal proof + exact verifier | Independent audit |

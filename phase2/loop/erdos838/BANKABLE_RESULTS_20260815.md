@@ -162,7 +162,25 @@ artifact of the threshold error term.
 
 Source: `FIXED_SIZE_LITERAL_EXPLICIT_BOUNDARY_20260816.md`.
 
-## 6. Sharp scope and publication package
+## 6. Exact hull-root increment floor
+
+Let `m_n(t)` be the least total rank of `t` distinct nonempty subsets of an
+`n`-set and let `K_(n,1)=f(n+1)-f(n)-1`. The exact hull-root optimizer obeys
+
+\[
+ K_{n,1}\ge\left\lceil{m_n(f(n))\over n}\right\rceil+n-1.
+\]
+
+The proof deletes each label from the weighted optimizer, restores it on the
+cap side, compares to `f(n)`, and sums the exact face/cap rank identities.
+At coefficient `c` the bound is
+`(c+o(1))f(n)log n/n`; the cumulative half criterion needs coefficient one.
+Thus this is a genuine minimizer increment theorem and an exact measure of
+the remaining correlation deficit, not half closure.
+
+Source: `HULL_ROOT_INCREMENT_MOMENT_FLOOR_20260816.md`.
+
+## 7. Sharp scope and publication package
 
 The preceding statements support a short paper section containing:
 

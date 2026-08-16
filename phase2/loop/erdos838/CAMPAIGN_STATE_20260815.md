@@ -65,6 +65,10 @@ Primary sources:
 
 - Exact deletion and hull-root identities reduce the desired half lower bound
   to a near-`log n` mean-rank/curvature statement for minimizers.
+- The weighted hull-root increment now has the unconditional exact floor
+  `K_(n,1)>=ceil(m_n(f(n))/n)+n-1`. At a putative coefficient `c` this is
+  `(c+o(1))f(n)log n/n`; the cumulative half gate needs coefficient one, so
+  the theorem exposes rather than closes the missing profile correlation.
 - The endpoint-envelope formulation identifies the required one-seam Pareto
   curvature and records exact small-`n` saturation, including projective hull
   roots missed by affine contiguous-cut searches.
@@ -77,6 +81,7 @@ Primary sources:
 - `agent_minimizer_endpoint_curvature/MINIMIZER_ENDPOINT_CURVATURE_AND_HIGH_WALL_GATE.md`
 - `agent_hull_root_envelope_dynamic/HULL_ROOT_ENVELOPE_AND_CHART_RESET_GATE.md`
 - `agent_sparse_curvature_transport/SPARSE_CURVATURE_TRANSPORT_AND_NATIVE_COLLISION.md`
+- `HULL_ROOT_INCREMENT_MOMENT_FLOOR_20260816.md`
 
 ### C. Decoder and Hall assembly
 
@@ -146,8 +151,8 @@ the next reduction layer.
 The directory contains hundreds of exact verifier/certificate scripts and
 many rational finite configurations. That is substantial author-side
 verification, but it is not a substitute for independent proof
-reconstruction. V1 and V5 in `VERIFICATION_QUEUE_20260815.md` now have such
-reconstructions; V2--V4 remain frozen pending the same treatment.
+reconstruction. V1, V3, and V5 in `VERIFICATION_QUEUE_20260815.md` now have
+such reconstructions; V2 and V4 remain frozen pending the same treatment.
 
 ## 5. Progress accounting
 

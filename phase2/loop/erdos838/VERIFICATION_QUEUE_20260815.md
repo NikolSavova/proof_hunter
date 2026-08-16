@@ -53,6 +53,13 @@ Artifacts:
 
 ### V3. Minimizer hull-root recurrence and endpoint curvature reduction
 
+**Independent status, 2026-08-16:** `PASS`. The hull-root recurrence and
+converse extension were reconstructed geometrically, the normalization in
+the cumulative half-growth criterion was checked, the endpoint moment/Pareto
+reduction was rederived, and the projective-root correction at `n=9` was
+included explicitly. Both exact suites passed. See
+`V3_INDEPENDENT_AUDIT_20260816.md`.
+
 Claims to reconstruct:
 
 1. the projective hull-root extension/deletion recurrence for `f(n+1)`;
