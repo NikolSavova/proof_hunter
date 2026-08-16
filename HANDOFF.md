@@ -101,10 +101,10 @@ Dossou-Olory's fixed-`k` unordered caterpillar theorem has the right
 does not retain the plane itinerary; see
 `FIXED_RANK_STRONG_TREE_CATERPILLAR_AUDIT_20260815.md`.
 
-Independent audits are complete for V1, V3, and V5. V1 received one explicit
-finite-grammar splice repair and then passed; V3 and V5 passed as stated. See
-`V1_INDEPENDENT_AUDIT_20260815.md`, `V3_INDEPENDENT_AUDIT_20260816.md`, and
-`V5_INDEPENDENT_AUDIT_20260815.md`.
+Independent audits are complete for V1 and V3--V5. V1 received one explicit
+finite-grammar splice repair and then passed; V3--V5 passed as stated. See
+`V1_INDEPENDENT_AUDIT_20260815.md`, `V3_INDEPENDENT_AUDIT_20260816.md`,
+`V4_INDEPENDENT_AUDIT_20260816.md`, and `V5_INDEPENDENT_AUDIT_20260815.md`.
 Using V5 plus Suk's `ES(k)=2^(k+o(k))`,
 `FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md` gives a load-one,
 fibre-one pooled replacement for every literal history of rank
@@ -126,10 +126,14 @@ the explicit range
 `o(log n)` approach to the boundary, but does not cross the structural
 quarter-log capacity ceiling or improve the coefficient `[1/4,1/2]`.
 
-V3 is now independently reconstructed and `PASS`: the hull-root recurrence,
-weighted increment, cumulative normalization, endpoint moment/Pareto gate,
-and projective `n=8,9` corrections all survived, with both exact suites
-rerun. The follow-up `HULL_ROOT_INCREMENT_MOMENT_FLOOR_20260816.md` proves
+V3 and V4 are now independently reconstructed and `PASS`. V3 covers the
+hull-root recurrence, weighted increment, cumulative normalization, endpoint
+moment/Pareto gate, and projective `n=8,9` corrections; both exact suites
+were rerun. V4 proves exact causal curvature transport but also the sharp
+full-ledger remapping obstruction: any ordinary-face remapping has fibre
+`(1-o(1))` times the shelling weight. Thus only sparse child-excess or a
+genuinely larger ordinary-output bank remains. The follow-up
+`HULL_ROOT_INCREMENT_MOMENT_FLOOR_20260816.md` proves
 the new exact bound
 `K_(n,1)>=ceil(m_n(f(n))/n)+n-1`. It applies to the genuinely nonminimal
 weighted child selected by the root envelope. At coefficient `c` it yields
@@ -715,10 +719,10 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 **Erdős #838 post-critique obligations (current priority).**
 
-- [ ] Finish independent reconstruction of V2 and V4 in
+- [ ] Finish independent reconstruction of V2 in
   `phase2/loop/erdos838/VERIFICATION_QUEUE_20260815.md`. V1 is repaired and
-  passed; V3 and V5 passed. Exact author-side scripts alone are not enough
-  for the two remaining packages.
+  passed; V3--V5 passed. Exact author-side scripts alone are not enough for
+  the one remaining frozen package.
 - [x] Prove and verify the exact implication
   `(P1 at n=4^k) => liminf >= (1+eta)/4`.
 - [ ] Continue `(P1)` only through the narrowed range
@@ -918,7 +922,7 @@ Read, in order:
 5. `phase2/loop/erdos838/PROVED_GAIN_STRATEGY_20260815.md`.
 
 The full `FULL_ATTACK_20260814.md` and all agent artifacts remain preserved
-for lookup. V1, V3, and V5 now have independent audits; V2 and V4 remain frozen. The
+for lookup. V1 and V3--V5 now have independent audits; only V2 remains frozen. The
 exact fixed-size bridge, strong-tree comb/seam theorem, caterpillar audit, and
 explicit-boundary literal pooling theorem are the current positive additions.
 Next attack only selected histories in

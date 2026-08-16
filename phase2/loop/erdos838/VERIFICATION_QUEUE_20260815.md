@@ -76,6 +76,11 @@ Artifacts:
 
 ### V4. Sparse curvature transport and native-cap collision
 
+**Independent status, 2026-08-16:** `PASS`. The curvature conservation law,
+causal layer construction, weighted native/child-excess inequality, and
+universal remapping load bound were reconstructed directly. Both exact
+transport/max-flow suites passed. See `V4_INDEPENDENT_AUDIT_20260816.md`.
+
 Claims to reconstruct:
 
 1. sparse layer selection retains the claimed amount of curvature;

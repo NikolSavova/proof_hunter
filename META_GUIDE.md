@@ -480,6 +480,13 @@ prior-art kill-search**; has a writeable-down win condition.
   `(c+o(1))f(n)log n/n`, so it does not move `[1/4,1/2]`; it proves that a
   successful root proof needs cross-chart/profile correlation beyond summed
   deletion moments.
+- **V4 independent audit:** reconstructed and passed causal curvature
+  transport, the forced native-cap collision, the weighted child-excess gate,
+  and the universal post-collision remapping bound. Any full tagged-ledger
+  decoder into ordinary faces has fibre `(1-o(1))` times total shelling
+  weight; only sparse child-excess or a genuinely larger ordinary-output bank
+  remains. Both exact transport/max-flow suites passed. V2 is now the sole
+  frozen verification package.
 
 ### 2026-08-15 — ERDŐS #838: fixed-size bridge, V1/V5 audits, and quarter-log pooling gain (Sihao + Codex)
 
