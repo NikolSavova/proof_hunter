@@ -449,6 +449,39 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-16 — ERDŐS #838: mass-truncated square mesh + uniform caterpillars + exact rank-density gate (Sihao + Codex)
+
+- **Local heterogeneous loss sharpened.** Ordinary hinged Kraft on one
+  mass-truncated child alphabet proves
+  `max_i((log n_i)^2/2+R_i)>=L^2/2-O((log m+log L)^2)`. This removes the
+  earlier harmonic `L log log m` loss. The stronger normalized weighted
+  Kraft shortcut is false on an exact rational five-point chart and is
+  separately banked.
+- **Growing-rank finite error solved.** For every full binary tree,
+  `R_k(T)>=b_k(n-2^(k-2))_+^k`; at `n=4^k` this has exponent
+  `3k^2/2+O(k)`. The exact ordered endpoint formula was also proved. Its
+  same-constant plane analogue is false on a 256-leaf alternating comb, so
+  the honest residual is a shifted/excess orientation comparison rather
+  than another finite-size estimate.
+- **Strict Stage-C target quantified.** For `p_j=v_j/C(N,j)`, `N=4^k`,
+  and `r=alpha k`, an average density-decay coefficient `c<2` between ranks
+  `r` and `k` gives
+  `eta=(1-c/2)(1-alpha^2)>0` and unrestricted coefficient
+  `1/4+eta/4`. The pointwise `c=1` inequality survives exact minimizer,
+  ordered-tree, and vertical-Pascal regressions in its admissible range, but
+  is explicitly not claimed; near `N=2^j` it would itself improve the
+  Erdős--Szekeres number.
+- **Artifacts:** `TRUNCATED_WEIGHTED_KRAFT_SQUARE_MESH_20260816.md`,
+  `WEIGHTED_NORMALIZED_KRAFT_BARRIER_20260816.md`,
+  `UNIFORM_GROWING_RANK_ROOTED_CATERPILLAR_THEOREM_20260816.md`,
+  `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`, and four exact verifiers.
+  All PASS; approximate direct API spend `$0`.
+- **Honest status / next action:** the coefficient window remains
+  `[1/4,1/2]`. Attack the highly supersaturated cross-rank extension graph
+  only at `N=4^k`; beat decay constant two or obtain an equivalent
+  one-face circuit/profile charge. The near-threshold pointwise conjecture
+  and raw two-target deletion map are parked as full-strength/equivalent.
+
 ### 2026-08-16 — ERDŐS #838: fixed-size prior-art ceiling + harmonic square mesh (Sihao + Codex)
 
 - **Prior-art kill-search completed for the live P1 target.** Aichholzer et

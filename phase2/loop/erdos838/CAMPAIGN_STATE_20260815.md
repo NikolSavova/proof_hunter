@@ -148,6 +148,31 @@ be coefficient-equivalent to the unrestricted problem.
 
 Source: `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md`.
 
+### F. Uniform caterpillars and the exact successive-rank gate
+
+- The fixed-$k$ error in the unordered rooted-caterpillar theorem is no
+  longer an obstruction. For every full binary tree,
+  `R_k(T)>=b_k(n-2^(k-2))_+^k`, so at `n=4^k` the unordered count has
+  exponent `3k^2/2+O(k)`. The proof is a finite shifted induction.
+- Genuine ordered strong-tree faces have the exact endpoint formula
+  `v_k(T)=sum_(x<y)e_(k-2)(S(x,y))`. Reusing the same shifted constant is
+  false: the 256-leaf alternating comb gives `86,709,504<96,018,048` at
+  rank four. The loss is subquadratic in every canonical stress tested,
+  but no shifted/excess comparison is proved.
+- For arbitrary point sets, write `p_j=v_j/C(N,j)`. At `N=4^k`, an average
+  decay bound
+  `log(p_r/p_k)<=(c/2)(k^2-r^2)+o(k^2)`, with
+  `r=alpha k` and any `c<2`, proves fixed-size gain
+  `eta=(1-c/2)(1-alpha^2)>0`. The constant `c=2` is exactly the ordinary
+  double-count ceiling. This is the current strict Stage-C target.
+- The stronger pointwise guess `p_(j+1)>=2^-j p_j` fails below threshold
+  and, if imposed near `N=2^j`, would itself substantially improve the
+  Erdős--Szekeres number. It is therefore parked as full-strength rather
+  than treated as an easy extension lemma.
+
+Sources: `UNIFORM_GROWING_RANK_ROOTED_CATERPILLAR_THEOREM_20260816.md`,
+`SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`.
+
 ## 3. What remains open
 
 Three broad gates survive.  None is presently a theorem.
@@ -178,8 +203,10 @@ one minor repair, and V2--V5 passed.
 
 - Obstruction/architecture map: approximately `75--80%` mature.
 - Construction-side recursive threat map: highly constrained. The local
-  heterogeneous square mesh is proved up to a harmonic lower-order loss; its
-  accumulation and the unrestricted geometric promotion remain open.
+  heterogeneous square mesh now has the sharper mass-truncated loss
+  `O((log m+log log N)^2)`. The finite-size unordered caterpillar error is
+  also removed. Recursive accumulation, plane-orientation conversion, and
+  unrestricted geometric promotion remain open.
 - Unconditional lower-bound progress beyond `1/4`: **none yet**.
 - Full proof completion cannot responsibly be assigned the earlier `78%`
   number; the final bridge may contain most of the theorem's difficulty.

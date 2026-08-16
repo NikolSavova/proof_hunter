@@ -165,6 +165,30 @@ construction progress only: unrestricted geometric promotion and recursive
 loss charging remain open, so the rigorous coefficient window is still
 `[1/4,1/2]`.
 
+**⭐ 2026-08-16 — ERDŐS #838: HARMONIC LOSS REMOVED LOCALLY; GROWING-RANK CATERPILLAR ERROR SOLVED; EXACT STAGE-C CONSTANT ISOLATED.**
+Mass truncation strengthens the heterogeneous square mesh to
+`L^2/2-O((log m+log L)^2)`, with no normalized weighted-Kraft assumption;
+the tempting normalized inequality is independently killed by a rational
+five-point example. See `TRUNCATED_WEIGHTED_KRAFT_SQUARE_MESH_20260816.md`
+and `WEIGHTED_NORMALIZED_KRAFT_BARRIER_20260816.md`.
+
+For every rooted full binary tree, the exact finite theorem
+`R_k(T)>=b_k(n-2^(k-2))_+^k` removes Dossou-Olory's nonuniform growing-rank
+error and gives `log R_k(4^k)>=3k^2/2+O(k)`. The ordered plane endpoint
+formula is exact, but its naive shifted analogue is false on a 256-leaf
+alternating comb, so strong-tree P1b still needs a shifted/excess orientation
+comparison. See
+`UNIFORM_GROWING_RANK_ROOTED_CATERPILLAR_THEOREM_20260816.md`.
+
+The unrestricted Stage-C target now has an exact coefficient ledger. With
+`p_j=v_j/C(N,j)`, `N=4^k`, and `r=alpha k`, any average decay bound
+`log(p_r/p_k)<=(c/2)(k^2-r^2)+o(k^2)` with `c<2` yields
+`eta=(1-c/2)(1-alpha^2)>0` and hence a strict unconditional coefficient
+gain. The pointwise `c=1` guess survives all saved admissible regressions
+but is full-strength near the Erdős--Szekeres threshold and is not claimed.
+See `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`. The honest coefficient
+window remains `[1/4,1/2]`.
+
 **⭐ 2026-08-13 — ERDŐS #1208: EXPLICIT CANDIDATE UPPER EXPONENT `0.49815` + FULL-GAP BARRIER MAP (Sihao + Codex ultracode).**
 The live literature window is `n^(1/3) << F_2(n) << n^(1/2-epsilon)`; the
 Erdős Problems page is stale because CFRN (arXiv:2606.05841) and LPZ
@@ -762,9 +786,15 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   threshold theorem with harmonic loss. Do not spend further work on nesting
   the maximizing paths; the remaining task is a global loss charge or an
   unrestricted geometric promotion.
-- [ ] For the strong-tree subcase, do not cite fixed-`k` unordered
-  caterpillar inducibility as closure. The exact survivor is the growing-rank
-  plane one-turn caterpillar count after the proved comb-or-seam split.
+- [x] Remove the nonuniform finite-size error in unordered growing-rank
+  caterpillar inducibility. The exact shifted theorem is proved and verified.
+- [ ] For the strong-tree subcase, prove a shifted/excess orientation
+  comparison for the exact endpoint formula. The naive same-constant plane
+  analogue is false and must not be reused.
+- [ ] For unrestricted P1, beat the successive-rank density-decay constant
+  `c=2` on one fixed interval `alpha k<=j<k` at `N=4^k`. Any fixed
+  `c<2` gives the explicit gain recorded in
+  `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`.
 - [ ] Enforce `DIFFICULTY_LEDGER_20260815.md`: mark coefficient-equivalent
   reductions `EQUIVALENT` and stop them; cap new chains at three reductions
   without an explicit coefficient/range gain.
@@ -957,20 +987,24 @@ The full `FULL_ATTACK_20260814.md` and all agent artifacts remain preserved
 for lookup. All V1--V5 packages now have independent audits. The
 exact fixed-size bridge, strong-tree comb/seam theorem, caterpillar audit, and
 explicit-boundary literal pooling theorem are the current positive additions.
-Also read `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md` and
-`HETEROGENEOUS_THRESHOLD_SQUARE_MESH_GATE_20260816.md`: the former excludes
-the standard counting shortcuts, while the latter removes the local
-weighted-witness conjecture up to a harmonic lower-order loss.
+Also read `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md`,
+`TRUNCATED_WEIGHTED_KRAFT_SQUARE_MESH_20260816.md`,
+`UNIFORM_GROWING_RANK_ROOTED_CATERPILLAR_THEOREM_20260816.md`, and
+`SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`. The first excludes the
+standard counting shortcuts; the second proves the local square mesh with
+only polylogarithmic-square loss; the third removes the unordered
+growing-rank error while isolating the plane obstruction; and the fourth
+states the exact strict coefficient-bearing Stage-C target.
 
-Next attack only selected histories in
-`1/4 log n-O(sqrt(log n log log n)) < r < log n`: the universal rank-`k`
-bank cannot cross the quarter-log capacity boundary, so require a larger
-configuration-specific bank or an explicit cross-rank circuit, sparsity,
-mixed-face, or profile alternative. The most concrete formulation is the
-convex-four-set hypergraph plus planar circuit elimination: force either the
-P1 rank-`k` gain or a same-size mixed/profile bank. Do not restart fixed-`k`
-asymptotics, a single same-type transversal box, scalar hull identities, or
-threshold-path nesting.
+Next attack the cross-rank extension graph at `N=4^k`: prove an averaged
+density decay constant `c<2` over one fixed positive fraction of the ranks,
+or derive the same gain from the convex-four-set circuit deletion map. A
+failed one-point extension naturally yields a retained convex hull and a
+deleted convex subface; the exact unresolved operation is to turn that
+two-target record into one ordinary face with subquadratic history load.
+Do not strengthen the conjecture down to `N~2^j` (that is a separate major
+Erdős--Szekeres improvement), and do not restart fixed-`k` asymptotics, one
+same-type box, scalar hull identities, or threshold-path nesting.
 If the next bounded attack produces neither an explicit `eta>0` nor another
 proved rank range, stop and package the `1/2` upper/strong-tree theorem plus
 the audited construction and barrier results. Nothing is currently running.
