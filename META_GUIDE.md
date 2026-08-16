@@ -449,6 +449,35 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-16 — ERDŐS #838: concentrated-pocket splice killed; global all-delete gate isolated (Sihao + Codex)
+- **Exact gain ledger:** at `N=4^k`, partial replacement of a rank-`alpha k`
+  source after deleting `delta k` labels has exponent
+  `1+2alpha-2alpha^2-2(1-alpha)delta-delta^2` under the hoped-for decoder.
+  The critical choice `(alpha,delta)=(1/2,1/4)` gives `19/16>1`; complete
+  deletion gives only `3/4`.
+- **Exact planar kill:** a new integral 12-point certificate has a convex
+  four-point source and convex four-point pocket.  Every pocket label is
+  individually addable through the same exposed source edge, but the whole
+  pocket is nonconvex with each of the 15 nonempty source traces.  Thus no
+  universal bounded-deletion merge follows even from perfect one-edge
+  concentration.  The report and verifier are
+  `P1D_CONCENTRATED_POCKET_REPLACEMENT_BARRIER_20260816.md` and
+  `verify_p1d_concentrated_pocket_replacement_barrier.py`.
+- **Cross-route audit:** mutually-avoiding/same-type extraction is already
+  banked at a coefficient-one ceiling.  Joint mixed-Hall assembly already
+  controls global output overlap once a reservoir exists and passes the
+  matching-star and `E(k,k)` regressions.  A proposed scalar tail-entropy
+  derivation of the averaged square mesh is false on a two-scale alphabet
+  by `2.7096...` bits, so threshold Kraft alone cannot erase predecessor
+  identity.
+- **Decision:** preserve the local arithmetic and barrier; do not open a
+  new deletion-fraction or threshold surrogate.  The remaining
+  coefficient-bearing operation is a joint all-delete/rooted-pocket code
+  with `n^{o(1)}` load and recovery fibre, or a genuinely multi-point
+  minimizer mutation/profile inequality.  The unconditional window remains
+  `[1/4,1/2]`.  Current web prior-art check still lists #838 as open.
+  Approximate direct API spend `$0`.
+
 ### 2026-08-16 — ERDŐS #838: strict minimizer-mean route stress-tested and parked (Sihao + Codex)
 - **Direct gain target audited:** for a global minimizer, the exact deletion
   identity shows that `mu>=(1/2+epsilon)log_2 n` would improve the lower

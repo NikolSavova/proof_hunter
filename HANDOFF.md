@@ -65,6 +65,34 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-16 — ERDŐS #838: CONCENTRATED-POCKET P1d SPLICE KILLED; GLOBAL ALL-DELETE GATE IS NOW EXPLICIT.**
+The next bounded P1d operation had genuinely favorable arithmetic.  At the
+canonical scale `N=4^k`, a rank-`alpha k` source, deletion of `delta k`
+labels, and a complementary pocket face would give normalized exponent
+`E(alpha,delta)=1+2alpha-2alpha^2-2(1-alpha)delta-delta^2`.  In particular
+`E(1/2,1/4)=19/16>1`, while complete source deletion falls to `3/4`.
+
+`P1D_CONCENTRATED_POCKET_REPLACEMENT_BARRIER_20260816.md` proves that the
+needed bounded-deletion merge is false even after the strongest local
+concentration.  Its exact integral 12-point witness has a convex four-point
+pocket whose labels all enter a convex source through the same exposed edge,
+yet the whole pocket is incompatible with every nonempty source trace.  The
+verifier checks all determinants, hulls, fifteen nonempty traces, and the
+exponent ledger.  This does not refute P1d or give a low-face construction;
+it proves that the surviving operation is genuinely global: jointly pool
+the all-delete records with bounded recovery fibre, or use a multi-point
+minimizer mutation/profile inequality.
+
+The follow-up audit found no hidden shortcut.  The mutually-avoiding and
+same-type routes were already banked and have a coefficient-one ceiling.
+The global mixed-Hall allocator already solves output overlap once a
+reservoir exists, including the matching-star and `E(k,k)` regressions.  A
+new threshold-entropy attempt at the local square mesh is false on a simple
+two-scale alphabet (gap `2.7096...` bits), so threshold Kraft cannot replace
+the missing predecessor/history state.  A current literature check still
+lists Problem #838 as open.  The rigorous coefficient window remains
+`[1/4,1/2]`.
+
 **⭐ 2026-08-16 — ERDŐS #838: STRICT MINIMIZER-MEAN ATTACK AUDITED AND PARKED; EXACT LARGE CLOSURE STRESS ADDED.**
 The direct strict-gain target was
 `mu(P)>=(1/2+epsilon)log_2 n` for every large global minimizer; by the exact
@@ -879,6 +907,19 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   `log(v_j/v_(j+1)) >= (0.053611954...-o(1))j^2`. Any surviving P1d proof
   must genuinely average over a positive fraction of ranks or use total
   face mass; it cannot be reduced to one threshold layer.
+- [x] Audit the concentrated one-pocket replacement splice.  Its exponent
+  would close P1d with room (`19/16` at the critical parameters), but an
+  exact rational witness forces complete deletion even when every pocket
+  label uses one common exposed source edge.  Do not try another local
+  deletion fraction; see
+  `P1D_CONCENTRATED_POCKET_REPLACEMENT_BARRIER_20260816.md`.
+- [ ] The live coefficient-bearing gate is now one of two genuinely global
+  operations with an explicit success condition: jointly allocate the
+  all-delete/rooted-pocket histories into an ordinary mixed bank with
+  `n^{o(1)}` load and recovery fibre, or prove a multi-point minimizer
+  mutation/profile inequality with a checked fixed gain.  Local threshold
+  Kraft, one-box same-type extraction, and source-plus-pocket Cauchy do not
+  meet this condition.
 - [ ] Enforce `DIFFICULTY_LEDGER_20260815.md`: mark coefficient-equivalent
   reductions `EQUIVALENT` and stop them; cap new chains at three reductions
   without an explicit coefficient/range gain.
@@ -1057,7 +1098,7 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
-### ⭐ 2026-08-16 — ERDŐS #838: TWO BOUNDED ATTACKS PARKED; PRESERVE THE EXACT GATES
+### ⭐ 2026-08-16 — ERDŐS #838: P1d LOCAL SPLICES EXHAUSTED; ATTACK ONLY THE GLOBAL ALL-DELETE GATE
 
 Read, in order:
 
@@ -1096,6 +1137,18 @@ residues currently left are (i) P1d itself in an already-averaged form, or
 (ii) a genuinely multi-point minimizer mutation/profile inequality with a
 checked fixed gain.  Either route must begin with an explicit quantitative
 statement and its own kill condition.
+
+The concentrated-pocket continuation has now also been audited; read
+`P1D_CONCENTRATED_POCKET_REPLACEMENT_BARRIER_20260816.md`.  The local
+operation has more than enough exponent but is exactly false: a common
+exposed insertion edge can still require deletion of the entire source.
+Accordingly, do **not** open another bounded-deletion or threshold-Kraft
+surrogate.  The immediate mathematical task is the existing global one:
+formulate one joint Hall allocation for all-delete/rooted-pocket records and
+prove an `n^{o(1)}` load **and** recovery-fibre bound, or find a genuinely
+multi-point minimizer mutation that rules out that stationary rectangle.
+The already-proved mixed-Hall assembly may be used after the local reservoir
+condition is established; output overlap itself is not the remaining loss.
 
 ### ⭐ 2026-08-13 — ERDŐS #838 IS THE ALL-IN TARGET: READ `RESUME_838.md` FIRST
 **Entry point: `phase2/loop/erdos838/RESUME_838.md`.** It indexes every 838 document, states
