@@ -65,6 +65,28 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-16 — ERDŐS #838: STRICT MINIMIZER-MEAN ATTACK AUDITED AND PARKED; EXACT LARGE CLOSURE STRESS ADDED.**
+The direct strict-gain target was
+`mu(P)>=(1/2+epsilon)log_2 n` for every large global minimizer; by the exact
+deletion identity this would improve the lower coefficient to
+`1/4+epsilon/2`.  `STRICT_MINIMIZER_MEAN_GAIN_STRATEGY_20260816.md` records
+that implication and the alternative blocked-exterior sufficient condition.
+The new exact verifier reconstructs every face and closure in the certified
+44- and 58-point rational records and finds
+`E B/mu^2=1.100265...` and `1.350137...`; hence even `E B<=mu^2` is false
+without minimizer status.  Exact n=8,9 minimizers remain compatible with the
+target, so this is a sharp scope correction rather than a counterexample to
+the minimizer conjecture.
+
+`STRICT_MINIMIZER_MEAN_GAIN_AUTOPSY_20260816.md` applies the precommitted
+two-reduction stop rule.  One-point minimizer relocation has the wrong
+first-order sign and the needed repair is the existing multi-point mutation
+problem.  The variance ladder has the clean threshold
+`1/(2 ln 2)=0.721347...`, but exact Pascal cells kill a pointwise variance
+bound; making it hereditary is exactly the parked averaged positive-rank
+interval gate P1d.  No unconditional coefficient gain results, and the
+rigorous window remains `[1/4,1/2]`.
+
 **⭐ 2026-08-16 — ERDŐS #838: FIXED-THRESHOLD ADJACENT BALANCE KILLED AT THE EXACT CERTIFIED SIZE; BOUNDED P1 ATTACK PARKED.**
 The final quantifier escape in P1e is closed. For every prescribed certified
 sequence `q_j>=ES(j+1)` with `log q_j=j+o(j)`, an exact rational strong-glue
@@ -1035,7 +1057,7 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
-### ⭐ 2026-08-16 — ERDŐS #838: FIXED-SIZE STOP RULE TRIGGERED; PACKAGE RESULTS BEFORE A NEW DIRECT ATTACK
+### ⭐ 2026-08-16 — ERDŐS #838: TWO BOUNDED ATTACKS PARKED; PRESERVE THE EXACT GATES
 
 Read, in order:
 
@@ -1058,16 +1080,22 @@ only polylogarithmic-square loss; the third removes the unordered
 growing-rank error while isolating the plane obstruction; and the fourth
 records why the bounded Stage-C chain is now parked.
 
+Also read `STRICT_MINIMIZER_MEAN_GAIN_STRATEGY_20260816.md` and its
+`STRICT_MINIMIZER_MEAN_GAIN_AUTOPSY_20260816.md`.  The suggested strict
+minimizer-mean attack has now received its bounded audit and is parked too:
+the universal blocked-point form is exactly false, minimizer relocation
+reaches the existing multi-point mutation problem, and the hereditary
+variance form is P1d.
+
 Immediate repo work: extract the `1/2` upper theorem, strong-tree theorem,
 verified construction closures, and sharp barriers into one short
-self-contained draft section. Do not continue P1 through another
-threshold-layer or short-window surrogate. A later proof attack must start
-from a new direct quantitative target with its own stop rule. The cleanest
-candidate is a strict minimizer mean-size gain
-`mu(P)>=(1/2+epsilon)log n`, which would move the lower coefficient above
-`1/4`; it must use planar rooted-circuit/change-of-measure information,
-because down-set entropy, scalar deletion moments, and interval-weighted
-random-hull identities are already known to be insufficient.
+self-contained draft section.  Do not continue P1 through another
+threshold-layer or short-window surrogate, and do not rename the strict-mean
+or half-weight reformulations as new progress.  The only honest proof-level
+residues currently left are (i) P1d itself in an already-averaged form, or
+(ii) a genuinely multi-point minimizer mutation/profile inequality with a
+checked fixed gain.  Either route must begin with an explicit quantitative
+statement and its own kill condition.
 
 ### ⭐ 2026-08-13 — ERDŐS #838 IS THE ALL-IN TARGET: READ `RESUME_838.md` FIRST
 **Entry point: `phase2/loop/erdos838/RESUME_838.md`.** It indexes every 838 document, states

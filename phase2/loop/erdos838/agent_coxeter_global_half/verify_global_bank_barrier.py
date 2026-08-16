@@ -106,6 +106,7 @@ def n58_exact() -> dict[str, object]:
     total_x = Q(0)
     total_g = Q(0)
     total_b = 0
+    total_ranked_b = 0
     total_gb = Q(0)
     sum_sqrt_x = 0.0
     small_x = Q(0)
@@ -120,6 +121,7 @@ def n58_exact() -> dict[str, object]:
         total_x += x
         total_g += g
         total_b += bank
+        total_ranked_b += dimension * bank
         total_gb += g * bank
         sum_sqrt_x += math.sqrt(float(x))
         maximum_dimension = max(maximum_dimension, dimension)
@@ -130,6 +132,7 @@ def n58_exact() -> dict[str, object]:
     assert total_x == 1059609
     assert total_g == Q(18721123, 512)
     assert total_b == 55221
+    assert total_ranked_b == 313576
     assert maximum_dimension == 8
     assert total_x <= 4 * total_gb
     assert sum_sqrt_x**2 <= 4 * float(total_g) * total_b + 1e-6
@@ -139,6 +142,9 @@ def n58_exact() -> dict[str, object]:
         "X": total_x,
         "G": total_g,
         "B": total_b,
+        "ranked_B": total_ranked_b,
+        "bank_moment_mean": Q(n + 2 * total_x, 1 + n + total_x)
+        + Q(total_ranked_b, 2 * (1 + n + total_x)),
         "dilation": total_x / (4 * total_g),
         "offdiagonal_H": Q(n) * total_g / total_x,
         "small_bank_mass_fraction": small_g / total_g,
@@ -165,6 +171,8 @@ def main() -> None:
         )
     print(
         f"n58 (X,G,B)=({n58['X']},{n58['G']},{n58['B']}) "
+        f"sum(kB)={n58['ranked_B']} "
+        f"bank-moment-mean={float(n58['bank_moment_mean']):.6f} "
         f"dilation={float(n58['dilation']):.6f} "
         f"small-bank-mass={float(n58['small_bank_mass_fraction']):.6f} "
         f"small-bank-H={float(n58['small_bank_H']):.6f}"

@@ -449,6 +449,29 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-16 — ERDŐS #838: strict minimizer-mean route stress-tested and parked (Sihao + Codex)
+- **Direct gain target audited:** for a global minimizer, the exact deletion
+  identity shows that `mu>=(1/2+epsilon)log_2 n` would improve the lower
+  coefficient to `1/4+epsilon/2`.  A closure-lattice sufficient condition
+  `E B<=(1-delta)mu^2` was isolated with its exact coefficient implication.
+- **Exact stress theorem:** a new verifier reconstructs every convex face and
+  closed hull from the certified rational n=44 and n=58 reflection-order
+  records.  It finds `E B/mu^2=1.100265...` and `1.350137...`, rigorously
+  killing even the coefficient-one blocked bound for arbitrary planar point
+  sets.  Exact n=8,9 global minimizers remain compatible with the
+  minimizer-only conjecture.
+- **Second reduction audited:** the deletion variance ladder has critical
+  average `1/(2 ln 2)=0.721347...`, but exact balanced Pascal cells have
+  variance tending to zero.  Restricting to low-mean descendants requires the
+  already-parked hereditary positive-rank-interval theorem P1d.
+- **Decision:** apply the written two-reduction stop rule.  One-point
+  minimizer relocation has the anti-converting sign and a useful repair needs
+  the existing multi-point mutation problem; the variance route is P1d.  No
+  lower-coefficient improvement is claimed.  Preserve the strategy, autopsy,
+  and exact verifier; do not relabel the half-weight or strict-mean forms as a
+  new route.  Rigorous window remains `[1/4,1/2]`.  Spend approximately $0
+  direct API.
+
 ### 2026-08-16 — ERDŐS #838: exact-size P1e counterexample and fixed-size stop rule (Sihao + Codex)
 
 - **P1e is false with its quantifiers fixed.** For every prescribed

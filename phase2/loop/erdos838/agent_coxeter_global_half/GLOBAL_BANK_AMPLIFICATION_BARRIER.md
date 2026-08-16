@@ -260,7 +260,25 @@ normalized statistic is \(2.101946\).  The selected banks comprise only
 exercises exactly the small-bank/high-half branch which a cross-endpoint
 charge must handle.
 
-## 6. Verification
+## 6. The same selected banks do not force the uniform mean
+
+The maximum-support cube in a cell of dimension \(k_e\) has internal-rank
+sum \(k_e2^{k_e-1}=k_eB_e/2\).  Since every other face has nonnegative
+internal rank, direct summation gives the exact lower bound
+
+\[
+ \sum_{F\text{ ordinary}}|F|
+ \ge n+2S_X+\frac12\sum_e k_eB_e.                     \tag{27}
+\]
+
+For the saved 58-wire record the final sum is exactly \(313{,}576\).
+Dividing the right side of (27) by \(F_R(1)=1{,}059{,}668\) gives only
+\(2.147902\ldots\), whereas
+\((1/2)\log_2 58=2.928990\ldots\).  Thus passing from half activity to the
+uniform first moment does not rescue the direct maximum-bank summation; the
+remaining path-downset mass still needs a cross-endpoint charge.
+
+## 7. Verification
 
 Run
 
@@ -273,4 +291,4 @@ coordinates, verifies all crossings form an adjacent-swap reduced word,
 evaluates the full and fan profiles with rational arithmetic through 48
 wires, and checks (12)--(24).  It then replays the saved 58-wire word,
 computes every longest forward/reverse temporal path rank, checks (1),
-(4)--(5), and verifies (25)--(26) and the bank-dimension audit exactly.
+(4)--(5), and verifies (25)--(27) and the bank-dimension audit exactly.
