@@ -1,0 +1,96 @@
+{
+  "description": "exact one-sided/Schroeder classification and cup-cap product audit",
+  "arithmetic": "integer and fractions.Fraction only",
+  "records": [
+    {
+      "n": 3,
+      "one_sided_systems": 2,
+      "minimum_convex_subsets": 8,
+      "minimum_product_slack": 0,
+      "first_minimizer": [
+        0,
+        1
+      ],
+      "number_of_minimizers": 2
+    },
+    {
+      "n": 4,
+      "one_sided_systems": 6,
+      "minimum_convex_subsets": 15,
+      "minimum_product_slack": 0,
+      "first_minimizer": [
+        0,
+        2,
+        1
+      ],
+      "number_of_minimizers": 4
+    },
+    {
+      "n": 5,
+      "one_sided_systems": 22,
+      "minimum_convex_subsets": 27,
+      "minimum_product_slack": 0,
+      "first_minimizer": [
+        0,
+        2,
+        3,
+        1
+      ],
+      "number_of_minimizers": 14
+    },
+    {
+      "n": 6,
+      "one_sided_systems": 90,
+      "minimum_convex_subsets": 45,
+      "minimum_product_slack": 0,
+      "first_minimizer": [
+        0,
+        3,
+        4,
+        1,
+        2
+      ],
+      "number_of_minimizers": 4
+    },
+    {
+      "n": 7,
+      "one_sided_systems": 394,
+      "minimum_convex_subsets": 73,
+      "minimum_product_slack": 0,
+      "first_minimizer": [
+        0,
+        3,
+        5,
+        4,
+        1,
+        2
+      ],
+      "number_of_minimizers": 8
+    },
+    {
+      "n": 8,
+      "one_sided_systems": 1806,
+      "minimum_convex_subsets": 114,
+      "minimum_product_slack": 0,
+      "first_minimizer": [
+        0,
+        4,
+        5,
+        6,
+        1,
+        2,
+        3
+      ],
+      "number_of_minimizers": 12
+    }
+  ],
+  "assertions": [
+    "all abstract closure assignments through n=7 exhaust exactly the avoiding permutations",
+    "avoidance of 2413/3142 iff recursive direct/skew decomposition",
+    "four-point closure for every classified sign system",
+    "exact rational realization with sign(i,j,k)=compare(pi_i,pi_(k-1))",
+    "every convex subset is a cup or cap",
+    "(maximum cup - 1)(maximum cap - 1) >= n - 1",
+    "Caro-Wei plus E-product constants checked algebraically"
+  ]
+}

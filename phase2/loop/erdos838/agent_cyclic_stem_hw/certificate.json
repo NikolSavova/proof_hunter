@@ -1,0 +1,375 @@
+{
+  "central_pascal_high_mean_QMS_counterfamily": [
+    {
+      "QMS_ratio": 1.099358867780601,
+      "family": "T_(32,16)",
+      "mu": 31.63407976892863,
+      "mu_minus_log2_n": 2.4710970563335692,
+      "n": 601080390
+    },
+    {
+      "QMS_ratio": 1.164508358949572,
+      "family": "T_(64,32)",
+      "mu": 63.800332497407155,
+      "mu_minus_log2_n": 3.131715860403716,
+      "n": 1832624140942590534
+    },
+    {
+      "QMS_ratio": 1.2105630625865915,
+      "family": "T_(128,64)",
+      "mu": 127.89230866665326,
+      "mu_minus_log2_n": 3.7208744664794864,
+      "n": 23951146041928082866135587776380551750
+    }
+  ],
+  "n58_low_mean_nonminimizer": {
+    "QMS_ratio": 1.4839736000072201,
+    "V": 1061907,
+    "deletion_entropy_defect": 3.519648760175187e-05,
+    "logV_drift": 0.13532000987547832,
+    "log_drift_over_mu_times_mean_drift": 1.3412954883496238,
+    "mu": 5.194152595283768,
+    "mu_minus_log2_n": -0.6638283998438039,
+    "mu_over_log2_n": 0.886679659699144,
+    "mu_times_mean_drift": 0.10088754569806295,
+    "profile": [
+      1,
+      58,
+      1653,
+      30856,
+      220958,
+      428915,
+      284982,
+      76995,
+      15100,
+      2179,
+      210
+    ],
+    "quadratic_minus_log_drift": -0.03463872698320891,
+    "quadratic_potential_drift": 0.10068128289226941,
+    "variance": 1.0256634254460621,
+    "warning": "This record is not known to minimize V at n=58."
+  },
+  "n9_exact_minimizer": {
+    "Gordon_er_half": "387/128",
+    "V": 169,
+    "Z_half": "875/32",
+    "all_direct_block_deletions": [
+      {
+        "child_size": 1,
+        "logV_drift": 6.400879436282184,
+        "mean_child_mu": 0.5,
+        "mu_times_mean_drift": 7.0197121949511585,
+        "normalizer_exact": 18,
+        "quadratic_minus_log_drift": -2.2882126879190308,
+        "quadratic_potential_drift": 4.112666748363154
+      },
+      {
+        "child_size": 2,
+        "logV_drift": 5.400879436282184,
+        "mean_child_mu": 1.0,
+        "mu_times_mean_drift": 5.564090893176011,
+        "normalizer_exact": 144,
+        "quadratic_minus_log_drift": -1.6632126879190308,
+        "quadratic_potential_drift": 3.7376667483631536
+      },
+      {
+        "child_size": 3,
+        "logV_drift": 4.400879436282184,
+        "mean_child_mu": 1.5,
+        "mu_times_mean_drift": 4.108469591400862,
+        "normalizer_exact": 672,
+        "quadratic_minus_log_drift": -1.2882126879190308,
+        "quadratic_potential_drift": 3.1126667483631536
+      },
+      {
+        "child_size": 4,
+        "logV_drift": 3.4661430374911664,
+        "mean_child_mu": 1.9065420560747663,
+        "mu_times_mean_drift": 2.924927037621069,
+        "normalizer_exact": 1926,
+        "quadratic_minus_log_drift": -1.0477909308725613,
+        "quadratic_potential_drift": 2.418352106618605
+      },
+      {
+        "child_size": 5,
+        "logV_drift": 2.6210382662934935,
+        "mean_child_mu": 2.2159583694709455,
+        "mu_times_mean_drift": 2.024141083828642,
+        "normalizer_exact": 3459,
+        "quadratic_minus_log_drift": -0.840888085848559,
+        "quadratic_potential_drift": 1.7801501804449344
+      },
+      {
+        "child_size": 6,
+        "logV_drift": 1.8632020097222535,
+        "mean_child_mu": 2.4523076923076923,
+        "mu_times_mean_drift": 1.3360708658660418,
+        "normalizer_exact": 3900,
+        "quadratic_minus_log_drift": -0.6338959618751772,
+        "quadratic_potential_drift": 1.2293060478470763
+      },
+      {
+        "child_size": 7,
+        "logV_drift": 1.1814201778351432,
+        "mean_child_mu": 2.6375838926174495,
+        "mu_times_mean_drift": 0.7966868981003581,
+        "normalizer_exact": 2682,
+        "quadratic_minus_log_drift": -0.42267158693171014,
+        "quadratic_potential_drift": 0.758748590903433
+      },
+      {
+        "child_size": 8,
+        "logV_drift": 0.5637649199901604,
+        "mean_child_mu": 2.7871720116618075,
+        "mu_times_mean_drift": 0.3611995929534697,
+        "normalizer_exact": 1029,
+        "quadratic_minus_log_drift": -0.2102727829556832,
+        "quadratic_potential_drift": 0.35349213703447724
+      }
+    ],
+    "exp_omitted_interior_weighted": "875/32",
+    "hull": [
+      0,
+      2,
+      8
+    ],
+    "mean_interior_uniform": "111/169",
+    "mean_omitted_interior_weighted": "387/128",
+    "mean_omitted_uniform": "918/169",
+    "minimizer_status": "f(9)=169, conditional on the documented completeness of the Aichholzer-Aurenhammer-Krasser realizable order-type database",
+    "mu_uniform": "492/169",
+    "n": 9,
+    "one_step_deletion": {
+      "V": 169,
+      "deletion_entropy_defect": 1.2250840367933336e-05,
+      "logV_drift": 0.5637649199901595,
+      "log_drift_over_mu_times_mean_drift": 1.560812722352056,
+      "mu": 2.911242603550296,
+      "mu_minus_log2_n": -0.2586823978920161,
+      "mu_times_mean_drift": 0.3611995929534697,
+      "quadratic_minus_log_drift": -0.2102727829556823,
+      "quadratic_potential_drift": 0.35349213703447724,
+      "variance": 0.7554357340429227
+    },
+    "profile": [
+      1,
+      9,
+      36,
+      84,
+      36,
+      3,
+      0,
+      0,
+      0,
+      0
+    ],
+    "stems": [
+      {
+        "conditional_exposure_probability_given_x_absent": "151/256",
+        "cyclic_stems": [
+          [
+            0
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            5,
+            6,
+            7,
+            8
+          ]
+        ],
+        "point": 1,
+        "probability_outside_random_half_hull": "151/512",
+        "probability_point_matters": "151/512",
+        "stem_sizes": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "conditional_exposure_probability_given_x_absent": "151/256",
+        "cyclic_stems": [
+          [
+            2
+          ],
+          [
+            6,
+            7,
+            8
+          ],
+          [
+            0,
+            1,
+            4,
+            5
+          ]
+        ],
+        "point": 3,
+        "probability_outside_random_half_hull": "151/512",
+        "probability_point_matters": "151/512",
+        "stem_sizes": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "conditional_exposure_probability_given_x_absent": "109/256",
+        "cyclic_stems": [
+          [
+            2,
+            3
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            5,
+            6,
+            7,
+            8
+          ],
+          [
+            3,
+            6,
+            7,
+            8
+          ]
+        ],
+        "point": 4,
+        "probability_outside_random_half_hull": "109/512",
+        "probability_point_matters": "109/512",
+        "stem_sizes": [
+          2,
+          3,
+          3,
+          4,
+          4
+        ]
+      },
+      {
+        "conditional_exposure_probability_given_x_absent": "109/256",
+        "cyclic_stems": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            7,
+            8
+          ],
+          [
+            6,
+            7,
+            8
+          ],
+          [
+            2,
+            3,
+            4,
+            6
+          ],
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        "point": 5,
+        "probability_outside_random_half_hull": "109/512",
+        "probability_point_matters": "109/512",
+        "stem_sizes": [
+          2,
+          3,
+          3,
+          4,
+          4
+        ]
+      },
+      {
+        "conditional_exposure_probability_given_x_absent": "109/256",
+        "cyclic_stems": [
+          [
+            7,
+            8
+          ],
+          [
+            2,
+            3,
+            8
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            4,
+            5
+          ],
+          [
+            0,
+            1,
+            5,
+            7
+          ]
+        ],
+        "point": 6,
+        "probability_outside_random_half_hull": "109/512",
+        "probability_point_matters": "109/512",
+        "stem_sizes": [
+          2,
+          3,
+          3,
+          4,
+          4
+        ]
+      },
+      {
+        "conditional_exposure_probability_given_x_absent": "151/256",
+        "cyclic_stems": [
+          [
+            8
+          ],
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            2,
+            3,
+            4,
+            6
+          ]
+        ],
+        "point": 7,
+        "probability_outside_random_half_hull": "151/512",
+        "probability_point_matters": "151/512",
+        "stem_sizes": [
+          1,
+          3,
+          4
+        ]
+      }
+    ]
+  },
+  "schema": "cyclic stems, random half-hulls, and QMS drift barriers"
+}

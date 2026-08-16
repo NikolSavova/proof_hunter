@@ -1,0 +1,256 @@
+{
+  "definition": "sum_(r<L) (L-r) # {rank-r convex A : u(A)<=4(r+1)}",
+  "description": "exact low-addable-face budget audit",
+  "records": {
+    "ACP_coordinate_n24": {
+      "L": 5,
+      "N": 6326,
+      "N_over_V": 0.618921827609823,
+      "V": 10221,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        0,
+        476,
+        5374
+      ],
+      "n": 24,
+      "rank_counts_below_L": [
+        1,
+        24,
+        276,
+        2024,
+        5374
+      ]
+    },
+    "APA_counterexample_n44": {
+      "L": 6,
+      "N": 34486,
+      "N_over_V": 0.14537008544486552,
+      "V": 237229,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        0,
+        48,
+        8013,
+        18316
+      ],
+      "n": 44,
+      "rank_counts_below_L": [
+        1,
+        44,
+        946,
+        13244,
+        70450,
+        99093
+      ]
+    },
+    "central_Pascal_m4": {
+      "L": 3,
+      "N": 27,
+      "N_over_V": 0.5294117647058824,
+      "V": 51,
+      "low_addable_counts_below_L": [
+        0,
+        6,
+        15
+      ],
+      "n": 6,
+      "rank_counts_below_L": [
+        1,
+        6,
+        15
+      ]
+    },
+    "central_Pascal_m5": {
+      "L": 4,
+      "N": 210,
+      "N_over_V": 0.5585106382978723,
+      "V": 376,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        45,
+        120
+      ],
+      "n": 10,
+      "rank_counts_below_L": [
+        1,
+        10,
+        45,
+        120
+      ]
+    },
+    "central_Pascal_m6": {
+      "L": 5,
+      "N": 4633,
+      "N_over_V": 0.42302775748721694,
+      "V": 10952,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        0,
+        704,
+        3225
+      ],
+      "n": 20,
+      "rank_counts_below_L": [
+        1,
+        20,
+        190,
+        1140,
+        3225
+      ]
+    },
+    "central_Pascal_m7": {
+      "L": 6,
+      "N": 73224,
+      "N_over_V": 0.2064660204029843,
+      "V": 354654,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        0,
+        0,
+        3345,
+        66534
+      ],
+      "n": 35,
+      "rank_counts_below_L": [
+        1,
+        35,
+        595,
+        6545,
+        35610,
+        100371
+      ]
+    },
+    "guarded_template_k3": {
+      "L": 3,
+      "N": 35,
+      "N_over_V": 0.3465346534653465,
+      "V": 101,
+      "low_addable_counts_below_L": [
+        0,
+        7,
+        21
+      ],
+      "n": 7,
+      "rank_counts_below_L": [
+        1,
+        7,
+        21
+      ]
+    },
+    "guarded_template_k3_depth2": {
+      "L": 6,
+      "N": 21324,
+      "N_over_V": 0.001066298952542796,
+      "V": 19998144,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        21324
+      ],
+      "n": 49,
+      "rank_counts_below_L": [
+        1,
+        49,
+        1176,
+        18424,
+        151546,
+        727504
+      ]
+    },
+    "guarded_template_k4": {
+      "L": 4,
+      "N": 275,
+      "N_over_V": 0.3472222222222222,
+      "V": 792,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        55,
+        165
+      ],
+      "n": 11,
+      "rank_counts_below_L": [
+        1,
+        11,
+        55,
+        165
+      ]
+    },
+    "guarded_template_k5": {
+      "L": 5,
+      "N": 7534,
+      "N_over_V": 0.18628687288282275,
+      "V": 40443,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        0,
+        200,
+        7134
+      ],
+      "n": 25,
+      "rank_counts_below_L": [
+        1,
+        25,
+        300,
+        2300,
+        8118
+      ]
+    },
+    "half_weight_counterexample_n58": {
+      "L": 6,
+      "N": 32713,
+      "N_over_V": 0.030805899198329045,
+      "V": 1061907,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        0,
+        9,
+        9089,
+        14508
+      ],
+      "n": 58,
+      "rank_counts_below_L": [
+        1,
+        58,
+        1653,
+        30856,
+        220958,
+        428915
+      ]
+    },
+    "vertical_T42_depth2": {
+      "L": 6,
+      "N": 64718,
+      "N_over_V": 0.14661984594472133,
+      "V": 441400,
+      "low_addable_counts_below_L": [
+        0,
+        0,
+        0,
+        0,
+        4176,
+        56366
+      ],
+      "n": 36,
+      "rank_counts_below_L": [
+        1,
+        36,
+        630,
+        7140,
+        38493,
+        104220
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "description": "dense two-sided rank-four trace extraction and universality barrier",
+  "arithmetic": "integer signs and fractions.Fraction only",
+  "pascal": [
+    {
+      "parameter": 4,
+      "n": 6,
+      "B": 4,
+      "T": 9,
+      "max_trace_degree": 4
+    },
+    {
+      "parameter": 5,
+      "n": 20,
+      "B": 119,
+      "T": 2223,
+      "max_trace_degree": 81
+    },
+    {
+      "parameter": 6,
+      "n": 70,
+      "B": 2036,
+      "T": 399469,
+      "max_trace_degree": 1156
+    },
+    {
+      "parameter": 7,
+      "n": 252,
+      "B": 29777,
+      "T": 70552355,
+      "max_trace_degree": 15625
+    }
+  ],
+  "universality_regression": {
+    "left_cloud_size": 6,
+    "right_cloud_size": 7,
+    "guaranteed_cross_bad_pairs": 42,
+    "n": 15,
+    "B": 65,
+    "T": 700,
+    "max_trace_degree": 42
+  },
+  "side_factorization_regression": {
+    "opposite_root_line_sides_but_not_convex": true
+  },
+  "assertions": [
+    "T=sum r_ik s_ik equals total two-point trace extension incidence",
+    "T >= B^2/(2n) and max trace degree >= B^2/n^3",
+    "central Pascal exact values through 252 points",
+    "complete cross quadrilateral grid with both detached order types preserved",
+    "opposite sides of the trace line alone do not imply convexity"
+  ]
+}

@@ -1,0 +1,363 @@
+{
+  "description": "exact two-tangent rooted diagonal amalgamation and global load audit",
+  "arithmetic": "fractions.Fraction only",
+  "configurations": [
+    {
+      "n": 6,
+      "convex_faces": 64,
+      "local_bank_incidences": 24,
+      "rank_four_T": 11,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 264,
+      "local_bank_incidences": 51,
+      "rank_four_T": 26,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 268,
+      "local_bank_incidences": 124,
+      "rank_four_T": 56,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 365,
+      "local_bank_incidences": 264,
+      "rank_four_T": 66,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 7
+    },
+    {
+      "n": 9,
+      "convex_faces": 258,
+      "local_bank_incidences": 109,
+      "rank_four_T": 53,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 257,
+      "local_bank_incidences": 126,
+      "rank_four_T": 58,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 211,
+      "local_bank_incidences": 57,
+      "rank_four_T": 40,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 4
+    },
+    {
+      "n": 9,
+      "convex_faces": 215,
+      "local_bank_incidences": 63,
+      "rank_four_T": 40,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 266,
+      "local_bank_incidences": 138,
+      "rank_four_T": 64,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 211,
+      "local_bank_incidences": 48,
+      "rank_four_T": 38,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 4
+    },
+    {
+      "n": 9,
+      "convex_faces": 332,
+      "local_bank_incidences": 196,
+      "rank_four_T": 63,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 223,
+      "local_bank_incidences": 60,
+      "rank_four_T": 39,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 4
+    },
+    {
+      "n": 9,
+      "convex_faces": 222,
+      "local_bank_incidences": 61,
+      "rank_four_T": 42,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 4
+    },
+    {
+      "n": 9,
+      "convex_faces": 304,
+      "local_bank_incidences": 191,
+      "rank_four_T": 60,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 275,
+      "local_bank_incidences": 156,
+      "rank_four_T": 64,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 258,
+      "local_bank_incidences": 126,
+      "rank_four_T": 57,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 246,
+      "local_bank_incidences": 36,
+      "rank_four_T": 29,
+      "maximum_decoder_load": 1,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 255,
+      "local_bank_incidences": 70,
+      "rank_four_T": 43,
+      "maximum_decoder_load": 1,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 275,
+      "local_bank_incidences": 142,
+      "rank_four_T": 61,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 256,
+      "local_bank_incidences": 114,
+      "rank_four_T": 57,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 270,
+      "local_bank_incidences": 151,
+      "rank_four_T": 65,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 269,
+      "local_bank_incidences": 114,
+      "rank_four_T": 50,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 276,
+      "local_bank_incidences": 130,
+      "rank_four_T": 58,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 227,
+      "local_bank_incidences": 84,
+      "rank_four_T": 51,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 228,
+      "local_bank_incidences": 79,
+      "rank_four_T": 50,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 4
+    },
+    {
+      "n": 9,
+      "convex_faces": 283,
+      "local_bank_incidences": 142,
+      "rank_four_T": 56,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 210,
+      "local_bank_incidences": 58,
+      "rank_four_T": 42,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 4
+    },
+    {
+      "n": 9,
+      "convex_faces": 261,
+      "local_bank_incidences": 100,
+      "rank_four_T": 51,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 269,
+      "local_bank_incidences": 99,
+      "rank_four_T": 46,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 292,
+      "local_bank_incidences": 146,
+      "rank_four_T": 53,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 294,
+      "local_bank_incidences": 124,
+      "rank_four_T": 48,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 273,
+      "local_bank_incidences": 150,
+      "rank_four_T": 60,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 313,
+      "local_bank_incidences": 213,
+      "rank_four_T": 65,
+      "maximum_decoder_load": 4,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 238,
+      "local_bank_incidences": 84,
+      "rank_four_T": 45,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 280,
+      "local_bank_incidences": 73,
+      "rank_four_T": 38,
+      "maximum_decoder_load": 1,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 249,
+      "local_bank_incidences": 121,
+      "rank_four_T": 64,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 4
+    },
+    {
+      "n": 9,
+      "convex_faces": 222,
+      "local_bank_incidences": 63,
+      "rank_four_T": 38,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 5
+    },
+    {
+      "n": 9,
+      "convex_faces": 350,
+      "local_bank_incidences": 187,
+      "rank_four_T": 56,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 284,
+      "local_bank_incidences": 163,
+      "rank_four_T": 60,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 272,
+      "local_bank_incidences": 109,
+      "rank_four_T": 58,
+      "maximum_decoder_load": 2,
+      "maximum_rank_minus_one": 6
+    },
+    {
+      "n": 9,
+      "convex_faces": 249,
+      "local_bank_incidences": 92,
+      "rank_four_T": 46,
+      "maximum_decoder_load": 3,
+      "maximum_rank_minus_one": 5
+    }
+  ],
+  "matching_star_regressions": [
+    {
+      "m": 5,
+      "q": 4,
+      "trace_count": 16,
+      "extension_mass": 80
+    },
+    {
+      "m": 10,
+      "q": 8,
+      "trace_count": 64,
+      "extension_mass": 640
+    },
+    {
+      "m": 20,
+      "q": 12,
+      "trace_count": 144,
+      "extension_mass": 2880
+    }
+  ],
+  "assertions": [
+    "union convex iff left tangent crosses after j and right tangent crosses before l",
+    "passing tangent guards implies every cross rooted quadrilateral is convex",
+    "local decoder multiplicity equals number of consecutive-x diagonal pairs",
+    "rank-k global overlap at most k-1",
+    "rank-four local bank sum equals T=sum r_ik s_ik",
+    "q^2 traces can share the same m-edge matching extension graph",
+    "the matching extension graph has no higher outer-cloud amalgamation"
+  ]
+}

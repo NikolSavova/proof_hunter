@@ -1,0 +1,121 @@
+{
+  "description": "aggregate rooted-circuit shield and anti-alignment audit",
+  "arithmetic": "exact Fraction geometry and integer enumeration",
+  "exact_composition_tensor": {
+    "outer_singletons": 6,
+    "child_size": 4,
+    "child_cap_count": 15,
+    "child_cup_count": 10,
+    "child_face_count_nonempty": 15,
+    "composition_formula_nonempty": 449,
+    "enumerated_face_count_including_empty": 450,
+    "tensor_records": 64,
+    "pair_core_degree": 16,
+    "all_rectangles_bad": true,
+    "fixed_pair_core_records": 16,
+    "fixed_pair_local_bank_sum": 90,
+    "fixed_pair_bank_ranks": [
+      1,
+      2,
+      2,
+      3,
+      2,
+      2,
+      2,
+      3,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3
+    ]
+  },
+  "exposed_support_entropy": [
+    {
+      "log2_D": 144,
+      "rank_cap": 288,
+      "log2_core_count": 2592,
+      "log2_history_bound": 1033,
+      "minimal_convex_shield_support": 4718,
+      "log2_D_squared_times_M": 2880,
+      "shield_boolean_log2_faces": 4718
+    },
+    {
+      "log2_D": 160,
+      "rank_cap": 320,
+      "log2_core_count": 3200,
+      "log2_history_bound": 1172,
+      "minimal_convex_shield_support": 9793,
+      "log2_D_squared_times_M": 3520,
+      "shield_boolean_log2_faces": 9793
+    },
+    {
+      "log2_D": 192,
+      "rank_cap": 384,
+      "log2_core_count": 4608,
+      "log2_history_bound": 1457,
+      "minimal_convex_shield_support": 42323,
+      "log2_D_squared_times_M": 4992,
+      "shield_boolean_log2_faces": 42323
+    }
+  ],
+  "scalable_both_mark_linear_mass": [
+    {
+      "mark_size": 8,
+      "outer_singletons": 128,
+      "uniform_core_rank": 65,
+      "core_count": 5316911983139663491615228241121378304,
+      "pair_core_degree": 5316911983139663491615228241121378304,
+      "selected_records": 85070591730234615865843651857942052864,
+      "exact_composition_faces_nonempty": 3062541302288446176243226087156040597475,
+      "common_forward_bank_faces": 2722258935367507707411848954274792865800,
+      "all_record_demand_over_forward_bank": "10633823966279326983230456482242756608/340282366920938463426481119284349108225",
+      "face_to_record_ratio_floor": 36
+    },
+    {
+      "mark_size": 10,
+      "outer_singletons": 160,
+      "uniform_core_rank": 81,
+      "core_count": 18268770466636286477546060408953537745699156787,
+      "pair_core_degree": 18268770466636286477546060408953537745699156787,
+      "selected_records": 456719261665907161938651510223838443642478919675,
+      "exact_composition_faces_nonempty": 16076518010639932100241812203396265493882097106898,
+      "common_forward_bank_faces": 14615016373309029182036824148646437903975831306250,
+      "all_record_demand_over_forward_bank": "2029863385181809608616228934328170860633239643/64955628325817907475719218438428612906559250250",
+      "face_to_record_ratio_floor": 35
+    },
+    {
+      "mark_size": 12,
+      "outer_singletons": 192,
+      "uniform_core_rank": 97,
+      "core_count": 65386476410277924623289473158413191834399535879833692842,
+      "pair_core_degree": 65386476410277924623289473158413191834399535879833692842,
+      "selected_records": 2353913150770005286438421033702874906038383291674012942312,
+      "exact_composition_faces_nonempty": 81602322560026849929865262830417309681013357453646298611645,
+      "common_forward_bank_faces": 75325220824640169166029473076590521092885921231323359346700,
+      "all_record_demand_over_forward_bank": "3113641733822758315394736817067294849257120756182556802/99636535482328266092631578143638255413870266178999152575",
+      "face_to_record_ratio_floor": 34
+    }
+  ],
+  "hall_projection_core": {
+    "initial_records": 8100,
+    "hall_union_size": 250,
+    "hall_density": "162/5",
+    "rank_cap": 4,
+    "certified_minimum_degree": "81/50",
+    "remaining_records": 8000,
+    "actual_minimum_projection_degree": 20
+  },
+  "assertions": [
+    "quadratic low-rank entropy in a common convex shield forces enormous Boolean support",
+    "the one-child separated-composition formula matches exhaustive geometry",
+    "the full mark tensor has only rooted-circuit rectangles",
+    "local marked half-plane banks have unbounded aggregate reuse",
+    "large two-mark alphabets admit uniform-core selected mass of order V outside the logarithmic-rank normalization",
+    "the coefficient residue is the directional cap/cup skew of the hidden core and mark children",
+    "every Hall-dense record family retains half its mass in a simultaneous three-projection minimum-degree core"
+  ]
+}

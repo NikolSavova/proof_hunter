@@ -1,0 +1,57 @@
+{
+  "actual_marked_common_alphabet": {
+    "all_nontrivial_star_shield_unions_bad": true,
+    "ambient_faces": 785,
+    "completions": 16,
+    "load_of_every_marked_bin": 16,
+    "marked_bins": 28,
+    "marked_occurrences": 448,
+    "ordinary_repair_stars": 64,
+    "repair_labels": 4,
+    "shield_faces": 15
+  },
+  "claims": [
+    "a c-label coexisting external alphabet divides normalized load by exactly (3/2)^c before decoder overlap",
+    "the sharp conic necessary coefficient is 1/log_2(3/2)",
+    "the full-interval product sufficient coefficient is 2/log_2(3/2)",
+    "the independent additive-alphabet coefficient is 6+2/log_2(3/2)",
+    "the established quarter-coefficient reservoir is below the necessary conic scale",
+    "a common marked shield can have a full ordinary downset while every nonempty interval-shield union is nonconvex",
+    "the actual repair-star construction retains the marked shield with exact common overlap but no nontrivial coexistence"
+  ],
+  "conic_common_cage": {
+    "common_marked_shield_rank": 5,
+    "every_nonempty_interval_shield_union_is_bad": true,
+    "interval_rank": 11,
+    "mark": [
+      "-1329599/4010000",
+      "-40/1203"
+    ],
+    "nonempty_shield_subsets_checked": 31,
+    "shield_downset_half_weight": "243/32"
+  },
+  "description": "conditional external-alphabet multiplication and marked-shield chronology barrier",
+  "product_routing": {
+    "base_load": "7",
+    "distinct_ranked_product_bins_checked": 48,
+    "external_half_weight": "81/16",
+    "external_rank": 4,
+    "product_normalized_load": "112/81"
+  },
+  "rank_extraction": {
+    "alpha_over_4_decimal": "0.146240625180",
+    "d": 65536,
+    "log2_d": 16,
+    "low_rank_subset_count": 46912496173057,
+    "rank_cutoff": 3,
+    "reservoir_coefficient": "1/4",
+    "reservoir_lower_bound": 18446744073709551616
+  },
+  "thresholds": {
+    "additive_alphabet_coefficient": "9.419022582703",
+    "alpha_log2_3_over_2": "0.584962500721",
+    "full_interval_product_sufficient_coefficient": "3.419022582703",
+    "integer_slope_checks_at_s": 40,
+    "necessary_conic_coefficient": "1.709511291351"
+  }
+}

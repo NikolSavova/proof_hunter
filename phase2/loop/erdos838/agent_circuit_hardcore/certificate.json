@@ -1,0 +1,478 @@
+{
+  "curvature_countertest": {
+    "bad_ratio_rows": [
+      {
+        "excess_bits_beyond_halving": 0.011399792434249933,
+        "p_r_plus_1_over_p_r": 0.49606470132505237,
+        "r": 13
+      },
+      {
+        "excess_bits_beyond_halving": 0.0730750572445289,
+        "p_r_plus_1_over_p_r": 0.4753048218972949,
+        "r": 14
+      },
+      {
+        "excess_bits_beyond_halving": 0.23535923393315095,
+        "p_r_plus_1_over_p_r": 0.4247367261118244,
+        "r": 15
+      },
+      {
+        "excess_bits_beyond_halving": 0.060332832280645565,
+        "p_r_plus_1_over_p_r": 0.47952142046660784,
+        "r": 29
+      },
+      {
+        "excess_bits_beyond_halving": 0.11842465452603967,
+        "p_r_plus_1_over_p_r": 0.46059649744606723,
+        "r": 30
+      },
+      {
+        "excess_bits_beyond_halving": 0.2763871590586775,
+        "p_r_plus_1_over_p_r": 0.4128280318097579,
+        "r": 31
+      },
+      {
+        "excess_bits_beyond_halving": 0.07661103453409002,
+        "p_r_plus_1_over_p_r": 0.4741412987186623,
+        "r": 45
+      },
+      {
+        "excess_bits_beyond_halving": 0.13385440135131388,
+        "p_r_plus_1_over_p_r": 0.455696627490774,
+        "r": 46
+      },
+      {
+        "excess_bits_beyond_halving": 0.29103374925189174,
+        "p_r_plus_1_over_p_r": 0.40865810431205,
+        "r": 47
+      },
+      {
+        "excess_bits_beyond_halving": 0.08455431699373483,
+        "p_r_plus_1_over_p_r": 0.47153791480176427,
+        "r": 61
+      },
+      {
+        "excess_bits_beyond_halving": 0.14150797387192426,
+        "p_r_plus_1_over_p_r": 0.4532855342307985,
+        "r": 62
+      },
+      {
+        "excess_bits_beyond_halving": 0.29841327960305497,
+        "p_r_plus_1_over_p_r": 0.4065731139879951,
+        "r": 63
+      },
+      {
+        "excess_bits_beyond_halving": 0.08925940079191808,
+        "p_r_plus_1_over_p_r": 0.4700025858158419,
+        "r": 77
+      },
+      {
+        "excess_bits_beyond_halving": 0.1460807036617464,
+        "p_r_plus_1_over_p_r": 0.45185108633766363,
+        "r": 78
+      },
+      {
+        "excess_bits_beyond_halving": 0.30285918463424566,
+        "p_r_plus_1_over_p_r": 0.4053221197911094,
+        "r": 79
+      },
+      {
+        "excess_bits_beyond_halving": 0.0923711734534618,
+        "p_r_plus_1_over_p_r": 0.4689899220166158,
+        "r": 93
+      },
+      {
+        "excess_bits_beyond_halving": 0.14912115798179748,
+        "p_r_plus_1_over_p_r": 0.4508998208927422,
+        "r": 94
+      },
+      {
+        "excess_bits_beyond_halving": 0.3058307511655367,
+        "p_r_plus_1_over_p_r": 0.40448812365985193,
+        "r": 95
+      },
+      {
+        "excess_bits_beyond_halving": 0.094581777281326,
+        "p_r_plus_1_over_p_r": 0.46827185132261906,
+        "r": 109
+      },
+      {
+        "excess_bits_beyond_halving": 0.15128899466450751,
+        "p_r_plus_1_over_p_r": 0.45022279413464505,
+        "r": 110
+      },
+      {
+        "excess_bits_beyond_halving": 0.3079570522739248,
+        "p_r_plus_1_over_p_r": 0.40389241213752514,
+        "r": 111
+      },
+      {
+        "excess_bits_beyond_halving": 0.0962331668345231,
+        "p_r_plus_1_over_p_r": 0.46773614778900247,
+        "r": 125
+      },
+      {
+        "excess_bits_beyond_halving": 0.15291273714417186,
+        "p_r_plus_1_over_p_r": 0.4497163567959109,
+        "r": 126
+      },
+      {
+        "excess_bits_beyond_halving": 0.30955383720825425,
+        "p_r_plus_1_over_p_r": 0.4034456284957801,
+        "r": 127
+      },
+      {
+        "excess_bits_beyond_halving": 0.0975137128331176,
+        "p_r_plus_1_over_p_r": 0.4673211661784374,
+        "r": 141
+      },
+      {
+        "excess_bits_beyond_halving": 0.15417438570820385,
+        "p_r_plus_1_over_p_r": 0.4493232480923803,
+        "r": 142
+      },
+      {
+        "excess_bits_beyond_halving": 0.31079700405924937,
+        "p_r_plus_1_over_p_r": 0.4030981301076547,
+        "r": 143
+      },
+      {
+        "excess_bits_beyond_halving": 0.09853572367534502,
+        "p_r_plus_1_over_p_r": 0.4669902312576119,
+        "r": 157
+      },
+      {
+        "excess_bits_beyond_halving": 0.15518291232631354,
+        "p_r_plus_1_over_p_r": 0.44900925512129797,
+        "r": 158
+      },
+      {
+        "excess_bits_beyond_halving": 0.31179231407742525,
+        "p_r_plus_1_over_p_r": 0.4028201300925238,
+        "r": 159
+      }
+    ],
+    "cumulative_excess_bits_through_0.9_log2_n": 4.5614885247792865,
+    "cumulative_excess_divided_by_log2_n": 0.027844397650580544,
+    "family": "vertical_iterate(central_template(h=10), depth=12)",
+    "log2_n": 163.82069319729678
+  },
+  "factorization_counterexample": {
+    "base_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "base_plus_both_is_convex": false,
+    "base_plus_each_is_convex": true,
+    "edge_pockets": [
+      0,
+      3
+    ],
+    "individual_additions": [
+      4,
+      5
+    ],
+    "points": [
+      [
+        0,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        -10
+      ],
+      [
+        -10,
+        1
+      ]
+    ]
+  },
+  "mode": "circuit_hardcore_localization_audit",
+  "pair_locality_random_audit": {
+    "faces_checked": 13925,
+    "nonadjacent_pairs_checked": 8173,
+    "random_integer_records": 20
+  },
+  "saved_twenty_point_audit": {
+    "hull_ear_repair_incidences": 43115,
+    "interior_repair_incidences": 15033,
+    "maximal_face_counts": [
+      0,
+      0,
+      0,
+      0,
+      789,
+      402,
+      87,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "n": 20,
+    "nested_pair_overcount_rows": [
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": 0.031444099378881984,
+        "all_depth_two_subsets": 2430,
+        "k": 4,
+        "repairable_nonfaces": 2430,
+        "repairable_over_2_to_k_minus_1_k_v_k": 0.031444099378881984,
+        "v_k": 2415
+      },
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": 0.21128752886836027,
+        "all_depth_two_subsets": 14638,
+        "k": 5,
+        "repairable_nonfaces": 14638,
+        "repairable_over_2_to_k_minus_1_k_v_k": 0.21128752886836027,
+        "v_k": 866
+      },
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": 1.490162037037037,
+        "all_depth_two_subsets": 38625,
+        "k": 6,
+        "repairable_nonfaces": 9302,
+        "repairable_over_2_to_k_minus_1_k_v_k": 0.35887345679012345,
+        "v_k": 135
+      },
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": 20.295479910714285,
+        "all_depth_two_subsets": 72739,
+        "k": 7,
+        "repairable_nonfaces": 1593,
+        "repairable_over_2_to_k_minus_1_k_v_k": 0.44447544642857145,
+        "v_k": 8
+      },
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": null,
+        "all_depth_two_subsets": 64919,
+        "k": 8,
+        "repairable_nonfaces": 95,
+        "repairable_over_2_to_k_minus_1_k_v_k": null,
+        "v_k": 0
+      },
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": null,
+        "all_depth_two_subsets": 17846,
+        "k": 9,
+        "repairable_nonfaces": 0,
+        "repairable_over_2_to_k_minus_1_k_v_k": null,
+        "v_k": 0
+      },
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": null,
+        "all_depth_two_subsets": 1403,
+        "k": 10,
+        "repairable_nonfaces": 0,
+        "repairable_over_2_to_k_minus_1_k_v_k": null,
+        "v_k": 0
+      },
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": null,
+        "all_depth_two_subsets": 82,
+        "k": 11,
+        "repairable_nonfaces": 0,
+        "repairable_over_2_to_k_minus_1_k_v_k": null,
+        "v_k": 0
+      },
+      {
+        "all_depth_two_over_2_to_k_minus_1_k_v_k": null,
+        "all_depth_two_subsets": 3,
+        "k": 12,
+        "repairable_nonfaces": 0,
+        "repairable_over_2_to_k_minus_1_k_v_k": null,
+        "v_k": 0
+      }
+    ],
+    "profile": [
+      1,
+      20,
+      190,
+      1140,
+      2415,
+      866,
+      135,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "repair_degree_histogram": {
+      "1": 13572,
+      "2": 1312,
+      "3": 10744,
+      "4": 2430
+    },
+    "two_extension_rows": [
+      {
+        "boundary_B_r_plus_1": 34310,
+        "r": 3,
+        "repair_error": 29508,
+        "successful_two_extensions": 8660,
+        "sum_faces_choose_u_2": 38168
+      },
+      {
+        "boundary_B_r_plus_1": 12180,
+        "r": 4,
+        "repair_error": 3720,
+        "successful_two_extensions": 2025,
+        "sum_faces_choose_u_2": 5745
+      },
+      {
+        "boundary_B_r_plus_1": 1834,
+        "r": 5,
+        "repair_error": 305,
+        "successful_two_extensions": 168,
+        "sum_faces_choose_u_2": 473
+      },
+      {
+        "boundary_B_r_plus_1": 104,
+        "r": 6,
+        "repair_error": 11,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 11
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 7,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 8,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 9,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 10,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 11,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 12,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 13,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 14,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 15,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 16,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 17,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      },
+      {
+        "boundary_B_r_plus_1": 0,
+        "r": 18,
+        "repair_error": 0,
+        "successful_two_extensions": 0,
+        "sum_faces_choose_u_2": 0
+      }
+    ],
+    "universal_conflict_vertices_from_rank_below": [
+      0,
+      0,
+      0,
+      0,
+      3156,
+      2010,
+      522,
+      56,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "r": 4,
+  "sharp_blocked_repairs_at_r4": 2,
+  "ambient_n": 28,
+  "chain_size": 20,
+  "exterior_apex_count": 8,
+  "sources": 4845,
+  "source_formula": "binom(20,4)",
+  "u_each_source": 16,
+  "exterior_blocked_each_source": 8,
+  "full_swap_degree_every_source": 64,
+  "induced_johnson_degree": 64,
+  "greedy_independent_code_size": 189,
+  "disjoint_immediate_shadow_size": 756,
+  "rooted_triples_checked": 9120,
+  "general_position_triples_checked": 3276,
+  "verdict": "swap-degree theorem and exterior planar constant-weight-code barrier verified; source-only swaps/shadows cannot supply n-dependent Hall gain"
+}

@@ -1,0 +1,95 @@
+{
+  "n9_points": [
+    [62614, 7322],
+    [2922, 4014],
+    [10209, 14386],
+    [20660, 24299],
+    [33336, 29017],
+    [30137, 33324],
+    [15334, 45211],
+    [14934, 55621],
+    [10934, 61521]
+  ],
+  "n9_minimizer": {
+    "n": 9,
+    "V": 168,
+    "nontrivial_faces": 159,
+    "shellings": 6984,
+    "domain": 1110456,
+    "all_face_lower": 6610,
+    "nontrivial_output_lower": 6984,
+    "menu_types": 1038,
+    "menu_optimum": 6633,
+    "successes": {
+      "add": 330120,
+      "replace": 1007514,
+      "toggle": 716112
+    },
+    "map_maximum_load": {
+      "canonical": 6984,
+      "add": 11712,
+      "replace": 13968,
+      "toggle": 6984
+    },
+    "map_image_size": {
+      "canonical": 159,
+      "add": 159,
+      "replace": 167,
+      "toggle": 168
+    }
+  },
+  "pascal_T_4_2": {
+    "n": 6,
+    "V": 50,
+    "nontrivial_faces": 44,
+    "shellings": 336,
+    "domain": 14784,
+    "all_face_lower": 296,
+    "nontrivial_output_lower": 336,
+    "menu_types": 191,
+    "menu_optimum": 298,
+    "successes": {
+      "add": 5376,
+      "replace": 14304,
+      "toggle": 12432
+    },
+    "map_maximum_load": {
+      "canonical": 336,
+      "add": 600,
+      "replace": 672,
+      "toggle": 336
+    },
+    "map_image_size": {
+      "canonical": 44,
+      "add": 44,
+      "replace": 49,
+      "toggle": 50
+    }
+  },
+  "convex_rows": [
+    [4, 15, 11, 24, 264, 24, 18, 18],
+    [5, 31, 26, 120, 3120, 80, 101, 102],
+    [6, 63, 57, 720, 41040, 240, 652, 657],
+    [7, 127, 120, 5040, 604800, 672, 4763, 4788],
+    [8, 255, 247, 40320, 9959040, 1792, 39056, 39178]
+  ],
+  "vertical_T_3_1_square": {
+    "n": 9,
+    "V": 273,
+    "shellings": 64560,
+    "domain": 17043840,
+    "all_face_lower": 62432
+  },
+  "vertical_T_4_2_square": {
+    "n": 36,
+    "V": 441399,
+    "unavoidable_weight_fraction": "147121/147133"
+  },
+  "counting_barrier_rows": [
+    [8, "21/23"],
+    [16, "85/87"],
+    [32, "341/343"],
+    [64, "1365/1367"],
+    [128, "5461/5463"]
+  ]
+}

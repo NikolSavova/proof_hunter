@@ -1,0 +1,104 @@
+{
+  "description": "averaged radial endpoint Carleson and common-cage activity audit",
+  "complete_small_instance": {
+    "m": 8,
+    "n": 14,
+    "faces": 2587,
+    "half_partition_function": "38481/256",
+    "rank_at_least_two_probability": "36433/38481",
+    "carleson_mass": "231545/153924",
+    "interval_container_expectation": "231545/38481",
+    "mean_radial_depth": "57808/38481",
+    "depth_rows": [
+      {
+        "depth": 0,
+        "tail_probability": "36433/38481",
+        "capture_cost_bits": 0.5480555617104834,
+        "carleson_bound_bits": 0.632424563733523,
+        "endpoint_tilt_bits": 0.0,
+        "endpoint_divergence_bits": 0.0,
+        "reservoir_divergence_bits": 0.08911161767761616,
+        "radial_crowding_bits": 0.0
+      },
+      {
+        "depth": 1,
+        "tail_probability": "18961/38481",
+        "capture_cost_bits": 0.263429126749635,
+        "carleson_bound_bits": 0.7933975211716375,
+        "endpoint_tilt_bits": 0.2713239393917775,
+        "endpoint_divergence_bits": 1.4928576757672873,
+        "reservoir_divergence_bits": 1.626208021596333,
+        "radial_crowding_bits": 0.38925745648142485
+      },
+      {
+        "depth": 2,
+        "tail_probability": "795/12827",
+        "capture_cost_bits": 0.020630893687904293,
+        "carleson_bound_bits": 0.2851736044413957,
+        "endpoint_tilt_bits": -0.08381481954189726,
+        "endpoint_divergence_bits": 2.580866774977963,
+        "reservoir_divergence_bits": 2.915970642227822,
+        "radial_crowding_bits": -0.04702920802718561
+      },
+      {
+        "depth": 3,
+        "tail_probability": "29/38481",
+        "capture_cost_bits": 0.0,
+        "carleson_bound_bits": 0.008261885356608815,
+        "endpoint_tilt_bits": -0.005321012968487949,
+        "endpoint_divergence_bits": 3.2343599373599505,
+        "reservoir_divergence_bits": 3.9023348402510027,
+        "radial_crowding_bits": -0.004469738312413916
+      }
+    ],
+    "total_canonical_KL_bits": 0.8321155821480226,
+    "aggregate_radial_crowding_bits": 0.3377585101418253,
+    "boolean_core_parent_checks": 2572,
+    "expected_omitted_label_depth": 7.419973493412347,
+    "expected_addable_label_depth": 3.7556196564541464,
+    "expected_addable_label_count": 7.035160208935528,
+    "twice_mean_rank": 7.035160208934177,
+    "twice_rank_radial_second_moment": 3.7556196564537916,
+    "summed_carleson_bound_bits": 1.719257574703165,
+    "global_tail_carleson_bound_bits": 3.0074274200309574
+  },
+  "nested_cap_activity": {
+    "m": 21,
+    "n": 27,
+    "outer_parent_degree": 1,
+    "inner_parent_degree": 8,
+    "outer_parent_activity": "131072/11854959283",
+    "inner_parent_activity": "1048576/11854959283",
+    "rows": [
+      {
+        "edge": [
+          1,
+          23
+        ],
+        "interval_halfweight": "3517455249/1048576",
+        "capture": "524288/106589553",
+        "capture_cost_bits": 7.667490803446696
+      },
+      {
+        "edge": [
+          2,
+          22
+        ],
+        "interval_halfweight": "1162261467/524288",
+        "capture": "1835008/387420489",
+        "capture_cost_bits": 7.721970090923207
+      }
+    ],
+    "exact_two_depth_contribution_bits": 0.0007677855020304972,
+    "ambient_partition_cage_bound_bits": 0.0011059461887620806,
+    "boolean_cage_only_bound_bits": 0.0012533942958258154
+  },
+  "claims": [
+    "one-depth capture cost is bounded by interval Carleson mass plus endpoint activity tilt",
+    "one-depth capture cost exactly equals a difference of endpoint and reservoir KL divergences",
+    "endpoint activity tilt is data-processed radial log-degree crowding",
+    "interval Carleson mass equals one quarter of the expected open-container count",
+    "the rank-four nested-cap parents have exact radial degrees 1 and 8",
+    "their complete two-depth activity is exponentially discounted by the common Boolean cage"
+  ]
+}

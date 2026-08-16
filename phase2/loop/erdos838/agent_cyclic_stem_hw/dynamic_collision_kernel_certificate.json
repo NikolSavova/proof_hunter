@@ -1,0 +1,33 @@
+{
+  "comparable_kernel_exhaustion": {"families_checked": 65814, "maximum_ground_size": 4},
+  "outer_tag_factor": [
+    {"alphabet": 16, "blocks": 8, "tags": 16, "untagged_to_tagged_collision_ratio": "16"},
+    {"alphabet": 256, "blocks": 16, "tags": 256, "untagged_to_tagged_collision_ratio": "256"},
+    {"alphabet": 65536, "blocks": 32, "tags": 65536, "untagged_to_tagged_collision_ratio": "65536"}
+  ],
+  "parabolic_prefix_chains": [
+    {"depth": 0, "energy": "1", "strict_upper_bound": "6"},
+    {"depth": 1, "energy": "5/2", "strict_upper_bound": "6"},
+    {"depth": 2, "energy": "15/4", "strict_upper_bound": "6"},
+    {"depth": 4, "energy": "83/16", "strict_upper_bound": "6"},
+    {"depth": 8, "energy": "1515/256", "strict_upper_bound": "6"},
+    {"depth": 16, "energy": "393179/65536", "strict_upper_bound": "6"},
+    {"depth": 32, "energy": "25769803707/4294967296", "strict_upper_bound": "6"},
+    {"depth": 64, "energy": "110680464442257309563/18446744073709551616", "strict_upper_bound": "6"},
+    {"depth": 128, "energy": "2041694201525630780780247644590609268475/340282366920938463463374607431768211456", "strict_upper_bound": "6"}
+  ],
+  "product_transversals": [
+    {"alphabet": 2, "blocks": 2, "carrier_count": 4, "collision_energy": "9/4", "comparable_diagonal_energy": "1", "incomparable_to_comparable_ratio": "5/4"},
+    {"alphabet": 3, "blocks": 3, "carrier_count": 27, "collision_energy": "27", "comparable_diagonal_energy": "27/8", "incomparable_to_comparable_ratio": "7"},
+    {"alphabet": 4, "blocks": 3, "carrier_count": 64, "collision_energy": "125", "comparable_diagonal_energy": "8", "incomparable_to_comparable_ratio": "117/8"},
+    {"alphabet": 8, "blocks": 6, "carrier_count": 262144, "collision_energy": "34012224", "comparable_diagonal_energy": "4096", "incomparable_to_comparable_ratio": "531377/64"},
+    {"alphabet": 256, "blocks": 16, "carrier_count": 340282366920938463463374607431768211456, "collision_energy": "28695219888071495866821309328441380626511357849248184611925378727936", "comparable_diagonal_energy": "5192296858534827628530496329220096", "incomparable_to_comparable_ratio": "362184594182720980613658216570962776065/65536"}
+  ],
+  "ramp_plateau": [
+    {"L": 8, "blocks": 10, "exact_checks": "1 < each quantity < 2", "h": 3, "prefix_collision_kraft_1e12_floor": 1632843137255, "sum_reciprocal_alphabets_1e12_floor": 1640625000000},
+    {"L": 16, "blocks": 16, "exact_checks": "1 < each quantity < 2", "h": 4, "prefix_collision_kraft_1e12_floor": 1632843018043, "sum_reciprocal_alphabets_1e12_floor": 1632934570312},
+    {"L": 32, "blocks": 26, "exact_checks": "1 < each quantity < 2", "h": 5, "prefix_collision_kraft_1e12_floor": 1632843018043, "sum_reciprocal_alphabets_1e12_floor": 1632843021303},
+    {"L": 64, "blocks": 44, "exact_checks": "1 < each quantity < 2", "h": 6, "prefix_collision_kraft_1e12_floor": 1632843018043, "sum_reciprocal_alphabets_1e12_floor": 1632843018043},
+    {"L": 128, "blocks": 78, "exact_checks": "1 < each quantity < 2", "h": 7, "prefix_collision_kraft_1e12_floor": 1632843018043, "sum_reciprocal_alphabets_1e12_floor": 1632843018043}
+  ]
+}

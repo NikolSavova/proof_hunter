@@ -1,0 +1,103 @@
+{
+  "APA_boundary_identity": {
+    "APA_ratio": "1025021/1195264",
+    "available_derivative_credit": "145433/16",
+    "identity_checked": true,
+    "n": 20,
+    "profile": [
+      1,
+      20,
+      190,
+      1140,
+      2415,
+      866,
+      135,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "weighted_boundary": "120623/32"
+  },
+  "compatibility_graph_barrier": {
+    "all_pair_compatibilities": true,
+    "pocket_points": [
+      [
+        110597,
+        138659
+      ],
+      [
+        16176,
+        148701
+      ],
+      [
+        87080,
+        127172
+      ]
+    ],
+    "rooted_profile": [
+      1,
+      3,
+      3
+    ],
+    "roots": [
+      [
+        0,
+        0
+      ],
+      [
+        100000,
+        0
+      ]
+    ],
+    "three_clique_is_not_a_rooted_chain": true
+  },
+  "local_pivot_barrier": {
+    "Delta_V": "56",
+    "R_zero_half": "59049/1024",
+    "chain_size": 12,
+    "global_rooted_inequality_still_passes": true,
+    "global_rooted_ratio": "655171/2155520",
+    "pointwise_pivot_inequality": false,
+    "pointwise_pivot_margin": "-6313/1024",
+    "rooted_points_m": 11
+  },
+  "planar_twenty_corner_barrier": {
+    "APA_ratio": "1025021/1195264",
+    "K_11": "4754",
+    "K_1h": "22959/16",
+    "K_h1": "91197/64",
+    "K_hh": "23691/64",
+    "false_mixed_payment_rhs_over_lhs": "61011/78970",
+    "four_corner_interaction": "72457/32",
+    "n": 20,
+    "stretchable_fixed_x_integer_certificate": true
+  },
+  "rooted_slack": {
+    "maximum_m": 12,
+    "maximum_m_Rh_over_R1_plus_V": "255/376",
+    "maximum_record": {
+      "V": 27,
+      "m": 5,
+      "rooted_profile": [
+        1,
+        5,
+        9,
+        5
+      ],
+      "seed": 55019
+    },
+    "records": 200,
+    "status": "finite_pass_only"
+  }
+}

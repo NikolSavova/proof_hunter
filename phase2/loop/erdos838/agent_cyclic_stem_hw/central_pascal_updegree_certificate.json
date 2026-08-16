@@ -1,0 +1,125 @@
+{
+  "description": "exact up-degree DP for central strong-glue Pascal cells",
+  "audits": [
+    {
+      "parameter": 16,
+      "n": 12870,
+      "ell": 14,
+      "cutoff": 16,
+      "V": 3876321533839982275742162840469373172,
+      "log2_V": 121.54409966059822,
+      "rows_below_ell": [
+        {
+          "rank": 3,
+          "face_count": 355208336340,
+          "near_maximal_count": 784,
+          "near_density_log2": -111.92938981648301,
+          "mean_up_degree_on_near": 12.285714285714286,
+          "entropy_required_mean_q": 8.713398114827774,
+          "rigorous_EIC_over_V_lower": 0.0,
+          "trivial_EIC_over_V_upper": 2.6030038818798687e-30
+        },
+        {
+          "rank": 4,
+          "face_count": 795434708084325,
+          "near_maximal_count": 17092598,
+          "near_density_log2": -97.51723129938125,
+          "mean_up_degree_on_near": 14.73952046377034,
+          "entropy_required_mean_q": 92.6236877972476,
+          "rigorous_EIC_over_V_lower": 3.434293959296756e-28,
+          "trivial_EIC_over_V_upper": 5.675012620588275e-26
+        },
+        {
+          "rank": 5,
+          "face_count": 1023996900422273980,
+          "near_maximal_count": 2782264994,
+          "near_density_log2": -90.17048697216569,
+          "mean_up_degree_on_near": 19.681887889216636,
+          "entropy_required_mean_q": 139.92214605126654,
+          "rigorous_EIC_over_V_lower": 8.630353757635532e-26,
+          "trivial_EIC_over_V_upper": 9.237559413010803e-24
+        },
+        {
+          "rank": 6,
+          "face_count": 790266499668273798556,
+          "near_maximal_count": 2861853992272,
+          "near_density_log2": -80.16401245226069,
+          "mean_up_degree_on_near": 23.466941561119654,
+          "entropy_required_mean_q": 260.0111125222311,
+          "rigorous_EIC_over_V_lower": 1.7463847467346666e-22,
+          "trivial_EIC_over_V_upper": 9.501807463338539e-21
+        },
+        {
+          "rank": 7,
+          "face_count": 371198410392991638017614,
+          "near_maximal_count": 8831613544448194,
+          "near_density_log2": -68.5725011935352,
+          "mean_up_degree_on_near": 26.043363066948267,
+          "entropy_required_mean_q": 484.94199583277776,
+          "rigorous_EIC_over_V_lower": 1.0455312711504187e-18,
+          "trivial_EIC_over_V_upper": 2.93223524738029e-17
+        },
+        {
+          "rank": 8,
+          "face_count": 106121258242500793898355666,
+          "near_maximal_count": 35001284665983944056,
+          "near_density_log2": -56.62005798290269,
+          "mean_up_degree_on_near": 28.964700472492467,
+          "entropy_required_mean_q": 812.2209573224636,
+          "rigorous_EIC_over_V_lower": 7.072420327645242e-15,
+          "trivial_EIC_over_V_upper": 1.1620979573512568e-13
+        },
+        {
+          "rank": 9,
+          "face_count": 18243302217104343307592634252,
+          "near_maximal_count": 122944891450976388220694,
+          "near_density_log2": -44.841741688203726,
+          "mean_up_degree_on_near": 33.47794918355672,
+          "entropy_required_mean_q": 1213.0096269129592,
+          "rigorous_EIC_over_V_lower": 3.7411084920443e-11,
+          "trivial_EIC_over_V_upper": 4.0819646645942677e-10
+        },
+        {
+          "rank": 10,
+          "face_count": 1848048175630375953022623418336,
+          "near_maximal_count": 303410341294703631846410144,
+          "near_density_log2": -33.57269893496779,
+          "mean_up_degree_on_near": 37.716618599940226,
+          "entropy_required_mean_q": 1631.4744596782418,
+          "rigorous_EIC_over_V_lower": 1.2474780698175162e-07,
+          "trivial_EIC_over_V_upper": 1.0073702757558792e-06
+        },
+        {
+          "rank": 11,
+          "face_count": 106899695467352714441147598447316,
+          "near_maximal_count": 480217498952380222430088992226,
+          "near_density_log2": -22.94449693305181,
+          "mean_up_degree_on_near": 41.29785801711963,
+          "entropy_required_mean_q": 2014.7786927381453,
+          "rigorous_EIC_over_V_lower": 0.00024448437066090616,
+          "trivial_EIC_over_V_upper": 0.0015943979769383768
+        },
+        {
+          "rank": 12,
+          "face_count": 3401393052005308608244181354695296,
+          "near_maximal_count": 329256021325181025775480674701926,
+          "near_density_log2": -13.523190799950015,
+          "mean_up_degree_on_near": 41.88158994758675,
+          "entropy_required_mean_q": 2256.985390050484,
+          "rigorous_EIC_over_V_lower": 0.18815164265325277,
+          "trivial_EIC_over_V_upper": 1.093182017400213
+        },
+        {
+          "rank": 13,
+          "face_count": 56183754026089047471202404078462540,
+          "near_maximal_count": 39312851416224417682858803150639460,
+          "near_density_log2": -6.623543426177065,
+          "mean_up_degree_on_near": 37.76009189916343,
+          "entropy_required_mean_q": 2185.131576457232,
+          "rigorous_EIC_over_V_lower": 21.778197543958818,
+          "trivial_EIC_over_V_upper": 130.52487862780438
+        }
+      ]
+    }
+  ]
+}

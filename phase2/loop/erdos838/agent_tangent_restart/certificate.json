@@ -1,0 +1,72 @@
+{
+  "matching_chain_search": {
+    "checked": 77,
+    "n": 13,
+    "records": 40,
+    "status": "pass"
+  },
+  "nonadjacent_chain_search": {
+    "n": 12,
+    "records": 80,
+    "single_pocket_rooted_equivalences_checked": 854553,
+    "status": "pass",
+    "two_pocket_chain_products_checked": 78814
+  },
+  "pascal_block_regression": {
+    "rows": [
+      {
+        "blocks": 3,
+        "depth": 8,
+        "h": 4,
+        "last_credit": 1.8184067428589508,
+        "log2_n": 20.67970000576925,
+        "minimum_credit_over_2_to_minus_period": 1.8184067428589508,
+        "period": 4
+      },
+      {
+        "blocks": 5,
+        "depth": 8,
+        "h": 6,
+        "last_credit": 2.1602106078486276,
+        "log2_n": 49.03426413555973,
+        "minimum_credit_over_2_to_minus_period": 2.1602106078486276,
+        "period": 8
+      },
+      {
+        "blocks": 5,
+        "depth": 8,
+        "h": 8,
+        "last_credit": 2.4478112349561805,
+        "log2_n": 78.81399233132846,
+        "minimum_credit_over_2_to_minus_period": 2.4478112349561805,
+        "period": 12
+      },
+      {
+        "blocks": 5,
+        "depth": 8,
+        "h": 10,
+        "last_credit": 2.6531301484183647,
+        "log2_n": 109.21379546486452,
+        "minimum_credit_over_2_to_minus_period": 2.6531301484183647,
+        "period": 16
+      },
+      {
+        "blocks": 6,
+        "depth": 8,
+        "h": 12,
+        "last_credit": 2.758494900650472,
+        "log2_n": 139.96209353177852,
+        "minimum_credit_over_2_to_minus_period": 2.758494900650472,
+        "period": 20
+      }
+    ],
+    "status": "pass"
+  },
+  "rooted_pivot_recurrence": {
+    "maximum_discarded_middle_pocket": 7,
+    "points_per_record": 12,
+    "records": 120,
+    "rooted_subsets_checked": 122880,
+    "status": "pass"
+  }
+}

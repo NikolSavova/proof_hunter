@@ -1,0 +1,124 @@
+{
+  "claims": [
+    "an exact endpoint-plus-three-label 1+3 atom can be the obstruction to the desired one-gap profile face",
+    "strict reverse tangent dominance and convex full source words do not imply the omitted-cell splice",
+    "under the additional lexicographic exposure hypothesis the recursive fixed-point threshold is strictly above one half",
+    "arbitrary child face complexes survive projective singleton reset geometry"
+  ],
+  "conditional_lexicographic_wrapper": {
+    "aligned_partial_rectangles": [
+      {
+        "alphabet": 8,
+        "cycle": 4,
+        "gap_rectangles": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      {
+        "alphabet": 8,
+        "cycle": 6,
+        "gap_rectangles": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ]
+      },
+      {
+        "alphabet": 12,
+        "cycle": 4,
+        "gap_rectangles": [
+          27,
+          27,
+          27,
+          27
+        ]
+      }
+    ],
+    "cyclic_profile_product_identity": true,
+    "fixed_point_thresholds": [
+      {
+        "beta": "1",
+        "fixed_point_threshold": "2/3",
+        "one_half_maps_to": "5/8"
+      },
+      {
+        "beta": "2",
+        "fixed_point_threshold": "3/5",
+        "one_half_maps_to": "5/9"
+      },
+      {
+        "beta": "4",
+        "fixed_point_threshold": "5/9",
+        "one_half_maps_to": "13/25"
+      },
+      {
+        "beta": "8",
+        "fixed_point_threshold": "9/17",
+        "one_half_maps_to": "41/81"
+      }
+    ]
+  },
+  "description": "rooted 1+3 atom versus lexicographic wrapper applicability",
+  "projective_universality_stress": {
+    "convex_subset_count": 98,
+    "global_orientation_product": 1,
+    "maximum_nonempty_history_load": 7,
+    "n": 7,
+    "name": "one_three_wrapper_random_child_n7",
+    "prefix_history_incidences": 206,
+    "projective_parameters": {
+      "a_translation": "38567",
+      "final_left_shear": "38568",
+      "monotone_shear": "5743"
+    },
+    "rooted_coefficients": [
+      1,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "rooted_rational_counterexample": {
+    "barycentric_weights": [
+      "3/230",
+      "122/575",
+      "891/1150"
+    ],
+    "endpoint_plus_every_three_interval_labels_bad": true,
+    "full_source_words_convex": 2,
+    "hidden_label": "z",
+    "inherited_dominance_audit": {
+      "barycentric_weights": [
+        "3/230",
+        "122/575",
+        "891/1150"
+      ],
+      "cell_occupancies": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "cross_complete_singleton_choices": 2,
+      "directional_one_gap_face_convex_with_root": false,
+      "directional_one_gap_face_convex_without_root": false,
+      "general_position": true,
+      "interior_point": "z",
+      "positive_reverse_dominance": true
+    },
+    "interval_is_ordinary": true,
+    "interval_rank": 3,
+    "one_gap_output_convex_with_root": false,
+    "one_gap_output_convex_without_root": false
+  }
+}

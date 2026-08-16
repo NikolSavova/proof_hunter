@@ -1,0 +1,113 @@
+{
+  "arithmetic": "exact integers and rational coordinates",
+  "artifact": "CYCLIC_FERRERS_ONE_GAP",
+  "cyclic_transfer": {
+    "bank_branch": {
+      "compatible_bank": 272,
+      "formal_substitutions": 315,
+      "left_bad": 27,
+      "reservoir_H": 7,
+      "right_bad": 27
+    },
+    "cells": 4,
+    "circuit_branch": {
+      "compatible_bank": 141,
+      "ferrers_rectangle": {
+        "dyadic_levels": 6,
+        "rectangle_columns": 8,
+        "rectangle_rows": 3,
+        "rectangle_weight": 256,
+        "row_weight_W": 45,
+        "total_bad_R": 374
+      },
+      "formal_substitutions": 540,
+      "left_bad": 374,
+      "reservoir_H": 12,
+      "right_bad": 374
+    },
+    "gap_projection_m": 4,
+    "partial_words_Q": 45,
+    "selected_valid_words_M": 137
+  },
+  "geometric_adjacent_ferrers": {
+    "bad_adjacent_pairs": 24,
+    "bad_pairs_with_four_circuit": 24,
+    "bad_singleton_pairs_released_by_deleting_shared_vertex": 24,
+    "base_rank": 3,
+    "good_adjacent_pairs": 18,
+    "left_profiles": 6,
+    "nested_neighborhood_sizes": [
+      1,
+      1,
+      3,
+      4,
+      4,
+      5
+    ],
+    "right_profiles": 7
+  },
+  "guard_release_counterexample": {
+    "all_six_points_general_position": true,
+    "base": [
+      [
+        -3,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        0,
+        4
+      ]
+    ],
+    "first_release_turn": -1,
+    "full_union_convex": false,
+    "hidden_after_release": [
+      [
+        -9,
+        -15
+      ]
+    ],
+    "individual_ears_convex": true,
+    "left_ear": [
+      [
+        -10,
+        -16
+      ],
+      [
+        -9,
+        -15
+      ]
+    ],
+    "released_union_convex": false,
+    "right_ear": [
+      [
+        8,
+        1
+      ]
+    ],
+    "second_release_turn": 179,
+    "shared_vertex_z": [
+      3,
+      0
+    ]
+  },
+  "saturation_regression": {
+    "bad_seams": 0,
+    "cells": 4,
+    "full_words_M": 2401,
+    "local_reservoir_H": 7,
+    "local_selected_m": 7,
+    "one_gap_banks": [
+      2401,
+      2401,
+      2401,
+      2401
+    ],
+    "points_per_cell": 3,
+    "surplus_K": "1"
+  },
+  "status": "PASS"
+}

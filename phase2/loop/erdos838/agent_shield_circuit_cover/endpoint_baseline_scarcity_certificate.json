@@ -1,0 +1,73 @@
+{
+  "coefficient_gate": {
+    "cluster_count_coefficient_kappa": "1/4",
+    "conditional_face_coefficient": "3/8",
+    "finite_scale_rows": [
+      {
+        "asymptotic_one_gap_gain_before_lower_order_cleanup": "-16",
+        "clusters": 4,
+        "log_M": 64,
+        "log_cluster_size": 16
+      },
+      {
+        "asymptotic_one_gap_gain_before_lower_order_cleanup": "32",
+        "clusters": 8,
+        "log_M": 256,
+        "log_cluster_size": 32
+      },
+      {
+        "asymptotic_one_gap_gain_before_lower_order_cleanup": "320",
+        "clusters": 16,
+        "log_M": 1024,
+        "log_cluster_size": 64
+      }
+    ],
+    "history_coefficient_a": "1/4",
+    "local_reservoir_coefficient_c0": "1/8"
+  },
+  "global_decoder_model": {
+    "bank_incidences": 388,
+    "depths_J": 2,
+    "distinct_decoded_outputs": 388,
+    "maximum_output_load": 1,
+    "ranks_R": 3,
+    "records": 78,
+    "theorem_global_load_bound": 6
+  },
+  "planar_scarcity_regression": {
+    "W_union_endpoint_convex": false,
+    "baseline_harmonic_rank_factor": "2875/41472",
+    "canonical_sources": 81,
+    "common_W": [
+      "z0",
+      "z2",
+      "z4"
+    ],
+    "depth": 2,
+    "distinct_parents": 1,
+    "endpoint_half_weight_G": "81/16",
+    "endpoint_retaining_bank": 648,
+    "fixed_mark": "t+0",
+    "fixed_tangent_five_tuple": [
+      "t-2",
+      "t-1",
+      "t+0",
+      "t+1",
+      "t+2"
+    ],
+    "full_parent_boolean_bank": 2592,
+    "likelihood_h": "1/32",
+    "outer_clusters": {
+      "L0": 3,
+      "L1": 3,
+      "R0": 3,
+      "R1": 3
+    },
+    "parent_rank": 5,
+    "points": 22,
+    "rank_five_endpoint_faces": 46,
+    "rank_five_endpoint_upper_bound": 46,
+    "same_rank_identity_value": "1/2",
+    "source_rank": 9
+  }
+}

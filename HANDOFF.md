@@ -65,6 +65,29 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-15 — ERDŐS #838: FULL CAMPAIGN PRESERVED; STATE DISTILLED AFTER EXTERNAL CRITIQUE.**
+The complete 2026-08-14/15 attack is preserved verbatim in
+`phase2/loop/erdos838/FULL_ATTACK_20260814.md` together with every agent
+report and verifier.  The honest unconditional window is unchanged:
+`1/4 <= liminf <= limsup <= 1/2`.  The campaign substantially constrained
+recursive construction threats, proved exact minimizer/root identities,
+developed pooled Hall/replacement codes, and produced many stretchable
+barriers, but it did **not** improve the lower coefficient beyond `1/4`.
+Claude/Fable's process critique is preserved at
+`phase2/loop/erdos838/CRITICISM_20260815_claude.md`.
+
+Four short additive navigation files now replace none of that information:
+`CAMPAIGN_STATE_20260815.md` (truth and result map),
+`DIFFICULTY_LEDGER_20260815.md` (GAIN/STRICT/EQUIVALENT/stop classifications),
+`VERIFICATION_QUEUE_20260815.md` (five recent load-bearing packages needing
+independent reconstruction), `BANKABLE_RESULTS_20260815.md` (short extracted
+statements), and `PROVED_GAIN_STRATEGY_20260815.md` (one bounded next target).
+The selected next target is fixed-size
+supersaturation: for `n=2^(2k+o(k))`, prove
+`v_k(P)>=2^((1+eta-o(1))k^2)` for any explicit `eta>0`; standard double
+counting would then improve the unrestricted lower coefficient to
+`(1+eta)/4`.  Full-strength/equivalent reformulations are parked.
+
 **⭐ 2026-08-13 — ERDŐS #1208: EXPLICIT CANDIDATE UPPER EXPONENT `0.49815` + FULL-GAP BARRIER MAP (Sihao + Codex ultracode).**
 The live literature window is `n^(1/3) << F_2(n) << n^(1/2-epsilon)`; the
 Erdős Problems page is stale because CFRN (arXiv:2606.05841) and LPZ
@@ -641,6 +664,24 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 ## 4. WHAT STILL NEEDS TO BE BUILT
 
+**Erdős #838 post-critique obligations (current priority).**
+
+- [ ] Independently reconstruct the five packages in
+  `phase2/loop/erdos838/VERIFICATION_QUEUE_20260815.md`.  Exact author-side
+  scripts are substantial but do not satisfy the cross-model house rule.
+- [ ] Attack only the fixed-size supersaturation target `(P1)` in
+  `PROVED_GAIN_STRATEGY_20260815.md`, beginning with an independent check of
+  the implication `(P1) => liminf >= (1+eta)/4`.
+- [ ] Enforce `DIFFICULTY_LEDGER_20260815.md`: mark coefficient-equivalent
+  reductions `EQUIVALENT` and stop them; cap new chains at three reductions
+  without an explicit coefficient/range gain.
+- [ ] Extract the independently accepted construction-closure and barrier
+  packages into a short self-contained paper section.  The 13,000-line log is
+  evidence/archive, not a publication draft.
+- [ ] Do not describe the campaign as “78% of the proof.”  Approximately
+  `75--80%` refers only to the mapped obstruction architecture; the
+  unconditional lower-bound coefficient has not moved from `1/4`.
+
 **Erdős #1208 candidate-result obligations.**
 
 - [ ] Obtain a human number-theory audit of the rank-17 tame totally-real
@@ -808,6 +849,23 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
+
+### ⭐ 2026-08-15 — ERDŐS #838: DISTILLATION COMPLETE; VERIFY BEFORE MORE REDUCTIONS
+
+Read, in order:
+
+1. `phase2/loop/erdos838/CAMPAIGN_STATE_20260815.md`;
+2. `phase2/loop/erdos838/DIFFICULTY_LEDGER_20260815.md`;
+3. `phase2/loop/erdos838/VERIFICATION_QUEUE_20260815.md`;
+4. `phase2/loop/erdos838/BANKABLE_RESULTS_20260815.md`;
+5. `phase2/loop/erdos838/PROVED_GAIN_STRATEGY_20260815.md`.
+
+The full `FULL_ATTACK_20260814.md` and all agent artifacts remain preserved
+for lookup.  Do not resume from its long “sole remaining target” chains.
+First obtain an independent verdict on V1--V5.  Then make at most two bounded
+attack/audit cycles on `(P1)`.  If no explicit `eta>0` or new rank range is
+proved, stop and package the `1/2` upper/strong-tree theorem plus the audited
+construction and barrier results.  Nothing is currently running.
 
 ### ⭐ 2026-08-13 — ERDŐS #838 IS THE ALL-IN TARGET: READ `RESUME_838.md` FIRST
 **Entry point: `phase2/loop/erdos838/RESUME_838.md`.** It indexes every 838 document, states

@@ -1,0 +1,138 @@
+{
+  "asymptotic_capacity_formula": {
+    "external_alphabet_capacity_multiplier": "(3/2)^c for c fixed repair labels",
+    "parameters": "|X|=|Y|=3s, layer ranks s, |L|=|R|=2^s",
+    "samples": {
+      "12": {
+        "A": 1251677700,
+        "all_subface_load_lower_bound_decimal": "0.0178231385035",
+        "all_subface_ratio_to_2_power_s_over_s_decimal": "5.22162260844e-05",
+        "normalized_load_lower_bound_decimal": "3437326.42378",
+        "ratio_to_4_power_s_decimal": "0.204880620467"
+      },
+      "16": {
+        "A": 2254848913647,
+        "all_subface_load_lower_bound_decimal": "0.219608412859",
+        "all_subface_ratio_to_2_power_s_over_s_decimal": "5.36153351706e-05",
+        "normalized_load_lower_bound_decimal": "1041868434.8",
+        "ratio_to_4_power_s_decimal": "0.242578898276"
+      },
+      "2": {
+        "A": 15,
+        "all_subface_load_lower_bound_decimal": "4.50055276545e-05",
+        "all_subface_ratio_to_2_power_s_over_s_decimal": "2.25027638273e-05",
+        "normalized_load_lower_bound_decimal": "0.0720172841482",
+        "ratio_to_4_power_s_decimal": "0.00450108025926"
+      },
+      "20": {
+        "A": 4191844505805495,
+        "all_subface_load_lower_bound_decimal": "2.83092640006",
+        "all_subface_ratio_to_2_power_s_over_s_decimal": "5.39956359874e-05",
+        "normalized_load_lower_bound_decimal": "273728529732",
+        "ratio_to_4_power_s_decimal": "0.248954647516"
+      },
+      "4": {
+        "A": 495,
+        "all_subface_load_lower_bound_decimal": "0.000136617093839",
+        "all_subface_ratio_to_2_power_s_over_s_decimal": "3.41542734598e-05",
+        "normalized_load_lower_bound_decimal": "3.56288497895",
+        "ratio_to_4_power_s_decimal": "0.013917519449"
+      },
+      "8": {
+        "A": 735471,
+        "all_subface_load_lower_bound_decimal": "0.00151404910189",
+        "all_subface_ratio_to_2_power_s_over_s_decimal": "4.7314034434e-05",
+        "normalized_load_lower_bound_decimal": "6110.7023503",
+        "ratio_to_4_power_s_decimal": "0.0932419181869"
+      }
+    },
+    "verified_all_subface_bound_for_sampled_s_at_least_20": "T > 2^s/(20000s)",
+    "verified_lower_bound_for_sampled_s_at_least_8": "T > 4^s/16"
+  },
+  "claims": [
+    "visible and hidden choices form a full realizable Cartesian rectangle",
+    "every record has one fixed canonical left-role 1+3 trace",
+    "all complement reattachments remain nonconvex",
+    "visible, hidden, interval, and endpoint projection sizes and loads are exact",
+    "the uniform rectangle is the actual literal depth-zero activity weighting on a constant-rank target layer",
+    "fractional routing among all four projections has exact unit and literal half-Gibbs congestion lower bounds",
+    "every subset-valued one-face decoder has a fixed-power literal half-Gibbs congestion lower bound",
+    "a c-label external repair alphabet and J tags can improve congestion by at most J(3/2)^c",
+    "a singleton full-pocket reset transfers an arbitrary child face complex exactly"
+  ],
+  "conic_rectangle": {
+    "all_complement_reattachments_fail": true,
+    "all_left_plus_three_lower_arc_sets_are_bad": true,
+    "all_record_subfaces_fractional_normalized_load_lower_bound": "128/3877551",
+    "fixed_trace": [
+      3,
+      4,
+      5
+    ],
+    "hidden_layer_size": 15,
+    "interval_rank": 11,
+    "left_endpoints": 3,
+    "literal_depth_zero_tilt": "1",
+    "literal_fractional_normalized_load_lower_bound": "675/10604",
+    "output_ranks": {
+      "edge": 2,
+      "hidden": 7,
+      "interval": 11,
+      "visible": 5
+    },
+    "points": 25,
+    "projection_sizes_and_loads": {
+      "edge": {
+        "load": 225,
+        "outputs": 9
+      },
+      "hidden": {
+        "load": 135,
+        "outputs": 15
+      },
+      "interval": {
+        "load": 9,
+        "outputs": 225
+      },
+      "visible": {
+        "load": 45,
+        "outputs": 45
+      }
+    },
+    "records": 2025,
+    "right_endpoints": 3,
+    "unit_record_fractional_projection_load_lower_bound": "675/98",
+    "visible_layer_size": 15
+  },
+  "description": "literal visible-hidden interval rectangle and singleton-universal child barrier",
+  "parabola_visible_path_stress": {
+    "m": 12,
+    "maximum_parabola_labels_in_one_ell_retaining_face": 2,
+    "subsets_checked": 4096,
+    "three_point_traces_checked": 220,
+    "visible_profiles": 79
+  },
+  "singleton_universality_stress": {
+    "convex_subset_count": 101,
+    "global_orientation_product": 1,
+    "maximum_nonempty_history_load": 7,
+    "n": 7,
+    "name": "interval_hidden_child_random_n7",
+    "prefix_history_incidences": 213,
+    "projective_parameters": {
+      "a_translation": "46922",
+      "final_left_shear": "46923",
+      "monotone_shear": "7406"
+    },
+    "rooted_coefficients": [
+      1,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

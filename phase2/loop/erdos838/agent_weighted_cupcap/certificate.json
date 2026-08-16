@@ -1,0 +1,714 @@
+{
+  "description": "exact weighted cup-cap endpoint and localization stress tests",
+  "records": [
+    {
+      "family": "parabola_chord",
+      "n": 3,
+      "endpoint": [
+        0,
+        2
+      ],
+      "span": 3,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        1
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "product_at_half": "3/8",
+      "half_activity_mean": "7/3",
+      "mean_minus_log2_span": 0.7483708326121774,
+      "endpoint_ratio_one_over_half": 5.333333333333333,
+      "profile": [
+        1,
+        3,
+        3,
+        1
+      ],
+      "Z_one": 8,
+      "Z_half": "27/8",
+      "H": 1.265625,
+      "local_compensation_score": 2.830074998557688
+    },
+    {
+      "family": "parabola_chord",
+      "n": 4,
+      "endpoint": [
+        0,
+        3
+      ],
+      "span": 4,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        2
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "product_at_half": "1/2",
+      "half_activity_mean": "5/2",
+      "mean_minus_log2_span": 0.5,
+      "endpoint_ratio_one_over_half": 6.0,
+      "profile": [
+        1,
+        4,
+        6,
+        4,
+        0
+      ],
+      "Z_one": 15,
+      "Z_half": "5",
+      "H": 1.3333333333333333,
+      "local_compensation_score": 2.9068905956085187
+    },
+    {
+      "family": "parabola_chord",
+      "n": 5,
+      "endpoint": [
+        0,
+        4
+      ],
+      "span": 5,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        3
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        3
+      ],
+      "product_at_half": "5/8",
+      "half_activity_mean": "13/5",
+      "mean_minus_log2_span": 0.2780719051126379,
+      "endpoint_ratio_one_over_half": 6.4,
+      "profile": [
+        1,
+        5,
+        10,
+        10,
+        1,
+        0
+      ],
+      "Z_one": 27,
+      "Z_half": "117/16",
+      "H": 1.3541666666666667,
+      "local_compensation_score": 3.1110313123887443
+    },
+    {
+      "family": "parabola_chord",
+      "n": 6,
+      "endpoint": [
+        0,
+        5
+      ],
+      "span": 6,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        4
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        4
+      ],
+      "product_at_half": "3/4",
+      "half_activity_mean": "8/3",
+      "mean_minus_log2_span": 0.08170416594551044,
+      "endpoint_ratio_one_over_half": 6.666666666666667,
+      "profile": [
+        1,
+        6,
+        15,
+        20,
+        5,
+        1,
+        0
+      ],
+      "Z_one": 48,
+      "Z_half": "339/32",
+      "H": 1.32421875,
+      "local_compensation_score": 3.415037499278844
+    },
+    {
+      "family": "parabola_chord",
+      "n": 7,
+      "endpoint": [
+        0,
+        6
+      ],
+      "span": 7,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        5
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        5
+      ],
+      "product_at_half": "7/8",
+      "half_activity_mean": "19/7",
+      "mean_minus_log2_span": -0.09306920777188976,
+      "endpoint_ratio_one_over_half": 6.857142857142857,
+      "profile": [
+        1,
+        7,
+        21,
+        35,
+        15,
+        6,
+        1,
+        0
+      ],
+      "Z_one": 86,
+      "Z_half": "977/64",
+      "H": 1.2425508720930232,
+      "local_compensation_score": 3.81155491058689
+    },
+    {
+      "family": "parabola_chord",
+      "n": 8,
+      "endpoint": [
+        0,
+        7
+      ],
+      "span": 8,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        6
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        6
+      ],
+      "product_at_half": "1",
+      "half_activity_mean": "11/4",
+      "mean_minus_log2_span": -0.25,
+      "endpoint_ratio_one_over_half": 7.0,
+      "profile": [
+        1,
+        8,
+        28,
+        56,
+        35,
+        21,
+        7,
+        1,
+        0
+      ],
+      "Z_one": 157,
+      "Z_half": "2811/128",
+      "H": 1.1190286624203822,
+      "local_compensation_score": 4.294620748891627
+    },
+    {
+      "family": "parabola_chord",
+      "n": 9,
+      "endpoint": [
+        0,
+        8
+      ],
+      "span": 9,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        7
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        7
+      ],
+      "product_at_half": "9/8",
+      "half_activity_mean": "25/9",
+      "mean_minus_log2_span": -0.39214722366453447,
+      "endpoint_ratio_one_over_half": 7.111111111111111,
+      "profile": [
+        1,
+        9,
+        36,
+        84,
+        70,
+        56,
+        28,
+        8,
+        1,
+        0
+      ],
+      "Z_one": 293,
+      "Z_half": "8097/256",
+      "H": 0.971536369453925,
+      "local_compensation_score": 4.854906851537624
+    },
+    {
+      "family": "parabola_chord",
+      "n": 10,
+      "endpoint": [
+        0,
+        9
+      ],
+      "span": 10,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        8
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        8
+      ],
+      "product_at_half": "5/4",
+      "half_activity_mean": "14/5",
+      "mean_minus_log2_span": -0.5219280948873624,
+      "endpoint_ratio_one_over_half": 7.2,
+      "profile": [
+        1,
+        10,
+        45,
+        120,
+        126,
+        126,
+        84,
+        36,
+        9,
+        1,
+        0
+      ],
+      "Z_one": 558,
+      "Z_half": "23395/512",
+      "H": 0.8188774081541219,
+      "local_compensation_score": 5.480265122054464
+    },
+    {
+      "family": "parabola_chord",
+      "n": 11,
+      "endpoint": [
+        0,
+        10
+      ],
+      "span": 11,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        9
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        9
+      ],
+      "product_at_half": "11/8",
+      "half_activity_mean": "31/11",
+      "mean_minus_log2_span": -0.641249800455479,
+      "endpoint_ratio_one_over_half": 7.2727272727272725,
+      "profile": [
+        1,
+        11,
+        55,
+        165,
+        210,
+        252,
+        210,
+        120,
+        45,
+        10,
+        1,
+        0
+      ],
+      "Z_one": 1080,
+      "Z_half": "67881/1024",
+      "H": 0.6751763237847223,
+      "local_compensation_score": 6.157952359776236
+    },
+    {
+      "family": "parabola_chord",
+      "n": 12,
+      "endpoint": [
+        0,
+        11
+      ],
+      "span": 12,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        10
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        10
+      ],
+      "product_at_half": "3/2",
+      "half_activity_mean": "17/6",
+      "mean_minus_log2_span": -0.7516291673878226,
+      "endpoint_ratio_one_over_half": 7.333333333333333,
+      "profile": [
+        1,
+        12,
+        66,
+        220,
+        330,
+        462,
+        462,
+        330,
+        165,
+        55,
+        11,
+        1,
+        0
+      ],
+      "Z_one": 2115,
+      "Z_half": "197883/2048",
+      "H": 0.5482130984042554,
+      "local_compensation_score": 6.876516946564999
+    },
+    {
+      "family": "parabola_chord",
+      "n": 13,
+      "endpoint": [
+        0,
+        12
+      ],
+      "span": 13,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        11
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        11
+      ],
+      "product_at_half": "13/8",
+      "half_activity_mean": "37/13",
+      "mean_minus_log2_span": -0.8542858719872459,
+      "endpoint_ratio_one_over_half": 7.384615384615385,
+      "profile": [
+        1,
+        13,
+        78,
+        286,
+        495,
+        792,
+        924,
+        792,
+        495,
+        220,
+        66,
+        12,
+        1,
+        0
+      ],
+      "Z_one": 4175,
+      "Z_half": "579569/4096",
+      "H": 0.44058739941991015,
+      "local_compensation_score": 7.626681045966592
+    },
+    {
+      "family": "parabola_chord",
+      "n": 14,
+      "endpoint": [
+        0,
+        13
+      ],
+      "span": 14,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        12
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        12
+      ],
+      "product_at_half": "7/4",
+      "half_activity_mean": "20/7",
+      "mean_minus_log2_span": -0.950212064914747,
+      "endpoint_ratio_one_over_half": 7.428571428571429
+    },
+    {
+      "family": "visible_pocket",
+      "m": 2,
+      "n": 5,
+      "endpoint": [
+        1,
+        4
+      ],
+      "span": 4,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        2,
+        1
+      ],
+      "product_at_half": "9/16",
+      "half_activity_mean": "8/3",
+      "mean_minus_log2_span": 0.6666666666666665,
+      "endpoint_ratio_one_over_half": 7.111111111111111,
+      "profile": [
+        1,
+        5,
+        10,
+        10,
+        1,
+        0
+      ],
+      "Z_one": 27,
+      "Z_half": "117/16",
+      "H": 1.3541666666666667,
+      "local_compensation_score": 3.584962500721156
+    },
+    {
+      "family": "visible_pocket",
+      "m": 4,
+      "n": 7,
+      "endpoint": [
+        1,
+        6
+      ],
+      "span": 6,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        4,
+        6,
+        4,
+        1
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        4,
+        6,
+        4,
+        1
+      ],
+      "product_at_half": "81/64",
+      "half_activity_mean": "10/3",
+      "mean_minus_log2_span": 0.7483708326121774,
+      "endpoint_ratio_one_over_half": 12.641975308641975,
+      "profile": [
+        1,
+        7,
+        21,
+        35,
+        15,
+        6,
+        1,
+        0
+      ],
+      "Z_one": 86,
+      "Z_half": "977/64",
+      "H": 1.2425508720930232,
+      "local_compensation_score": 3.5014522510963175
+    },
+    {
+      "family": "visible_pocket",
+      "m": 6,
+      "n": 9,
+      "endpoint": [
+        1,
+        8
+      ],
+      "span": 8,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        6,
+        15,
+        20,
+        15,
+        6,
+        1
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        6,
+        15,
+        20,
+        15,
+        6,
+        1
+      ],
+      "product_at_half": "729/256",
+      "half_activity_mean": "4",
+      "mean_minus_log2_span": 1.0,
+      "endpoint_ratio_one_over_half": 22.474622770919066,
+      "profile": [
+        1,
+        9,
+        36,
+        84,
+        70,
+        56,
+        28,
+        8,
+        1,
+        0
+      ],
+      "Z_one": 293,
+      "Z_half": "8097/256",
+      "H": 0.971536369453925,
+      "local_compensation_score": 3.684981850095311
+    },
+    {
+      "family": "visible_pocket",
+      "m": 8,
+      "n": 11,
+      "endpoint": [
+        1,
+        10
+      ],
+      "span": 10,
+      "cup": [
+        0,
+        1
+      ],
+      "cap": [
+        0,
+        1,
+        8,
+        28,
+        56,
+        70,
+        56,
+        28,
+        8,
+        1
+      ],
+      "product": [
+        0,
+        0,
+        1,
+        8,
+        28,
+        56,
+        70,
+        56,
+        28,
+        8,
+        1
+      ],
+      "product_at_half": "6561/1024",
+      "half_activity_mean": "14/3",
+      "mean_minus_log2_span": 1.3447385717793048,
+      "endpoint_ratio_one_over_half": 39.95488492607834,
+      "profile": [
+        1,
+        11,
+        55,
+        165,
+        210,
+        252,
+        210,
+        120,
+        45,
+        10,
+        1,
+        0
+      ],
+      "Z_one": 1080,
+      "Z_half": "67881/1024",
+      "H": 0.6751763237847223,
+      "local_compensation_score": 4.07518749639422
+    }
+  ]
+}

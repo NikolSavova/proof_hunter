@@ -1,0 +1,540 @@
+{
+  "claim_boundary": "Finite enumeration verifies the universal repair lemma and switch identity on the exact minimizers; it is not evidence for the still-open maximal-face restart bound.",
+  "records": {
+    "20": {
+      "boundary": {
+        "boundary_B_r": [
+          0,
+          0,
+          0,
+          9720,
+          34310,
+          12180,
+          1834,
+          104,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "maximal_face_counts": [
+          0,
+          0,
+          0,
+          0,
+          789,
+          402,
+          87,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "maximum_repair_degree_by_size": [
+          0,
+          0,
+          0,
+          0,
+          4,
+          3,
+          3,
+          3,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "mixed_sum_b_times_u": [
+          0,
+          0,
+          0,
+          78224,
+          53460,
+          10394,
+          706,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "repair_degree_histograms": {
+          "4": {
+            "4": 2430
+          },
+          "5": {
+            "1": 4802,
+            "3": 9836
+          },
+          "6": {
+            "1": 7266,
+            "2": 1194,
+            "3": 842
+          },
+          "7": {
+            "1": 1416,
+            "2": 113,
+            "3": 64
+          },
+          "8": {
+            "1": 88,
+            "2": 5,
+            "3": 2
+          }
+        },
+        "switch_inequality": "(r-1) B_(r+1) <= sum_{|A|=r} b(A)u(A) <= (r+1) B_(r+1)"
+      },
+      "coordinate_format": "(i,y_i), with y_i stored below",
+      "n": 20,
+      "postponement": "not enumerated (20! permutations)",
+      "profile": [
+        1,
+        20,
+        190,
+        1140,
+        2415,
+        866,
+        135,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "y_at_x_0_through_19": [
+        358329966,
+        -198927971,
+        -63719209,
+        217376688,
+        -90978114,
+        -51535675,
+        -10240197,
+        35270977,
+        81248315,
+        1125190,
+        13012406,
+        -271597462,
+        170081922,
+        -21479979,
+        270310124,
+        -492940940,
+        -549521438,
+        -607603894,
+        412455433,
+        450382350
+      ]
+    },
+    "8": {
+      "boundary": {
+        "boundary_B_r": [
+          0,
+          0,
+          0,
+          196,
+          84,
+          0,
+          0,
+          0,
+          0
+        ],
+        "maximal_face_counts": [
+          0,
+          0,
+          0,
+          8,
+          21,
+          0,
+          0,
+          0,
+          0
+        ],
+        "maximum_repair_degree_by_size": [
+          0,
+          0,
+          0,
+          0,
+          4,
+          3,
+          0,
+          0,
+          0
+        ],
+        "mixed_sum_b_times_u": [
+          0,
+          0,
+          0,
+          252,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "repair_degree_histograms": {
+          "4": {
+            "4": 49
+          },
+          "5": {
+            "1": 42,
+            "3": 14
+          }
+        },
+        "switch_inequality": "(r-1) B_(r+1) <= sum_{|A|=r} b(A)u(A) <= (r+1) B_(r+1)"
+      },
+      "coordinates": [
+        [
+          15,
+          11
+        ],
+        [
+          5,
+          203
+        ],
+        [
+          118,
+          187
+        ],
+        [
+          93,
+          140
+        ],
+        [
+          112,
+          166
+        ],
+        [
+          106,
+          120
+        ],
+        [
+          189,
+          207
+        ],
+        [
+          251,
+          246
+        ]
+      ],
+      "n": 8,
+      "postponement": {
+        "gain_histogram": {
+          "0": 17856,
+          "1": 22464
+        },
+        "immobile_stopped_permutations_by_rank": {
+          "3": 5760,
+          "4": 12096
+        },
+        "maximum_fibre_image": [
+          0,
+          2,
+          3,
+          1,
+          4,
+          5,
+          6,
+          7
+        ],
+        "maximum_stable_postponement_fibre": 5,
+        "permutations": 40320
+      },
+      "profile": [
+        1,
+        8,
+        28,
+        56,
+        21,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "9": {
+      "boundary": {
+        "boundary_B_r": [
+          0,
+          0,
+          0,
+          360,
+          165,
+          12,
+          0,
+          0,
+          0,
+          0
+        ],
+        "maximal_face_counts": [
+          0,
+          0,
+          0,
+          14,
+          21,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        "maximum_repair_degree_by_size": [
+          0,
+          0,
+          0,
+          0,
+          4,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "mixed_sum_b_times_u": [
+          0,
+          0,
+          0,
+          534,
+          60,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "repair_degree_histograms": {
+          "4": {
+            "4": 90
+          },
+          "5": {
+            "1": 102,
+            "3": 21
+          },
+          "6": {
+            "1": 12
+          }
+        },
+        "switch_inequality": "(r-1) B_(r+1) <= sum_{|A|=r} b(A)u(A) <= (r+1) B_(r+1)"
+      },
+      "coordinates": [
+        [
+          62614,
+          7322
+        ],
+        [
+          2922,
+          4014
+        ],
+        [
+          10209,
+          14386
+        ],
+        [
+          20660,
+          24299
+        ],
+        [
+          33336,
+          29017
+        ],
+        [
+          30137,
+          33324
+        ],
+        [
+          15334,
+          45211
+        ],
+        [
+          14934,
+          55621
+        ],
+        [
+          10934,
+          61521
+        ]
+      ],
+      "n": 9,
+      "postponement": {
+        "gain_histogram": {
+          "0": 129600,
+          "1": 164160,
+          "2": 69120
+        },
+        "immobile_stopped_permutations_by_rank": {
+          "3": 60480,
+          "4": 60480,
+          "5": 8640
+        },
+        "maximum_fibre_image": [
+          0,
+          1,
+          4,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8
+        ],
+        "maximum_stable_postponement_fibre": 15,
+        "permutations": 362880
+      },
+      "profile": [
+        1,
+        9,
+        36,
+        84,
+        36,
+        3,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "stable_postponement_counterfamily": {
+    "asymptotic_exact_rows": [
+      {
+        "h": 6,
+        "load_over_target_decimal": 39.96366636272074,
+        "load_over_target_exact": "6351365030/158928487",
+        "n": 100,
+        "ratio_over_2_to_h": 0.6244322869175115,
+        "target_tilt": "1271427896",
+        "tilted_load": "50810920240"
+      },
+      {
+        "h": 9,
+        "load_over_target_decimal": 462.02722190914227,
+        "load_over_target_exact": "309827196518074170119732/670582125524633555519",
+        "n": 1000,
+        "ratio_over_2_to_h": 0.9023969177912935,
+        "target_tilt": "2682328502098534222076",
+        "tilted_load": "1239308786072296680478928"
+      },
+      {
+        "h": 12,
+        "load_over_target_decimal": 4007.471676284632,
+        "load_over_target_exact": "126288013534992872108347519981399892145/31513139389690157495940975117367961",
+        "n": 5000,
+        "ratio_over_2_to_h": 0.9783866397179277,
+        "target_tilt": "504210230235042519935055601877887376",
+        "tilted_load": "2020608216559885953733560319702398274320"
+      }
+    ],
+    "finite_geometric_member": {
+      "coordinates": [
+        [
+          0,
+          0
+        ],
+        [
+          1000003,
+          1000003
+        ],
+        [
+          2000006,
+          4000012
+        ],
+        [
+          3000009,
+          9000027
+        ],
+        [
+          4000012,
+          16000048
+        ],
+        [
+          1893766,
+          6588604
+        ],
+        [
+          2681442,
+          8853060
+        ],
+        [
+          2975978,
+          10556876
+        ],
+        [
+          1392034,
+          4519820
+        ]
+      ],
+      "d_inner": 4,
+      "gain_histogram": {
+        "0": 1,
+        "1": 4,
+        "2": 10
+      },
+      "h_outer": 5,
+      "inner_D": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "n": 9,
+      "outer_triangle_A": [
+        0,
+        2,
+        4
+      ],
+      "remaining_outer_G": [
+        1,
+        3
+      ],
+      "shuffle_sources_in_one_fibre": 15,
+      "target_tilt": 382,
+      "tilted_congestion": "1353/191",
+      "tilted_load": 2706
+    },
+    "formula": "L(n,h)=sum_{k=0}^{h-3} C(n-k-4,h-k-3) S_{k+3}(1); L(n,h)/S_h(1)=(1-o(1))(2^h-1-h-C(h,2)) when h=o(n)"
+  }
+}

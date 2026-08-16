@@ -1,0 +1,276 @@
+# Globalizing the endpoint banks: an exact cross-charge barrier
+
+**Date:** 2026-08-15
+**Verdict:** the disjoint endpoint banks give two clean global inequalities,
+but both have the wrong direction for the half-weight target.  Moreover, a
+stretchable reduced-word family contains a common-endpoint fan on which the
+local product theorem is asymptotically sharp after summation, the total bank
+is only linear, and the restricted normalized half ratio is \(\Theta(n)\).
+The full configuration is harmless only because an exponential ordinary
+face bank lies entirely in the complementary endpoint cells.
+
+Thus summing
+
+\[
+ 4G_e(1/2)B_e\ge X_e                                  \tag{1}
+\]
+
+cannot close \(H=n^{o(1)}\), even with literal disjointness of the selected
+banks.  A successful use of (1) must cross-charge a bad endpoint class to
+ordinary faces **outside that class**.  Same-cell bank multiplication or a
+separable sum over a localized half-mass class is rigorously blocked.
+
+This note does not disprove a genuinely cross-endpoint amplification theorem
+and does not claim a counterexample to \(H=n^{o(1)}\).
+
+## 1. Everything obtained by direct summation
+
+For a collection \(\mathcal C\) of endpoint cells, write
+
+\[
+ S_X=\sum_{e\in\mathcal C}X_e,\qquad
+ S_G=\sum_{e\in\mathcal C}G_e(1/2),\qquad
+ S_B=\sum_{e\in\mathcal C}B_e.                         \tag{2}
+\]
+
+Here \(B_e=2^{k_e}\), where \(k_e\) is the largest number of internal
+vertices in a face in cell \(e\).  Equivalently, a maximum face generates
+the endpoint-retaining Boolean bank of size \(2^{k_e}\).  Different cells
+have different minimum/maximum labels, so these banks are disjoint and
+
+\[
+ S_B\le F_R(1)-1-n.                                    \tag{3}
+\]
+
+Summing (1), and then applying Cauchy, gives
+
+\[
+ \boxed{S_X\le4\sum_{e\in\mathcal C}G_eB_e},           \tag{4}
+\]
+
+\[
+ \boxed{\left(\sum_{e\in\mathcal C}\sqrt{X_e}\right)^2
+       \le4S_GS_B.}                                    \tag{5}
+\]
+
+Indeed, \(\sqrt{X_e}\le2\sqrt{G_eB_e}\), and
+\(\sum\sqrt{G_eB_e}\le\sqrt{S_GS_B}\).
+
+These are exact global couplings between all three requested quantities.
+Their direction is revealing.  Put
+
+\[
+ d_e:=\frac{X_e}{4G_e(1/2)}.                            \tag{6}
+\]
+
+Then the desired off-diagonal dilation is the \(G\)-weighted average
+
+\[
+ \frac{S_X}{4S_G}=\frac{\sum_eG_ed_e}{\sum_eG_e},       \tag{7}
+\]
+
+whereas (1) says only
+
+\[
+ 1\le d_e\le B_e.                                      \tag{8}
+\]
+
+Disjointness controls the **unweighted** sum of the upper bounds \(B_e\);
+it gives no lower bound on their \(G\)-weighted average.  Equations (4)--(5)
+therefore lower-bound half mass or upper-bound dilation.  The target needs
+the reverse type of control.
+
+The obstruction is not merely algebraic: the next section realizes it in a
+scalable stretchable reflection order.
+
+## 2. A genuine bad fan saturating the summed tradeoff
+
+Take the exact sign realization
+
+\[
+ p_i=(i,\epsilon_iM^{n-i})\quad(0\le i\le n-3),
+ \quad p_{n-2}=(n-2,0),\quad p_{n-1}=(n-1,0),
+ \quad M=4n+1,                                         \tag{9}
+\]
+
+with \(\epsilon_0=+1\) and \(\epsilon_i=-1\) for \(i>0\).
+Its chirotope is
+
+\[
+ \chi(i,j,k)=\epsilon_i.                               \tag{10}
+\]
+
+The dominant-height argument proves (10), and also proves that all pair
+slopes are distinct.  Sorting slopes gives a generic stretchable reflection
+order and an adjacent-swap reduced word for \(w_0\).
+
+Consider only the common-left-endpoint fan
+
+\[
+ \mathcal W_n=\{(0,v):1\le v<n\}.                      \tag{11}
+\]
+
+For \(v\ge1\), the rich temporal support family consists of the empty set
+and the \(v-1\) singleton internal supports.  The other temporal direction
+is direct-only.  Hence
+
+\[
+ X_{0v}=v,\qquad G_{0v}(1/2)=\frac{v+1}{8},             \tag{12}
+\]
+
+and
+
+\[
+ B_{01}=1,\qquad B_{0v}=2\quad(v\ge2).                 \tag{13}
+\]
+
+Summing gives the exact profile
+
+\[
+ \boxed{
+ S_X(\mathcal W_n)=\frac{n(n-1)}2,\qquad
+ S_G(\mathcal W_n)=\frac{(n-1)(n+2)}{16},\qquad
+ S_B(\mathcal W_n)=2n-3.}                              \tag{14}
+\]
+
+The summed local product is nearly equality:
+
+\[
+ 4\sum_{e\in\mathcal W_n}G_eB_e
+ =S_X(\mathcal W_n)+n-2.                               \tag{15}
+\]
+
+In particular
+
+\[
+ \frac{S_X}{S_G}=\frac{8n}{n+2}\longrightarrow8,       \tag{16}
+\]
+
+and the normalized restricted statistic is
+
+\[
+ \boxed{\frac{nS_G(\mathcal W_n)}{S_X(\mathcal W_n)}
+             =\frac{n+2}{8}=\Theta(n).}                \tag{17}
+\]
+
+Thus no inequality valid for arbitrary cell collections inside genuine
+reflection orders can deduce \(S_X\ge n^{1-o(1)}S_G\) from (1), bank
+disjointness, or the three aggregate sums alone.  This remains true for a
+single nested endpoint fan, not an artificially scattered collection.
+
+The union-amplification interpretation also fails literally.  Fixing the
+two-element bank generated by one singleton, its union with any different
+singleton support is not a face.  The bank cannot be multiplied through the
+other \(v-2\) whiskers.
+
+## 3. The compensation is entirely external
+
+The family above is not a half-weight counterexample.  The points
+\(1,\ldots,n-1\) form a strict cap, so every one of their subsets is an
+ordinary face.  The cells with left endpoint at least one have
+
+\[
+ \sum_{1\le u<v<n}X_{uv}=2^{n-1}-n,\qquad
+ \sum_{1\le u<v<n}G_{uv}(1/2)
+ =(3/2)^{n-1}-1-\frac{n-1}{2}.                         \tag{18}
+\]
+
+Combining (14) and (18) gives
+
+\[
+ \boxed{F_R(1)=2^{n-1}+1+\frac{n(n-1)}2},              \tag{19}
+\]
+
+\[
+ \boxed{F_R(1/2)=(3/2)^{n-1}+\frac12
+                 +\frac{(n-1)(n+2)}{16}.}              \tag{20}
+\]
+
+The total selected-bank size is
+
+\[
+ \sum_{u<v}B_{uv}=2^{n-1}+n-3.                         \tag{21}
+\]
+
+Consequently the full statistic decays exponentially,
+
+\[
+ H(R_n)=\Theta\!\left(n(3/4)^{n-1}\right),             \tag{22}
+\]
+
+even though its fan alone has (17).  The exact lesson is a forced shape for
+any future theorem:
+
+> a small-bank/high-half endpoint fan must be charged to a face bank on
+> complementary endpoints or complementary vertices.
+
+The local product theorem contains no such cross-endpoint map.
+
+## 4. Stretchable alternating audit
+
+The alternating sign family provides the opposite stress test.  At endpoint
+distance \(d\),
+
+\[
+ B_e=2^{\lfloor d/2\rfloor},\qquad B_e=\Theta(X_e).      \tag{23}
+\]
+
+Summing over all cells, \(S_B/S_X\to7/12\).  Thus the chosen disjoint banks
+capture a constant fraction of the unweighted mass.  Nevertheless (1) alone
+still only upper-bounds the dilation; the actual dilation grows
+exponentially because the Boolean bank itself is concentrated at large
+rank.  Exact rows are:
+
+\[
+\begin{array}{c|c|c|c}
+n&S_B/S_X&S_X/(4S_G)&H(R_n)\\ \hline
+16&0.607343&3.965853&1.052702\\
+32&0.583698&30.875258&0.259789\\
+48&0.583337&299.696122&0.040047
+\end{array}                                             \tag{24}
+\]
+
+So bank abundance is compatible with an excellent half-weight ratio, while
+the whisker fan shows bank scarcity is compatible with a terrible localized
+ratio.  A useful global theorem must distinguish the two by where the
+external faces live, not merely by \(S_B\).
+
+## 5. Saved 58-wire audit
+
+For the certified word falsifying \(H\le2\), the exact off-diagonal totals
+are
+
+\[
+ S_X=1{,}059{,}609,\qquad
+ S_G=\frac{18{,}721{,}123}{512},\qquad
+ S_B=55{,}221.                                         \tag{25}
+\]
+
+Thus
+
+\[
+ \frac{S_X}{4S_G}=7.244755\ldots,\qquad
+ \frac{58S_G}{S_X}=2.001448\ldots .                    \tag{26}
+\]
+
+The maximum bank dimension is eight.  Cells of bank dimension at most six
+already carry \(86.5483\%\) of all half mass, while their restricted
+normalized statistic is \(2.101946\).  The selected banks comprise only
+\(5.211\%\) of the nontrivial ordinary faces.  This finite adversary therefore
+exercises exactly the small-bank/high-half branch which a cross-endpoint
+charge must handle.
+
+## 6. Verification
+
+Run
+
+```bash
+python3 phase2/loop/erdos838/agent_coxeter_global_half/verify_global_bank_barrier.py
+```
+
+The checker constructs both scalable sign families from exact integer
+coordinates, verifies all crossings form an adjacent-swap reduced word,
+evaluates the full and fan profiles with rational arithmetic through 48
+wires, and checks (12)--(24).  It then replays the saved 58-wire word,
+computes every longest forward/reverse temporal path rank, checks (1),
+(4)--(5), and verifies (25)--(26) and the bank-dimension audit exactly.

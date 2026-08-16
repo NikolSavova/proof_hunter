@@ -1,0 +1,512 @@
+{
+  "source": "agent_growing_state_upper/LARGE_MACRO_CERTIFICATE.json",
+  "macro_count": 12,
+  "exact_inequality_checks": 120,
+  "rows": [
+    {
+      "r": 9,
+      "W": 169,
+      "C": 116,
+      "U": 90,
+      "largest_convex_face": 5,
+      "mu2": 3.05,
+      "mu2_over_log2_r": 0.9621678741964727,
+      "self_composition_W": 69156081,
+      "self_composition_coefficient": 0.647946171593092,
+      "transversal_partition_coefficient": 0.4735457462544163,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 7.321928094887363,
+          "log_boolean_bound": 4.700439718141092,
+          "log_jensen_bound": 7.321928094887363,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 8.569855608330949,
+          "log_boolean_bound": 5.857980995127572,
+          "log_jensen_bound": 8.371928094887362,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 9,
+          "log_partition": 12.693486957499326,
+          "log_boolean_bound": 10.269126679149418,
+          "log_jensen_bound": 10.650349346401791,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 81,
+          "log_partition": 21.175724964952277,
+          "log_boolean_bound": 19.108059859330538,
+          "log_jensen_bound": 13.978770597916219,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 10,
+      "W": 248,
+      "C": 154,
+      "U": 132,
+      "largest_convex_face": 5,
+      "mu2": 3.1554621848739495,
+      "mu2_over_log2_r": 0.9498887678304617,
+      "self_composition_W": 338362040,
+      "self_composition_coefficient": 0.6418999291257792,
+      "transversal_partition_coefficient": 0.468200222325092,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 7.894817763307944,
+          "log_boolean_bound": 4.700439718141092,
+          "log_jensen_bound": 7.894817763307944,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 9.259743263690781,
+          "log_boolean_bound": 5.857980995127572,
+          "log_jensen_bound": 9.050279948181894,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 10,
+          "log_partition": 14.022801250027625,
+          "log_boolean_bound": 10.65284497300198,
+          "log_jensen_bound": 11.733180057820652,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 100,
+          "log_partition": 23.202403211061583,
+          "log_boolean_bound": 20.003344965438515,
+          "log_jensen_bound": 15.57154235233336,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 11,
+      "W": 358,
+      "C": 177,
+      "U": 225,
+      "largest_convex_face": 6,
+      "mu2": 3.276657060518732,
+      "mu2_over_log2_r": 0.9471663041021282,
+      "self_composition_W": 2324867963,
+      "self_composition_coefficient": 0.6499700675707583,
+      "transversal_partition_coefficient": 0.47528060746375334,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 8.43879185257826,
+          "log_boolean_bound": 5.832890014164741,
+          "log_jensen_bound": 8.43879185257826,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 9.955649907528374,
+          "log_boolean_bound": 7.483815777264256,
+          "log_jensen_bound": 9.715448913096992,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 11,
+          "log_partition": 15.833112452048912,
+          "log_boolean_bound": 14.590879395260599,
+          "log_jensen_bound": 12.855299653893312,
+          "dominant_certified_bound": "boolean"
+        },
+        {
+          "activity": 121,
+          "log_partition": 27.925219763316537,
+          "log_boolean_bound": 27.74669755051004,
+          "log_jensen_bound": 17.27180745520836,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 12,
+      "W": 513,
+      "C": 177,
+      "U": 347,
+      "largest_convex_face": 6,
+      "mu2": 3.3912175648702596,
+      "mu2_over_log2_r": 0.9459562168887617,
+      "self_composition_W": 11991083202,
+      "self_composition_coefficient": 0.6512869051817429,
+      "transversal_partition_coefficient": 0.481342624659786,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 8.968666793195208,
+          "log_boolean_bound": 5.832890014164741,
+          "log_jensen_bound": 8.968666793195208,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 10.620219825507487,
+          "log_boolean_bound": 7.483815777264256,
+          "log_jensen_bound": 10.359884358065468,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 12,
+          "log_partition": 17.57484479455058,
+          "log_boolean_bound": 15.03269148811651,
+          "log_jensen_bound": 13.956129593599691,
+          "dominant_certified_bound": "boolean"
+        },
+        {
+          "activity": 144,
+          "log_partition": 31.076232523025034,
+          "log_boolean_bound": 28.73960453707071,
+          "log_jensen_bound": 18.94359239400417,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 13,
+      "W": 698,
+      "C": 418,
+      "U": 306,
+      "largest_convex_face": 6,
+      "mu2": 3.4671532846715327,
+      "mu2_over_log2_r": 0.9369571047662545,
+      "self_composition_W": 36736337846,
+      "self_composition_coefficient": 0.640762387231738,
+      "transversal_partition_coefficient": 0.4661533644868945,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 9.419960177847889,
+          "log_boolean_bound": 5.832890014164741,
+          "log_jensen_bound": 9.419960177847889,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 11.138271800172221,
+          "log_boolean_bound": 7.483815777264256,
+          "log_jensen_bound": 10.887113462519421,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 13,
+          "log_partition": 18.131741432692234,
+          "log_boolean_bound": 15.443234959206915,
+          "log_jensen_bound": 14.849072465047595,
+          "dominant_certified_bound": "boolean"
+        },
+        {
+          "activity": 169,
+          "log_partition": 31.381232375878742,
+          "log_boolean_bound": 29.654586744201175,
+          "log_jensen_bound": 20.2781847522473,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 14,
+      "W": 963,
+      "C": 403,
+      "U": 514,
+      "largest_convex_face": 6,
+      "mu2": 3.5848261327713384,
+      "mu2_over_log2_r": 0.9415529169615727,
+      "self_composition_W": 197415246588,
+      "self_composition_coefficient": 0.6471193431525787,
+      "transversal_partition_coefficient": 0.4738718451078386,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 9.89026427702111,
+          "log_boolean_bound": 5.832890014164741,
+          "log_jensen_bound": 9.89026427702111,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 11.756139298372927,
+          "log_boolean_bound": 7.483815777264256,
+          "log_jensen_bound": 11.475090409792449,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 14,
+          "log_partition": 19.862181782472607,
+          "log_boolean_bound": 15.82662296370558,
+          "log_jensen_bound": 15.924259854233583,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 196,
+          "log_partition": 34.33087699114122,
+          "log_boolean_bound": 30.50289122847879,
+          "log_jensen_bound": 21.958255431446055,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 15,
+      "W": 1336,
+      "C": 619,
+      "U": 588,
+      "largest_convex_face": 6,
+      "mu2": 3.6987130961392882,
+      "mu2_over_log2_r": 0.9467152984260093,
+      "self_composition_W": 836445893100,
+      "self_composition_coefficient": 0.6486834291793149,
+      "transversal_partition_coefficient": 0.47409239906598233,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 10.367414751246828,
+          "log_boolean_bound": 5.832890014164741,
+          "log_jensen_bound": 10.367414751246828,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 12.356176830516356,
+          "log_boolean_bound": 7.483815777264256,
+          "log_jensen_bound": 12.066127847386117,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 15,
+          "log_partition": 21.132013285288455,
+          "log_boolean_bound": 16.186210983551128,
+          "log_jensen_bound": 17.004100971190443,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 225,
+          "log_partition": 36.159091410349966,
+          "log_boolean_bound": 31.293511392042426,
+          "log_jensen_bound": 23.64078719113406,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 16,
+      "W": 1772,
+      "C": 686,
+      "U": 933,
+      "largest_convex_face": 7,
+      "mu2": 3.7921412300683373,
+      "mu2_over_log2_r": 0.9480353075170843,
+      "self_composition_W": 5675176011920,
+      "self_composition_coefficient": 0.6619969105625161,
+      "transversal_partition_coefficient": 0.4856250686636574,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 10.778077129535358,
+          "log_boolean_bound": 6.906890595608519,
+          "log_jensen_bound": 10.778077129535358,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 12.880348808156027,
+          "log_boolean_bound": 9.084808387804362,
+          "log_jensen_bound": 12.570218359603695,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 16,
+          "log_partition": 23.080004231769056,
+          "log_boolean_bound": 20.61223949145967,
+          "log_jensen_bound": 17.946642049808705,
+          "dominant_certified_bound": "boolean"
+        },
+        {
+          "activity": 256,
+          "log_partition": 42.06782155413639,
+          "log_boolean_bound": 40.03937184435711,
+          "log_jensen_bound": 25.115206970082056,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 17,
+      "W": 2352,
+      "C": 784,
+      "U": 903,
+      "largest_convex_face": 7,
+      "mu2": 3.749036402569593,
+      "mu2_over_log2_r": 0.9172037883096149,
+      "self_composition_W": 4450310203584,
+      "self_composition_coefficient": 0.6287208445112468,
+      "transversal_partition_coefficient": 0.4602565989496967,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 11.189206834597025,
+          "log_boolean_bound": 6.906890595608519,
+          "log_jensen_bound": 11.189206834597025,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 13.167418145831737,
+          "log_boolean_bound": 9.084808387804362,
+          "log_jensen_bound": 12.938243237166619,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 17,
+          "log_partition": 22.583751005017607,
+          "log_boolean_bound": 21.014549044815766,
+          "log_jensen_bound": 18.338328138094408,
+          "dominant_certified_bound": "boolean"
+        },
+        {
+          "activity": 289,
+          "log_partition": 41.052912644680454,
+          "log_boolean_bound": 40.90951226510317,
+          "log_jensen_bound": 25.48744944159179,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 18,
+      "W": 3012,
+      "C": 1034,
+      "U": 1441,
+      "largest_convex_face": 7,
+      "mu2": 3.9191716766867066,
+      "mu2_over_log2_r": 0.9398662266901986,
+      "self_composition_W": 35706623038578,
+      "self_composition_coefficient": 0.64729333673986,
+      "transversal_partition_coefficient": 0.4723618762139612,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 11.547858506058416,
+          "log_boolean_bound": 6.906890595608519,
+          "log_jensen_bound": 11.547858506058416,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 13.766632427778108,
+          "log_boolean_bound": 9.084808387804362,
+          "log_jensen_bound": 13.467030182745123,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 18,
+          "log_partition": 24.514381838042652,
+          "log_boolean_bound": 21.39564238624444,
+          "log_jensen_bound": 19.550660462734278,
+          "dominant_certified_bound": "boolean"
+        },
+        {
+          "activity": 324,
+          "log_partition": 43.82595465257535,
+          "log_boolean_bound": 41.73037134964146,
+          "log_jensen_bound": 27.55346241941014,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 19,
+      "W": 4052,
+      "C": 1352,
+      "U": 1309,
+      "largest_convex_face": 7,
+      "mu2": 3.9504091247210513,
+      "mu2_over_log2_r": 0.9299615194042352,
+      "self_composition_W": 72824390571844,
+      "self_composition_coefficient": 0.6379852087451644,
+      "transversal_partition_coefficient": 0.46814107270142163,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 11.977637690405876,
+          "log_boolean_bound": 6.906890595608519,
+          "log_jensen_bound": 11.977637690405876,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 14.19637159654198,
+          "log_boolean_bound": 9.084808387804362,
+          "log_jensen_bound": 13.928046815126928,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 19,
+          "log_partition": 25.294358137060406,
+          "log_boolean_bound": 21.757641486292222,
+          "log_jensen_bound": 20.262834273779852,
+          "dominant_certified_bound": "boolean"
+        },
+        {
+          "activity": 361,
+          "log_partition": 45.362414917226374,
+          "log_boolean_bound": 42.50721115580809,
+          "log_jensen_bound": 28.548030857153826,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    },
+    {
+      "r": 20,
+      "W": 5155,
+      "C": 1443,
+      "U": 1762,
+      "largest_convex_face": 7,
+      "mu2": 3.99143135345667,
+      "mu2_over_log2_r": 0.9235302545126434,
+      "self_composition_W": 127540678882640,
+      "self_composition_coefficient": 0.6271453786955045,
+      "transversal_partition_coefficient": 0.4580523419749554,
+      "activities": [
+        {
+          "activity": 1,
+          "log_partition": 12.326148561205557,
+          "log_boolean_bound": 6.906890595608519,
+          "log_jensen_bound": 12.326148561205557,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 2,
+          "log_partition": 14.57116008792743,
+          "log_boolean_bound": 9.084808387804362,
+          "log_jensen_bound": 14.317579914662227,
+          "dominant_certified_bound": "mean"
+        },
+        {
+          "activity": 20,
+          "log_partition": 25.58009699945614,
+          "log_boolean_bound": 22.102365656733785,
+          "log_jensen_bound": 20.932971676749503,
+          "dominant_certified_bound": "boolean"
+        },
+        {
+          "activity": 400,
+          "log_partition": 45.368069225523016,
+          "log_boolean_bound": 43.24449660563499,
+          "log_jensen_bound": 29.539794792293453,
+          "dominant_certified_bound": "boolean"
+        }
+      ]
+    }
+  ],
+  "verdict": "mean-transfer and maximal-degree partition bounds pass exactly; no saved stretchable macro gives an asymptotic sub-half construction"
+}

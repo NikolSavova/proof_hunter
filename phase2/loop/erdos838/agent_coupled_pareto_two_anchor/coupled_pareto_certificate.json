@@ -1,0 +1,65 @@
+{
+  "date": "2026-08-15",
+  "configurations": {
+    "ordinary_8": {
+      "coordinates": [[42, 236], [249, 28], [131, 71], [77, 168], [76, 161], [53, 195], [83, 60], [7, 20]],
+      "V": 113,
+      "minimum_stored_chamber_C": 55,
+      "strongly_decomposable": false,
+      "ordered_nonempty_subsets_checked": 109600
+    },
+    "flat_8": {
+      "coordinates": [[80, 233], [254, 23], [219, 45], [154, 125], [85, 218], [82, 206], [78, 96], [1, 71]],
+      "V": 114,
+      "minimum_stored_chamber_C": 53,
+      "strongly_decomposable": false,
+      "ordered_nonempty_subsets_checked": 109600
+    },
+    "ordinary_9": {
+      "coordinates": [[62614, 7322], [2922, 4014], [10209, 14386], [20660, 24299], [33336, 29017], [30137, 33324], [15334, 45211], [14934, 55621], [10934, 61521]],
+      "V": 168,
+      "minimum_stored_chamber_C": 82,
+      "strongly_decomposable": false,
+      "ordered_nonempty_subsets_checked": 986409
+    },
+    "flat_9": {
+      "coordinates": [[11164, 4101], [12508, 65228], [15188, 59208], [27928, 45988], [17968, 20888], [16188, 13108], [28308, 26528], [48288, 28008], [60248, 30768]],
+      "V": 169,
+      "minimum_stored_chamber_C": 76,
+      "strongly_decomposable": false,
+      "ordered_nonempty_subsets_checked": 986409
+    },
+    "killer_9": {
+      "database_record_zero_based": 144811,
+      "coordinates": [[65050, 18218], [8768, 288], [17668, 8028], [44168, 13808], [50758, 15298], [29668, 17348], [42718, 29148], [38358, 46818], [39458, 65248]],
+      "V": 172,
+      "minimum_stored_chamber_C": 71,
+      "strongly_decomposable": false,
+      "ordered_nonempty_subsets_checked": 986409
+    }
+  },
+  "exact_B8_coupled_envelope": {
+    "classes": 1232944,
+    "K_8_1": 54,
+    "K_8_1_optimizer_V_C": [114, 53],
+    "minimum_8_plus_1_seam_V": 168,
+    "K_8_8": 1580,
+    "K_8_8_optimizer_left_V_C": [255, 36],
+    "K_8_8_optimizer_right_V_U": [255, 36],
+    "minimum_8_plus_8_seam_V": 1806
+  },
+  "singleton_root_rows": {
+    "ordinary_9_child_V_endpoint": [[114, 53], [114, 53], [114, 53]],
+    "flat_9_child_V_endpoint": [[113, 55], [114, 54], [117, 51]]
+  },
+  "stored_induced_bipartition_scan": {
+    "ordinary_8": {"minimum_mutation_V": 113, "ordered_minimizers": 16},
+    "flat_8": {"minimum_mutation_V": 113, "ordered_minimizers": 12},
+    "ordinary_9": {"minimum_mutation_V": 168, "ordered_minimizers": 6},
+    "flat_9": {"minimum_mutation_V": 169, "ordered_minimizers": 10}
+  },
+  "database_provenance": {
+    "otypes09_sha256": "e48faf76c3890ef5481b043bc681b05052b2015092837549b2c53e18626038b4",
+    "kgons09_sha256": "0e2b5d3e1b3128b5f6fb54f5d29d5460462ae2bb4f7320ae19f5c31ec9de7701"
+  }
+}

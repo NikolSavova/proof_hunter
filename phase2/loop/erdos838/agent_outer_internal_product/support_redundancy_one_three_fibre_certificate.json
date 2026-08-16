@@ -1,0 +1,266 @@
+{
+  "claims": [
+    "exact cyclic role colouring retains a 1/r^r share of arbitrary nonnegative record weight",
+    "high support redundancy pays after the explicit Gamma Delta endpoint tax",
+    "a homogeneous full-transversal product supplies exact raw and half-weight partial-transversal banks",
+    "the fixed rooted 1+3 trace alone does not imply the desired endpoint-partial-transversal product",
+    "the R=0 conic restriction has fixed-power record-subface congestion but is globally paid by the Boolean union-support bank",
+    "partial outputs can still have exponentially large varying-W and quadratic endpoint overlap"
+  ],
+  "coefficient_role_tax": {
+    "interpretation": "O(r log r)=o(r^2), but for r=Theta(log n) it is not n^o(1)",
+    "values": [
+      {
+        "log2_Gamma_upper": "36.000000000000",
+        "r": 8,
+        "ratio_to_r_squared": "0.562500000000"
+      },
+      {
+        "log2_Gamma_upper": "85.000000000000",
+        "r": 16,
+        "ratio_to_r_squared": "0.332031250000"
+      },
+      {
+        "log2_Gamma_upper": "198.000000000000",
+        "r": 32,
+        "ratio_to_r_squared": "0.193359375000"
+      },
+      {
+        "log2_Gamma_upper": "455.000000000000",
+        "r": 64,
+        "ratio_to_r_squared": "0.111083984375"
+      },
+      {
+        "log2_Gamma_upper": "1032.000000000000",
+        "r": 128,
+        "ratio_to_r_squared": "0.062988281250"
+      },
+      {
+        "log2_Gamma_upper": "2313.000000000000",
+        "r": 256,
+        "ratio_to_r_squared": "0.035293579102"
+      }
+    ]
+  },
+  "conic_R_zero_block_product": {
+    "half_weight_gain_base_per_s": "81/64",
+    "parameters": "2s variable roles of size 3, seven forced conic labels, |L|=|R|=2^s",
+    "raw_gain_base_per_s": "16/9",
+    "record_subface_congestion_base_per_s": "36/25 up to a polynomial factor",
+    "samples": {
+      "1": {
+        "R": 0,
+        "all_record_subfaces_capacity_upper": "410481/1024",
+        "all_record_subfaces_load_lower": "2/45609",
+        "boolean_capacity_ratio": "177147/16",
+        "boolean_half_weight": "1594323/8192",
+        "boolean_raw_ratio_to_records": "2048/9",
+        "boolean_support_faces": 8192,
+        "empty_output_record_overlap": 36,
+        "endpoint_pairs_per_interval": 4,
+        "full_partial_transversal_record_overlap": 4,
+        "interval_faces": 9,
+        "literal_demand_without_1_over_F": "9/512",
+        "load_ratio_to_(36/25)^s_over_s^4": "25/820962",
+        "partial_half_weight": "54675/512",
+        "partial_transversal_faces": 2048,
+        "records": 36,
+        "variable_roles": 2
+      },
+      "12": {
+        "R": 0,
+        "all_record_subfaces_capacity_upper": "1864676635038616522347/2147483648",
+        "all_record_subfaces_load_lower": "14624633760251904/23020699198007611387",
+        "boolean_capacity_ratio": "174449211009120179071170507/1180591620717411303424",
+        "boolean_half_weight": "49269609804781974438694403402127765867/604462909807314587353088",
+        "boolean_raw_ratio_to_records": "36028797018963968/282429536481",
+        "boolean_support_faces": 604462909807314587353088,
+        "empty_output_record_overlap": 4738381338321616896,
+        "endpoint_pairs_per_interval": 16777216,
+        "full_partial_transversal_record_overlap": 16777216,
+        "interval_faces": 282429536481,
+        "literal_demand_without_1_over_F": "282429536481/512",
+        "load_ratio_to_(36/25)^s_over_s^4": "3814697265625000000/23020699198007611387",
+        "partial_half_weight": "130355358123779296875/2147483648",
+        "partial_transversal_faces": 36028797018963968,
+        "records": 4738381338321616896,
+        "variable_roles": 24
+      },
+      "2": {
+        "R": 0,
+        "all_record_subfaces_capacity_upper": "8815797/2048",
+        "all_record_subfaces_load_lower": "4/108837",
+        "boolean_capacity_ratio": "14348907/1024",
+        "boolean_half_weight": "1162261467/524288",
+        "boolean_raw_ratio_to_records": "32768/81",
+        "boolean_support_faces": 524288,
+        "empty_output_record_overlap": 1296,
+        "endpoint_pairs_per_interval": 16,
+        "full_partial_transversal_record_overlap": 16,
+        "interval_faces": 81,
+        "literal_demand_without_1_over_F": "81/512",
+        "load_ratio_to_(36/25)^s_over_s^4": "2500/8815797",
+        "partial_half_weight": "1366875/2048",
+        "partial_transversal_faces": 32768,
+        "records": 1296,
+        "variable_roles": 4
+      },
+      "20": {
+        "R": 0,
+        "all_record_subfaces_capacity_upper": "105352910679688063148831818335147/140737488355328",
+        "all_record_subfaces_load_lower": "4584188799329126909409755136/144517024251972651781662302243",
+        "boolean_capacity_ratio": "323257909929174534292273980721360271853387/332306998946228968225951765070086144",
+        "boolean_half_weight": "3930061525912861057173624287137506221892737197425280369698987/170141183460469231731687303715884105728",
+        "boolean_raw_ratio_to_records": "154742504910672534362390528/12157665459056928801",
+        "boolean_support_faces": 170141183460469231731687303715884105728,
+        "empty_output_record_overlap": 13367494538843734067838845976576,
+        "endpoint_pairs_per_interval": 1099511627776,
+        "full_partial_transversal_record_overlap": 1099511627776,
+        "interval_faces": 12157665459056928801,
+        "literal_demand_without_1_over_F": "12157665459056928801/512",
+        "load_ratio_to_(36/25)^s_over_s^4": "363797880709171295166015625000000/105352910679688063148831818335147",
+        "partial_half_weight": "19890649127773940563201904296875/140737488355328",
+        "partial_transversal_faces": 154742504910672534362390528,
+        "records": 13367494538843734067838845976576,
+        "variable_roles": 40
+      },
+      "4": {
+        "R": 0,
+        "all_record_subfaces_capacity_upper": "10791677547/32768",
+        "all_record_subfaces_load_lower": "5184/133230587",
+        "boolean_capacity_ratio": "94143178827/4194304",
+        "boolean_half_weight": "617673396283947/2147483648",
+        "boolean_raw_ratio_to_records": "8388608/6561",
+        "boolean_support_faces": 2147483648,
+        "empty_output_record_overlap": 1679616,
+        "endpoint_pairs_per_interval": 256,
+        "full_partial_transversal_record_overlap": 256,
+        "interval_faces": 6561,
+        "literal_demand_without_1_over_F": "6561/512",
+        "load_ratio_to_(36/25)^s_over_s^4": "25000000/10791677547",
+        "partial_half_weight": "854296875/32768",
+        "partial_transversal_faces": 8388608,
+        "records": 1679616,
+        "variable_roles": 8
+      },
+      "8": {
+        "R": 0,
+        "all_record_subfaces_capacity_upper": "6027319685920203/8388608",
+        "all_record_subfaces_load_lower": "2902376448/24803784715721",
+        "boolean_capacity_ratio": "4052555153018976267/70368744177664",
+        "boolean_half_weight": "174449211009120179071170507/36028797018963968",
+        "boolean_raw_ratio_to_records": "549755813888/43046721",
+        "boolean_support_faces": 36028797018963968,
+        "empty_output_record_overlap": 2821109907456,
+        "endpoint_pairs_per_interval": 65536,
+        "full_partial_transversal_record_overlap": 65536,
+        "interval_faces": 43046721,
+        "literal_demand_without_1_over_F": "43046721/512",
+        "load_ratio_to_(36/25)^s_over_s^4": "156250000000000/6027319685920203",
+        "partial_half_weight": "333709716796875/8388608",
+        "partial_transversal_faces": 549755813888,
+        "records": 2821109907456,
+        "variable_roles": 16
+      }
+    }
+  },
+  "description": "support-redundancy split for varying rank-r interval faces with endpoint reuse",
+  "inherited_exact_conic_geometry": {
+    "all_left_plus_three_lower_arc_sets_are_bad": true,
+    "all_right_plus_three_upper_arc_sets_are_bad": true,
+    "central_layer_interval_rank": 11,
+    "central_layer_records": 2025,
+    "fixed_trace": [
+      3,
+      4,
+      5
+    ],
+    "literal_depth_zero_tilt": "1",
+    "points": 25
+  },
+  "partial_transversal_bank": {
+    "samples": [
+      {
+        "full_transversals": 1,
+        "half_weight": "27/8",
+        "partial_transversals": 8,
+        "rank_distribution": {
+          "0": 1,
+          "1": 3,
+          "2": 3,
+          "3": 1
+        },
+        "sizes": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "full_transversals": 24,
+        "half_weight": "15",
+        "partial_transversals": 60,
+        "rank_distribution": {
+          "0": 1,
+          "1": 9,
+          "2": 26,
+          "3": 24
+        },
+        "sizes": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "full_transversals": 81,
+        "half_weight": "625/16",
+        "partial_transversals": 256,
+        "rank_distribution": {
+          "0": 1,
+          "1": 12,
+          "2": 54,
+          "3": 108,
+          "4": 81
+        },
+        "sizes": [
+          3,
+          3,
+          3,
+          3
+        ]
+      },
+      {
+        "full_transversals": 70,
+        "half_weight": "189/4",
+        "partial_transversals": 288,
+        "rank_distribution": {
+          "0": 1,
+          "1": 15,
+          "2": 73,
+          "3": 129,
+          "4": 70
+        },
+        "sizes": [
+          1,
+          5,
+          2,
+          7
+        ]
+      }
+    ]
+  },
+  "role_colouring": {
+    "best_retained_weight": 9,
+    "colourings_checked": 729,
+    "exact_role_probability": "1/27",
+    "expected_retained_weight": "17/27",
+    "rainbow_probability": "2/9",
+    "rank": 3,
+    "record_weight": 17
+  },
+  "support_endpoint_inequality": {
+    "all_passed": true,
+    "random_exact_samples": 80
+  }
+}

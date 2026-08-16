@@ -1,0 +1,150 @@
+{
+  "description": "two synchronized full-ACP reset chains",
+  "arithmetic": "Fraction for geometry; exact integers for histories and Pascal recurrences",
+  "finite_geometry": {
+    "seed": "central Pascal T_(5,2)",
+    "tip_count": 10,
+    "chain_sizes": [
+      4,
+      4
+    ],
+    "common_blockers": 2,
+    "projective_parameters": {
+      "shear": "1",
+      "half_C": "355048616/88529281"
+    },
+    "full_pocket_containments": 45,
+    "internal_actual_records": 12,
+    "terminal_actual_records": 16,
+    "length_two_histories": 24,
+    "maximum_terminal_history_multiplicity": 3,
+    "guarded_mixed_nonfaces": 45,
+    "rank_two_record_code_load": 1,
+    "terminal_pair_code_load": 2,
+    "same_target_pair_code_load": 1,
+    "tip_convex_subsets": 376,
+    "total_convex_subsets_with_base": 1024,
+    "base_factor_bound": 3008
+  },
+  "variable_core_geometry": {
+    "boolean_compatible_core_count": 64,
+    "fixed_pair_source_decoder_load": 1,
+    "fixed_pair_target_decoder_load": 1,
+    "all_boolean_core_unions_convex": true,
+    "incompatible_core_pair_audited": true,
+    "incompatible_pair_target_decoder_load": 1
+  },
+  "scalable_history_regression": {
+    "template": "vertical iterates of central Pascal T_(4,2)",
+    "template_size": 6,
+    "cap_profile": [
+      6,
+      15,
+      10,
+      0,
+      0,
+      0
+    ],
+    "cup_profile": [
+      6,
+      15,
+      10,
+      0,
+      0,
+      0
+    ],
+    "convex_profile": [
+      6,
+      15,
+      20,
+      9,
+      0,
+      0
+    ],
+    "exact_limit_convex_rate": 0.7737056144690833,
+    "audited_depths": [
+      {
+        "depth": 8,
+        "point_count": 1679616,
+        "history_length": 20,
+        "base_rank": 21,
+        "log2_convex_upper": 307.0929276416444,
+        "normalized_convex_rate": 0.7180940796221729,
+        "log2_history_pair_count": 679.8232281633881,
+        "log2_two_face_fibre_lower": 23.63737289495504,
+        "normalized_fibre_lower": 0.05527270739851137
+      },
+      {
+        "depth": 16,
+        "point_count": 2821109907456,
+        "history_length": 41,
+        "base_rank": 42,
+        "log2_convex_upper": 1270.1505845142783,
+        "normalized_convex_rate": 0.742517600431918,
+        "log2_history_pair_count": 3012.0195672485474,
+        "log2_two_face_fibre_lower": 387.7183982199907,
+        "normalized_fibre_lower": 0.2266563809043998
+      },
+      {
+        "depth": 24,
+        "point_count": 4738381338321616896,
+        "history_length": 62,
+        "base_rank": 63,
+        "log2_convex_upper": 2894.9586344709433,
+        "normalized_convex_rate": 0.7521619929075118,
+        "log2_history_pair_count": 7049.185599053462,
+        "log2_two_face_fibre_lower": 1133.2683301115756,
+        "normalized_fibre_lower": 0.2944433663147895
+      },
+      {
+        "depth": 32,
+        "point_count": 7958661109946400884391936,
+        "history_length": 82,
+        "base_rank": 83,
+        "log2_convex_upper": 5181.51708461222,
+        "normalized_convex_rate": 0.7572660437216062,
+        "log2_history_pair_count": 12653.168506232945,
+        "log2_two_face_fibre_lower": 2124.1343370085056,
+        "normalized_fibre_lower": 0.31043703599792905
+      },
+      {
+        "depth": 40,
+        "point_count": 13367494538843734067838845976576,
+        "history_length": 103,
+        "base_rank": 104,
+        "log2_convex_upper": 8129.825934938113,
+        "normalized_convex_rate": 0.7604186676744784,
+        "log2_history_pair_count": 20087.651544566088,
+        "log2_two_face_fibre_lower": 3619.999674689861,
+        "normalized_fibre_lower": 0.338594620799918
+      }
+    ],
+    "interpretation": "history pairs force a quadratic-log two-face fibre even though the distinct fixed-core incidence support has a rank-two injection"
+  },
+  "decoder_overlap": {
+    "marked_target_rank": 4,
+    "marked_target_decoder_load": 4,
+    "outer_cores_on_one_ear_blocker_pair": 7,
+    "rank_two_decoder_load": 7
+  },
+  "fixed_mark_decoders": {
+    "rank": 5,
+    "fixed_ear_record_count": 280,
+    "fixed_ear_target_load": 5,
+    "fixed_blocker_record_count": 280,
+    "fixed_blocker_source_load": 5,
+    "fixed_pair_target_load": 1
+  },
+  "assertions": [
+    "every selected arrow is an actual exterior repair with its exact source, target, blocker, and singleton hidden ear",
+    "the two chains share the complete terminal blocker alphabet",
+    "all earlier states satisfy full rooted-triangle pocket containment",
+    "fixed-core actual incidences inject into rank-two ordinary faces",
+    "quadratic history entropy repeatedly traverses the same actual incidence support",
+    "rank-two core multiplicity matters only when neither ear nor blocker mark is fixed",
+    "same marked targets have a two-face decoder of load at most target rank",
+    "fixed ear labels map all core/blocker variation to targets with rank load",
+    "fixed blocker labels map all core/ear variation to sources with rank load",
+    "fixed ear-blocker pairs map injectively even for incompatible cores"
+  ]
+}

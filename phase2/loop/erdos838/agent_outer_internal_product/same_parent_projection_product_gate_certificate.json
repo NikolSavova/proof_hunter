@@ -1,0 +1,32 @@
+{
+  "ambient_cross_bank": 117649,
+  "blocked_interval_tag": true,
+  "depth": 3,
+  "edge_splice_audit": {
+    "adjacent_turn_pass_and_fail": true,
+    "disjoint_gap_pass": true,
+    "same_edge_positive_and_negative": true
+  },
+  "endpoint_half_weight": "33/32",
+  "endpoint_rank_counts": [
+    1,
+    4,
+    4,
+    1,
+    0
+  ],
+  "field": 7,
+  "four_to_j_h": "343/33",
+  "general_position": true,
+  "h": "343/2112",
+  "left_projection": 343,
+  "marked_shield_verified": true,
+  "points": 48,
+  "rank5_endpoint_baseline": 1,
+  "raw_density": "343",
+  "repair_cell": "a,u,p,v,b",
+  "repair_insertion_verified": true,
+  "right_projection": 343,
+  "rs_min_distance": 4,
+  "selected_sources": 343
+}

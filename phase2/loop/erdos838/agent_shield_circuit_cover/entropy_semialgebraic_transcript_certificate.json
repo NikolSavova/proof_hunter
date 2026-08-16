@@ -1,0 +1,69 @@
+{
+  "artifact": "ENTROPY_SEMIALGEBRAIC_TRANSCRIPT",
+  "high_node_and_entropy": {
+    "c_star_bits": 0.20751874963942188,
+    "entropy_atom_trials": 300,
+    "grid_minimum_high_node_divergence": 0.2236569328938235
+  },
+  "kl_partition": {
+    "maximum_chain_rule_error": 2.220446049250313e-16,
+    "minimum_child_product_correction": 0.0,
+    "random_laws": 400
+  },
+  "overlapping_windows": {
+    "diagonal_blocks": [
+      {
+        "blocks": 1,
+        "global_TC": 2.0,
+        "rank": 3,
+        "window_TC_sum": 2.0
+      },
+      {
+        "blocks": 2,
+        "global_TC": 4.0,
+        "rank": 6,
+        "window_TC_sum": 6.0
+      },
+      {
+        "blocks": 3,
+        "global_TC": 6.0,
+        "rank": 9,
+        "window_TC_sum": 10.0
+      },
+      {
+        "blocks": 4,
+        "global_TC": 8.0,
+        "rank": 12,
+        "window_TC_sum": 14.0
+      }
+    ],
+    "maximum_random_window_over_global_TC": 1.4617237420888267,
+    "random_rows": [
+      {
+        "random_laws": 80,
+        "rank": 3
+      },
+      {
+        "random_laws": 80,
+        "rank": 4
+      },
+      {
+        "random_laws": 80,
+        "rank": 5
+      },
+      {
+        "random_laws": 80,
+        "rank": 6
+      },
+      {
+        "random_laws": 80,
+        "rank": 7
+      },
+      {
+        "random_laws": 80,
+        "rank": 8
+      }
+    ]
+  },
+  "status": "PASS"
+}

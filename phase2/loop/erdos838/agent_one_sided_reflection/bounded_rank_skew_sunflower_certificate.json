@@ -1,0 +1,252 @@
+{
+  "skew": {
+    "max_p": 8,
+    "checked_profile_pairs": 1328832886,
+    "occupied_unit_bins": {
+      "1": 1,
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 4,
+      "6": 4,
+      "7": 6,
+      "8": 6
+    },
+    "minimum_ratio_to_W_over_2": 1.0666666666666667
+  },
+  "asymptotic_and_bank": {
+    "parameters": {
+      "a": 0.18,
+      "kappa": 0.5,
+      "rho": 0.25,
+      "compatibility_power": 3.0
+    },
+    "leftover_rows": [
+      {
+        "log_D": 32,
+        "q": 16,
+        "log2_leftover_bound": 272.33760331113297,
+        "log2_mass": 184.32,
+        "normalized_leftover_exponent": 0.2659546907335283
+      },
+      {
+        "log_D": 64,
+        "q": 32,
+        "log2_leftover_bound": 826.7076577717187,
+        "log2_mass": 737.28,
+        "normalized_leftover_exponent": 0.2018329242606735
+      },
+      {
+        "log_D": 128,
+        "q": 64,
+        "log2_leftover_bound": 2734.0175117547524,
+        "log2_mass": 2949.12,
+        "normalized_leftover_exponent": 0.16687118602018752
+      },
+      {
+        "log_D": 256,
+        "q": 128,
+        "log2_leftover_bound": 9683.172949339045,
+        "log2_mass": 11796.48,
+        "normalized_leftover_exponent": 0.14775349348967048
+      }
+    ],
+    "bank_arithmetic": {
+      "q": 12,
+      "h": 4096,
+      "petal_rank": 4,
+      "groups": 100,
+      "multiplicity": 64,
+      "retained_per_group": 819,
+      "exact_representation_lower": 251228250.0,
+      "theorem_representation_lower": 1240918.3431952663,
+      "theorem_union_lower": 19389.349112426036
+    },
+    "weighted_interface": {
+      "h": 64,
+      "petal_rank": 3,
+      "q": 12,
+      "dyadic_band_floor": 100,
+      "total_weight": 9472,
+      "possible_extension_degree": 189,
+      "weighted_representation_mass": 1790208,
+      "theorem_3W_untagged_lower": 172.13538461538462,
+      "direct_all_good_decoder_lower": 688.5415384615385,
+      "tagged_decoder_multiplicity": 7,
+      "tagged_lower": 63936.0
+    }
+  },
+  "bounded_rank_acp_geometry": {
+    "points": {
+      "u": [
+        "-1",
+        "0"
+      ],
+      "v": [
+        "1",
+        "0"
+      ],
+      "outer": [
+        [
+          "-3/4",
+          "7/16"
+        ],
+        [
+          "-1/2",
+          "3/4"
+        ],
+        [
+          "-1/4",
+          "15/16"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "1/4",
+          "15/16"
+        ],
+        [
+          "1/2",
+          "3/4"
+        ],
+        [
+          "3/4",
+          "7/16"
+        ]
+      ],
+      "nested_outer_to_inner": [
+        [
+          "1/5",
+          "-2/5"
+        ],
+        [
+          "1/7",
+          "-2/7"
+        ],
+        [
+          "0",
+          "-1/5"
+        ],
+        [
+          "-1/7",
+          "-1/7"
+        ],
+        [
+          "-5/19",
+          "-2/19"
+        ],
+        [
+          "-9/25",
+          "-2/25"
+        ]
+      ]
+    },
+    "general_position": true,
+    "outer_shield_size": 9,
+    "outer_shield_boolean_faces_including_empty": 512,
+    "outer_shield_nonempty_faces": 511,
+    "core_rank": 5,
+    "source_rank": 6,
+    "cores": 35,
+    "ears": 3,
+    "blockers": 3,
+    "records": 315,
+    "projection_degrees": {
+      "source": 3,
+      "target": 3,
+      "mark_pair": 35
+    },
+    "untagged_two_petal_faces": 15,
+    "history_multiplicity_per_core_independent_pair_face": 35,
+    "mixed_whole_completion_extensions_tested": 1050,
+    "mixed_whole_completion_extensions_good": 0,
+    "common_carrier_triple": [
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "-1/5"
+      ]
+    ],
+    "common_role_container_sizes": {
+      "new_label_hidden": 3,
+      "old_label_hidden": 2
+    },
+    "all_source_and_target_faces_convex": true,
+    "all_repairs_hide_the_ear": true,
+    "all_same_core_same_side_pairs_incompatible": true
+  },
+  "common_target_circuit_sunflower": {
+    "fixed_target_W": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "1",
+        "1"
+      ],
+      [
+        "6/5",
+        "-1"
+      ]
+    ],
+    "common_left_endpoint": [
+      "-1",
+      "0"
+    ],
+    "right_endpoints": [
+      [
+        "13/10",
+        "7/5"
+      ],
+      [
+        "7/5",
+        "3/2"
+      ],
+      [
+        "3/2",
+        "17/10"
+      ],
+      [
+        "8/5",
+        "2"
+      ],
+      [
+        "17/10",
+        "19/10"
+      ],
+      [
+        "9/5",
+        "21/10"
+      ]
+    ],
+    "loads": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "total_load_H_W": "21",
+    "maximum_endpoint_load_eta_star": "6",
+    "theorem_3C_support_lower": "7/128",
+    "detached_endpoint_triple_half_mass": "5/2",
+    "common_target_demand_before_global_normalization": "21/32",
+    "detached_endpoint_shield_pays_fixture": true,
+    "rank_two_sunflower_type": "star centered at active endpoint",
+    "first_common_circuit": "t inside conv{z,u,v}",
+    "one_ended_refinement": "u inside conv{t,v,b_i} for every i",
+    "all_W_union_endpoint_pairs_bad": true,
+    "all_refined_W_union_b_i_bad": true
+  }
+}

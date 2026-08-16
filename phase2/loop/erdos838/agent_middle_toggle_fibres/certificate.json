@@ -1,0 +1,24 @@
+{
+  "interval_collision": {
+    "intervals": 210,
+    "outputs": 112,
+    "incidences_checked": 1680
+  },
+  "complete_layer_instances": 4290,
+  "planar_trace": {
+    "base_rank": 5,
+    "support_rank": 6,
+    "bad_traces": 20,
+    "trace_matching": 2,
+    "guard_rank": 6,
+    "compatible_subsets": 22
+  },
+  "first_divergence": {
+    "completion_faces": 51,
+    "compatible_ordered_pairs": 1612,
+    "bad_ordered_pairs": 938,
+    "maximum_union_load": 30,
+    "decoder_bound": 729
+  },
+  "verdict": "Heavy middle-toggle overlap localizes to uniform common-base completions; complete layers release a full shield, while arbitrary defects obey the exact rank-four trace matching suppression/guard-release dichotomy."
+}

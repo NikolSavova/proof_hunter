@@ -1,0 +1,16 @@
+{
+  "nested_ear": {
+    "rational_configurations": 12,
+    "two_point_selections": 19244,
+    "detached_convex_pairs": 38567,
+    "joined_incompatible_pairs": 38567,
+    "maximum_coordinate_load": 16
+  },
+  "arbitrary_word_subfamilies": 800,
+  "detached_bad_regression": {
+    "nested_triangles": 4,
+    "bad_detached_pairs": 6
+  },
+  "numerical_pair_cases": 15288,
+  "verdict": "Detached-compatible pairs give a quadratic union bank; the exact nested-ear product is two-point stable and has coordinate decoder load at most 2^q.  The remaining branch is detached-incompatible."
+}

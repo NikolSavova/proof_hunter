@@ -1,0 +1,91 @@
+{
+  "cases": {
+    "dyadic_horton_n16": {
+      "L": 3.0410794445785223,
+      "V": 5678,
+      "expected_path_slack": 0.9445906319328485,
+      "minimum_path_sum": 2.4781539800637957,
+      "n": 16,
+      "path_KL": 0.01704727096583828,
+      "path_integrated_variance": 3.0240321736126843,
+      "target_log_n_over_2": 2.0794415416798357
+    },
+    "dyadic_horton_n4": {
+      "L": 1.1507282898071236,
+      "V": 16,
+      "expected_path_slack": 0.4575811092471781,
+      "minimum_path_sum": 1.1507282898071234,
+      "n": 4,
+      "path_KL": 0.0,
+      "path_integrated_variance": 1.1507282898071234,
+      "target_log_n_over_2": 0.6931471805599453
+    },
+    "dyadic_horton_n8": {
+      "L": 2.02117263355586,
+      "V": 175,
+      "expected_path_slack": 0.6322874063785251,
+      "minimum_path_sum": 1.8925269385449746,
+      "n": 8,
+      "path_KL": 0.00259086605744339,
+      "path_integrated_variance": 2.0185817674984157,
+      "target_log_n_over_2": 1.3862943611198906
+    },
+    "nested_triangles_n12": {
+      "L": 2.1928196516019547,
+      "V": 607,
+      "expected_path_slack": 0.3976486604783811,
+      "minimum_path_sum": 2.040953430625512,
+      "n": 12,
+      "path_KL": 0.003411521895518773,
+      "path_integrated_variance": 2.189408129706436,
+      "target_log_n_over_2": 1.791759469228055
+    },
+    "nested_triangles_n15": {
+      "L": 2.459301831030636,
+      "V": 1667,
+      "expected_path_slack": 0.4355217250887624,
+      "minimum_path_sum": 2.2184972020589497,
+      "n": 15,
+      "path_KL": 0.008877085399608542,
+      "path_integrated_variance": 2.450424745631027,
+      "target_log_n_over_2": 2.0149030205422647
+    },
+    "nested_triangles_n6": {
+      "L": 1.4928376090267663,
+      "V": 47,
+      "expected_path_slack": 0.3936355839657959,
+      "minimum_path_sum": 1.4633796428186046,
+      "n": 6,
+      "path_KL": 0.0005897363928602628,
+      "path_integrated_variance": 1.4922478726339057,
+      "target_log_n_over_2": 1.0986122886681098
+    },
+    "nested_triangles_n9": {
+      "L": 1.8990852655708352,
+      "V": 191,
+      "expected_path_slack": 0.39333892543339144,
+      "minimum_path_sum": 1.8046835101991325,
+      "n": 9,
+      "path_KL": 0.0016689433611692369,
+      "path_integrated_variance": 1.8974163222096656,
+      "target_log_n_over_2": 1.5040773967762742
+    },
+    "parabola_n16": {
+      "L": 4.602913159228494,
+      "V": 65536,
+      "expected_path_slack": 2.523471617548658,
+      "minimum_path_sum": 4.6029131592284935,
+      "n": 16,
+      "path_KL": 0.0,
+      "path_integrated_variance": 4.6029131592284935,
+      "target_log_n_over_2": 2.0794415416798357
+    }
+  },
+  "mode": "direct_hull_family_path_probe",
+  "parabola_all_n_formula": {
+    "local_r": "log(4/3)",
+    "path_KL": 0,
+    "path_integrated_variance": "n log(4/3)"
+  },
+  "scope": "exact face decisions and integer zeta transforms; floating logs only"
+}

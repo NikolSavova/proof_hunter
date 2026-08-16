@@ -1,0 +1,290 @@
+{
+  "mode": "corrected_actual_addability_census",
+  "records": {
+    "central_T42_vertical_square": {
+      "V": 441400,
+      "corrected_NPM_over_V": "22566/55175",
+      "corrected_NPM_over_V_decimal": 0.4089895786135025,
+      "corrected_RNP_K": "5196/11035",
+      "corrected_RNP_K_decimal": 0.47086542818305394,
+      "corrected_RNP_maximizing_rank": 5,
+      "ell": 6,
+      "n": 36,
+      "ranks_below_ell": [
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 1,
+          "low_q_count": 0,
+          "rank": 0
+        },
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 36,
+          "low_q_count": 0,
+          "rank": 1
+        },
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 630,
+          "low_q_count": 0,
+          "rank": 2
+        },
+        {
+          "RNP_term": "1032/55175",
+          "RNP_term_decimal": 0.018704123244222926,
+          "actual_low_addable_count": 1032,
+          "exterior_incidence_over_V": 0.04954689623923879,
+          "exterior_incidence_sum_on_low_addable_faces": 21870,
+          "face_count": 7140,
+          "low_q_count": 0,
+          "rank": 3
+        },
+        {
+          "RNP_term": "18378/55175",
+          "RNP_term_decimal": 0.3330856366107839,
+          "actual_low_addable_count": 36756,
+          "exterior_incidence_over_V": 1.093375623017671,
+          "exterior_incidence_sum_on_low_addable_faces": 482616,
+          "face_count": 38493,
+          "low_q_count": 4176,
+          "rank": 4
+        },
+        {
+          "RNP_term": "5196/11035",
+          "RNP_term_decimal": 0.47086542818305394,
+          "actual_low_addable_count": 103920,
+          "exterior_incidence_over_V": 3.467920253738106,
+          "exterior_incidence_sum_on_low_addable_faces": 1530740,
+          "face_count": 104220,
+          "low_q_count": 56366,
+          "rank": 5
+        }
+      ]
+    },
+    "guarded_k3_vertical_square": {
+      "V": 19998144,
+      "corrected_NPM_over_V": "729695/19998144",
+      "corrected_NPM_over_V_decimal": 0.03648813609902999,
+      "corrected_RNP_K": "625753/9999072",
+      "corrected_RNP_K_decimal": 0.06258110752677848,
+      "corrected_RNP_maximizing_rank": 5,
+      "ell": 6,
+      "n": 49,
+      "ranks_below_ell": [
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 1,
+          "low_q_count": 0,
+          "rank": 0
+        },
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 49,
+          "low_q_count": 0,
+          "rank": 1
+        },
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 1176,
+          "low_q_count": 0,
+          "rank": 2
+        },
+        {
+          "RNP_term": "421/1249884",
+          "RNP_term_decimal": 0.0003368312579407369,
+          "actual_low_addable_count": 842,
+          "exterior_incidence_over_V": 0.0013924792220718083,
+          "exterior_incidence_sum_on_low_addable_faces": 27847,
+          "face_count": 18424,
+          "low_q_count": 0,
+          "rank": 3
+        },
+        {
+          "RNP_term": "12677/1249884",
+          "RNP_term_decimal": 0.010142541227825942,
+          "actual_low_addable_count": 50708,
+          "exterior_incidence_over_V": 0.06273367168473235,
+          "exterior_incidence_sum_on_low_addable_faces": 1254557,
+          "face_count": 151546,
+          "low_q_count": 0,
+          "rank": 4
+        },
+        {
+          "RNP_term": "625753/9999072",
+          "RNP_term_decimal": 0.06258110752677848,
+          "actual_low_addable_count": 625753,
+          "exterior_incidence_over_V": 0.5637594668785263,
+          "exterior_incidence_sum_on_low_addable_faces": 11274143,
+          "face_count": 727504,
+          "low_q_count": 21324,
+          "rank": 5
+        }
+      ]
+    },
+    "n24_RNP_coordinate_record": {
+      "V": 10064,
+      "corrected_NPM_over_V": "4703/5032",
+      "corrected_NPM_over_V_decimal": 0.9346184419713831,
+      "corrected_RNP_K": "2679/2516",
+      "corrected_RNP_K_decimal": 1.064785373608903,
+      "corrected_RNP_maximizing_rank": 4,
+      "ell": 5,
+      "n": 24,
+      "ranks_below_ell": [
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 1,
+          "low_q_count": 0,
+          "rank": 0
+        },
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 24,
+          "low_q_count": 0,
+          "rank": 1
+        },
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 276,
+          "low_q_count": 0,
+          "rank": 2
+        },
+        {
+          "RNP_term": "506/629",
+          "RNP_term_decimal": 0.8044515103338633,
+          "actual_low_addable_count": 2024,
+          "exterior_incidence_over_V": 1.570349761526232,
+          "exterior_incidence_sum_on_low_addable_faces": 15804,
+          "face_count": 2024,
+          "low_q_count": 483,
+          "rank": 3
+        },
+        {
+          "RNP_term": "2679/2516",
+          "RNP_term_decimal": 1.064785373608903,
+          "actual_low_addable_count": 5358,
+          "exterior_incidence_over_V": 6.850755166931638,
+          "exterior_incidence_sum_on_low_addable_faces": 68946,
+          "face_count": 5358,
+          "low_q_count": 5358,
+          "rank": 4
+        }
+      ]
+    },
+    "n58_half_weight_record": {
+      "V": 1061907,
+      "corrected_NPM_over_V": "280576/353969",
+      "corrected_NPM_over_V_decimal": 0.792656984086177,
+      "corrected_RNP_K": "857476/1061907",
+      "corrected_RNP_K_decimal": 0.8074869079872343,
+      "corrected_RNP_maximizing_rank": 5,
+      "ell": 6,
+      "n": 58,
+      "ranks_below_ell": [
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 1,
+          "low_q_count": 0,
+          "old_reported_low_count": 0,
+          "rank": 0
+        },
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 58,
+          "low_q_count": 0,
+          "old_reported_low_count": 0,
+          "rank": 1
+        },
+        {
+          "RNP_term": "0",
+          "RNP_term_decimal": 0.0,
+          "actual_low_addable_count": 0,
+          "exterior_incidence_over_V": 0.0,
+          "exterior_incidence_sum_on_low_addable_faces": 0,
+          "face_count": 1653,
+          "low_q_count": 0,
+          "old_reported_low_count": 0,
+          "rank": 2
+        },
+        {
+          "RNP_term": "304/50567",
+          "RNP_term_decimal": 0.00601182589435798,
+          "actual_low_addable_count": 798,
+          "exterior_incidence_over_V": 0.026594607625714868,
+          "exterior_incidence_sum_on_low_addable_faces": 28241,
+          "face_count": 30856,
+          "low_q_count": 9,
+          "old_reported_low_count": 9,
+          "rank": 3
+        },
+        {
+          "RNP_term": "821192/1061907",
+          "RNP_term_decimal": 0.7733181907643513,
+          "actual_low_addable_count": 205298,
+          "exterior_incidence_over_V": 6.215104524219164,
+          "exterior_incidence_sum_on_low_addable_faces": 6599863,
+          "face_count": 220958,
+          "low_q_count": 9089,
+          "old_reported_low_count": 9089,
+          "rank": 4
+        },
+        {
+          "RNP_term": "857476/1061907",
+          "RNP_term_decimal": 0.8074869079872343,
+          "actual_low_addable_count": 428738,
+          "exterior_incidence_over_V": 14.814827475475724,
+          "exterior_incidence_sum_on_low_addable_faces": 15731969,
+          "face_count": 428915,
+          "low_q_count": 14508,
+          "old_reported_low_count": 14508,
+          "rank": 5
+        }
+      ]
+    }
+  },
+  "status": "PASS"
+}

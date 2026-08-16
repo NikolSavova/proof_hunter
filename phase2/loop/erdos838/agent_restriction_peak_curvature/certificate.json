@@ -1,0 +1,60 @@
+{
+  "abstract_complete_rank_truncations": {
+    "complete_three_skeleton": {
+      "ACP_scalar": "250203811651840/7819948037889",
+      "H": "90554624/2796417",
+      "H_decimal": 32.38237501774592,
+      "delta": "11815149728/989173788993",
+      "global_peak_m": 256,
+      "n": 256
+    },
+    "quarter_log_truncation": {
+      "H": "349815602706904580096/85398986902785593",
+      "H_decimal": 4096.250030519906,
+      "V": 768590882125070337,
+      "delta": "250434508993504857878619369472/4102555582666212982547530406668857",
+      "global_peak_m": 65536,
+      "log2_V_over_log2_n_squared": 0.2320898182607169,
+      "log_n_H": 0.7500055039487001,
+      "n": 65536,
+      "rank": 4
+    }
+  },
+  "central_pascal_twenty_point": {
+    "H": "11375/10952",
+    "bernoulli_gap_at_witness": "-37467223311/22968008704",
+    "conclusion": "endpoint curvature is necessary but does not certify a global peak",
+    "delta": "4720207/6228950",
+    "endpoint_upper_bound": "36689/45500",
+    "fixed_size_maximizer_m": 4,
+    "fixed_size_maximum_H": "5211/4048",
+    "interior_witness_alpha": "1/8",
+    "profile": [
+      1,
+      20,
+      190,
+      1140,
+      3225,
+      4260,
+      2116
+    ],
+    "weighted_restriction_H_at_witness": "195011719/161409280"
+  },
+  "description": "exact restriction-peak and curvature scalar audit",
+  "n58_profile": {
+    "H": "33994061/16990512",
+    "H_exp_minus_delta": 1.034973937680135,
+    "bernoulli_gap_all_alpha": {
+      "certified_intervals": 1,
+      "maximum_subdivision_depth": 0
+    },
+    "delta": "4376001835655/6638810360336",
+    "endpoint_slack": "101135902204417/385051000899488",
+    "endpoint_upper_bound": "1002754503/1087809952",
+    "fixed_size_hierarchy_maximizer_m": 58,
+    "fixed_size_second_best_m": 57,
+    "fixed_size_second_best_over_H": "20231808494327199/20332944396531616",
+    "mu_half": "85055449/18755344",
+    "mu_one": "1838569/353969"
+  }
+}

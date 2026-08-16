@@ -1,0 +1,815 @@
+{
+  "pair_multiplicity_audit": {
+    "n": 14,
+    "number_of_exterior_incidences": 6439,
+    "number_of_distinct_pairs": 4320,
+    "hidden_size_histogram": {
+      "1": 5228,
+      "2": 1007,
+      "3": 182,
+      "4": 22
+    },
+    "maximum_pair_multiplicity": 2,
+    "maximum_singleton_pair_multiplicity": 2,
+    "multiple_root_examples": [
+      {
+        "hidden": [
+          3
+        ],
+        "outer": [
+          0,
+          1,
+          2,
+          7
+        ],
+        "roots": [
+          2,
+          7
+        ],
+        "all_repairs": [
+          2,
+          3,
+          7
+        ]
+      },
+      {
+        "hidden": [
+          3
+        ],
+        "outer": [
+          0,
+          1,
+          2,
+          8
+        ],
+        "roots": [
+          2,
+          8
+        ],
+        "all_repairs": [
+          2,
+          3,
+          8
+        ]
+      },
+      {
+        "hidden": [
+          3
+        ],
+        "outer": [
+          0,
+          1,
+          2,
+          9
+        ],
+        "roots": [
+          2,
+          9
+        ],
+        "all_repairs": [
+          2,
+          3,
+          9
+        ]
+      },
+      {
+        "hidden": [
+          3
+        ],
+        "outer": [
+          0,
+          1,
+          2,
+          10
+        ],
+        "roots": [
+          2,
+          10
+        ],
+        "all_repairs": [
+          2,
+          3,
+          10
+        ]
+      },
+      {
+        "hidden": [
+          3
+        ],
+        "outer": [
+          0,
+          1,
+          2,
+          11
+        ],
+        "roots": [
+          2,
+          11
+        ],
+        "all_repairs": [
+          2,
+          3,
+          11
+        ]
+      }
+    ]
+  },
+  "fixed_frame_rectangle_audit": {
+    "number_of_fixed_frames": 971,
+    "sum_of_rectangle_sizes": 6439,
+    "maximum_rectangle_size": 68,
+    "maximum_completion_ratio": "2/2",
+    "maximum_ratio_frame": {
+      "frame_root_tangents_rank_hidden_size": [
+        7,
+        0,
+        2,
+        4,
+        1
+      ],
+      "hidden_pool": 2,
+      "retained_pool": 1,
+      "source_edges": 2,
+      "completed_rectangle": 2
+    },
+    "aggregate_fixed_root_rank_rows": [
+      {
+        "root": 0,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 366,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 0,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 394,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 0,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 171,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 1,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 138,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 1,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 126,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 1,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 67,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 2,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 206,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 2,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 219,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 2,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 116,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 2,
+        "rank": 7,
+        "sum_of_rectangle_sizes": 7,
+        "rank_faces": 15,
+        "disjoint_rectangle_capacity": 15
+      },
+      {
+        "root": 2,
+        "rank": 8,
+        "sum_of_rectangle_sizes": 1,
+        "rank_faces": 2,
+        "disjoint_rectangle_capacity": 2
+      },
+      {
+        "root": 3,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 67,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 3,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 12,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 3,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 1,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 4,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 281,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 4,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 327,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 4,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 147,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 5,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 61,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 5,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 28,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 5,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 13,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 6,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 163,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 6,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 196,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 6,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 96,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 7,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 76,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 7,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 64,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 7,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 32,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 8,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 182,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 8,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 184,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 8,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 93,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 9,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 70,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 9,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 19,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 9,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 5,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 10,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 253,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 10,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 283,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 10,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 148,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 10,
+        "rank": 7,
+        "sum_of_rectangle_sizes": 15,
+        "rank_faces": 15,
+        "disjoint_rectangle_capacity": 15
+      },
+      {
+        "root": 10,
+        "rank": 8,
+        "sum_of_rectangle_sizes": 2,
+        "rank_faces": 2,
+        "disjoint_rectangle_capacity": 2
+      },
+      {
+        "root": 11,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 191,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 11,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 206,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 11,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 103,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 11,
+        "rank": 7,
+        "sum_of_rectangle_sizes": 15,
+        "rank_faces": 15,
+        "disjoint_rectangle_capacity": 15
+      },
+      {
+        "root": 11,
+        "rank": 8,
+        "sum_of_rectangle_sizes": 2,
+        "rank_faces": 2,
+        "disjoint_rectangle_capacity": 2
+      },
+      {
+        "root": 12,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 190,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 12,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 206,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 12,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 103,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 12,
+        "rank": 7,
+        "sum_of_rectangle_sizes": 15,
+        "rank_faces": 15,
+        "disjoint_rectangle_capacity": 15
+      },
+      {
+        "root": 12,
+        "rank": 8,
+        "sum_of_rectangle_sizes": 2,
+        "rank_faces": 2,
+        "disjoint_rectangle_capacity": 2
+      },
+      {
+        "root": 13,
+        "rank": 4,
+        "sum_of_rectangle_sizes": 279,
+        "rank_faces": 668,
+        "disjoint_rectangle_capacity": 668
+      },
+      {
+        "root": 13,
+        "rank": 5,
+        "sum_of_rectangle_sizes": 318,
+        "rank_faces": 606,
+        "disjoint_rectangle_capacity": 606
+      },
+      {
+        "root": 13,
+        "rank": 6,
+        "sum_of_rectangle_sizes": 163,
+        "rank_faces": 253,
+        "disjoint_rectangle_capacity": 253
+      },
+      {
+        "root": 13,
+        "rank": 7,
+        "sum_of_rectangle_sizes": 15,
+        "rank_faces": 15,
+        "disjoint_rectangle_capacity": 15
+      },
+      {
+        "root": 13,
+        "rank": 8,
+        "sum_of_rectangle_sizes": 2,
+        "rank_faces": 2,
+        "disjoint_rectangle_capacity": 2
+      }
+    ],
+    "maximum_aggregate_capacity_ratio": "15/15"
+  },
+  "common_ear_audit": {
+    "points": [
+      [
+        -20,
+        0
+      ],
+      [
+        2,
+        -10
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        1,
+        100
+      ],
+      [
+        -8,
+        -1192
+      ],
+      [
+        -6,
+        -1108
+      ],
+      [
+        -4,
+        -1048
+      ],
+      [
+        -2,
+        -1012
+      ],
+      [
+        1,
+        -1003
+      ],
+      [
+        3,
+        -1027
+      ],
+      [
+        5,
+        -1075
+      ],
+      [
+        7,
+        -1147
+      ]
+    ],
+    "source_labels": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "retained_labels": [
+      0,
+      2,
+      3
+    ],
+    "cloud_labels": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "blocker_checks": [
+      {
+        "root": 4,
+        "hidden": [
+          1
+        ]
+      },
+      {
+        "root": 5,
+        "hidden": [
+          1
+        ]
+      },
+      {
+        "root": 6,
+        "hidden": [
+          1
+        ]
+      },
+      {
+        "root": 7,
+        "hidden": [
+          1
+        ]
+      },
+      {
+        "root": 8,
+        "hidden": [
+          1
+        ]
+      },
+      {
+        "root": 9,
+        "hidden": [
+          1
+        ]
+      },
+      {
+        "root": 10,
+        "hidden": [
+          1
+        ]
+      },
+      {
+        "root": 11,
+        "hidden": [
+          1
+        ]
+      }
+    ],
+    "cloud_is_convex": true,
+    "replacement_histogram": {
+      "0": 1,
+      "1": 8,
+      "2": 28
+    },
+    "interpretation": "Each cloud point hides the same singleton.  Any two blockers can replace it, but no three can do so while the other source vertices are retained; the cloud itself supplies a large independent face."
+  },
+  "common_target_star_audit": {
+    "points": [
+      [
+        -20,
+        0
+      ],
+      [
+        0,
+        -1000
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        1,
+        100
+      ],
+      [
+        -7,
+        -198
+      ],
+      [
+        -5,
+        -151
+      ],
+      [
+        -3,
+        -118
+      ],
+      [
+        -1,
+        -102
+      ],
+      [
+        2,
+        -108
+      ],
+      [
+        4,
+        -132
+      ],
+      [
+        6,
+        -172
+      ],
+      [
+        8,
+        -228
+      ]
+    ],
+    "number_of_sources": 8,
+    "common_target": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rows": [
+      {
+        "source": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "root": 1,
+        "repaired_hull": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "source": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "root": 1,
+        "repaired_hull": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "source": [
+          0,
+          2,
+          3,
+          6
+        ],
+        "root": 1,
+        "repaired_hull": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "source": [
+          0,
+          2,
+          3,
+          7
+        ],
+        "root": 1,
+        "repaired_hull": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "source": [
+          0,
+          2,
+          3,
+          8
+        ],
+        "root": 1,
+        "repaired_hull": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "source": [
+          0,
+          2,
+          3,
+          9
+        ],
+        "root": 1,
+        "repaired_hull": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "source": [
+          0,
+          2,
+          3,
+          10
+        ],
+        "root": 1,
+        "repaired_hull": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "source": [
+          0,
+          2,
+          3,
+          11
+        ],
+        "root": 1,
+        "repaired_hull": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "interpretation": "The raw map (A,p) -> ext(A+p) has inverse multiplicity eight here, and the same construction admits arbitrarily many generic rational inner points.  Retaining the hidden face I removes this collapse."
+  }
+}

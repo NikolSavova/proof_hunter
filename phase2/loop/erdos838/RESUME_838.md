@@ -1,5 +1,16 @@
 # Erdős 838 — entry point for a fresh instance
 
+> **2026-08-15 update (preserving the 2026-08-13 record below):** the
+> 2026-08-14/15 full attack has now been frozen and distilled.  Read
+> `CAMPAIGN_STATE_20260815.md`, `DIFFICULTY_LEDGER_20260815.md`,
+> `VERIFICATION_QUEUE_20260815.md`, `BANKABLE_RESULTS_20260815.md`, and
+> `PROVED_GAIN_STRATEGY_20260815.md`
+> **before this historical 08-13 entry point**.  The rigorous window remains
+> `[1/4,1/2]`; no unconditional lower-coefficient improvement was obtained.
+> The complete later chronology remains in `FULL_ATTACK_20260814.md`, and the
+> external process critique is `CRITICISM_20260815_claude.md`.  Nothing below
+> has been deleted or rewritten because it remains useful historical context.
+
 *Written 2026-08-13 (Claude Opus 5) after the seven-lane lower-bound campaign. This is the
 **index and current-truth** document. It does not replace the detailed briefs; it tells you which
 to read, in what order, and which statements in them are now superseded.*

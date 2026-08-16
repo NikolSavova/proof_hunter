@@ -1,0 +1,125 @@
+{
+  "description": "exact rooted-hull fibre, Kraft, KL, and global trace-load audit",
+  "arithmetic": "all geometric and polynomial assertions use fractions.Fraction",
+  "global_rooted_identities": [
+    {
+      "name": "random_n8",
+      "n": 8,
+      "faces_rank_at_least_three": 134,
+      "left_rooted_incidences": 134,
+      "right_rooted_incidences": 134
+    },
+    {
+      "name": "pascal_T_5_2_n10",
+      "n": 10,
+      "faces_rank_at_least_three": 320,
+      "left_rooted_incidences": 320,
+      "right_rooted_incidences": 320
+    }
+  ],
+  "local_reset_profiles": [
+    {
+      "name": "nested_ear_q10",
+      "cloud_size": 10,
+      "visible_hull_count": 11,
+      "half_rooted_mass": "6/1",
+      "maximum_pocket": 9,
+      "minimum_codimension": 1,
+      "mean_exposed_cost": 2.947975410252502,
+      "kl_surplus_bits": 0.8605074326753761,
+      "strict_tangent_progress_comparisons": 90
+    },
+    {
+      "name": "pascal_heavy_left",
+      "cloud_size": 9,
+      "visible_hull_count": 20,
+      "half_rooted_mass": "8/1",
+      "maximum_pocket": 7,
+      "minimum_codimension": 2,
+      "mean_exposed_cost": 4.317329675354366,
+      "kl_surplus_bits": 0.4745240366670522,
+      "strict_tangent_progress_comparisons": 134
+    },
+    {
+      "name": "pascal_heavy_right",
+      "cloud_size": 9,
+      "visible_hull_count": 20,
+      "half_rooted_mass": "8/1",
+      "maximum_pocket": 7,
+      "minimum_codimension": 2,
+      "mean_exposed_cost": 4.317329675354366,
+      "kl_surplus_bits": 0.4745240366670522,
+      "strict_tangent_progress_comparisons": 134
+    },
+    {
+      "name": "matching_star_left_m12",
+      "cloud_size": 12,
+      "visible_hull_count": 360,
+      "half_rooted_mass": "6043/128",
+      "maximum_pocket": 7,
+      "minimum_codimension": 5,
+      "mean_exposed_cost": 8.581353339317065,
+      "kl_surplus_bits": 0.5412793177609173,
+      "strict_tangent_progress_comparisons": 1648
+    },
+    {
+      "name": "matching_star_right_m12",
+      "cloud_size": 12,
+      "visible_hull_count": 335,
+      "half_rooted_mass": "367/8",
+      "maximum_pocket": 6,
+      "minimum_codimension": 6,
+      "mean_exposed_cost": 8.542588923323567,
+      "kl_surplus_bits": 0.5225420736230096,
+      "strict_tangent_progress_comparisons": 1506
+    }
+  ],
+  "hidden_pocket_grids": [
+    {
+      "name": "pascal_heavy_hidden_grid",
+      "left_size": 9,
+      "right_size": 9,
+      "singleton_degree": 81,
+      "compatible_visible_hull_pairs": 361,
+      "maximum_compatible_hidden_product": 49,
+      "deepest_pocket_product": 49,
+      "deepest_visible_hulls_compatible": true
+    },
+    {
+      "name": "matching_star_hidden_grid",
+      "left_size": 12,
+      "right_size": 12,
+      "singleton_degree": 12,
+      "compatible_visible_hull_pairs": 12,
+      "maximum_compatible_hidden_product": 0,
+      "deepest_pocket_product": 42,
+      "deepest_visible_hulls_compatible": false
+    }
+  ],
+  "pascal_heavy_trace": {
+    "n": 20,
+    "j": 9,
+    "ell": 10,
+    "orientation": -1,
+    "left_size": 9,
+    "right_size": 9,
+    "singleton_degree": 81
+  },
+  "matching_star": {
+    "m": 12,
+    "q": 6,
+    "trace_count": 36,
+    "identical_matching_edges_per_trace": 12
+  },
+  "assertions": [
+    "relative-hull fibres are exactly Boolean hidden pockets",
+    "the weighted Kraft identity holds coefficientwise",
+    "half-rooted mass is at least (3/2)^minimum_codimension",
+    "the KL decomposition holds after exact probability construction",
+    "left and right rooted-side sums each count every rank>=3 face once",
+    "compatible visible hulls expose a complete hidden-pocket grid",
+    "hidden pocket product is at most singleton compatibility degree",
+    "every hidden-pocket reset makes strict progress in both tangent ranks",
+    "Pascal and perfect-matching-star regressions satisfy the reset"
+  ]
+}

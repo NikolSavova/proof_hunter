@@ -1,0 +1,200 @@
+{
+  "claim": "Every audited order type is preserved, up to global orientation reversal, inside one strict fixed-edge insertion chain.",
+  "theorem_scope": "all finite planar order types after a generic affine shear",
+  "records": [
+    {
+      "family": "central_Pascal_T_6_3",
+      "n": 20,
+      "input_general_position_triples": 1140,
+      "ambient_general_position_triples": 1771,
+      "strict_nesting_relations": 190,
+      "affine_shear_M": 1,
+      "final_horizontal_shear": "1/4",
+      "minimum_strict_barycentric_coefficient": "9/6281480",
+      "lower_base_vertex": [
+        "-484/971",
+        "-1"
+      ],
+      "transformed_coordinate_sha256": "8b205e6ba7b91e77cb3301d6ee367370b6ee127435132ee90f9df5701f92e3eb",
+      "profile_including_empty": [
+        1,
+        20,
+        190,
+        1140,
+        3225,
+        4260,
+        2116
+      ],
+      "V": 10952
+    },
+    {
+      "family": "saved_half_weight_n20",
+      "n": 20,
+      "input_general_position_triples": 1140,
+      "ambient_general_position_triples": 1771,
+      "strict_nesting_relations": 190,
+      "affine_shear_M": 763251065,
+      "final_horizontal_shear": "1/4",
+      "minimum_strict_barycentric_coefficient": "1/14593822640",
+      "lower_base_vertex": [
+        "-484/971",
+        "-1"
+      ],
+      "transformed_coordinate_sha256": "9ace7323b3fbf181d7d7dcd49be5d99bad72e1b0a72d98eb2fb4e294dbdca079",
+      "profile_including_empty": [
+        1,
+        20,
+        190,
+        1140,
+        2415,
+        866,
+        135,
+        8
+      ],
+      "V": 4775
+    },
+    {
+      "family": "saved_half_weight_n24",
+      "n": 24,
+      "input_general_position_triples": 2024,
+      "ambient_general_position_triples": 2925,
+      "strict_nesting_relations": 276,
+      "affine_shear_M": 1785425182,
+      "final_horizontal_shear": "1/4",
+      "minimum_strict_barycentric_coefficient": "1/42381196841",
+      "lower_base_vertex": [
+        "-676/1355",
+        "-1"
+      ],
+      "transformed_coordinate_sha256": "6a4c92fafdf214153e695238595d9824c4b72dbbf16e993208ce545fc27139d6",
+      "profile_including_empty": [
+        1,
+        24,
+        276,
+        2024,
+        5378,
+        2679,
+        413,
+        43,
+        3
+      ],
+      "V": 10841
+    },
+    {
+      "family": "saved_half_weight_n30",
+      "n": 30,
+      "input_general_position_triples": 4060,
+      "ambient_general_position_triples": 5456,
+      "strict_nesting_relations": 435,
+      "affine_shear_M": 2999071053,
+      "final_horizontal_shear": "1/4",
+      "minimum_strict_barycentric_coefficient": "1/89074933051",
+      "lower_base_vertex": [
+        "-1024/2051",
+        "-1"
+      ],
+      "transformed_coordinate_sha256": "3a4c7882f4b4ebb9247860d89aa87cf50900763f600c59bfe8e2b20f2f31747d",
+      "profile_including_empty": [
+        1,
+        30,
+        435,
+        4060,
+        13975,
+        10607,
+        3158,
+        481,
+        30
+      ],
+      "V": 32777
+    },
+    {
+      "family": "saved_half_weight_n58",
+      "n": 58,
+      "input_general_position_triples": 30856,
+      "ambient_general_position_triples": 35990,
+      "strict_nesting_relations": 1653,
+      "affine_shear_M": 39643536031,
+      "final_horizontal_shear": "1/4",
+      "minimum_strict_barycentric_coefficient": "3914741374635/615522896097935582396309504",
+      "lower_base_vertex": [
+        "-1200/2401",
+        "-1"
+      ],
+      "transformed_coordinate_sha256": "3cd8ce5de9f9677496fd5345389fdbaa15008c84c960cb54695e3068dd9a890e",
+      "profile_including_empty": [
+        1,
+        58,
+        1653,
+        30856,
+        220958,
+        428915,
+        284982,
+        76995,
+        15100,
+        2179,
+        210
+      ],
+      "V": 1061907
+    }
+  ],
+  "quadratic_prefix_kraft": [
+    {
+      "family": "nested_stop_chain_depth_8",
+      "records": 9,
+      "root_square": 81,
+      "diagonal": 9,
+      "first_divergence_release": 72
+    },
+    {
+      "family": "nested_stop_chain_depth_32",
+      "records": 33,
+      "root_square": 1089,
+      "diagonal": 33,
+      "first_divergence_release": 1056
+    },
+    {
+      "family": "nested_stop_chain_depth_128",
+      "records": 129,
+      "root_square": 16641,
+      "diagonal": 129,
+      "first_divergence_release": 16512
+    },
+    {
+      "family": "product_2x3x4x2",
+      "records": 48,
+      "root_square": 2304,
+      "diagonal": 48,
+      "first_divergence_release": 2256
+    },
+    {
+      "family": "ramp_plateau_height_3",
+      "levels": 10,
+      "log2_records": 46,
+      "identity_verified": true
+    },
+    {
+      "family": "ramp_plateau_height_4",
+      "levels": 16,
+      "log2_records": 158,
+      "identity_verified": true
+    },
+    {
+      "family": "ramp_plateau_height_5",
+      "levels": 26,
+      "log2_records": 574,
+      "identity_verified": true
+    },
+    {
+      "family": "ramp_plateau_height_6",
+      "levels": 44,
+      "log2_records": 2174,
+      "identity_verified": true
+    },
+    {
+      "family": "ramp_plateau_height_7",
+      "levels": 78,
+      "log2_records": 8446,
+      "identity_verified": true
+    }
+  ]
+}

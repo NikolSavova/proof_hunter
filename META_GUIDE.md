@@ -449,6 +449,36 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-15 — ERDŐS #838: external critique accepted; campaign frozen and distilled (Sihao + Codex)
+
+- **Headline correction:** the 2026-08-14/15 campaign did not move the
+  unconditional window `[1/4,1/2]`.  Its progress is a deep obstruction and
+  route map, not “78% of the proof.”  Claude/Fable's constructive process
+  critique is preserved at
+  `phase2/loop/erdos838/CRITICISM_20260815_claude.md`.
+- **No information was overwritten.**  The 12,980-line
+  `FULL_ATTACK_20260814.md`, all agent reports, rational examples, and exact
+  verifiers remain intact.  Added five compact navigation files:
+  `CAMPAIGN_STATE_20260815.md`, `DIFFICULTY_LEDGER_20260815.md`,
+  `VERIFICATION_QUEUE_20260815.md`, `BANKABLE_RESULTS_20260815.md`, and
+  `PROVED_GAIN_STRATEGY_20260815.md`.
+- **Discipline adopted:** every new target must have an explicit quantitative
+  implication, strictness explanation, saved stress test, and kill criterion.
+  Coefficient-equivalent branches stop immediately; three reductions without
+  a gain trigger an autopsy rather than a fourth renamed target.
+- **Five-package verification freeze:** hinged Kraft/variable grammar;
+  recursive separated-template closure; minimizer hull-root recurrence;
+  sparse curvature transport; and global Hall/low-rank ES replacement.  The
+  many exact scripts are author-side checks, not independent cross-model proof
+  audits.
+- **One next proved-gain target:** for `n=2^(2k+o(k))`, prove
+  `v_k(P)>=2^((1+eta-o(1))k^2)` for any fixed `eta>0`, which would improve the
+  unrestricted lower coefficient to `(1+eta)/4`.  Two bounded attack/audit
+  cycles are allowed; otherwise package the upper/strong-tree theorem and
+  audited barriers.
+- **Operational state:** no research process is running.  Approximate API
+  spend for this distillation: `$0`.
+
 ### 2026-08-13 — ERDŐS #838: exact half-weight/stopping-time attack (Sihao + Codex ultracode)
 
 - **Honest outcome:** unrestricted #838 remains open with rigorous base-two window `[1/4,1/2]`.

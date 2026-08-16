@@ -1,0 +1,23 @@
+{
+  "r": 6,
+  "g": 1,
+  "n": 128,
+  "ell": 7,
+  "outer_chain_size": 30,
+  "inner_pocket_size": 97,
+  "source_count": 2925,
+  "source_count_formula": "binom(27,3)",
+  "u_each_source": 24,
+  "near_max_threshold": 28,
+  "common_repaired_target_size": 3,
+  "max_chain_vertices_in_any_apex_containing_face": 2,
+  "rooted_triples_checked": 4060,
+  "common_tangent_endpoint_indices": [
+    0,
+    29
+  ],
+  "common_onion_pocket": true,
+  "general_position_triples_checked": 341376,
+  "source_information_bits": 11.51422090935813,
+  "verdict": "exact common-ear/common-onion obstruction verified; this refutes endpoint-only polynomial-ambiguity recovery, not RNP itself"
+}

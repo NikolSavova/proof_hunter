@@ -1,0 +1,110 @@
+{
+  "claims": {
+    "kl": "D2(q1||qh)=mu1-m; D2(qh||q1)=m-muh; sum=delta",
+    "localization": "sum t^r B_r <= Lambda*t/(Lambda*t-1) sum_{u<=Lambda(r+1)} t^r b(A)",
+    "moment": "E R^2-(1-t)mu+3t beta3 <= E(tu)^2 <= E R^2-(1-t)mu+2t E b+t beta3",
+    "near_maximal_mean": "sum_{r<ell}(ell-r) #{A:u(A)<=4(r+1)} <= C V implies mu1>=log2(n)-2C-1/2"
+  },
+  "exact_planar_face_tables": {
+    "8": {
+      "NPM_constant_exact": "22/57",
+      "activities": {
+        "1": {
+          "Z": "114",
+          "boundary": "280",
+          "localization_factor": "4/3",
+          "low_extension_boundary": "280",
+          "moment_upper_bound": "286/19",
+          "rank_second_moment": "160/19",
+          "rank_three_boundary_expectation": "98/57",
+          "scaled_up_second_moment": "272/19"
+        },
+        "1/2": {
+          "Z": "325/16",
+          "boundary": "119/4",
+          "localization_factor": "2",
+          "low_extension_boundary": "119/4",
+          "moment_upper_bound": "2174/325",
+          "rank_second_moment": "1856/325",
+          "rank_three_boundary_expectation": "392/325",
+          "scaled_up_second_moment": "164/25"
+        }
+      },
+      "ell": 3,
+      "expected_maximal_faces_in_half_restriction": "1133/256",
+      "near_maximal_deficit": 44,
+      "number_of_faces": 114
+    },
+    "9": {
+      "NPM_constant_exact": "183/169",
+      "activities": {
+        "1": {
+          "Z": "169",
+          "boundary": "537",
+          "localization_factor": "4/3",
+          "low_extension_boundary": "537",
+          "moment_upper_bound": "2994/169",
+          "rank_second_moment": "120/13",
+          "rank_three_boundary_expectation": "360/169",
+          "scaled_up_second_moment": "2766/169"
+        },
+        "1/2": {
+          "Z": "875/32",
+          "boundary": "891/16",
+          "localization_factor": "2",
+          "low_extension_boundary": "891/16",
+          "moment_upper_bound": "14067/1750",
+          "rank_second_moment": "5547/875",
+          "rank_three_boundary_expectation": "288/175",
+          "scaled_up_second_moment": "2727/350"
+        }
+      },
+      "ell": 4,
+      "expected_maximal_faces_in_half_restriction": "1555/256",
+      "near_maximal_deficit": 183,
+      "number_of_faces": 169
+    }
+  },
+  "kl_profiles": {
+    "20": {
+      "H": "4879/3056",
+      "delta": "12602014/23297225",
+      "local_compensation": "10695211/14592400",
+      "mu_1": "18676/4775",
+      "mu_half": "82218/24395",
+      "n": "20"
+    },
+    "24": {
+      "H": "584943/346912",
+      "delta": "1118873644/2113789021",
+      "local_compensation": "2984746131/3760872992",
+      "mu_1": "44358/10841",
+      "mu_half": "694594/194981",
+      "n": "24"
+    },
+    "30": {
+      "H": "226845/131108",
+      "delta": "4650690709/7930985136",
+      "local_compensation": "49204416405/68757230656",
+      "mu_1": "144570/32777",
+      "mu_half": "925363/241968",
+      "n": "30"
+    },
+    "44": {
+      "H": "57268761/30365312",
+      "delta": "748888288693/1235073718479",
+      "local_compensation": "2674019863823/3601766300224",
+      "mu_1": "1150674/237229",
+      "mu_half": "22095989/5206251",
+      "n": "44"
+    },
+    "58": {
+      "H": "33994061/16990512",
+      "delta": "4376001835655/6638810360336",
+      "local_compensation": "21873815738583/32075277558016",
+      "mu_1": "1838569/353969",
+      "mu_half": "85055449/18755344",
+      "n": "58"
+    }
+  }
+}

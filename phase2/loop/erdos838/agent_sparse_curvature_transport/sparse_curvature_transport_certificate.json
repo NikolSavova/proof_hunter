@@ -1,0 +1,113 @@
+{
+  "n9_points": [[62614, 7322], [2922, 4014], [10209, 14386], [20660, 24299], [33336, 29017], [30137, 33324], [15334, 45211], [14934, 55621], [10934, 61521]],
+  "n9_minimizer": {
+    "n": 9,
+    "V": 168,
+    "f_n": 168,
+    "excess": 0,
+    "K_top": 54,
+    "hull_size": 3,
+    "shellings": 6984,
+    "potential_transitions": 1539,
+    "full_ledger_per_shelling": 159,
+    "universal_core_per_shelling": 159,
+    "top_layer_per_shelling": 54,
+    "top_density_in_full_ledger": "18/53",
+    "forced_native_mass": 370152,
+    "native_menu_optimum": 6984,
+    "native_menu_optimum_over_W": "1",
+    "full_native_hull_face_load": 6984,
+    "root_rows": [
+      {"root": 1, "shelling_weight": 2328, "child_V": 114, "C": 53, "D": 1, "forced_native": 53, "single_root_average_lower": "1/3"},
+      {"root": 0, "shelling_weight": 2328, "child_V": 114, "C": 53, "D": 1, "forced_native": 53, "single_root_average_lower": "1/3"},
+      {"root": 8, "shelling_weight": 2328, "child_V": 114, "C": 53, "D": 1, "forced_native": 53, "single_root_average_lower": "1/3"}
+    ]
+  },
+  "pascal_T_4_2": {
+    "n": 6,
+    "V": 50,
+    "f_n": 44,
+    "excess": 6,
+    "K_top": 17,
+    "hull_size": 4,
+    "shellings": 336,
+    "potential_transitions": 172,
+    "full_ledger_per_shelling": 44,
+    "universal_core_per_shelling": 38,
+    "top_layer_per_shelling": 17,
+    "top_density_in_full_ledger": "17/44",
+    "forced_native_mass": 5040,
+    "native_menu_optimum": 131,
+    "native_menu_optimum_over_W": "131/336",
+    "full_native_hull_face_load": 336,
+    "root_rows": [
+      {"root": 0, "shelling_weight": 84, "child_V": 28, "C": 21, "D": 2, "forced_native": 15, "single_root_average_lower": "5/28"},
+      {"root": 3, "shelling_weight": 84, "child_V": 28, "C": 21, "D": 2, "forced_native": 15, "single_root_average_lower": "5/28"},
+      {"root": 5, "shelling_weight": 84, "child_V": 28, "C": 21, "D": 2, "forced_native": 15, "single_root_average_lower": "5/28"},
+      {"root": 2, "shelling_weight": 84, "child_V": 28, "C": 21, "D": 2, "forced_native": 15, "single_root_average_lower": "5/28"}
+    ]
+  },
+  "convex_8_global_baseline": {
+    "n": 8,
+    "V": 255,
+    "f_n": 113,
+    "excess": 142,
+    "K_top": 40,
+    "hull_size": 8,
+    "shellings": 40320,
+    "potential_transitions": 1016,
+    "full_ledger_per_shelling": 247,
+    "universal_core_per_shelling": 105,
+    "top_layer_per_shelling": 40,
+    "top_density_in_full_ledger": "40/247",
+    "forced_native_mass": 0,
+    "native_menu_optimum": 0,
+    "native_menu_optimum_over_W": "0",
+    "full_native_hull_face_load": 40320,
+    "root_rows": [
+      {"root": 0, "shelling_weight": 5040, "child_V": 127, "C": 127, "D": 55, "forced_native": 0, "single_root_average_lower": "0"},
+      {"root": 1, "shelling_weight": 5040, "child_V": 127, "C": 127, "D": 55, "forced_native": 0, "single_root_average_lower": "0"},
+      {"root": 2, "shelling_weight": 5040, "child_V": 127, "C": 127, "D": 55, "forced_native": 0, "single_root_average_lower": "0"},
+      {"root": 3, "shelling_weight": 5040, "child_V": 127, "C": 127, "D": 55, "forced_native": 0, "single_root_average_lower": "0"},
+      {"root": 4, "shelling_weight": 5040, "child_V": 127, "C": 127, "D": 55, "forced_native": 0, "single_root_average_lower": "0"},
+      {"root": 5, "shelling_weight": 5040, "child_V": 127, "C": 127, "D": 55, "forced_native": 0, "single_root_average_lower": "0"},
+      {"root": 6, "shelling_weight": 5040, "child_V": 127, "C": 127, "D": 55, "forced_native": 0, "single_root_average_lower": "0"},
+      {"root": 7, "shelling_weight": 5040, "child_V": 127, "C": 127, "D": 55, "forced_native": 0, "single_root_average_lower": "0"}
+    ]
+  },
+  "vertical_T_3_1_square": {
+    "n": 9,
+    "V": 273,
+    "f_n": 168,
+    "excess": 105,
+    "K_top": 54,
+    "hull_size": 6,
+    "shellings": 64560,
+    "potential_transitions": 1980,
+    "full_ledger_per_shelling": 264,
+    "universal_core_per_shelling": 159,
+    "top_layer_per_shelling": 54,
+    "top_density_in_full_ledger": "9/44",
+    "forced_native_mass": 523800,
+    "native_menu_optimum": 2117,
+    "native_menu_optimum_over_W": "2117/64560",
+    "full_native_hull_face_load": 64560,
+    "root_rows": [
+      {"root": 0, "shelling_weight": 11808, "child_V": 164, "C": 108, "D": 51, "forced_native": 3, "single_root_average_lower": "41/8070"},
+      {"root": 3, "shelling_weight": 15780, "child_V": 182, "C": 90, "D": 69, "forced_native": 0, "single_root_average_lower": "0"},
+      {"root": 6, "shelling_weight": 8388, "child_V": 149, "C": 123, "D": 36, "forced_native": 18, "single_root_average_lower": "2097/110290"},
+      {"root": 7, "shelling_weight": 8388, "child_V": 149, "C": 123, "D": 36, "forced_native": 18, "single_root_average_lower": "2097/110290"},
+      {"root": 8, "shelling_weight": 8388, "child_V": 149, "C": 123, "D": 36, "forced_native": 18, "single_root_average_lower": "2097/110290"},
+      {"root": 2, "shelling_weight": 11808, "child_V": 164, "C": 108, "D": 51, "forced_native": 3, "single_root_average_lower": "41/8070"}
+    ]
+  },
+  "convex_family_rows": [
+    {"n": 4, "V": 15, "W": 24, "C_equals_K": 7, "top_density": "7/11", "forced_common_face_load_over_W": "1"},
+    {"n": 5, "V": 31, "W": 120, "C_equals_K": 15, "top_density": "15/26", "forced_common_face_load_over_W": "1"},
+    {"n": 6, "V": 63, "W": 720, "C_equals_K": 31, "top_density": "31/57", "forced_common_face_load_over_W": "1"},
+    {"n": 8, "V": 255, "W": 40320, "C_equals_K": 127, "top_density": "127/247", "forced_common_face_load_over_W": "1"},
+    {"n": 12, "V": 4095, "W": 479001600, "C_equals_K": 2047, "top_density": "2047/4083", "forced_common_face_load_over_W": "1"},
+    {"n": 20, "V": 1048575, "W": 2432902008176640000, "C_equals_K": 524287, "top_density": "524287/1048555", "forced_common_face_load_over_W": "1"},
+    {"n": 32, "V": 4294967295, "W": 263130836933693530167218012160000000, "C_equals_K": 2147483647, "top_density": "2147483647/4294967263", "forced_common_face_load_over_W": "1"}
+  ]
+}

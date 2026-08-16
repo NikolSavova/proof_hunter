@@ -1,0 +1,45 @@
+{
+  "arithmetic": "exact integers and fractions",
+  "artifact": "PARENT_SEAM_JET_COMPLETION",
+  "fixed_parent_singleton_audit": {
+    "adjacent_bad": 3104,
+    "adjacent_good": 2606,
+    "disjoint": 1261,
+    "endpoint_incidence_checks": 15506,
+    "same": 783,
+    "singleton_pairs": 7754
+  },
+  "rooted_multi_ear_audit": {
+    "active_selected_states": 67,
+    "bad_rooted_pairs": 175,
+    "boolean_outputs": 608,
+    "completed_pairs": 76,
+    "good_rooted_pairs": 221,
+    "jet_states": 195,
+    "left_rooted_faces": 18,
+    "right_rooted_faces": 22,
+    "rooted_pairs": 396,
+    "selected_pairs": 72
+  },
+  "separated_pair_square_loss": {
+    "B_over_M_denominator": 18,
+    "B_over_M_numerator": 96,
+    "full_projection_product_P0": 36,
+    "maximum_pair_bank": 96,
+    "pair_bank_below_M_squared": true,
+    "pair_bank_sizes": [
+      72,
+      96,
+      72,
+      96
+    ],
+    "selected_records_M": 18
+  },
+  "sharp_examples": {
+    "ferrers_threshold_checks": 8,
+    "same_edge_first_turn": 8,
+    "same_edge_second_turn": -9,
+    "strict_endpoint_counterexample": true
+  },
+  "status": "PASS"
+}

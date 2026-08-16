@@ -1,0 +1,148 @@
+{
+  "description": "rational rank-four nested-cap counterexample to every pointwise RMC(C,b)",
+  "m": 54,
+  "n": 60,
+  "selected_face_rank": 4,
+  "asymmetric_endpoint_pairs": [
+    [
+      -4,
+      "w_m"
+    ],
+    [
+      -2,
+      "w_(m-1)"
+    ]
+  ],
+  "rank_four_triangle_witnesses_checked": 2704,
+  "rank_four_bucket_to_capture_quotient_lower": "36472996377170786403/7740561859543040",
+  "rank_four_bucket_to_capture_log2_lower": 12.202102816042744,
+  "rank_four_RMC_8_0_analytic_threshold_m": 54,
+  "rank_four_exact_matrix_audits": [
+    {
+      "m": 21,
+      "n": 27,
+      "face_indices": [
+        1,
+        2,
+        22,
+        23
+      ],
+      "face_x_coordinates": [
+        "-4",
+        "-2",
+        "9/11",
+        "10/11"
+      ],
+      "rank_four_bucket_degree": 9570,
+      "half_partition_function": "11854959283/2097152",
+      "capture_product": "137438953472/5899282392221631",
+      "bucket_probability": "1254359040/11854959283",
+      "bucket_to_capture_quotient": "28228066246780504335/6215412892565504",
+      "log2_quotient": 12.148992447116374,
+      "per_vertex_constant": 8.209236849275989
+    },
+    {
+      "m": 22,
+      "n": 28,
+      "face_indices": [
+        1,
+        2,
+        23,
+        24
+      ],
+      "face_x_coordinates": [
+        "-4",
+        "-2",
+        "19/23",
+        "21/23"
+      ],
+      "rank_four_bucket_degree": 11235,
+      "half_partition_function": "34420865049/4194304",
+      "capture_product": "139088220913664/12235663505778272289",
+      "bucket_probability": "981729280/11473621683",
+      "bucket_to_capture_quotient": "15274186609713209907435/2029222650305314816",
+      "log2_quotient": 12.877880765243725,
+      "per_vertex_constant": 9.314447468755752
+    }
+  ],
+  "symmetric_selected_face_rank": 6,
+  "endpoint_pairs": [
+    [
+      -6,
+      6
+    ],
+    [
+      -4,
+      4
+    ],
+    [
+      -2,
+      2
+    ]
+  ],
+  "general_position_triples_checked": 34220,
+  "quadrilateral_witnesses_checked": 74412,
+  "A_m": "1543/4",
+  "trace_halfweight_uppers": {
+    "6": "124983/64",
+    "4": "13887/16",
+    "2": "1543/4"
+  },
+  "interval_halfweight_lower": "58149737003040059690390169/18014398509481984",
+  "capture_uppers": {
+    "6": "434315889064542208/717897987691852588770249",
+    "4": "1737263556258168832/6461081889226673298932241",
+    "2": "6949054225032675328/58149737003040059690390169"
+  },
+  "three_capture_product_upper": "5243208496299983365991491419076139593918943089936826368/269721605590607563262106870407286853611938890184108047911269431464974473521",
+  "bucket_probability_lower": "18014398509481984/42391158275216203514294433201",
+  "bucket_to_capture_quotient_lower": "6362685441135942358474828762538534230890216321/291056539775124321400373096306654052352",
+  "bucket_to_capture_log2_lower": 24.381833029518788,
+  "RMC_8_0_threshold_m": 48,
+  "illustrative_m_thresholds_for_C_8": {
+    "0": 48,
+    "4": 73,
+    "20": 188,
+    "100": 911
+  },
+  "exhaustive_small_normalization_audit": {
+    "m": 8,
+    "faces": 2587,
+    "half_partition_function": "38481/256",
+    "rank_six_bucket_degree": 497,
+    "rank_six_bucket_probability": "1988/38481",
+    "capture_rows": [
+      {
+        "radius": 6,
+        "numerator": "243/4",
+        "denominator": "19041/256",
+        "capture": "5184/6347"
+      },
+      {
+        "radius": 4,
+        "numerator": "27",
+        "denominator": "10401/256",
+        "capture": "2304/3467"
+      },
+      {
+        "radius": 2,
+        "numerator": "12",
+        "denominator": "6561/256",
+        "capture": "1024/2187"
+      }
+    ],
+    "capture_product": "16777216/66015147",
+    "bucket_to_capture_quotient": "10936509353/53800337408"
+  },
+  "claims": [
+    "all coordinates are rational and the configuration is in general position",
+    "both the six-point high cap and the m-point low cap are convex faces",
+    "every endpoint-compatible trace contains at most two low-cap points",
+    "each asymmetric rank-four compatible trace contains at most one earlier low-prefix point",
+    "the same Boolean low-cap reservoir occurs in all three interval denominators",
+    "the rank-four exact matrix audit violates RMC(8,0) at m=21",
+    "the rank-four analytic bound violates RMC(8,0) at m=54",
+    "asymptotic quotient is Omega((9/4)^m/m^6), defeating every fixed C and b",
+    "the stronger rank-four quotient is Omega((3/2)^m/m^2)"
+  ]
+}

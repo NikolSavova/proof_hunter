@@ -1,0 +1,111 @@
+{
+  "description": "two-reference joint lift, Hall demand bridge, and planar monotonicity kill",
+  "n": 9,
+  "points": [
+    [
+      152732,
+      588305
+    ],
+    [
+      198972,
+      629398
+    ],
+    [
+      253646,
+      338142
+    ],
+    [
+      271535,
+      312524
+    ],
+    [
+      627261,
+      872520
+    ],
+    [
+      773158,
+      636702
+    ],
+    [
+      848731,
+      579029
+    ],
+    [
+      886929,
+      449046
+    ],
+    [
+      913864,
+      133077
+    ]
+  ],
+  "faces": 449,
+  "half_partition_function": "9509/256",
+  "rank_at_least_two_probability": "8101/9509",
+  "carleson_mass": "8335/9509",
+  "baseline_inverse_capture_moment": "8335/8101",
+  "joint_density_checks": 439,
+  "mean_radial_depth": "11514/9509",
+  "sum_inverse_capture_demands": "23693/19018",
+  "total_canonical_KL_bits": 0.04808022472681595,
+  "global_jensen_bound_bits": 0.049731866424573126,
+  "depth_rows": [
+    {
+      "depth": 0,
+      "tail_probability": "8101/9509",
+      "capture_cost_bits": 0.03392090218172607,
+      "endpoint_divergence_bits": 0.0,
+      "reservoir_divergence_bits": 0.0012656432773222727,
+      "divergence_difference_bits": -0.0012656432773222727,
+      "inverse_capture_demand": "8335/9509",
+      "conditional_inverse_capture_moment": "8335/8101",
+      "jensen_bound_bits": 0.034999141343529466
+    },
+    {
+      "depth": 1,
+      "tail_probability": "3109/9509",
+      "capture_cost_bits": 0.013516005681915709,
+      "endpoint_divergence_bits": 1.6691430440726776,
+      "reservoir_divergence_bits": 1.6688859955021833,
+      "divergence_difference_bits": 0.0002570485704942449,
+      "inverse_capture_demand": "3203/9509",
+      "conditional_inverse_capture_moment": "3203/3109",
+      "jensen_bound_bits": 0.014050228318132645
+    },
+    {
+      "depth": 2,
+      "tail_probability": "301/9509",
+      "capture_cost_bits": 0.0006433168631741766,
+      "endpoint_divergence_bits": 3.3769916918336382,
+      "reservoir_divergence_bits": 3.397750627556307,
+      "divergence_difference_bits": -0.02075893572266896,
+      "inverse_capture_demand": "611/19018",
+      "conditional_inverse_capture_moment": "611/602",
+      "jensen_bound_bits": 0.0006776818604235192
+    },
+    {
+      "depth": 3,
+      "tail_probability": "3/9509",
+      "capture_cost_bits": 0.0,
+      "endpoint_divergence_bits": 5.870600957869779,
+      "reservoir_divergence_bits": 5.911683149578904,
+      "divergence_difference_bits": -0.041082191709125304,
+      "inverse_capture_demand": "3/9509",
+      "conditional_inverse_capture_moment": "1",
+      "jensen_bound_bits": 0.0
+    }
+  ],
+  "exact_depth_one_KL_sign_certificate": {
+    "common_exponent_denominator": 3109,
+    "product_numerator_bit_length": 44463,
+    "product_denominator_bit_length": 44463,
+    "numerator_exceeds_denominator": true
+  },
+  "claims": [
+    "parent Gibbs incidences are interval-container incidences conditioned on compatibility",
+    "all three inverse-capture demand formulas agree exactly",
+    "one-depth and global Jensen/log-sum bridges hold",
+    "depth one strictly violates inverse-moment monotonicity",
+    "depth one strictly violates exact two-reference KL domination"
+  ]
+}

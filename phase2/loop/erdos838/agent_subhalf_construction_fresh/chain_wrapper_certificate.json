@@ -1,0 +1,194 @@
+{
+  "claim": "strict-chain guard wrapper sandwich and finite exact iteration",
+  "coherent_edge_wrapper_rows": [
+    {
+      "Z": 169,
+      "cap_hat": 116,
+      "cup_hat": 91,
+      "depth": 0,
+      "n": 9
+    },
+    {
+      "Z": 386,
+      "cap_hat": 202,
+      "cup_hat": 243,
+      "depth": 1,
+      "n": 11
+    },
+    {
+      "Z": 843,
+      "cap_hat": 510,
+      "cup_hat": 417,
+      "depth": 2,
+      "n": 13
+    },
+    {
+      "Z": 1784,
+      "cap_hat": 862,
+      "cup_hat": 1035,
+      "depth": 3,
+      "n": 15
+    },
+    {
+      "Z": 3697,
+      "cap_hat": 2102,
+      "cup_hat": 1741,
+      "depth": 4,
+      "n": 17
+    },
+    {
+      "Z": 7558,
+      "cap_hat": 3518,
+      "cup_hat": 4223,
+      "depth": 5,
+      "n": 19
+    },
+    {
+      "Z": 15319,
+      "cap_hat": 8486,
+      "cup_hat": 7057,
+      "depth": 6,
+      "n": 21
+    },
+    {
+      "Z": 30884,
+      "cap_hat": 14158,
+      "cup_hat": 16995,
+      "depth": 7,
+      "n": 23
+    },
+    {
+      "Z": 62061,
+      "cap_hat": 34038,
+      "cup_hat": 28341,
+      "depth": 8,
+      "n": 25
+    }
+  ],
+  "greedy_direction_reset_rows": [
+    {
+      "Z": 169,
+      "chosen_shear_denominator": 170915450,
+      "chosen_shear_numerator": -179662813,
+      "depth": 0,
+      "min_cap_plus_cup_hat": 199,
+      "n": 9,
+      "projection_chambers": 37
+    },
+    {
+      "Z": 378,
+      "chosen_shear_denominator": 249001558072766989761511302483948523900,
+      "chosen_shear_numerator": -27962047011716355844206410842643741894641199937,
+      "depth": 1,
+      "min_cap_plus_cup_hat": 367,
+      "n": 11,
+      "projection_chambers": 55
+    },
+    {
+      "Z": 757,
+      "chosen_shear_denominator": 3453242112695175715665958108729356402181828717213596871440638948897858440727459931921082074478,
+      "chosen_shear_numerator": -5179863143176089570182030481688706352403244320833980156624273378541433719763526225082066708717,
+      "depth": 2,
+      "min_cap_plus_cup_hat": 614,
+      "n": 13,
+      "projection_chambers": 78
+    },
+    {
+      "Z": 1385,
+      "chosen_shear_denominator": 10924149652969834921142602324212700775735273426563784125752479263718521293834583422228792733967394759933136483963281908304403975745537109496451581711731403442436004314615933919155540353695005851485248136439477800988340548212932271510895125059607004022541168971405990613502034201158543295154069299,
+      "chosen_shear_numerator": -147593988919363393841055025452720816419234256289395841671013121897383035860671958258378895973765227082934758357257529876599280194459493986544874201727778182211106441128421785673855819229479653274484574834237429492852681430090181948993469937430894056682178285397862058065097947109368957029921293405144624551747448,
+      "depth": 3,
+      "min_cap_plus_cup_hat": 1002,
+      "n": 15,
+      "projection_chambers": 105
+    }
+  ],
+  "rows": [
+    {
+      "Z": 169,
+      "n": 9,
+      "profile_including_empty": [
+        1,
+        9,
+        36,
+        84,
+        36,
+        3
+      ],
+      "wrapper_depth": 0
+    },
+    {
+      "Z": 563,
+      "guard_intersection_counts": {
+        "0": 116,
+        "0,11": 10,
+        "0,9": 27,
+        "0,9,11": 10,
+        "11": 91,
+        "9": 103,
+        "9,11": 37,
+        "none": 169
+      },
+      "n": 12,
+      "profile_including_empty": [
+        1,
+        12,
+        66,
+        220,
+        206,
+        55,
+        3
+      ],
+      "universal_lower_bound": 189,
+      "universal_upper_bound": 1034,
+      "wrapper_depth": 1
+    },
+    {
+      "Z": 1568,
+      "guard_intersection_counts": {
+        "0": 300,
+        "0,1": 22,
+        "0,1,14": 13,
+        "0,14": 13,
+        "1": 216,
+        "1,14": 207,
+        "14": 234,
+        "none": 563
+      },
+      "n": 15,
+      "profile_including_empty": [
+        1,
+        15,
+        105,
+        455,
+        583,
+        305,
+        90,
+        13,
+        1
+      ],
+      "universal_lower_bound": 589,
+      "universal_upper_bound": 3404,
+      "wrapper_depth": 2
+    },
+    {
+      "Z": 4179,
+      "n": 18,
+      "profile_including_empty": [
+        1,
+        18,
+        153,
+        816,
+        1369,
+        1141,
+        537,
+        128,
+        15,
+        1
+      ],
+      "universal_lower_bound": 1600,
+      "universal_upper_bound": 9440,
+      "wrapper_depth": 3
+    }
+  ]
+}

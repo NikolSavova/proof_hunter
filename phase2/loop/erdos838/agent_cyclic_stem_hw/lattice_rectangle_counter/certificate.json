@@ -1,0 +1,911 @@
+{
+  "conjectures_tested": {
+    "LR_constant_one": "For every planar closure lattice C(P) and K in C(P), |down K||up K| <= |C(P)|.",
+    "localized_Theorem23_product": "A full support rectangle satisfying Theorem 23 with epsilon=0 forces at least |G| distinct core-preserving intermediate hulls or convex faces.",
+    "fixed_chord_control": "Opposite-side families sharing one directed chord have all distinct convex cross-unions."
+  },
+  "minimal_planar_counterexample": {
+    "points": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "K_mask": 4,
+    "closed_hulls": 15,
+    "ordinary_convex_faces": 15,
+    "down_K": 2,
+    "up_K": 8,
+    "rectangle_pairs": 16,
+    "hulls_per_pair": "15/16",
+    "violates_constant_one": true
+  },
+  "nested_ring_planar_counterexamples": [
+    {
+      "points": [
+        [
+          1000400006,
+          6
+        ],
+        [
+          498208656,
+          8656
+        ],
+        [
+          -498791329,
+          8671
+        ],
+        [
+          -999500001,
+          -1
+        ],
+        [
+          -499008658,
+          -8658
+        ],
+        [
+          501691333,
+          -8667
+        ],
+        [
+          10100016,
+          16
+        ],
+        [
+          -6399924,
+          76
+        ],
+        [
+          -3700092,
+          -92
+        ]
+      ],
+      "K_mask": 448,
+      "closed_hulls": 230,
+      "ordinary_convex_faces": 230,
+      "down_K": 8,
+      "up_K": 64,
+      "rectangle_pairs": 512,
+      "hulls_per_pair": "115/256",
+      "violates_constant_one": true,
+      "inner_points": 3,
+      "outer_points": 6
+    },
+    {
+      "points": [
+        [
+          1000400006,
+          6
+        ],
+        [
+          705307067,
+          7067
+        ],
+        [
+          1210011,
+          10011
+        ],
+        [
+          -706592930,
+          7070
+        ],
+        [
+          -998999998,
+          2
+        ],
+        [
+          -705407078,
+          -7078
+        ],
+        [
+          1189988,
+          -10012
+        ],
+        [
+          706892917,
+          -7083
+        ],
+        [
+          9700019,
+          19
+        ],
+        [
+          -1699899,
+          101
+        ],
+        [
+          -9700018,
+          -18
+        ],
+        [
+          1699899,
+          -101
+        ]
+      ],
+      "K_mask": 3840,
+      "closed_hulls": 871,
+      "ordinary_convex_faces": 871,
+      "down_K": 16,
+      "up_K": 256,
+      "rectangle_pairs": 4096,
+      "hulls_per_pair": "871/4096",
+      "violates_constant_one": true,
+      "inner_points": 4,
+      "outer_points": 8
+    },
+    {
+      "points": [
+        [
+          1000400006,
+          6
+        ],
+        [
+          807205874,
+          5874
+        ],
+        [
+          310209522,
+          9522
+        ],
+        [
+          -308490490,
+          9510
+        ],
+        [
+          -807894120,
+          5880
+        ],
+        [
+          -998300007,
+          -7
+        ],
+        [
+          -807805890,
+          -5890
+        ],
+        [
+          -309209523,
+          -9523
+        ],
+        [
+          307590508,
+          -9492
+        ],
+        [
+          808594136,
+          -5864
+        ],
+        [
+          10100016,
+          16
+        ],
+        [
+          1400097,
+          97
+        ],
+        [
+          -9199956,
+          44
+        ],
+        [
+          -6900070,
+          -70
+        ],
+        [
+          4499911,
+          -89
+        ]
+      ],
+      "K_mask": 31744,
+      "closed_hulls": 2990,
+      "ordinary_convex_faces": 2990,
+      "down_K": 32,
+      "up_K": 1024,
+      "rectangle_pairs": 32768,
+      "hulls_per_pair": "1495/16384",
+      "violates_constant_one": true,
+      "inner_points": 5,
+      "outer_points": 10
+    },
+    {
+      "points": [
+        [
+          1000400006,
+          6
+        ],
+        [
+          864204996,
+          4996
+        ],
+        [
+          501208671,
+          8671
+        ],
+        [
+          509999,
+          9999
+        ],
+        [
+          -498991338,
+          8662
+        ],
+        [
+          -864295007,
+          4993
+        ],
+        [
+          -998800012,
+          -12
+        ],
+        [
+          -866205012,
+          -5012
+        ],
+        [
+          -501408641,
+          -8641
+        ],
+        [
+          -409986,
+          -9986
+        ],
+        [
+          501791329,
+          -8671
+        ],
+        [
+          865894986,
+          -5014
+        ],
+        [
+          9700017,
+          17
+        ],
+        [
+          3600096,
+          96
+        ],
+        [
+          -6599923,
+          77
+        ],
+        [
+          -9800017,
+          -17
+        ],
+        [
+          -3300095,
+          -95
+        ],
+        [
+          6599924,
+          -76
+        ]
+      ],
+      "K_mask": 258048,
+      "closed_hulls": 9841,
+      "ordinary_convex_faces": 9841,
+      "down_K": 64,
+      "up_K": 4096,
+      "rectangle_pairs": 262144,
+      "hulls_per_pair": "9841/262144",
+      "violates_constant_one": true,
+      "inner_points": 6,
+      "outer_points": 12
+    }
+  ],
+  "near_product_nested_chain": [
+    {
+      "a": 2,
+      "point_count": 12,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10000,
+          0
+        ],
+        [
+          5000,
+          -20000
+        ],
+        [
+          5001,
+          -40000
+        ],
+        [
+          5004,
+          -80000
+        ],
+        [
+          5009,
+          -160000
+        ],
+        [
+          5016,
+          -320000
+        ],
+        [
+          5025,
+          -640000
+        ],
+        [
+          5036,
+          -1280000
+        ],
+        [
+          5049,
+          -2560000
+        ],
+        [
+          5064,
+          -5120000
+        ],
+        [
+          5081,
+          -10240000
+        ]
+      ],
+      "fixed_core_indices": [
+        0,
+        1
+      ],
+      "hidden_z_indices": [
+        2,
+        3
+      ],
+      "target_z_indices": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "hidden_support": 2,
+      "target_support": 8,
+      "record_edges": 16,
+      "tau": 3,
+      "kappa": 1,
+      "entropy_density_equality_integer_checks": {
+        "hidden_support^4_equals_edges": 16,
+        "target_support^4_equals_edges^3": 4096
+      },
+      "mutual_information_bits": 0,
+      "independent_support_probability": "1",
+      "weighted_C4_probability": "1",
+      "core_preserving_closed_hulls": 11,
+      "core_preserving_convex_faces": 11,
+      "records_per_localized_object": "16/11"
+    },
+    {
+      "a": 3,
+      "point_count": 32,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          90000,
+          0
+        ],
+        [
+          45000,
+          -180000
+        ],
+        [
+          45001,
+          -360000
+        ],
+        [
+          45004,
+          -720000
+        ],
+        [
+          45009,
+          -1440000
+        ],
+        [
+          45016,
+          -2880000
+        ],
+        [
+          45025,
+          -5760000
+        ],
+        [
+          45036,
+          -11520000
+        ],
+        [
+          45049,
+          -23040000
+        ],
+        [
+          45064,
+          -46080000
+        ],
+        [
+          45081,
+          -92160000
+        ],
+        [
+          45100,
+          -184320000
+        ],
+        [
+          45121,
+          -368640000
+        ],
+        [
+          45144,
+          -737280000
+        ],
+        [
+          45169,
+          -1474560000
+        ],
+        [
+          45196,
+          -2949120000
+        ],
+        [
+          45225,
+          -5898240000
+        ],
+        [
+          45256,
+          -11796480000
+        ],
+        [
+          45289,
+          -23592960000
+        ],
+        [
+          45324,
+          -47185920000
+        ],
+        [
+          45361,
+          -94371840000
+        ],
+        [
+          45400,
+          -188743680000
+        ],
+        [
+          45441,
+          -377487360000
+        ],
+        [
+          45484,
+          -754974720000
+        ],
+        [
+          45529,
+          -1509949440000
+        ],
+        [
+          45576,
+          -3019898880000
+        ],
+        [
+          45625,
+          -6039797760000
+        ],
+        [
+          45676,
+          -12079595520000
+        ],
+        [
+          45729,
+          -24159191040000
+        ],
+        [
+          45784,
+          -48318382080000
+        ],
+        [
+          45841,
+          -96636764160000
+        ]
+      ],
+      "fixed_core_indices": [
+        0,
+        1
+      ],
+      "hidden_z_indices": [
+        2,
+        3,
+        4
+      ],
+      "target_z_indices": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "hidden_support": 3,
+      "target_support": 27,
+      "record_edges": 81,
+      "tau": 3,
+      "kappa": 1,
+      "entropy_density_equality_integer_checks": {
+        "hidden_support^4_equals_edges": 81,
+        "target_support^4_equals_edges^3": 531441
+      },
+      "mutual_information_bits": 0,
+      "independent_support_probability": "1",
+      "weighted_C4_probability": "1",
+      "core_preserving_closed_hulls": 31,
+      "core_preserving_convex_faces": 31,
+      "records_per_localized_object": "81/31"
+    }
+  ],
+  "fixed_chord_positive_control": {
+    "points": [
+      [
+        0,
+        0
+      ],
+      [
+        100,
+        0
+      ],
+      [
+        17,
+        -31
+      ],
+      [
+        39,
+        -47
+      ],
+      [
+        61,
+        -43
+      ],
+      [
+        83,
+        -29
+      ],
+      [
+        13,
+        23
+      ],
+      [
+        32,
+        41
+      ],
+      [
+        57,
+        37
+      ],
+      [
+        78,
+        31
+      ],
+      [
+        91,
+        19
+      ]
+    ],
+    "lower_choices": 4,
+    "upper_choices": 5,
+    "distinct_cross_union_faces": 20
+  },
+  "abstract_meet_distributive_products": [
+    {
+      "power": 1,
+      "closed_hulls": 15,
+      "down_K": 2,
+      "up_K": 8,
+      "rectangle_pairs": 16,
+      "hulls_per_pair": "15/16"
+    },
+    {
+      "power": 2,
+      "closed_hulls": 225,
+      "down_K": 4,
+      "up_K": 64,
+      "rectangle_pairs": 256,
+      "hulls_per_pair": "225/256"
+    },
+    {
+      "power": 3,
+      "closed_hulls": 3375,
+      "down_K": 8,
+      "up_K": 512,
+      "rectangle_pairs": 4096,
+      "hulls_per_pair": "3375/4096"
+    },
+    {
+      "power": 4,
+      "closed_hulls": 50625,
+      "down_K": 16,
+      "up_K": 4096,
+      "rectangle_pairs": 65536,
+      "hulls_per_pair": "50625/65536"
+    },
+    {
+      "power": 5,
+      "closed_hulls": 759375,
+      "down_K": 32,
+      "up_K": 32768,
+      "rectangle_pairs": 1048576,
+      "hulls_per_pair": "759375/1048576"
+    },
+    {
+      "power": 6,
+      "closed_hulls": 11390625,
+      "down_K": 64,
+      "up_K": 262144,
+      "rectangle_pairs": 16777216,
+      "hulls_per_pair": "11390625/16777216"
+    },
+    {
+      "power": 7,
+      "closed_hulls": 170859375,
+      "down_K": 128,
+      "up_K": 2097152,
+      "rectangle_pairs": 268435456,
+      "hulls_per_pair": "170859375/268435456"
+    },
+    {
+      "power": 8,
+      "closed_hulls": 2562890625,
+      "down_K": 256,
+      "up_K": 16777216,
+      "rectangle_pairs": 4294967296,
+      "hulls_per_pair": "2562890625/4294967296"
+    },
+    {
+      "power": 9,
+      "closed_hulls": 38443359375,
+      "down_K": 512,
+      "up_K": 134217728,
+      "rectangle_pairs": 68719476736,
+      "hulls_per_pair": "38443359375/68719476736"
+    },
+    {
+      "power": 10,
+      "closed_hulls": 576650390625,
+      "down_K": 1024,
+      "up_K": 1073741824,
+      "rectangle_pairs": 1099511627776,
+      "hulls_per_pair": "576650390625/1099511627776"
+    },
+    {
+      "power": 11,
+      "closed_hulls": 8649755859375,
+      "down_K": 2048,
+      "up_K": 8589934592,
+      "rectangle_pairs": 17592186044416,
+      "hulls_per_pair": "8649755859375/17592186044416"
+    },
+    {
+      "power": 12,
+      "closed_hulls": 129746337890625,
+      "down_K": 4096,
+      "up_K": 68719476736,
+      "rectangle_pairs": 281474976710656,
+      "hulls_per_pair": "129746337890625/281474976710656"
+    }
+  ],
+  "fixed_x_permutation_census": [
+    {
+      "n": 3,
+      "general_position_permutations": 4,
+      "distinct_labeled_chirotopes": 2,
+      "violating_chirotopes": 0,
+      "worst_hulls_per_pair": "1",
+      "worst_points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "worst_K_mask": 0,
+      "worst_counts_C_down_up": [
+        8,
+        1,
+        8
+      ]
+    },
+    {
+      "n": 4,
+      "general_position_permutations": 18,
+      "distinct_labeled_chirotopes": 8,
+      "violating_chirotopes": 4,
+      "worst_hulls_per_pair": "15/16",
+      "worst_points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "worst_K_mask": 2,
+      "worst_counts_C_down_up": [
+        15,
+        2,
+        8
+      ]
+    },
+    {
+      "n": 5,
+      "general_position_permutations": 56,
+      "distinct_labeled_chirotopes": 28,
+      "violating_chirotopes": 22,
+      "worst_hulls_per_pair": "29/32",
+      "worst_points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "worst_K_mask": 2,
+      "worst_counts_C_down_up": [
+        29,
+        2,
+        16
+      ]
+    },
+    {
+      "n": 6,
+      "general_position_permutations": 272,
+      "distinct_labeled_chirotopes": 144,
+      "violating_chirotopes": 134,
+      "worst_hulls_per_pair": "25/32",
+      "worst_points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "worst_K_mask": 18,
+      "worst_counts_C_down_up": [
+        50,
+        4,
+        16
+      ]
+    },
+    {
+      "n": 7,
+      "general_position_permutations": 1000,
+      "distinct_labeled_chirotopes": 684,
+      "violating_chirotopes": 662,
+      "worst_hulls_per_pair": "41/64",
+      "worst_points": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "worst_K_mask": 42,
+      "worst_counts_C_down_up": [
+        82,
+        8,
+        16
+      ]
+    }
+  ]
+}

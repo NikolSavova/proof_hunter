@@ -1,0 +1,44 @@
+{
+  "all_base_vertices_survive": true,
+  "all_transitions_same_edge": true,
+  "ambient_face_upper_bound": 76400,
+  "base_size": 3,
+  "certified_internal_V": 4775,
+  "cloud_exponent_checks": [
+    {
+      "alpha": "1",
+      "beta": "1",
+      "history_coefficient": "1",
+      "inductive_face_coefficient": "1/2"
+    },
+    {
+      "alpha": "1",
+      "beta": "4/5",
+      "history_coefficient": "4/5",
+      "inductive_face_coefficient": "8/25"
+    },
+    {
+      "alpha": "1",
+      "beta": "3/5",
+      "history_coefficient": "3/5",
+      "inductive_face_coefficient": "9/50"
+    },
+    {
+      "alpha": "4/5",
+      "beta": "3/5",
+      "history_coefficient": "12/25",
+      "inductive_face_coefficient": "9/50"
+    }
+  ],
+  "common_terminal_hull_size": 4,
+  "cross_level_clouds": 5,
+  "histories_checked": 184756,
+  "history_arrows_checked": 1847560,
+  "history_length": 10,
+  "internal_order_type_points": 20,
+  "layered_transversal_histories": 1024,
+  "one_slot_fibre_lower_bound": 3,
+  "pair_level_face_reservoir_with_multiplicity": 1457,
+  "pair_level_trivial_upper_bound": 47750,
+  "repair_relations_checked": 210
+}

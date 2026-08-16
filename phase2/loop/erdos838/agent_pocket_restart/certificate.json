@@ -1,0 +1,199 @@
+{
+  "description": "exact pocket-restart geometry, decoder, and obstructions",
+  "crossing_visible_pockets": {
+    "coordinates": [
+      [
+        "-4",
+        "16"
+      ],
+      [
+        "-3",
+        "9"
+      ],
+      [
+        "-2",
+        "4"
+      ],
+      [
+        "-1",
+        "1"
+      ],
+      [
+        "0",
+        "0"
+      ],
+      [
+        "1",
+        "1"
+      ],
+      [
+        "2",
+        "4"
+      ],
+      [
+        "3",
+        "9"
+      ],
+      [
+        "4",
+        "16"
+      ],
+      [
+        "-8",
+        "-5"
+      ],
+      [
+        "-8",
+        "17"
+      ]
+    ],
+    "maximal_face": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "hidden_visible_chains": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        0,
+        1,
+        2
+      ]
+    ],
+    "intersection": [
+      1,
+      2
+    ],
+    "laminar": false
+  },
+  "visible_family_restart": {
+    "chain_size": 11,
+    "coordinates": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "1",
+        "9"
+      ],
+      [
+        "2",
+        "16"
+      ],
+      [
+        "3",
+        "21"
+      ],
+      [
+        "4",
+        "24"
+      ],
+      [
+        "5",
+        "25"
+      ],
+      [
+        "6",
+        "24"
+      ],
+      [
+        "7",
+        "21"
+      ],
+      [
+        "8",
+        "16"
+      ],
+      [
+        "9",
+        "9"
+      ],
+      [
+        "10",
+        "0"
+      ],
+      [
+        "-1",
+        "121"
+      ]
+    ],
+    "maximal_apex_triangles": 55,
+    "bad_incidences_routed": 495,
+    "transition_checks": 495,
+    "strict_pocket_size": 9,
+    "strict_pocket_boolean_faces": 512,
+    "injection_unused_targets": 17,
+    "target_rank_histogram": {
+      "0": 1,
+      "1": 9,
+      "2": 36,
+      "3": 84,
+      "4": 126,
+      "5": 125,
+      "6": 80,
+      "7": 30,
+      "8": 4
+    },
+    "source_demand": "1/8",
+    "minimum_target_residual_capacity": "1/2",
+    "maximum_relative_load": "1/4",
+    "congestion": 1
+  },
+  "hull_expansion": {
+    "point_sets": 2,
+    "exact_subset_point_checks": 71680
+  },
+  "nested_onion_depth": [
+    {
+      "triangle_layers": 1,
+      "points": 3,
+      "uniform_expected_onion_depth": "7/8",
+      "uniform_lower_bound": "1/8",
+      "activity_half_boolean_expected_onion_depth": "19/27",
+      "activity_half_lower_bound": "1/27"
+    },
+    {
+      "triangle_layers": 2,
+      "points": 6,
+      "uniform_expected_onion_depth": "79/64",
+      "uniform_lower_bound": "1/4",
+      "activity_half_boolean_expected_onion_depth": "238/243",
+      "activity_half_lower_bound": "2/27"
+    },
+    {
+      "triangle_layers": 3,
+      "points": 9,
+      "uniform_expected_onion_depth": "53/32",
+      "uniform_lower_bound": "3/8",
+      "activity_half_boolean_expected_onion_depth": "24199/19683",
+      "activity_half_lower_bound": "1/9"
+    },
+    {
+      "triangle_layers": 4,
+      "points": 12,
+      "uniform_expected_onion_depth": "521/256",
+      "uniform_lower_bound": "1/2",
+      "activity_half_boolean_expected_onion_depth": "794524/531441",
+      "activity_half_lower_bound": "4/27"
+    },
+    {
+      "triangle_layers": 5,
+      "points": 15,
+      "uniform_expected_onion_depth": "39523/16384",
+      "uniform_lower_bound": "5/8",
+      "activity_half_boolean_expected_onion_depth": "311461/177147",
+      "activity_half_lower_bound": "5/27"
+    }
+  ]
+}

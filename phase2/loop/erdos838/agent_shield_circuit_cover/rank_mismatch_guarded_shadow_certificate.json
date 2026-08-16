@@ -1,0 +1,136 @@
+{
+  "cross_petal_bad_circuit": {
+    "carrier_U_convex": true,
+    "carrier_V_convex": true,
+    "circuit": [
+      "l",
+      "r",
+      "x",
+      "y"
+    ],
+    "cross_petals": [
+      "x",
+      "y"
+    ],
+    "hidden_point": "x",
+    "points": {
+      "d": [
+        "0",
+        "-20"
+      ],
+      "l": [
+        "-20",
+        "0"
+      ],
+      "r": [
+        "20",
+        "0"
+      ],
+      "x": [
+        "1",
+        "10"
+      ],
+      "y": [
+        "-1",
+        "30"
+      ]
+    },
+    "union_convex": false
+  },
+  "endpoint_partition": {
+    "J": 3,
+    "endpoint_bins": 21,
+    "high_bank_union": 120,
+    "high_histories": 240,
+    "low_bound": "540",
+    "low_histories": 177,
+    "m": 7,
+    "nontrivial_faces": 120,
+    "rho": "3/2"
+  },
+  "guarded_shadow": {
+    "beta": 4,
+    "carriers": 70,
+    "compatible_pairs": 105,
+    "fixed_prefix_boolean_bank": 60,
+    "fixed_prefix_petals": 15,
+    "flow_at_K": 280,
+    "flow_at_K_minus_1": 252,
+    "guard_rank": 2,
+    "k": 4,
+    "left_degree_R": 6,
+    "m": 10,
+    "max_pair_union_multiplicity": 3,
+    "max_shadow_degree": 15,
+    "mixed_bank": 140,
+    "s": 6,
+    "shadow_outputs": 28,
+    "sharp_clone_congestion": 10
+  },
+  "mismatch_poor_table": [
+    {
+      "R": 3,
+      "b": 1,
+      "beta": 2,
+      "beta_over_R": "2/3",
+      "guarded_boolean_multiplier": 4,
+      "s": 5
+    },
+    {
+      "R": 6,
+      "b": 2,
+      "beta": 4,
+      "beta_over_R": "2/3",
+      "guarded_boolean_multiplier": 4,
+      "s": 6
+    },
+    {
+      "R": 10,
+      "b": 3,
+      "beta": 8,
+      "beta_over_R": "4/5",
+      "guarded_boolean_multiplier": 4,
+      "s": 7
+    },
+    {
+      "R": 15,
+      "b": 4,
+      "beta": 16,
+      "beta_over_R": "16/15",
+      "guarded_boolean_multiplier": 4,
+      "s": 8
+    },
+    {
+      "R": 21,
+      "b": 5,
+      "beta": 32,
+      "beta_over_R": "32/21",
+      "guarded_boolean_multiplier": 4,
+      "s": 9
+    },
+    {
+      "R": 28,
+      "b": 6,
+      "beta": 64,
+      "beta_over_R": "16/7",
+      "guarded_boolean_multiplier": 4,
+      "s": 10
+    },
+    {
+      "R": 36,
+      "b": 7,
+      "beta": 128,
+      "beta_over_R": "32/9",
+      "guarded_boolean_multiplier": 4,
+      "s": 11
+    },
+    {
+      "R": 45,
+      "b": 8,
+      "beta": 256,
+      "beta_over_R": "256/45",
+      "guarded_boolean_multiplier": 4,
+      "s": 12
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "Hall_and_singleton_domination": {
+    "Hall_witness_contexts": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "contexts": 4,
+    "empty_face_excluded": true,
+    "exact_Hall_ratio": "15/14",
+    "nonempty_outputs": 18,
+    "proportional_max_load": "36/19",
+    "singleton_max_load": "36/19"
+  },
+  "arbitrary_induced_bank_prefix_failure": {
+    "circuit_type": "1+3",
+    "completion_face": "{b,c,x}",
+    "prefix": "{a}",
+    "prefix_union_completion_is_convex": false
+  },
+  "claims": [
+    "fractional Hall min-load is the maximum demand-to-union-capacity ratio",
+    "after deleting the empty face proportional load in every hereditary bank is singleton-dominated",
+    "weighted rank-t double counting retains a common nonempty prefix without square loss",
+    "Boolean and one-per-role partial cubes factor exactly over a common prefix",
+    "arbitrary induced face banks do not factor over even a singleton prefix",
+    "identical Boolean completion supports give an exact scalable planar bounded-rank quadratic-mass regression",
+    "the regression exposes a convex outer shield whose half-weight pays the literal source demand"
+  ],
+  "common_prefix_double_count": {
+    "layers": {
+      "1": {
+        "best_face": [
+          5
+        ],
+        "best_weight": "25/4",
+        "guaranteed_average": "5",
+        "weighted_incidence_sum": "35"
+      },
+      "2": {
+        "best_face": [
+          1,
+          5
+        ],
+        "best_weight": "9/2",
+        "guaranteed_average": "5/2",
+        "weighted_incidence_sum": "105/2"
+      },
+      "3": {
+        "best_face": [
+          1,
+          3,
+          5
+        ],
+        "best_weight": "5/2",
+        "guaranteed_average": "1",
+        "weighted_incidence_sum": "35"
+      }
+    },
+    "n": 7,
+    "uniform_support_rank": 4
+  },
+  "description": "global nonempty support-bank Hall routing, common prefixes, and synchronized-support regression",
+  "prefix_factorizations": {
+    "boolean": {
+      "prefix_rank": 3,
+      "prefixed_half_weight": "81/128",
+      "prefixed_outputs": 16,
+      "support_rank": 7
+    },
+    "partial": {
+      "occupied_roles": [
+        1,
+        3
+      ],
+      "prefixed_half_weight": "3/2",
+      "prefixed_outputs": 18,
+      "role_sizes": [
+        2,
+        3,
+        1,
+        4,
+        2
+      ]
+    }
+  },
+  "synchronized_planar_support_regression": {
+    "cap_rank": 7,
+    "completion_multiplicity_at_every_prefix": 56,
+    "contexts": 56,
+    "exact_Hall_load": "896/2059",
+    "identical_nonempty_bank_capacity": "2059/128",
+    "literal_total_demand": "7",
+    "nonempty_common_prefixes_checked": 127,
+    "outer_shield_half_capacity": "6561/256",
+    "outer_shield_pays_literal_demand": true,
+    "outer_shield_rank": 8,
+    "rooted_1_plus_3_circuits_checked": 280,
+    "source_context_rank": 3
+  }
+}

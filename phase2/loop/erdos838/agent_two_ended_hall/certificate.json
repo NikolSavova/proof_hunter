@@ -1,0 +1,303 @@
+{
+  "schema": "erdos838-two-ended-capped-hall-v1",
+  "finite_exact_geometry": {
+    "r": 8,
+    "M": 3,
+    "n": 23,
+    "epsilon": "1/32",
+    "cloud_delta": "1/256",
+    "internal_blocks": 6,
+    "micro_cap_count": 6,
+    "micro_cup_count": 7,
+    "full_two_ended_faces": 3402,
+    "full_two_ended_formula": "6*7*3^4",
+    "all_interval_forward_faces": 7518,
+    "forward_scan_final_transport": 2184,
+    "rank_r_pair_pair_faces": 729,
+    "rank_r_pair_pair_formula": "binom(3,2)^2*3^4",
+    "suffix_retention_regression": {
+      "interval_target": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "common_suffix_point": 7,
+      "extended_point_count": 5,
+      "extended_hull": [
+        1,
+        2,
+        5,
+        7
+      ],
+      "hidden_points": [
+        4
+      ]
+    },
+    "simultaneous_repair_blocks": [
+      1,
+      3,
+      5
+    ],
+    "disjoint_violated_edge_windows": [
+      [
+        6,
+        7
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "fixed_source_boolean_targets": 8,
+    "one_target_inverse_fibre": 8,
+    "one_target_inverse_fibre_formula": "(3-1)^3"
+  },
+  "scalable_capped_hall": [
+    {
+      "r": 16,
+      "regime": "small",
+      "log2_M": 16,
+      "log2_T": 16.0,
+      "ell": 20,
+      "g": 4,
+      "log2_D": 4,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 25.999955972105482,
+      "cloud_quarter_main_term_margin": -164.0
+    },
+    {
+      "r": 16,
+      "regime": "direct_edge",
+      "log2_M": 16,
+      "log2_T": 42.0,
+      "ell": 43,
+      "g": 27,
+      "log2_D": 27,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 2.9999559721054823,
+      "cloud_quarter_main_term_margin": 190.0
+    },
+    {
+      "r": 16,
+      "regime": "cloud_edge",
+      "log2_M": 16,
+      "log2_T": 42.00000000000033,
+      "ell": 43,
+      "g": 27,
+      "log2_D": 27,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 2.9999559721054823,
+      "cloud_quarter_main_term_margin": 190.00000000000688
+    },
+    {
+      "r": 16,
+      "regime": "large",
+      "log2_M": 16,
+      "log2_T": 64.0,
+      "ell": 65,
+      "g": 49,
+      "log2_D": 49,
+      "direct_pair_pool_pays": false,
+      "log2_direct_pool_over_capped_demand": -19.000044027894518,
+      "cloud_quarter_main_term_margin": 751.0
+    },
+    {
+      "r": 24,
+      "regime": "small",
+      "log2_M": 24,
+      "log2_T": 24.0,
+      "ell": 29,
+      "g": 5,
+      "log2_D": 5,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 40.999999828017394,
+      "cloud_quarter_main_term_margin": -389.0
+    },
+    {
+      "r": 24,
+      "regime": "direct_edge",
+      "log2_M": 24,
+      "log2_T": 66.0,
+      "ell": 67,
+      "g": 43,
+      "log2_D": 43,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 2.999999828017394,
+      "cloud_quarter_main_term_margin": 518.0
+    },
+    {
+      "r": 24,
+      "regime": "cloud_edge",
+      "log2_M": 24,
+      "log2_T": 66.0,
+      "ell": 67,
+      "g": 43,
+      "log2_D": 43,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 2.999999828017394,
+      "cloud_quarter_main_term_margin": 518.0
+    },
+    {
+      "r": 24,
+      "regime": "large",
+      "log2_M": 24,
+      "log2_T": 96.0,
+      "ell": 97,
+      "g": 73,
+      "log2_D": 73,
+      "direct_pair_pool_pays": false,
+      "log2_direct_pool_over_capped_demand": -27.000000171982606,
+      "cloud_quarter_main_term_margin": 1703.0
+    },
+    {
+      "r": 32,
+      "regime": "small",
+      "log2_M": 32,
+      "log2_T": 32.0,
+      "ell": 37,
+      "g": 5,
+      "log2_D": 5,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 56.999999999328224,
+      "cloud_quarter_main_term_margin": -709.0
+    },
+    {
+      "r": 32,
+      "regime": "direct_edge",
+      "log2_M": 32,
+      "log2_T": 90.0,
+      "ell": 91,
+      "g": 59,
+      "log2_D": 59,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 2.9999999993282245,
+      "cloud_quarter_main_term_margin": 1006.0
+    },
+    {
+      "r": 32,
+      "regime": "cloud_edge",
+      "log2_M": 32,
+      "log2_T": 90.0,
+      "ell": 91,
+      "g": 59,
+      "log2_D": 59,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 2.9999999993282245,
+      "cloud_quarter_main_term_margin": 1006.0
+    },
+    {
+      "r": 32,
+      "regime": "large",
+      "log2_M": 32,
+      "log2_T": 128.0,
+      "ell": 129,
+      "g": 97,
+      "log2_D": 97,
+      "direct_pair_pool_pays": false,
+      "log2_direct_pool_over_capped_demand": -35.000000000671776,
+      "cloud_quarter_main_term_margin": 3039.0
+    },
+    {
+      "r": 48,
+      "regime": "small",
+      "log2_M": 48,
+      "log2_T": 48.0,
+      "ell": 54,
+      "g": 6,
+      "log2_D": 6,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 88.0,
+      "cloud_quarter_main_term_margin": -1638.0
+    },
+    {
+      "r": 48,
+      "regime": "direct_edge",
+      "log2_M": 48,
+      "log2_T": 138.0,
+      "ell": 139,
+      "g": 91,
+      "log2_D": 91,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 3.0,
+      "cloud_quarter_main_term_margin": 2462.0
+    },
+    {
+      "r": 48,
+      "regime": "cloud_edge",
+      "log2_M": 48,
+      "log2_T": 138.0,
+      "ell": 139,
+      "g": 91,
+      "log2_D": 91,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 3.0,
+      "cloud_quarter_main_term_margin": 2462.0
+    },
+    {
+      "r": 48,
+      "regime": "large",
+      "log2_M": 48,
+      "log2_T": 192.0,
+      "ell": 193,
+      "g": 145,
+      "log2_D": 145,
+      "direct_pair_pool_pays": false,
+      "log2_direct_pool_over_capped_demand": -51.0,
+      "cloud_quarter_main_term_margin": 6863.0
+    },
+    {
+      "r": 64,
+      "regime": "small",
+      "log2_M": 64,
+      "log2_T": 64.0,
+      "ell": 70,
+      "g": 6,
+      "log2_D": 6,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 120.0,
+      "cloud_quarter_main_term_margin": -2950.0
+    },
+    {
+      "r": 64,
+      "regime": "direct_edge",
+      "log2_M": 64,
+      "log2_T": 186.0,
+      "ell": 187,
+      "g": 123,
+      "log2_D": 123,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 3.0,
+      "cloud_quarter_main_term_margin": 4558.0
+    },
+    {
+      "r": 64,
+      "regime": "cloud_edge",
+      "log2_M": 64,
+      "log2_T": 186.0,
+      "ell": 187,
+      "g": 123,
+      "log2_D": 123,
+      "direct_pair_pool_pays": true,
+      "log2_direct_pool_over_capped_demand": 3.0,
+      "cloud_quarter_main_term_margin": 4558.0
+    },
+    {
+      "r": 64,
+      "regime": "large",
+      "log2_M": 64,
+      "log2_T": 256.0,
+      "ell": 257,
+      "g": 193,
+      "log2_D": 193,
+      "direct_pair_pool_pays": false,
+      "log2_direct_pool_over_capped_demand": -67.0,
+      "cloud_quarter_main_term_margin": 12223.0
+    }
+  ],
+  "verdict": "Disjoint tangent windows admit exact simultaneous replacement, but their target fibres can be exponential.  The complete product obstruction is nevertheless discharged at capped Hall scale: two-ended faces handle T<=M^3/64 and the blocker cloud lower bound handles T>M^3/64."
+}

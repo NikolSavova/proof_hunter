@@ -1,0 +1,66 @@
+{
+  "claims": [
+    "a 2+2 circuit between individually compatible endpoint ears is repaired by adjoining the complement to both endpoints",
+    "the complement output recovers the endpoint pair and fixed interval tag",
+    "literal aggregate radial tilt obeys the heavy-endpoint-or-output-bank inequality",
+    "a fixed 1+3 trace can coexist with quadratically many endpoint pairs for which complement reattachment always fails",
+    "the 1+3 regression requires deletion of all but two interval labels before the seam theorem applies"
+  ],
+  "description": "2+2 interval-complement repair and scalable 1+3 seam-jet obstruction",
+  "one_plus_three_regressions": [
+    {
+      "all_complement_reattachments_fail": true,
+      "discarded_complement_rank": 3,
+      "endpoint_pairs": 9,
+      "fixed_one_plus_three_trace": [
+        3,
+        4,
+        5
+      ],
+      "m": 6,
+      "minimum_interval_deletions_for_one_endpoint_ear": 4,
+      "points": 12
+    },
+    {
+      "all_complement_reattachments_fail": true,
+      "discarded_complement_rank": 6,
+      "endpoint_pairs": 9,
+      "fixed_one_plus_three_trace": [
+        3,
+        4,
+        5
+      ],
+      "m": 9,
+      "minimum_interval_deletions_for_one_endpoint_ear": 7,
+      "points": 15
+    },
+    {
+      "all_complement_reattachments_fail": true,
+      "discarded_complement_rank": 9,
+      "endpoint_pairs": 9,
+      "fixed_one_plus_three_trace": [
+        3,
+        4,
+        5
+      ],
+      "m": 12,
+      "minimum_interval_deletions_for_one_endpoint_ear": 10,
+      "points": 18
+    }
+  ],
+  "positive_two_plus_two": {
+    "complement_outputs": 64,
+    "endpoint_pairs": 16,
+    "fixed_two_plus_two_trace": [
+      4,
+      5
+    ],
+    "interval_rank": 4,
+    "literal_maximum_endpoint_tilt": "429/248",
+    "literal_total_aggregate_tilt": "54322731/688975",
+    "ordinary_faces": 699,
+    "points": 12,
+    "varying_interval_records": 64,
+    "weighted_hall_inequality_verified": true
+  }
+}

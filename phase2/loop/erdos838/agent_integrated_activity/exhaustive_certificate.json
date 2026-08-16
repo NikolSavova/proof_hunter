@@ -1,0 +1,117 @@
+{
+  "cached_restriction_states": 36395,
+  "mode": "exhaustive_type_A_integrated_variance_path",
+  "rows": [
+    {
+      "commutation_classes": 2,
+      "maximum_path_KL": 0.0,
+      "minimizing_word_zero_based": [
+        0,
+        1,
+        0
+      ],
+      "minimum_over_orders_and_deletion_paths": 0.8630462173553426,
+      "minimum_path_integrated_variance": 0.8630462173553426,
+      "n": 3,
+      "slack": 0.4575811092471782,
+      "target_log_n_over_2": 0.4054651081081644
+    },
+    {
+      "commutation_classes": 8,
+      "maximum_path_KL": 0.0,
+      "minimizing_word_zero_based": [
+        0,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "minimum_over_orders_and_deletion_paths": 1.0986122886681096,
+      "minimum_path_integrated_variance": 1.0986122886681096,
+      "n": 4,
+      "slack": 0.4054651081081643,
+      "target_log_n_over_2": 0.6931471805599453
+    },
+    {
+      "commutation_classes": 62,
+      "maximum_path_KL": 0.00032391350867365387,
+      "minimizing_word_zero_based": [
+        1,
+        0,
+        1,
+        2,
+        1,
+        3,
+        2,
+        1,
+        0,
+        1
+      ],
+      "minimum_over_orders_and_deletion_paths": 1.2955033068949207,
+      "minimum_path_integrated_variance": 1.306030479194821,
+      "n": 5,
+      "slack": 0.38973974732066585,
+      "target_log_n_over_2": 0.9162907318741551
+    },
+    {
+      "commutation_classes": 908,
+      "maximum_path_KL": 0.0014628861859847125,
+      "minimizing_word_zero_based": [
+        2,
+        1,
+        0,
+        2,
+        1,
+        2,
+        3,
+        2,
+        4,
+        3,
+        2,
+        1,
+        0,
+        2,
+        1
+      ],
+      "minimum_over_orders_and_deletion_paths": 1.4505090530419125,
+      "minimum_path_integrated_variance": 1.4610362253418128,
+      "n": 6,
+      "slack": 0.362423936673703,
+      "target_log_n_over_2": 1.0986122886681098
+    },
+    {
+      "commutation_classes": 24698,
+      "maximum_path_KL": 0.004374825719532354,
+      "minimizing_word_zero_based": [
+        1,
+        0,
+        2,
+        1,
+        3,
+        2,
+        3,
+        4,
+        3,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0,
+        2,
+        3,
+        2,
+        1,
+        2,
+        3
+      ],
+      "minimum_over_orders_and_deletion_paths": 1.5789652834943881,
+      "minimum_path_integrated_variance": 1.603006540732048,
+      "n": 7,
+      "slack": 0.3502435722366799,
+      "target_log_n_over_2": 1.252762968495368
+    }
+  ],
+  "scope": "all reflection-order commutation classes through n=7"
+}

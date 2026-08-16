@@ -1,0 +1,13 @@
+{
+  "cauchy_parameter_cases": 6496,
+  "deleted_guard_overlap_cases": 9,
+  "double_parabola": {
+    "outer_points": 13,
+    "internal_points": 13,
+    "singleton_traces": 11,
+    "minimum_trace_cover": 11,
+    "rank_four_contexts": 330
+  },
+  "matching_shield_incidence_cases": 11110,
+  "verdict": "Small outer circuit transversals release the full internal mixed bank; a rational double-parabola family forces a linear trace matching, while the matching canonically exposes an outer Boolean shield."
+}

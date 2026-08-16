@@ -1,0 +1,99 @@
+{
+  "description": "projective universality and chronology of singleton reset chains",
+  "arithmetic": "fractions.Fraction for all geometric assertions",
+  "source_transfers": [
+    {
+      "name": "central_pascal_T_5_2",
+      "n": 10,
+      "projective_parameters": {
+        "monotone_shear": "1",
+        "a_translation": "355058026/88529281",
+        "final_left_shear": "443587307/88529281"
+      },
+      "global_orientation_product": 1,
+      "convex_subset_count": 376,
+      "rooted_coefficients": [
+        1,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "prefix_history_incidences": 949,
+      "maximum_nonempty_history_load": 10
+    },
+    {
+      "name": "random_n9",
+      "n": 9,
+      "projective_parameters": {
+        "monotone_shear": "17760",
+        "a_translation": "133566",
+        "final_left_shear": "133567"
+      },
+      "global_orientation_product": 1,
+      "convex_subset_count": 249,
+      "rooted_coefficients": [
+        1,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "prefix_history_incidences": 627,
+      "maximum_nonempty_history_load": 9
+    },
+    {
+      "name": "alternating_n10",
+      "n": 10,
+      "projective_parameters": {
+        "monotone_shear": "99609375000000001",
+        "a_translation": "896484374999999969",
+        "final_left_shear": "896484374999999970"
+      },
+      "global_orientation_product": 1,
+      "convex_subset_count": 288,
+      "rooted_coefficients": [
+        1,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "prefix_history_incidences": 776,
+      "maximum_nonempty_history_load": 10
+    }
+  ],
+  "guard_monotonicity": {
+    "levels": 9,
+    "left_crossing_shear": "10",
+    "right_crossing_shear": "191495/2",
+    "left_guard_transitions": 1,
+    "right_guard_transitions": 1,
+    "alternation_detected": false
+  },
+  "assertions": [
+    "arbitrary source and discarded tips have identical convex-subset complexes",
+    "every earlier prefix is the full hidden pocket of the next singleton tip",
+    "rooted polynomial is exactly 1+L*s",
+    "every nonempty parent-child coexistence product is empty",
+    "prefix-history multiplicity of face S is L-max(S)",
+    "both guard margins increase and each failure can heal at most once"
+  ]
+}

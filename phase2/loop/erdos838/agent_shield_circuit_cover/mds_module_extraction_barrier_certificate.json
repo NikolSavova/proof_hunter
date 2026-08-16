@@ -1,0 +1,100 @@
+{
+  "asymptotic_scaling": [
+    {
+      "L": 64,
+      "codimension_c": 3,
+      "dimension_k": 13,
+      "maximum_disjoint_modules": 4,
+      "minimum_distance": 4,
+      "one_gap_coefficient_lower_bound": 0.375,
+      "q": 16,
+      "rectangle_surplus_log2": 192,
+      "selected_coefficient": 0.203125,
+      "selected_log2": 832,
+      "surplus_coefficient": 0.046875
+    },
+    {
+      "L": 128,
+      "codimension_c": 5,
+      "dimension_k": 27,
+      "maximum_disjoint_modules": 5,
+      "minimum_distance": 6,
+      "one_gap_coefficient_lower_bound": 0.375,
+      "q": 32,
+      "rectangle_surplus_log2": 640,
+      "selected_coefficient": 0.2109375,
+      "selected_log2": 3456,
+      "surplus_coefficient": 0.0390625
+    },
+    {
+      "L": 256,
+      "codimension_c": 8,
+      "dimension_k": 56,
+      "maximum_disjoint_modules": 7,
+      "minimum_distance": 9,
+      "one_gap_coefficient_lower_bound": 0.375,
+      "q": 64,
+      "rectangle_surplus_log2": 2048,
+      "selected_coefficient": 0.21875,
+      "selected_log2": 14336,
+      "surplus_coefficient": 0.03125
+    },
+    {
+      "L": 512,
+      "codimension_c": 15,
+      "dimension_k": 113,
+      "maximum_disjoint_modules": 8,
+      "minimum_distance": 16,
+      "one_gap_coefficient_lower_bound": 0.375,
+      "q": 128,
+      "rectangle_surplus_log2": 7680,
+      "selected_coefficient": 0.220703125,
+      "selected_log2": 57856,
+      "surplus_coefficient": 0.029296875
+    }
+  ],
+  "exact_rs_code": {
+    "codewords": 83521,
+    "dimension_k": 4,
+    "field_prime": 17,
+    "left_projection": 4913,
+    "length_q": 6,
+    "maximum_disjoint_variable_modules": 2,
+    "minimum_distance": 3,
+    "rectangle_to_selected_ratio": 289,
+    "right_projection": 4913,
+    "tangent_rectangle": 24137569
+  },
+  "planar_fixed_tuple": {
+    "W_union_endpoint_convex": false,
+    "ambient_points": 30,
+    "available_transversals": 625,
+    "common_W": [
+      "z0",
+      "z2",
+      "z4"
+    ],
+    "common_parent": [
+      "t-2",
+      "t-1",
+      "t+0",
+      "t+1",
+      "t+2"
+    ],
+    "dimension_k": 3,
+    "field_prime": 5,
+    "fixed_mark": "t+0",
+    "fixed_tangent_tuple": [
+      "t-2",
+      "t-1",
+      "t+0",
+      "t+1",
+      "t+2"
+    ],
+    "left_projection": 25,
+    "length_q": 4,
+    "rectangle_surplus_factor": 5,
+    "right_projection": 25,
+    "selected_sources": 125
+  }
+}

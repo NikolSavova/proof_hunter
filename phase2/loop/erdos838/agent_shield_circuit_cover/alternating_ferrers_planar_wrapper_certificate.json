@@ -1,0 +1,149 @@
+{
+  "arithmetic": "exact integers and rational coordinates",
+  "artifact": "ALTERNATING_FERRERS_PLANAR_WRAPPER",
+  "geometry": {
+    "adjacent_matrix": {
+      "bad": 24,
+      "good": 40
+    },
+    "bad_four_circuits": 1900,
+    "compatible_rich_adjacent_pairs": 0,
+    "detached_faces": 2047,
+    "detached_faces_by_active_cell_mask": [
+      1,
+      14,
+      14,
+      143,
+      14,
+      169,
+      143,
+      196,
+      14,
+      143,
+      169,
+      216,
+      143,
+      196,
+      216,
+      256
+    ],
+    "faces_by_base_mask": [
+      2047,
+      828,
+      828,
+      526,
+      828,
+      361,
+      515,
+      320,
+      828,
+      515,
+      361,
+      320,
+      526,
+      320,
+      320,
+      279
+    ],
+    "general_position": true,
+    "nonconvex_child_order_types": 4,
+    "one_gap_layers": [
+      216,
+      196,
+      216,
+      196
+    ],
+    "opposite_complete_rectangles": [
+      {
+        "cells": [
+          0,
+          2
+        ],
+        "columns": 13,
+        "rows": 13
+      },
+      {
+        "cells": [
+          1,
+          3
+        ],
+        "columns": 13,
+        "rows": 13
+      }
+    ],
+    "points": 20,
+    "rank_vector": [
+      1,
+      20,
+      190,
+      1140,
+      2945,
+      3108,
+      1716,
+      528,
+      74
+    ],
+    "total_faces": 9722,
+    "valid_singleton_words": 70
+  },
+  "scalable_algebra": {
+    "aligned_partial_rectangles": [
+      {
+        "alphabet": 8,
+        "cycle": 4,
+        "gap_rectangles": [
+          8,
+          8,
+          8,
+          8
+        ]
+      },
+      {
+        "alphabet": 8,
+        "cycle": 6,
+        "gap_rectangles": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ]
+      },
+      {
+        "alphabet": 12,
+        "cycle": 4,
+        "gap_rectangles": [
+          27,
+          27,
+          27,
+          27
+        ]
+      }
+    ],
+    "cyclic_profile_product_identity": true,
+    "fixed_point_thresholds": [
+      {
+        "beta": "1",
+        "fixed_point_threshold": "2/3",
+        "one_half_maps_to": "5/8"
+      },
+      {
+        "beta": "2",
+        "fixed_point_threshold": "3/5",
+        "one_half_maps_to": "5/9"
+      },
+      {
+        "beta": "4",
+        "fixed_point_threshold": "5/9",
+        "one_half_maps_to": "13/25"
+      },
+      {
+        "beta": "8",
+        "fixed_point_threshold": "9/17",
+        "one_half_maps_to": "41/81"
+      }
+    ]
+  },
+  "status": "PASS"
+}

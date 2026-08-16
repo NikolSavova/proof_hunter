@@ -1,0 +1,361 @@
+{
+  "H": "33994061/16990512",
+  "all_constant_two_margins_negative": true,
+  "averaged_C_threshold": "5935970545/2824041984",
+  "description": "exact generalized arbitrary-deletion threshold audit",
+  "existential_C_threshold": "223780817/111243264",
+  "existential_minimizer_label": 37,
+  "n": 58,
+  "rows": [
+    {
+      "C_threshold": "193504241/88578048",
+      "C_threshold_decimal": 2.1845620373119985,
+      "constant_two_margin": "-16348145/1024",
+      "label": 0
+    },
+    {
+      "C_threshold": "95265133/43572736",
+      "C_threshold_decimal": 2.1863472837693734,
+      "constant_two_margin": "-8119661/512",
+      "label": 1
+    },
+    {
+      "C_threshold": "96230485/44148736",
+      "C_threshold_decimal": 2.179688338076089,
+      "constant_two_margin": "-7933013/512",
+      "label": 2
+    },
+    {
+      "C_threshold": "98341651/45308416",
+      "C_threshold_decimal": 2.1704941307151415,
+      "constant_two_margin": "-7724819/512",
+      "label": 3
+    },
+    {
+      "C_threshold": "25378069/12079360",
+      "C_threshold_decimal": 2.100944834825686,
+      "constant_two_margin": "-1219349/128",
+      "label": 4
+    },
+    {
+      "C_threshold": "49953521/22902016",
+      "C_threshold_decimal": 2.1811844424525773,
+      "constant_two_margin": "-4149489/256",
+      "label": 5
+    },
+    {
+      "C_threshold": "102307825/49571328",
+      "C_threshold_decimal": 2.0638508010114234,
+      "constant_two_margin": "-3165169/512",
+      "label": 6
+    },
+    {
+      "C_threshold": "103208197/50071040",
+      "C_threshold_decimal": 2.061235336833427,
+      "constant_two_margin": "-3066117/512",
+      "label": 7
+    },
+    {
+      "C_threshold": "12972011/6326656",
+      "C_threshold_decimal": 2.05037400484553,
+      "constant_two_margin": "-318699/64",
+      "label": 8
+    },
+    {
+      "C_threshold": "27094453/12864256",
+      "C_threshold_decimal": 2.1061811114455433,
+      "constant_two_margin": "-1365941/128",
+      "label": 9
+    },
+    {
+      "C_threshold": "52836467/25710336",
+      "C_threshold_decimal": 2.0550671527591082,
+      "constant_two_margin": "-1415795/256",
+      "label": 10
+    },
+    {
+      "C_threshold": "210610853/98695168",
+      "C_threshold_decimal": 2.1339530320268567,
+      "constant_two_margin": "-13220517/1024",
+      "label": 11
+    },
+    {
+      "C_threshold": "212934401/103915520",
+      "C_threshold_decimal": 2.0491106718226497,
+      "constant_two_margin": "-5103361/1024",
+      "label": 12
+    },
+    {
+      "C_threshold": "108626047/53287424",
+      "C_threshold_decimal": 2.03849311612436,
+      "constant_two_margin": "-2051199/512",
+      "label": 13
+    },
+    {
+      "C_threshold": "26780041/12429440",
+      "C_threshold_decimal": 2.1545653706039856,
+      "constant_two_margin": "-1921161/128",
+      "label": 14
+    },
+    {
+      "C_threshold": "198787001/94470144",
+      "C_threshold_decimal": 2.1042309515268656,
+      "constant_two_margin": "-9846713/1024",
+      "label": 15
+    },
+    {
+      "C_threshold": "109674049/52073984",
+      "C_threshold_decimal": 2.106119804468965,
+      "constant_two_margin": "-5526081/512",
+      "label": 16
+    },
+    {
+      "C_threshold": "193994783/92131328",
+      "C_threshold_decimal": 2.1056332000337603,
+      "constant_two_margin": "-9732127/1024",
+      "label": 17
+    },
+    {
+      "C_threshold": "206107967/98997248",
+      "C_threshold_decimal": 2.081956530751239,
+      "constant_two_margin": "-8113471/1024",
+      "label": 18
+    },
+    {
+      "C_threshold": "12640385/5981248",
+      "C_threshold_decimal": 2.11333571187819,
+      "constant_two_margin": "-677889/64",
+      "label": 19
+    },
+    {
+      "C_threshold": "194356619/94583808",
+      "C_threshold_decimal": 2.054861430404663,
+      "constant_two_margin": "-5189003/1024",
+      "label": 20
+    },
+    {
+      "C_threshold": "198547601/92083200",
+      "C_threshold_decimal": 2.156176164598971,
+      "constant_two_margin": "-14381201/1024",
+      "label": 21
+    },
+    {
+      "C_threshold": "47809979/23180032",
+      "C_threshold_decimal": 2.0625501724932906,
+      "constant_two_margin": "-1449915/256",
+      "label": 22
+    },
+    {
+      "C_threshold": "12906347/6102208",
+      "C_threshold_decimal": 2.1150290190042687,
+      "constant_two_margin": "-701931/64",
+      "label": 23
+    },
+    {
+      "C_threshold": "189546503/92226560",
+      "C_threshold_decimal": 2.0552268565584577,
+      "constant_two_margin": "-5093383/1024",
+      "label": 24
+    },
+    {
+      "C_threshold": "188932271/89113600",
+      "C_threshold_decimal": 2.120128364245188,
+      "constant_two_margin": "-10705071/1024",
+      "label": 25
+    },
+    {
+      "C_threshold": "185200367/84931584",
+      "C_threshold_decimal": 2.180582985476875,
+      "constant_two_margin": "-15337199/1024",
+      "label": 26
+    },
+    {
+      "C_threshold": "187810511/91211776",
+      "C_threshold_decimal": 2.059059906913774,
+      "constant_two_margin": "-5386959/1024",
+      "label": 27
+    },
+    {
+      "C_threshold": "177566813/80044032",
+      "C_threshold_decimal": 2.218364174858158,
+      "constant_two_margin": "-17478749/1024",
+      "label": 28
+    },
+    {
+      "C_threshold": "177110813/79479808",
+      "C_threshold_decimal": 2.2283749477603165,
+      "constant_two_margin": "-18151197/1024",
+      "label": 29
+    },
+    {
+      "C_threshold": "196233743/93158400",
+      "C_threshold_decimal": 2.1064524830825775,
+      "constant_two_margin": "-9916943/1024",
+      "label": 30
+    },
+    {
+      "C_threshold": "211624541/99168256",
+      "C_threshold_decimal": 2.1339947835726787,
+      "constant_two_margin": "-13288029/1024",
+      "label": 31
+    },
+    {
+      "C_threshold": "39540709/18275328",
+      "C_threshold_decimal": 2.1636114547437946,
+      "constant_two_margin": "-14950265/1024",
+      "label": 32
+    },
+    {
+      "C_threshold": "53902139/25670144",
+      "C_threshold_decimal": 2.0997988558225464,
+      "constant_two_margin": "-2561851/256",
+      "label": 33
+    },
+    {
+      "C_threshold": "15565219/7499776",
+      "C_threshold_decimal": 2.0754245193456446,
+      "constant_two_margin": "-3959669/512",
+      "label": 34
+    },
+    {
+      "C_threshold": "14135837/6774656",
+      "C_threshold_decimal": 2.0865763516258244,
+      "constant_two_margin": "-586525/64",
+      "label": 35
+    },
+    {
+      "C_threshold": "100117429/47461376",
+      "C_threshold_decimal": 2.1094506193836438,
+      "constant_two_margin": "-5194677/512",
+      "label": 36
+    },
+    {
+      "C_threshold": "223780817/111243264",
+      "C_threshold_decimal": 2.01163476289225,
+      "constant_two_margin": "-1294289/1024",
+      "label": 37
+    },
+    {
+      "C_threshold": "27383101/12953984",
+      "C_threshold_decimal": 2.1138748511654795,
+      "constant_two_margin": "-1475133/128",
+      "label": 38
+    },
+    {
+      "C_threshold": "96828187/46816256",
+      "C_threshold_decimal": 2.06825994372553,
+      "constant_two_margin": "-3195675/512",
+      "label": 39
+    },
+    {
+      "C_threshold": "54264887/26223104",
+      "C_threshold_decimal": 2.0693540703648203,
+      "constant_two_margin": "-1818679/256",
+      "label": 40
+    },
+    {
+      "C_threshold": "13237403/6272320",
+      "C_threshold_decimal": 2.110447649354625,
+      "constant_two_margin": "-692763/64",
+      "label": 41
+    },
+    {
+      "C_threshold": "201301841/93893632",
+      "C_threshold_decimal": 2.1439349688805307,
+      "constant_two_margin": "-13514577/1024",
+      "label": 42
+    },
+    {
+      "C_threshold": "53669351/24847872",
+      "C_threshold_decimal": 2.1599173965480825,
+      "constant_two_margin": "-3973607/256",
+      "label": 43
+    },
+    {
+      "C_threshold": "204473435/95900672",
+      "C_threshold_decimal": 2.132137666355456,
+      "constant_two_margin": "-12672091/1024",
+      "label": 44
+    },
+    {
+      "C_threshold": "109414813/52526080",
+      "C_threshold_decimal": 2.0830568928806414,
+      "constant_two_margin": "-4362653/512",
+      "label": 45
+    },
+    {
+      "C_threshold": "25901215/12601472",
+      "C_threshold_decimal": 2.055411859820821,
+      "constant_two_margin": "-698271/128",
+      "label": 46
+    },
+    {
+      "C_threshold": "94830223/45072384",
+      "C_threshold_decimal": 2.10395400873404,
+      "constant_two_margin": "-4685455/512",
+      "label": 47
+    },
+    {
+      "C_threshold": "419905/197922",
+      "C_threshold_decimal": 2.121568092480876,
+      "constant_two_margin": "-24061/2",
+      "label": 48
+    },
+    {
+      "C_threshold": "54014999/26052608",
+      "C_threshold_decimal": 2.07330486836481,
+      "constant_two_margin": "-1909783/256",
+      "label": 49
+    },
+    {
+      "C_threshold": "100887499/47954944",
+      "C_threshold_decimal": 2.1037976605707223,
+      "constant_two_margin": "-4977611/512",
+      "label": 50
+    },
+    {
+      "C_threshold": "99350095/47512576",
+      "C_threshold_decimal": 2.0910273313743293,
+      "constant_two_margin": "-4324943/512",
+      "label": 51
+    },
+    {
+      "C_threshold": "3296939/1603664",
+      "C_threshold_decimal": 2.055878912290854,
+      "constant_two_margin": "-89611/16",
+      "label": 52
+    },
+    {
+      "C_threshold": "112583671/55443968",
+      "C_threshold_decimal": 2.0305846616172927,
+      "constant_two_margin": "-1695735/512",
+      "label": 53
+    },
+    {
+      "C_threshold": "204663587/97204224",
+      "C_threshold_decimal": 2.10550096053439,
+      "constant_two_margin": "-10255139/1024",
+      "label": 54
+    },
+    {
+      "C_threshold": "15891373/7613952",
+      "C_threshold_decimal": 2.0871385845353374,
+      "constant_two_margin": "-4644283/512",
+      "label": 55
+    },
+    {
+      "C_threshold": "27276397/13224448",
+      "C_threshold_decimal": 2.06257357584982,
+      "constant_two_margin": "-827501/128",
+      "label": 56
+    },
+    {
+      "C_threshold": "196847177/97590272",
+      "C_threshold_decimal": 2.0170778599735844,
+      "constant_two_margin": "-1666633/1024",
+      "label": 57
+    }
+  ],
+  "unique_deepest_constant_two_margin": "-1695735/512",
+  "unique_deepest_label": 53
+}

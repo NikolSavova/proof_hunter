@@ -1,0 +1,431 @@
+{
+  "schema": "erdos838-forward-tangent-bellman-v1",
+  "tangent_geometry": {
+    "one_bad_endpoint": {
+      "upper": [
+        [
+          100,
+          1
+        ]
+      ],
+      "lower": [
+        [
+          -100,
+          -2
+        ]
+      ],
+      "turn_u": 100,
+      "turn_v": -97,
+      "compatible_by_turns": false,
+      "convex_by_hull": false,
+      "root_subset_hull_sizes": {
+        "0": 2,
+        "1": 3,
+        "2": 3,
+        "3": 3
+      },
+      "root_subset_point_counts": {
+        "0": 2,
+        "1": 3,
+        "2": 3,
+        "3": 4
+      }
+    },
+    "both_bad_endpoints": {
+      "upper": [
+        [
+          -7,
+          5
+        ]
+      ],
+      "lower": [
+        [
+          -4,
+          -2
+        ],
+        [
+          5,
+          -3
+        ],
+        [
+          7,
+          -3
+        ],
+        [
+          -3,
+          -1
+        ]
+      ],
+      "turn_u": -22,
+      "turn_v": -6,
+      "compatible_by_turns": false,
+      "convex_by_hull": false,
+      "root_subset_hull_sizes": {
+        "0": 4,
+        "1": 4,
+        "2": 4,
+        "3": 4
+      },
+      "root_subset_point_counts": {
+        "0": 5,
+        "1": 6,
+        "2": 6,
+        "3": 7
+      }
+    }
+  },
+  "dyadic_failure_partition": {
+    "rank_count": 32,
+    "tree_height": 5,
+    "failure_relation_weight": 20653,
+    "level_masses": [
+      10605,
+      5420,
+      2679,
+      1407,
+      542
+    ],
+    "largest_level": 0,
+    "largest_level_fraction": 0.5134847237689439
+  },
+  "realizable_all_cup_cap_stress": [
+    {
+      "m": 8,
+      "D": 36,
+      "E": 255,
+      "cup_then_cap_W": 1806,
+      "cap_then_cup_W": 65535,
+      "orientation_gap_bits": 5.181395808571878,
+      "bad_order_W_over_local_W": 7.08235294117647
+    },
+    {
+      "m": 16,
+      "D": 136,
+      "E": 65535,
+      "cup_then_cap_W": 149566,
+      "cap_then_cup_W": 4294967295,
+      "orientation_gap_bits": 14.809577272503635,
+      "bad_order_W_over_local_W": 2.282230869001297
+    },
+    {
+      "m": 32,
+      "D": 528,
+      "E": 4294967295,
+      "cup_then_cap_W": 8590213374,
+      "cap_then_cup_W": 18446744073709551615,
+      "orientation_gap_bits": 30.999953178818984,
+      "bad_order_W_over_local_W": 2.0000649094581755
+    },
+    {
+      "m": 64,
+      "D": 2080,
+      "E": 18446744073709551615,
+      "cup_then_cap_W": 36893488147423429630,
+      "cap_then_cup_W": 340282366920938463463374607431768211455,
+      "orientation_gap_bits": 62.99999999999983,
+      "bad_order_W_over_local_W": 2.0000000000002345
+    }
+  ],
+  "abstract_capped_countercycles": [
+    {
+      "s": 3,
+      "base": 16,
+      "max_block_log_size_M": 128,
+      "block_count_b": 36,
+      "plateau_count": 30,
+      "source_entropy": 4064,
+      "local_quarter_capacity": 4096,
+      "max_forward_capacity": 4096,
+      "forward_argmax": [
+        0,
+        4
+      ],
+      "capped_target_using_log_n_ge_M": 4156,
+      "linear_exponent_deficit": 60,
+      "deficit_over_M": 0.46875,
+      "state_kinds": {
+        "left_tail": 3,
+        "plateau": 30,
+        "right_tail": 3
+      }
+    },
+    {
+      "s": 4,
+      "base": 16,
+      "max_block_log_size_M": 256,
+      "block_count_b": 70,
+      "plateau_count": 62,
+      "source_entropy": 16352,
+      "local_quarter_capacity": 16384,
+      "max_forward_capacity": 16384,
+      "forward_argmax": [
+        0,
+        5
+      ],
+      "capped_target_using_log_n_ge_M": 16538,
+      "linear_exponent_deficit": 154,
+      "deficit_over_M": 0.6015625,
+      "state_kinds": {
+        "left_tail": 4,
+        "plateau": 62,
+        "right_tail": 4
+      }
+    },
+    {
+      "s": 5,
+      "base": 16,
+      "max_block_log_size_M": 512,
+      "block_count_b": 136,
+      "plateau_count": 126,
+      "source_entropy": 65504,
+      "local_quarter_capacity": 65536,
+      "max_forward_capacity": 65536,
+      "forward_argmax": [
+        0,
+        6
+      ],
+      "capped_target_using_log_n_ge_M": 65880,
+      "linear_exponent_deficit": 344,
+      "deficit_over_M": 0.671875,
+      "state_kinds": {
+        "left_tail": 5,
+        "plateau": 126,
+        "right_tail": 5
+      }
+    },
+    {
+      "s": 6,
+      "base": 16,
+      "max_block_log_size_M": 1024,
+      "block_count_b": 266,
+      "plateau_count": 254,
+      "source_entropy": 262112,
+      "local_quarter_capacity": 262144,
+      "max_forward_capacity": 262144,
+      "forward_argmax": [
+        0,
+        7
+      ],
+      "capped_target_using_log_n_ge_M": 262870,
+      "linear_exponent_deficit": 726,
+      "deficit_over_M": 0.708984375,
+      "state_kinds": {
+        "left_tail": 6,
+        "plateau": 254,
+        "right_tail": 6
+      }
+    },
+    {
+      "s": 7,
+      "base": 16,
+      "max_block_log_size_M": 2048,
+      "block_count_b": 524,
+      "plateau_count": 510,
+      "source_entropy": 1048544,
+      "local_quarter_capacity": 1048576,
+      "max_forward_capacity": 1048576,
+      "forward_argmax": [
+        0,
+        8
+      ],
+      "capped_target_using_log_n_ge_M": 1050068,
+      "linear_exponent_deficit": 1492,
+      "deficit_over_M": 0.728515625,
+      "state_kinds": {
+        "left_tail": 7,
+        "plateau": 510,
+        "right_tail": 7
+      }
+    }
+  ],
+  "fixed_child_sqrt_rank_batch": [
+    {
+      "rank_r": 64,
+      "batch_depth": 8,
+      "log2_fixed_child_prefix_count_upper": 576,
+      "chosen_ES_constant_c": 0.24,
+      "log2_congestion_upper": 50.98979485566356,
+      "congestion_exponent_over_r": 0.7967155446197431
+    },
+    {
+      "rank_r": 128,
+      "batch_depth": 12,
+      "log2_fixed_child_prefix_count_upper": 1664,
+      "chosen_ES_constant_c": 0.24,
+      "log2_congestion_upper": 85.26663997864532,
+      "congestion_exponent_over_r": 0.6661456248331665
+    },
+    {
+      "rank_r": 256,
+      "batch_depth": 16,
+      "log2_fixed_child_prefix_count_upper": 4352,
+      "chosen_ES_constant_c": 0.24,
+      "log2_congestion_upper": 136.66006584482773,
+      "congestion_exponent_over_r": 0.5338283822063583
+    },
+    {
+      "rank_r": 512,
+      "batch_depth": 23,
+      "log2_fixed_child_prefix_count_upper": 12288,
+      "chosen_ES_constant_c": 0.24,
+      "log2_congestion_upper": 228.27416997969522,
+      "congestion_exponent_over_r": 0.4458479882415922
+    },
+    {
+      "rank_r": 1024,
+      "batch_depth": 32,
+      "log2_fixed_child_prefix_count_upper": 33792,
+      "chosen_ES_constant_c": 0.24,
+      "log2_congestion_upper": 377.2332607858744,
+      "congestion_exponent_over_r": 0.36839185623620546
+    }
+  ],
+  "prefix_cube_collapse": [
+    {
+      "depth": 4,
+      "alphabet": 16,
+      "projection_fibre": 65536,
+      "rank_drop_allowance": 16,
+      "fibre_over_allowance": 4096.0,
+      "union_of_path_boolean_cubes": 83521,
+      "boolean_union_over_paths": 1.2744293212890625
+    },
+    {
+      "depth": 8,
+      "alphabet": 64,
+      "projection_fibre": 281474976710656,
+      "rank_drop_allowance": 256,
+      "fibre_over_allowance": 1099511627776.0,
+      "union_of_path_boolean_cubes": 318644812890625,
+      "boolean_union_over_paths": 1.1320537854353496
+    },
+    {
+      "depth": 16,
+      "alphabet": 256,
+      "projection_fibre": 340282366920938463463374607431768211456,
+      "rank_drop_allowance": 65536,
+      "fibre_over_allowance": 5.192296858534828e+33,
+      "union_of_path_boolean_cubes": 362184594182720980613658216570962841601,
+      "boolean_union_over_paths": 1.064364861041628
+    }
+  ],
+  "weighted_exposure_amgm": {
+    "rational_grid_denominator": 4,
+    "max_coordinate_count": 6,
+    "max_depth": 4,
+    "threshold_patterns_per_vector": 3,
+    "instances_checked": 292950,
+    "tight_instances": 798,
+    "minimum_slack": "0"
+  },
+  "ordered_array_threshold": {
+    "bipartite_array_shape": [
+      3,
+      3
+    ],
+    "nonempty_support_graphs": 511,
+    "depths": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "instances_checked": 2044,
+    "minimum_slack_equation_46": "0",
+    "minimum_slack_equation_49": "1"
+  },
+  "high_row_decoder": [
+    {
+      "rank_r": 64,
+      "batch_length": 8,
+      "log2_n": 128,
+      "log2_high_row_cutoff": 3276.169925001442,
+      "log2_max_distinct_batch_words": 1024.0,
+      "cutoff_over_max_words_log2": 2252.169925001442,
+      "cutoff_log_over_r_squared": 0.7998461730960552,
+      "cutoff_log_over_r": 51.190155078147534,
+      "recovered_over_selected_demand": 1.0
+    },
+    {
+      "rank_r": 128,
+      "batch_length": 12,
+      "log2_n": 256,
+      "log2_high_row_cutoff": 9613.870364719583,
+      "log2_max_distinct_batch_words": 3072.0,
+      "cutoff_over_max_words_log2": 6541.870364719583,
+      "cutoff_log_over_r_squared": 0.5867840798779043,
+      "cutoff_log_over_r": 75.10836222437175,
+      "recovered_over_selected_demand": 1.0
+    },
+    {
+      "rank_r": 256,
+      "batch_length": 16,
+      "log2_n": 512,
+      "log2_high_row_cutoff": 25359.08746284125,
+      "log2_max_distinct_batch_words": 8192.0,
+      "cutoff_over_max_words_log2": 17167.08746284125,
+      "cutoff_log_over_r_squared": 0.38694896641298293,
+      "cutoff_log_over_r": 99.05893540172363,
+      "recovered_over_selected_demand": 1.0
+    },
+    {
+      "rank_r": 512,
+      "batch_length": 23,
+      "log2_n": 1024,
+      "log2_high_row_cutoff": 72208.63208641284,
+      "log2_max_distinct_batch_words": 23552.0,
+      "cutoff_over_max_words_log2": 48656.632086412836,
+      "cutoff_log_over_r_squared": 0.2754540713745607,
+      "cutoff_log_over_r": 141.03248454377507,
+      "recovered_over_selected_demand": 1.0
+    }
+  ],
+  "weighted_prefix_projection_countercycle": [
+    {
+      "rank_r": 16,
+      "depth_s": 4,
+      "log2_alphabet_M": 16,
+      "log2_history_count": 64,
+      "log2_selected_mass": 80,
+      "log2_selected_over_projected_capacity": 15.999911945544056,
+      "gap_over_log2_M": 0.9999944965965035
+    },
+    {
+      "rank_r": 32,
+      "depth_s": 6,
+      "log2_alphabet_M": 32,
+      "log2_history_count": 192,
+      "log2_selected_mass": 224,
+      "log2_selected_over_projected_capacity": 31.999999997984588,
+      "gap_over_log2_M": 0.9999999999370184
+    },
+    {
+      "rank_r": 64,
+      "depth_s": 8,
+      "log2_alphabet_M": 64,
+      "log2_history_count": 512,
+      "log2_selected_mass": 576,
+      "log2_selected_over_projected_capacity": 64.0,
+      "gap_over_log2_M": 1.0
+    },
+    {
+      "rank_r": 128,
+      "depth_s": 12,
+      "log2_alphabet_M": 128,
+      "log2_history_count": 1536,
+      "log2_selected_mass": 1664,
+      "log2_selected_over_projected_capacity": 128.0,
+      "gap_over_log2_M": 1.0
+    },
+    {
+      "rank_r": 256,
+      "depth_s": 16,
+      "log2_alphabet_M": 256,
+      "log2_history_count": 4096,
+      "log2_selected_mass": 4352,
+      "log2_selected_over_projected_capacity": 256.0,
+      "gap_over_log2_M": 1.0
+    }
+  ],
+  "claim_scope": "The tangent and all-cup/all-cap checks are realizable.  The scalable capped countercycle is only a scalar-inequality obstruction, not a realizable planar construction."
+}

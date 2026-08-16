@@ -1,0 +1,35 @@
+{
+  "description": "aggregate raw-rank identity and raw completion-density dichotomy",
+  "n": 9,
+  "faces": 449,
+  "nontrivial_faces": 439,
+  "half_partition_function": "9509/256",
+  "radial_cells": 69,
+  "active_depths": 4,
+  "raw_history_occurrences": 849,
+  "aggregate_radial_tilt": "137/2",
+  "aggregate_completion_bank_spend": 570,
+  "completion_load_upper_bound": 1756,
+  "density_thresholds_audited": 15,
+  "maximum_raw_density": "15",
+  "coefficient_gap_regression": {
+    "L": 12,
+    "reservoir_coefficient": "1/4",
+    "face_coefficient": "1/2",
+    "weighted_fibre": 68719476736,
+    "history_rank": 3,
+    "raw_histories": 549755813888,
+    "ambient_completion_bank": 4722366482869645213696,
+    "raw_density": "1/8589934592"
+  },
+  "claims": [
+    "endpoint completion banks partition all nontrivial faces",
+    "the aggregate raw-rank identity holds in every radial cell",
+    "every radial history weight equals 2^-source-rank divided by endpoint half-weight",
+    "every radial history weight is at most four times 2^-source-rank",
+    "endpoint completion-bank aggregate load is at most the number of active depths",
+    "the raw low-density payment holds at every audited threshold",
+    "the high-rank weighted-to-raw count inequality holds exactly",
+    "a coefficient one-quarter fibre versus coefficient one-half bank has exponentially vanishing raw density"
+  ]
+}

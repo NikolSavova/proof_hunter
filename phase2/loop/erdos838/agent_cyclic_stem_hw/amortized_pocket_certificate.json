@@ -1,0 +1,201 @@
+{
+  "nested_prefixes": [
+    {
+      "s": 0,
+      "demand": 1,
+      "largest_cube": 1,
+      "ratio": 1.0,
+      "conditional_reuse_entropy_bits": 0.0
+    },
+    {
+      "s": 1,
+      "demand": 3,
+      "largest_cube": 2,
+      "ratio": 1.5,
+      "conditional_reuse_entropy_bits": 0.6666666666666666
+    },
+    {
+      "s": 2,
+      "demand": 7,
+      "largest_cube": 4,
+      "ratio": 1.75,
+      "conditional_reuse_entropy_bits": 0.9649839288804954
+    },
+    {
+      "s": 4,
+      "demand": 31,
+      "largest_cube": 16,
+      "ratio": 1.9375,
+      "conditional_reuse_entropy_bits": 1.1974004993149594
+    },
+    {
+      "s": 8,
+      "demand": 511,
+      "largest_cube": 256,
+      "ratio": 1.99609375,
+      "conditional_reuse_entropy_bits": 1.2816143205554216
+    },
+    {
+      "s": 16,
+      "demand": 131071,
+      "largest_cube": 65536,
+      "ratio": 1.9999847412109375,
+      "conditional_reuse_entropy_bits": 1.2884980145053797
+    },
+    {
+      "s": 32,
+      "demand": 8589934591,
+      "largest_cube": 4294967296,
+      "ratio": 1.9999999997671694,
+      "conditional_reuse_entropy_bits": 1.2885312751668707
+    },
+    {
+      "s": 64,
+      "demand": 36893488147419103231,
+      "largest_cube": 18446744073709551616,
+      "ratio": 2.0,
+      "conditional_reuse_entropy_bits": 1.2885312757793885
+    },
+    {
+      "s": 128,
+      "demand": 680564733841876926926749214863536422911,
+      "largest_cube": 340282366920938463463374607431768211456,
+      "ratio": 2.0,
+      "conditional_reuse_entropy_bits": 1.2885312757793885
+    },
+    {
+      "s": 256,
+      "demand": 231584178474632390847141970017375815706539969331281128078915168015826259279871,
+      "largest_cube": 115792089237316195423570985008687907853269984665640564039457584007913129639936,
+      "ratio": 2.0,
+      "conditional_reuse_entropy_bits": 1.2885312757793885
+    }
+  ],
+  "product_grids": [
+    {
+      "r": 4,
+      "b": 2,
+      "M": 16,
+      "n": 50,
+      "ell": 6,
+      "ell_minus_r": 2,
+      "boolean_loss_lower_bound_bits": 1,
+      "forward_over_weighted_demand_lower_bound": 14,
+      "sources_digits": 3
+    },
+    {
+      "r": 6,
+      "b": 4,
+      "M": 64,
+      "n": 322,
+      "ell": 9,
+      "ell_minus_r": 3,
+      "boolean_loss_lower_bound_bits": 3,
+      "forward_over_weighted_demand_lower_bound": 62,
+      "sources_digits": 8
+    },
+    {
+      "r": 8,
+      "b": 6,
+      "M": 256,
+      "n": 1794,
+      "ell": 11,
+      "ell_minus_r": 3,
+      "boolean_loss_lower_bound_bits": 5,
+      "forward_over_weighted_demand_lower_bound": 254,
+      "sources_digits": 15
+    },
+    {
+      "r": 12,
+      "b": 10,
+      "M": 4096,
+      "n": 45058,
+      "ell": 16,
+      "ell_minus_r": 4,
+      "boolean_loss_lower_bound_bits": 9,
+      "forward_over_weighted_demand_lower_bound": 4094,
+      "sources_digits": 37
+    },
+    {
+      "r": 16,
+      "b": 14,
+      "M": 65536,
+      "n": 983042,
+      "ell": 20,
+      "ell_minus_r": 4,
+      "boolean_loss_lower_bound_bits": 13,
+      "forward_over_weighted_demand_lower_bound": 65534,
+      "sources_digits": 68
+    },
+    {
+      "r": 24,
+      "b": 22,
+      "M": 16777216,
+      "n": 385875970,
+      "ell": 29,
+      "ell_minus_r": 5,
+      "boolean_loss_lower_bound_bits": 21,
+      "forward_over_weighted_demand_lower_bound": 16777214,
+      "sources_digits": 159
+    },
+    {
+      "r": 32,
+      "b": 30,
+      "M": 4294967296,
+      "n": 133143986178,
+      "ell": 37,
+      "ell_minus_r": 5,
+      "boolean_loss_lower_bound_bits": 29,
+      "forward_over_weighted_demand_lower_bound": 4294967294,
+      "sources_digits": 289
+    },
+    {
+      "r": 48,
+      "b": 46,
+      "M": 281474976710656,
+      "n": 13229323905400834,
+      "ell": 54,
+      "ell_minus_r": 6,
+      "boolean_loss_lower_bound_bits": 45,
+      "forward_over_weighted_demand_lower_bound": 281474976710654,
+      "sources_digits": 665
+    },
+    {
+      "r": 64,
+      "b": 62,
+      "M": 18446744073709551616,
+      "n": 1162144876643701751810,
+      "ell": 70,
+      "ell_minus_r": 6,
+      "boolean_loss_lower_bound_bits": 61,
+      "forward_over_weighted_demand_lower_bound": 18446744073709551614,
+      "sources_digits": 1195
+    }
+  ],
+  "width_and_tangent_cases": [
+    {
+      "chains": 1,
+      "family_size": 7,
+      "demand": 127,
+      "union_size": 64
+    },
+    {
+      "chains": 2,
+      "family_size": 5,
+      "demand": 20,
+      "union_size": 11
+    },
+    {
+      "chains": 3,
+      "family_size": 5,
+      "demand": 34,
+      "union_size": 23
+    },
+    {
+      "local_tangent": true,
+      "width_bound": 2,
+      "weighted_demand": 35,
+      "distinct_targets": 20
+    }
+  ]
+}

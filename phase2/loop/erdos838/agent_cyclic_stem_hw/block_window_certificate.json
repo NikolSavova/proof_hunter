@@ -1,0 +1,790 @@
+{
+  "description": "exact block-doubling and cumulative-window audit",
+  "finite_stretchable_counterexample": {
+    "points": [
+      [
+        0,
+        -610766
+      ],
+      [
+        1,
+        -553100
+      ],
+      [
+        2,
+        -480898
+      ],
+      [
+        3,
+        -445553
+      ],
+      [
+        4,
+        -319263
+      ],
+      [
+        5,
+        -72366
+      ],
+      [
+        6,
+        270063
+      ],
+      [
+        7,
+        589685
+      ],
+      [
+        8,
+        996351
+      ],
+      [
+        9,
+        -299655
+      ],
+      [
+        10,
+        2060498
+      ],
+      [
+        11,
+        -384200
+      ],
+      [
+        12,
+        4986319
+      ],
+      [
+        13,
+        -526183
+      ],
+      [
+        14,
+        -679887
+      ],
+      [
+        15,
+        -723778
+      ],
+      [
+        16,
+        -808443
+      ]
+    ],
+    "profile": [
+      1,
+      17,
+      136,
+      680,
+      824,
+      645,
+      349,
+      142,
+      33,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "ell": 5,
+    "coefficient_block_1_failures": [
+      {
+        "rank": 3,
+        "lhs": 824,
+        "rhs": 1360
+      }
+    ],
+    "cumulative_block_1_failures": [
+      {
+        "rank": 3,
+        "lhs": 1658,
+        "rhs": 1668
+      }
+    ],
+    "coefficient_minimal_block": 2,
+    "cumulative_minimal_block": 2,
+    "mean": "12229/2830"
+  },
+  "saved_profile_audit": {
+    "count": 59,
+    "maximum_coefficient_minimal_block": 2,
+    "maximum_cumulative_minimal_block": 1,
+    "rows": [
+      {
+        "n": 8,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "400/133",
+        "sources": [
+          "agent_planar_tutte/expected_rank_collision_certificate.json:first.convex_profile"
+        ]
+      },
+      {
+        "n": 8,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "3",
+        "sources": [
+          "agent_planar_tutte/expected_rank_collision_certificate.json:second.convex_profile"
+        ]
+      },
+      {
+        "n": 3,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "3/2",
+        "sources": [
+          "agent_dual_number_amortization/certificate.json:half_weight_census.exact_all_classes.profile",
+          "agent_weighted_cupcap/certificate.json:records.profile",
+          "agent_circuit_hardcore/rooted_omission_certificate.json:random_marked_omission.maximum_record.rooted_profile"
+        ]
+      },
+      {
+        "n": 4,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "28/15",
+        "sources": [
+          "agent_dual_number_amortization/certificate.json:half_weight_census.exact_all_classes.profile"
+        ]
+      },
+      {
+        "n": 5,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "59/27",
+        "sources": [
+          "agent_dual_number_amortization/certificate.json:half_weight_census.exact_all_classes.profile"
+        ]
+      },
+      {
+        "n": 6,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "12/5",
+        "sources": [
+          "agent_dual_number_amortization/certificate.json:half_weight_census.exact_all_classes.profile",
+          "agent_dual_number_amortization/certificate.json:deletion_variance.empty_inclusive_profile"
+        ]
+      },
+      {
+        "n": 7,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "190/73",
+        "sources": [
+          "agent_dual_number_amortization/certificate.json:half_weight_census.exact_all_classes.profile"
+        ]
+      },
+      {
+        "n": 8,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "158/57",
+        "sources": [
+          "agent_dual_number_amortization/certificate.json:half_weight_census.exact_realizable_minima.profile",
+          "agent_integrated_activity/certificate.json:cases.n8_exact_minimizer.parent.profile"
+        ]
+      },
+      {
+        "n": 9,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "492/169",
+        "sources": [
+          "agent_dual_number_amortization/certificate.json:half_weight_census.exact_realizable_minima.profile",
+          "agent_integrated_activity/certificate.json:cases.n9_exact_minimizer.parent.profile"
+        ]
+      },
+      {
+        "n": 20,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "18676/4775",
+        "sources": [
+          "agent_dual_number_amortization/certificate.json:new_n20_coordinate_record.profile_including_empty",
+          "agent_dual_number_amortization/half_weight_search_records.json:exact_records.20.profile_including_empty",
+          "agent_half_weight/certificate.json:records.20.profile",
+          "agent_integrated_activity/certificate.json:cases.n20_half_weight_record.parent.profile",
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:saved_profile_stress_tests.20.profile"
+        ]
+      },
+      {
+        "n": 20,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "18676/4775",
+        "sources": [
+          "agent_tilted_switch/certificate.json:records.20.profile",
+          "agent_bivariate_potential/certificate.json:APA_boundary_identity.profile",
+          "agent_circuit_hardcore/certificate.json:saved_twenty_point_audit.profile"
+        ]
+      },
+      {
+        "n": 8,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "158/57",
+        "sources": [
+          "agent_tilted_switch/certificate.json:records.8.profile"
+        ]
+      },
+      {
+        "n": 9,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "492/169",
+        "sources": [
+          "agent_tilted_switch/certificate.json:records.9.profile",
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:exact_configuration_checks.n9_exact_minimizer.profile",
+          "agent_cyclic_stem_hw/certificate.json:n9_exact_minimizer.profile",
+          "agent_planar_lattice_mean/CERTIFICATE.json:direct_n9_lex_minimizer.lattice.profile_including_empty"
+        ]
+      },
+      {
+        "n": 24,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "44358/10841",
+        "sources": [
+          "agent_half_weight/certificate.json:records.24.profile",
+          "agent_integrated_activity/certificate.json:cases.n24_half_weight_record.parent.profile",
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:saved_profile_stress_tests.24.profile"
+        ]
+      },
+      {
+        "n": 30,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "144570/32777",
+        "sources": [
+          "agent_half_weight/certificate.json:records.30.profile",
+          "agent_integrated_activity/certificate.json:cases.n30_half_weight_record.parent.profile",
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:saved_profile_stress_tests.30.profile"
+        ]
+      },
+      {
+        "n": 7,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "190/73",
+        "sources": [
+          "agent_global_braid_plateau/toggle_cde_n7.json:down_degree_profile"
+        ]
+      },
+      {
+        "n": 4,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "28/15",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 5,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "59/27",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile",
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 6,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "121/48",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 7,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "125/43",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile",
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 8,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "526/157",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 9,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "1125/293",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile",
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 10,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "2431/558",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 11,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "1319/270",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile",
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 12,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "11452/2115",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 13,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "24799/4175",
+        "sources": [
+          "agent_weighted_cupcap/certificate.json:records.profile"
+        ]
+      },
+      {
+        "n": 24,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "28144/7699",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.ACP_coordinate_n24.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.ACP_coordinate_n24.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 44,
+        "coefficient_minimal_block": 2,
+        "cumulative_minimal_block": 1,
+        "mean": "818933/183778",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.APA_counterexample_n44.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.APA_counterexample_n44.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 10,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "115/44",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.central_Pascal_m5.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.central_Pascal_m5.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 20,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "95/26",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.central_Pascal_m6.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.central_Pascal_m6.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 35,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "665155/143157",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.central_Pascal_m7.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.central_Pascal_m7.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 49,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "4301377/898700",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.guarded_template_k3_depth2.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.guarded_template_k3_depth2.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 11,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "77/29",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.guarded_template_k4.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.guarded_template_k4.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 25,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "39997/10744",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.guarded_template_k5.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.guarded_template_k5.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 58,
+        "coefficient_minimal_block": 2,
+        "cumulative_minimal_block": 1,
+        "mean": "3124339/682441",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.half_weight_counterexample_n58.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.half_weight_counterexample_n58.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 36,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "2457/530",
+        "sources": [
+          "agent_generalized_deletion/low_addable_certificate.json:records.vertical_T42_depth2.rank_counts_below_L",
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:saved_exact_records.vertical_T42_depth2.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 24,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "41099/10221",
+        "sources": [
+          "agent_generalized_deletion/certificate.json:planar_record.profile"
+        ]
+      },
+      {
+        "n": 24,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "40445/10064",
+        "sources": [
+          "agent_generalized_deletion/planar_rnp_record.json:search_profile"
+        ]
+      },
+      {
+        "n": 24,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "720/197",
+        "sources": [
+          "agent_generalized_deletion/rankwise_nearmax_certificate.json:exact_coordinate_record.rank_counts_below_L"
+        ]
+      },
+      {
+        "n": 12870,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "29696245340876966659900765939652914767/1938160766919991137871081420234686586",
+        "sources": [
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:central_pascal_stress_tests.16.profile"
+        ]
+      },
+      {
+        "n": 601080390,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "11144783516695597389705548492321103649589874070079874724635338833897966931695377809037648291426180594146734841903077615424003734238262520207297660396249518578318868296/352303073081396737841358386432012740485606448367671774266457800234129885419534653820359799257554594131740863282055686808217897136474727747771770007973036006171243747",
+        "sources": [
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:central_pascal_stress_tests.32.profile"
+        ]
+      },
+      {
+        "n": 1832624140942590534,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "18305912174841596230330208975022829878850663738851790129311626838604372072576143317573485616700616340522333070408387185492015297895341605593400694314386438189988241404843217537258817829169402330284259148273168399132799928941947140878997643254859140763351937802997390657361826742252077540740412106285601036561532939746174379550399851681599873916615895067051291790052057014303396288256778483591640321051798049971917902370707089103231229101750770808490960690935209497013806082477086529278431409230795987071180243039478712361733177847901942399749588614572281382810852479933135965512588013614717515091020335389438453224497586455831201486892921700389273816675883798443361733008607684759046308001125375610474118716349836528/286925027790185078237164926770967963740406047345661226231619886185197336990413010872160208882234688274879584197708577570869462398377172585214193206285358899056405637471755538818736283649953147530660901707840493698077991132282078386621368615962726753872663558871304679001443390647791433410979720788413772579389772371380562432689699051812923780775721239630779633589111405636851986982104265342279896696368086250051887690311017462301053150403567058304632521098956722603980663777547475422061497166254866074274004770622711407949290417083730894147915258944671750749842201740066818815463495113617769187740599422463622728254062015959561230007432951215492325572342107642887269059945177353896107715722491123060761196920470095",
+        "sources": [
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:central_pascal_stress_tests.64.profile"
+        ]
+      },
+      {
+        "n": 20,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "5129/1289",
+        "sources": [
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:exact_configuration_checks.n20_exact_macro.profile",
+          "agent_planar_lattice_mean/CERTIFICATE.json:results.profile_including_empty"
+        ]
+      },
+      {
+        "n": 58,
+        "coefficient_minimal_block": 2,
+        "cumulative_minimal_block": 1,
+        "mean": "1838569/353969",
+        "sources": [
+          "agent_cyclic_stem_hw/optimized_hull_certificate.json:saved_profile_stress_tests.58.profile",
+          "agent_cyclic_stem_hw/certificate.json:n58_low_mean_nonminimizer.profile"
+        ]
+      },
+      {
+        "n": 9,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "9/2",
+        "sources": [
+          "agent_planar_lattice_mean/CERTIFICATE.json:direct_n9_lex_minimizer.lattice.boolean_coefficients",
+          "agent_planar_lattice_mean/CERTIFICATE.json:results.boolean_coefficients"
+        ]
+      },
+      {
+        "n": 9,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "497/170",
+        "sources": [
+          "agent_planar_lattice_mean/CERTIFICATE.json:results.profile_including_empty"
+        ]
+      },
+      {
+        "n": 17,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "17/2",
+        "sources": [
+          "agent_planar_lattice_mean/CERTIFICATE.json:results.boolean_coefficients"
+        ]
+      },
+      {
+        "n": 17,
+        "coefficient_minimal_block": 2,
+        "cumulative_minimal_block": 1,
+        "mean": "8771/2353",
+        "sources": [
+          "agent_planar_lattice_mean/CERTIFICATE.json:results.profile_including_empty"
+        ]
+      },
+      {
+        "n": 20,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "10",
+        "sources": [
+          "agent_planar_lattice_mean/CERTIFICATE.json:results.boolean_coefficients"
+        ]
+      },
+      {
+        "n": 8,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "341/120",
+        "sources": [
+          "agent_circuit_hardcore/rooted_omission_certificate.json:quarter_target_induction_barriers.mean_induction_counterexample.unrooted_profile"
+        ]
+      },
+      {
+        "n": 4,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "2",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      },
+      {
+        "n": 5,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "67/29",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      },
+      {
+        "n": 6,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "124/49",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      },
+      {
+        "n": 7,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "219/80",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      },
+      {
+        "n": 8,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "194/65",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      },
+      {
+        "n": 9,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "711/215",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      },
+      {
+        "n": 10,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "1364/367",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      },
+      {
+        "n": 11,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "2731/650",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      },
+      {
+        "n": 12,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1,
+        "mean": "1411/298",
+        "sources": [
+          "agent_endpoint_ladder_proof/certificate.json:records.brute_profile"
+        ]
+      }
+    ]
+  },
+  "pascal_cell_audit": {
+    "maximum_parameter": 50,
+    "cells": 1222,
+    "maximum_coefficient_minimal_block": 1,
+    "maximum_cumulative_minimal_block": 1,
+    "record_witnesses": [
+      {
+        "parameter": 4,
+        "cell": 1,
+        "n": 4,
+        "ell": 2,
+        "coefficient_minimal_block": 1,
+        "cumulative_minimal_block": 1
+      }
+    ]
+  },
+  "vertical_iteration_of_counterexample": [
+    {
+      "depth": 1,
+      "n": 17,
+      "ell": 5,
+      "coefficient_minimal_block": 2,
+      "cumulative_minimal_block": 2
+    },
+    {
+      "depth": 2,
+      "n": 289,
+      "ell": 9,
+      "coefficient_minimal_block": 1,
+      "cumulative_minimal_block": 1
+    },
+    {
+      "depth": 3,
+      "n": 4913,
+      "ell": 13,
+      "coefficient_minimal_block": 1,
+      "cumulative_minimal_block": 1
+    },
+    {
+      "depth": 4,
+      "n": 83521,
+      "ell": 17,
+      "coefficient_minimal_block": 1,
+      "cumulative_minimal_block": 1
+    },
+    {
+      "depth": 5,
+      "n": 1419857,
+      "ell": 21,
+      "coefficient_minimal_block": 1,
+      "cumulative_minimal_block": 1
+    },
+    {
+      "depth": 6,
+      "n": 24137569,
+      "ell": 25,
+      "coefficient_minimal_block": 1,
+      "cumulative_minimal_block": 1
+    },
+    {
+      "depth": 7,
+      "n": 410338673,
+      "ell": 29,
+      "coefficient_minimal_block": 1,
+      "cumulative_minimal_block": 1
+    },
+    {
+      "depth": 8,
+      "n": 6975757441,
+      "ell": 33,
+      "coefficient_minimal_block": 1,
+      "cumulative_minimal_block": 1
+    }
+  ],
+  "dyadic_resonance_audit": [
+    {
+      "name": "deep_cluster_n65",
+      "n": 65,
+      "ell": 7,
+      "coefficient_minimal_block": 2,
+      "cumulative_minimal_block": 2,
+      "cumulative_block_1_failures": [
+        {
+          "rank": 5,
+          "lhs": 2051195,
+          "rhs": 2525594
+        }
+      ]
+    },
+    {
+      "name": "heterogeneous_vertical_n129",
+      "n": 129,
+      "ell": 8,
+      "coefficient_minimal_block": 2,
+      "cumulative_minimal_block": 2,
+      "cumulative_block_1_failures": [
+        {
+          "rank": 6,
+          "lhs": 174925706,
+          "rhs": 204131768
+        }
+      ]
+    }
+  ]
+}

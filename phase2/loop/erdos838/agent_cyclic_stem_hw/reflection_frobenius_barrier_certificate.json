@@ -1,0 +1,289 @@
+{
+  "status": "PASS",
+  "claim_boundary": "scalable counterexample to polynomial/activity-stable Frobenius alignment; not a counterexample to HW",
+  "finite_entry_checks": [
+    {
+      "n": 4,
+      "positive_roots": 6,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 5,
+      "positive_roots": 10,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 6,
+      "positive_roots": 15,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 7,
+      "positive_roots": 21,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 8,
+      "positive_roots": 28,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 9,
+      "positive_roots": 36,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 10,
+      "positive_roots": 45,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 11,
+      "positive_roots": 55,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 12,
+      "positive_roots": 66,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 13,
+      "positive_roots": 78,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    },
+    {
+      "n": 14,
+      "positive_roots": 91,
+      "entry_formula": "PASS",
+      "reflection_betweenness": "PASS",
+      "general_position": "PASS"
+    }
+  ],
+  "asymptotic_rows": [
+    {
+      "n": 8,
+      "log2_alignment_ratio": -1.0565421111872606,
+      "log2_marginal_energy_dilation": 3.8981127485827756,
+      "pairing_dilation": {
+        "exact": "896/125",
+        "decimal": 7.168,
+        "log2": 2.8415706373955167
+      },
+      "half_weight": {
+        "exact": "15/11",
+        "decimal": 1.3636363636363635,
+        "log2": 0.4474589769712214
+      }
+    },
+    {
+      "n": 12,
+      "log2_alignment_ratio": -1.9654296511869802,
+      "log2_marginal_energy_dilation": 5.348011747363024,
+      "pairing_dilation": {
+        "exact": "20160/1933",
+        "decimal": 10.429384376616659,
+        "log2": 3.382582096176044
+      },
+      "half_weight": {
+        "exact": "6471/5144",
+        "decimal": 1.2579704510108864,
+        "log2": 0.3310980345536638
+      }
+    },
+    {
+      "n": 20,
+      "log2_alignment_ratio": -3.746178454285676,
+      "log2_marginal_energy_dilation": 8.406040198564572,
+      "pairing_dilation": {
+        "exact": "6136832/242765",
+        "decimal": 25.278899347105224,
+        "log2": 4.659861744278899
+      },
+      "half_weight": {
+        "exact": "1241985/1536896",
+        "decimal": 0.8081125853668694,
+        "log2": -0.3073717932031137
+      }
+    },
+    {
+      "n": 30,
+      "log2_alignment_ratio": -5.919653241969186,
+      "log2_marginal_energy_dilation": 12.468763635897531,
+      "pairing_dilation": {
+        "exact": "6432669696/68693015",
+        "decimal": 93.64372339749536,
+        "log2": 6.549110393928348
+      },
+      "half_weight": {
+        "exact": "206865477/643317760",
+        "decimal": 0.321560339015046,
+        "log2": -1.6368386182051573
+      }
+    },
+    {
+      "n": 40,
+      "log2_alignment_ratio": -8.02905289244245,
+      "log2_marginal_energy_dilation": 16.605579514568888,
+      "pairing_dilation": {
+        "exact": "1319309934592/3455851409",
+        "decimal": 381.76118659388806,
+        "log2": 8.576526622126437
+      },
+      "half_weight": {
+        "exact": "86451335465/824571396096",
+        "decimal": 0.10484396605837996,
+        "log2": -3.2536842605214744
+      }
+    },
+    {
+      "n": 60,
+      "log2_alignment_ratio": -12.189620772249782,
+      "log2_marginal_energy_dilation": 24.90422201382694,
+      "pairing_dilation": {
+        "exact": "6917527909875843072/1029140248812445",
+        "decimal": 6721.657148146893,
+        "log2": 12.714601241577142
+      },
+      "half_weight": {
+        "exact": "15437353377160755/1729381985656242176",
+        "decimal": 0.008926514503562844,
+        "log2": -6.807687322084554
+      }
+    },
+    {
+      "n": 80,
+      "log2_alignment_ratio": -16.340387902492182,
+      "log2_marginal_energy_dilation": 33.204935065603706,
+      "pairing_dilation": {
+        "exact": "1450710983144809456205824/12157557706917406753",
+        "decimal": 119325.85623832852,
+        "log2": 16.864547163111517
+      },
+      "half_weight": {
+        "exact": "303939055372877015865/453347182235536093872128",
+        "decimal": 0.0006704333175163881,
+        "log2": -10.542618533284724
+      }
+    },
+    {
+      "n": 120,
+      "log2_alignment_ratio": -24.641150014190288,
+      "log2_marginal_energy_dilation": 49.8064343848572,
+      "pairing_dilation": {
+        "exact": "1595073594941898153739818101108637696/42391158037137912812980532657",
+        "decimal": 37627506.98021722,
+        "log2": 25.165284370666924
+      },
+      "half_weight": {
+        "exact": "3179336853312805049331172440795/996920996838686354806355191782178816",
+        "decimal": 3.1891562755671997e-06,
+        "log2": -18.25839377481907
+      }
+    },
+    {
+      "n": 160,
+      "log2_alignment_ratio": -32.9419000076694,
+      "log2_marginal_energy_dilation": 66.40793435581489,
+      "pairing_dilation": {
+        "exact": "1753801964797083501842785880840437107387906654208/147808829413916754650120016849362605121",
+        "decimal": 11865339653.599586,
+        "log2": 33.466034348145485
+      },
+      "half_weight": {
+        "exact": "3695220735348163673731472383641943128665/274031556999544297162938335085333266080878034944",
+        "decimal": 1.3484654015064071e-08,
+        "log2": -26.14410625325803
+      }
+    },
+    {
+      "n": 240,
+      "log2_alignment_ratio": -49.54339997882727,
+      "log2_marginal_energy_dilation": 99.61093429812234,
+      "pairing_dilation": {
+        "exact": "2120216477734061195499957000891498245664655675980215465685862851545137152/1797010299914431209387015816763649985849736577001425093729",
+        "decimal": 1179857721369221.0,
+        "log2": 50.06753431929505
+      },
+      "half_weight": {
+        "exact": "134775772493582340705232460663448560093390448182311294732395/662567649291894123593736562778593211780953241998965000833629063844200448",
+        "decimal": 2.034143572171404e-13,
+        "log2": -42.16064372368655
+      }
+    }
+  ],
+  "entry_multiset_collision": {
+    "word_1": [
+      0,
+      2,
+      1,
+      3,
+      2,
+      1,
+      4,
+      3,
+      2,
+      1,
+      0,
+      1,
+      2,
+      4,
+      3
+    ],
+    "word_2": [
+      0,
+      3,
+      2,
+      1,
+      2,
+      4,
+      3,
+      2,
+      1,
+      0,
+      1,
+      4,
+      3,
+      2,
+      3
+    ],
+    "unordered_entry_polynomial_multisets_equal": true,
+    "nonempty_profiles": [
+      [
+        0,
+        6,
+        15,
+        20,
+        8,
+        1
+      ],
+      [
+        0,
+        6,
+        15,
+        20,
+        8
+      ]
+    ]
+  }
+}

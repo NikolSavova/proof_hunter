@@ -1,0 +1,104 @@
+# Erdős 838: independent verification queue
+
+The recent campaign has extensive exact author-side verification but has not
+received comparable independent cross-model proof reconstruction.  Freeze
+publication claims resting on the following packages until each receives a
+fresh proof attempt from another model with the source artifact attached.
+
+**Local integrity rerun, 2026-08-15:** all nine verifier suites associated
+with V1--V5 passed, including `16,142,517` exact nonstationary ledgers,
+`8,232` weighted Hall networks, the recursive ES schedule census, the
+minimizer/root finite scans, sparse-curvature certificates, pooled rank
+promotion, and the global rank-three ES(4) code.  This confirms that the saved
+artifacts run; it does not change their independent-audit status.
+
+## Queue (maximum five packages)
+
+### V1. Hinged Kraft and variable-arity grammar closure
+
+Claims to reconstruct:
+
+1. the merged cup/cap word is prefix-free;
+2. `sum_i 2^{-(alpha_i+beta_i)} <= 1`;
+3. the Perron/circulation step gives a same-edge cycle with sufficient reward;
+4. the resulting coefficient is at least `1/2` for the stated grammar class.
+
+Artifacts:
+
+- `agent_nonstrong_ramp_search/HINGED_DIAGONAL_FLOOR_LOG.md`
+- `agent_nonstrong_ramp_search/verify_hinged_diagonal_floor_log.py`
+- `agent_nonstrong_ramp_search/NONSTATIONARY_HOMOGENEOUS_HALF_CLOSURE.md`
+
+### V2. Recursive separated-template construction closure
+
+Claims to reconstruct:
+
+1. expansion of every permitted macro/child schedule produces one ordered
+   strong-decomposition tree;
+2. stationary tropical coefficients and finite correction terms are correct;
+3. perfect-reset powers do not evade the strong-tree lower theorem.
+
+Artifacts:
+
+- `agent_many_class_partner_reset/RECURSIVE_ES_RAMP_HALF_CLOSURE.md`
+- `agent_many_class_partner_reset/verify_recursive_es_ramp_half_barrier.py`
+
+### V3. Minimizer hull-root recurrence and endpoint curvature reduction
+
+Claims to reconstruct:
+
+1. the projective hull-root extension/deletion recurrence for `f(n+1)`;
+2. the definition and exact role of `K_{n,1}`;
+3. the cumulative curvature condition equivalent/sufficient for half;
+4. the corrected `n=8,9` finite values and projective-root saturation.
+
+Artifacts:
+
+- `agent_minimizer_endpoint_curvature/MINIMIZER_ENDPOINT_CURVATURE_AND_HIGH_WALL_GATE.md`
+- `agent_minimizer_endpoint_curvature/verify_minimizer_endpoint_curvature.py`
+- `agent_hull_root_envelope_dynamic/HULL_ROOT_ENVELOPE_AND_CHART_RESET_GATE.md`
+- `agent_hull_root_envelope_dynamic/verify_hull_root_envelope.py`
+
+### V4. Sparse curvature transport and native-cap collision
+
+Claims to reconstruct:
+
+1. sparse layer selection retains the claimed amount of curvature;
+2. the shelling/remapping load lower bounds are exact;
+3. the native-cap collision really has full load;
+4. the child-excess alternative is stated without assuming the desired bound.
+
+Artifacts:
+
+- `agent_sparse_curvature_transport/SPARSE_CURVATURE_TRANSPORT_AND_NATIVE_COLLISION.md`
+- its verifier(s) in the same directory
+- `agent_post_collision_remapping/POST_COLLISION_REMAPPING_MINIMAX.md`
+
+### V5. Global mixed-Hall assembly and low-rank ES replacement
+
+Claims to reconstruct:
+
+1. the weighted Hall condition and recovery-fibre condition are independent
+   and correctly composed;
+2. rank incidence gives the asserted global superposition load;
+3. pooled rank-four/rank-five allocation has the claimed load/fibre;
+4. the ES(4) code handles all literal rank-three histories and extends to
+   `r=o(sqrt(log n))` with subpolynomial overhead.
+
+Artifacts:
+
+- `agent_coxeter_global_half/ABSTRACT_MIXED_HALL_ASSEMBLY.md`
+- `agent_coxeter_global_half/JOINT_DETACHED_BANK_RANK_PROMOTION.md`
+- `agent_coxeter_global_half/GLOBAL_RANK_THREE_ES4_REPLACEMENT_CODE.md`
+- the three corresponding `verify_*.py` programs
+
+## Verdict format
+
+Each external audit must return one of `PASS`, `MINOR_REPAIR`, `MAJOR_GAP`, or
+`FALSE`, with:
+
+- a self-contained reconstruction;
+- exact lemma dependencies;
+- a check that no statement silently assumes the unrestricted lower bound;
+- rerun output for every numerical certificate;
+- a short scope statement saying exactly what the result does **not** prove.

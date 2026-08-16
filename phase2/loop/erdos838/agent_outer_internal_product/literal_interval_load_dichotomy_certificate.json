@@ -1,0 +1,40 @@
+{
+  "description": "literal interval load localization and bounded-rank circuit trichotomy",
+  "n": 9,
+  "faces": 449,
+  "half_partition_function": "9509/256",
+  "active_depths": 4,
+  "mean_radial_depth": "11514/9509",
+  "total_inverse_capture_demand": "23693/19018",
+  "expected_literal_load": "23693/19018",
+  "expected_compatible_load": "11514/9509",
+  "expected_blocked_load": "665/19018",
+  "heaviest_target": [],
+  "heaviest_target_rank": 0,
+  "heaviest_target_load": "137/8",
+  "heaviest_blocked_target": [
+    4,
+    5,
+    6
+  ],
+  "heaviest_blocked_target_rank": 3,
+  "heaviest_blocked_target_load": "19/8",
+  "branch_counts": {
+    "tagged_mixed_outputs": 112,
+    "common_circuit_fibre": 1
+  },
+  "targets_audited": 113,
+  "claims": [
+    "ordinary-face normalized load equals one quarter of cumulative radial endpoint tilt",
+    "expected literal load equals total inverse-capture demand",
+    "compatible records have expected load exactly equal to mean radial depth",
+    "blocked records carry exactly the excess inverse-capture demand",
+    "the empty face maximizes total load but has zero blocked load",
+    "maximum blocked load is at least total demand minus mean radial depth",
+    "tagged mixed outputs recover their endpoint intervals",
+    "every bad endpoint union has a canonical two-plus-two or one-plus-three circuit profile",
+    "the bounded-rank trichotomy holds target by target",
+    "blocked load has a rank-free heavy-endpoint/many-traces/common-profile compression",
+    "a common-profile endpoint graph has a square-root star or matching"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "date": "2026-08-15",
+  "exact_bruhat": {
+    "5": {
+      "classes": 62,
+      "first_profiles_V_minC_count": [[26, 17, 2], [28, 16, 6], [31, 15, 2]],
+      "ordinary_endpoint_slope": "2"
+    },
+    "8": {
+      "classes": 1232944,
+      "first_profiles_V_minC_count": [[113, 55, 16], [114, 53, 4]],
+      "ordinary_endpoint_slope": "1/2"
+    }
+  },
+  "database_9_low_envelope": {
+    "otypes_sha256": "e48faf76c3890ef5481b043bc681b05052b2015092837549b2c53e18626038b4",
+    "kgons_sha256": "0e2b5d3e1b3128b5f6fb54f5d29d5460462ae2bb4f7320ae19f5c31ec9de7701",
+    "profiles_V_minC_count_through_180": [
+      [168, 82, 1], [169, 76, 1], [170, 74, 1], [171, 74, 3],
+      [172, 71, 1], [173, 71, 1], [174, 70, 1], [175, 71, 2],
+      [176, 70, 4], [177, 70, 6], [178, 69, 6], [179, 69, 10],
+      [180, 67, 2]
+    ],
+    "stretchable_slope_witness": {
+      "V": 169,
+      "C": 76,
+      "coordinates": [[11164, 4101], [12508, 65228], [15188, 59208], [27928, 45988], [17968, 20888], [16188, 13108], [28308, 26528], [48288, 28008], [60248, 30768]]
+    }
+  },
+  "finite_moment_bounds": {
+    "5": {"f": 26, "p": 17, "cardinality_bound": 17},
+    "8": {"f": 113, "p": 55, "cardinality_bound": 53},
+    "9": {"f": 168, "stored_projection_p": 82, "cardinality_bound": 71, "actual_f_vector_bound": 72}
+  },
+  "strong_decomposition_barrier": {
+    "8": {"V": 114, "C": 53, "decomposable": false, "ordered_nonempty_subsets_checked": 109600},
+    "9": {"V": 169, "C": 76, "decomposable": false, "ordered_nonempty_subsets_checked": 986409}
+  }
+}

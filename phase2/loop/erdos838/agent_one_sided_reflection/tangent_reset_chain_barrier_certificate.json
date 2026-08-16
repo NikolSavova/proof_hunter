@@ -1,0 +1,408 @@
+{
+  "description": "exact linear-depth tangent reset coexistence barrier",
+  "arithmetic": "fractions.Fraction for all geometric and polynomial assertions",
+  "arbitrary_core_wrappers": [
+    {
+      "name": "pascal_core_six_plus_ten_ears",
+      "core_size": 6,
+      "wrapper_levels": 10,
+      "rooted_base_coefficients": [
+        1,
+        6,
+        9,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rooted_full_coefficients": [
+        1,
+        16,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "coexistence_failures_checked": 105,
+      "detached_apex_faces": 1024,
+      "reset_chain": [
+        {
+          "cloud_size": 16,
+          "selected_hull_rank": 1,
+          "child_size": 15,
+          "codimension": 1,
+          "half_rooted_mass": "45/4"
+        },
+        {
+          "cloud_size": 15,
+          "selected_hull_rank": 1,
+          "child_size": 14,
+          "codimension": 1,
+          "half_rooted_mass": "43/4"
+        },
+        {
+          "cloud_size": 14,
+          "selected_hull_rank": 1,
+          "child_size": 13,
+          "codimension": 1,
+          "half_rooted_mass": "41/4"
+        },
+        {
+          "cloud_size": 13,
+          "selected_hull_rank": 1,
+          "child_size": 12,
+          "codimension": 1,
+          "half_rooted_mass": "39/4"
+        },
+        {
+          "cloud_size": 12,
+          "selected_hull_rank": 1,
+          "child_size": 11,
+          "codimension": 1,
+          "half_rooted_mass": "37/4"
+        },
+        {
+          "cloud_size": 11,
+          "selected_hull_rank": 1,
+          "child_size": 10,
+          "codimension": 1,
+          "half_rooted_mass": "35/4"
+        },
+        {
+          "cloud_size": 10,
+          "selected_hull_rank": 1,
+          "child_size": 9,
+          "codimension": 1,
+          "half_rooted_mass": "33/4"
+        },
+        {
+          "cloud_size": 9,
+          "selected_hull_rank": 1,
+          "child_size": 8,
+          "codimension": 1,
+          "half_rooted_mass": "31/4"
+        },
+        {
+          "cloud_size": 8,
+          "selected_hull_rank": 1,
+          "child_size": 7,
+          "codimension": 1,
+          "half_rooted_mass": "29/4"
+        },
+        {
+          "cloud_size": 7,
+          "selected_hull_rank": 1,
+          "child_size": 6,
+          "codimension": 1,
+          "half_rooted_mass": "27/4"
+        },
+        {
+          "cloud_size": 6,
+          "selected_hull_rank": 2,
+          "child_size": 4,
+          "codimension": 2,
+          "half_rooted_mass": "25/4"
+        },
+        {
+          "cloud_size": 4,
+          "selected_hull_rank": 2,
+          "child_size": 2,
+          "codimension": 2,
+          "half_rooted_mass": "4/1"
+        },
+        {
+          "cloud_size": 2,
+          "selected_hull_rank": 0,
+          "child_size": 0,
+          "codimension": 2,
+          "half_rooted_mass": "9/4"
+        }
+      ]
+    },
+    {
+      "name": "random_core_six_plus_eight_ears",
+      "core_size": 6,
+      "wrapper_levels": 8,
+      "rooted_base_coefficients": [
+        1,
+        6,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rooted_full_coefficients": [
+        1,
+        14,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "coexistence_failures_checked": 76,
+      "detached_apex_faces": 256,
+      "reset_chain": [
+        {
+          "cloud_size": 14,
+          "selected_hull_rank": 1,
+          "child_size": 13,
+          "codimension": 1,
+          "half_rooted_mass": "21/2"
+        },
+        {
+          "cloud_size": 13,
+          "selected_hull_rank": 1,
+          "child_size": 12,
+          "codimension": 1,
+          "half_rooted_mass": "10/1"
+        },
+        {
+          "cloud_size": 12,
+          "selected_hull_rank": 1,
+          "child_size": 11,
+          "codimension": 1,
+          "half_rooted_mass": "19/2"
+        },
+        {
+          "cloud_size": 11,
+          "selected_hull_rank": 1,
+          "child_size": 10,
+          "codimension": 1,
+          "half_rooted_mass": "9/1"
+        },
+        {
+          "cloud_size": 10,
+          "selected_hull_rank": 1,
+          "child_size": 9,
+          "codimension": 1,
+          "half_rooted_mass": "17/2"
+        },
+        {
+          "cloud_size": 9,
+          "selected_hull_rank": 1,
+          "child_size": 8,
+          "codimension": 1,
+          "half_rooted_mass": "8/1"
+        },
+        {
+          "cloud_size": 8,
+          "selected_hull_rank": 1,
+          "child_size": 7,
+          "codimension": 1,
+          "half_rooted_mass": "15/2"
+        },
+        {
+          "cloud_size": 7,
+          "selected_hull_rank": 1,
+          "child_size": 6,
+          "codimension": 1,
+          "half_rooted_mass": "7/1"
+        },
+        {
+          "cloud_size": 6,
+          "selected_hull_rank": 2,
+          "child_size": 4,
+          "codimension": 2,
+          "half_rooted_mass": "13/2"
+        },
+        {
+          "cloud_size": 4,
+          "selected_hull_rank": 2,
+          "child_size": 2,
+          "codimension": 2,
+          "half_rooted_mass": "9/2"
+        },
+        {
+          "cloud_size": 2,
+          "selected_hull_rank": 0,
+          "child_size": 0,
+          "codimension": 2,
+          "half_rooted_mass": "9/4"
+        }
+      ]
+    }
+  ],
+  "pascal_and_matching_stress": [
+    {
+      "name": "central_pascal_T_6_3",
+      "singleton_degree": 81,
+      "left_chain": [
+        {
+          "cloud_size": 9,
+          "selected_hull_rank": 2,
+          "child_size": 7,
+          "codimension": 2,
+          "half_rooted_mass": "8/1"
+        },
+        {
+          "cloud_size": 7,
+          "selected_hull_rank": 1,
+          "child_size": 5,
+          "codimension": 2,
+          "half_rooted_mass": "23/4"
+        },
+        {
+          "cloud_size": 5,
+          "selected_hull_rank": 2,
+          "child_size": 3,
+          "codimension": 2,
+          "half_rooted_mass": "9/2"
+        },
+        {
+          "cloud_size": 3,
+          "selected_hull_rank": 1,
+          "child_size": 2,
+          "codimension": 1,
+          "half_rooted_mass": "11/4"
+        },
+        {
+          "cloud_size": 2,
+          "selected_hull_rank": 0,
+          "child_size": 0,
+          "codimension": 2,
+          "half_rooted_mass": "9/4"
+        }
+      ],
+      "right_chain": [
+        {
+          "cloud_size": 9,
+          "selected_hull_rank": 2,
+          "child_size": 7,
+          "codimension": 2,
+          "half_rooted_mass": "8/1"
+        },
+        {
+          "cloud_size": 7,
+          "selected_hull_rank": 1,
+          "child_size": 5,
+          "codimension": 2,
+          "half_rooted_mass": "23/4"
+        },
+        {
+          "cloud_size": 5,
+          "selected_hull_rank": 2,
+          "child_size": 3,
+          "codimension": 2,
+          "half_rooted_mass": "9/2"
+        },
+        {
+          "cloud_size": 3,
+          "selected_hull_rank": 1,
+          "child_size": 2,
+          "codimension": 1,
+          "half_rooted_mass": "11/4"
+        },
+        {
+          "cloud_size": 2,
+          "selected_hull_rank": 0,
+          "child_size": 0,
+          "codimension": 2,
+          "half_rooted_mass": "9/4"
+        }
+      ]
+    },
+    {
+      "name": "perfect_matching_star_m12_q6",
+      "grid": {
+        "name": "matching_star",
+        "left_size": 12,
+        "right_size": 12,
+        "singleton_degree": 12,
+        "compatible_visible_hull_pairs": 12,
+        "maximum_compatible_hidden_product": 0,
+        "deepest_pocket_product": 42,
+        "deepest_visible_hulls_compatible": false
+      },
+      "left_chain": [
+        {
+          "cloud_size": 12,
+          "selected_hull_rank": 2,
+          "child_size": 7,
+          "codimension": 5,
+          "half_rooted_mass": "6043/128"
+        },
+        {
+          "cloud_size": 7,
+          "selected_hull_rank": 2,
+          "child_size": 2,
+          "codimension": 5,
+          "half_rooted_mass": "425/32"
+        },
+        {
+          "cloud_size": 2,
+          "selected_hull_rank": 0,
+          "child_size": 0,
+          "codimension": 2,
+          "half_rooted_mass": "9/4"
+        }
+      ],
+      "right_chain": [
+        {
+          "cloud_size": 12,
+          "selected_hull_rank": 2,
+          "child_size": 6,
+          "codimension": 6,
+          "half_rooted_mass": "367/8"
+        },
+        {
+          "cloud_size": 6,
+          "selected_hull_rank": 2,
+          "child_size": 3,
+          "codimension": 3,
+          "half_rooted_mass": "141/16"
+        },
+        {
+          "cloud_size": 3,
+          "selected_hull_rank": 0,
+          "child_size": 0,
+          "codimension": 3,
+          "half_rooted_mass": "27/8"
+        }
+      ]
+    }
+  ],
+  "alternating_stress": {
+    "name": "alternating_terminal_trace",
+    "sides": [
+      {
+        "orientation": -1,
+        "cloud_size": 6,
+        "half_rooted_mass": "729/64"
+      },
+      {
+        "orientation": 1,
+        "cloud_size": 6,
+        "half_rooted_mass": "729/64"
+      }
+    ]
+  },
+  "assertions": [
+    "each wrapper ear gives a codimension-one deepest pocket reset",
+    "both endpoint tangent coordinates progress strictly at every reset",
+    "rooted polynomial equals core polynomial plus L singleton terms",
+    "no nonempty child face coexists with its parent wrapper ear",
+    "discarded wrapper apices form a Boolean convex-face bank",
+    "Pascal, matching-star, and alternating profiles retain their expected branches"
+  ]
+}

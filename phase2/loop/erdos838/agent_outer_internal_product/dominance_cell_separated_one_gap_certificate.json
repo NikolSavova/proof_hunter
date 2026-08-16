@@ -1,0 +1,59 @@
+{
+  "ordinary_mixed_bank_counterexample": {
+    "barycentric_weights": [
+      "3/230",
+      "122/575",
+      "891/1150"
+    ],
+    "cell_occupancies": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "cross_complete_singleton_choices": 2,
+    "directional_one_gap_face_convex_with_root": false,
+    "directional_one_gap_face_convex_without_root": false,
+    "general_position": true,
+    "interior_point": "z",
+    "positive_reverse_dominance": true
+  },
+  "separated_pair_bank": {
+    "cell_sizes": [
+      2,
+      3,
+      2,
+      3
+    ],
+    "cells": 4,
+    "cyclic_identity_verified": true,
+    "full_product": 252,
+    "local_reservoirs": [
+      4,
+      8,
+      4,
+      8
+    ],
+    "maximum_pair_bank": 504,
+    "maximum_pair_bank_exceeds_source_square": false,
+    "pair_bank_sizes": [
+      504,
+      336,
+      336,
+      288
+    ],
+    "sparse_words": 126,
+    "trace_alphabets": [
+      2,
+      6,
+      3,
+      7
+    ],
+    "trace_rank_bounds": [
+      1,
+      2,
+      2,
+      3
+    ]
+  }
+}

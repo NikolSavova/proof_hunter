@@ -1,0 +1,30 @@
+{
+  "capped_arithmetic": {
+    "M": 16777216,
+    "cap_d=floor(n/2^r)": 131072,
+    "ground_size": 33554439,
+    "minimum_maximum_fibre": 130056,
+    "minimum_weighted_load_as_fraction": "130056/256",
+    "rank": 8,
+    "selected_interval_faces": 16908289,
+    "selected_records": 2199023255552
+  },
+  "construction": "R_z=(z,z^2-B^2), y_t=(t^2,t)",
+  "large_exact_geometry": {
+    "alternatives_each_side": 64,
+    "common_frame_faces": 129,
+    "common_size": 8,
+    "coordinate_scale_B": 3732480,
+    "ground_size": 136,
+    "rank": 9,
+    "repair_records": 4096,
+    "weighted_C4_denominator": 16777216,
+    "weighted_C4_numerator": 16777216
+  },
+  "small_exhaustive": {
+    "alternatives_each_side": 6,
+    "common_size": 5,
+    "expected_counts": [8, 9, 10, 11, 12, 13],
+    "interval_closed_set_counts": [8, 9, 10, 11, 12, 13]
+  }
+}
