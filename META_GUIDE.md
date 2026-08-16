@@ -449,6 +449,40 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-15 — ERDŐS #838: fixed-size bridge, V1/V5 audits, and quarter-log pooling gain (Sihao + Codex)
+
+- **Exact gain bridge:** proved and verified that
+  `mu_k(4^k)>=2^((1+eta-o(1))k^2)` improves the unrestricted coefficient
+  from `1/4` to `(1+eta)/4`. The earlier loose `2^(2k+o(k))` shorthand is no
+  longer used for the transfer.
+- **Strong-tree narrowing:** proved the diffuse-comb/near-full-seam
+  dichotomy. The diffuse branch gives `2^(2k^2-O(k log k))` rank-`k` faces;
+  every survivor has a `4^k/poly(k)` by `4^k/poly(k)` seam. The exact
+  plane-caterpillar audit found that known fixed-`k` unordered inducibility
+  has the desired `3/2` main exponent but a dominating finite-size error and
+  loses the required left/right itinerary.
+- **Independent verification:** V1 is `MINOR_REPAIR -> repaired/PASS`; the
+  missing bounded reachability from two retained child states to the two
+  endpoint-maximizing cycles is now explicit. V5 is `PASS`: weighted Hall,
+  recovery fibre, trace-bank incidence, pooled rank promotion, and the
+  literal-rank ES code were reconstructed separately and four suites rerun.
+- **New unconditional range theorem:** at `n=4^k`, Suk's
+  `ES(k)=2^(k+o(k))` supplies enough actual convex `k`-faces to jointly code
+  every literal history of rank `r<=(1/2-delta)k`, equivalently
+  `r<=(1/4-delta/2)log n`, with load and fibre one. The live literal window is
+  now `(1/4-o(1))log n <= r < log n`; the present universal total-capacity
+  estimate stops at the lower boundary.
+- **Truth status:** no unconditional coefficient improvement yet; the window
+  remains `[1/4,1/2]`. V2--V4 still need independent reconstruction. The next
+  bounded P1 attack must use selected-family sparsity, mixed geometry, or a
+  profile charge above the quarter-log boundary. No process is running.
+- **Artifacts:** `FIXED_SIZE_GAIN_BRIDGE_20260815.md`,
+  `STRONG_TREE_FIXED_RANK_COMB_OR_SEAM_GATE.md`,
+  `FIXED_RANK_STRONG_TREE_CATERPILLAR_AUDIT_20260815.md`,
+  `V1_INDEPENDENT_AUDIT_20260815.md`, `V5_INDEPENDENT_AUDIT_20260815.md`,
+  `FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md`, and their exact
+  verifier scripts. Approximate direct API spend: `$0`.
+
 ### 2026-08-15 — ERDŐS #838: external critique accepted; campaign frozen and distilled (Sihao + Codex)
 
 - **Headline correction:** the 2026-08-14/15 campaign did not move the

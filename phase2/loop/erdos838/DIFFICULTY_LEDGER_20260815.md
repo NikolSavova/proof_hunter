@@ -29,10 +29,12 @@ progress.
 | E1 | Fixed-power EIC/product extraction | conditional `3/8-o(1)` route | STRICT at entry | Many subcases closed; final residue became EQUIVALENT | Park equivalent residue; retain proved subcases |
 | D1 | Local natural two-tangent Hall decoder | hoped-for subpolynomial load | BARRIER | False by matching-star examples | Closed permanently |
 | D2 | Global pooled Hall assembly | converts local codes to global codes with rank load | ROUTE | Internal proof + exact verifier | Independent audit |
-| D3 | Global literal-history code for `r=o(sqrt(log n))` | closes low-rank decoder range | STRICT range theorem | Internal proof + exact verifier | Independent audit and use only in fixed-rank target |
-| D4 | Intermediate literal ranks `sqrt(log n) <= r < log n` | would complete the current literal decoder coverage | STRICT local target, not by itself a coefficient gain | Open | Attack only through `P1`; no new nomenclature chain |
+| D3 | Global literal-history code; fixed-size pooled extension through `r<=(1/4-epsilon)log n` | closes a fixed positive fraction of the low/intermediate decoder range | STRICT range theorem | V5 independently audited; fixed-size extension proved | `V5_INDEPENDENT_AUDIT_20260815.md`; `FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md` |
+| D4 | Intermediate literal ranks `(1/4-o(1))log n <= r < log n` | would complete the current literal decoder coverage | STRICT local target, not by itself a coefficient gain | Open, narrowed | Attack only through `P1`; the current universal capacity estimate stops at the new boundary |
 | R1 | Unrestricted reset-chain/rectangle-or-shield telescope | intended full decoder | EQUIVALENT in surviving branches | Open | Stop branch; preserve barriers |
-| P1 | Fixed-size supersaturation with any `eta>0` | improves unrestricted lower coefficient from `1/4` to `(1+eta)/4` | STRICT, direct GAIN | Open | Sole primary proof target |
+| P1 | At canonical size `4^k`, fixed-size supersaturation with any `eta>0` | improves unrestricted lower coefficient from `1/4` to `(1+eta)/4` by the exact bridge | STRICT, direct GAIN | Open | Sole primary proof target; bridge proved in `FIXED_SIZE_GAIN_BRIDGE_20260815.md` |
+| P1a | Strong-tree fixed-rank diffuse branch | removes all diffuse heavy-path trees from P1; survivor has a `4^k/poly(k)` by `4^k/poly(k)` seam | STRICT construction-class reduction | Proved | `STRONG_TREE_FIXED_RANK_COMB_OR_SEAM_GATE.md`; exact verifier PASS |
+| P1b | Near-full strong-seam graded profile alignment | would prove the `3/2` diagonal for all strong trees | STRICT construction-class gain | Open, narrowed | Exact plane one-turn caterpillar formulation; fixed-`k` unordered inducibility has the right main exponent but nonuniform error and wrong orientation (`FIXED_RANK_STRONG_TREE_CATERPILLAR_AUDIT_20260815.md`) |
 
 ## Mandatory rule for new entries
 

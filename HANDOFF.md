@@ -88,6 +88,30 @@ supersaturation: for `n=2^(2k+o(k))`, prove
 counting would then improve the unrestricted lower coefficient to
 `(1+eta)/4`.  Full-strength/equivalent reformulations are parked.
 
+**⭐ 2026-08-15 — ERDŐS #838: FIXED-SIZE BRIDGE PROVED; TWO AUDIT PACKAGES CLEARED; LITERAL WINDOW NARROWED.**
+The implication from the canonical local target is now exact:
+`mu_k(4^k)>=2^((1+eta-o(1))k^2)` implies unrestricted lower coefficient
+`(1+eta)/4`; see `FIXED_SIZE_GAIN_BRIDGE_20260815.md`. For ordered strong
+trees, `STRONG_TREE_FIXED_RANK_COMB_OR_SEAM_GATE.md` proves that either a
+literal comb already gives `2^(2k^2-O(k log k))` rank-`k` faces, or one seam
+has both children of size `4^k/poly(k)`. The remaining strong-tree gate is a
+growing-rank, orientation-sensitive plane-caterpillar/profile problem.
+Dossou-Olory's fixed-`k` unordered caterpillar theorem has the right
+`3k^2/2` main exponent but a dominating finite-size error at `n=4^k` and
+does not retain the plane itinerary; see
+`FIXED_RANK_STRONG_TREE_CATERPILLAR_AUDIT_20260815.md`.
+
+Independent audits are complete for V1 and V5. V1 received one explicit
+finite-grammar splice repair and then passed; V5 passed as stated. See
+`V1_INDEPENDENT_AUDIT_20260815.md` and `V5_INDEPENDENT_AUDIT_20260815.md`.
+Using V5 plus Suk's `ES(k)=2^(k+o(k))`,
+`FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md` gives a load-one,
+fibre-one pooled replacement for every literal history of rank
+`r<=(1/4-epsilon)log n` at `n=4^k`. The unresolved literal window is now
+`(1/4-o(1))log n <= r < log n`, rather than starting at `sqrt(log n)`.
+This is a genuine range gain, but it does **not** yet improve the
+unconditional coefficient: the honest window remains `[1/4,1/2]`.
+
 **⭐ 2026-08-13 — ERDŐS #1208: EXPLICIT CANDIDATE UPPER EXPONENT `0.49815` + FULL-GAP BARRIER MAP (Sihao + Codex ultracode).**
 The live literature window is `n^(1/3) << F_2(n) << n^(1/2-epsilon)`; the
 Erdős Problems page is stale because CFRN (arXiv:2606.05841) and LPZ
@@ -666,12 +690,20 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 **Erdős #838 post-critique obligations (current priority).**
 
-- [ ] Independently reconstruct the five packages in
-  `phase2/loop/erdos838/VERIFICATION_QUEUE_20260815.md`.  Exact author-side
-  scripts are substantial but do not satisfy the cross-model house rule.
-- [ ] Attack only the fixed-size supersaturation target `(P1)` in
-  `PROVED_GAIN_STRATEGY_20260815.md`, beginning with an independent check of
-  the implication `(P1) => liminf >= (1+eta)/4`.
+- [ ] Finish independent reconstruction of V2--V4 in
+  `phase2/loop/erdos838/VERIFICATION_QUEUE_20260815.md`. V1 is repaired and
+  passed; V5 passed. Exact author-side scripts alone are not enough for the
+  three remaining packages.
+- [x] Prove and verify the exact implication
+  `(P1 at n=4^k) => liminf >= (1+eta)/4`.
+- [ ] Continue `(P1)` only through the narrowed range
+  `(1/4-o(1))log n <= r < log n`. The current universal
+  pooled-capacity estimate stops at its `r=(1/4)log n` boundary; the next
+  lemma must use a larger configuration-specific bank, selected-family
+  sparsity, mixed geometry, or a profile charge.
+- [ ] For the strong-tree subcase, do not cite fixed-`k` unordered
+  caterpillar inducibility as closure. The exact survivor is the growing-rank
+  plane one-turn caterpillar count after the proved comb-or-seam split.
 - [ ] Enforce `DIFFICULTY_LEDGER_20260815.md`: mark coefficient-equivalent
   reductions `EQUIVALENT` and stop them; cap new chains at three reductions
   without an explicit coefficient/range gain.
@@ -850,7 +882,7 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
-### ⭐ 2026-08-15 — ERDŐS #838: DISTILLATION COMPLETE; VERIFY BEFORE MORE REDUCTIONS
+### ⭐ 2026-08-15 — ERDŐS #838: TWO AUDITS PASS; ATTACK THE NARROWED P1 WINDOW
 
 Read, in order:
 
@@ -861,11 +893,16 @@ Read, in order:
 5. `phase2/loop/erdos838/PROVED_GAIN_STRATEGY_20260815.md`.
 
 The full `FULL_ATTACK_20260814.md` and all agent artifacts remain preserved
-for lookup.  Do not resume from its long “sole remaining target” chains.
-First obtain an independent verdict on V1--V5.  Then make at most two bounded
-attack/audit cycles on `(P1)`.  If no explicit `eta>0` or new rank range is
-proved, stop and package the `1/2` upper/strong-tree theorem plus the audited
-construction and barrier results.  Nothing is currently running.
+for lookup. V1 and V5 now have independent audits; V2--V4 remain frozen. The
+exact fixed-size bridge, strong-tree comb/seam theorem, caterpillar audit, and
+quarter-log literal pooling theorem are the current positive additions. Next
+attack only selected histories in
+`(1/4-o(1))log n <= r < log n`: the current universal total-capacity estimate
+cannot cross the lower boundary, so require a larger configuration-specific
+bank or an explicit sparsity, mixed-face, or profile alternative.
+If the next bounded attack produces neither an explicit `eta>0` nor another
+proved rank range, stop and package the `1/2` upper/strong-tree theorem plus
+the audited construction and barrier results. Nothing is currently running.
 
 ### ⭐ 2026-08-13 — ERDŐS #838 IS THE ALL-IN TARGET: READ `RESUME_838.md` FIRST
 **Entry point: `phase2/loop/erdos838/RESUME_838.md`.** It indexes every 838 document, states

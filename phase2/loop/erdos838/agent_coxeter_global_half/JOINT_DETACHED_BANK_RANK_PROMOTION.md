@@ -278,7 +278,7 @@ For \(k\ge20\),
  \frac{(k-3)(k-2)}2\ge8k-11,
 \]
 
-so (22) yields
+so (25) yields
 
 \[
  W_k\ge2^{8k-11}

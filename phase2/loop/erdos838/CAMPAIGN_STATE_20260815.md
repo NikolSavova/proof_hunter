@@ -90,10 +90,13 @@ Primary sources:
   rank-five gives fibre one.  A global Erdős--Szekeres replacement code handles
   every literal rank-three history and, more generally, ranks
   `r=o(sqrt(log n))` with subpolynomial overhead.
+- At the canonical fixed-size scale `n=4^k`, pooling into the ordinary
+  rank-`k` bank and using Suk's `ES(k)=2^(k+o(k))` strengthens this to
+  load/fibre one for every literal `r<=(1/4-epsilon)log n`.
 - Identity is adequate at `r >= log n`.  The literal-history window
 
   \[
-     \Omega(\sqrt{\log n})\le r<\log n
+     (1/4-o(1))\log n\le r<\log n
   \]
 
   remains open, as does nonliteral path multiplicity not determined by the
@@ -104,6 +107,7 @@ Primary sources:
 - `agent_coxeter_global_half/ABSTRACT_MIXED_HALL_ASSEMBLY.md`
 - `agent_coxeter_global_half/JOINT_DETACHED_BANK_RANK_PROMOTION.md`
 - `agent_coxeter_global_half/GLOBAL_RANK_THREE_ES4_REPLACEMENT_CODE.md`
+- `FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md`
 
 ### D. Barrier and equivalence results
 
@@ -134,11 +138,10 @@ the next reduction layer.
 ## 4. Verification status
 
 The directory contains hundreds of exact verifier/certificate scripts and
-many rational finite configurations.  That is substantial author-side
-verification.  It is not a substitute for independent cross-model proof
-reconstruction.  The five packages in `VERIFICATION_QUEUE_20260815.md` are
-the only recent packages that should be promoted until that reconstruction is
-complete.
+many rational finite configurations. That is substantial author-side
+verification, but it is not a substitute for independent proof
+reconstruction. V1 and V5 in `VERIFICATION_QUEUE_20260815.md` now have such
+reconstructions; V2--V4 remain frozen pending the same treatment.
 
 ## 5. Progress accounting
 

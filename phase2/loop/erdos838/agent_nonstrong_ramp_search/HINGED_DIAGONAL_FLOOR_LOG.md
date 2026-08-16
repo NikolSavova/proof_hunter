@@ -328,8 +328,18 @@ expansion therefore gives leading cap and cup exponents
  {\rho_U\log\Lambda\over2}d^2.                            \tag{27}
 \]
 
-A two-position macro support is convex, so the corresponding child cap and
-cup banks give convex-face coefficient
+For completeness, the two endpoint banks in (27) can be made to coexist in
+one actual parent row. Since \(\Lambda>1\), some state \(s\in K\) has at
+least two retained individual positions; order two of them as
+\(e_L:s\to t_L\) and \(e_R:s\to t_R\). Strong connectivity gives a bounded
+directed path from \(t_L\) to a cycle attaining \(\rho_C\), and another from
+\(t_R\) to a cycle attaining \(\rho_U\). Following those paths and then
+repeating the respective cycles changes each exponent in (27) by only
+\(O(d)\); bounded suffixes handle the cycle-period congruences. Put the cap
+bank reached from \(e_L\) in the left child and the cup bank reached from
+\(e_R\) in the right child. A two-position macro support is convex, and the
+exact vertical recurrence therefore includes their Cartesian product.
+Consequently the convex-face coefficient is
 
 \[
  {\,\rho_C+\rho_U\,\over2\log\Lambda}\ge {1\over2}.        \tag{28}

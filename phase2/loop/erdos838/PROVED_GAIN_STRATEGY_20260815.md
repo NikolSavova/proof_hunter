@@ -6,13 +6,8 @@ The next primary target is not the full half-weight conjecture, peak mean, or
 another unrestricted decoder reformulation.  It is a fixed-size
 supersaturation theorem that would move the unconditional coefficient.
 
-Let `v_k(P)` be the number of convex `k`-subsets.  For
-
-\[
-       |P|=2^{2k+o(k)},
-\]
-
-prove, for one explicit constant `eta>0`,
+Let `v_k(P)` be the number of convex `k`-subsets.  At the canonical size
+`|P|=4^k`, prove, for one explicit constant `eta>0`,
 
 \[
        v_k(P)\ge 2^{(1+\eta-o(1))k^2}.                 \tag{P1}
@@ -45,21 +40,40 @@ strictly weaker than proving the full `1/2` lower coefficient.
 
 ### Stage A: verify the bridge
 
-Independently reconstruct the double-count implication
-`(P1) => liminf >= (1+eta)/4`, including all `o(k)` losses.  This is the first
-item to check because it defines what counts as a gain.
+The implication `(P1) => liminf >= (1+eta)/4`, including all rounding and
+`o(k)` losses, is proved in `FIXED_SIZE_GAIN_BRIDGE_20260815.md` and checked
+by `verify_fixed_size_gain_bridge.py`.  The canonical size `4^k` avoids the
+uniformity trap in the earlier shorthand `2^{2k+o(k)}`.
 
 ### Stage B: isolate one rank window
 
 Use the existing literal-history results only after V5 is audited:
 
 - `r=o(sqrt(log n))`: global ES replacement;
+- at the canonical size `n=4^k`, every literal
+  `r<=(1/2-delta)k=(1/4-delta/2)log n` is now jointly replaceable with
+  load/fibre one by `FIXED_SIZE_LITERAL_QUARTER_LOG_POOLING_GATE_20260815.md`;
 - `r>=log n`: identity/no replacement;
 - focus exclusively on
-  `Omega(sqrt(log n)) <= r < log n`.
+  `(1/4-o(1))log n <= r < log n` in the fixed-size attack.
 
 No unrestricted recursive call on a comparably sized arbitrary child is
 allowed; that would be marked `EQUIVALENT` in the difficulty ledger.
+
+The first construction-side reduction is now proved in
+`STRONG_TREE_FIXED_RANK_COMB_OR_SEAM_GATE.md`: every diffuse heavy-path
+branch gives `2^{2k^2-o(k^2)}` rank-`k` faces, so a strong-tree survivor has
+one seam with both children of size `4^k/poly(k)`.  The next strong-tree
+subtarget is only the graded profile alignment at that seam.
+
+There is now an exact prior-art translation of that subtarget.  As recorded
+in `FIXED_RANK_STRONG_TREE_CATERPILLAR_AUDIT_20260815.md`, strong-tree faces
+are plane caterpillar leaf sets whose spine has at most one turn.  The known
+minimum-density theorem for unordered rooted caterpillars has exactly the
+desired `3k^2/2` main exponent, but it fixes `k`, has an error that dominates
+when `|T|=4^k`, and forgets the left/right itinerary.  Only a uniform,
+orientation-sensitive strengthening is relevant; fixed-`k` inducibility is
+not to be cited as closure.
 
 ### Stage C: one promotion dichotomy
 

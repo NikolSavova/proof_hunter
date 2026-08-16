@@ -16,6 +16,14 @@ artifacts run; it does not change their independent-audit status.
 
 ### V1. Hinged Kraft and variable-arity grammar closure
 
+**Independent status, 2026-08-15:** `MINOR_REPAIR`, repaired and `PASS`.
+The independent reconstruction found that the finite-grammar proof needed to
+state explicitly how two retained child states reach the cap- and
+cup-maximizing cycles before the final product splice. Strong connectivity
+makes both paths bounded, so the correction changes only the lower-order
+term. The source was patched and both verifier suites rerun successfully.
+See `V1_INDEPENDENT_AUDIT_20260815.md`.
+
 Claims to reconstruct:
 
 1. the merged cup/cap word is prefix-free;
@@ -75,6 +83,13 @@ Artifacts:
 - `agent_post_collision_remapping/POST_COLLISION_REMAPPING_MINIMAX.md`
 
 ### V5. Global mixed-Hall assembly and low-rank ES replacement
+
+**Independent status, 2026-08-15:** `PASS`. The Hall cut condition,
+recovery-fibre condition, and bank-incidence factor were reconstructed
+separately. The rank-four/rank-five matching-star allocations, joint
+coherent-root (E(k,k)) allocation, and literal-rank ES replacement were
+also checked from their exact capacity inequalities. Four verifier suites
+passed. See `V5_INDEPENDENT_AUDIT_20260815.md`.
 
 Claims to reconstruct:
 
