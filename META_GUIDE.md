@@ -449,6 +449,31 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-16 — ERDŐS #838: exact-size P1e counterexample and fixed-size stop rule (Sihao + Codex)
+
+- **P1e is false with its quantifiers fixed.** For every prescribed
+  certified `q_j>=ES(j+1)`, `log q_j=j+o(j)`, a rational exact-size
+  strong-glue family has
+  `log(v_j/v_(j+1)) >= (1-1/(4 ln2)-41/70-o(1))j^2`; the positive constant
+  is `0.053611954...`.
+- **Construction.** The numerator is the exact top layer of the central
+  Pascal cell `T(j,j/2)`. The exact-size padding is an induced subset of a
+  homogeneous tower built from the first `2^35` leaves of `T(41,27)`.
+  Its cup and total-face coefficients are `1/5` and `41/70`, so neither the
+  padding nor the mixed cap-cup term repairs the cliff.
+- **Verification.** `verify_fixed_threshold_adjacent_counterexample.py`
+  reconstructs both exact integer recurrences. The strong-glue lower bound
+  becomes positive by padding depth five and exceeds 1600 bits at depth
+  eight. The prior threshold verifier still passes all 3,567 averaging and
+  construction regressions.
+- **Process decision.** The bounded P1 attack reached its precommitted kill
+  rule after two failed local promotion candidates. P1 and the averaged P1d
+  condition remain open, but no third threshold-layer surrogate will be
+  opened. `FIXED_SIZE_BOUNDED_ATTACK_AUTOPSY_20260816.md` preserves the
+  actual bridge/range/construction-class gains and parks the chain.
+- **Status/spend.** The rigorous coefficient window remains `[1/4,1/2]`.
+  Approximate direct API spend `$0`.
+
 ### 2026-08-16 — ERDŐS #838: adjacent-layer quantifier correction and exact Pascal barrier (Sihao + Codex)
 
 - **Correction.** The adjacent-layer lemma must be stated at one fixed

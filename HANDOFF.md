@@ -65,6 +65,25 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-16 — ERDŐS #838: FIXED-THRESHOLD ADJACENT BALANCE KILLED AT THE EXACT CERTIFIED SIZE; BOUNDED P1 ATTACK PARKED.**
+The final quantifier escape in P1e is closed. For every prescribed certified
+sequence `q_j>=ES(j+1)` with `log q_j=j+o(j)`, an exact rational strong-glue
+construction on **exactly** `q_j` points satisfies
+`log(v_j/v_(j+1)) >= (0.053611954...-o(1))j^2`. It splices the top rank of a
+central Pascal core to an induced skew `T(41,27)` padding tower whose total
+face coefficient is `41/70`. See
+`FIXED_THRESHOLD_ADJACENT_LAYER_COUNTEREXAMPLE_20260816.md`; its verifier
+reconstructs both integer recurrences and passes through padding depth eight.
+
+The exact averaging theorem remains valid, and the broader averaged-rank
+condition P1d is not disproved. However, the two local promotion candidates
+in the bounded fixed-size plan have now both failed, so its written stop rule
+has been applied. `FIXED_SIZE_BOUNDED_ATTACK_AUTOPSY_20260816.md` preserves
+the genuine outputs—the fixed-size bridge, literal load-one range, strong-tree
+comb-or-seam theorem, growing-rank caterpillar theorem, and prior-art
+ceilings—while prohibiting a third renamed threshold-layer reduction. The
+honest unconditional coefficient window remains `[1/4,1/2]`.
+
 **⭐ 2026-08-15 — ERDŐS #838: FULL CAMPAIGN PRESERVED; STATE DISTILLED AFTER EXTERNAL CRITIQUE.**
 The complete 2026-08-14/15 attack is preserved verbatim in
 `phase2/loop/erdos838/FULL_ATTACK_20260814.md` together with every agent
@@ -808,11 +827,12 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   proof reconstructions as well as exact verifier replays.
 - [x] Prove and verify the exact implication
   `(P1 at n=4^k) => liminf >= (1+eta)/4`.
-- [ ] Continue `(P1)` only through the narrowed range
-  `1/4 log n-O(sqrt(log n log log n)) < r < log n`. The current universal
-  pooled-capacity estimate stops at its `r=(1/4)log n` boundary; the next
-  lemma must use a larger configuration-specific bank, selected-family
-  sparsity, mixed geometry, or a profile charge.
+- [x] Complete the bounded `(P1)` campaign through its written stop rule.
+  The universal pooled-capacity theorem reaches
+  `1/4 log n-O(sqrt(log n log log n))`; two attempted local promotions above
+  that boundary are false, including P1e at the exact certified size. P1
+  itself remains open, but this reduction chain is parked; see
+  `FIXED_SIZE_BOUNDED_ATTACK_AUTOPSY_20260816.md`.
 - [x] Audit standard fixed-size counting inputs. Fixed-`k` asymptotics, one
   positive-fraction transversal box, and scalar weighted polygon identities
   all stop at the coefficient-one boundary or fail to encode high-rank
@@ -826,14 +846,17 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 - [ ] For the strong-tree subcase, prove a shifted/excess orientation
   comparison for the exact endpoint formula. The naive same-constant plane
   analogue is false and must not be reused.
-- [ ] For unrestricted P1, beat the successive-rank density-decay constant
+- [x] Record the remaining unrestricted P1d condition, then park it with the
+  bounded campaign: beat the successive-rank density-decay constant
   `c=2` on one fixed interval `alpha k<=j<k` at `N=4^k`. Any fixed
   `c<2` gives the explicit gain recorded in
-  `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`. The most concrete child
-  is P1e at one fixed certified `q_j`; the exact no-slack `c=1` inequality
-  and the uniform `2^(j+o(j))` size-window version are false. Any P1e proof
-  must use the certified sequence's oversaturation to force mixed
-  `(j+1)`-faces.
+  `SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`. The one-layer child P1e
+  is now closed as false even at the exact fixed certified sequence:
+  `FIXED_THRESHOLD_ADJACENT_LAYER_COUNTEREXAMPLE_20260816.md` constructs a
+  rational exact-size family with
+  `log(v_j/v_(j+1)) >= (0.053611954...-o(1))j^2`. Any surviving P1d proof
+  must genuinely average over a positive fraction of ranks or use total
+  face mass; it cannot be reduced to one threshold layer.
 - [ ] Enforce `DIFFICULTY_LEDGER_20260815.md`: mark coefficient-equivalent
   reductions `EQUIVALENT` and stop them; cap new chains at three reductions
   without an explicit coefficient/range gain.
@@ -1012,7 +1035,7 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
-### ⭐ 2026-08-16 — ERDŐS #838: STANDARD SHORTCUTS EXHAUSTED; ATTACK CROSS-RANK GEOMETRY
+### ⭐ 2026-08-16 — ERDŐS #838: FIXED-SIZE STOP RULE TRIGGERED; PACKAGE RESULTS BEFORE A NEW DIRECT ATTACK
 
 Read, in order:
 
@@ -1029,24 +1052,22 @@ explicit-boundary literal pooling theorem are the current positive additions.
 Also read `FIXED_SIZE_SUPERSATURATION_PRIOR_ART_AUDIT_20260816.md`,
 `TRUNCATED_WEIGHTED_KRAFT_SQUARE_MESH_20260816.md`,
 `UNIFORM_GROWING_RANK_ROOTED_CATERPILLAR_THEOREM_20260816.md`, and
-`SUCCESSIVE_RANK_DENSITY_GAIN_GATE_20260816.md`. The first excludes the
+`FIXED_SIZE_BOUNDED_ATTACK_AUTOPSY_20260816.md`. The first excludes the
 standard counting shortcuts; the second proves the local square mesh with
 only polylogarithmic-square loss; the third removes the unordered
 growing-rank error while isolating the plane obstruction; and the fourth
-states the exact strict coefficient-bearing Stage-C target.
+records why the bounded Stage-C chain is now parked.
 
-Next attack the cross-rank extension graph at `N=4^k`: prove an averaged
-density decay constant `c<2` over one fixed positive fraction of the ranks,
-or derive the same gain from the convex-four-set circuit deletion map. A
-failed one-point extension naturally yields a retained convex hull and a
-deleted convex subface; the exact unresolved operation is to turn that
-two-target record into one ordinary face with subquadratic history load.
-Do not strengthen the conjecture down to `N~2^j` (that is a separate major
-Erdős--Szekeres improvement), and do not restart fixed-`k` asymptotics, one
-same-type box, scalar hull identities, or threshold-path nesting.
-If the next bounded attack produces neither an explicit `eta>0` nor another
-proved rank range, stop and package the `1/2` upper/strong-tree theorem plus
-the audited construction and barrier results. Nothing is currently running.
+Immediate repo work: extract the `1/2` upper theorem, strong-tree theorem,
+verified construction closures, and sharp barriers into one short
+self-contained draft section. Do not continue P1 through another
+threshold-layer or short-window surrogate. A later proof attack must start
+from a new direct quantitative target with its own stop rule. The cleanest
+candidate is a strict minimizer mean-size gain
+`mu(P)>=(1/2+epsilon)log n`, which would move the lower coefficient above
+`1/4`; it must use planar rooted-circuit/change-of-measure information,
+because down-set entropy, scalar deletion moments, and interval-weighted
+random-hull identities are already known to be insufficient.
 
 ### ⭐ 2026-08-13 — ERDŐS #838 IS THE ALL-IN TARGET: READ `RESUME_838.md` FIRST
 **Entry point: `phase2/loop/erdos838/RESUME_838.md`.** It indexes every 838 document, states

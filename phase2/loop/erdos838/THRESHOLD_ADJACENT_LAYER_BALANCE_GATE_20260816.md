@@ -2,6 +2,21 @@
 
 **Date:** 2026-08-16. All logarithms are base two.
 
+> **Superseded verdict (2026-08-16).** The target formulated below is
+> false even at every prescribed certified sequence $q_j$ satisfying
+> $q_j\ge ES(j+1)$ and $\log q_j=j+o(j)$.  A rational strong-glue
+> construction has
+> \[
+>   \log\frac{v_j(Q_j)}{v_{j+1}(Q_j)}
+>   \ge (0.053611954\ldots-o(1))j^2
+> \]
+> at the exact size $|Q_j|=q_j$.  See
+> `FIXED_THRESHOLD_ADJACENT_LAYER_COUNTEREXAMPLE_20260816.md` and
+> `verify_fixed_threshold_adjacent_counterexample.py`.  The averaging
+> theorem and finite calculations below remain valid as conditional tools;
+> only the proposed geometric hypothesis and its former open status are
+> retracted.
+
 ## Verdict
 
 For a planar point set $P$, let $v_j(P)$ be the number of its $j$-point
