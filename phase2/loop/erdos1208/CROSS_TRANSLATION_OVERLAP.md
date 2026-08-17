@@ -1,9 +1,11 @@
-# Rotated difference overlap: an intermediate exponent theorem
+# Rotated difference overlap: reduction and sharp obstruction
 
-This note isolates a pointwise statement which, in its natural linear form,
-settles the power-law order in Erdős 1208.  It also records two computational
-stress tests and the exact places where the obvious graph and Costas-array
-arguments stop.
+This note isolates a pointwise statement which would conditionally give strong
+exponents for Erdős 1208.  The size-only hypothesis is now known to be false
+as strongly as possible: `PERPENDICULAR_RULER_OBSTRUCTION.md` constructs
+lattice distance-Sidon sets with \(M_A(t)=\Omega(|A|^2)\).  The exact support
+reduction remains useful only for a density-sensitive hypothesis involving
+the containing square.
 
 Let
 
@@ -242,20 +244,44 @@ ordinary cross-correlation of two dot arrays, not the second-order overlap of
 their complete difference sets in (4).  In particular, the known small
 correlation of an array with some rotated/flipped images does not prove (5).
 
-## 5. Live problem
+## 5. Sharp perpendicular-ruler obstruction
 
-The most useful next lemma is now explicit:
+Take a dense \(2s\)-mark Golomb ruler, split its marks into two \(s\)-sets
+\(R_1,R_2\), and put them on perpendicular axes with a generic integer offset.
+The full ruler makes the two internal distance spectra disjoint, while the
+generic offset separates every cross distance.  The resulting \(2s\)-point
+set \(A\) is distance-Sidon.  Nevertheless its directed difference set
+contains
 
-> Prove a fixed power saving
-> \(\max_{t\ne0}|(A-A)\cap(t-J(A-A))|\le k^{2-\delta}\)
-> for every planar distance-Sidon set \(A\).
+\[
+ (\Delta R_1)\times\{0\}
+ \quad\text{and}\quad
+ \{0\}\times(\Delta R_2).
+\]
 
-Any \(\delta>0.0219\) improves the current best upper exponent through (8),
-while \(\delta=1\) gives the full cube-root solution directly from (6).
-The likely proof needs a stability theorem for a difference set with large
-overlap under a quarter-turn about an external centre.  Standard BSG sees only
-one difference set and loses the rotation; pair-codegree and generic Costas
-cross-correlation statements see too little of the Euclidean norm condition.
+All \(\Theta(s^4)\) cross pairs of these two sets land, after the quarter-turn,
+at only \(O(s^2)\) translations.  Some nonzero translation therefore has
+
+\[
+ M_A(t)=\Omega(s^2)=\Omega(|A|^2).
+\]
+
+Thus no fixed power saving in terms of \(|A|\) alone is possible.  The same
+construction has \(E^+(A+JA)=\Omega(|A|^6)\), so the cross-energy route is
+also sharp in the wrong direction.  Full details are in the obstruction note.
+
+The live replacement is an ambient-sensitive estimate for
+\(A\subset[m]^2\).  If, up to subpolynomial factors,
+
+\[
+ M_A(t)\ll m^\alpha k^\beta,
+\]
+
+then (6) gives the cube-root grid bound whenever
+\(3\alpha+2\beta\le2\).  The perpendicular-ruler construction may require a
+very large containing square, so it does not rule out estimates on this
+critical line.  A direct rotated-triple estimate which bypasses cross-sum
+energy also remains viable.
 
 ### Failed digit-tensor counterexample
 
@@ -274,7 +300,8 @@ the identical displacement and length.  In particular, every Cartesian digit
 product has unavoidable cylinder collisions.  Restricting to a code with no
 such repeated difference words returns the ordinary Sidon-code square-root
 loss and no longer preserves enough tensor edges.  Thus this tempting
-counterexample to the linear overlap target fails.
+counterexample to the linear overlap target fails.  The later perpendicular-
+ruler construction above supplies a different, valid counterexample.
 
 Affine images of one-dimensional parabola sets were also tested because their
 chord vectors have the explicit form \((h,hs)\) and a generic anisotropic

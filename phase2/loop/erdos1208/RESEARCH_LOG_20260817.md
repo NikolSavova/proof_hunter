@@ -594,7 +594,7 @@ be removed by passing to the union relation, by nonnegative reweighting, or by
 a thinned pattern code while retaining a universal pair-energy lower bound.
 `LOCAL_PSD_BARRIER.md` gives the calculation and the coding interpretation.
 
-## Cross-sum energy target
+## Cross-sum energy reduction (subsequently killed as an upper route)
 
 For (B=A+JA\), directness gives (|B|=|A|^2\) and
 \(|\widehat{1_B}|^2=|\widehat{1_A}|^2
@@ -609,9 +609,11 @@ Since (E^+(A)=2|A|^2-|A|\), an upper bound
 \(E^+(A+JA)\le |A|^{5+o(1)}\) would already yield the new grid bound
 \(|A|\le m^{4/5+o(1)}\), hence (F_2(n)\le n^{2/5+o(1)}\).  The sharp
 \(|A|^{4+o(1)}\) energy bound would solve the cube-root problem.  Experiments
-put the cross-sum energy naturally on the fifth-power scale, while the Golomb
-ruler counterexample shows that directness alone allows sixth-power energy.
-Section 9 of `ROTATED_TRIPLE_ENERGY.md` records the exact reduction.
+put the cross-sum energy naturally on the fifth-power scale, while the first
+Golomb-ruler counterexample showed that directness alone allows sixth-power
+energy.  The later perpendicular-ruler construction below shows that even
+the identity \(JA\) and radial uniqueness allow sixth-power energy.  Thus the
+factorization is exact but no size-only upper bound can exploit it.
 
 ## Relative Minkowski-unit target
 
@@ -659,7 +661,7 @@ gives
  F_2(n)\le n^{1/(3-\theta)+o(1)}.
 \]
 
-Thus a linear overlap bound solves the problem at the matching cube-root
+Thus, conditionally, a linear overlap bound would solve the problem at the matching cube-root
 exponent, a \(k^{3/2+o(1)}\) bound gives exponent \(2/5\), and any fixed
 \(M_A(t)\le k^{1.9780}\) estimate already beats the current explicit
 \(0.494586\) theorem.  As a secondary consequence,
@@ -676,8 +678,9 @@ energy decreased across the range.  This does not prove the overlap lemma,
 but it shows that the most natural positive-density vector-Sidon construction
 loses its common rotated structure when radial uniqueness is imposed.
 
-The exact reduction, conditional exponent calculation, DDC/Costas prior-art
-audit, and remaining obstruction are in `CROSS_TRANSLATION_OVERLAP.md`.
+The implications remain correct, but the size-only hypothesis is false by the
+perpendicular-ruler construction below.  The exact reduction and revised
+ambient-sensitive target are in `CROSS_TRANSLATION_OVERLAP.md`.
 
 ## Kill: fixed forbidden bicliques in the overlap graph
 
@@ -709,10 +712,46 @@ then gives distinct global edges with exactly the same difference vector.
 Algebraic independence of the digit scales cannot remove an identically equal
 displacement polynomial.  A code restriction that makes all coordinatewise
 difference words unique has only the usual square-root density and destroys
-the naive overlap count.  Therefore this is not a counterexample to the live
-linear overlap conjecture.
+the naive overlap count.  Therefore this is not itself a counterexample to the
+then-live linear overlap conjecture.
 
 This failure is useful to retain because the seed ratio alone can look like a
 Shannon-capacity obstruction.  Any valid amplification must simultaneously
 avoid the cylinder collisions and preserve a superlinear number of the
 four-endpoint overlap equations; the plain Cartesian product does neither.
+
+## Kill: perpendicular rulers give quadratic overlap
+
+The size-only overlap and cross-energy programmes are false as strongly as
+possible, even with the full Euclidean distance-Sidon hypothesis.  Start with
+a \(2s\)-mark Golomb ruler \(S\subset[0,O(s^2)]\), split it into two \(s\)-sets
+\(R_1,R_2\), and place \(R_1\) on the horizontal axis and a translate of
+\(R_2\) on the vertical axis.  Since the full ruler has unique differences,
+the two internal distance spectra are disjoint.  All cross squared distances
+are distinct polynomials
+
+\[
+ u^2+(C+v)^2
+\]
+
+in the offset \(C\), so an integer \(C\) outside a finite bad set makes the
+union \(A_C\) a lattice distance-Sidon set.
+
+Its directed difference set contains the horizontal copy of
+\(\Delta R_1\) and the vertical copy of \(\Delta R_2\).  After the quarter
+turn, their \(s^2(s-1)^2\) pairs land at only \(O(s^2)\) horizontal integer
+translations.  The zero translation is absent because the two ruler spectra
+are disjoint.  Therefore some nonzero \(t\) has
+
+\[
+ M_{A_C}(t)=\Omega(s^2)=\Omega(|A_C|^2).
+\]
+
+Cauchy--Schwarz over the same translations gives
+\(E^+(A_C+JA_C)=\Omega(|A_C|^6)\), the maximum possible exponent.  This kills
+every uniform estimate \(M_A(t)\le |A|^{2-\delta}\), as well as every power
+saving for the cross-sum energy.  The support-count reduction itself remains
+correct, so the surviving overlap target must use the ambient side length.
+The full proof and a finite exact witness are in
+`PERPENDICULAR_RULER_OBSTRUCTION.md` and
+`verify_perpendicular_rulers.py`.

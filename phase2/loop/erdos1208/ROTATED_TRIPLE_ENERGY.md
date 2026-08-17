@@ -324,7 +324,8 @@ Since (A\) is vector-Sidon,
   E^+(A)=2k^2-k.                                  \tag{9.2}
 \]
 
-Consequently either of the following would have a concrete geometric payoff:
+Consequently either of the following would have a concrete geometric payoff
+if it were true:
 
 * (E^+(A+JA)\le k^{4+o(1)}\) implies the desired
   \(\mathcal E_J(A)\le k^{3+o(1)}\) and hence the cube-root solution;
@@ -333,7 +334,20 @@ Consequently either of the following would have a concrete geometric payoff:
   \(k\le m^{4/5+o(1)}\), and therefore the major partial improvement
   \(F_2(n)\le n^{2/5+o(1)}\).
 
-The first estimate is false as a model for the observed configurations.
+Both estimates are now false in general.  The exact finite experiments below
+explain why the weaker one initially looked plausible, but the perpendicular-
+ruler construction in `PERPENDICULAR_RULER_OBSTRUCTION.md` gives
+
+\[
+ E^+(A+JA)=\Omega(k^6)
+\]
+
+for genuine planar lattice distance-Sidon sets.  Thus (9.1) is a valid
+factorization but cannot yield a power saving without an ambient-density
+hypothesis.
+
+For comparison, in the earlier experiments the first estimate was already
+false as a model for the observed configurations.
 For greedy distance-Sidon sets of sizes (k=12,20,32,40,54\), exact
 computations gave
 
@@ -345,8 +359,7 @@ computations gave
 up to the variation between runs.  Thus the (k^5\) scale looks natural and
 the weaker target is consistent with the data.
 
-It is not a generic consequence of directness.  Splitting a dense Golomb
-ruler into two direct Sidon summands can make their sum a positive-density
-subset of an interval of length (O(k^2)\), whose energy is \(\Theta(k^6)\).
-Any proof of the (k^5\) estimate must again use the rigid identity between
-the summands, (JA\), and the Euclidean radial uniqueness of (A-A\).
+The older abstract counterexample split a dense Golomb ruler into two direct
+Sidon summands.  The perpendicular-ruler construction shows that imposing the
+rigid identity between the summands, \(JA\), and Euclidean radial uniqueness
+still does not help: those conditions coexist with sixth-power energy.
