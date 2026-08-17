@@ -755,3 +755,68 @@ correct, so the surviving overlap target must use the ambient side length.
 The full proof and a finite exact witness are in
 `PERPENDICULAR_RULER_OBSTRUCTION.md` and
 `verify_perpendicular_rulers.py`.
+
+## Sharpening: the obstruction is critical-scale and saturates the direct energy
+
+The generic offset above is not forced to be huge.  For (C>L), cross and
+internal distances are automatically separated.  A collision between two
+cross edges implies
+
+\[
+ |v_1-v_2|\mid |u_1^2-u_2^2|.
+\]
+
+For each horizontal pair, the right side has only (L^{o(1)}) divisors, and
+the Golomb property permits at most one vertical pair with any prescribed
+positive difference.  Hence only (s^{2+o(1)}) integer offsets are bad, and
+one may choose (C=s^{2+o(1)}).  The example therefore lies in a square of
+side (m=k^{2+o(1)}).
+
+This closes the whole nonnegative monomial overlap route: an estimate
+(M_A(t)\ll m^{\alpha+o(1)}k^{\beta+o(1)}) must obey
+(2\alpha+\beta\ge2) on the example, whereas the support argument needs
+(3\alpha+2\beta\le2); the two conditions are incompatible.
+
+The direct rotated triple map also concentrates maximally.  Restricting its
+apex to the horizontal arm and its ordered difference to the vertical arm
+gives (s^2(s-1)) triples whose outputs are (u+w-v), supported on only
+(O(L)=O(s^2)) values.  Thus
+
+\[
+ \mathcal T_J(A_C)=\Omega(k^4).
+\]
+
+This matches the universal fourth-power upper bound and falsifies the former
+size-only (k^{3+o(1)}) target.  The unique sharp interpolation left by the
+two regimes is
+
+\[
+ \mathcal T_J(A)\ll k^{3+o(1)}+m^{2+o(1)}.
+\]
+
+It would still yield the cube-root grid bound, while the (k^3) and (m^2)
+terms are both necessary.  This hybrid estimate is now the principal direct
+analytic target.
+
+## New construction probe: unit-circle polynomial encoding
+
+For a transcendental (z) on the unit circle, the map
+
+\[
+ (\epsilon_0,\ldots,\epsilon_{d-1})\longmapsto
+ \sum_j\epsilon_j z^j
+\]
+
+embeds the Boolean cube into the Euclidean plane.  Equality of two squared
+distances is then exactly equality of the aperiodic autocorrelations of the
+two coefficient-difference words.  This realizes all one-dimensional phase-
+retrieval ambiguities as exact planar distance collisions without a number-
+field discriminant loss.
+
+Random-greedy rainbow subsets for (d=4,\ldots,14) had sizes
+(5,7,9,12,16,21,29,39,53,74,100), with observed exponents drifting from
+0.58 to about 0.475.  The construction is therefore a credible source of a
+new polynomial upper bound, but the data do not indicate the cube-root scale;
+no theorem from phase retrieval currently supplies the needed anti-Ramsey
+bound.  Keep this as a distinct upper-construction lane, not as a claimed
+resolution.

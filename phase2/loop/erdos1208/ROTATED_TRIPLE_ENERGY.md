@@ -346,6 +346,19 @@ for genuine planar lattice distance-Sidon sets.  Thus (9.1) is a valid
 factorization but cannot yield a power saving without an ambient-density
 hypothesis.
 
+The same construction also kills the direct size-only target (3.1), not just
+this factorization.  Restricting (a) to its horizontal arm and distinct
+(b,c) to its vertical arm compresses (Theta(k^3)) triples into
+(O(k^2)) outputs, giving
+
+\[
+ \mathcal T_J(A)=\Omega(k^4).
+\]
+
+Since the fibre-matching property gives the reverse universal bound
+(O(k^4)), no size-only improvement is possible.  Only a density-sensitive
+version of the rotated energy can remain viable.
+
 For comparison, in the earlier experiments the first estimate was already
 false as a model for the observed configurations.
 For greedy distance-Sidon sets of sizes (k=12,20,32,40,54\), exact

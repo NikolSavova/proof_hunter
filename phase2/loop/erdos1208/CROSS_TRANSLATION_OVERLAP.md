@@ -278,10 +278,13 @@ The live replacement is an ambient-sensitive estimate for
 \]
 
 then (6) gives the cube-root grid bound whenever
-\(3\alpha+2\beta\le2\).  The perpendicular-ruler construction may require a
-very large containing square, so it does not rule out estimates on this
-critical line.  A direct rotated-triple estimate which bypasses cross-sum
-energy also remains viable.
+\(3\alpha+2\beta\le2\).  A divisor-counting argument sharpens the
+perpendicular-ruler construction to a containing square of side
+(m=k^{2+o(1)}).  It therefore forces (2\alpha+\beta\ge2), which is
+incompatible with the preceding condition for all nonnegative
+(\alpha,\beta\).  Thus the entire nonnegative monomial pointwise route is
+closed.  A genuinely density-dichotomic estimate, or the sharp ambient
+rotated-energy target (\mathcal T_J(A)\ll m^{2+o(1)}), remains viable.
 
 ### Failed digit-tensor counterexample
 

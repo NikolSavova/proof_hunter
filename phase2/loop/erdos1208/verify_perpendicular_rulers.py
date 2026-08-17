@@ -57,9 +57,41 @@ assert delta1.isdisjoint(delta2)
 ruler_counts = Counter(u - v for u in delta1 for v in delta2)
 assert sum(ruler_counts.values()) == len(delta1) * len(delta2)
 
+# Restrict the rotated triple map to a on the horizontal arm and distinct
+# b,c on the vertical arm.  These triples already give fourth-power energy.
+horizontal = [(u, 0) for u in R1]
+vertical = [(0, C + v) for v in R2]
+restricted_phi = Counter(
+    (
+        a[0] + rot(sub(b, c))[0],
+        a[1] + rot(sub(b, c))[1],
+    )
+    for a in horizontal
+    for b in vertical
+    for c in vertical
+    if b != c
+)
+restricted_phi_energy = sum(value * value for value in restricted_phi.values())
+assert sum(restricted_phi.values()) == len(R1) * len(R2) * (len(R2) - 1)
+
+full_phi = Counter(
+    (
+        a[0] + rot(sub(b, c))[0],
+        a[1] + rot(sub(b, c))[1],
+    )
+    for a in A
+    for b in A
+    for c in A
+    if b != c
+)
+full_phi_energy = sum(value * value for value in full_phi.values())
+assert full_phi_energy >= restricted_phi_energy
+
 print("marks", len(A))
 print("distance_count", len(squared_distances))
 print("max_overlap", overlap, "at", t)
 print("ruler_pairs", sum(ruler_counts.values()))
 print("ruler_support", len(ruler_counts))
+print("restricted_phi_energy", restricted_phi_energy)
+print("full_phi_energy", full_phi_energy)
 print("PASS")
