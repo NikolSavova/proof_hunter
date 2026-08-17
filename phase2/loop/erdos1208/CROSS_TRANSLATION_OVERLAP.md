@@ -1,9 +1,9 @@
 # Rotated difference overlap: an intermediate exponent theorem
 
-This note isolates a pointwise statement strictly weaker than the full
-rotated-energy conjecture, but already strong enough to improve Erdős 1208 by
-a large amount.  It also records two computational stress tests and the exact
-places where the obvious graph and Costas-array arguments stop.
+This note isolates a pointwise statement which, in its natural linear form,
+settles the power-law order in Erdős 1208.  It also records two computational
+stress tests and the exact places where the obvious graph and Costas-array
+arguments stop.
 
 Let
 
@@ -64,7 +64,53 @@ Suppose that, uniformly for all distance-Sidon \(A\) and all \(t\ne0\),
  M_A(t)\le k^{1+\theta+o(1)}                     \tag{5}
 \]
 
-for some \(0\le\theta\le1\).  Since
+for some \(0\le\theta\le1\).  Every representation counted by \(M_A(t)\)
+has \(t\in D+JD\), which lies in a box of \(O(m^2)\) lattice positions, and
+
+\[
+ \sum_t M_A(t)=|D|^2=k^2(k-1)^2.                 \tag{6}
+\]
+
+Consequently
+
+\[
+ k^{4-o(1)}\ll m^2k^{1+\theta+o(1)},
+\]
+
+and hence
+
+\[
+ k\le m^{2/(3-\theta)+o(1)}.                    \tag{7}
+\]
+
+Applied to the \(m\) by \(m\) grid, (7) proves the conditional upper bound
+
+\[
+ \boxed{F_2(n)\le n^{1/(3-\theta)+o(1)}.}        \tag{8}
+\]
+
+In particular:
+
+* \(M_A(t)\le k^{1+o(1)}\) proves
+  \(F_2(n)\le n^{1/3+o(1)}\), matching the universal lower bound and
+  resolving the power-law order;
+* \(M_A(t)\le k^{3/2+o(1)}\) gives
+  \(F_2(n)\le n^{2/5+o(1)}\);
+* any \(\theta<0.9781\) already improves the local unconditional exponent
+  \(0.494586\).
+
+Equivalently, any fixed estimate
+
+\[
+ M_A(t)\le k^{2-\delta}
+\]
+
+with \(\delta>0.0219\) improves the current theorem, and \(\delta=1\) solves
+the problem at the conjectured exponent.
+
+### A weaker energy consequence
+
+For completeness, (5) also feeds the cross-sum energy factorization.  Since
 
 \[
  \sum_t\rho_B(t)=|B|^2=k^4,
@@ -75,7 +121,7 @@ for some \(0\le\theta\le1\).  Since
 \[
  E^+(B)=\sum_t\rho_B(t)^2
  \le k^4+k^{1+\theta+o(1)}k^4
- =k^{5+\theta+o(1)}.                             \tag{6}
+ =k^{5+\theta+o(1)}.                             \tag{9}
 \]
 
 The cross-sum factorization gives
@@ -83,40 +129,24 @@ The cross-sum factorization gives
 \[
  \mathcal E_J(A)
  \le\sqrt{E^+(B)E^+(A)}
- \le k^{7/2+\theta/2+o(1)},                      \tag{7}
+ \le k^{7/2+\theta/2+o(1)},                      \tag{10}
 \]
 
-because \(E^+(A)=2k^2-k\).  On the other hand the image of the rotated
-triple map lies in a box of \(O(m^2)\) lattice points, so
+because \(E^+(A)=2k^2-k\).  The rotated-triple lower bound is
 
 \[
- \mathcal E_J(A)\gg k^6/m^2.                    \tag{8}
+ \mathcal E_J(A)\gg k^6/m^2.                    \tag{11}
 \]
 
-Comparing (7) and (8) yields
+Comparing (10) and (11) yields only
 
 \[
- k\le m^{4/(5-\theta)+o(1)}.                    \tag{9}
+ k\le m^{4/(5-\theta)+o(1)}.                    \tag{12}
 \]
 
-Applied to the \(m\) by \(m\) grid, (9) proves the conditional upper bound
-
-\[
- \boxed{F_2(n)\le n^{2/(5-\theta)+o(1)}.}        \tag{10}
-\]
-
-In particular:
-
-* \(M_A(t)\le k^{1+o(1)}\) gives \(F_2(n)\le n^{2/5+o(1)}\);
-* \(M_A(t)\le k^{3/2+o(1)}\) gives
-  \(F_2(n)\le n^{4/9+o(1)}\);
-* any \(\theta<0.9562\) already improves the local unconditional exponent
-  \(0.494586\).
-
-This pointwise route cannot by itself reach the conjectural cube root.  The
-baseline \(k\)-multiplicity terms in (2) make (6) naturally fifth-power.  A
-cube-root proof still needs the stronger total-energy cancellation described
-in `ROTATED_TRIPLE_ENERGY.md`.
+The direct support count (6)--(8) is strictly stronger for \(\theta<1\); the
+energy estimate remains useful only as a connection with the earlier Fourier
+formulation.
 
 ## 3. What pair-injectivity gives, and why it is insufficient
 
@@ -192,8 +222,8 @@ The most useful next lemma is now explicit:
 > \(\max_{t\ne0}|(A-A)\cap(t-J(A-A))|\le k^{2-\delta}\)
 > for every planar distance-Sidon set \(A\).
 
-Any \(\delta>0.0438\) improves the current best upper exponent through (10),
-while \(\delta=1\) gives the fifth-power energy theorem and exponent \(2/5\).
+Any \(\delta>0.0219\) improves the current best upper exponent through (8),
+while \(\delta=1\) gives the full cube-root solution directly from (6).
 The likely proof needs a stability theorem for a difference set with large
 overlap under a quarter-turn about an external centre.  Standard BSG sees only
 one difference set and loses the rotation; pair-codegree and generic Costas

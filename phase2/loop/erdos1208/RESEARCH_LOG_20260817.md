@@ -647,17 +647,24 @@ and the remaining contribution is
  M_A(t)=|D\cap(t-JD)|.
 \]
 
-If uniformly \(M_A(t)\le k^{1+\theta+o(1)}\), then
+If uniformly \(M_A(t)\le k^{1+\theta+o(1)}\), then the direct support count
 
 \[
- E^+(A+JA)\le k^{5+\theta+o(1)},\qquad
- F_2(n)\le n^{2/(5-\theta)+o(1)}.
+ |D|^2=\sum_t M_A(t)\ll m^2k^{1+\theta+o(1)}
 \]
 
-Thus a linear overlap bound gives exponent \(2/5\), a
-\(k^{3/2+o(1)}\) bound gives \(4/9\), and any
-\(M_A(t)\le k^{1.9561}\) estimate already beats the current explicit
-\(0.494586\) theorem.  A bare \(C_4\)-free argument is false: the maximizing
+gives
+
+\[
+ F_2(n)\le n^{1/(3-\theta)+o(1)}.
+\]
+
+Thus a linear overlap bound solves the problem at the matching cube-root
+exponent, a \(k^{3/2+o(1)}\) bound gives exponent \(2/5\), and any fixed
+\(M_A(t)\le k^{1.9780}\) estimate already beats the current explicit
+\(0.494586\) theorem.  As a secondary consequence,
+\(E^+(A+JA)\le k^{5+\theta+o(1)}\).  A bare \(C_4\)-free argument is false:
+the maximizing
 translation graphs of exact greedy examples contain many four-cycles, although
 their observed overlap remains only about \(2.4k\)--\(2.9k\).
 
