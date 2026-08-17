@@ -260,6 +260,131 @@ real, but its Gibbs normalization is too severe unless one first proves
 that the useful endpoint differences have only \(O(\log\log n)\) bits or
 share a recoverable long trace.
 
+### 2.1 Exact three-block strengthening
+
+The same comparison has a genuinely stronger rank-sensitive form, but it
+does not remove the endpoint-pair obstruction.  Colour the physical labels
+with the ordered colours \(1<2<3\), and write \(P_i\) for the induced colour
+class.  The exact three-block strong-glue count is
+
+\[
+\begin{aligned}
+ M_3(P_1,P_2,P_3)
+  ={}&W(P_1)+W(P_2)+W(P_3)\\
+    &+C(P_1)U(P_2)+C(P_2)U(P_3)\\
+    &+C(P_1)U(P_3)\{1+|P_2|\}.
+\end{aligned}                                                   \tag{12a}
+\]
+
+Thus a global minimizer satisfies \(W(P)\le M_3\) for every ordered
+three-colouring.  Put
+
+\[
+ \begin{aligned}
+ F(t)&=\sum_{A\in\mathcal F(P)}t^{|A|},\\
+ D(t)&=\sum_{\substack{A\in\mathcal C(P),\ B\in\mathcal U(P)\\
+                        A\cap B=\varnothing}}
+                         t^{|A|+|B|}.
+ \end{aligned}                                                  \tag{12b}
+\]
+
+For an independent uniform three-colouring, taking expectations in (12a)
+gives the exact necessary inequality
+
+\[
+ \boxed{
+ W(P)\le
+ 3F(1/3)+3D(1/3)+{n\over3}D(1/3)-{1\over9}D'(1/3).}
+                                                                  \tag{12c}
+\]
+
+Indeed, the first line of (12a) contributes \(3F(1/3)\).  The three
+unmarked ordered endpoint pairs contribute \(3D(1/3)\).  After fixing a
+disjoint cap--cup pair of total rank \(s\), each of the \(n-s\) remaining
+labels contributes to the middle singleton term with probability
+\(3^{-(s+1)}\).  Summing gives
+
+\[
+ \sum_{A,B}(n-|A|-|B|)3^{-(|A|+|B|+1)}
+ ={n\over3}D(1/3)-{1\over9}D'(1/3),                     \tag{12d}
+\]
+
+which proves (12c).
+
+This is not a third closing route.  The new derivative term still lives on
+the same disjoint cap--cup reservoir, and it is positive: the middle block
+creates optional singleton faces.  Consequently (12c) can reject a
+nonminimal stationary wrapper more sharply than the fair bipartition, but
+without an upper bound or a compatible mixed-face decoder for \(D\) it does
+not yield a coefficient gain.  It should be treated as a rank-sensitive
+strengthening of the existing minimizer-mutation state, not as a replacement
+for the surviving multi-point profile inequality.
+
+There is also an exact formula for every number of ordered blocks.  For
+integers \(q\ge2\), \(h\ge0\), and \(m\ge0\), put
+
+\[
+ K_{q,h}(m)=\sum_{t=0}^{\min\{h,m\}}
+       \binom mt{(h)_t\over q^t},
+ \qquad
+ \Psi_q(m)=\sum_{h=0}^{q-2}(q-h-1)K_{q,h}(m),          \tag{12e}
+\]
+
+where \((h)_t=h(h-1)\cdots(h-t+1)\).  Uniformly and independently colour
+the labels by the ordered colours \(1<\cdots<q\), and strongly glue the
+induced colour classes in that order.  If a disjoint cap--cup pair has total
+rank \(s\), summing over the possible endpoint colours and over the optional
+singleton intermediate blocks gives the exact expectation
+
+\[
+ \boxed{
+ \mathbb E M_q
+  =qF(1/q)+
+    \sum_{\substack{A\in\mathcal C(P),\ B\in\mathcal U(P)\\A\cap B=\varnothing}}
+       q^{-s}\Psi_q(n-s),
+ \qquad s=|A|+|B|.}                                    \tag{12f}
+\]
+
+Indeed, for endpoint colours at distance \(h+1\), choose \(t\) of the
+remaining \(m=n-s\) labels and inject them into the \(h\) intermediate
+colours.  This is exactly the summand in \(K_{q,h}(m)\), and there are
+\(q-h-1\) endpoint-colour pairs at that distance.  Formula (12f) specializes
+to the fair bipartition at \(q=2\), and to (12c)--(12d) at \(q=3\), since
+
+\[
+                    \Psi_2(m)=1,
+ \qquad             \Psi_3(m)=3+{m\over3}.             \tag{12g}
+\]
+
+The formula also closes a tempting higher-block escape in the all-delete
+state.  Let \(L=\log n\), let \(q\ge4\) be fixed, and suppose the relevant
+endpoint pairs have total rank \(s\le2L+O(1)\).  The last gap and top-degree
+term in (12e) give
+
+\[
+ \Psi_q(n-s)\ge{(n-s)_{q-2}\over q^{q-2}},
+ \quad
+ {q^{-s}\Psi_q(n-s)\over2^{-s}}
+ \ge2^{\{q-2\log q-o(1)\}L}.                            \tag{12h}
+\]
+
+For \(q=4\) the exponent in braces is zero, and for every fixed \(q>4\) it
+is positive.  Thus four or more uniform ordered blocks do not suppress the
+live endpoint reservoir beyond the bipartition kernel; their intermediate
+singleton choices return all of the apparent extra Gibbs saving.  Three
+blocks are the sole fixed-\(q\) refinement: relative to the bipartition its
+kernel has exponent
+
+\[
+ 1-\{\log 3-1\}{s\over L}+o(1),                         \tag{12i}
+\]
+
+so it improves only on the extreme tail
+\(s>(1/(\log 3-1)+o(1))L=1.7095\ldots L\).  This is a
+precise scope statement for the present endpoint-dominated branch; it does
+not compare the separate face terms \(qF(1/q)\), and it does not rule out a
+nonuniform or genuinely non-linear geometric mutation.
+
 ## 3. Exact planar calibration
 
 Take \(Q=T(4,2)\), whose exact profile is
@@ -301,6 +426,29 @@ physical bipartitions find
 \[
                      \min_{R\sqcup S=P}M(R,S)=688<1061.         \tag{17}
 \]
+
+The three-block comparison is closer but still does not contradict the
+average.  Exhausting all \(3^{12}\) ordered colourings gives
+
+\[
+ \min M_3=616,\qquad
+ \mathbb E M_3={2342539\over2187}=1071.119798\ldots,     \tag{17a}
+\]
+
+and exactly \(305089\) colourings have \(M_3<1061\).  Direct evaluation of
+(12c) gives the same expectation, with
+
+\[
+ F(1/3)={18469\over729},\quad
+ D(1/3)={127502\over729},\quad
+ {n\over3}D(1/3)-{1\over9}D'(1/3)
+ ={1028800\over2187}.                                    \tag{17b}
+\]
+
+Thus the pointwise three-block inequalities detect the nonminimal wrapper
+even more strongly than their average, while the averaged inequality alone
+still remains on the permitted side.  This is the same pointwise-versus-
+Gibbs gap as in the two-block audit, now with an exact rank derivative.
 
 This distinction is useful.  The average Gibbs condition is necessary but
 not sufficient for minimizer status; a positive proof must exploit a

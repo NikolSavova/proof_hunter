@@ -233,7 +233,7 @@ def weighted_profiles_float(n: int, roots, sizes):
     return cap, cup
 
 
-def check_average_square(n: int, roots, sizes) -> None:
+def check_average_square(n: int, roots, sizes) -> bool:
     cap, cup = weighted_profiles_float(n, roots, sizes)
     total = sum(sizes)
     probabilities = [value / total for value in sizes]
@@ -246,16 +246,57 @@ def check_average_square(n: int, roots, sizes) -> None:
     target = 0.5 * log_total ** 2 - 0.5 * log2(n) ** 2
     assert average + 1e-10 >= target
 
+    # The proved dyadic-bucket approximation to the pointwise square mesh.
+    buckets: dict[int, int] = {}
+    for size in sizes:
+        exponent = size.bit_length() - 1
+        buckets[exponent] = buckets.get(exponent, 0) + 1
+    bucket_count = len(buckets)
+    bucket_floor = (
+        0.5
+        * max(0.0, log_total - 1.0 - log2(bucket_count)) ** 2
+        - 0.5 * log2(n) ** 2
+    )
+    pointwise = max(
+        0.5 * log2(sizes[i]) ** 2 + cap[i] + cup[i]
+        for i in range(n)
+    )
+    assert pointwise + 1e-10 >= bucket_floor
 
-def arbitrary_n4_regression() -> int:
+    # General bounded-range row theorem, equation (28).  This holds for
+    # every row; the polynomial-imbalance hypothesis is needed only to sum
+    # the row losses through an arbitrary-depth tree.
+    q = log2(n)
+    range_log = log2(max(sizes) / min(sizes))
+    general_loss = 0.5 * q**2 + q * range_log
+    assert average + 1e-10 >= 0.5 * log_total**2 - general_loss
+    probabilities = [value / total for value in sizes]
+    entropy = -sum(
+        probability * log2(probability)
+        for probability in probabilities
+    )
+    if range_log <= q:
+        assert entropy + 1e-12 >= q - range_log
+
+    # Proved factor-two averaged square theorem, equation (3b).
+    balanced = max(sizes) <= 2 * min(sizes)
+    if balanced:
+        row_loss = 0.5 * log2(n) ** 2 + log2(n)
+        assert average + 1e-10 >= 0.5 * log_total ** 2 - row_loss
+        assert entropy + 1e-12 >= 0.5 * log2(n)
+    return balanced
+
+
+def arbitrary_n4_regression() -> tuple[int, int]:
     edges = tuple(combinations(range(4), 2))
     vectors = tuple(product((1, 2, 4, 16, 1024), repeat=4))
     count = 0
+    balanced = 0
     for roots in permutations(edges):
         for sizes in vectors:
-            check_average_square(4, roots, sizes)
+            balanced += check_average_square(4, roots, sizes)
             count += 1
-    return count
+    return count, balanced
 
 
 def reflection_representatives(n: int):
@@ -273,7 +314,7 @@ def reflection_representatives(n: int):
     return tuple(answer)
 
 
-def reflection_n5_regression() -> int:
+def reflection_n5_regression() -> tuple[int, int]:
     roots = reflection_representatives(5)
     assert len(roots) == 62
     vectors = tuple(
@@ -281,11 +322,12 @@ def reflection_n5_regression() -> int:
         for exponents in product(range(7), repeat=5)
     )
     count = 0
+    balanced = 0
     for row in roots:
         for sizes in vectors:
-            check_average_square(5, row, sizes)
+            balanced += check_average_square(5, row, sizes)
             count += 1
-    return count
+    return count, balanced
 
 
 def main() -> None:
@@ -306,8 +348,8 @@ def main() -> None:
     assert cup == ((0, 0), (0, 1), (1, 1), (1, 1), (2, 1))
     defect, square_margin = exact_log_certificates()
     nested_threshold_obstruction()
-    arbitrary = arbitrary_n4_regression()
-    reflection = reflection_n5_regression()
+    arbitrary, arbitrary_balanced = arbitrary_n4_regression()
+    reflection, reflection_balanced = reflection_n5_regression()
 
     getcontext().prec = 18
     decimal = lambda value: Decimal(value.numerator) / Decimal(value.denominator)
@@ -316,9 +358,12 @@ def main() -> None:
         f"defect=({decimal(defect[0])},{decimal(defect[1])}); "
         f"square_margin=({decimal(square_margin[0])},"
         f"{decimal(square_margin[1])}); "
-        "nested_threshold_counter=n4; "
-        f"average_square_arbitrary_n4={arbitrary}; "
-        f"average_square_reflection_n5={reflection}"
+        "nested_threshold_counter=n4; dyadic_bucket_square=PASS; "
+        "factor_two_telescope=PASS; polynomial_range_telescope=PASS; "
+        f"average_square_arbitrary_n4={arbitrary} "
+        f"(balanced={arbitrary_balanced}); "
+        f"average_square_reflection_n5={reflection} "
+        f"(balanced={reflection_balanced})"
     )
 
 
