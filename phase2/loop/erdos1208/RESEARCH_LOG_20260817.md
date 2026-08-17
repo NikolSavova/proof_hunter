@@ -697,3 +697,22 @@ available.  These constructions use essentially fresh endpoints per cell and
 therefore have only linear overlap in the total number of points.  The live
 problem is global endpoint reuse in a superlinear overlap, not a bounded local
 configuration.
+
+## Failed amplification: Cartesian digit tensor
+
+The greedy search has a 13-point seed with true overlap 34 at one nonzero
+translation.  A proposed generic Gaussian-integer digit tensor would multiply
+these overlap solutions, but it fails the distance-Sidon condition for a
+simple structural reason: whenever a pair of digit strings agrees in some
+coordinate, the common digit disappears from the displacement.  Varying it
+then gives distinct global edges with exactly the same difference vector.
+Algebraic independence of the digit scales cannot remove an identically equal
+displacement polynomial.  A code restriction that makes all coordinatewise
+difference words unique has only the usual square-root density and destroys
+the naive overlap count.  Therefore this is not a counterexample to the live
+linear overlap conjecture.
+
+This failure is useful to retain because the seed ratio alone can look like a
+Shannon-capacity obstruction.  Any valid amplification must simultaneously
+avoid the cylinder collisions and preserve a superlinear number of the
+four-endpoint overlap equations; the plain Cartesian product does neither.

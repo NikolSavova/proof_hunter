@@ -256,3 +256,29 @@ The likely proof needs a stability theorem for a difference set with large
 overlap under a quarter-turn about an external centre.  Standard BSG sees only
 one difference set and loses the rotation; pair-codegree and generic Costas
 cross-correlation statements see too little of the Euclidean norm condition.
+
+### Failed digit-tensor counterexample
+
+An exact search found a 13-point distance-Sidon seed with
+\(M_A((-2,-1))=34\), which at first appears tensorizable.  The naive product
+
+\[
+ A^{(d)}=\left\{\sum_j\gamma_j a_j:a_j\in A\right\}
+\]
+
+does multiply the 34 overlap solutions coordinate by coordinate.  It does
+**not** remain distance-Sidon, even for algebraically generic Gaussian scales
+\(\gamma_j\).  If two endpoints agree in one digit, that digit is invisible
+in their difference; changing the common digit produces a second edge with
+the identical displacement and length.  In particular, every Cartesian digit
+product has unavoidable cylinder collisions.  Restricting to a code with no
+such repeated difference words returns the ordinary Sidon-code square-root
+loss and no longer preserves enough tensor edges.  Thus this tempting
+counterexample to the linear overlap target fails.
+
+Affine images of one-dimensional parabola sets were also tested because their
+chord vectors have the explicit form \((h,hs)\) and a generic anisotropic
+metric separates all lengths.  Exact searches over small rational scalings
+gave sublinear-to-linear maximum overlap, not a counterexample.  The two
+coordinate equations determine both endpoint sums from the two gaps, leaving
+a divisor-type rather than a product-sized family.

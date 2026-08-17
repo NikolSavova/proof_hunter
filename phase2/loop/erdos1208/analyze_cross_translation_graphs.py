@@ -69,12 +69,27 @@ def profile(side: int, trials: int) -> None:
                 counts[sub(x, y)] += 1
     t, multiplicity = counts.most_common(1)[0]
     cells = [indices for point, indices in b.items() if sub(point, t) in b]
+    differences = {
+        sub(x, y)
+        for x in a
+        for y in a
+        if x != y
+    }
+    rotated_differences = {rot(x) for x in differences}
+    overlap = sum(
+        1 for x in differences if sub(t, x) in rotated_differences
+    )
+    baseline = k * int(t in differences or t in rotated_differences)
+    assert multiplicity == overlap + baseline
     degrees = Counter(i for i, _ in cells)
     print(
         "side", side,
         "k", k,
         "max_r", multiplicity,
         "max_r/k", round(multiplicity / k, 4),
+        "M", overlap,
+        "M/k", round(overlap / k, 4),
+        "baseline", baseline,
         "rows", len(degrees),
         "max_row_degree", max(degrees.values()),
         "c4", c4_count(cells),
