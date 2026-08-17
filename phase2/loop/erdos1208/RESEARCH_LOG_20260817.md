@@ -17,11 +17,12 @@ prime-power refinement and a rank-17 certificate proving the explicit partial
 result \(F_2(n)\ll n^{0.49815}\), subject to the declared number-field tower
 and master-inequality inputs.  The placewise refinement first improved this to
 \(F_2(n)\ll n^{0.498}\).  The quadratic-Frobenius construction below first
-gave \(F_2(n)\ll n^{0.4947}\).  Optimizing its presentation rank from 400 to
-725 now gives the stronger certified theorem
+gave \(F_2(n)\ll n^{0.4947}\).  Optimizing its presentation rank and globally
+interleaving the first three local depths now gives the stronger certified
+theorem
 
 \[
-  F_2(n)\ll n^{0.49459}.
+  F_2(n)\ll n^{0.494586}.
 \]
 
 The natural full-resolution target remains
@@ -554,6 +555,30 @@ master inequality are \(23.28\), \(1814.20\), and \(23.95\).  Hence
 The mathematical delta is recorded in
 `proof_frobenius_order_two_rank725.md`; the exact arithmetic and 80-digit
 endpoint certificate are in `verify_frobenius_order_two_rank725.py`.
+
+## Global depth envelope at rank 715
+
+The two-stage path is not quite the true concave local frontier: near its
+large-scale endpoint, a third increment at a small prime has slightly larger
+gain per cost than a second increment at a much larger prime.  Globally
+sorting the first three increments and re-optimizing the presentation rank
+gives the best sampled rank at 715.  With
+
+\[
+ \alpha=0.494586,\qquad w\in[1040100,2080200],
+\]
+
+the two concavity endpoint margins are (3.0585\) and (3.3207\).  The right
+endpoint uses all 127,091 first increments, 30,938 second increments, and 396
+third increments.  Therefore
+
+\[
+  F_2(n)\ll n^{0.494586}.
+\]
+
+The proof, including the new residue-degree-one identity for the third
+increment, is in `proof_frobenius_all_depth_rank715.md`; the finite certificate
+is `verify_frobenius_all_depth_rank715.py`.
 
 ## Relative Minkowski-unit target
 
