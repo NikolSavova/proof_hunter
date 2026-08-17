@@ -594,6 +594,25 @@ be removed by passing to the union relation, by nonnegative reweighting, or by
 a thinned pattern code while retaining a universal pair-energy lower bound.
 `LOCAL_PSD_BARRIER.md` gives the calculation and the coding interpretation.
 
+## Cross-sum energy target
+
+For (B=A+JA\), directness gives (|B|=|A|^2\) and
+\(|\widehat{1_B}|^2=|\widehat{1_A}|^2
+ |\widehat{1_A}\circ J^*|^2\).  Cauchy--Schwarz therefore turns the rotated
+triple energy into
+
+\[
+ \mathcal E_J(A)\le\sqrt{E^+(A+JA)E^+(A)}.
+\]
+
+Since (E^+(A)=2|A|^2-|A|\), an upper bound
+\(E^+(A+JA)\le |A|^{5+o(1)}\) would already yield the new grid bound
+\(|A|\le m^{4/5+o(1)}\), hence (F_2(n)\le n^{2/5+o(1)}\).  The sharp
+\(|A|^{4+o(1)}\) energy bound would solve the cube-root problem.  Experiments
+put the cross-sum energy naturally on the fifth-power scale, while the Golomb
+ruler counterexample shows that directness alone allows sixth-power energy.
+Section 9 of `ROTATED_TRIPLE_ENERGY.md` records the exact reduction.
+
 ## Relative Minkowski-unit target
 
 In an imaginary non-CM Galois field, every unit `beta` produces exact

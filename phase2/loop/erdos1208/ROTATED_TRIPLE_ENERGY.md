@@ -280,3 +280,73 @@ simply because the whole set lies in an interval of length (O(k^2)).
 Thus the relation (Y=JX), together with the full radial uniqueness of
 (X-X), is load-bearing.  A generic theorem about direct sums of Sidon sets
 would be false by a full power of (k).
+
+## 9. Cross-sum energy factorization
+
+There is a useful intermediate target between the raw mixed sixth moment and
+the conjectural cubic bound.  Work in a finite torus large enough to avoid
+wraparound and put
+
+\[
+  B=A+JA.
+\]
+
+The sum is direct by (1.1), so (1_B=1_A*1_{JA}\) and (|B|=k^2\).  With the
+unnormalized Fourier transform, write
+
+\[
+ X(\chi)=|\widehat{1_A}(\chi)|^2,qquad
+ Y(\chi)=|\widehat{1_A}(J^*\chi)|^2.
+\]
+
+Then
+
+\[
+ |\widehat{1_B}(\chi)|^2=X(\chi)Y(\chi),
+\]
+
+while the full rotated triple energy is
+
+\[
+ \mathcal E_J(A)=\frac1{|G|}\sum_\chi X(\chi)Y(\chi)^2.
+\]
+
+Cauchy--Schwarz therefore gives the exact inequality
+
+\[
+ \boxed{\mathcal E_J(A)\le
+   \sqrt{E^+(A+JA)E^+(A)}.}                       \tag{9.1}
+\]
+
+Since (A\) is vector-Sidon,
+
+\[
+  E^+(A)=2k^2-k.                                  \tag{9.2}
+\]
+
+Consequently either of the following would have a concrete geometric payoff:
+
+* (E^+(A+JA)\le k^{4+o(1)}\) implies the desired
+  \(\mathcal E_J(A)\le k^{3+o(1)}\) and hence the cube-root solution;
+* the weaker estimate (E^+(A+JA)\le k^{5+o(1)}\) implies
+  \(\mathcal E_J(A)\le k^{7/2+o(1)}\).  Comparing with (2.1) gives
+  \(k\le m^{4/5+o(1)}\), and therefore the major partial improvement
+  \(F_2(n)\le n^{2/5+o(1)}\).
+
+The first estimate is false as a model for the observed configurations.
+For greedy distance-Sidon sets of sizes (k=12,20,32,40,54\), exact
+computations gave
+
+\[
+ \frac{E^+(A+JA)}{k^5}
+ =0.98,1.04,1.13,0.86,0.75
+\]
+
+up to the variation between runs.  Thus the (k^5\) scale looks natural and
+the weaker target is consistent with the data.
+
+It is not a generic consequence of directness.  Splitting a dense Golomb
+ruler into two direct Sidon summands can make their sum a positive-density
+subset of an interval of length (O(k^2)\), whose energy is \(\Theta(k^6)\).
+Any proof of the (k^5\) estimate must again use the rigid identity between
+the summands, (JA\), and the Euclidean radial uniqueness of (A-A\).
