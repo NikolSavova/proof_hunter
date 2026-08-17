@@ -16,11 +16,12 @@ due to Lee--Pohoata--Zhu (arXiv:2607.05374).  The local project has a
 prime-power refinement and a rank-17 certificate proving the explicit partial
 result \(F_2(n)\ll n^{0.49815}\), subject to the declared number-field tower
 and master-inequality inputs.  The placewise refinement first improved this to
-\(F_2(n)\ll n^{0.498}\).  The quadratic-Frobenius construction below now gives
-the stronger certified theorem
+\(F_2(n)\ll n^{0.498}\).  The quadratic-Frobenius construction below first
+gave \(F_2(n)\ll n^{0.4947}\).  Optimizing its presentation rank from 400 to
+725 now gives the stronger certified theorem
 
 \[
-  F_2(n)\ll n^{0.4947}.
+  F_2(n)\ll n^{0.49459}.
 \]
 
 The natural full-resolution target remains
@@ -518,3 +519,51 @@ Sidon, `(X-X) intersect (Y-Y)={0}`, and `X+Y` is direct, yet
 `|X+Y-Y|=O(k^2)`.  Therefore the identity `Y=JX` and radial uniqueness are
 essential; any black-box theorem for two abstract direct Sidon summands is
 false at exactly the desired cubic scale.
+
+## Kill: Frobenius fourth powers
+
+Imposing `g_q^4=1` in a pro-2 group gives degree-four GS relators and allows
+`Theta(d^4)` useful primes, but their worst residue degree is four.  An exact
+prime sweep has best dyadic exponent about `0.49576` near rank 15, worse than
+`0.4947`.  At rank 400 the existing square presentation can surprisingly
+absorb 39,999 extra fourth-power relators for free, but all of their local
+increments occur below the part of the square-prime concave envelope used by
+the tight dyadic interval.  The certified threshold is unchanged.  See
+`FROBENIUS_FOURTH_POWER_AUDIT.md`.
+
+## Rank-725 optimization of the quadratic-Frobenius tower
+
+An exact rank sweep showed that the two-stage Frobenius-square construction
+is strongest near presentation rank 725, rather than the previously used
+rank 400.  Take the first 726 odd primes as the ramification set and impose
+Frobenius-square relators at the first 130,681 useful unramified primes.  The
+presentation has
+
+\[
+ d=725,\qquad r\le725+130681=131406<725^2/4.
+\]
+
+With \(\alpha=0.49459\) and phase interval
+\(w\in[1069500,2139000]\), the three concavity endpoint margins in the
+master inequality are \(23.28\), \(1814.20\), and \(23.95\).  Hence
+
+\[
+  F_2(n)\ll n^{0.49459}.
+\]
+
+The mathematical delta is recorded in
+`proof_frobenius_order_two_rank725.md`; the exact arithmetic and 80-digit
+endpoint certificate are in `verify_frobenius_order_two_rank725.py`.
+
+## Relative Minkowski-unit target
+
+In an imaginary non-CM Galois field, every unit `beta` produces exact
+rotations `sigma(beta)/c sigma(beta)`, all of height at most `2h(beta)`.  A
+single relative Minkowski unit whose conjugate ratios have linear rank would
+therefore suffice if its full-field log height were below `(log 2)/2`.
+Amoroso--Masser rule out the naive case where `beta` itself is a primitive
+generator of a growing Galois field: its Mahler measure must grow.  Their
+theorem does not rule out an element lying in a much larger Galois tower whose
+conjugate rank grows with the ambient degree.  This leaves a sharply stated
+higher-dimensional Lehmer/regulator construction problem; Section 7 of
+`UNIMODULAR_UNIT_ROTATIONS.md` records it.

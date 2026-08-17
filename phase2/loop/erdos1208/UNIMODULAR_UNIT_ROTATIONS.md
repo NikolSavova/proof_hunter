@@ -240,3 +240,65 @@ Primary references:
 * Eduardo Friedman and Nils-Peter Skoruppa, “Relative regulators of number
   fields,” Invent. Math. 135 (1999), 115--144,
   https://doi.org/10.1007/s002220050281 .
+
+## 7. Galois-orbit formulation
+
+There is a more constructive version of the same target.  Suppose
+\(K/\mathbb Q\) is Galois and imaginary non-CM, with chosen complex
+conjugation \(c\).
+For any unit β and any σ in the Galois group,
+
+\[
+  u_\sigma=\frac{\sigma(\beta)}{c\sigma(\beta)}
+\]
+
+is a relative unit and hence an exact planar rotation.  Moreover
+
+\[
+  h(u_\sigma)\leq 2h(\beta).                      \tag{7.1}
+\]
+
+Thus a single unit β would solve the small-rotation input if
+
+1. linearly many of the \(u_\sigma\) were multiplicatively independent, and
+2. \(2[K:\mathbb Q]h(\beta)<\log2-c\).
+
+Condition 1 is a relative analogue of the Minkowski-unit property.  Condition
+2 says that β has bounded *full-field* Mahler expansion below a sharp
+constant.  It also shows why importing β from a fixed subfield fails: if
+β has degree \(e\), then
+
+\[
+  [K:\mathbb Q]h(\beta)
+  =\frac{[K:\mathbb Q]}e\log M(\beta),            \tag{7.2}
+\]
+
+which grows with the repetition index.
+
+Known height theorems close only the most optimistic version of this idea.
+Amoroso--Masser prove that if β itself generates a Galois field of degree
+\(e\), then for every fixed ε>0,
+
+\[
+  h(\beta)\ge c(\epsilon)e^{-\epsilon}.
+\]
+
+Hence a primitive Galois generator cannot have bounded Mahler measure along a
+growing-degree family; its \(e h(\beta)\) tends to infinity.  Their more
+general theorem for an element merely *lying* in a Galois field depends on the
+multiplicative rank of its conjugates and does not rule out a relative
+Minkowski unit whose orbit rank grows linearly with the ambient degree.
+
+So the surviving version is precise and substantially narrower:
+
+> Find a bounded-root-discriminant non-CM Galois tower with a relative
+> Minkowski unit β in each layer, of orbit rank proportional to the degree and
+> full-field log height below ½ log 2 by a fixed margin.
+
+This is not supplied by present Galois-height results, but it is now an
+explicit interface between the geometric construction and higher-dimensional
+Lehmer theory.
+
+Reference: Francesco Amoroso and David Masser, “Lower bounds for the height in
+Galois extensions,” Bull. Lond. Math. Soc. 48 (2016), 591--596,
+https://amoroso.users.lmno.cnrs.fr/files-height/BLMS2.pdf .
