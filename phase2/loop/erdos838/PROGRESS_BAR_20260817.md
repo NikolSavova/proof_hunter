@@ -58,6 +58,12 @@ unrestricted coefficient, we are still stuck at the same place.
    nested-threshold uncrossing, natural local two-tangent Hall, and uniform
    higher-block Gibbs improvement all have certified counterexamples or
    exact ceilings.  This is conceptual progress but no coefficient gain.
+5. **The fixed-block mutation evidence was narrowed correctly.**  Exact
+   coordinate-annealed configurations through twenty points are stable
+   under the stated two-/three-block audits after a short descent.  They are
+   all above the coefficient-one-half scale, so they kill an unconditioned
+   selector but do not kill a theorem conditioned on a strict sub-half
+   deficit.
 
 ## Current closing target
 
@@ -73,7 +79,14 @@ There are still only two honest coefficient-bearing exits.
    all-delete / anti-aligned state.  Scalar deletion moments and uniform
    ordered block averages are now known to be insufficient.
 
-The active micro-target `P1g` is an exact binary drop-charged endpoint floor.
-It is useful only if it propagates to a graded rank interval; if it improves
-only total endpoint mass, the ledger requires banking it and stopping that
-branch.
+The former micro-target `P1g` is no longer active.  Its exact binary
+drop-charged endpoint floor is true, but a verified low-degree spine shows
+that it need not put any mass in the target rank.  The next admissible
+fixed-rank attack must therefore begin with a genuinely rank-averaged planar
+theorem, not another total endpoint inequality or one-layer surrogate.
+
+The strict-sub-half version of the selected mutation target remains a
+secondary hope, not an active theorem: the current controls do not refute
+it, but no sub-half viability witness or quantitative selection mechanism is
+known.  Promoting it would require a written fixed-gap implication and a
+new geometric input beyond the complete/sparse fixed-block spectra.

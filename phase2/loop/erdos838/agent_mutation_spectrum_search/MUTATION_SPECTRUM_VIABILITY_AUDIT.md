@@ -129,13 +129,57 @@ another uniform ordered-block selector. It must either
 
 Under the campaign stop rule, this audit chooses option 2.
 
-## 5. Verification
+## 5. Coordinate-annealing follow-up
+
+To check that the cyclic stress was not an artifact of one recursive family,
+we ran a separate fixed-$x$ coordinate anneal at sizes
+$10,12,14,16,18,20$.  The search itself was heuristic; the saved integral
+coordinates and every count quoted here are checked independently with exact
+rational arithmetic by `verify_annealed_coordinate_candidates.py`.
+
+The resulting profiles $(C,U,V)$ are
+
+\[
+\begin{array}{c|rrrrrr}
+n&10&12&14&16&18&20\\ \hline
+(C,U,V)&(125,157,249)&(306,203,500)&(434,497,963)&
+(951,645,1743)&(1087,1435,2965)&(1469,1636,4895).
+\end{array}                                               \tag{5}
+\]
+
+The twelve-point candidate improves the cyclic deletion candidate from
+$504$ to $500$.  Every candidate through $n=18$ is stable under every
+ordered bipartition.  The $n=10,12$ candidates are stable under every
+ordered three-colouring, and the $n=14,16,18$ candidates are stable under
+every three-colouring which moves at most four labels away from one block.
+
+The raw twenty-point candidate has one ten-face improvement, of block sizes
+$(0,19,1)$.  Realizing that mutation by an exact rational strong glue gives
+
+\[
+                         (C,U,V)=(1441,2191,4885),        \tag{6}
+\]
+
+after which no ordered three-colouring moving at most four labels decreases
+the count.  This is the same phenotype as the cyclic family: a short descent
+ends at a fixed-block wall.
+
+This follow-up strengthens the empirical negative conclusion but does not
+strengthen the asymptotic kill condition.  All saved candidates are above
+the coefficient-one-half scale at these sizes.  They therefore refute an
+unconditioned fixed-$q$ descent theorem, not the sharper possibility that a
+*strict fixed-gap sub-half* state must admit a decreasing mutation.  That
+conditional version remains logically open, but it currently has no
+sub-half viability witness and is not promoted to an active target.
+
+## 6. Verification
 
 Run
 
 ```text
 python3 phase2/loop/erdos838/agent_mutation_spectrum_search/verify_mutation_spectrum_controls.py
 python3 phase2/loop/erdos838/agent_mutation_spectrum_search/verify_greedy_ifs_mutation_spectrum.py
+python3 phase2/loop/erdos838/agent_mutation_spectrum_search/verify_annealed_coordinate_candidates.py
 ```
 
 The first verifier exhausts all ordered two- and three-colourings of the
@@ -143,3 +187,5 @@ four controls. The second reconstructs the rational cyclic IFS, certifies
 the greedy deletion sequence, exhausts the displayed $n=10,12,14$
 three-colourings, performs the sparse $n=16,18,20$ audit, constructs (4),
 and reruns the sparse audit after mutation.
+The third certifies the saved annealed coordinates, their two- and
+three-block spectra in the stated ranges, and the exact repair (6).
