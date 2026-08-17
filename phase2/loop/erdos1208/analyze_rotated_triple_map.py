@@ -66,6 +66,57 @@ def collision_types(a: list[tuple[int, int]]) -> Counter[tuple[int, int]]:
     return ans
 
 
+def translate_incidence_profile(a: list[tuple[int, int]]) -> tuple[int, int, int]:
+    """Return support size and the numbers of 6- and 8-cycle witnesses.
+
+    The right vertices are the oriented differences d=b-c and the left
+    vertices are points of A+J(A-A).  The neighbourhood of d is A+Jd.
+    Vector-Sidon uniqueness makes this graph C4-free.  A 6-cycle is therefore
+    exactly a triple of difference-columns whose three pairwise intersection
+    points exist and are distinct.  The 8-cycle count is deliberately omitted
+    for now; the returned third coordinate records the largest degree in the
+    auxiliary column-intersection graph, which is the useful cheap diagnostic.
+    """
+    differences = {
+        (bx - cx, by - cy)
+        for bx, by in a
+        for cx, cy in a
+    }
+    columns: dict[tuple[int, int], set[tuple[int, int]]] = {}
+    for dx, dy in differences:
+        columns[(dx, dy)] = {(ax - dy, ay + dx) for ax, ay in a}
+
+    labels = list(columns)
+    intersections: dict[tuple[int, int], tuple[int, int]] = {}
+    neighbours: list[set[int]] = [set() for _ in labels]
+    for i, left in enumerate(labels):
+        for j in range(i):
+            meet = columns[left] & columns[labels[j]]
+            assert len(meet) <= 1
+            if meet:
+                intersections[(j, i)] = next(iter(meet))
+                neighbours[i].add(j)
+                neighbours[j].add(i)
+
+    six_cycles = 0
+    for i in range(len(labels)):
+        higher = [j for j in neighbours[i] if j > i]
+        for pos, j in enumerate(higher):
+            for ell in higher[pos + 1 :]:
+                if ell not in neighbours[j]:
+                    continue
+                points = {
+                    intersections[tuple(sorted((i, j)))],
+                    intersections[tuple(sorted((i, ell)))],
+                    intersections[tuple(sorted((j, ell)))],
+                }
+                if len(points) == 3:
+                    six_cycles += 1
+
+    support = set().union(*columns.values())
+    return len(support), six_cycles, max(map(len, neighbours), default=0)
+
+
 def main() -> None:
     for m, trials in [(20, 200), (40, 120), (80, 50), (120, 25)]:
         a = greedy(m, trials, 1208 + m)
@@ -77,6 +128,12 @@ def main() -> None:
         )
         if m == 40:
             print("  collision types (same positions, union size):", sorted(collision_types(a).items()))
+        if m <= 40:
+            support, six_cycles, max_column_degree = translate_incidence_profile(a)
+            print(
+                f"  translate graph: support={support} "
+                f"C6={six_cycles} max-column-degree={max_column_degree}"
+            )
 
 
 if __name__ == "__main__":

@@ -820,3 +820,27 @@ new polynomial upper bound, but the data do not indicate the cube-root scale;
 no theorem from phase retrieval currently supplies the needed anti-Ramsey
 bound.  Keep this as a distinct upper-construction lane, not as a claimed
 resolution.
+## 2026-08-17: rotated triple support survives the obstruction
+
+The energy conjecture failed, but the corresponding support statement
+
+\[
+  |A+JA-JA|\ge |A|^{3-o(1)}
+\]
+
+survives every known construction and would directly prove the conjectural
+square-grid upper bound.  The perpendicular-ruler family actually contains
+an explicit injective subfamily of `(k/2)^3` triples: take the first two
+coordinates on the horizontal arm and the third on the vertical arm.  Full
+Golomb uniqueness makes the cross-sum coordinate injective.
+
+The translate formulation `A+JD=union_{d in D}(A+Jd)` gives a `C_4`-free
+bipartite incidence graph with `k^2+O(k)` columns of degree `k`.  A proposed
+short-cycle proof was stress-tested and rejected.  Random-greedy examples
+already contain `C_6`s, and dense perpendicular-ruler examples contain a
+growing super-cubic number of column-graph triangles and many column-graph
+`C_4`s while their support remains a constant multiple of `k^3`.  Thus
+ordinary girth/Zarankiewicz information does not see the compensating arm
+types.  The exact reduction, obstruction audit, and numerical data are in
+`ROTATED_TRIPLE_SUPPORT.md`; the exploratory script now includes the
+translate-cycle diagnostic.
