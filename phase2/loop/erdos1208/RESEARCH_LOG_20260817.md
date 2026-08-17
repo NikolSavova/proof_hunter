@@ -343,3 +343,88 @@ known.
    if \(D=A-A\subset[-m,m]^2\) and \(Q\) is two-to-one on \(D\setminus\{0\}\),
    exploit the forced triangle relations in \(D\) to prove \(|A|\ll
    m^{2/3+o(1)}\), or find a construction falsifying that target.
+
+## Rotated triple-sum reduction
+
+The grid bottleneck now has a sharper exact form; see
+`ROTATED_TRIPLE_ENERGY.md`.  If `J` is quarter-turn and `A` is a
+distance-Sidon subset of `[m]^2`, then
+
+\[
+  |A+JA|=|A|^2.
+\]
+
+For the cubic map
+
+\[
+  \Phi(a,b,c)=a+J(b-c),\qquad b\ne c,
+\]
+
+all images lie in fewer than `9m^2` lattice positions.  Its collision energy
+therefore satisfies
+
+\[
+  \mathcal T_J(A)\ge \frac{|A|^4(|A|-1)^2}{9m^2}.
+\]
+
+The estimate `T_J(A) <= |A|^{3+o(1)}`, or alternatively the triple-sum
+expansion `|A+JA-JA| >= |A|^{3-o(1)}`, would prove the conjectural grid bound
+`|A| <= m^{2/3+o(1)}` and hence close the power-law gap in problem 1208.
+
+The pointwise version is false: one external image can have linearly many
+generic representations.  What remains plausible, and is supported by
+greedy experiments, is a *total* mixed-energy bound.  Fourier analysis turns
+the full energy into
+
+\[
+  |G|^{-1}\sum_\chi |\widehat{1_A}(\chi)|^2
+  |\widehat{1_A}(J^*\chi)|^4.
+\]
+
+This exposes the exact missing inverse theorem: a large mixed sixth moment
+must force perpendicular additive structure in `A-A`, and that structure
+must then be contradicted by the fact that `(A-A) intersect J(A-A)={0}`.
+Generic BSG loses the rotation and returns only a rank-two progression, so it
+does not suffice.
+
+The pinned-distance/Tardos entropy idea was also audited.  Two pinned rows do
+indeed share exactly one entry, but there are only `|A|` rows and Tardos's
+row-sum exponent tends to `1/e`; this cannot reach the required cubic count.
+
+## Kill: direct pro-3 Frobenius-cube amplification
+
+A pro-`3` analogue of the order-two construction initially looks stronger.
+With generator rank `d` and initial relation rank at most `d`, adding `N`
+Frobenius-cube relators is certified by
+
+\[
+  1-dt+dt^2+Nt^3<0.
+\]
+
+Optimizing `t` permits `N` of order `d^3`, rather than the order `d^2`
+quadratic-relator budget in a pro-`2` group.  However, the guaranteed residue
+degree is now three.  A depth-one useful prime contributes at worst
+
+\[
+  \frac13\log\frac{2}{1+q^{-3}}
+\]
+
+per absolute degree, while still costing `log q`.  Ramification also has to
+use primes congruent to `1 mod 3`, and useful primes were conservatively
+restricted to `1 mod 4` so that `-1` already splits in the residue field.
+
+A direct sweep using the exact cubic GS capacity and the smallest eligible
+primes gave the following *continuous-degree, no-phase-loss* exponents:
+
+| `d` | cube relators | relaxed exponent |
+|---:|---:|---:|
+| 20 | 923 | 0.49602 |
+| 30 | 3407 | 0.49533 |
+| 40 | 8424 | 0.49535 |
+| 50 | 16864 | 0.49548 |
+
+The best point in this sweep is already worse than the rigorous pro-`2`
+exponent `0.4947`, before accounting for the much coarser degree sequence
+`3^j`.  Higher odd primes have an even worse gain-to-log-cost ratio.  Thus
+Frobenius-cube amplification is not a competitive route with the current
+local norm sieve.
