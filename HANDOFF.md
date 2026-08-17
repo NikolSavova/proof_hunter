@@ -1185,6 +1185,32 @@ In parallel, harden and externally audit the rank-715 `0.494586` proof stack;
 do not tune another decimal place.  No proof or search process is currently
 running, and #1208 is not resolved.
 
+### ⭐ 2026-08-17 — ERDŐS #838: GATE NARROWED TO A SELECTED ENDPOINT RESET; RUN THE EMPIRICAL MINIMIZER PROGRAM BEFORE MORE BARRIERS
+
+Delta on top of the 2026-08-16 entry below (still read that one for the full
+route ledger).  The morning campaign produced the first genuine multi-point
+minimizer inequality (exact random-bipartition Gibbs bound, with an exact
+closed form for every number `q` of ordered blocks) and proved its scope
+limits: fixed `q>=4` is a closed barrier (ledger row M5), `q=3` helps only on
+an extreme tail, and all-pairs cap–cup converters are impossible by an exact
+quadratic-load theorem.  `(WH)` is falsified with a certified defect; the
+averaged square mesh `(ASM)` survives.  Read
+`agent_common_shield_mixing/POLYLOG_CAP_CUP_CONVERTER_MUTATION_GATE.md`
+(especially §4), `agent_nonstrong_ramp_search/WEIGHTED_HINGE_FALSE_SQUARE_SURVIVES.md`,
+`PROGRESS_BAR_20260817.md`, and the updated `DIFFICULTY_LEDGER_20260815.md`.
+
+The sole surviving positive target is the **selected endpoint reset**: choose
+an inverse-polylog fraction of the endpoint energy whose differences carry
+only `O(log L)` entropy, or exhibit one `V`-decreasing bipartition.  Before
+attacking it on paper, run the empirical program (see
+`NOTE_TO_SOL_20260817.md` §3): enumerate/SAT/anneal candidate near-minimizers
+at `n=14..20` and characterize which bipartitions achieve `M(R,S) < W(P)` —
+the 12-point calibration already shows pointwise mutations detect
+non-minimizers where the Gibbs average cannot (688 < 1061 vs 1121 > 1061).
+If no selecting structure appears empirically, treat the reset target as a
+restatement of P1d and stop.  The unconditional window is still `[1/4,1/2]`;
+no coefficient has moved.  Nothing is running.
+
 ### ⭐ 2026-08-16 — ERDŐS #838: P1d LOCAL SPLICES EXHAUSTED; ATTACK ONLY THE GLOBAL ALL-DELETE GATE
 
 Read, in order:

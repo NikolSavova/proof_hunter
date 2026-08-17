@@ -449,6 +449,49 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-17 (later) — ERDŐS #838 morning campaign; independent Claude audit of both fronts; colleague note to Sol (Sihao + Claude)
+
+- **#838 morning campaign (Sol/Codex, six `agent_*` directories, committed 10:42).**
+  Attacked exactly the two honest residues left on 2026-08-16.  New positive tool:
+  an exact random-bipartition minimizer inequality (Gibbs form `W <= G_p + Z_p`),
+  strengthened to an exact closed-form for every number `q` of ordered blocks —
+  the first genuine multi-point mutation inequality of the campaign.  Its scope is
+  proved sharp: fixed `q>=4` returns the apparent saving, `q=3` helps only on the
+  extreme tail, and the `2^-rank` Gibbs weight mismatches the polylog endpoint
+  surplus.  Ledger row M5 records this as a BARRIER.  Separately: all-pairs
+  cap–cup converters are impossible (exact quadratic-load pigeonhole, attained on
+  a 12-point calibration); the weighted-hinge conjecture `(WH)` is falsified with
+  a certified defect interval while the averaged square mesh `(ASM)` survives;
+  the C2 mesh theorem extends to arbitrary-depth polynomial imbalance.  The sole
+  surviving positive target is a *selected endpoint reset* (inverse-polylog
+  density, `O(log L)`-entropy differences) — see
+  `agent_common_shield_mixing/POLYLOG_CAP_CUP_CONVERTER_MUTATION_GATE.md` §4 and
+  `PROGRESS_BAR_20260817.md` (architecture ~88%, completed-proof ~45%,
+  unconditional coefficient gain still **zero**, window `[1/4,1/2]`).
+- **Independent audit (Claude/Fable).**  Re-ran and confirmed
+  `verify_frobenius_all_depth_rank715.py` (CERTIFIED, margins > 3.05),
+  `verify_perpendicular_rulers.py` (PASS), and
+  `verify_polylog_cap_cup_converter_mutation_gate.py` (PASS, all exact counts
+  reproduced).  Assessment: #1208 overnight = one certified incremental theorem
+  plus a decisive falsification sweep that leaves one clean surviving target;
+  #838 = same track, much better lit — the remaining step likely needs a new
+  idea, and the empirical near-minimizer program should precede more barriers.
+- **Colleague guidance filed.**  `NOTE_TO_SOL_20260817.md` (repo root, pointer in
+  AGENTS.md §Inbox): keep the self-falsification discipline; break the
+  "surviving-statement treadmill" via pre-registered viability tests and
+  mandatory reformulation classification (reduction / restatement / new bet);
+  data-before-proof programs for both fronts; bank the standing debts (838 draft
+  section, 1208 interval-arithmetic + human audits + LPZ priority check,
+  cross-model examination of both crux chains); portfolio stop rule (two
+  consecutive barrier-only sessions on one front → switch or write up).  Sol's
+  10:42 HANDOFF update already adopts the viability-test and adversarial-search
+  framing for the #1208 rotated-support target.
+- **State at close:** all work committed and pushed; no process running; no API
+  spend this session.  Open items for humans: restore or reconstruct the missing
+  `SOL_DIRECTIVE_1208_20260816.md`; decide the front split for the next sessions
+  (suggested: #1208 rotated support as primary, #838 empirical minimizer program
+  as secondary).
+
 ### 2026-08-17 — ERDŐS #1208: explicit 0.494586 bound and rotated-support frontier (Sihao + Codex ultracode)
 
 - **Rigorous partial upper candidate.**  Prime-power valuation flags,
