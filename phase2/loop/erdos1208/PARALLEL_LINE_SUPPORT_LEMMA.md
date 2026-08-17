@@ -193,6 +193,25 @@ Thus parallel collisions already have the desired `k^{3+o(1)}` scale when
 E_{\mathrm{trans}}(A)\le k^{3+o(1)}.            \tag{4.6}
 \]
 
+`TRANSVERSE_LOCAL_GATE.md` sharpens (4.6) to a local overlap problem.  For
+
+\[
+ m_{\rm tr}(d)=\#\{e\in D\setminus\{0\}:d-Je\in D,\ d\cdot e\ne0\},
+\]
+
+there is the exact identity
+
+\[
+ 2E_{\rm trans}(A)=\sum_{d\in D}m_{\rm tr}(d).   \tag{4.6a}
+\]
+
+Since `|D|=k^2-k+1`, the sufficient local gate
+`max_d m_tr(d)<=k^(1+o(1))` implies (4.6).  The dot-product restriction is
+essential: it deletes exactly the quadratic local overlaps in the
+perpendicular-ruler obstruction.  The note supplies an exact verifier, a
+targeted falsification search, and the secondary sufficient condition that
+the transverse graph have at most `k^(4+o(1))` four-cycles.
+
 For wide point sets, (4.5) can be replaced by a much stronger existing
 theorem.  Elekes, *Trapezoids and Deltoids in Wide Planar Point Sets*, Graphs
 and Combinatorics 35 (2019), Theorem 1, proves that the number of trapezoids is

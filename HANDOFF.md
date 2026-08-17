@@ -112,6 +112,17 @@ distance-Sidon sets forbid automatically.  A valid off-diagonal alternating
 three-cycle is also forbidden, but no extremal theorem forces it from small
 support.
 
+The transverse target now has a sharper local form.  With `D=A-A`, define
+`m_tr(d)=#{e in D\{0}: d-Je in D, d dot e != 0}`.  The exact identity
+`2E_trans=sum_{d in D}m_tr(d)` shows that
+`max_d m_tr(d)<=k^(1+o(1))` would close the global transverse gate.  The
+dot-product deletion removes exactly the perpendicular-ruler obstruction.  A
+direct falsification search found no superlinear trend: the largest exact
+ratio through the targeted `k=12,16,20` witnesses is `31/16`.  A secondary
+route is to prove at most `k^(4+o(1))` four-cycles in the transverse graph.
+Proofs, witnesses, exact verifiers, and kill conditions are in
+`phase2/loop/erdos1208/TRANSVERSE_LOCAL_GATE.md`.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier
@@ -1028,6 +1039,11 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   `E_trans(A) <= k^(3+o(1))`.  Elekes controls the parallel collisions in the
   wide regime.  A pre-registered kill is a distance-Sidon family with maximum
   line occupancy `k^(o(1))` but `E_trans >= k^(3+epsilon)`.
+- [ ] Prefer the sharper sufficient local gate
+  `max_d #{e in D\{0}:d-Je in D, d dot e != 0} <= k^(1+o(1))` from
+  `TRANSVERSE_LOCAL_GATE.md`.  Its exact sum is `2E_trans`.  A family with a
+  fixed power excess kills this route; alternatively prove the sufficient
+  four-cycle bound `Q_trans <= k^(4+o(1))`.
 
 **Erdős #669 candidate-result obligations.**
 
@@ -1184,12 +1200,15 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 Read `phase2/loop/erdos1208/HANDOFF_20260817.md`, then
 `ROTATED_TRIPLE_SUPPORT.md`, `PARALLEL_LINE_SUPPORT_LEMMA.md`,
-`ADVERSARIAL_ROTATED_SUPPORT_SEARCH.md`, and `COLLISION_PATTERN_AUDIT.md`.
+`TRANSVERSE_LOCAL_GATE.md`, `ADVERSARIAL_ROTATED_SUPPORT_SEARCH.md`, and
+`COLLISION_PATTERN_AUDIT.md`.
 Reproduce the new finite checks with
 
 ```bash
 python3 phase2/loop/erdos1208/verify_parallel_line_support.py
 python3 phase2/loop/erdos1208/verify_adversarial_support_witnesses.py
+python3 phase2/loop/erdos1208/verify_transverse_local_gate.py
+python3 phase2/loop/erdos1208/verify_transverse_search_witnesses.py
 python3 phase2/loop/erdos1208/verify_collision_patterns.py
 ```
 
@@ -1211,6 +1230,12 @@ anti-Ramsey theory, additive energy, pointwise overlap, and any fixed
 short-cycle exclusion are already falsified or quantitatively exhausted.  The
 old four-row `q=5` calculation is killed: its diagonal/off-diagonal collision
 premise cannot occur in a distance-Sidon set.
+
+Start with the sharper exact local identity in `TRANSVERSE_LOCAL_GATE.md`:
+`2E_trans=sum_d m_tr(d)`.  The local theorem `max_d m_tr(d)<=k^(1+o(1))`
+would imply the global target at once, and targeted annealing has not found a
+power-law counterexample.  The proof must use endpoint reuse plus Euclidean
+length uniqueness; the affine constraint rows alone are too dependent.
 
 In parallel, harden and externally audit the rank-715 `0.494586` proof stack;
 do not tune another decimal place.  No proof or search process is currently

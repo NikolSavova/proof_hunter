@@ -449,6 +449,28 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-17 (latest) — ERDŐS #1208 local transverse gate isolated (Sihao + Codex)
+
+- **Exact localization.**  For `D=A-A`, defined
+  `m_tr(d)=#{e in D\{0}:d-Je in D, d dot e != 0}` and proved
+  `2E_trans=sum_d m_tr(d)`.  Thus the local estimate
+  `max_d m_tr(d)<=k^(1+o(1))` is sufficient for the remaining global
+  transverse-collision theorem.  The dot-product restriction deletes exactly
+  the perpendicular-ruler obstruction.
+- **Structured and graph consequences.**  If `A` lies on `r` parallel lines,
+  proved `m_tr(d)<=|H-H|^2<=r^4`.  Also derived
+  `E=O(N^(3/2)+NQ^(1/4))` for a transverse graph with `N` vertices and `Q`
+  four-cycles, so `Q<=k^(4+o(1))` is a second sufficient gate.
+- **Targeted falsification.**  Exact simulated annealing maximizing the local
+  overlap found maxima `22,31,35` for `k=12,16,20`; the worst observed ratio
+  was `31/16`.  No superlinear trend appeared.  All retained witnesses and
+  local/global, quarter-turn, line-cover, and four-cycle identities have exact
+  checkers.  Affine row-rank alone was ruled out as a proof mechanism.
+- **State at close.**  #1208 remains unresolved.  The new local theorem is the
+  sharpest live gate; a fixed-power superlinear family kills it.  The next
+  proof must exploit endpoint reuse and uniqueness of Euclidean lengths.  No
+  process is running; direct API spend `$0`.
+
 ### 2026-08-17 (later) — ERDŐS #1208 adversarial support search and wide-case reduction (Sihao + Codex)
 
 - **Adversarial viability test completed.**  A deterministic exact-integer
