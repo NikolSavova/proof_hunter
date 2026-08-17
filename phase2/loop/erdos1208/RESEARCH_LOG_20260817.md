@@ -625,3 +625,49 @@ theorem does not rule out an element lying in a much larger Galois tower whose
 conjugate rank grows with the ambient degree.  This leaves a sharply stated
 higher-dimensional Lehmer/regulator construction problem; Section 7 of
 `UNIMODULAR_UNIT_ROTATIONS.md` records it.
+
+## Rotated difference-overlap theorem
+
+The cross-sum energy has a useful pointwise sufficient condition.  For
+
+\[
+ D=(A-A)\setminus\{0\},\qquad B=A+JA,
+\]
+
+the exact autocorrelation identity is
+
+\[
+ \rho_B(t)=\sum_{x+Jy=t}\rho_A(x)\rho_A(y).
+\]
+
+For nonzero \(t\), at most one zero-difference term contributes \(k=|A|\),
+and the remaining contribution is
+
+\[
+ M_A(t)=|D\cap(t-JD)|.
+\]
+
+If uniformly \(M_A(t)\le k^{1+\theta+o(1)}\), then
+
+\[
+ E^+(A+JA)\le k^{5+\theta+o(1)},\qquad
+ F_2(n)\le n^{2/(5-\theta)+o(1)}.
+\]
+
+Thus a linear overlap bound gives exponent \(2/5\), a
+\(k^{3/2+o(1)}\) bound gives \(4/9\), and any
+\(M_A(t)\le k^{1.9561}\) estimate already beats the current explicit
+\(0.494586\) theorem.  A bare \(C_4\)-free argument is false: the maximizing
+translation graphs of exact greedy examples contain many four-cycles, although
+their observed overlap remains only about \(2.4k\)--\(2.9k\).
+
+Welch Costas arrays were tested as a dense distinct-difference obstruction.
+After the smallest integral shear/stretch separating every Euclidean edge
+length, their largest nonzero cross-sum autocorrelation was only
+\(1.02k\)--\(1.33k\) for \(6\le k\le42\), and their normalized fifth-power
+energy decreased across the range.  This does not prove the overlap lemma,
+but it shows that the most natural positive-density vector-Sidon construction
+loses its common rotated structure when radial uniqueness is imposed.
+
+The exact reduction, conditional exponent calculation, DDC/Costas prior-art
+audit, and remaining obstruction are in `CROSS_TRANSLATION_OVERLAP.md`.
