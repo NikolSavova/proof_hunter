@@ -449,6 +449,42 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-17 — ERDŐS #1208: explicit 0.494586 bound and rotated-support frontier (Sihao + Codex ultracode)
+
+- **Rigorous partial upper candidate.**  Prime-power valuation flags,
+  placewise depths, Frobenius-order-two quotients, and a globally interleaved
+  depth path now give `F_2(n) << n^0.494586`, conditional on the declared tame
+  Shafarevich presentation theorem and symbolic Minkowski-grid master bound.
+  `verify_frobenius_all_depth_rank715.py` checks rank 715, 127,091 useful
+  primes, the strict relation budget, the root-discriminant data, all depth
+  slopes, and endpoint margins exceeding 3.05.  This improves the local
+  explicit exponent but does not resolve #1208.
+- **Full-resolution reduction.**  For distance-Sidon `A subset [m]^2` and the
+  quarter-turn `J`, the surviving target is
+  `|A+JA-JA| >= |A|^(3-o(1))`.  It would give the expected grid-scale upper
+  `|A| <= m^(2/3+o(1))`, matching the published `n^(1/3)` lower bound.  The
+  fibres are induced tri-coloured matchings and the translate-incidence graph
+  is `C_4`-free.
+- **Barriers and controls.**  A quantitative perpendicular dense-Golomb-ruler
+  family is distance-Sidon yet has fourth-power rotated energy, sixth-power
+  cross energy, quadratic pointwise overlap, and many short-cycle witnesses.
+  It kills size-only energy/overlap, biclique, and fixed-girth routes while
+  retaining cubic support.  Unstretched Costas sets show vector-Sidonicity is
+  insufficient; norm-unique stretched Costas sets have support ratio rising to
+  about `0.983` at size 60.  Random-greedy and exhaustive small-grid tests also
+  show no subcubic trend.
+- **Latest exploratory lead.**  A `q=5` Gaussian-rational model contains four
+  actual collision rows whose linear span includes a forbidden radial
+  equality.  The missing theorem is extremal: subcubic support has not been
+  shown to force that or any equivalent finite certificate.  The calculation
+  is recorded as in-flight evidence, not a result.
+- **Next actions and claim boundary.**  Run an adversarial search minimizing
+  `|A+JA-JA|/|A|^3`, then attack a line-structured/transverse or radial
+  uncertainty theorem.  Separately replace Decimal by directed intervals,
+  obtain two human proof audits, and clear priority before circulating the
+  `0.494586` note.  Seventeen #1208 commits were prepared for push; no process
+  is running.  Approximate direct API spend: `$0`.
+
 ### 2026-08-16 — ERDŐS #838: progress bar checkpoint and cyclic-stem audit (Sihao + Codex)
 
 - Preserved the original seven-component progress-bar breakdown in

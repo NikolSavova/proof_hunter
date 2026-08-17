@@ -65,6 +65,32 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-17 — ERDŐS #1208: EXPLICIT PARTIAL UPPER BOUND IMPROVED; FULL ATTACK REDUCED TO ROTATED SUPPORT.**
+The published/preprint window remains
+`n^(1/3) << F_2(n) << n^(1/2-epsilon)`.  The local prime-power/
+Frobenius construction now gives the explicit candidate theorem
+`F_2(n) << n^0.494586`, conditional on the declared tame Shafarevich
+presentation input and the symbolic Minkowski-grid master inequality.  The
+rank-715 verifier checks 716 ramified primes, Frattini rank 715, 127,091 useful
+primes, the strict Golod--Shafarevich relation budget, all sorted local-depth
+increments, and both dyadic endpoint margins.  This is a strong partial result,
+not a resolution of #1208.
+
+For a distance-Sidon `A subset [m]^2`, `|A|=k`, and quarter-turn `J`, the
+cleanest surviving full-resolution target is
+`|A+JA-JA| >= k^(3-o(1))`.  Since the support lies in `O(m^2)` lattice points,
+this would give `k <= m^(2/3+o(1))` and hence the expected
+`F_2(n)=n^(1/3+o(1))`.  The exact fibres are induced tri-coloured matchings and
+the associated translate-incidence graph is `C_4`-free.  Perpendicular dense
+Golomb rulers rigorously kill the earlier size-only energy, cross-sum energy,
+pointwise-overlap, biclique, and fixed-short-cycle routes while still retaining
+cubic support.  Unstretched Costas arrays show that vector-Sidonicity alone is
+insufficient; stretching them until the norms are unique restores nearly full
+cubic support in the tested range.  Thus radial uniqueness is the load-bearing
+Euclidean input, and a line-structured/transverse dichotomy or a radial
+uncertainty theorem is the current proof target.  Full details and restart
+instructions are in `phase2/loop/erdos1208/HANDOFF_20260817.md`.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier
@@ -953,20 +979,28 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 **Erdős #1208 candidate-result obligations.**
 
-- [ ] Obtain a human number-theory audit of the rank-17 tame totally-real
-  Shafarevich/Golod--Shafarevich specialization and a separate geometric-
-  combinatorics audit of master inequality (3.5).
-- [ ] Replace the high-precision Decimal endpoint checks by directed interval
-  or exact rational transcendental bounds; current 80/150-digit runs agree
-  with minimum transformed margin `4.25e-5`.
+- [ ] Obtain a human number-theory audit of the current rank-715 tame
+  totally-real Shafarevich/Golod--Shafarevich specialization and a separate
+  geometric-combinatorics audit of master inequality (3.5) and its
+  Frobenius-order-two/all-depth refinements.
+- [ ] Replace the high-precision Decimal endpoint checks in the rank-715
+  certificate by directed interval or exact rational transcendental bounds.
+  The current two endpoint log-margins exceed `3.05`, so hardening should be
+  routine but remains a publication gate.
 - [ ] Run MathSciNet/zbMATH/forward-citation and author clearance for the
-  prime-power and adaptive-modulus ideas.  Only then draft a short note around
-  the candidate `F_2(n) << n^0.49815` theorem.
-- [ ] For the full problem, do not optimize more tower dimensions or generic
-  codegrees.  The live lower targets are an inverse/stability theorem for
-  near-extremal Elekes--Sharir configurations or a rainbow principal-submatrix
-  theorem for rank-at-most-four Euclidean distance matrices.  See the dedicated
-  handoff §§8--14.
+  prime-power, placewise-depth, and Frobenius-order-two ideas.  Only then draft
+  a short note around the candidate `F_2(n) << n^0.494586` theorem.
+- [ ] For the full problem, attack
+  `|A+JA-JA| >= |A|^(3-o(1))` from
+  `ROTATED_TRIPLE_SUPPORT.md`.  First run the adversarial search that minimizes
+  the normalized support over lattice distance-Sidon sets, seeded by
+  perpendicular rulers and stretched Costas arrays.  Do not spend another
+  session on tower-rank tuning, generic codegrees, size-only overlap, or
+  fixed-girth incidence bounds without a new mechanism.
+- [ ] Turn the exploratory finite-field collision-pattern calculation into a
+  real finite extremal statement or kill it.  A four-row `q=5` pattern spans a
+  forbidden radial equality, but no theorem currently forces that pattern from
+  small support; it is evidence, not a result.
 
 **Erdős #669 candidate-result obligations.**
 
@@ -1118,6 +1152,38 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
+
+### ⭐ 2026-08-17 — ERDŐS #1208: ATTACK ROTATED SUPPORT; HARDEN THE 0.494586 RESULT IN PARALLEL
+
+Read `phase2/loop/erdos1208/HANDOFF_20260817.md`, then
+`ROTATED_TRIPLE_SUPPORT.md`, `PERPENDICULAR_RULER_OBSTRUCTION.md`, and
+`RESEARCH_LOG_20260817.md`.  Reproduce the two principal finite checks with
+
+```bash
+python3 phase2/loop/erdos1208/verify_frobenius_all_depth_rank715.py
+python3 phase2/loop/erdos1208/verify_perpendicular_rulers.py
+```
+
+The proof-level target is
+`|A+JA-JA| >= |A|^(3-o(1))` for every lattice distance-Sidon set.  Its
+pre-registered viability test is an adversarial annealing/OpenEvolve search
+over distance-Sidon subsets of `[m]^2`, minimizing
+`|A+JA-JA|/|A|^3`, with perpendicular-ruler and stretched-Costas seeds.  A
+stable positive ratio makes the target more credible; a decaying family is a
+valuable new obstruction and should stop the proof lane immediately.
+
+On the proof side, use the exact matching fibres plus radial uniqueness to seek
+a line-structured/transverse dichotomy.  `C_4`-freeness alone, generic
+anti-Ramsey theory, additive energy, pointwise overlap, and any fixed
+short-cycle exclusion are already falsified or quantitatively exhausted.  A
+scratch `q=5` finite-field calculation found four actual collision rows whose
+linear consequences include a forbidden radial equality, but the missing step
+is an extremal theorem forcing such a certificate in every subcubic-support
+colouring.  Treat that calculation as an in-flight lead, not a theorem.
+
+In parallel, harden and externally audit the rank-715 `0.494586` proof stack;
+do not tune another decimal place.  No proof or search process is currently
+running, and #1208 is not resolved.
 
 ### ⭐ 2026-08-16 — ERDŐS #838: P1d LOCAL SPLICES EXHAUSTED; ATTACK ONLY THE GLOBAL ALL-DELETE GATE
 
