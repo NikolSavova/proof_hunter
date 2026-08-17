@@ -263,7 +263,11 @@ There are three credible formulations of the missing structural step.
    along the line from the perpendicular difference coordinate.  In the
    absence of rich lines, seek an incidence or polynomial-partitioning bound
    on the high fibres.  The two estimates must be coupled rather than
-   optimized independently, or they lose a fixed power.
+   optimized independently, or they lose a fixed power.  The line branch is
+   now rigorous in `PARALLEL_LINE_SUPPORT_LEMMA.md`: a cover by `r` parallel
+   lines gives support at least `k^3/r^2-O(k^2/r)`.  The same note gives the
+   exact random-thinning reduction for the remaining transverse collision
+   count.
 4. **Quadratic-separation versus Freiman compression.**  Small support gives
    a Freiman-order-three model resembling the modular Welch example.  Prove
    that any such low-complexity model necessarily repeats the value of the

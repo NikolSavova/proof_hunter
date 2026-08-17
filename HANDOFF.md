@@ -91,6 +91,27 @@ Euclidean input, and a line-structured/transverse dichotomy or a radial
 uncertainty theorem is the current proof target.  Full details and restart
 instructions are in `phase2/loop/erdos1208/HANDOFF_20260817.md`.
 
+The pre-registered adversarial search is now complete.  Deterministic annealing
+found exact distance-Sidon witnesses of sizes `12,16,20,24,28` with normalized
+rotated support between `0.626` and `0.703`; it found no decaying family, though
+this is evidence rather than a proof.  On the rigorous side, if the occupancies
+of `A` on parallel lines in a fixed direction are `k_h`, `Q=sum_h k_h(k_h-1)`,
+and there are `p` occupied projection fibres, then
+`|A+JA-JA| >= k+pQ`.  In particular, containment in `r` parallel lines gives
+`|A+JA-JA| >= k^3/r^2-k^2/r+k`, closing the few-line regime.
+
+Random thinning of the translate blocks reduces the complementary wide regime
+to a concrete collision count.  Elekes's planar trapezoid theorem already
+controls the parallel block collisions by `k^(3+o(1))` when the maximum line
+occupancy is at most `sqrt(k) log k`.  The active missing statement is the
+transverse bound `E_trans(A) <= k^(3+o(1))` for wide distance-Sidon sets.  This
+would prove cubic rotated support in that regime; it still has to be coupled to
+the line theorem through the intermediate occupancy range.  The earlier
+four-row `q=5` lead is closed: it used diagonal/off-diagonal collisions that
+distance-Sidon sets forbid automatically.  A valid off-diagonal alternating
+three-cycle is also forbidden, but no extremal theorem forces it from small
+support.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier
@@ -992,15 +1013,21 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   a short note around the candidate `F_2(n) << n^0.494586` theorem.
 - [ ] For the full problem, attack
   `|A+JA-JA| >= |A|^(3-o(1))` from
-  `ROTATED_TRIPLE_SUPPORT.md`.  First run the adversarial search that minimizes
-  the normalized support over lattice distance-Sidon sets, seeded by
-  perpendicular rulers and stretched Costas arrays.  Do not spend another
+  `ROTATED_TRIPLE_SUPPORT.md`.  The adversarial search minimizing normalized
+  support over lattice distance-Sidon sets has been run and found no decaying
+  family through `k=28`.  Do not spend another
   session on tower-rank tuning, generic codegrees, size-only overlap, or
   fixed-girth incidence bounds without a new mechanism.
-- [ ] Turn the exploratory finite-field collision-pattern calculation into a
-  real finite extremal statement or kill it.  A four-row `q=5` pattern spans a
-  forbidden radial equality, but no theorem currently forces that pattern from
-  small support; it is evidence, not a result.
+- [x] Prove the exact parallel-line support lemma
+  `|A+JA-JA| >= k+p sum_h k_h(k_h-1)`, giving cubic support for
+  `k^(o(1))` parallel lines; preserve its exact verifier.
+- [x] Kill the exploratory four-row `q=5` calculation: it depended on
+  diagonal/off-diagonal collisions already excluded by distance-Sidonicity.
+  The valid alternating three-cycle has no known forcing theorem.
+- [ ] Prove or falsify the wide-case transverse collision gate
+  `E_trans(A) <= k^(3+o(1))`.  Elekes controls the parallel collisions in the
+  wide regime.  A pre-registered kill is a distance-Sidon family with maximum
+  line occupancy `k^(o(1))` but `E_trans >= k^(3+epsilon)`.
 
 **Erdős #669 candidate-result obligations.**
 
@@ -1153,33 +1180,37 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
 
-### ⭐ 2026-08-17 — ERDŐS #1208: ATTACK ROTATED SUPPORT; HARDEN THE 0.494586 RESULT IN PARALLEL
+### ⭐ 2026-08-17 — ERDŐS #1208: ATTACK THE TRANSVERSE-COLLISION GATE; HARDEN THE 0.494586 RESULT IN PARALLEL
 
 Read `phase2/loop/erdos1208/HANDOFF_20260817.md`, then
-`ROTATED_TRIPLE_SUPPORT.md`, `PERPENDICULAR_RULER_OBSTRUCTION.md`, and
-`RESEARCH_LOG_20260817.md`.  Reproduce the two principal finite checks with
+`ROTATED_TRIPLE_SUPPORT.md`, `PARALLEL_LINE_SUPPORT_LEMMA.md`,
+`ADVERSARIAL_ROTATED_SUPPORT_SEARCH.md`, and `COLLISION_PATTERN_AUDIT.md`.
+Reproduce the new finite checks with
 
 ```bash
-python3 phase2/loop/erdos1208/verify_frobenius_all_depth_rank715.py
-python3 phase2/loop/erdos1208/verify_perpendicular_rulers.py
+python3 phase2/loop/erdos1208/verify_parallel_line_support.py
+python3 phase2/loop/erdos1208/verify_adversarial_support_witnesses.py
+python3 phase2/loop/erdos1208/verify_collision_patterns.py
 ```
 
 The proof-level target is
 `|A+JA-JA| >= |A|^(3-o(1))` for every lattice distance-Sidon set.  Its
-pre-registered viability test is an adversarial annealing/OpenEvolve search
-over distance-Sidon subsets of `[m]^2`, minimizing
-`|A+JA-JA|/|A|^3`, with perpendicular-ruler and stretched-Costas seeds.  A
-stable positive ratio makes the target more credible; a decaying family is a
-valuable new obstruction and should stop the proof lane immediately.
+pre-registered adversarial annealing test has now produced exact witnesses
+through `k=28`, with normalized support in `[0.626,0.703]` and no decaying
+trend.  This raises confidence in the target but is not asymptotic evidence
+strong enough to replace a theorem.
 
-On the proof side, use the exact matching fibres plus radial uniqueness to seek
-a line-structured/transverse dichotomy.  `C_4`-freeness alone, generic
+On the proof side, the exact parallel-line lemma closes the few-line case, and
+Elekes's trapezoid theorem controls parallel translate collisions in the wide
+case.  The next target is the honest new bet
+`E_trans(A) <= |A|^(3+o(1))` for wide distance-Sidon sets.  If proved, random
+block thinning yields cubic rotated support in the wide regime.  The remaining
+architecture problem is to splice that theorem to the line lemma across the
+intermediate maximum-line-occupancy range.  `C_4`-freeness alone, generic
 anti-Ramsey theory, additive energy, pointwise overlap, and any fixed
-short-cycle exclusion are already falsified or quantitatively exhausted.  A
-scratch `q=5` finite-field calculation found four actual collision rows whose
-linear consequences include a forbidden radial equality, but the missing step
-is an extremal theorem forcing such a certificate in every subcubic-support
-colouring.  Treat that calculation as an in-flight lead, not a theorem.
+short-cycle exclusion are already falsified or quantitatively exhausted.  The
+old four-row `q=5` calculation is killed: its diagonal/off-diagonal collision
+premise cannot occur in a distance-Sidon set.
 
 In parallel, harden and externally audit the rank-715 `0.494586` proof stack;
 do not tune another decimal place.  No proof or search process is currently

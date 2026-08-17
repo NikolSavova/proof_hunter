@@ -449,6 +449,37 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-17 (later) — ERDŐS #1208 adversarial support search and wide-case reduction (Sihao + Codex)
+
+- **Adversarial viability test completed.**  A deterministic exact-integer
+  annealing search minimized `|A+JA-JA|/|A|^3` over distance-Sidon lattice sets.
+  Certified witnesses of sizes `12,16,20,24,28` have ratios from `0.626` to
+  `0.703`; no decaying family was found.  This supports, but does not prove,
+  cubic rotated support.  The search, fixed witnesses, and independent verifier
+  are in `phase2/loop/erdos1208/ADVERSARIAL_ROTATED_SUPPORT_SEARCH.md`.
+- **Exact structured-case theorem.**  For occupancies `k_h` on parallel lines,
+  `Q=sum_h k_h(k_h-1)`, and `p` occupied projections, proved
+  `|A+JA-JA| >= k+pQ`.  Hence a set contained in `r` parallel lines has support
+  at least `k^3/r^2-k^2/r+k`.  The proof and exact finite checker are in
+  `PARALLEL_LINE_SUPPORT_LEMMA.md` and `verify_parallel_line_support.py`.
+- **Wide-case gate isolated.**  Random thinning of translate blocks gives an
+  exact lower bound in terms of their collision graph.  Elekes's 2019
+  trapezoid theorem supplies `k^(3+o(1))` control of the parallel collisions in
+  the wide regime.  The remaining new theorem is
+  `E_trans(A) <= k^(3+o(1))` for wide distance-Sidon sets; a family with
+  maximum line occupancy `k^(o(1))` and `E_trans >= k^(3+epsilon)` is the
+  pre-registered kill condition.  The intermediate structured/wide splice is
+  also not yet closed.
+- **Misleading finite-field lead killed.**  The old four-row `q=5` pattern used
+  diagonal/off-diagonal collisions, which distance-Sidonicity already forbids.
+  A genuine off-diagonal alternating three-cycle is also forbidden (Gaussian
+  determinant `4`), but there is no theorem forcing it from small support.
+  Exact audit: `COLLISION_PATTERN_AUDIT.md` and
+  `verify_collision_patterns.py`.
+- **State at close.**  This is a sharper route, not a solution of #1208.  The
+  next proof lane is the transverse-collision estimate, with the line theorem
+  as its structured branch.  No process is running; direct API spend `$0`.
+
 ### 2026-08-17 (later) — ERDŐS #838 morning campaign; independent Claude audit of both fronts; colleague note to Sol (Sihao + Claude)
 
 - **#838 morning campaign (Sol/Codex, six `agent_*` directories, committed 10:42).**
