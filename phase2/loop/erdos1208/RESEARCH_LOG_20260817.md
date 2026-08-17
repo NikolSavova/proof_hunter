@@ -678,3 +678,22 @@ loses its common rotated structure when radial uniqueness is imposed.
 
 The exact reduction, conditional exponent calculation, DDC/Costas prior-art
 audit, and remaining obstruction are in `CROSS_TRANSLATION_OVERLAP.md`.
+
+## Kill: fixed forbidden bicliques in the overlap graph
+
+High-overlap samples happened to be \(K_{4,4}\)-free, which suggested a
+Kővári--Sós--Turán route.  The suggestion is false in general.  Prescribe an
+\(s\) by \(s\) source grid \(a_i+Jc_j\), choose target first coordinates
+\(b_{ij}\) and a translation \(t\) generically, and solve
+
+\[
+ d_{ij}=c_j-Ja_i+Jb_{ij}+Jt.
+\]
+
+All \(s^2\) cells then lie in one translation-overlap graph.  Exact
+80-bit-integer trials produced distance-Sidon realizations for \(s=2,3,4\)
+on 12, 24, and 40 points.  Hence no fixed \(K_{s,s}\)-exclusion argument is
+available.  These constructions use essentially fresh endpoints per cell and
+therefore have only linear overlap in the total number of points.  The live
+problem is global endpoint reuse in a superlinear overlap, not a bounded local
+configuration.

@@ -186,6 +186,34 @@ nonzero translations had respectively
 Thus a bare \(C_4\)-free/Kővári--Sós--Turán proof is unavailable, although
 the observed four-cycle count remains sparse.
 
+A larger fixed forbidden biclique does not rescue this route.  Exhaustive
+translation scans of the small greedy examples suggested \(K_{4,4}\)-freeness,
+but this was a sampling artefact.  For any prescribed \(s\), choose source
+labels \(a_i,c_j\), target first labels \(b_{ij}\), and a translation \(t\)
+generically, and define
+
+\[
+ d_{ij}=c_j-Ja_i+Jb_{ij}+Jt.
+\]
+
+Then
+
+\[
+ a_i+Jc_j-(b_{ij}+Jd_{ij})=t
+\]
+
+for all \(i,j\), so the translation graph contains \(K_{s,s}\).  The exact
+script `search_biclique_realization.py` found rational/integral
+distance-Sidon realizations for \(s=2,3,4\), using respectively 12, 24, and 40
+points.  Thus neither \(K_{3,3}\) nor \(K_{4,4}\) is universally forbidden.
+
+The generic construction spends new target endpoints for essentially every
+biclique edge, so it produces only linear total overlap relative to the final
+number of points.  This pinpoints the actual issue: a superlinear overlap must
+reuse the same \(k\) endpoints across many such local grids.  A successful
+extremal theorem has to exploit that global reuse; no bounded forbidden
+configuration can prove the required power saving.
+
 ## 4. Costas and distinct-difference stress test
 
 The set \(A\) is a distinct-difference configuration, but with the stronger

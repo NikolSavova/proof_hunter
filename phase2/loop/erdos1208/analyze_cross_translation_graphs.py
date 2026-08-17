@@ -9,6 +9,7 @@ underlie an energy bound.
 """
 
 from collections import Counter
+from itertools import combinations
 
 from analyze_rotated_triple_map import greedy
 
@@ -38,6 +39,18 @@ def c4_count(cells: list[tuple[int, int]]) -> int:
     return total
 
 
+def max_common_neighbors(
+    cells: list[tuple[int, int]], number_of_rows: int
+) -> int:
+    rows: dict[int, set[int]] = {}
+    for i, j in cells:
+        rows.setdefault(i, set()).add(j)
+    answer = 0
+    for chosen in combinations(rows.values(), number_of_rows):
+        answer = max(answer, len(set.intersection(*chosen)))
+    return answer
+
+
 def profile(side: int, trials: int) -> None:
     a = greedy(side, trials, 91208 + side)
     k = len(a)
@@ -65,7 +78,29 @@ def profile(side: int, trials: int) -> None:
         "rows", len(degrees),
         "max_row_degree", max(degrees.values()),
         "c4", c4_count(cells),
+        "common3", max_common_neighbors(cells, 3),
+        "common4", max_common_neighbors(cells, 4),
     )
+
+    if k <= 20:
+        all_cells: dict[tuple[int, int], list[tuple[int, int]]] = {}
+        for x, indices in b.items():
+            for y in points:
+                if x != y:
+                    all_cells.setdefault(sub(x, y), []).append(indices)
+        global_common3 = max(
+            max_common_neighbors(translation_cells, 3)
+            for translation_cells in all_cells.values()
+        )
+        global_common4 = max(
+            max_common_neighbors(translation_cells, 4)
+            for translation_cells in all_cells.values()
+        )
+        print(
+            "side", side,
+            "global_common3", global_common3,
+            "global_common4", global_common4,
+        )
 
 
 if __name__ == "__main__":
