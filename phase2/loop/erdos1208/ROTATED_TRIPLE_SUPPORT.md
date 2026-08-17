@@ -220,6 +220,31 @@ family gives a sub-cubic trend.
 These computations are only falsification checks.  Their value is that the
 support target passes examples that decisively refute the energy target.
 
+### Vector-Sidon alone is not enough
+
+There is a sharp counterfactual control.  An unstretched Welch Costas set
+
+\[
+  W_p=\{(j,g^j\bmod p):0\le j<p-1\}
+\]
+
+has unique directed difference vectors, so it is an additive/vector Sidon
+set.  Nevertheless its modular origin compresses the integer set
+`W_p+JW_p-JW_p` to `O(p^2)` points (only constantly many carry states lie
+over each residue of `F_p^2`).  Exact computations for `p` from `7` to `127`
+show `|W_p+JW_p-JW_p|/|W_p|^3` decaying from `0.53` to `0.054`, consistent
+with a quadratic image.  These sets are not distance-Sidon: distinct Costas
+displacements can have the same Euclidean norm.
+
+After applying the smallest integral shear/stretch found by
+`analyze_affine_costas_energy.py` that separates all squared norms, the same
+families have support ratios rising toward one (about `0.983` at size `60`).
+Thus neither ordinary Sidonicity nor `C_4`-freeness can imply (1.3).  A proof
+must use the injectivity of the *quadratic norm* on `D/{+-1}`.  The Costas
+comparison also suggests an uncertainty principle: preserving modular
+three-term compression and separating all quadratic norms cannot both occur
+at low geometric height.
+
 ## 7. What a proof now has to do
 
 There are three credible formulations of the missing structural step.
@@ -239,6 +264,12 @@ There are three credible formulations of the missing structural step.
    absence of rich lines, seek an incidence or polynomial-partitioning bound
    on the high fibres.  The two estimates must be coupled rather than
    optimized independently, or they lose a fixed power.
+4. **Quadratic-separation versus Freiman compression.**  Small support gives
+   a Freiman-order-three model resembling the modular Welch example.  Prove
+   that any such low-complexity model necessarily repeats the value of the
+   Euclidean norm on two non-antipodal realized differences.  Equivalently,
+   quantify the experimentally sharp jump in support when a Costas model is
+   stretched just enough to separate its norms.
 
 At present (1.3) is a conjectural lemma, not a proof.  It is nevertheless the
 first direct full-resolution target in this project that survives the

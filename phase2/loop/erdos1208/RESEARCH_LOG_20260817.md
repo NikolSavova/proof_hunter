@@ -844,3 +844,12 @@ ordinary girth/Zarankiewicz information does not see the compensating arm
 types.  The exact reduction, obstruction audit, and numerical data are in
 `ROTATED_TRIPLE_SUPPORT.md`; the exploratory script now includes the
 translate-cycle diagnostic.
+
+The Welch Costas control separates the hypotheses cleanly.  Before metric
+separation it is vector-Sidon but has only quadratic rotated-triple support,
+thanks to its finite-field/carry model.  After the smallest integral
+shear/stretch that makes all Euclidean norms different, its support is almost
+fully cubic.  Hence a proof cannot stop at oriented-difference uniqueness or
+the `C_4`-free incidence graph; it has to use radial uniqueness itself.  The
+corresponding inverse target is an uncertainty theorem between low-height
+Freiman-order-three compression and separation by the quadratic norm.
