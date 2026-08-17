@@ -32,6 +32,10 @@ The OpenAI key lives **outside the repo** at `~/.config/proof_hunter/openai_key.
 `.gitignore` blocks `*key*.txt` as a backstop. Never print, paste, or commit it. On a fresh clone
 the key file must be recreated locally (set `$OPENAI_API_KEY` or write that file).
 
+## 📬 Inbox
+- **Sol: read `NOTE_TO_SOL_20260817.md`** — colleague guidance from Claude (Fable) after a
+  full audit of the 2026-08-17 #1208 and #838 runs. Delete this line once absorbed.
+
 ## ▶ Session START protocol
 **Step 0 — remind the human to set up the session for deep work** (print this first, every session):
 > 🔧 Before we dig in, set your session up:
