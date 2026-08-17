@@ -153,3 +153,90 @@ why all known successful constructions must use local congruence branching.
 Reference for the rank calculation: Ryan C. Daileda,
 “Algebraic Integers on the Unit Circle” (2005),
 https://ramanujan.math.trinity.edu/rdaileda/research/papers/p1.pdf .
+
+## 6. An exact relative-regulator obstruction
+
+There is a useful quantitative sharpening of the height bottleneck.  Put
+
+\[
+  F=K\cap\mathbb R,
+\]
+
+where the real structure is the fixed complex conjugation used at the planar
+embedding.  Then (K/F) is quadratic and, modulo torsion, (V_K) is exactly
+the relative unit group (E_{K/F}).  Indeed, at the chosen embedding the
+relative norm is (u\bar u=|u|^2), so a relative unit has norm one rather
+than the other possible real root of unity.
+
+Let
+
+\[
+  d=[K:\mathbb Q],\qquad r=\operatorname{rank}V_K,
+  \qquad R_{K/F}=\operatorname{Reg}(E_{K/F}).
+\]
+
+Akhtari--Vaaler's relative-height inequality says that every full-rank
+independent collection \(\epsilon_1,\ldots,\epsilon_r\) in (V_K) satisfies
+
+\[
+  R_{K/F}\leq\prod_{j=1}^r d\,h(\epsilon_j).       \tag{6.1}
+\]
+
+For a unit, the quantity in each factor is precisely
+
+\[
+  d\,h(\epsilon)=\log M_K(\epsilon).
+\]
+
+The arithmetic--geometric mean inequality therefore gives the rigorous
+lower bound
+
+\[
+  \sum_{j=1}^r\log M_K(\epsilon_j)
+  \geq r R_{K/F}^{1/r}.                            \tag{6.2}
+\]
+
+Consequently a full-rank subset-product construction can have positive
+entropy only if
+
+\[
+  R_{K/F}^{1/r}<\log 2.                            \tag{6.3}
+\]
+
+More strongly, (2.3) requires
+
+\[
+  R_{K/F}^{1/r}
+  \leq \log2-\frac{\gamma d}{r}.                  \tag{6.4}
+\]
+
+This is an unusually sharp numerical target: the relevant threshold is
+`log 2 = 0.693...`, not merely an unspecified bounded regulator per degree.
+
+The converse does not follow from the regulator alone.  Akhtari--Vaaler also
+construct a basis whose *product* of log heights is at most `r! R_{K/F}`;
+that factorial loss and the absence of coordinatewise control do not imply
+that the *sum* in (2.3) is small.  If one uses only a positive-rank subfamily
+of (V_K), the right invariant is the corresponding collection of
+successive minima of the relative logarithmic lattice, not its full
+determinant.
+
+Known unconditional lower bounds for relative regulators do not appear to
+settle (6.3).  Friedman--Skoruppa give exponential lower bounds for regulator
+ratios, but in the quadratic extension (K/F) the published absolute
+constants are far too weak to force the normalized relative regulator above
+`log 2`.  Thus the unit-rotation lane is narrowed to a concrete arithmetic
+question rather than closed:
+
+> Can a bounded-root-discriminant family of non-CM quadratic extensions
+> (K/F) have linearly growing relative-unit rank and a positive proportion
+> of relative logarithmic successive minima below `log 2`?
+
+Primary references:
+
+* Shabnam Akhtari and Jeffrey D. Vaaler, “Independent relative units of low
+  height,” Acta Arith. 202 (2022), 389--401,
+  https://arxiv.org/abs/2008.06124 .
+* Eduardo Friedman and Nils-Peter Skoruppa, “Relative regulators of number
+  fields,” Invent. Math. 135 (1999), 115--144,
+  https://doi.org/10.1007/s002220050281 .

@@ -462,3 +462,59 @@ fields have rank zero here, a single Salem unit loses to expansion at the
 other embeddings, and `S`-units reintroduce the rational-rotation denominator
 cost.  This lane remains open pending either a small-unit construction or a
 regulator obstruction.
+
+Akhtari--Vaaler's relative-height inequality now makes the obstruction
+numerical.  If `r=rank V_K` and `R_{K/F}` is the relative regulator for
+`F=K intersect R`, every full-rank independent rotation family satisfies
+
+\[
+  \sum_{j=1}^r \log M_K(\epsilon_j)
+  \ge r R_{K/F}^{1/r}.
+\]
+
+Thus the binary subset-product mechanism requires
+`R_{K/F}^{1/r}<log 2`, and a polynomial gain requires a fixed gap below this
+threshold.  Known general relative-regulator bounds do not settle that sharp
+inequality.  The exact derivation and citations are in
+`UNIMODULAR_UNIT_ROTATIONS.md`.
+
+## Kill: odd-degree composita as dyadic phase fillers
+
+Compositing the pro-2 tower with fixed cyclic totally real fields of degrees
+`1,3,5,...,15` gives degree phases with maximum ratio `9/8`; the construction
+is arithmetically valid and can use conductors already in the ramification
+set.  However, requiring the useful primes to split in a degree-`s` field
+thins them by `1/s`.  Exact prime enumeration plus a master-inequality sweep
+shows that every auxiliary family has a worse best exponent than the base
+family, even at a single favorable scale.  Varying the presentation rank does
+not reverse this.  See `ODD_DEGREE_PHASE_AUDIT.md`.
+
+## Kill: radial uniqueness without difference-set realizability
+
+For `D=(A-A)\{0}`, every ordered point triple supplies an additive relation
+`(a-b)+(b-c)=a-c`.  It was tempting to conjecture that any symmetric lattice
+set with at most one antipodal pair on each circle has only `m^{2+o(1)}`
+additive triples.  `RADIAL_ADDITIVE_TRIPLE_AUDIT.md` gives a decisive
+counterexample: canonical representatives from every occupied lattice circle
+have more than 20 billion additive triples already at `m=800`, over 32,000
+times `m^2`.
+
+The missing input is therefore not radial uniqueness itself but the fact that
+`D` is the complete directed difference set of one set `A`.  Any additive
+proof must retain that realizability constraint.
+
+## Tri-coloured fibres and a second abstraction barrier
+
+Every fibre of `Phi(a,b,c)=a+Jb-Jc` is tri-coloured sum-free, not merely a
+matching.  If its representations are `(a_i,b_i,c_i)`, a mixed solution
+`a_i+Jb_j-Jc_l=x` would imply
+`b_j-b_i=c_l-c_i`; oriented-difference uniqueness then forces
+`b_i=c_i`, a contradiction unless all three indices agree.  This is a
+rigorous induced-matching structure and suggests arithmetic-removal methods.
+
+However, direct-sum theory without the rotation cannot suffice.  Split a
+`2k`-mark Golomb ruler of length `O(k^2)` into two `k`-sets `X,Y`.  They are
+Sidon, `(X-X) intersect (Y-Y)={0}`, and `X+Y` is direct, yet
+`|X+Y-Y|=O(k^2)`.  Therefore the identity `Y=JX` and radial uniqueness are
+essential; any black-box theorem for two abstract direct Sidon summands is
+false at exactly the desired cubic scale.

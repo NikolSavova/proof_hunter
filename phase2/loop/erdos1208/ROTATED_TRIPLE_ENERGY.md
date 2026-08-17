@@ -206,3 +206,77 @@ Ordinary Balog--Szemerédi--Gowers is insufficient because it may return a
 rank-two progression, i.e. the grid itself.  The required inverse conclusion
 has to retain the quarter-turn in (1.2), rather than merely assert small
 doubling.
+
+## 7. Every fibre is tri-coloured sum-free
+
+There is a stronger exact property than the matching observation in Section
+4.  Fix an image (x), and list its representations as
+
+\[
+  a_i+Jb_i-Jc_i=x,\qquad i=1,\ldots,r(x),quad b_i\ne c_i.
+\]
+
+Then the displayed triples form a tri-coloured sum-free set: among the three
+coordinate sets
+
+\[
+  \{a_i\},\qquad\{b_i\},\qquad\{c_i\},
+\]
+
+the equation
+
+\[
+  a_i+Jb_j-Jc_\ell=x                              \tag{7.1}
+\]
+
+holds only when (i=j=\ell).
+
+To prove this, compare (7.1) with the diagonal representation having first
+coordinate (a_i).  It gives
+
+\[
+  b_j-b_i=c_\ell-c_i.                             \tag{7.2}
+\]
+
+If (j=i), oriented-difference uniqueness immediately gives
+ \(\ell=i\).  If (j\ne i), both sides of (7.2) are nonzero.  The unique
+oriented representation of a difference in (A-A) forces
+
+\[
+  b_j=c_\ell,\qquad b_i=c_i,
+\]
+
+contradicting (b_i\ne c_i).
+
+This identifies the fibres as induced three-partite matchings, a natural
+entry point for arithmetic-removal or Ruzsa--Szemerédi methods.  It still
+does not give a pointwise bound: a single fibre of linear size can be built
+generically, and large tri-coloured sum-free sets exist in torsion-free boxes.
+The needed statement would have to control the *whole partition* of (A^3)
+into these fibres.
+
+## 8. Why generic direct-sum theory cannot finish the proof
+
+The desired expansion
+
+\[
+  |A+JA-JA|\ge |A|^{3-o(1)}
+\]
+
+cannot be deduced merely from the two abstract facts that (A) and (JA)
+are Sidon sets and that (A+JA) is a direct sum.
+
+Indeed, take a Golomb ruler (R\subset[0,Ck^2]) with (2k) marks and split
+it into two (k)-element sets (X,Y).  Since every nonzero difference in
+(R) is unique, (X) and (Y) are Sidon, their nonzero difference sets are
+disjoint, and hence (X+Y) has (k^2) unique representations.  Nevertheless
+
+\[
+  |X+Y-Y|=O(k^2)
+\]
+
+simply because the whole set lies in an interval of length (O(k^2)).
+
+Thus the relation (Y=JX), together with the full radial uniqueness of
+(X-X), is load-bearing.  A generic theorem about direct sums of Sidon sets
+would be false by a full power of (k).
