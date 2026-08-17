@@ -449,6 +449,39 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-17 (latest) — ERDŐS #1208 Welch rigidity and relation-closure stress test (Sihao + Codex)
+
+- **Hereditary gate classified.**  For fixed `d=p-q`, local solutions
+  `u-v+J(x-y)=d` form a four-role linear relation hypergraph.  The statement
+  `|F|<=|V_d(F)|^(1+o(1))`, with `p,q` adjoined to the endpoint union, is
+  explicitly **equivalent** to the local transverse theorem, not a reduction.
+- **Welch control.**  Full vector-Sidon Welch hosts have quadratic local
+  overlap (`6887,27474,114191` at `N=126,250,508`), but exact distance-Sidon
+  subsets retain maxima only `43/25`, `68/40`, and `94/55`.  Exact modular
+  Gaussian row reduction gives rank `N-2` at `N=30,60,126`; the full
+  quadratic relation systems are rigid up to similarity, so a global linear
+  deformation cannot separate their forced repeated lengths.  The sampled
+  codimension-one audit is reproducible and explicitly non-exhaustive.
+- **Purpose-built closure adversary.**  Greedily adjoining integer points
+  forced by one quarter-turn relation, while rejecting every repeated squared
+  distance, produced a certified 47-point set with `m_(0,-1)=237`.  This kills
+  `m_d<=2k+O(1)`.  Its 17-point core has 29 relations but projected graphic
+  ranks only `13+13`, so the proposed two-forest/matroid charge is also false.
+- **Viability signal and next target.**  The full 47-point relation
+  hypergraph is exactly 8-degenerate.  Thus the asymptotic
+  `k^(1+o(1))` gate survives its strongest current falsification test; the
+  right next experiment/proof is hereditary `k^(o(1))` degeneracy.  A family
+  with core degeneracy `k^epsilon` is the honest kill, whereas a growing
+  global constant is not.  Exact artifacts are
+  `WELCH_TRANSVERSE_SUBSET_AUDIT.md`,
+  `verify_welch_relation_rigidity.py`,
+  `TRANSVERSE_RELATION_CLOSURE.md`, and
+  `verify_transverse_closure_witness.py`.
+- **Prior art and state.**  Targeted searches found no direct-sum,
+  rotated-segment, Costas-rigidity, or sparsity-matroid theorem supplying the
+  missing radial degeneracy estimate.  #1208 remains unresolved.  No process
+  is running; direct API spend `$0`.
+
 ### 2026-08-17 (latest) — ERDŐS #1208 local transverse gate isolated (Sihao + Codex)
 
 - **Exact localization.**  For `D=A-A`, defined

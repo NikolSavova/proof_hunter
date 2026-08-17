@@ -123,6 +123,24 @@ route is to prove at most `k^(4+o(1))` four-cycles in the transverse graph.
 Proofs, witnesses, exact verifiers, and kill conditions are in
 `phase2/loop/erdos1208/TRANSVERSE_LOCAL_GATE.md`.
 
+The local gate has now survived a substantially stronger, purpose-built
+falsification campaign, but two tempting shortcuts are dead.  Full Welch
+Costas hosts have quadratic local overlap, while exact distance-Sidon subsets
+at ambient sizes `126,250,508` retain only `43/25`, `68/40`, and `94/55`
+relations per selected point.  Their full Gaussian relation matrices have
+exact rank `N-2` at `N=30,60,126`, so the quadratic systems are rigid up to
+similarity and cannot be repaired by a global linear deformation.
+
+A relation-forcing closure search produced a stronger exact distance-Sidon
+witness: `k=47`, `m_(0,-1)=237`, ratio `5.043`.  This kills
+`m_d<=2k+O(1)` and a proposed two-graphic-forest charging argument (the
+17-point core already has `29>13+13`).  It does **not** kill the asymptotic
+gate: the full 47-point relation hypergraph is exactly 8-degenerate.  The
+sharp live statement is therefore the equivalent hereditary endpoint-density
+bound `|F|<=|V_d(F)|^(1+o(1))`, or a `k^(o(1))` degeneracy theorem.  See
+`WELCH_TRANSVERSE_SUBSET_AUDIT.md` and
+`TRANSVERSE_RELATION_CLOSURE.md`; both have exact certificate scripts.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier
@@ -1044,6 +1062,14 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   `TRANSVERSE_LOCAL_GATE.md`.  Its exact sum is `2E_trans`.  A family with a
   fixed power excess kills this route; alternatively prove the sufficient
   four-cycle bound `Q_trans <= k^(4+o(1))`.
+- [ ] Use the corrected hereditary target from
+  `TRANSVERSE_RELATION_CLOSURE.md`: prove or falsify that every fixed-`d`
+  relation subfamily has `|F|<=|V_d(F)|^(1+o(1))`.  Do not assume
+  `m_d<=2k+O(1)` or partitionability into the two `e/f` graphic forests; the
+  exact 47-point closure witness kills both.  The current viability signal is
+  that this adversary is only 8-degenerate.  The next true kill condition is
+  a sequence with hereditary degeneracy `k^epsilon`, not a growing constant
+  in the global ratio.
 
 **Erdős #669 candidate-result obligations.**
 
@@ -1201,7 +1227,10 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
 Read `phase2/loop/erdos1208/HANDOFF_20260817.md`, then
 `ROTATED_TRIPLE_SUPPORT.md`, `PARALLEL_LINE_SUPPORT_LEMMA.md`,
 `TRANSVERSE_LOCAL_GATE.md`, `ADVERSARIAL_ROTATED_SUPPORT_SEARCH.md`, and
-`COLLISION_PATTERN_AUDIT.md`.
+`COLLISION_PATTERN_AUDIT.md`.  Then read
+`WELCH_TRANSVERSE_SUBSET_AUDIT.md` and
+`TRANSVERSE_RELATION_CLOSURE.md`; they contain the newest corrections to the
+local proof strategy.
 Reproduce the new finite checks with
 
 ```bash
@@ -1210,6 +1239,10 @@ python3 phase2/loop/erdos1208/verify_adversarial_support_witnesses.py
 python3 phase2/loop/erdos1208/verify_transverse_local_gate.py
 python3 phase2/loop/erdos1208/verify_transverse_search_witnesses.py
 python3 phase2/loop/erdos1208/verify_collision_patterns.py
+python3 phase2/loop/erdos1208/verify_welch_transverse_subsets.py
+python3 phase2/loop/erdos1208/verify_welch_relation_rigidity.py
+python3 phase2/loop/erdos1208/search_welch_relation_hyperplanes.py
+python3 phase2/loop/erdos1208/verify_transverse_closure_witness.py
 ```
 
 The proof-level target is
@@ -1233,9 +1266,17 @@ premise cannot occur in a distance-Sidon set.
 
 Start with the sharper exact local identity in `TRANSVERSE_LOCAL_GATE.md`:
 `2E_trans=sum_d m_tr(d)`.  The local theorem `max_d m_tr(d)<=k^(1+o(1))`
-would imply the global target at once, and targeted annealing has not found a
-power-law counterexample.  The proof must use endpoint reuse plus Euclidean
-length uniqueness; the affine constraint rows alone are too dependent.
+would imply the global target at once.  The correct equivalent form is the
+hereditary endpoint-density statement
+`|F|<=|V_d(F)|^(1+o(1))`.  Full Welch arrays show that vector uniqueness alone
+allows quadratic reuse, while exact radially unique selections restore linear
+scale.  The relation-closure adversary raises the exact global ratio to
+`237/47`, killing the guesses `m_d<=2k+O(1)` and the two-forest charge, but its
+relation hypergraph remains exactly 8-degenerate.  Thus attack hereditary
+degeneracy directly; a sequence with core degeneracy `k^epsilon` is the honest
+kill condition.  The proof must use endpoint reuse plus Euclidean length
+uniqueness; affine rank, a small constant, and the two projected graphic
+matroids are all insufficient.
 
 In parallel, harden and externally audit the rank-715 `0.494586` proof stack;
 do not tune another decimal place.  No proof or search process is currently

@@ -225,3 +225,22 @@ batch of `s^2` prescribed pairs can be realized with `Theta(s^2)` fresh
 endpoints, so no fixed-pattern exclusion suffices.  A proof of (1.4) must show
 that reusing only `k` endpoints in superlinearly many transverse pairs forces
 two non-antipodal realized differences to have the same Euclidean norm.
+
+`WELCH_TRANSVERSE_SUBSET_AUDIT.md` supplies the strongest structured stress
+test of this statement.  Full Welch Costas hosts are vector-Sidon and have
+about `0.44N^2` transverse local solutions.  Exact radially unique subset
+searches at ambient sizes `126,250,508` retained respectively `43/25`,
+`68/40`, and `94/55` solutions per selected point.  The note also records the
+equivalent hereditary formulation: every subfamily of local relation
+quadruples should use `|F|^{1-o(1)}` distinct endpoint labels, including the
+fixed endpoints of `d`.  This equivalence makes endpoint reuse--rather than a
+bounded forbidden pattern--the precise next gate.
+
+`TRANSVERSE_RELATION_CLOSURE.md` records a stronger purpose-built adversary.
+An exact distance-Sidon chain reaches `m_d=237` at `k=47`, so even the
+previously tempting constant bound `m_d<=2k+O(1)` is false.  Its 17-point
+prefix also kills a proposed two-graphic-forest charging proof: after removing
+relations incident to the fixed endpoints, it has 29 relation elements but
+the two projected graphic ranks sum to only 26.  The asymptotic gate survives:
+the complete 47-point relation hypergraph is exactly 8-degenerate, hence is
+still hereditarily linear on this adversarial family.
