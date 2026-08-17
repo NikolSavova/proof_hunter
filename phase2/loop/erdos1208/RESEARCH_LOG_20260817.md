@@ -580,6 +580,20 @@ The proof, including the new residue-degree-one identity for the third
 increment, is in `proof_frobenius_all_depth_rank715.md`; the finite certificate
 is `verify_frobenius_all_depth_rank715.py`.
 
+## Local PSD optimality of the branch sum
+
+At a split residue place the norm-zero relation is the union of the two axes
+in \(\mathbb F_q^2\).  A symmetric translation-invariant kernel supported on
+those axes, with weight (b\) on a nonzero axial difference and weight (a\)
+at zero, has Fourier eigenvalues whose smallest type is (a-2b\).  Hence every
+positive-semidefinite Cauchy kernel must have (a\ge2b\).  The existing sum of
+the two branch-equivalence kernels has (a=2,b=1\), so it is optimal.
+
+Thus the diagonal double count which produces the local divisor factor cannot
+be removed by passing to the union relation, by nonnegative reweighting, or by
+a thinned pattern code while retaining a universal pair-energy lower bound.
+`LOCAL_PSD_BARRIER.md` gives the calculation and the coding interpretation.
+
 ## Relative Minkowski-unit target
 
 In an imaginary non-CM Galois field, every unit `beta` produces exact
