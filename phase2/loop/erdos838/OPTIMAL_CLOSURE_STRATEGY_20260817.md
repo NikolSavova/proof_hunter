@@ -21,7 +21,8 @@ reservoir in an arbitrary low-face configuration**.
 
 There are only two coefficient-bearing exits left.  The primary route is a
 direct fixed-rank or positive-rank-interval gain.  The secondary route is a
-mutation theorem genuinely conditioned on a strict sub-half deficit.  Every
+common-core conversion or mutation theorem genuinely conditioned on a
+strict sub-half deficit.  Every
 other current target is a construction-class theorem, a barrier, or a
 reformulation at essentially full difficulty.
 
@@ -65,7 +66,61 @@ This is a real wall, not loose bookkeeping.  The anti-aligned two-cloud
 configuration realizes the local failure; its Boolean internal banks show
 what a global low-face theorem would have to charge.
 
-### 1.3 Fixed-block mutation is narrower, not dead
+### 1.3 A fixed strict gap now forces a linear common-circuit core
+
+The pocket ledger becomes substantially sharper when its scale is allowed
+to be a fixed power of the parent. Assume
+\(\log V(P)\le(1/2-\delta+o(1))L^2\), take a pocket of size
+\(n^{1-\delta^2}\), and use only the established quarter lower bound
+inside that pocket. A rank-\((1/2-o(1))L\) source bank in the complement
+gives a Cartesian rectangle larger than \(V(P)\) by
+
+\[
+ 2^{(\eta_\delta-o(1))L^2},\qquad
+ \eta_\delta=\delta-\delta^2/2+\delta^4/4>0.
+\]
+
+The exact deletion theorem and literal circuit pigeonholing then produce a
+subrectangle of size at least
+\(V(P)2^{(\eta_\delta/2-o(1))L^2}\) sharing
+\(\Omega_\delta(L)\) fixed, vertex-disjoint crossing four-circuits. Both
+row and column families remain quadratically large. Their continuation
+labels have only \(O_\delta(L)^2\) visible-interval types relative to the
+common core, but traces in those intervals are not automatically
+recombinable.
+
+This is the first scale-matched strict-deficit reduction: quadratic mass is
+paired with a linear physical circuit core, rather than quasipolynomial mass
+with only \(\Theta(\log\log n)\) circuits. It still does not close. The
+fixed matching need not be a transversal of the residual bad circuits, and
+deleting it can expose fresh bad circuits on private continuation labels.
+See
+`agent_common_shield_mixing/STRICT_SUBHALF_LINEAR_POCKET_CIRCUIT_CORE_GATE.md`.
+
+The bounded repair audit gives a sharp correction. In the exact global
+nine-point minimizer there are complete fixed-circuit rectangles for which
+no subset of the common circuit labels releases every record. The smallest
+has \(2\times8\) records. Deleting the entire circuit releases \(15/16\),
+but one private-continuation circuit survives. Across all \(10{,}800\) such
+rectangles, \(1{,}569\) have no universal common-label deletion.
+
+The exact positive replacement is a deletion cascade. After deleting the
+current common core, released records inject into ordinary faces; if most
+records remain bad, one fixes a fresh residual four-circuit at cost at most
+\(\binom n4\) and repeats. For row and column ranks \(r,h\), this gives only
+
+\[
+ |\mathcal A||\mathcal H|
+ \le2V(P)\left(2\binom n4\right)^{\min(r-c_Y,h-c_X)},
+\]
+
+which is quadratically expensive at live ranks. Thus the literal
+common-transversal version of the secondary route is closed. The surviving
+strict-deficit target is specifically a **positive-mass release theorem**
+or a sub-\(n^4\) amortized charge for the residual cascade. See
+`agent_common_shield_mixing/COMMON_CIRCUIT_DELETION_CASCADE_AND_MINIMIZER_GATE.md`.
+
+### 1.4 Fixed-block mutation is narrower, not dead
 
 The exact three-block audit has two logically different conclusions.
 
@@ -79,7 +134,7 @@ The conditional version remains possible, but it currently has neither a
 sub-half witness nor a selection theorem.  It is therefore a secondary
 hope rather than the active plan.
 
-### 1.4 The weighted recursive-construction lane is fenced but unfinished
+### 1.5 The weighted recursive-construction lane is fenced but unfinished
 
 Hinged Kraft closes finite grammars and broad balanced or polynomially
 imbalanced heterogeneous recursions at coefficient one half.  The exact
@@ -106,7 +161,7 @@ decay inequality
 \[
  \log {p_r\over p_k}
  \leq {c\over2}(k^2-r^2)+o(k^2),
- \qquad r=\alpha k,quad c<2,
+ \qquad r=\alpha k,\qquad c<2,
 \]
 
 where \(p_j=v_j/\binom Nj\).  Any fixed saving below the ordinary decay
@@ -138,10 +193,20 @@ sub-half bound.  Ordered three-block mutation is one candidate family, but
 the theorem must be conditioned on the deficit; no unconditioned selector
 survives the exact controls.
 
+The linear-pocket theorem now supplies the conditioning structure for free.
+It is enough to handle a bad face-family rectangle with quadratic excess,
+two quadratically large sides, and a literal linear disjoint-circuit core.
+A positive-mass release after deleting the common core would give an
+injective mixed-face map immediately. A universal common deletion is false
+even in the exact nine-point minimizer, so the statement must be
+quantitative. Failing that, a valid mutation must use the residual
+crossing-circuit cascade; moving or toggling only the fixed core cannot work
+because the core itself has only \(2^{O(L)}\) subfaces.
+
 A promotion of this route needs one of the following concrete inputs:
 
-1. a deficit-to-profile theorem forcing an inverse-polylogarithmic family
-   of compatible endpoint pairs;
+1. a deficit-to-release theorem forcing a
+   \(2^{-o((\log n)^2)}\) released fraction after common-core deletion;
 2. a nonincreasing multi-chart/circuit mutation retaining both physical
    anchors; or
 3. a proof that fixed-block stability itself creates a mixed reservoir with
@@ -169,13 +234,14 @@ and is not progress.
 
 ## 5. Progress bar and next action
 
-The obstruction/architecture map is approximately **88%** complete.  The
-conservative completed-proof estimate remains approximately **45%**.  The
+The obstruction/architecture map is approximately **91%** complete.  The
+conservative completed-proof estimate is approximately **46%**.  The
 rigorous coefficient bar has not moved from \([1/4,1/2]\).
 
-The optimal next mathematical action is not another broad search.  It is a
-bounded attempt at one of the two statements above, with preference for a
-rank-averaged planar inequality because its coefficient implication is
-immediate and it avoids minimizer-specific compatibility bookkeeping.  If
-no such input is found, the correct deliverable is the verified
-construction/barrier package, not a deeper chain of equivalent gates.
+The bounded literal repair attempt is complete: universal common deletion
+is false, and the exact residual cascade has full quadratic cost. The only
+secondary continuation worth one further bounded attack is a
+strict-deficit **positive-mass** release or decreasing-mutation theorem. If
+that reduces to unrestricted two-sided profile composition or merely pays
+\(n^4\) per fresh circuit, park the secondary route. The primary admissible
+route remains a theorem already averaged over a positive rank interval.

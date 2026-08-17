@@ -12,15 +12,15 @@
 | Exact minimizer/root reduction | 95% | 97% | Exact two-/three-point and uniform ordered `q`-block mutation formulae obtained; fixed `q>=4` is now a proved barrier rather than an open escape |
 | Local cap/cup/history structure | 95% | 98% | Exact hinged Kraft, pooled rank promotion, and label-replacing codes solve several natural and hostile local interfaces |
 | Decoder on canonical `E(k,k)` extremals | 100% | 100% | Complete, including coherent-root terminal histories |
-| Arbitrary cross-chart/global decoder | 60% | 75% | Global Hall assembly and bounded-overlap pooling are proved once a compatible reservoir exists; arbitrary-minimizer reservoir production remains open |
+| Arbitrary cross-chart/global decoder | 60% | 79% | Global Hall assembly and bounded-overlap pooling are proved once a compatible reservoir exists; every strict-subhalf counterexample now supplies a scale-matched linear common-circuit core, and exact minimizer/cascade audits isolate positive-mass release as the remaining conversion |
 | Final assembled proof | not yet | not yet | The unrestricted lower bridge is still missing |
 
-The proof-architecture / obstruction-map estimate is now about **88%**.
+The proof-architecture / obstruction-map estimate is now about **91%**.
 This percentage measures how completely the possible mechanisms and failure
 modes have been classified, not how much of the final theorem is proved.
 
 The conservative completed-proof estimate moves only from about **40% to
-45%**.  The movement is deliberately small because the headline theorem has
+46%**.  The movement is deliberately small because the headline theorem has
 not improved: the last bridge can still contain most of the mathematical
 difficulty.
 
@@ -64,6 +64,21 @@ unrestricted coefficient, we are still stuck at the same place.
    all above the coefficient-one-half scale, so they kill an unconditioned
    selector but do not kill a theorem conditioned on a strict sub-half
    deficit.
+6. **The strict-subhalf condition now has a scale-matched physical
+   consequence.**  A pocket of size `n^(1-delta^2)`, the known quarter
+   lower bound, and the rank-half source bank force a bad rectangle larger
+   than `V(P)` by `2^((eta_delta-o(1))L^2)`.  After paying all literal
+   localization costs, a subrectangle still has quadratic excess and
+   shares `Omega_delta(L)` vertex-disjoint bad four-circuits.  This is a
+   genuine narrowing, but the circuits are not known to hit all residual
+   badness.
+7. **The naive common-deletion completion is now closed exactly.** In the
+   true nine-point global minimizer, 1,569 of 10,800 induced fixed-circuit
+   rectangles have no common-label deletion releasing every record. The
+   exact replacement is a residual-circuit cascade with cost
+   `(2*binom(n,4))^q`; at live rank this is still quadratic. Finite
+   minimizers release at least 25/28 after deleting the full circuit, so a
+   quantitative minimizer-specific release theorem remains viable.
 
 ## Current closing target
 
@@ -74,10 +89,12 @@ There are still only two honest coefficient-bearing exits.
    equivalent averaged density improvement on a positive rank interval.
    The strong-tree diffuse branch is already closed; the survivor is a
    near-full seam with anti-aligned graded cap/cup profiles.
-2. **Genuinely multi-point minimizer mutation.**  Produce an actual
-   decreasing mutation or compatible mixed-face reservoir in the stationary
-   all-delete / anti-aligned state.  Scalar deletion moments and uniform
-   ordered block averages are now known to be insufficient.
+2. **Strict-deficit positive-mass release or mutation.** Starting from the
+   new linear common-circuit rectangle, prove that deleting the common core
+   releases a `2^(-o((log n)^2))` fraction, amortize the residual-circuit
+   cascade below four fresh labels per step, or produce an actual decreasing
+   mutation. A universal common deletion, scalar moments, fixed-core
+   toggles, and uniform ordered-block averages are insufficient.
 
 The former micro-target `P1g` is no longer active.  Its exact binary
 drop-charged endpoint floor is true, but a verified low-degree spine shows
@@ -85,8 +102,9 @@ that it need not put any mass in the target rank.  The next admissible
 fixed-rank attack must therefore begin with a genuinely rank-averaged planar
 theorem, not another total endpoint inequality or one-layer surrogate.
 
-The strict-sub-half version of the selected mutation target remains a
-secondary hope, not an active theorem: the current controls do not refute
-it, but no sub-half viability witness or quantitative selection mechanism is
-known.  Promoting it would require a written fixed-gap implication and a
-new geometric input beyond the complete/sparse fixed-block spectra.
+The strict-sub-half route is now an active **bounded** target rather than a
+bare hope, because the linear-pocket theorem provides the written fixed-gap
+implication.  It is not yet a gain theorem: no common-core converter or
+decreasing mutation is known.  If the bounded repair audit reduces back to
+unrestricted two-sided profile composition, this route is to be parked and
+the rank-averaged target resumes priority.
