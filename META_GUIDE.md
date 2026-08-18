@@ -449,6 +449,36 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 foreign-shift third moment and quadratic triangle obstruction (Sihao + Codex)
+
+- Derived the exact identity
+  `sum_z r(z)^3 = sum_(u,v) C_3(JA;u,v) C_3(D;u,v)` for
+  `r(z)=#{(a,d):z=a+Jd}` and `D=(A-A)\{0}`.  The sharp cubic upper bound on
+  this moment implies cubic rotated support and the expected `n^(1/3+o(1))`
+  order; a fourth-power bound gives the partial upper exponent `2/5`.
+- Read the primary TeX of Shkredov's arXiv:1405.3132, 2408.08113, and
+  2502.20702.  Their common-energy theorems concern ordinary four-variable
+  energy and inverse/small-doubling structure.  They do not give the required
+  foreign-shift three-point upper bound.
+- Killed the pointwise triangle-codegree route asymptotically.  Welch Costas
+  differences are a bijective lift of a punctured product torus; bounded carry
+  pigeonhole gives a nonparallel translated triangle with `Omega(k^2)` copies.
+  Generic integral norm separation plus one anchor triangle turns this into a
+  genuine planar distance-Sidon example.  Linearly many anchors show the
+  cubic averaged target is exponent-sharp.
+- Added a fully exact certificate: 129 integer points, 8,256 pairwise distinct
+  distances, and one non-collinear anchor triangle appearing in exactly 3,610
+  fibres.  `verify_foreign_shift_triangle_counterexample.py` passes using
+  integer arithmetic only.
+- Files: `FOREIGN_SHIFT_TRIANGLE_COUNTEREXAMPLE.md`,
+  `verify_foreign_shift_triangle_counterexample.py`, and updated #1208/root
+  handoffs.  No API spend.  The checkout still contains unrelated unstaged
+  #838 work, so only the #1208/handoff files from this entry should be staged.
+- **Next:** prove a rich-triangle tail bound for the total common correlation,
+  first at `k^(4+o(1))` (which would yield `F_2(n)<=n^(2/5+o(1))`) and then at
+  the sharp `k^(3+o(1))` scale.  Do not revisit a uniform pointwise bound;
+  even `k^(2-epsilon)` is false.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 shear-averaged cubic support (Sihao + Codex)
 - Proved the exact affine-line section bound
   `|(A-A) intersect ell|<=kL` for every line `ell`, where `L` is the maximum

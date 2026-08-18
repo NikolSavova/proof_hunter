@@ -65,6 +65,24 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: THIRD-MOMENT GATE ISOLATED; POINTWISE VERSION KILLED.**
+The fixed-quarter-turn support problem now has the exact common-correlation
+identity
+`sum_z r(z)^3 = sum_(u,v) C_3(JA;u,v) C_3(A-A;u,v)`.  A bound
+`sum_z r(z)^3 <= k^(3+o(1))` would prove the expected
+`F_2(n)=n^(1/3+o(1))`; the fourth-power version would already give the new
+upper exponent `2/5`.  Direct reading of Shkredov's common-energy papers found
+no theorem covering this foreign-shift three-point upper bound.
+
+The obvious local route is false.  A new Welch--Costas plus anchor-triangle
+construction gives arbitrarily large distance-Sidon sets with one fixed
+non-collinear triangle in `Omega(k^2)` rotated fibres.  The exact 129-point
+integer certificate has all 8,256 distances distinct and codegree 3,610.
+Linearly many popular anchors can be planted, so the desired cubic total is
+sharp and must be proved by a rich-triangle tail estimate, not a maximum.
+Read `phase2/loop/erdos1208/FOREIGN_SHIFT_TRIANGLE_COUNTEREXAMPLE.md` and run
+`phase2/loop/erdos1208/verify_foreign_shift_triangle_counterexample.py`.
+
 **⭐ 2026-08-17 — ERDŐS #1208: EXPLICIT PARTIAL UPPER BOUND IMPROVED; FULL ATTACK REDUCED TO ROTATED SUPPORT.**
 The published/preprint window remains
 `n^(1/3) << F_2(n) << n^(1/2-epsilon)`.  The local prime-power/
