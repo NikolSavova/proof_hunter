@@ -222,22 +222,22 @@ superquadratically many fixed-row rectangles must reuse their auxiliary
 endpoints efficiently enough to force two non-antipodal edge vectors of equal
 norm.
 
-The newest refinement charges every fixed-row projection rectangle to its
-unique longest **variable** edge, excluding the fixed row edge.  If the
-resulting book loads are `c(g)`, the sufficient estimate
-`sum_g c(g)^2<=k^(2+o(1))` implies the fixed-row `C_4` gate by Cauchy.  This
-moment is 15,126 (`1.0504 k^2`) in the 120-point heavy witness and 5,215
-(`<k^2`) in the 90-point strict-diameter witness.  The largest charge classes
-are actual `C_4` books centered on a common relation, so the current inverse
-target is an `A^2`-scale bound for pairs of rectangle pages sharing a
-variable-longest edge.  Exact audits also kill affine quarter-turn orbit
-exclusion, multi-projection duplication, and a rigidity dichotomy: the heavy
-row already has Gaussian relation rank 118 on 120 variables while remaining
-distance-Sidon.  The integer parabola through 1,000 points has all 499,500
-distances distinct, so its tempting three-factor norm is not a collision-rich
-construction.  Read `FIXED_ROW_LONGEST_BOOK_GATE.md` and run
-`verify_fixed_row_longest_book_gate.py`.  The book moment is unproved; the
-full problem remains open.
+The attempted variable-longest rectangle-book refinement is now decisively
+**false**.  Six algebraically generic biclique gadgets can be planted around
+one realized row, one for each two-role projection.  With
+`k=12s^2+12s+2` points, every projection contains a `K_(s,s)` and hence
+`binom(s,2)^2=Theta(k^2)` four-cycles.  The construction is generically
+distance-Sidon, so it proves the fixed-row `C_4` exponent is sharp.  But those
+cycles charge to only `O(s^2)` variable edges per projection, forcing the
+longest-book second moment to be `Omega(s^6)=Omega(k^3)` simultaneously in
+all six projections.  Thus the proposed `k^(2+o(1))` charge moment and the
+related Hall matching are dead.  The exact side-four symbolic genericity
+check has 29,161 distinct edge signatures; a concrete 866-point instance has
+384 row relations and exactly 784 four-cycles in every projection.  Read the
+corrected `FIXED_ROW_LONGEST_BOOK_GATE.md` and run
+`verify_fixed_row_six_biclique.py`.  The surviving theorem is the original
+`min C_4<=k^(2+o(1))` gate itself, now known to be exponent-sharp.  A proof
+must separate sparse/fresh-endpoint bicliques from dense endpoint reuse.
 
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in

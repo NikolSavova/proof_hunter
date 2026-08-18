@@ -265,3 +265,43 @@ No such extraction theorem is presently proved.  The main outcome of this
 audit is a quantitatively meaningful intermediate gate, exact saturation
 data, and a correction eliminating coordinate-degenerate row differences as
 the whole explanation.
+
+## 7. Six-biclique sharpness and the correct sparse/dense split
+
+The fixed-row exponent in (2.5) is sharp.  For each of the six role pairs,
+one can plant an algebraically generic `K_(s,s)` relation gadget around the
+same realized row.  The union can be chosen distance-Sidon and has
+
+\[
+ k=12s^2+12s+2,
+ \qquad r(d)=6s^2,
+ \qquad C_4(G_d^{ij})\ge {s\choose2}^2
+ \quad\hbox{for all }ij.                         \tag{7.1}
+\]
+
+Thus every projection simultaneously has `Theta(k^2)` four-cycles.  Read
+`FIXED_ROW_LONGEST_BOOK_GATE.md`, whose originally proposed charge moment is
+also falsified by this family, and run `verify_fixed_row_six_biclique.py`.
+
+The construction identifies the right proof split.  A bipartite graph with
+`r` edges has at most `r(r-1)/4` four-cycles: every four-cycle has two pairs
+of opposite edges, and a pair of edges is opposite in at most one
+four-cycle.  Hence rows with
+
+\[
+ r(d)\le k^{1+o(1)}                                  \tag{7.2}
+\]
+
+already satisfy (2.5) trivially.  They are also harmless for the full global
+problem, because there are fewer than `k^2` rows and therefore
+
+\[
+ \sum_{d:r(d)\le k^{1+o(1)}}r(d)\le k^{3+o(1)}.     \tag{7.3}
+\]
+
+The six-biclique family lies exactly in this sparse/fresh-endpoint branch.
+The missing inverse theorem should consequently be stated only for
+superlinear rows: prove that dense endpoint reuse either gives the fixed-row
+`k^(2+o(1))` cycle bound (for the intermediate `2/5` theorem) or, preferably,
+that its total mass over all dense rows is `k^(3+o(1))`.  Uniform
+longest-charge and Hall-matching statements are false.

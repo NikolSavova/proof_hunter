@@ -449,6 +449,39 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 six-biclique kill of the longest-book moment (Sihao + Codex)
+- Corrected the immediately preceding checkpoint: the variable-longest book
+  hypothesis is false, even after taking the minimum over all six fixed-row
+  projections.  Around one realized row, plant six independent generic
+  `K_(s,s)` relation gadgets, one for each role pair.  The union has
+  `k=12s^2+12s+2` points and every projection has
+  `binom(s,2)^2=Theta(k^2)` four-cycles.
+- Proved the generic union can be distance-Sidon.  All points are
+  Gaussian-linear forms in free complex variables.  Any forced edge-norm
+  equality uses at most four row/column indices; the exact side-four symbolic
+  template checks all 29,161 edges and finds distinct norm signatures.  The
+  finitely many remaining nonzero distance/transversality polynomials can be
+  avoided over the rationals and then scaled to integers.
+- In each intended `K_(s,s)`, all rectangle charges land on at most
+  `3s^2-s` selected-side or distinguished relation edges.  Cauchy therefore
+  forces charge moment `Omega(s^6)=Omega(k^3)` in every projection, killing
+  the proposed `k^(2+o(1))` moment by a full power.  The associated Hall/SDR
+  idea is also false: at `s=10` there are 2,025 rectangles but only 1,890
+  algebraically adjacent actual edges.
+- The underlying fixed-row conjecture `min C_4<=k^(2+o(1))` survives and is
+  now known to be exponent-sharp.  The six-gadget family identifies the
+  necessary proof split: sparse rows/fresh endpoint bicliques are already
+  harmless by `C_4<=r^2`; only dense rows with substantial endpoint reuse
+  require a radial inverse theorem.
+- Audited Solymosi's arXiv:2606.26311 small-distance theorem as a possible
+  length-ordering input.  It assumes every pairwise distance is an integer
+  and uses those distances as integer polynomial roots; square-grid subsets
+  have only integral squared distances, so the theorem does not transfer.
+- Added `verify_fixed_row_six_biclique.py` and corrected
+  `FIXED_ROW_LONGEST_BOOK_GATE.md`.  The exact numerical side-eight instance
+  has 866 distance-Sidon points, 384 fixed-row relations, and 784 four-cycles
+  in each of six projections.  No paid API batch; full #1208 remains open.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 variable-longest fixed-row book gate (Sihao + Codex)
 - Refined the fixed-row six-projection `C_4` gate by charging every projection
   rectangle to its unique longest variable actual edge, excluding the fixed
