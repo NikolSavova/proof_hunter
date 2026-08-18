@@ -449,6 +449,32 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 variable-longest fixed-row book gate (Sihao + Codex)
+- Refined the fixed-row six-projection `C_4` gate by charging every projection
+  rectangle to its unique longest variable actual edge, excluding the fixed
+  row edge.  If the book loads are `c(g)`, the exact Cauchy implication
+  `sum_g c(g)^2<=k^(2+o(1)) => C_4<=k^(2+o(1))` gives the earlier conditional
+  `r(d)<=k^(3/2+o(1))` and wide-branch exponent `2/5`.  This moment input is
+  not proved.
+- Exact adversarial tests are sharply consistent with the new scale.  Across
+  all six projections, the 120-point heavy row has maximum charge moment
+  15,126 = `1.0504 k^2`; the 90-point strict-diameter row has maximum 5,215
+  `<k^2`.  The largest charge classes have 44 and 34 pages and are genuine
+  `C_4` books centered on one common relation.
+- Killed three plausible shortcuts.  The affine quarter-turn map has ten
+  fully occupied four-orbits in the heavy witness; 11,850 of 11,852 projection
+  cycles occur in only one projection; and the 948 heavy-row Gaussian-linear
+  relations have exact rank 118 on 120 variables, so the configuration is
+  already rigid up to similarity without repeated distances.
+- Tested the three-factor integer-parabola construction.  The first 1,000
+  consecutive points have all 499,500 distances distinct, and the direct
+  number-field adaptation loses its local branching to quartic height.  This
+  is a killed construction lane, not a universal theorem about parabolas.
+- Added `FIXED_ROW_LONGEST_BOOK_GATE.md` and
+  `verify_fixed_row_longest_book_gate.py`; exact audit passes.  No paid API
+  batch.  Full #1208 remains open; next target is an `A^2`-scale count for
+  pairs of rectangle pages sharing their variable-longest charge.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 fixed-row six-projection `C_4` gate (Sihao + Codex)
 - Reorganized one fixed transverse row `d=(u-v)+J(x-y)` as a four-partite
   pair-linear relation system.  Every two coordinate roles determine the
