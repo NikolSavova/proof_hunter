@@ -12,6 +12,9 @@ MATRIX = (-93, -83, 66, -1)
 EXPECTED_TRIPLE_SUPPORT = 81_221
 EXPECTED_THIRD_ENERGY = 86_658_955
 EXPECTED_MAX_REPRESENTATION = 168
+EXPECTED_ROTATED_SUPPORT = 2_031_882
+EXPECTED_ROTATED_ENERGY = 2_032_998
+EXPECTED_ROTATED_MAX_REPRESENTATION = 2
 
 
 def is_prime(value: int) -> bool:
@@ -101,6 +104,29 @@ def verify_third_energy(points: list[tuple[int, int]]) -> None:
     print("maximum triple-sum representation", maximum)
 
 
+def verify_rotated_energy(points: list[tuple[int, int]]) -> None:
+    representations: Counter[tuple[int, int]] = Counter()
+    for first in points:
+        for second in points:
+            for third in points:
+                if second == third:
+                    continue
+                dx = second[0] - third[0]
+                dy = second[1] - third[1]
+                representations[(first[0] - dy, first[1] + dx)] += 1
+    support = len(representations)
+    energy = sum(value * value for value in representations.values())
+    maximum = max(representations.values())
+    assert support == EXPECTED_ROTATED_SUPPORT
+    assert energy == EXPECTED_ROTATED_ENERGY
+    assert maximum == EXPECTED_ROTATED_MAX_REPRESENTATION
+    assert not (set(points) & set(representations))
+    print("off-diagonal rotated support", support)
+    print("off-diagonal rotated energy", energy)
+    print("rotated energy / k^3", energy / P**3)
+    print("maximum off-diagonal rotated representation", maximum)
+
+
 def main() -> None:
     assert is_prime(P)
     a, b, c, d = MATRIX
@@ -112,6 +138,7 @@ def main() -> None:
     verify_distance_sidon(points)
     verify_general_position(points)
     verify_third_energy(points)
+    verify_rotated_energy(points)
     print("all exact third-additive-energy barrier checks passed")
 
 

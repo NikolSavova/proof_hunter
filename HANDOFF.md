@@ -103,7 +103,10 @@ power third energy.  The exact `p=127` matrix
 `[[-93,-83],[66,-1]]` yields 8,001 distinct distances and
 `E_3^+=86,658,955`.  Read `THIRD_ADDITIVE_ENERGY_BARRIER.md` and run its
 verifier.  Any Fourier proof must retain the correlation between a frequency
-and its quarter-turn; Hölder into ordinary higher energy is closed.
+and its quarter-turn; Hölder into ordinary higher energy is closed.  On the
+same exact set the off-diagonal rotated energy is only 2,032,998, or
+`0.9925...k^3`, with maximum fibre two.  The discarded quarter-turn
+correlation accounts for essentially the entire factor-`k` gap.
 
 **⭐ 2026-08-18 — ERDŐS #1208: THIRD-MOMENT ROUTE KILLED IN GENERAL POSITION.**
 The fixed-quarter-turn support problem has the exact common-correlation

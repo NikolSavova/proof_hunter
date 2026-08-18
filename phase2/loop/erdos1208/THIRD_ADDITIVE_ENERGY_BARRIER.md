@@ -124,6 +124,13 @@ already works.  The resulting 127-point integer set has
 * `E_3^+(A)=86,658,955`;
 * maximum ordered triple-sum multiplicity 168.
 
+The contrast with the actual quarter-turn statistic is sharp.  For
+`Phi(a,b,c)=a+J(b-c)` with `b!=c`, the same set has 2,031,882 image points,
+maximum multiplicity two, and energy 2,032,998.  Thus its ordinary third
+energy is `0.3331... k^4`, while its off-diagonal rotated energy is only
+`0.9925... k^3`.  Hölder loses essentially a full factor of `k` on this
+exact example.
+
 Run
 
 ```text

@@ -463,7 +463,9 @@ prior-art kill-search**; has a writeable-down win condition.
 - Added `THIRD_ADDITIVE_ENERGY_BARRIER.md` and a pure-integer certificate.
   At `p=127`, `T=[[-93,-83],[66,-1]]` gives 127 points, all 8,001 distances
   distinct, no collinear triple, triple support 81,221, and exact third energy
-  86,658,955.  No API spend.
+  86,658,955.  Its actual off-diagonal rotated energy is only 2,032,998
+  (`0.9925...k^3`) with maximum fibre two, so Hölder loses essentially a full
+  factor of `k` on the certified example.  No API spend.
 - **Next:** continue on the restricted rotated/transverse moment itself; an
   ambient-sensitive higher-energy inequality is not ruled out, but an
   ordinary `|A|`-only energy majorant is.
