@@ -182,6 +182,27 @@ restricted identity in `TRANSVERSE_SPECTRAL_AUDIT.md` shows that the final
 moment/decorated-parallelogram estimate; do not pursue a local two-step or
 unrestricted Fourier-energy proof.
 
+The latest exact audits sharpen that global gate and kill one more promising
+pointwise shortcut.  The row--source bipartite graph on `D` and the direct-sum
+set `A+JA` has the property that a `k^(4+o(1))` bound for its number of
+four-cycles implies the required row moment.  Exact cycle counts through
+`k=60` stay on that scale, but a 45-point witness has source degree 250 and
+`89.4%` of the 60-point cycles are endpoint-disjoint.  See
+`TRANSVERSE_ROW_SOURCE_C4_GATE.md`.
+
+Charging every relation `d=f+Je` to its unique longest underlying edge also
+does not make the theorem pointwise.  A new exact 90-point distance-Sidon set
+keeps `(10000,0)` as its strict global diameter yet has 266 relations in that
+oriented row (`0.312 k^(3/2)`) and 1124 total charges on the diameter edge
+(`1.316 k^(3/2)`).  The fixed-row profile is stably about `0.30 k^(3/2)` at
+`k=35,45,70,90`.  The proposed two-forest proof fails with union rank 83 for
+90 relations at `k=45`, and rank 173 for 266 relations at `k=90`.  The global
+total nevertheless remains `0.4615 k^3`.  Therefore continue to target a
+fourth-power **moment/rich-tail** theorem; do not target a near-linear maximum
+longest-edge load.  Exact details and the passing verifier are in
+`TRANSVERSE_LONGEST_EDGE_CHARGE_AUDIT.md` and
+`verify_transverse_longest_charge.py`.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier

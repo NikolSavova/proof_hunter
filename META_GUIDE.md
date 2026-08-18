@@ -449,6 +449,38 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 row--source `C_4` gate and longest-diameter obstruction (Sihao + Codex)
+- Recast the transverse row fourth moment as a bipartite row--source graph on
+  `D` and `B=A+JA`.  If its unlabelled `C_4` count is `k^(4+o(1))`, an exact
+  Cauchy/convexity calculation gives the cubic transverse bound.  Exact heavy
+  closure counts through `k=60` stay on scale; a separate 45-point witness has
+  source degree 250, and endpoint-overlap cleanup accounts for only 10.6% of
+  the 60-point cycles.  The fifth incidence in the translation-slice formula
+  is load-bearing.
+- Tested the new idea of charging every relation `d=f+Je` to its unique
+  longest edge.  It would have solved the wide branch if every edge had
+  `k^(1+o(1))` load.  A purpose-built closure keeps `(10000,0)` as the strict
+  global diameter and extends exactly to 90 distance-Sidon points.  Its fixed
+  diameter row is `61,90,180,266` at `k=35,45,70,90`, stably about
+  `0.30 k^(3/2)`; total diameter charge is `1124=1.316 k^(3/2)` at `k=90`.
+  Thus longest-edge pointwise charging is unsafe even at the global diameter.
+- Rigorously killed the associated two-forest proof: diameter-row union ranks
+  are 83/90 at `k=45` and 173/266 at `k=90`; four longest-column families also
+  fail in the old 120-point witness.  The 90-point global total is still
+  `336428=0.4615 k^3`, and the longest-charge second moment is
+  `50120272=0.764 k^4`.  The survivor is a moment/rich-tail theorem, not an
+  `L^infinity` theorem.
+- New exact artifacts:
+  `TRANSVERSE_ROW_SOURCE_C4_GATE.md`,
+  `verify_transverse_row_source_c4.py`,
+  `TRANSVERSE_LONGEST_EDGE_CHARGE_AUDIT.md`,
+  `analyze_transverse_longest_charge.py`, and
+  `verify_transverse_longest_charge.py`.  Both default verifiers pass.
+- No full proof yet.  Best next attack: a structural inverse theorem for a
+  *large tail* of charged edges / row--source four-cycles, followed by the
+  still-missing intermediate line-rich splice.  Approximate spend: local
+  exact computation only; no paid API batch recorded.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 spectral shortcuts audited and killed (Sihao + Codex)
 
 Continued the full-resolution attack from the row--colour fourth-moment gate.
