@@ -18,7 +18,7 @@ There is nevertheless a universal partial theorem.  Every integral lattice
 has a canonical finite-index Gaussian core, and the critical Gaussian height
 bound can be applied to a square patch in that core.
 
-## 2. Universal `r^(6/5)` height theorem
+## 2. Preliminary universal `r^(6/5)` height theorem
 
 ### Theorem 2.1
 
@@ -36,8 +36,10 @@ non-antipodal points of `mathcal P` have the same norm.  Then
  \boxed{M\gg r^{6/5}.}                            \tag{2.2}
 \]
 
-The exponent `6/5` is not claimed to be sharp.  The cube-root application
-would require `3/2`; Section 4 identifies the exact conditioning loss.
+This preliminary exponent is superseded by the sharp modular-midpoint
+Theorem 7.1 below.  It is retained because the Gaussian-core argument is a
+useful independent proof and explains why a direct treatment of arbitrary
+oblique bases is necessary.
 
 ### Proof
 
@@ -135,10 +137,11 @@ the collinear theorem gives `r<=sqrt(S)`.  Consequently
 \]
 
 For a `J`-stable lattice, the arbitrary-ideal theorem improves `5/6` to
-`2/3`.  Thus (3.2) measures exactly the present cost of arbitrary
-conditioning.
+`2/3`.  Theorem 7.1 below obtains the same improvement for every complete
+exact integral oblique lattice, so (3.2) is now only the preliminary
+Gaussian-core consequence.
 
-## 4. Exact remaining oblique gate
+## 4. Historical oblique gate
 
 Let `G=L^T L`.  A collision between coefficient points `x` and `x+2n`
 is equivalent to the linear Diophantine equation
@@ -153,7 +156,7 @@ Indeed the difference of their squared norms is four times the two sides of
 `n=adj(L)y`, for which `L n=(det L)y`; keeping only a square of such
 directions loses the factor `B` in (2.7).
 
-The critical exact-oblique theorem is therefore:
+At this stage the critical exact-oblique theorem was:
 
 > If the full `r`-by-`r` patch is radially unique, prove directly from
 > (4.1) that `M>>r^(3/2)`, without first restricting to the Gaussian core.
@@ -166,9 +169,9 @@ approximation and the divisibility condition
  \gcd((Gn)_1,(Gn)_2)\mid n^TL^Tt+n^TGn.         \tag{4.2}
 \]
 
-The two forced copies in (1.1) may supply the extra congruence or averaging
-needed to remove the conditioning loss.  This is now a precise arithmetic
-gate rather than the vague phrase “approximate oblique lattice.”
+Section 7 solves this gate directly.  The key is to choose the midpoint
+first modulo a prime `q` larger than `|det L|`; the perpendicular direction
+then becomes integral automatically.  No extra rich-fibre copy is required.
 
 ## 5. Verification
 
@@ -226,6 +229,150 @@ The basis vectors are `(B,1)` and `(B+1,1)`, with determinant `-1`, and
 \]
 
 Hence its containing height is `O(Br)=O(r^(3/2))`.  This proves that the
-critical oblique theorem isolated in Section 4, if true, has the best
-possible exponent.  It also supplies a necessary extremal model for any
-attempt to solve the inhomogeneous gate (4.1).
+critical oblique theorem established in Section 7 has the best possible
+exponent.  It also supplies the extremal model for the modular-midpoint
+argument.
+
+## 7. Sharp modular-midpoint theorem
+
+### Theorem 7.1
+
+There are absolute constants `c>0` and `r_0` such that the following holds.
+Let `L` be any nonsingular matrix in `M_2(Z)`, let `t in Z^2`, and put
+
+\[
+ \mathcal P=\{t+Lx:x\in\{0,\ldots,r-1\}^2\}.
+                                                        \tag{7.1}
+\]
+
+If `r>=r_0`, `mathcal P subset [-M,M]^2`, and no two distinct
+non-antipodal points of `mathcal P` have the same norm, then
+
+\[
+ \boxed{M\gg r^{3/2}.}                            \tag{7.2}
+\]
+
+Together with Section 6, the exponent `3/2` is best possible.
+
+### Proof
+
+Write the columns of `L` as `v,w` and set
+
+\[
+ B=\max\{|v|,|w|\},\qquad G=L^TL.               \tag{7.3}
+\]
+
+Comparing the two patch points with coefficient vectors `(0,0)` and
+`(r-1,0)`, and then `(0,0)` and `(0,r-1)`, gives
+
+\[
+ B\le {2\sqrt2 M\over r-1}\le {6M\over r}       \tag{7.4}
+\]
+
+for `r>=2`.
+
+Suppose, for a contradiction, that
+
+\[
+ M<c r^{3/2},                                    \tag{7.5}
+\]
+
+where `c>0` is a sufficiently small absolute constant.  For all sufficiently
+large `r`, Bertrand's postulate supplies a prime
+
+\[
+ {r\over100}<q<{r\over40}.                       \tag{7.6}
+\]
+
+By (7.4),
+
+\[
+ 0<|\det L|\le B^2<36c^2r<q                     \tag{7.7}
+\]
+
+once, for example, `c<=1/100`.  Therefore `G` is invertible modulo `q`,
+because `det G=(det L)^2`.
+
+Put `d=L^Tt`.  There is a unique residue class `m_0 in (Z/qZ)^2` satisfying
+
+\[
+ Gm_0\equiv-d\pmod q.                           \tag{7.8}
+\]
+
+Choose an integer representative `m` of this class with both coordinates
+in the central interval `[r/3,2r/3]`.  The interval has length `r/3` while
+`q<r/40`, so there are many such representatives in each coordinate.  Since
+`L` is nonsingular, at most one of the resulting coefficient vectors can
+satisfy `t+Lm=0`; choose one for which
+
+\[
+ p:=t+Lm\ne0.                                    \tag{7.9}
+\]
+
+Now
+
+\[
+ a:=L^Tp=d+Gm\in q\mathbb Z^2.                  \tag{7.10}
+\]
+
+Let `J(x,y)=(-y,x)` and define
+
+\[
+ n=J(a/q)\in\mathbb Z^2.                        \tag{7.11}
+\]
+
+The choice (7.9) and nonsingularity of `L^T` imply `a\ne0`, hence `n\ne0`.
+Moreover, because `p in [-M,M]^2`, each coordinate of `a` has magnitude at
+most `sqrt(2)BM`.  Equations (7.4)--(7.6) therefore give
+
+\[
+ \|n\|_\infty
+ \le {\sqrt2BM\over q}
+ < {100\sqrt2BM\over r}
+ \le {600\sqrt2M^2\over r^2}
+ <600\sqrt2c^2r.                                \tag{7.12}
+\]
+
+For `c<=1/100`, the last quantity is less than `r/10`.  Thus both `m+n`
+and `m-n` lie in `{0,...,r-1}^2` when `r` is sufficiently large.
+
+The corresponding patch points are
+
+\[
+ p_+=p+Ln,\qquad p_-=p-Ln.                      \tag{7.13}
+\]
+
+Since `n` is perpendicular to `a`,
+
+\[
+ |p_+|^2-|p_-|^2
+ =4p\mathbin\cdot Ln
+ =4(L^Tp)\mathbin\cdot n
+ =4a\mathbin\cdot J(a/q)=0.                    \tag{7.14}
+\]
+
+They are distinct because `L` is nonsingular and `n\ne0`.  They are not
+antipodal, since `p_+=-p_-` would imply `p=0`, contrary to (7.9).  This
+contradicts radial uniqueness and proves (7.2).  QED.
+
+### Corollary 7.2 (rectangular rich-fibre form)
+
+Let an adaptive rich fibre contain a complete integral `r`-by-`s` lattice
+patch, with `r>=s`, inside `[-M,M]^2`, and write `S=|D+D|`.  Applying
+Theorem 7.1 to an `s`-by-`s` subpatch gives `s<<M^(2/3)`.  The patch is a
+union of `s` parallel lines, while the collinear rich-fibre theorem gives
+at most `sqrt(S)` points on each line.  Hence
+
+\[
+ \boxed{|Q|=rs\ll M^{2/3}\sqrt S.}              \tag{7.15}
+\]
+
+This closes the complete exact integral oblique-lattice branch at the
+cube-root-critical local exponent.  What remains for the full problem is
+to extract such complete structure, or a stable substitute, from a general
+large seven-incidence fibre and to aggregate the resulting bounds over all
+fibres.
+
+`verify_oblique_lattice_modular_midpoint.py` constructs the midpoint and
+perpendicular displacement exactly for varied integral bases and
+translations, and verifies (7.8)--(7.14) using integer arithmetic.

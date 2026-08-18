@@ -65,21 +65,29 @@
 
 ## 3. WHAT WE'VE DONE
 
-**⭐ 2026-08-18 — ERDŐS #1208: EVERY EXACT OBLIQUE LATTICE HAS A UNIVERSAL `r^(6/5)` HEIGHT BARRIER.**
-The adaptive fibre does not force its lattice itself to be quarter-turn
-stable, so the Gaussian-ideal theorem was not the entire exact oblique
-branch.  For an arbitrary integral basis matrix `L`, the adjugate identity
-`L adj(L)=det(L)I` extracts a Gaussian-core square of side
-`R>>r/||L||` from every complete `r x r` coefficient patch.  Combining the
-critical `R^(3/2)` Gaussian height with the original patch diameter gives
-`M>>max(r||L||,(r/||L||)^(3/2))>>r^(6/5)`.  For an `r x s` adaptive patch,
-this yields `|Q|<<M^(5/6)sqrt(S)`.  Seven exact matrix families and 700
-linear collision identities pass.  The target exponent `3/2` is sharp:
-the unimodular shear `(a,b)->(B(a+b)+b,a+b)` is radially injective on the
-full `B^2 x B^2` coefficient box and has height `O(B^3)=O(r^(3/2))`.
-The remaining `6/5`-to-`3/2` loss is now
-the explicit inhomogeneous divisibility/short-vector equation (4.1) in
-`OBLIQUE_LATTICE_GAUSSIAN_CORE.md`, plus extraction and aggregation.
+**⭐ 2026-08-18 — ERDŐS #1208: EVERY COMPLETE EXACT OBLIQUE LATTICE PAYS THE SHARP `r^(3/2)` HEIGHT.**
+The former `r^(6/5)` Gaussian-core loss has been removed.  For an arbitrary
+nonsingular integral basis `L`, choose a prime `q~r` larger than `|det L|`
+and solve the modular midpoint equation
+`L^T L m=-L^T t (mod q)` in the central coefficient box.  Then
+`a=L^T(t+Lm)` is divisible by `q`, so `n=J(a/q)` is an integral short
+perpendicular displacement.  The two patch points with coefficients `m+n`
+and `m-n` have exactly equal norm; small ambient height makes both stay in
+the box, and choosing a nonzero midpoint rules out the antipodal exception.
+Thus radial uniqueness forces `M>>r^(3/2)` for every complete exact integral
+oblique patch.  This is sharp by the unimodular shear family already proved.
+For an `r x s` adaptive patch it gives the critical
+`|Q|<<M^(2/3)sqrt(S)`.  Twenty-one new exact modular-midpoint certificates,
+the prior 700 collision identities, and the sharp family all pass.  Exact
+complete lattice patches are now closed locally; approximate/sparse module
+extraction and aggregate control of the off-diagonal seven-incidence mass
+remain.
+
+**PRELIMINARY RESULT (superseded by the sharp theorem above) — ARBITRARY OBLIQUE GAUSSIAN CORE.**
+The adjugate identity `L adj(L)=det(L)I` extracts a Gaussian-core square of
+side `R>>r/||L||`, giving the earlier bound
+`M>>max(r||L||,(r/||L||)^(3/2))>>r^(6/5)`.  It remains a valid independent
+argument but is no longer the best exact-oblique theorem.
 
 **⭐ 2026-08-18 — ERDŐS #1208: EVERY EXACT GAUSSIAN-IDEAL COSET PAYS THE CRITICAL HEIGHT.**
 The prime-norm restriction in the preceding local theorem has been removed.

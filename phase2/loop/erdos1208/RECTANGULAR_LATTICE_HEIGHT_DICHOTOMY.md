@@ -88,13 +88,11 @@ This identifies the precise shape of the remaining obstruction:
    these two regimes and are not yet controlled in aggregate.
 
 The exact quarter-turn-stable version of the third item is treated in
-`GAUSSIAN_IDEAL_COSET_HEIGHT.md`.  Such a lattice is a Gaussian ideal rather
-than an arbitrary oblique lattice.  A nonzero integral coset of every such
-ideal pays the weaker but cube-root-critical height `Omega(s^(3/2))` on an
-`s`-by-`s` subpatch.  A general exact oblique lattice need not be `J`-stable;
-`OBLIQUE_LATTICE_GAUSSIAN_CORE.md` proves the partial height
-`Omega(s^(6/5))` for that case.  Improving `6/5` to `3/2`, and then treating
-approximate modules, remain open.
+`GAUSSIAN_IDEAL_COSET_HEIGHT.md`.  The subsequent modular-midpoint theorem
+in `OBLIQUE_LATTICE_GAUSSIAN_CORE.md` handles every complete exact integral
+oblique lattice and proves the same sharp `Omega(s^(3/2))` height on an
+`s`-by-`s` subpatch.  Thus exact complete lattices are closed; sparse or
+approximate module extraction and aggregation remain open.
 
 ## 4. Verification
 

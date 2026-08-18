@@ -38,8 +38,11 @@ satisfies
 \]
 
 This closes the exact Gaussian-ideal patch branch at the cube-root-critical
-local exponent.  It does not extract such a patch from a general rich fibre,
-control approximate modules, or prove the aggregate seven-incidence bound.
+local exponent.  The later modular-midpoint theorem in
+`OBLIQUE_LATTICE_GAUSSIAN_CORE.md` closes all complete exact integral
+oblique patches at the same exponent.  Neither result extracts such a patch
+from a general rich fibre, controls approximate modules, or proves the
+aggregate seven-incidence bound.
 
 ## 2. Composite-denominator shifted-square lemma
 

@@ -449,6 +449,27 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 sharp arbitrary-oblique height theorem (Sihao + Codex)
+
+- Closed the exact complete oblique-lattice gate at the critical exponent.
+  For every nonsingular `L in M_2(Z)`, a radially unique complete `r x r`
+  patch `t+L[0,r)^2` in a box of radius `M` satisfies `M>>r^(3/2)`.
+- The proof chooses a prime `q~r` exceeding `|det L|`, solves
+  `L^TLm=-L^Tt (mod q)` at a central coefficient midpoint, and sets
+  `n=J(L^T(t+Lm)/q)`.  If `M=o(r^(3/2))`, diameter bounds make `n` short, so
+  both `m+n` and `m-n` remain in the patch and give distinct non-antipodal
+  points of exactly equal norm.
+- This matches the previously constructed unimodular shear family of height
+  `O(r^(3/2))`, so the local exponent is sharp.  The rectangular rich-fibre
+  consequence improves from `|Q|<<M^(5/6)sqrt(S)` to the critical
+  `|Q|<<M^(2/3)sqrt(S)`.
+- Added the proof to `OBLIQUE_LATTICE_GAUSSIAN_CORE.md` and a new exact
+  verifier.  Twenty-one modular-midpoint certificates pass across seven
+  varied bases and three translations; the older 700 collision identities
+  and sharp family also still pass.  Exact complete integral lattice patches
+  are now locally closed.  Full #1208 remains open at approximate/sparse
+  module extraction and aggregate off-diagonal seven-incidence control.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 arbitrary oblique Gaussian-core theorem (Sihao + Codex)
 
 - Corrected an over-narrow inverse model: the three affine copies of a rich
