@@ -154,3 +154,10 @@ A translated unit `r`-by-`r` lattice patch with pairwise distinct radii must
 have coordinate height `Omega(r^2)`.  Thus such a patch inside
 `D subset [-m,m]^2` has at most `O(m)` points.  The proof intersects two
 explicit arithmetic progressions of shifted-square differences by CRT.
+
+`RECTANGULAR_LATTICE_HEIGHT_DICHOTOMY.md` proves that the square theorem is
+sharp in its aspect-ratio dependence.  An `r`-by-`s` patch needs translation
+height `Theta(min(r,s)^2)`, not `Omega(rs)`: translating the long coordinate
+by `s^2` separates every radius for arbitrary `r`.  The thin escape is a
+union of `s` parallel lines, so the next aggregate theorem must couple the
+height and curve-cover branches.

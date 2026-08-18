@@ -449,6 +449,26 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 sharp rectangular-lattice dichotomy (Sihao + Codex)
+
+- Tested the natural conjecture that a radially unique translated unit
+  `r x s` patch must have height `Omega(rs)`.  Exact search exposed a sharp
+  counterexample rather than supporting it: for `r>=s`, translating the
+  long coordinate by `s^2` makes all `rs` squared norms distinct.
+- Proved the corrected theorem.  The explicit construction gives height at
+  most `s^2`; the `s x s` subpatch and the preceding square theorem give
+  height at least `c s^2`.  Hence the true order is
+  `Theta(min(r,s)^2)`, and ambient coordinate scale `Theta(r+s^2)` is sharp.
+- Connected the escape to the already-proved geometric branch: an `r x s`
+  patch is covered by `s` parallel lines, so its rich-fibre size is at most
+  `s sqrt(|D+D|)`.  Any successful rank-two stability theorem must combine
+  height with line-cover complexity rather than depend only on patch area.
+- Added `RECTANGULAR_LATTICE_HEIGHT_DICHOTOMY.md`, updated the adaptive
+  ledger and handoff, and added an exact checker.  The construction, small
+  exhaustive optima, and arbitrary-aspect-ratio obstruction all pass.  The
+  sparse/oblique and aggregate seven-incidence cases remain open.  No paid
+  API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 unit-lattice rich-fibre height theorem (Sihao + Codex)
 
 - Attacked the high-degree rank-two remainder left by the algebraic-curve

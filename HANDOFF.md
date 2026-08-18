@@ -65,6 +65,19 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: SHARP ASPECT-RATIO DICHOTOMY FOR RECTANGULAR LATTICE FIBRES.**
+The attempted extension of the square-patch height theorem to an
+`Omega(rs)` bound for an `r x s` rectangle is false.  For `r>=s`, the patch
+`{(s^2+i,j):0<=i<r, 0<=j<s}` has all squared radii distinct, so translation
+height `s^2` works independently of `r`.  Conversely every such rectangle
+contains an `s x s` square, and the unit-square theorem forces height
+`Omega(s^2)`.  Thus the optimal parameter is `Theta(min(r,s)^2)`, and the
+containing coordinate scale is `Theta(r+s^2)`.  This is a useful dichotomy,
+not a solution: thin patches evade area-height control but are unions of
+only `s` parallel lines, where the earlier curve-cover bound applies.  The
+exact verifier passes.  The remaining lattice target must couple aspect
+ratio/line cover with height and still handle sparse or oblique patches.
+
 **⭐ 2026-08-18 — ERDŐS #1208: UNIT RANK-TWO LATTICE PATCHES PAY QUADRATIC HEIGHT.**
 The first high-algebraic-complexity model left by the curve theorem is now
 partly closed.  If a translated unit `r x r` integer lattice patch has no
