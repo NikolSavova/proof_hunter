@@ -453,9 +453,11 @@ prior-art kill-search**; has a writeable-down win condition.
 
 - Derived the exact identity
   `sum_z r(z)^3 = sum_(u,v) C_3(JA;u,v) C_3(D;u,v)` for
-  `r(z)=#{(a,d):z=a+Jd}` and `D=(A-A)\{0}`.  The sharp cubic upper bound on
-  this moment implies cubic rotated support and the expected `n^(1/3+o(1))`
-  order; a fourth-power bound gives the partial upper exponent `2/5`.
+  `r(z)=#{(a,d):z=a+Jd}` and `D=(A-A)\{0}`.  The unrestricted cubic moment
+  bound is false by the perpendicular-ruler obstruction.  The viable
+  statistic is the ordered, pairwise-distinct, non-collinear contribution
+  `T_nc`; the exact split is `sum r^3<=4T_nc+9L^2 sum r`, where `L` is maximum
+  collinearity.
 - Read the primary TeX of Shkredov's arXiv:1405.3132, 2408.08113, and
   2502.20702.  Their common-energy theorems concern ordinary four-variable
   energy and inverse/small-doubling structure.  They do not give the required
@@ -474,10 +476,11 @@ prior-art kill-search**; has a writeable-down win condition.
   `verify_foreign_shift_triangle_counterexample.py`, and updated #1208/root
   handoffs.  No API spend.  The checkout still contains unrelated unstaged
   #838 work, so only the #1208/handoff files from this entry should be staged.
-- **Next:** prove a rich-triangle tail bound for the total common correlation,
-  first at `k^(4+o(1))` (which would yield `F_2(n)<=n^(2/5+o(1))`) and then at
-  the sharp `k^(3+o(1))` scale.  Do not revisit a uniform pointwise bound;
-  even `k^(2-epsilon)` is false.
+- **Next:** prove the sharp rich-triangle tail
+  `#{tau:q(tau)>=lambda}<=k^(3+o(1))/lambda` for ordered non-collinear
+  triangles in the wide regime, then couple it to the line-support theorem
+  through intermediate collinearity.  Do not revisit a uniform pointwise
+  bound; even `k^(2-epsilon)` is false.
 
 ### 2026-08-18 (latest) — ERDŐS #1208 shear-averaged cubic support (Sihao + Codex)
 - Proved the exact affine-line section bound

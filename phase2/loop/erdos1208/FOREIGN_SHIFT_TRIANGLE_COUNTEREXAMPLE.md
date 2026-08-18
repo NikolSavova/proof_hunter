@@ -2,9 +2,13 @@
 
 ## 1. Outcome
 
-The third-moment formulation of the rotated-support problem is exact and
-remains a credible full-resolution gate.  Its tempting pointwise
-strengthening is false as strongly as possible.
+The third-moment identity for the rotated-support problem is exact, but its
+unrestricted cubic upper bound is false: the perpendicular-ruler family has
+fourth-power second moment and hence at least fourth-power third moment.  The
+viable statistic is the number of ordered, pairwise-distinct,
+**non-collinear** triples inside the fibres, coupled to a separate line
+branch.  Its tempting pointwise strengthening is false as strongly as
+possible.
 
 Let `A` be distance-Sidon, `k=|A|`, let `J(x,y)=(-y,x)`, and put
 
@@ -33,7 +37,7 @@ four-variable energy `E(X,Y)`; they do not provide the upper bound needed
 here.  This was checked directly against arXiv:1405.3132, arXiv:2408.08113,
 and arXiv:2502.20702.
 
-The candidate pointwise lemma
+For pairwise-distinct non-collinear `a,b,c`, the candidate pointwise lemma
 
 \[
  C_3(D;J(b-a),J(c-a))\le k^{1+o(1)}              \tag{1.2}
@@ -45,10 +49,11 @@ the left side is `Omega(k^2)`.  The exact 129-point certificate in
 `verify_foreign_shift_triangle_counterexample.py` has codegree 3,610, or
 `0.2169... k^2`.
 
-Thus no maximum-codegree bound can prove the desired third moment.  Any
-successful theorem must average over the approximately `k^3` triangles of
-`A`, allowing a sparse exceptional family of quadratically popular
-triangles.
+Thus no maximum-codegree bound can prove the desired transverse moment.  Any
+successful theorem must average over the approximately `k^3` non-collinear
+triangles of `A`, allowing a sparse exceptional family of quadratically
+popular triangles, and then couple that estimate to the line-structured
+branch.
 
 ## 2. Proof of the identity
 
@@ -87,22 +92,50 @@ Hölder gives
  {(\sum_zr(z)^3)^{1/2}}.                         \tag{2.1}
 \]
 
-Consequently
+Consequently the formally sufficient estimate
 
 \[
  \sum_zr(z)^3\le k^{3+o(1)}                     \tag{2.2}
 \]
 
 would prove `|A+JD|>=k^(3-o(1))` and hence the expected square-grid upper
-bound `F_2(n)<=n^(1/3+o(1))`.  More generally a bound `k^(3+alpha+o(1))`
-gives
+bound `F_2(n)<=n^(1/3+o(1))`.  It is not a viable conjecture: the
+perpendicular-ruler obstruction already has `sum_z r(z)^2=Omega(k^4)`, so
+its third moment is at least that large.  More generally, if such a full
+moment bound `k^(3+alpha+o(1))` were available, it would give
 
 \[
  F_2(n)\le n^{1/(3-\alpha/2)+o(1)}.             \tag{2.3}
 \]
 
-In particular, the still-interesting fourth-power moment would give the new
-upper exponent `2/5`.
+The identity must therefore be restricted before it can be used.
+
+Let `L` be the maximum number of collinear points of `A`, let `F_z` be the
+set of `A`-coordinates in the fibre over `z`, and let `t_z` be the number of
+ordered, pairwise-distinct, non-collinear triples in `F_z`.  For `L>=2`,
+
+\[
+ r(z)^3\le 4t_z+9L^2r(z).                       \tag{2.4}
+\]
+
+Indeed, if `r(z)>=2L+2`, at most half of its distinct triples are collinear
+and `(r)_3>=r^3/2`; if `r(z)<2L+2`, then `r(z)^3<=9L^2r(z)`.
+Writing
+
+\[
+ T_{\rm nc}(A)=\sum_z t_z,
+\]
+
+we obtain the rigorous interface
+
+\[
+ |A+JD|\gg
+ \frac{k^{9/2}}{(T_{\rm nc}(A)+k^3L^2)^{1/2}}. \tag{2.5}
+\]
+
+Thus `T_nc(A)<=k^(3+o(1))` proves cubic support in the genuinely wide regime
+`L=k^o(1)`.  For larger `L`, (2.5) loses powers and must be coupled to the
+parallel-line support lemma; this intermediate-range coupling remains open.
 
 ## 3. Infinite counterexample to the pointwise lemma
 
@@ -247,9 +280,10 @@ distance-collision curves.  The resulting distance-Sidon set still has
 `Omega(p^2)` fibre codegree.
 
 Thus even the contribution from pairwise distinct, non-collinear fibre
-triples can be `Omega(k^3)`.  The proposed upper bound (2.2), if true, is
-sharp in exponent; it cannot be improved to `o(k^3)` and it must permit a
-linear family of quadratically popular triangles.
+triples can be `Omega(k^3)`.  The proposed transverse bound
+`T_nc(A)<=k^(3+o(1))`, if true in the needed wide regime, is sharp in
+exponent; it cannot be improved to `o(k^3)` and it must permit a linear
+family of quadratically popular triangles.
 
 ## 5. Exact finite certificate
 
@@ -286,14 +320,22 @@ python3 phase2/loop/erdos1208/verify_foreign_shift_triangle_counterexample.py
 Do not pursue a uniform upper bound for
 `C_3(D;J(b-a),J(c-a))`; even `k^(2-epsilon)` is false.
 
-The live statement is the averaged common-correlation bound (2.2), or first
-the partial target
+For an ordered non-collinear triangle `tau=(a,b,c)`, put
 
 \[
- \sum_{u,v}C_3(JA;u,v)C_3(D;u,v)\le k^{4+o(1)}.
+ q(\tau)=C_3(D;J(b-a),J(c-a)).
 \]
 
-The counterexample is compatible with both: it makes one triangle
-quadratically popular, which costs only `O(k^2)` in a budget of `k^3` or
-`k^4`.  A proof must establish a rich-triangle tail bound, not a local
-maximum.
+The clean live statement is the rich-triangle tail estimate
+
+\[
+ |\{\tau:q(\tau)\ge\lambda\}|
+ \le \frac{k^{3+o(1)}}{\lambda},                \tag{6.1}
+\]
+
+uniformly over dyadic `1<=lambda<=k^2`, first for sets with
+`L=k^o(1)`.  Dyadic summation gives `T_nc(A)<=k^(3+o(1))`.  The many-anchor
+construction is sharp for (6.1) at `lambda` of order `k^2`: it supplies
+`Theta(k)` such triangles.  A full solution must then couple this tail bound
+to the existing line-support theorem through the intermediate-collinearity
+range.
