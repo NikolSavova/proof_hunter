@@ -311,10 +311,13 @@ theorem gives `r<=sqrt(S)`, where `S=|D+D|`.  Therefore
  \boxed{|\mathcal G|=rs\ll M^{2/3}\sqrt S}.     \tag{4.2}
 \]
 
-The remaining lattice-like branch is no longer exact ideal arithmetic.  A
-full solution must show that supercritical adaptive seven-incidence mass
-either yields an exact/approximate Gaussian patch to which a stable version
-of this theorem applies, or is directly bounded by `N^(1+o(1))S`.
+The remaining lattice-like branch is no longer exact *ideal* arithmetic, but
+it may still be an exact non-`J`-stable oblique lattice.  The universal
+`r^(6/5)` Gaussian-core bound for that case is in
+`OBLIQUE_LATTICE_GAUSSIAN_CORE.md`.  A full solution must improve it to the
+critical exponent or show that supercritical adaptive seven-incidence mass
+yields a sufficiently stable Gaussian patch, and then aggregate the fibres
+within `N^(1+o(1))S`.
 
 ## 5. Verification
 

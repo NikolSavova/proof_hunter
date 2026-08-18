@@ -65,6 +65,19 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: EVERY EXACT OBLIQUE LATTICE HAS A UNIVERSAL `r^(6/5)` HEIGHT BARRIER.**
+The adaptive fibre does not force its lattice itself to be quarter-turn
+stable, so the Gaussian-ideal theorem was not the entire exact oblique
+branch.  For an arbitrary integral basis matrix `L`, the adjugate identity
+`L adj(L)=det(L)I` extracts a Gaussian-core square of side
+`R>>r/||L||` from every complete `r x r` coefficient patch.  Combining the
+critical `R^(3/2)` Gaussian height with the original patch diameter gives
+`M>>max(r||L||,(r/||L||)^(3/2))>>r^(6/5)`.  For an `r x s` adaptive patch,
+this yields `|Q|<<M^(5/6)sqrt(S)`.  Seven exact matrix families and 700
+linear collision identities pass.  The remaining `6/5`-to-`3/2` loss is now
+the explicit inhomogeneous divisibility/short-vector equation (4.1) in
+`OBLIQUE_LATTICE_GAUSSIAN_CORE.md`, plus extraction and aggregation.
+
 **⭐ 2026-08-18 — ERDŐS #1208: EVERY EXACT GAUSSIAN-IDEAL COSET PAYS THE CRITICAL HEIGHT.**
 The prime-norm restriction in the preceding local theorem has been removed.
 For every nonzero `z in Z[i]` and every nontrivial integral coset translate
@@ -76,8 +89,9 @@ congruence modulo `h`, and double both gaps; the doubling makes the shifted-
 square CRT compatible even when `h` is even.  Thirty-one fixed certificates
 and 400 randomized composite-denominator certificates pass, including inert,
 split-composite, 2-adic, mixed, and nonprimitive Gaussian steps.  Thus exact
-composite ideals are no longer an open branch.  Approximate-module extraction
-and aggregation of the off-diagonal seven-incidence mass remain.  Read
+composite ideals are no longer an open `J`-stable branch.  Exact non-`J`-
+stable oblique lattices, approximate-module extraction, and aggregation of
+the off-diagonal seven-incidence mass remain.  Read
 `GAUSSIAN_IDEAL_COSET_HEIGHT.md`.
 
 **⭐ 2026-08-18 — ERDŐS #1208: PRIME-GAUSSIAN COSET PATCHES PAY THE CUBE-ROOT-CRITICAL HEIGHT.**

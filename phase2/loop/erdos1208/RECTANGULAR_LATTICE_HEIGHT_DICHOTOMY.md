@@ -91,7 +91,10 @@ The exact quarter-turn-stable version of the third item is treated in
 `GAUSSIAN_IDEAL_COSET_HEIGHT.md`.  Such a lattice is a Gaussian ideal rather
 than an arbitrary oblique lattice.  A nonzero integral coset of every such
 ideal pays the weaker but cube-root-critical height `Omega(s^(3/2))` on an
-`s`-by-`s` subpatch.  Only approximate-module versions remain open.
+`s`-by-`s` subpatch.  A general exact oblique lattice need not be `J`-stable;
+`OBLIQUE_LATTICE_GAUSSIAN_CORE.md` proves the partial height
+`Omega(s^(6/5))` for that case.  Improving `6/5` to `3/2`, and then treating
+approximate modules, remain open.
 
 ## 4. Verification
 

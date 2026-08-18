@@ -182,3 +182,23 @@ by combining `s<<M^(2/3)` with the parallel-line bound `r<=sqrt(S)`.
 This closes the entire exact Gaussian-ideal patch branch at the cube-root-
 critical height.  Approximate-module extraction and aggregate-fibre control
 remain open.
+
+It does not close arbitrary exact oblique lattices: (1.1) sends a lattice
+`Lambda` to `(I+J)Lambda` but does not imply `J Lambda=Lambda`.
+`OBLIQUE_LATTICE_GAUSSIAN_CORE.md` gives the universal partial substitute.
+Every integral `r`-by-`r` lattice patch contains a Gaussian-core square of
+side `>>r/B`, where `B` is the largest basis length.  The core theorem and
+physical diameter imply
+
+\[
+ M\gg\max\{rB,(r/B)^{3/2}\}\gg r^{6/5}.          \tag{4.3}
+\]
+
+Thus an oblique `r`-by-`s` rich-fibre patch satisfies
+
+\[
+ |Q|\ll M^{5/6}\sqrt S.                           \tag{4.4}
+\]
+
+The exponent gap from `5/6` to the critical `2/3` is the exact oblique-
+conditioning gate.

@@ -449,6 +449,24 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 arbitrary oblique Gaussian-core theorem (Sihao + Codex)
+
+- Corrected an over-narrow inverse model: the three affine copies of a rich
+  fibre do not force the fibre lattice itself to satisfy `JL=L`.  Exact
+  non-`J`-stable oblique patches remain relevant.
+- Proved a universal partial height theorem.  If an arbitrary integral
+  `r x r` lattice patch is radially unique in a box of radius `M`, then
+  `M>>r^(6/5)`.  The identity `L adj(L)=det(L)I` extracts a Gaussian-core
+  patch of side `R>>r/||L||`; combine its `R^(3/2)` height with the diameter
+  lower bound `r||L||` and optimize.
+- Derived the exact full oblique collision equation
+  `(L^T L n).x=-n^T L^T t-n^T L^T L n`.  Reaching `r^(3/2)` amounts to
+  finding a short inhomogeneous solution satisfying its gcd divisibility
+  condition without restricting to the adjugate core.
+- Added `OBLIQUE_LATTICE_GAUSSIAN_CORE.md` and an exact verifier covering
+  seven primitive, nonprimitive, anisotropic, and sheared bases plus 700
+  collision identities.  No paid API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 arbitrary Gaussian-ideal critical height (Sihao + Codex)
 
 - Removed the prime-norm restriction from the exact Gaussian-coset theorem.
@@ -468,9 +486,9 @@ prior-art kill-search**; has a writeable-down win condition.
 - Targeted web searches found general lattice-coset and lattice-distance
   material but no matching translated-patch height theorem.  This is not a
   definitive MathSciNet/zbMATH novelty audit.
-- Exact composite ideals are now closed locally.  The live full-resolution
-  task is extraction/stability for approximate Gaussian modules and summing
-  their contribution to the off-diagonal `Z_K` moment.  No paid API spend.
+- Exact composite `J`-stable ideals are now closed locally.  Exact oblique
+  non-`J`-stable lattices, approximate-module extraction, and summing the
+  off-diagonal `Z_K` moment remain.  No paid API spend.
 
 ### 2026-08-18 (latest) — ERDŐS #1208 Gaussian-prime coset critical-height theorem (Sihao + Codex)
 
