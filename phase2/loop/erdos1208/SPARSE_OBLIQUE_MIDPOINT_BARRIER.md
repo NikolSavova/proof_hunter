@@ -172,6 +172,28 @@ The coordinate maximum in (3.1) is `(2B+1)(r-1)`, giving (3.3).  Finally
 choose fixed `T>(3/c)^2` and let `B` tend to infinity; then (3.2) has density
 tending to one while (3.3) is smaller than `c`.  QED.
 
+The same family rules out even a power-saving dense extension.  Given
+`0<eta<1/4`, take
+
+\[
+ T=B^{\theta+o(1)},\qquad
+ \theta={4\eta\over1-2\eta}<2.                  \tag{3.8}
+\]
+
+Then `r=B^(2+theta+o(1))`, while
+
+\[
+ M=r^{3/2-\eta+o(1)},\qquad
+ {T^2r\over r^2}={T\over B^2}=o(1).             \tag{3.9}
+\]
+
+Thus density `1-o(1)` does not force height `r^(3/2-o(1))`: it is compatible
+with every exponent strictly above `5/4`.  At the endpoint, taking
+`T=lambda B^2` with fixed `0<lambda<1` gives a radially unique subset of
+density at least `1-lambda` and height `O_lambda(r^(5/4))`.  These conclusions
+use only the proved pair-count bound; the finite examples are substantially
+sparser in collisions than that worst-case estimate.
+
 ## 4. Consequence for the seven-incidence route
 
 The counterexample is already an **exact injective linear/Freiman image** of
