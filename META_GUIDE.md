@@ -449,6 +449,38 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 opposite-endpoint aggregate gate and sparse-stability barrier (Sihao + Codex)
+
+- Reorganized every ordered off-diagonal pair in an adaptive rich fibre by
+  the charge `Xi(u,s,q,q')=(v_q,u+x_(q')) in D x (D+D)`.  The charge is
+  exactly injective inside a fixed fibre, so the former within-fibre
+  midpoint/Sidon-ruler obstruction disappears.  A fixed charge key has an
+  exact two-variable six-affine-copy preimage system.  A subpolynomial
+  size-biased cross-fibre load bound would imply
+  `sum_(r!=0)Z_K(r)<=N^(1+o(1))S` and finish the cube-root-order proof.
+- Added `SEVEN_INCIDENCE_OPPOSITE_ENDPOINT_CHARGE.md` and its exact verifier.
+  It passes closure, Costas, quadratic-switching, asymptotic Sidon-ruler,
+  and abstract-radial controls.  The hard cross-fibre load theorem remains
+  unproved.
+- Audited the natural plan “BSG/DRC -> dense approximate lattice -> apply the
+  exact oblique theorem” and disproved its required stability statement.
+  The explicit shear family has near-full radially unique subsets below
+  every fixed multiple of `r^(3/2)`, reaches height
+  `r^(3/2-eta+o(1))` at density `1-o(1)` for every `eta<1/4`, and reaches
+  `O(r^(5/4))` at fixed positive density.  The three affine fibre copies
+  survive rigorously; the adaptive-popularity strengthening is presently an
+  algebraic outline plus finite stress test, not a committed theorem artifact.
+- The decisive missing input is now endpoint realizability `D=A-A`, not
+  approximate lattice structure.  Complete differences satisfy the shifted
+  spectral constraint `hat(1_D)>=-(|A|-1)`; the finite adaptive shear model
+  violates this by a linear-in-`N` negative Fourier coefficient.  This
+  suggests a support-compensated spectral proof as the main alternative to
+  the cross-fibre charge theorem.
+- The sparse construction and verifier are in
+  `SPARSE_OBLIQUE_MIDPOINT_BARRIER.md` and
+  `verify_sparse_oblique_midpoint_barrier.py`.  All cited exact checks pass.
+  Full #1208 remains open; no paid API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 sharp arbitrary-oblique height theorem (Sihao + Codex)
 
 - Closed the exact complete oblique-lattice gate at the critical exponent.

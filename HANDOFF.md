@@ -65,6 +65,37 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: OFF-DIAGONAL ENERGY REDUCED TO A CROSS-FIBRE OPPOSITE-ENDPOINT LOAD.**
+For an ordered pair `q!=q'` in one adaptive rich fibre, the charge
+`Xi(u,s,q,q')=(v_q,u+x_(q'))` lies in the correct-size universe
+`D x (D+D)` and is exactly injective after the fibre label `(u,s)` is
+fixed.  Hence the old within-fibre midpoint multiplicity has been eliminated:
+all remaining loss is cross-fibre.  For a fixed key `(v,t)`, its preimages
+are exactly a two-variable six-affine-copy system, with both popular shifts
+retained.  A subpolynomial size-biased load estimate for this system would
+give `sum_(r!=0) Z_K(r)<=N^(1+o(1))S`, close the adaptive tail, and prove the
+cube-root order of #1208.  Exact tests pass on closure, Costas, quadratic,
+Sidon-ruler, and radial-control families.  The cross-fibre estimate itself
+is still open.  Read `SEVEN_INCIDENCE_OPPOSITE_ENDPOINT_CHARGE.md`.
+
+**⭐ 2026-08-18 — ERDŐS #1208: DENSE/APPROXIMATE LATTICE STABILITY IS FALSE; ENDPOINT REALIZABILITY IS LOAD-BEARING.**
+The sharp complete-patch theorem below does not admit the hoped-for dense
+extension.  The explicit shear family
+`(B(a+b)+b,a+b)`, with `r=TB^2`, has a radially unique subset of size at
+least `r^2-T^2r` at height `M/r^(3/2)<= (2+1/B)/sqrt(T)`.  Consequently even
+density `1-o(1)` is compatible with height `r^(3/2-eta+o(1))` for every
+`eta<1/4`, and fixed positive density is compatible with height `O(r^(5/4))`.
+The obstruction rigorously retains all three affine fibre copies; an exact
+algebraic outline and finite stress test also retain bidirectional adaptive
+popularity, but that strengthening is not yet packaged as a proof artifact.
+Therefore BSG, DRC, Varnavides averaging, or generic
+Freiman modelling cannot bridge the final gap.  What the obstruction lacks
+is genuine endpoint closure `D=A-A`: complete differences obey the shifted
+Fourier positivity `hat(1_D)>=-(|A|-1)`, while the finite shear model violates
+it at order `N`.  The remaining attack should be endpoint-sensitive, via
+the opposite-endpoint charge or a support-compensated spectral theorem.
+Read `SPARSE_OBLIQUE_MIDPOINT_BARRIER.md`.
+
 **⭐ 2026-08-18 — ERDŐS #1208: EVERY COMPLETE EXACT OBLIQUE LATTICE PAYS THE SHARP `r^(3/2)` HEIGHT.**
 The former `r^(6/5)` Gaussian-core loss has been removed.  For an arbitrary
 nonsingular integral basis `L`, choose a prime `q~r` larger than `|det L|`
