@@ -116,6 +116,14 @@ form
 
 The zero frequency in (2.4) is precisely the source of the cube-root scale.
 
+A tempting Hölder majorant for (2.4) is the ordinary third additive energy
+`E_3^+(A)`.  This loses the load-bearing quarter-turn correlation and is now
+known to be useless even in general position.  The finite-field parabola,
+followed by a generic integral linear map, gives arbitrarily large integer
+distance-Sidon sets with no three collinear and
+`E_3^+(A)>=|A|^4/9`.  See `THIRD_ADDITIVE_ENERGY_BARRIER.md` and its exact
+127-point verifier.
+
 ## 3. A sufficient theorem that would close the exponent
 
 Either of the following statements is sufficient:

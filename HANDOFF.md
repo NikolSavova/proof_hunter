@@ -93,6 +93,18 @@ without first testing it against this product construction.  The primary
 target is again the global transverse second moment/decorated-parallelogram
 estimate, followed by the intermediate line-rich splice.
 
+A second new barrier closes the ordinary third-additive-energy surrogate.
+For every odd prime `p`, the integer finite-field parabola `P_p` is
+vector-Sidon, has no three collinear, and satisfies `|3P_p|<=9p^2`, hence
+`E_3^+(P_p)>=p^4/9`.  A generic integral invertible linear map makes all
+Euclidean distances distinct while preserving every additive relation.
+Thus arbitrarily large general-position distance-Sidon sets have fourth-
+power third energy.  The exact `p=127` matrix
+`[[-93,-83],[66,-1]]` yields 8,001 distinct distances and
+`E_3^+=86,658,955`.  Read `THIRD_ADDITIVE_ENERGY_BARRIER.md` and run its
+verifier.  Any Fourier proof must retain the correlation between a frequency
+and its quarter-turn; Hölder into ordinary higher energy is closed.
+
 **⭐ 2026-08-18 — ERDŐS #1208: THIRD-MOMENT ROUTE KILLED IN GENERAL POSITION.**
 The fixed-quarter-turn support problem has the exact common-correlation
 identity

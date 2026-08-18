@@ -449,6 +449,25 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 third-additive-energy barrier (Sihao + Codex)
+
+- Closed the tempting Fourier/Hölder surrogate for rotated triple energy.
+  For the integer finite-field parabola `P_p`, vector-Sidonicity and maximum
+  collinearity two hold exactly, while `|3P_p|<=9p^2`; consequently
+  `E_3^+(P_p)>=p^4/9`.
+- Proved that a generic integral invertible linear map separates every
+  Euclidean edge length without changing additive relations or collinearity.
+  Hence arbitrarily large general-position distance-Sidon sets still have
+  fourth-power ordinary third energy.  Any successful Fourier argument must
+  retain the correlation between a frequency and its quarter-turn.
+- Added `THIRD_ADDITIVE_ENERGY_BARRIER.md` and a pure-integer certificate.
+  At `p=127`, `T=[[-93,-83],[66,-1]]` gives 127 points, all 8,001 distances
+  distinct, no collinear triple, triple support 81,221, and exact third energy
+  86,658,955.  No API spend.
+- **Next:** continue on the restricted rotated/transverse moment itself; an
+  ambient-sensitive higher-energy inequality is not ruled out, but an
+  ordinary `|A|`-only energy majorant is.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 eight-corner product barrier (Sihao + Codex)
 
 - Disproved the adaptive eight-corner hypothesis asymptotically, not just by
