@@ -252,7 +252,7 @@ This gate is not yet known to be easier than the decorated-parallelogram
 theorem.  Its concrete advantage is that it packages the missing line-rich
 splice and the transverse expansion into one scale-perfect inequality.
 
-## 6. A weaker local fibre theorem would already give exponent `2/5`
+## 6. Falsified weaker local fibre theorem
 
 There is a useful intermediate target between the present `0.494586` theorem
 and the full product estimate (0.1).  For `t in D+JD`, define the fixed-row
@@ -305,9 +305,9 @@ Since both supports are `O(m^2)`, (6.5) gives
  \qquad F_2(n)\le n^{2/5+o(1)}.                 \tag{6.6}
 \]
 
-Thus (6.4), while not a full solution, would be a major unconditional upper
-improvement.  It is only a conjectural local lemma at present.  Exact maximum-
-fibre checks give
+Thus (6.4), while not a full solution, would give a major unconditional upper
+improvement.  The implication is correct, but (6.4) is false.  The first
+maximum-fibre checks misleadingly supported it:
 
 \[
 \begin{array}{c|r|r|r}
@@ -318,9 +318,21 @@ fibre checks give
 \end{array}                                      \tag{6.7}
 \]
 
-Larger stored closure tests keep the last ratio above `0.5`, but that is
-evidence rather than a theorem.  The next falsification task is to test (6.4)
-against scalable fixed-row six-biclique and eight-corner completion families.
-If it survives, the proof problem is to show that a collision
-`e_1-Je_2=e_3-Je_4` cannot have high multiplicity inside one fibre without
-creating a repeated Euclidean norm in the original complete difference set.
+The scalable six-biclique family also has perfect quadratic expansion in its
+generic numerical instances.  Nevertheless
+`FIXED_ROW_FIBRE_EXPANSION_BARRIER.md` gives a decisive asymptotic
+counterexample.  Choose `M^(2-o(1))` vectors of distinct norms in an `M by M`
+box, adjoin their affine quarter-turn partners for one target `t`, and realize
+all vectors as independently translated disjoint segments.  A generic
+rational placement is distance-Sidon and has no unintended target-row
+relations, while
+
+\[
+ |E_t|=M^{2-o(1)},\qquad |E_t-JE_t|=O(M^2)
+       =|E_t|^{1+o(1)}.                          \tag{6.8}
+\]
+
+Thus (6.4) fails by essentially a full power.  The global product gate (0.1)
+survives: the independent segment translations make the rest of `D` highly
+expanding.  Any successor must charge the structure of one row to that global
+expansion rather than controlling the row in isolation.

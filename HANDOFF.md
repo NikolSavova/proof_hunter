@@ -86,14 +86,31 @@ itself remains large on this family and on every stored adversary.  Read
 dichotomy, or split the fibre moment before applying `L^2`; do not use the
 global mixed third moment.
 
-A weaker but potentially more accessible intermediate target has also been
-isolated.  For a fixed representation fibre
-`E_t={e in D:t-e in JD}`, quadratic internal orthogonal expansion
-`|E_t-JE_t|>=|E_t|^(2-o(1))`, combined with Ruzsa's triangle inequality,
-would prove `|D+D||D+JD|>=N^(5/2-o(1))` and hence the new upper bound
-`F_2(n)<=n^(2/5+o(1))`.  This is conditional, not yet proved.  Exact closure,
-parabola, and dense-perpendicular tests pass; the immediate adversarial test
-is the scalable fixed-row six-biclique/eight-corner family.
+The tempting local `2/5` route has now been killed.  For a fixed fibre
+`E_t={e in D:t-e in JD}`, quadratic internal expansion would indeed imply
+`F_2(n)<=n^(2/5+o(1))` by Ruzsa's triangle inequality.  However
+`FIXED_ROW_FIBRE_EXPANSION_BARRIER.md` constructs integral distance-Sidon
+sets with `|E_t|=M^(2-o(1))` and only `|E_t-JE_t|=O(M^2)`.  The construction
+uses radially unique vectors in a square, their affine quarter-turn partners,
+and generic independent segment translations.  A 116-point exact verifier
+has fibre 29 and support 123.  The full global product gate survives because
+the independent translations create large support elsewhere.  Resume by
+charging structured rows to global expansion or averaging across rows; no
+maximum-fibre-only theorem can suffice.
+
+The sharpest current global formulation is now
+`ORTHOGONAL_ENERGY_SUPPORT_GATE.md`.  With
+`E_perp(D)=sum_q R_D(q)R_D(Jq)`, Cauchy gives
+`|D+JD|>=N^4/E_perp`.  Hence the single inequality
+`E_perp(D)<=N^(1+o(1))|D+D|` proves the full product theorem and the cube-root
+exponent.  It survives every stored family: the strongest closure ratio
+`E_perp/(N|D+D|)` stays near `0.3`.  It must be proved globally.  Two
+generically deformed finite-field parabolas give distance-Sidon sets with one
+local product `R_D(q)R_D(Jq)=Omega(N^2)`, killing every termwise or maximum-
+translation strengthening while leaving the total ratio tiny.  Resume with a
+popular-sum tail/charging theorem that makes those isolated peaks pay through
+ordinary support, or exploit the positive-definite autocorrelation
+representation of the complete difference set.
 
 **⭐ 2026-08-18 — ERDŐS #1208: ADAPTIVE EIGHT-CORNER GATE KILLED ASYMPTOTICALLY.**
 The eight-corner charging reduction is correct, but its proposed

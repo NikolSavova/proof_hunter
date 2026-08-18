@@ -449,17 +449,60 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 orthogonal energy--support gate (Sihao + Codex)
+
+- Derived the exact common energy
+  `E_perp(D)=sum_q R_D(q)R_D(Jq)=sum_t r_(D+JD)(t)^2`.  Cauchy gives
+  `|D+JD|>=N^4/E_perp`, so the scale-perfect global estimate
+  `E_perp<=N^(1+o(1))|D+D|` implies the full
+  `|D+D||D+JD|>=N^(3-o(1))` theorem and settles the cube-root exponent.
+- Reinterpreted the earlier `k^5` unrestricted-energy data correctly: the
+  ordinary support pays for that growth.  Exact closure ratios
+  `E_perp/(N|D+D|)` through `k=70` stay in `[0.265,0.313]`; transformed-
+  parabola and dense-perpendicular ratios are `0.0952` and `0.0264`.
+- Proved a full-power barrier to pointwise strengthening.  Finite-field
+  parabola pair-sums have a nonzero vertical translation with `Omega(p^2)`
+  representations.  Two generic rational deformations align these peaks as
+  `q,Jq` while keeping the union distance-Sidon, giving
+  `R_D(q)R_D(Jq)=Omega(N^2)`.  The exact 46-point certificate has `N=2071`,
+  peak multiplicities `(252,252)`, support 608,903, energy 7,263,825, and
+  global ratio `0.005760...`.
+- Added `ORTHOGONAL_ENERGY_SUPPORT_GATE.md` and its exact verifier.  Restart
+  at a global popular-sum tail/charging theorem or the positive-definite
+  autocorrelation structure of the complete difference set; maximum-
+  translation bounds are definitively too strong.  Local compute only;
+  direct API spend `$0`.
+
+### 2026-08-18 (latest) — ERDŐS #1208 generic-segment fibre barrier (Sihao + Codex)
+
+- Killed the new local quadratic-expansion conjecture asymptotically.  Select
+  `M^(2-o(1))` lattice vectors of distinct norms in an `M by M` box, pair
+  each `e` with `J(e-t)`, and realize the resulting vectors as independently
+  translated segments.  Generic rational translations give a distance-Sidon
+  set and avoid every unintended relation in the target row.
+- The resulting fibre satisfies `|E_t|=M^(2-o(1))` but
+  `|E_t-JE_t|=O(M^2)=|E_t|^(1+o(1))`.  Thus the proposed fibre theorem fails
+  by essentially a full power, even though its Ruzsa implication to the
+  conditional `F_2(n)<=n^(2/5+o(1))` bound was correct.
+- Added `FIXED_ROW_FIBRE_EXPANSION_BARRIER.md` and its exact verifier.  The
+  concrete 116-point distance-Sidon instance has `|D|=13341`, fibre size 29,
+  and support size 123; all checks pass.  The direct global product gate
+  survives because generic translations make the remaining difference set
+  expand.  New restart rule: charge structured rows to global support or
+  average across rows; do not use a maximum-row-only theorem.  Direct API
+  spend `$0`.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 local fibre expansion route (Sihao + Codex)
 
 - For `E_t={e in D:t-e in JD}`, representation counting gives
   `|D+JD|>=N^2/max|E_t|`, while Ruzsa's triangle inequality gives the exact
   upper relation `|E_t-JE_t|N<=|D+D|^2`.
-- Consequently the local conjecture
+- Consequently the now-falsified local conjecture
   `|E_t-JE_t|>=|E_t|^(2-o(1))` would imply
   `|D+D||D+JD|>=N^(5/2-o(1))`, hence
   `F_2(n)<=n^(2/5+o(1))`.  This would be a major partial upper improvement,
-  but it would not settle the expected cube-root exponent and is not yet
-  proved.
+  but it would not settle the expected cube-root exponent.  The next log
+  entry records its generic-segment counterexample.
 - Extended `verify_orthogonal_two_support_gate.py` to check exact maximum-
   fibre profiles.  The closure, transformed parabola, and dense-perpendicular
   examples give `(r,|E_t-JE_t|)=(56,2303),(1,1),(97,9409)` respectively.
