@@ -253,6 +253,19 @@ next task is to turn that hereditary non-quasirandomness into a density
 increment or radial collision.  Read `DENSE_CORE_ORTHOGONAL_ARRAY_GATE.md`
 and run `verify_dense_core_orthogonal_array.py`.
 
+The subsequent design-matrix audit gives a valid compression but also closes
+rank alone as a proof route.  On the pruned four-role core, the improved
+Dvir--Saraf--Wigderson theorem yields corank at most `768k^2/r`, so a
+supercritical row is algebraically rigid.  The affine fixed difference is
+load-bearing, however: centering `Mz=d*1` creates the coordinate kernel vector
+while losing one rank, and endpoint homogenization creates dense common
+columns.  The exact 120-point distance-Sidon row already has maximal ranks
+`k-1` before centering and `k-2` after centering.  Read
+`FIXED_ROW_DESIGN_MATRIX_AUDIT.md` and run
+`verify_fixed_row_design_matrix_audit.py`.  A useful continuation must add
+radial norm rigidity or an ambient-height bound; sparse support rank by itself
+cannot prove the fixed-row `k^(3/2)` gate.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier

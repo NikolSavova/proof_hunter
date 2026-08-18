@@ -449,6 +449,30 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 design-matrix compression and affine-rank barrier (Sihao + Codex)
+- Applied the exact improved design-matrix theorem of Dvir--Saraf--Wigderson
+  (arXiv:1211.0330) to the pruned fixed-row role matrix.  With `r` original
+  relations, the retained core is a `(4,r/(8k),1)` design, so its corank is at
+  most `768k^2/r`.  Thus a hypothetical `k^(3/2+epsilon)` row is genuinely
+  rigid, with only `O(k^(1/2-epsilon))` Gaussian-linear degrees of freedom.
+- Closed a seductive but false proof.  The fixed difference makes the actual
+  coordinate vector satisfy `Mz=d*1`, not `Mz=0`.  Projecting away the common
+  right-hand side creates the second kernel vector but can lower rank by one;
+  homogenizing with the endpoints of `d` instead creates two dense columns
+  and destroys bounded column overlap.  The rank theorem therefore gives
+  compression, not `r<=k^(3/2)`.
+- The obstruction is exact on legal configurations.  The 120-point
+  distance-Sidon heavy row has 948 relations, affine rank 119, and centered
+  rank 118: both are maximal (`k-1` and `k-2`).  On four role copies it uses
+  478 active columns and has raw/centered ranks 473/472.  Hence no theorem
+  based only on the sparse support and ordinary rank can close the row gate.
+- Added `FIXED_ROW_DESIGN_MATRIX_AUDIT.md` and
+  `verify_fixed_row_design_matrix_audit.py`.  The exact verifier checks the
+  heavy and strict-diameter witnesses, all ranks, role-pair overlap one, and
+  merged actual-label overlap at most twelve; all tests pass.  The surviving
+  possible use is a new radial-rigidity or ambient-height theorem, not rank
+  alone.  No new exponent is claimed; #1208 remains open.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 dense-core and orthogonal-array inverse gate (Sihao + Codex)
 - Proved an exact pruning lemma for the corrected dense-row branch.  A fixed
   row with `r` relations contains at least `r/2` relations in a four-partite
