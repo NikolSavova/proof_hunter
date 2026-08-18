@@ -284,6 +284,21 @@ of the required length and exactly one orientation-preserving rotation.  Read
 quarter-turn of the square lattice; it converts the existing small
 unimodular-unit arithmetic target into an exact cube-root criterion.
 
+There is now a complementary exact theorem for affine quarter-turn shears
+`S_t=J+tI`.  If `L` is the maximum collinearity of `A`, then every affine line
+meets the complete difference set `A-A` in at most `kL` points, and for any
+`r` distinct real shear parameters
+
+`sum_t E_t(A) <= r(2k^3-k^2)+k^5L`.
+
+Hence one shear has support at least
+`k^6/(2k^3-k^2+k^5L/r)`, which is cubic once `r>=k^2L`.  Read
+`SHEAR_AVERAGED_CUBIC_SUPPORT.md` and run
+`verify_shear_averaged_support.py`.  This is a proved many-symmetry interface,
+not a fixed-quarter-turn solution: integral/rational shears pay quadratic box
+or denominator expansion, and the `kL` affine-line loss is compatible with
+the known heavy examples.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier

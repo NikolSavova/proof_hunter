@@ -449,6 +449,29 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 shear-averaged cubic support (Sihao + Codex)
+- Proved the exact affine-line section bound
+  `|(A-A) intersect ell|<=kL` for every line `ell`, where `L` is the maximum
+  collinearity of a distance-Sidon `k`-point set.  Projection fibres give the
+  proof: nonzero differences have unique ordered representations and each
+  projection fibre contains at most `L` points.
+- Applied it to the shear family `S_t=J+tI`.  For any `r` distinct real
+  parameters, the collision energies of `a+S_t(b-c)` satisfy
+  `sum_t E_t<=r(2k^3-k^2)+k^5L`.  Thus some shear has support at least
+  `k^6/(2k^3-k^2+k^5L/r)`, and `r>=k^2L` forces support at least `k^3/3`.
+- Added `SHEAR_AVERAGED_CUBIC_SUPPORT.md` and the exact-rational verifier
+  `verify_shear_averaged_support.py`.  On the stored 12-point witness and 13
+  rational shears it checks the line-section lemma, all fibre energies, and
+  every Cauchy inequality; `PASS`.
+- This quantifies, rather than removes, the exceptional-quarter-turn barrier.
+  Unlike exact rotations, a fixed four-tuple can survive at `kL` shear
+  parameters, and integral/rational shears incur quadratic ambient expansion.
+  The active full-resolution target remains the prescribed-`J` transverse
+  fourth moment or an inverse theorem coupling it to the parallel-line lemma.
+  The Fable directive named `SOL_DIRECTIVE_1208_20260816.md` was not present
+  in the current checkout or tracked history, so the committed #1208 handoff
+  remained the authoritative input.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 rotation-averaged cubic support (Sihao + Codex)
 - Proved an exact averaged theorem for the live rotated triple map.  For a
   distance-Sidon set `A`, `|A|=k`, and any `r` distinct rotations, the sum of
