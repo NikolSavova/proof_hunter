@@ -246,7 +246,8 @@ impossible: under its uniform edge distribution every pair of roles is
 independent, while centering the row equation and averaging its squared norm
 forces all four role variances to vanish.  Quantitatively, every noncollapsed
 fixed row has some pair projection whose degree-normalized second singular
-value is at least `1/6`.  This does not yet give the needed power bound; the
+value is at least `1/6`.  Equivalently, some projection has inverse-degree
+mass `sum_(ab in E)1/(deg(a)deg(b))>=1+1/36`.  This does not yet give the needed power bound; the
 next task is to turn that hereditary non-quasirandomness into a density
 increment or radial collision.  Read `DENSE_CORE_ORTHOGONAL_ARRAY_GATE.md`
 and run `verify_dense_core_orthogonal_array.py`.

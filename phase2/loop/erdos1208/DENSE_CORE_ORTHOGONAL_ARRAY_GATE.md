@@ -167,6 +167,30 @@ Thus every noncollapsed fixed row has a quantitatively non-quasirandom pair
 projection.  A full transversal design has `rho=0` in every pair, recovering
 (2.4).
 
+There is an exact degree-only version.  If `G` is a simple pair projection,
+with endpoint degrees `d(a)` and `d(b)`, the squared Frobenius norm of its
+degree-normalized adjacency matrix is
+
+\[
+ \sum_{ab\in E(G)}{1\over d(a)d(b)}.                \tag{3.5}
+\]
+
+Its top singular value is one.  Consequently (3.4) implies that some pair
+projection satisfies
+
+\[
+ \boxed{\sum_{ab\in E(G)}{1\over d(a)d(b)}
+        \ge 1+{1\over36}.}                         \tag{3.6}
+\]
+
+This is the chi-squared divergence of the edge-uniform joint distribution
+from the product of its degree marginals.  For a biregular graph of density
+`p` it equals `1/p`, so (3.6) gives `p<=36/37`.  In the irregular case the
+same formula identifies the low-degree or component concentration that must
+carry the non-quasirandomness.  A dyadic almost-regularization followed by a
+recursive use of (3.6) is a concrete possible density-increment mechanism;
+no power-saving recurrence has yet been proved.
+
 This spectral gap is only an inverse certificate, not yet a counting theorem.
 To reach the fixed-row `k^(3/2+o(1))` scale, one needs to turn its large
 coordinate correlation into either

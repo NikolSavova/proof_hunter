@@ -463,7 +463,9 @@ prior-art kill-search**; has a writeable-down win condition.
 - Quantified the obstruction: every noncollapsed fixed row has some pair
   projection with maximal correlation—equivalently degree-normalized second
   singular value—at least `1/6`.  Thus dense rows are hereditarily
-  non-quasirandom in at least one projection.  Turning this certificate into
+  non-quasirandom in at least one projection.  The exact degree-only form is
+  `sum_(ab in E)1/(deg(a)deg(b))>=1+1/36` for some projection; in a biregular
+  graph this forces density at most `36/37`.  Turning this certificate into
   a power-scale density increment or radial collision is the remaining step;
   no new final exponent is claimed.
 - Added `DENSE_CORE_ORTHOGONAL_ARRAY_GATE.md` and the pure-stdlib exact verifier

@@ -71,6 +71,17 @@ def verify_pairwise_orthogonality(edges, order: int) -> None:
     for first, second in combinations(range(4), 2):
         projection = {(edge[first], edge[second]) for edge in edges}
         assert len(projection) == order * order
+        left_degree = {}
+        right_degree = {}
+        for left, right in projection:
+            left_degree[left] = left_degree.get(left, 0) + 1
+            right_degree[right] = right_degree.get(right, 0) + 1
+        frobenius_squared = sum(
+            Fraction(1, left_degree[left] * right_degree[right])
+            for left, right in projection
+        )
+        # Complete bipartite projections have no nontrivial singular mass.
+        assert frobenius_squared == 1
 
 
 def equation_matrix(order: int, edges) -> list[list[int]]:
