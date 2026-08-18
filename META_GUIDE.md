@@ -449,6 +449,32 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 rotation-averaged cubic support (Sihao + Codex)
+- Proved an exact averaged theorem for the live rotated triple map.  For a
+  distance-Sidon set `A`, `|A|=k`, and any `r` distinct rotations, the sum of
+  the collision energies of `a+R(b-c)` is at most
+  `r(2k^3-k^2)+2k^4`.  The diagonal term is the exact ordered pair-sum energy;
+  off the diagonal, a fixed four-tuple leaves at most two directed edges of
+  the required length and one orientation-preserving rotation per edge.
+- By Cauchy, some rotation has support at least
+  `k^6/(2k^3-k^2+2k^4/r)`.  Thus any `k` rotations force one cubic support of
+  size at least `k^3/4`.  For a hostile box with at most `M` possible outputs,
+  this gives `k<=2sqrt(M/r)` when `r<=k` and the desired cube-root bound
+  `k<=(4M)^(1/3)` once `r>=k`.
+- This turns the small-unimodular-unit lane into an exact full-resolution
+  interface but does not control the prescribed quarter-turn of the ordinary
+  grid.  Rational rotations pay a denominator-square ambient cost, while the
+  square lattice has only four integral rotations.  The unresolved arithmetic
+  input remains a bounded-root-discriminant non-CM tower with linearly many
+  low-expansion relative units.
+- Added `ROTATION_AVERAGED_CUBIC_SUPPORT.md` and the exact-rational verifier
+  `verify_rotation_averaged_support.py`.  On the stored 12-point adversarial
+  witness and twelve rotations it checks total energy `57164<=81216`; all
+  support-energy Cauchy inequalities pass.  A current arXiv sweep found no new
+  planar #1208 resolution; the August 14 Tidor--Yu--Zakharov paper settles the
+  distinct-distance exponent in `R^3` but does not directly cover this
+  decorated planar configuration.  #1208 remains open.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 design-matrix compression and affine-rank barrier (Sihao + Codex)
 - Applied the exact improved design-matrix theorem of Dvir--Saraf--Wigderson
   (arXiv:1211.0330) to the pruned fixed-row role matrix.  With `r` original

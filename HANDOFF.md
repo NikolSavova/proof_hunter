@@ -266,6 +266,24 @@ columns.  The exact 120-point distance-Sidon row already has maximal ranks
 radial norm rigidity or an ambient-height bound; sparse support rank by itself
 cannot prove the fixed-row `k^(3/2)` gate.
 
+The next global check gives a positive averaged theorem.  For every finite set
+`R` of `r` distinct planar rotations and every distance-Sidon `A`, `|A|=k`,
+the rotated-triple energies satisfy
+
+`sum_(U in R) E_U(A) <= r(2k^3-k^2)+2k^4`,
+
+where `E_U(A)` is the collision energy of `a+U(b-c)`.  Hence among any `k`
+rotations one has `|A+U(A-A)|>=k^3/4`.  More generally, if a hostile additive
+box has `r` exact rotations and every associated triple support has at most
+`M` positions, then `k<=2sqrt(M/r)` for `r<=k` and `k<=(4M)^(1/3)` for
+`r>=k`.  The proof is elementary but sharp: after fixing the four variables on
+one side of a collision, radial uniqueness leaves at most two directed edges
+of the required length and exactly one orientation-preserving rotation.  Read
+`ROTATION_AVERAGED_CUBIC_SUPPORT.md` and run
+`verify_rotation_averaged_support.py`.  This does not control the prescribed
+quarter-turn of the square lattice; it converts the existing small
+unimodular-unit arithmetic target into an exact cube-root criterion.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier
