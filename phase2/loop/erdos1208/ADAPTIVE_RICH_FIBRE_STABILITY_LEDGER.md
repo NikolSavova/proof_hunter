@@ -148,3 +148,9 @@ fibre points lie on a real degree-`d` algebraic curve, then Bezout gives
 `S>=h^2/d^2`.  Hence a cover by `r` bounded-degree curves gives
 `|Q|<=rd sqrt(S)`.  The remaining wide fibres must have genuinely growing
 algebraic complexity, as a rank-two lattice model does.
+
+`UNIT_LATTICE_RICH_FIBRE_HEIGHT.md` begins that remaining rank-two case.
+A translated unit `r`-by-`r` lattice patch with pairwise distinct radii must
+have coordinate height `Omega(r^2)`.  Thus such a patch inside
+`D subset [-m,m]^2` has at most `O(m)` points.  The proof intersects two
+explicit arithmetic progressions of shifted-square differences by CRT.

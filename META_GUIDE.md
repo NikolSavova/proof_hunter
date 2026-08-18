@@ -449,6 +449,27 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 unit-lattice rich-fibre height theorem (Sihao + Codex)
+
+- Attacked the high-degree rank-two remainder left by the algebraic-curve
+  theorem.  Exhaustive search for translated `r x r` unit patches showed the
+  minimum norm-separating coordinate height growing as a stable constant
+  multiple of `r^2` through `r=15`.
+- Proved the asymptotic statement.  Differences of `r` consecutive shifted
+  squares at gap `d` form an arithmetic progression centred at
+  `d(2U+r-1)`.  Under `max(U,V)<=10^(-6)r^2`, odd gaps `d,e` chosen by
+  rational approximation give overlapping progressions; their residues are
+  compatible modulo `gcd(2d,2e)`, and CRT produces an exact collision.
+- Therefore a translated unit `r x r` patch with radially unique points has
+  height `Omega(r^2)`.  Inside `D subset [-m,m]^2`, it contains only `O(m)`
+  points.  This quantitatively rules out the cheapest full Gaussian-grid
+  escape inside one adaptive rich fibre.
+- Added `UNIT_LATTICE_RICH_FIBRE_HEIGHT.md` and an exact verifier.  It checks
+  the small optima, all 411,502 proof certificates at the medium test
+  scales, and 120 large random certificates.  The missing extension is to
+  sparse/oblique generalized progressions and then to the aggregate
+  seven-incidence mass.  No paid API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 algebraic-curve rich-fibre branch (Sihao + Codex)
 
 - Extended the collinear rich-fibre injection to all real algebraic curves.

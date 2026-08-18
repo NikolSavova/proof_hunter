@@ -65,6 +65,20 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: UNIT RANK-TWO LATTICE PATCHES PAY QUADRATIC HEIGHT.**
+The first high-algebraic-complexity model left by the curve theorem is now
+partly closed.  If a translated unit `r x r` integer lattice patch has no
+equal radii except an antipodal pair, then its coordinate height is
+`Omega(r^2)`.  For gaps `d,e`, the two coordinate intervals generate
+arithmetic progressions of shifted-square differences.  Choosing odd
+`d,e` by rational approximation makes their intervals overlap, and CRT
+forces a common difference, hence two non-antipodal equal-norm vectors.
+Consequently a unit patch inside `D=A-A subset [-m,m]^2` has only `O(m)`
+points.  The verifier checks the exact small optima, 411,502 exhaustive
+medium-scale CRT certificates, and 120 large certificates.  Read
+`UNIT_LATTICE_RICH_FIBRE_HEIGHT.md`.  Sparse and oblique approximate
+lattices remain; this is not yet the full seven-incidence bound.
+
 **⭐ 2026-08-18 — ERDŐS #1208: BOUNDED-DEGREE ALGEBRAIC RICH FIBRES CLOSED.**
 If `Q_0` is contained in a real algebraic curve of degree `d` inside one
 adaptive rich fibre, then the two forced copies `u+Q_0` and
