@@ -449,6 +449,48 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 local fibre expansion route (Sihao + Codex)
+
+- For `E_t={e in D:t-e in JD}`, representation counting gives
+  `|D+JD|>=N^2/max|E_t|`, while Ruzsa's triangle inequality gives the exact
+  upper relation `|E_t-JE_t|N<=|D+D|^2`.
+- Consequently the local conjecture
+  `|E_t-JE_t|>=|E_t|^(2-o(1))` would imply
+  `|D+D||D+JD|>=N^(5/2-o(1))`, hence
+  `F_2(n)<=n^(2/5+o(1))`.  This would be a major partial upper improvement,
+  but it would not settle the expected cube-root exponent and is not yet
+  proved.
+- Extended `verify_orthogonal_two_support_gate.py` to check exact maximum-
+  fibre profiles.  The closure, transformed parabola, and dense-perpendicular
+  examples give `(r,|E_t-JE_t|)=(56,2303),(1,1),(97,9409)` respectively.
+  Next kill-search: scalable fixed-row six-biclique/eight-corner families.
+  Local compute only; direct API spend `$0`.
+
+### 2026-08-18 (latest) — ERDŐS #1208 orthogonal two-support gate (Sihao + Codex)
+
+- Isolated a new full-resolution inequality.  For `D=A-A`, `N=|D|`, the
+  product `|D+D||D+JD|>=N^(3-o(1))` immediately gives
+  `|A|<=m^(2/3+o(1))` in the `m x m` grid.  It packages ordinary additive
+  structure and quarter-turned expansion into one statement and avoids the
+  separate intermediate line-rich splice required by the rotated-support
+  collision argument.
+- Derived the exact fibre model
+  `F(s,t)=#{d in D:s-d in D,-J(t-d) in D}` with
+  `sum F=N^3` and
+  `sum F^2=Xi(D)=sum_q R_D(q)^2R_D(Jq)`.  Hence
+  `|D+D||D+JD|>=N^6/Xi(D)`.
+- Killed the obvious moment conjecture `Xi<=N^(3+o(1))` asymptotically.
+  Two dense Golomb subrulers on perpendicular axes give genuine integral
+  distance-Sidon sets with `Xi(D)>>N^4`; the proof uses cross energy between
+  their scalar difference sets followed by weighted Cauchy.  The product
+  inequality itself survives and is very slack on this family.
+- Added `ORTHOGONAL_TWO_SUPPORT_GATE.md` and
+  `verify_orthogonal_two_support_gate.py`.  Exact checks pass for the fibre
+  identity and for closure, transformed-parabola, and dense-perpendicular
+  profiles.  New restart rule: attack the support product directly or split
+  the parallel fibres before using moments; never apply the global mixed
+  third-moment majorant.  Local compute only; direct API spend `$0`.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 centered-residual design dichotomy (Sihao + Codex)
 
 - Reorganized the exact positive residual

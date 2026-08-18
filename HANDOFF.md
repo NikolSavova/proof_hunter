@@ -65,6 +65,36 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: ORTHOGONAL TWO-SUPPORT GATE ISOLATED; NAIVE MOMENT PROOF KILLED.**
+For `D=A-A`, `N=|D|`, the single inequality
+`|D+D||D+JD| >= N^(3-o(1))` would prove the full cube-root upper bound:
+both supports contain only `O(m^2)` lattice points for `A subset [m]^2`, so
+it gives `|A|<=m^(2/3+o(1))`.  Unlike the earlier transverse moment, this
+formulation automatically rewards line structure through expansion in the
+quarter-turned factor and therefore needs no separate intermediate line-rich
+splice.
+
+The exact three-variable fibre `F(s,t)` has total mass `N^3` and second
+moment `Xi(D)=sum_q R_D(q)^2 R_D(Jq)`.  Thus `Xi<=N^(3+o(1))` would prove the
+product theorem by Cauchy, but that majorant is rigorously false.  Splitting
+a dense Golomb ruler between perpendicular axes gives genuine integral
+distance-Sidon sets with `Xi(D)>>N^4`; weighted Cauchy on the two dense scalar
+difference sets proves the full-power obstruction.  The support product
+itself remains large on this family and on every stored adversary.  Read
+`phase2/loop/erdos1208/ORTHOGONAL_TWO_SUPPORT_GATE.md` and run
+`verify_orthogonal_two_support_gate.py`.  Resume at a direct product-growth
+dichotomy, or split the fibre moment before applying `L^2`; do not use the
+global mixed third moment.
+
+A weaker but potentially more accessible intermediate target has also been
+isolated.  For a fixed representation fibre
+`E_t={e in D:t-e in JD}`, quadratic internal orthogonal expansion
+`|E_t-JE_t|>=|E_t|^(2-o(1))`, combined with Ruzsa's triangle inequality,
+would prove `|D+D||D+JD|>=N^(5/2-o(1))` and hence the new upper bound
+`F_2(n)<=n^(2/5+o(1))`.  This is conditional, not yet proved.  Exact closure,
+parabola, and dense-perpendicular tests pass; the immediate adversarial test
+is the scalable fixed-row six-biclique/eight-corner family.
+
 **⭐ 2026-08-18 — ERDŐS #1208: ADAPTIVE EIGHT-CORNER GATE KILLED ASYMPTOTICALLY.**
 The eight-corner charging reduction is correct, but its proposed
 subpolynomial local hypothesis is false at linear scale.  Starting from one
