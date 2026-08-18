@@ -449,6 +449,33 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 switching rich-tail gate and quadratic barrier (Sihao + Codex)
+
+- Reorganized every common-energy collision `x+Jy=u+Jv` by its longest
+  decorated edge and the ordinary sum of the opposite representation.  If
+  `f` denotes the loads on `{0,1} x D x (D+D)`, then the switching moment
+  `sum f^2 <= N^(1+o(1))|D+D|` implies the live energy--support inequality by
+  Cauchy.  This is the first gate to retain both the endpoint decoration and
+  the full ordinary-support budget.
+- Exact finite stress tests pass.  The 20-point closure has energy
+  1,735,609, image 777,087, maximum load 25, and switching moment 4,826,721,
+  or `0.78698... N|D+D|`.  The transformed 31-point parabola is injective.
+- Killed the tempting pointwise version sharply.  A generic construction
+  from two `h`-point clusters and two translated `(I+J)`-scaled copies gives
+  a `k=4h+2` point distance-Sidon set with `2h^2=Omega(k^2)=Omega(N)` ordered
+  collisions on one key.  A symbolic side-four Hermitian signature check
+  excludes every forced distance identity for arbitrary `h`; an 18-point
+  integral certificate checks 153 distinct distances, `N=307`, 16 physical
+  collisions, and a 32-element switching fibre.
+- Fixed cross-sum variants disperse the intended fibre but create the same
+  quadratic load in the rotated role.  The construction has maximal-scale
+  ordinary support, so it does not threaten the averaged gate.  Added
+  `ORTHOGONAL_SWITCHING_RICH_TAIL_GATE.md` and
+  `verify_orthogonal_switching_rich_tail.py`; verifier passes.  Next target:
+  a summable rich-tail or four-corner load-balancing theorem in the
+  low-support, many-layer branch.  Local compute and primary-source search;
+  direct API spend `$0`.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 radial two-support barrier (Sihao + Codex)
 
 - **The two-support theorem needs endpoint decoration.**  The canonical

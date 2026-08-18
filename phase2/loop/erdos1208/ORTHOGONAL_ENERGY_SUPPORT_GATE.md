@@ -280,3 +280,14 @@ Consequently the full product theorem already holds if
 `|D+D|>=N^(5/3-o(1))`.  The energy--support attack may therefore assume from
 the outset that `D` has doubling below `N^(2/3-o(1))`, in addition to being
 outside the subpolynomial parallel-cover branch.
+
+There is now a more endpoint-aware organization of the same residual.
+`ORTHOGONAL_SWITCHING_RICH_TAIL_GATE.md` assigns every collision in (1.2)
+to its longest decorated edge and the ordinary sum of the opposite
+representation.  A second-moment bound for these switching loads implies
+(5.1) by Cauchy.  Crucially, the corresponding maximum-load statement is
+false by the largest possible power: a generic complete-bipartite gadget
+gives a distance-Sidon set with one switching fibre of size `Omega(N)`.
+The exact 18-point certificate has a fibre of 32 ordered collisions.  Thus
+resume with an averaged rich-tail or multi-corner load-balancing theorem,
+not a pointwise switching injection.

@@ -65,6 +65,30 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: ENDPOINT SWITCHING GATE ISOLATED; MAXIMUM-FIBRE ROUTE KILLED SHARPLY.**
+The live common energy now has an endpoint-aware second-moment organization.
+For every collision `x+Jy=u+Jv`, select its longest decorated edge and pair
+it with the ordinary sum of the opposite representation.  If `f(lambda)`
+are the resulting loads on `{0,1} x D x (D+D)`, then
+`sum f(lambda)^2 <= N^(1+o(1))|D+D|` implies the full orthogonal
+energy--support gate by Cauchy and therefore resolves #1208 at the cube-root
+scale.  The 20-point closure profile is `(energy,image,max,moment) =
+(1735609,777087,25,4826721)`, so the moment is only
+`0.78698... N|D+D|`; the transformed parabola is injective.
+
+The corresponding maximum-load theorem is false at the largest possible
+scale.  A new generic complete-bipartite construction gives, for every `h`,
+a `k=4h+2` point distance-Sidon set with one switching fibre of size
+`2h^2=Omega(k^2)=Omega(N)`.  A side-four symbolic Hermitian-signature audit
+proves asymptotic genericity; the exact integral `h=4` certificate has 18
+points, `N=307`, 16 physical collisions, and 32 ordered preimages of one
+key.  Fixed cross-sum variants merely move the quadratic fibre to the
+rotated role.  This does not threaten the averaged gate because the generic
+construction has essentially maximal ordinary support.  Resume with a
+rich-tail or four-corner load-balancing theorem, never a pointwise switching
+injection.  Read `ORTHOGONAL_SWITCHING_RICH_TAIL_GATE.md` and run
+`verify_orthogonal_switching_rich_tail.py`.
+
 **⭐ 2026-08-18 — ERDŐS #1208: ORTHOGONAL TWO-SUPPORT GATE ISOLATED; NAIVE MOMENT PROOF KILLED.**
 For `D=A-A`, `N=|D|`, the single inequality
 `|D+D||D+JD| >= N^(3-o(1))` would prove the full cube-root upper bound:
