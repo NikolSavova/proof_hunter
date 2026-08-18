@@ -162,9 +162,9 @@ by `s^2` separates every radius for arbitrary `r`.  The thin escape is a
 union of `s` parallel lines, so the next aggregate theorem must couple the
 height and curve-cover branches.
 
-`GAUSSIAN_PRIME_COSET_HEIGHT.md` treats the exact quarter-turn-stable
+`GAUSSIAN_IDEAL_COSET_HEIGHT.md` treats the full exact quarter-turn-stable
 rank-two model beyond the unit lattice.  Such a lattice is a Gaussian ideal.
-For every nonzero coset of an odd prime-norm ideal, a radially unique
+For every nonzero integral coset of every Gaussian ideal, a radially unique
 `r`-by-`r` patch in `[-M,M]^2` satisfies
 
 \[
@@ -179,6 +179,6 @@ collision.  For an `r`-by-`s` rectangle, `r>=s`, it gives
 \]
 
 by combining `s<<M^(2/3)` with the parallel-line bound `r<=sqrt(S)`.
-This closes the exact prime-Gaussian patch branch at the cube-root-critical
-height.  Composite-index, approximate-module, and aggregate-fibre control
+This closes the entire exact Gaussian-ideal patch branch at the cube-root-
+critical height.  Approximate-module extraction and aggregate-fibre control
 remain open.

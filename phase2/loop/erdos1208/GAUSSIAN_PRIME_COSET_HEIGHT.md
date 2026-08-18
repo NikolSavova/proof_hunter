@@ -1,5 +1,11 @@
 # Critical height for Gaussian-prime coset patches
 
+> **Superseded at the stated level.**
+> `GAUSSIAN_IDEAL_COSET_HEIGHT.md` removes the prime-norm hypothesis and
+> proves the same critical-height conclusion for every nontrivial coset of
+> every exact Gaussian ideal.  This file is retained as the simpler first
+> proof and for its independent prime-case certificates.
+
 ## 1. Result
 
 The exact rank-two models compatible with the quarter-turn `J` are not

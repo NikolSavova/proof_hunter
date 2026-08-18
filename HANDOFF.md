@@ -65,6 +65,21 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: EVERY EXACT GAUSSIAN-IDEAL COSET PAYS THE CRITICAL HEIGHT.**
+The prime-norm restriction in the preceding local theorem has been removed.
+For every nonzero `z in Z[i]` and every nontrivial integral coset translate
+`t notin zZ[i]`, a radially unique `r x r` patch
+`t+z([r]+i[r])` inside `[-M,M]^2` satisfies `M>>r^(3/2)` and hence has
+`O(M^(4/3))` points.  Reduce the normalized translate to denominator `h`,
+construct a primitive coprime gap pair in the kernel of one linear
+congruence modulo `h`, and double both gaps; the doubling makes the shifted-
+square CRT compatible even when `h` is even.  Thirty-one fixed certificates
+and 400 randomized composite-denominator certificates pass, including inert,
+split-composite, 2-adic, mixed, and nonprimitive Gaussian steps.  Thus exact
+composite ideals are no longer an open branch.  Approximate-module extraction
+and aggregation of the off-diagonal seven-incidence mass remain.  Read
+`GAUSSIAN_IDEAL_COSET_HEIGHT.md`.
+
 **⭐ 2026-08-18 — ERDŐS #1208: PRIME-GAUSSIAN COSET PATCHES PAY THE CUBE-ROOT-CRITICAL HEIGHT.**
 The exact quarter-turn-stable rank-two model left by the adaptive inverse
 route is now identified and partly closed.  A `J`-stable sublattice of
@@ -77,7 +92,8 @@ collision for rational shifted squares.  For an `r x s` rich-fibre patch it
 combines with the line theorem to give `|Q|<<M^(2/3)sqrt(S)`.  Twenty-one
 exact prime-ideal/coset certificates pass.  This reaches the correct local
 height exponent but does not yet extract the patch from general rich-fibre
-mass or handle composite/approximate modules and aggregation.  Read
+mass.  The subsequent arbitrary-ideal theorem removes the composite-norm
+restriction; approximate modules and aggregation remain.  Read
 `GAUSSIAN_PRIME_COSET_HEIGHT.md`.
 
 **⭐ 2026-08-18 — ERDŐS #1208: SHARP ASPECT-RATIO DICHOTOMY FOR RECTANGULAR LATTICE FIBRES.**

@@ -88,11 +88,10 @@ This identifies the precise shape of the remaining obstruction:
    these two regimes and are not yet controlled in aggregate.
 
 The exact quarter-turn-stable version of the third item is treated in
-`GAUSSIAN_PRIME_COSET_HEIGHT.md`.  Such a lattice is a Gaussian ideal rather
-than an arbitrary oblique lattice.  A nonzero coset of an odd prime-norm
+`GAUSSIAN_IDEAL_COSET_HEIGHT.md`.  Such a lattice is a Gaussian ideal rather
+than an arbitrary oblique lattice.  A nonzero integral coset of every such
 ideal pays the weaker but cube-root-critical height `Omega(s^(3/2))` on an
-`s`-by-`s` subpatch.  Composite-index and approximate-module versions remain
-open.
+`s`-by-`s` subpatch.  Only approximate-module versions remain open.
 
 ## 4. Verification
 

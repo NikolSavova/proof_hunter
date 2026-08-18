@@ -449,6 +449,29 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 arbitrary Gaussian-ideal critical height (Sihao + Codex)
+
+- Removed the prime-norm restriction from the exact Gaussian-coset theorem.
+  If `z` is any nonzero Gaussian integer and `t in Z[i] \ zZ[i]`, radial
+  uniqueness of the balanced patch `t+z([r]+i[r])` in a box of radius `M`
+  forces `M>>r^(3/2)`.
+- Reduced `t/z` to its true common denominator `h`, with coprime triple
+  `(p,s,h)`.  The gap equation is one linear congruence modulo `h`.  A
+  primitive coprime solution is found within `O(h)` of the required centre
+  ratio; doubling both gaps makes the two shifted-square progressions
+  compatible modulo their full gcd `4h`, including when `h` is even.
+- Added `GAUSSIAN_IDEAL_COSET_HEIGHT.md` and an exact verifier.  Thirty-one
+  fixed certificates cover inert rational steps, split composites, powers of
+  `1+i`, mixed even norms, nonprimitive steps, and numerator gcds supported on
+  different denominator primes.  A separate deterministic fuzz run of 400
+  composite denominators also passed.
+- Targeted web searches found general lattice-coset and lattice-distance
+  material but no matching translated-patch height theorem.  This is not a
+  definitive MathSciNet/zbMATH novelty audit.
+- Exact composite ideals are now closed locally.  The live full-resolution
+  task is extraction/stability for approximate Gaussian modules and summing
+  their contribution to the off-diagonal `Z_K` moment.  No paid API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 Gaussian-prime coset critical-height theorem (Sihao + Codex)
 
 - Corrected the model for the remaining “oblique lattice” branch.  Exact
