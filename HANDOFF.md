@@ -123,6 +123,18 @@ difference set, giving `|D+JD|>=|H|^2`.  The one-line and perpendicular-ruler
 certificates pass exactly.  The unresolved branch now has polynomially many
 parallel layers in every useful direction.
 
+A second unconditional branch now follows from a direct Ruzsa injection.
+For every centrally symmetric `D`,
+`|D+JD|^2 >= |D||D+D|`.  Hence
+`|D+D||D+JD| >= N^(1/2)|D+D|^(3/2)`, and the full product theorem already
+holds whenever `|D+D| >= N^(5/3-o(1))`.  Read
+`ORTHOGONAL_RUZSA_HIGH_SUPPORT_BRANCH.md` and run its exact verifier.  The
+live case is therefore both additively compressed and wide:
+`|D+D| < N^(5/3-o(1))`, with polynomially many parallel layers in every
+useful direction.  This removes the generic independent-segment barriers
+from the hard branch because their ordinary support is essentially
+quadratic.
+
 **⭐ 2026-08-18 — ERDŐS #1208: ADAPTIVE EIGHT-CORNER GATE KILLED ASYMPTOTICALLY.**
 The eight-corner charging reduction is correct, but its proposed
 subpolynomial local hypothesis is false at linear scale.  Starting from one

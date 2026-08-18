@@ -449,6 +449,25 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 Ruzsa high-support branch (Sihao + Codex)
+
+- Applied Ruzsa's triangle inequality with `X=D`, `Y=JD`, `Z=-D` to prove
+  the exact universal inequality `|D+JD|^2 >= |D||D+D|`.  An explicit
+  injection from `JD x (D+D)` into `(D+JD)^2` is included, so no asymptotic
+  or geometric input is hidden.
+- Consequently
+  `|D+D||D+JD| >= N^(1/2)|D+D|^(3/2)`.  The full `N^(3-o(1))` product and
+  cube-root grid conclusion now hold throughout the high-support branch
+  `|D+D| >= N^(5/3-o(1))`.
+- Added `ORTHOGONAL_RUZSA_HIGH_SUPPORT_BRANCH.md` and its exact regression
+  verifier.  The closure, transformed-parabola, perpendicular-ruler, and
+  exhaustive small-grid checks pass.  The unresolved case is now
+  simultaneously low-support and wide.  Target a common-energy inverse
+  theorem or decorated-parallelogram estimate only in that compressed
+  regime.  Literature check found no generic common-energy theorem carrying
+  the required quarter-turn plus complete-difference structure.  Direct API
+  spend `$0`.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 product theorem for parallel covers (Sihao + Codex)
 
 - Proved an exact structured branch of the full orthogonal product gate.  If

@@ -261,3 +261,15 @@ termwise Fourier estimates are all too strong.  Plausible mechanisms are:
 
 No existing generic common-energy theorem located in the literature includes
 the complete-difference/radial constraint needed for (5.1).
+
+There is now a useful unconditional restriction on where (5.1) is needed.
+`ORTHOGONAL_RUZSA_HIGH_SUPPORT_BRANCH.md` proves
+
+\[
+ |D+JD|^2\ge N|D+D|.
+\]
+
+Consequently the full product theorem already holds if
+`|D+D|>=N^(5/3-o(1))`.  The energy--support attack may therefore assume from
+the outset that `D` has doubling below `N^(2/3-o(1))`, in addition to being
+outside the subpolynomial parallel-cover branch.
