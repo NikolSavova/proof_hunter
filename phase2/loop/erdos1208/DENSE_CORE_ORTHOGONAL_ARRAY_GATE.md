@@ -191,6 +191,17 @@ carry the non-quasirandomness.  A dyadic almost-regularization followed by a
 recursive use of (3.6) is a concrete possible density-increment mechanism;
 no power-saving recurrence has yet been proved.
 
+The direction of implication is important.  Equation (3.6) is only a weak
+Frobenius-norm consequence of the constant second singular value in (3.4),
+not an equivalent formulation.  On balanced supports of size `k`, a
+biregular row of the critical size `r=k^(3/2)` has density `k^(-1/2)` and the
+left side of (3.6) is already `k^(1/2)`, so (3.6) alone is vacuous there.  By
+contrast a random `sqrt(k)`-regular bipartite graph has normalized second
+singular value `k^(-1/4+o(1))`; the forced constant `1/6` in (3.4) still says
+that a realizable critical row has macroscopic community or localized
+structure.  It is (3.4), together with the minimum-degree core, that must be
+iterated.
+
 This spectral gap is only an inverse certificate, not yet a counting theorem.
 To reach the fixed-row `k^(3/2+o(1))` scale, one needs to turn its large
 coordinate correlation into either
@@ -198,6 +209,16 @@ coordinate correlation into either
 1. a density increment on smaller role subsets, iterated until (2.4) applies;
    or
 2. a radial collision between two actual edges of `A`.
+
+For the original fixed-row `C_4` gate, the sharp quantitative version of the
+first option is a **six-projection sparse energy increment**: assuming every
+pair projection has more than `k^(2+epsilon)` four-cycles, extract one common
+subfamily whose six degree-normalized pair graphs are simultaneously
+quasirandom.  Equation (3.4) would then contradict that subfamily.  Dense
+graph regularity does not provide this at the critical projection density
+`k^(-1/2)`; a relative/sparse theorem with polynomial losses is required.
+This is the precise combinatorial bridge now missing between the exponent-
+sharp `C_4` gate and the orthogonal-array obstruction.
 
 Generic hypergraph regularity does not automatically give the required power
 scale, and exact coordinates can cluster arbitrarily closely outside the

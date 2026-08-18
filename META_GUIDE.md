@@ -465,7 +465,9 @@ prior-art kill-search**; has a writeable-down win condition.
   singular value—at least `1/6`.  Thus dense rows are hereditarily
   non-quasirandom in at least one projection.  The exact degree-only form is
   `sum_(ab in E)1/(deg(a)deg(b))>=1+1/36` for some projection; in a biregular
-  graph this forces density at most `36/37`.  Turning this certificate into
+  graph this forces density at most `36/37`.  Correctly, this is a one-way
+  Frobenius corollary and is vacuous at `r=k^(3/2)`; the constant second
+  singular value is the nontrivial statement at that scale.  Turning it into
   a power-scale density increment or radial collision is the remaining step;
   no new final exponent is claimed.
 - Added `DENSE_CORE_ORTHOGONAL_ARRAY_GATE.md` and the pure-stdlib exact verifier
