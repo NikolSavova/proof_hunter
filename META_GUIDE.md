@@ -449,6 +449,62 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 support-adaptive popular-overlap gate (Sihao + Codex)
+
+- Replaced the false support-free energy uncertainty shortcut with an exact
+  adaptive tail decomposition.  For `D=A-A`, `N=|D|`, `S=|D+D|`, set
+  `K=S/N`.  The zero shift, the shifts with `R_D(q)<=K`, and then those with
+  `R_D(Jq)<=K` contribute at most `3NS`; hence the full energy--support gate
+  reduces to the nonzero two-sided popular tail
+  `sum R_D(q)R_D(Jq)<=N^(1+o(1))S` over `R_D(q),R_D(Jq)>K`.
+- Added `SUPPORT_ADAPTIVE_POPULAR_OVERLAP_GATE.md` and its exact verifier.
+  The verifier passes.  Tail ratios are `0` on the parabola, dense
+  perpendicular ruler, and quadratic fibre; at most `0.006708` on the stored
+  closure chain through 70 points; and grow from `2.503` to `16.225` on the
+  abstract radial transversals from side 8 to 30.  The cutoff therefore
+  removes all known genuine obstructions while preserving the endpoint-
+  realizability separation.
+- **Current gate:** prove a dyadic simultaneous-popular-overlap bound using
+  complete-difference endpoint decorations, in the already-reduced regime
+  `S<N^(5/3-o(1))` outside subpolynomial parallel covers.  Candidate tools:
+  simultaneous Katz--Koester, the seven-incidence switching identity, or an
+  inverse theorem forcing support creation/parallel concentration.
+- Factored the rich tail exactly as `sum_{u,s}g_K(u,s)` over at most `NS`
+  selector-free labels.  A rich fibre `Q` places three affine copies of `Q`
+  inside `D`; double popularity pigeonholes a subset
+  `Q'` of size `>|Q|K^2/N^2` with two additional affine copies.  Added
+  `SUPPORT_ADAPTIVE_RICH_FIBRE_GATE.md` and exact load profiles.  Closure-40
+  has `(mass,support,max,moment)=(1634032,1481835,13,2004548)`; radial
+  side-12 has `(693008,79157,35,9209244)`.
+- Stress-tested the same fibre gate on sheared/stretched Welch Costas sets of
+  sizes 10, 16, 22, and 30.  Their rich-load maxima are `2,2,4,3`, and their
+  second-moment/mass ratios stay below `1.158`; near-injectivity is therefore
+  not peculiar to the relation-closure witness.
+- Audited Shkredov's 2014 popular-difference machinery and the 2024/2025
+  common-energy papers.  They can return a small-doubling model but are
+  automorphism-blind; they discard the simultaneous `q,Jq` roles and endpoint
+  decorations.  The radial counterexample shows that this lost information
+  is essential.  The missing theorem is a Euclidean stability result for
+  the five-affine-copy model.
+
+### 2026-08-18 (latest) — ERDŐS #1208 energy-product gate killed by perpendicular rulers (Sihao + Codex)
+
+- Found that the new inequality `E_+(D)E_perp(D)<=N^(5+o(1))` had omitted the
+  already-constructed dense perpendicular-ruler family.  The omission is
+  fatal at exponent scale, not merely at the constant.
+- Split a dense `2s`-mark Erdos--Turan ruler into `X,Y` and place them on
+  perpendicular axes with a generic integer offset.  The resulting set is
+  integral and distance-Sidon.  For `P=X-X`, `Q=Y-Y`, both have
+  `Theta(s^2)` elements inside an interval of length `O(s^2)`.
+- Since horizontal `P` and vertical `Q` lie in `D=A-A`, Cauchy gives both
+  `E_+(D)>>s^6` and `E_perp(D)>>s^6`.  As `N=Theta(s^2)`, their product is
+  `Omega(N^6)`, violating the proposed target by a factor `Omega(N)`.
+- Added `ORTHOGONAL_ENERGY_PRODUCT_RULER_BARRIER.md` and its exact verifier.
+  This does not harm the live support-sensitive gate: the same family has
+  essentially maximal `|D+D|` and sits in the already-proved high-support
+  branch.  Resume with `E_perp<=N^(1+o(1))|D+D|` or its support-compensated
+  switching formulation.  Direct API spend `$0`.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 orthogonal energy-product uncertainty gate (Sihao + Codex)
 
 - Eliminated the support variable from the global gate.  With

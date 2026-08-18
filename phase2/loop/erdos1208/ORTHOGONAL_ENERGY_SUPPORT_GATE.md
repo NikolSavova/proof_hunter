@@ -307,7 +307,8 @@ family forces `|D+D|=Omega(N^2)`, so it is already in the Ruzsa high-support
 branch.  Any continuation must prove a support-compensated rich-tail
 dichotomy in the live low-support regime.
 
-There is now a cleaner global sufficient condition.  If
+The following briefly proposed global sufficient condition is false.  If it
+held,
 
 \[
  \mathcal E_+(D)\mathcal E_\perp(D)\le N^{5+o(1)},
@@ -315,7 +316,25 @@ There is now a cleaner global sufficient condition.  If
 
 then Cauchy's lower bound
 `E_+(D)>=N^4/|D+D|` gives the present energy--support gate immediately.
-`ORTHOGONAL_ENERGY_PRODUCT_GATE.md` records the shifted-positive Fourier
-form, exact profiles, and the polynomial radial-only failure.  Treat that
-uncertainty inequality as the primary target and the switching expansion as
-its physical-space fallback.
+However `ORTHOGONAL_ENERGY_PRODUCT_RULER_BARRIER.md` constructs integral
+distance-Sidon sets with both factors `Omega(N^3)`, so their product is
+`Omega(N^6)`.  Ordinary energy does not distinguish small ordinary support
+from a dense structured component inside a set having nearly maximal
+support.  The present support-sensitive inequality and the support-compensated
+switching expansion remain the live targets.
+
+There is now an exact support-adaptive localization of the live target.  Put
+`K=|D+D|/N` and retain only nonzero shifts satisfying both
+`R_D(q)>K` and `R_D(Jq)>K`.  The zero shift and the two complementary low
+parts contribute at most `3N|D+D|` in total, so it is enough to prove
+
+\[
+ \sum_{\substack{q\ne0\\R_D(q)>K,\ R_D(Jq)>K}}
+ R_D(q)R_D(Jq)\le N^{1+o(1)}|D+D|.
+\]
+
+Read `SUPPORT_ADAPTIVE_POPULAR_OVERLAP_GATE.md`.  Its exact verifier shows
+that this nonzero tail is empty on the ruler, parabola, and quadratic-fibre
+obstructions, is below `0.007N|D+D|` on the stored closure chain, and grows
+past `16N|D+D|` on the abstract radial transversals.  This is the current
+sharpest restart point.

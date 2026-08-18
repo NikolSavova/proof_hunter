@@ -1,4 +1,11 @@
-# A global orthogonal energy-product gate for Erdos 1208
+# A failed global orthogonal energy-product gate for Erdos 1208
+
+> **Status update (2026-08-18).**  The target below is false.  Dense
+> perpendicular Golomb rulers give genuine integral distance-Sidon sets with
+> `E_+(D),E_perp(D)=Omega(N^3)`, and hence product `Omega(N^6)`.
+> `ORTHOGONAL_ENERGY_PRODUCT_RULER_BARRIER.md` contains the proof.  The exact
+> complete-difference positivity in Section 3 is therefore insufficient; the
+> support-sensitive gate `E_perp<=N^(1+o(1))|D+D|` remains live.
 
 ## 1. The new sufficient inequality
 
@@ -22,14 +29,14 @@ Define the ordinary and orthogonal common energies
  \mathcal E_\perp(D)=\sum_qR_D(q)R_D(Jq).        \tag{1.1}
 \]
 
-The clean new target is
+The formerly proposed target was
 
 \[
  \boxed{\mathcal E_+(D)\mathcal E_\perp(D)
         \le N^{5+o(1)}.}                         \tag{1.2}
 \]
 
-It resolves the cube-root exponent.  Indeed, with `S=|D+D|`, Cauchy gives
+It would resolve the cube-root exponent.  Indeed, with `S=|D+D|`, Cauchy gives
 
 \[
  \mathcal E_+(D)\ge \frac{N^4}{S}.              \tag{1.3}
@@ -205,10 +212,9 @@ A decisive kill is an infinite family of distance-Sidon sets with
    \ge N^{5+\varepsilon}                          \tag{5.1}
 \]
 
-for fixed `epsilon>0`.  Finite constants above one do not matter.  None of
-the stored complete-difference families exhibits a growing normalized
-product, while the abstract radial family confirms that the test is capable
-of detecting the missing endpoint structure.
+for fixed `epsilon>0`.  The dense perpendicular-ruler family supplies exactly
+this with `epsilon=1`: both factors are `Omega(N^3)`.  It was inadvertently
+omitted from the original profile table.  The gate is therefore closed.
 
 Run `verify_orthogonal_energy_product_gate.py` for all exact profiles in
 Sections 2 and 4.

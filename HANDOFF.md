@@ -65,7 +65,39 @@
 
 ## 3. WHAT WE'VE DONE
 
-**⭐ 2026-08-18 — ERDŐS #1208: GLOBAL ORTHOGONAL ENERGY-PRODUCT GATE ISOLATED.**
+**⭐ 2026-08-18 — ERDŐS #1208: FULL ENERGY GATE LOCALIZED TO A SUPPORT-ADAPTIVE POPULAR TAIL.**
+Let `D=A-A`, `N=|D|`, `S=|D+D|`, `K=S/N`, and
+`R(q)=|D intersect (D+q)|`.  Splitting the common orthogonal energy at the
+adaptive threshold gives the exact inequality
+`E_perp(D)<=3NS+sum_{q in P_K}R(q)R(Jq)`, where `P_K` consists of nonzero
+shifts for which both `R(q)>K` and `R(Jq)>K`.  Thus the full cube-root problem
+is reduced to bounding only this two-sided rich tail by `N^(1+o(1))S`.
+The verifier passes: the nonzero tail is empty on the perpendicular ruler,
+parabola, and quadratic-fibre obstructions, below `0.007NS` on the closure
+chain, but grows past `16NS` on the non-realizable radial transversals.  Read
+`SUPPORT_ADAPTIVE_POPULAR_OVERLAP_GATE.md` and run its verifier.  The live
+mathematical task is now a simultaneous popular-difference inverse theorem
+using the uniquely decorated endpoints of the complete difference set.
+The sharper selector-free factorization in
+`SUPPORT_ADAPTIVE_RICH_FIBRE_GATE.md` shows that one heavy adaptive fibre
+forces five affine copies of a common subset inside `D`; this is the exact
+rotation-sensitive input missing from generic common-energy theorems.
+
+**⭐ 2026-08-18 — ERDŐS #1208: GLOBAL ENERGY-PRODUCT GATE KILLED BY DENSE PERPENDICULAR RULERS.**
+The briefly proposed uncertainty inequality
+`E_+(D)E_perp(D)<=N^(5+o(1))` is false by a full power.  Split a dense
+`2s`-mark Erdos--Turan Golomb ruler into `X,Y`, place them on perpendicular
+axes, and choose a generic integral offset.  This gives a genuine integral
+distance-Sidon set.  Its difference set contains horizontal `P=X-X` and
+vertical `Q=Y-Y`, both of size `Theta(s^2)` in an interval of length
+`O(s^2)`.  Cauchy gives `E_+(D),E_perp(D)>>s^6=Theta(N^3)`, so the normalized
+product grows as `Omega(N)`.  The earlier audit omitted this already-known
+family.  Read `ORTHOGONAL_ENERGY_PRODUCT_RULER_BARRIER.md` and run its exact
+verifier.  The support-sensitive gate `E_perp<=N^(1+o(1))|D+D|` remains the
+primary target; the ruler family has essentially maximal ordinary support
+and saturates rather than contradicts that scale.
+
+**RETRACTED TARGET (kept for chronology) — GLOBAL ORTHOGONAL ENERGY-PRODUCT GATE.**
 For `D=A-A`, `N=|D|`, define
 `E_+(D)=sum_q R_D(q)^2` and
 `E_perp(D)=sum_q R_D(q)R_D(Jq)`.  The single uncertainty inequality
@@ -86,9 +118,10 @@ constant one is false (a five-point grid set gives normalized product
 closure-30 gives `0.6601...`, parabola-31 `0.2367...`, and the quadratic
 gadget `0.0284...`.  Abstract radial transversals grow from `4.409` at side 8
 to `27.631` at side 30, proving that endpoint positivity is essential.  Read
-`ORTHOGONAL_ENERGY_PRODUCT_GATE.md` and run its exact verifier.  This is now
-the primary global target; the support-compensated switching charge is the
-physical-space fallback.
+`ORTHOGONAL_ENERGY_PRODUCT_GATE.md` and run its exact verifier.  This was
+briefly the primary global target, but the ruler barrier above closes it.
+The support-compensated switching charge and energy--support inequality are
+again primary.
 
 **⭐ 2026-08-18 — ERDŐS #1208: ENDPOINT SWITCHING GATE ISOLATED; MAXIMUM-FIBRE ROUTE KILLED SHARPLY.**
 The live common energy now has an endpoint-aware second-moment organization.
@@ -1509,12 +1542,10 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   `|D+D|>=N^(5/3-o(1))`.  The dense Sidon-ruler quadratic fibre proves that
   an unrestricted subpolynomial midpoint-charge theorem is false, but pays
   maximally with `|D+D|=Omega(N^2)`.
-- [ ] Attack the cleaner energy uncertainty gate
-  `E_+(D)E_perp(D)<=N^(5+o(1))`.  In Fourier space use
-  `hat(1_D)=|hat(1_A)|^2-(k-1)` together with the direct sum
-  `|A+JA|=k^2`; do not weaken to radial uniqueness, which violates the gate
-  polynomially.  A valid kill must be an infinite complete-difference family
-  with normalized product `N^epsilon`, not a finite constant above one.
+- [x] Kill the proposed energy uncertainty gate
+  `E_+(D)E_perp(D)<=N^(5+o(1))`.  Dense perpendicular rulers are an infinite
+  complete-difference family with normalized product `Omega(N)`.  Do not
+  return to a support-free product of ordinary and orthogonal energies.
 
 **Erdős #669 candidate-result obligations.**
 
@@ -1755,12 +1786,11 @@ average load `Omega(N)`.  But it simultaneously forces
 branch.  Read `ENDPOINT_MIDPOINT_SIDON_RULER_BARRIER.md`; attack only the
 support-compensated version in the low-support, many-layer regime.
 
-**New primary target (18 August).**  The same full theorem follows from the
-global uncertainty inequality `E_+(D)E_perp(D)<=N^(5+o(1))`.  It survives all
-stored complete-difference families, has an exact shifted-positive Fourier
-form, and sharply rejects the abstract radial transversals.  Read
-`ORTHOGONAL_ENERGY_PRODUCT_GATE.md`; pursue a spectral dyadic/inverse proof
-before returning to another local switching charge.
+**Closed detour (18 August).**  The proposed global uncertainty inequality
+`E_+(D)E_perp(D)<=N^(5+o(1))` is false on dense perpendicular rulers, with
+normalized product `Omega(N)`.  Read
+`ORTHOGONAL_ENERGY_PRODUCT_RULER_BARRIER.md`.  Resume with the explicitly
+support-sensitive energy gate or support-compensated switching charge.
 
 ### ⭐ 2026-08-17 — ERDŐS #838: GATE NARROWED TO A SELECTED ENDPOINT RESET; RUN THE EMPIRICAL MINIMIZER PROGRAM BEFORE MORE BARRIERS
 

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Exact profiles for the orthogonal energy-product gate."""
+"""Historical exact profiles for the now-false energy-product gate.
+
+The asymptotic perpendicular-ruler counterexample is checked separately by
+``verify_orthogonal_energy_product_ruler_barrier.py``.
+"""
 
 from __future__ import annotations
 
@@ -96,7 +100,7 @@ def verify_radial_failure() -> None:
 def main() -> None:
     verify_complete_difference_profiles()
     verify_radial_failure()
-    print("orthogonal energy-product gate: PASS")
+    print("historical energy-product profiles: PASS (gate itself is false)")
 
 
 if __name__ == "__main__":
