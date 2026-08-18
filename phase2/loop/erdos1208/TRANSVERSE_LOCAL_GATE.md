@@ -49,8 +49,10 @@ removes the known obstruction cleanly: the quadratic local overlaps in the
 perpendicular-ruler construction have `d dot e=0`, so their transverse local
 overlap is zero.
 
-Equation (1.4) is **not proved**.  It is the main new bet isolated in this
-note.
+Equation (1.4) is **not proved**.  The later 90-point closure audit in
+Section 7 makes a `k^(3/2)` counterexample family plausible, so this is no
+longer the main proof bet; it remains a clean sufficient condition and
+falsification target.
 
 ## 2. Quarter-turn interpretation
 
@@ -237,10 +239,34 @@ fixed endpoints of `d`.  This equivalence makes endpoint reuse--rather than a
 bounded forbidden pattern--the precise next gate.
 
 `TRANSVERSE_RELATION_CLOSURE.md` records a stronger purpose-built adversary.
-An exact distance-Sidon chain reaches `m_d=237` at `k=47`, so even the
+An exact distance-Sidon chain reaches `m_d=614` at `k=90`, so even the
 previously tempting constant bound `m_d<=2k+O(1)` is false.  Its 17-point
 prefix also kills a proposed two-graphic-forest charging proof: after removing
 relations incident to the fixed endpoints, it has 29 relation elements but
-the two projected graphic ranks sum to only 26.  The asymptotic gate survives:
-the complete 47-point relation hypergraph is exactly 8-degenerate, hence is
-still hereditarily linear on this adversarial family.
+the two projected graphic ranks sum to only 26.
+
+## 7. Later correction: the local maximum is strongly threatened
+
+The deterministic relation-closure search was extended from 47 to 90 points.
+The exact endpoint is
+
+\[
+ m_{(0,-1)}=614=0.7191\ldots k^{3/2}.
+\]
+
+From `k=70` through `k=90`, the quotient `m_d/k^(3/2)` stays between
+`0.718` and `0.722`.  Fixed degeneracy also fails: the relation hypergraph
+has degeneracy 9 at `k=63`, 10 at `k=76`, and 11 at `k=81` and `90`.
+This does not prove an infinite family and therefore does not formally refute
+(1.4), but it reverses the earlier finite evidence.
+
+At the same time the full 90-point transverse energy is only
+
+\[
+ E_{\rm tr}=504,558=0.6921\ldots k^3,
+\]
+
+and the rotated support is `0.6127... k^3`.  The global cubic target survives.
+The active direction is therefore a tail/moment bound for the distribution of
+`m_tr(d)`, or the equivalent decorated-midpoint formulation in
+`TRANSVERSE_GLOBAL_MIDPOINT_GATE.md`, rather than an `L^infinity` estimate.

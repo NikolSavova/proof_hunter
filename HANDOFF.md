@@ -112,34 +112,75 @@ distance-Sidon sets forbid automatically.  A valid off-diagonal alternating
 three-cycle is also forbidden, but no extremal theorem forces it from small
 support.
 
-The transverse target now has a sharper local form.  With `D=A-A`, define
+The transverse target has the exact local decomposition.  With `D=A-A`, define
 `m_tr(d)=#{e in D\{0}: d-Je in D, d dot e != 0}`.  The exact identity
 `2E_trans=sum_{d in D}m_tr(d)` shows that
 `max_d m_tr(d)<=k^(1+o(1))` would close the global transverse gate.  The
-dot-product deletion removes exactly the perpendicular-ruler obstruction.  A
-direct falsification search found no superlinear trend: the largest exact
-ratio through the targeted `k=12,16,20` witnesses is `31/16`.  A secondary
-route is to prove at most `k^(4+o(1))` four-cycles in the transverse graph.
-Proofs, witnesses, exact verifiers, and kill conditions are in
-`phase2/loop/erdos1208/TRANSVERSE_LOCAL_GATE.md`.
+dot-product deletion removes exactly the perpendicular-ruler obstruction.
+The local maximum is no longer a credible primary theorem: the deterministic
+relation-closure chain now reaches an exact 120-point distance-Sidon set with
+`m_(0,-1)=948=0.7212...k^(3/2)`, and the normalized value stays close to
+`0.72` from `k=70` through `120`.  This is finite evidence, not an
+asymptotic counterexample, but it strongly threatens every `k^(1+o(1))`
+maximum-fibre proof.
 
-The local gate has now survived a substantially stronger, purpose-built
-falsification campaign, but two tempting shortcuts are dead.  Full Welch
-Costas hosts have quadratic local overlap, while exact distance-Sidon subsets
-at ambient sizes `126,250,508` retain only `43/25`, `68/40`, and `94/55`
-relations per selected point.  Their full Gaussian relation matrices have
-exact rank `N-2` at `N=30,60,126`, so the quadratic systems are rigid up to
-similarity and cannot be repaired by a global linear deformation.
+Full Welch Costas hosts still provide the vector-Sidon control: they have
+quadratic local overlap, while exact distance-Sidon subsets at ambient sizes
+`126,250,508` retain only `43/25`, `68/40`, and `94/55` relations per selected
+point.  Their full Gaussian relation matrices have exact rank `N-2` at
+`N=30,60,126`, so the quadratic systems are rigid up to similarity and cannot
+be repaired by a global linear deformation.
 
-A relation-forcing closure search produced a stronger exact distance-Sidon
-witness: `k=47`, `m_(0,-1)=237`, ratio `5.043`.  This kills
-`m_d<=2k+O(1)` and a proposed two-graphic-forest charging argument (the
-17-point core already has `29>13+13`).  It does **not** kill the asymptotic
-gate: the full 47-point relation hypergraph is exactly 8-degenerate.  The
-sharp live statement is therefore the equivalent hereditary endpoint-density
-bound `|F|<=|V_d(F)|^(1+o(1))`, or a `k^(o(1))` degeneracy theorem.  See
-`WELCH_TRANSVERSE_SUBSET_AUDIT.md` and
-`TRANSVERSE_RELATION_CLOSURE.md`; both have exact certificate scripts.
+The same closure chain kills fixed degeneracy: its relation hypergraph rises
+from degeneracy `8` at `k=47` to `9,10,11,12,13` at
+`k=63,76,81,108,120`.  Nevertheless its
+global data remain exactly on the desired scale:
+`E_trans=1,399,192=0.8097...k^3` and
+`|A+JA-JA|=1,011,786=0.5855...k^3` at `k=120`.  Thus the corrected lead is a
+tail/moment bound for the whole overlap distribution, not an `L^infinity`
+bound.  Equivalently, the hard configurations are decorated pairs of unique
+midpoints whose separation is perpendicular to and half the length of an edge
+of `A`; see `TRANSVERSE_GLOBAL_MIDPOINT_GATE.md`.  Elekes's deltoid theorem
+does not apply to this six-point configuration.  Exact artifacts are in
+`TRANSVERSE_RELATION_CLOSURE.md`, `search_transverse_closure.py`, and the two
+closure verifiers.
+
+A second correction now replaces the raw global `L^1` target by an exact
+variance gate.  Put the transverse relations in a `D x D` row--colour matrix
+`B(d,e)=1_D(d-Je)1_(d dot e !=0)`.  Since `|D|<k^2`, either
+`sum_d row(d)^2<=k^(4+o(1))` or the dual column estimate implies
+`E_trans<=k^(3+o(1))` by Cauchy--Schwarz.  The 90-point heavy-row witness has
+both second moments about `2.5 k^4`.  A new exact 65-point witness destroys
+the dual pointwise shortcut with one column of size `1010=0.239...k^2`, yet
+its row/column moments remain `0.037 k^4` and `0.701 k^4` and its support is
+`0.915 k^3`.  A 45-point hybrid simultaneously forces a row of size 147 and
+a column of size 292 while preserving the fourth-power moment scale.  These
+sets have maximum collinearity at most four, so the phenomenon is genuinely
+transverse.  `TRANSVERSE_SECOND_MOMENT_GATE.md` contains the exact reduction,
+the quantitative reason black-box BSG is too weak, and all verifier paths.
+
+The sharp wedge inequality suggested at `k=100` is now falsified exactly and
+continues to drift.  Writing `T=sum_d r(d)` and
+`W=sum_d binom(r(d),2)`, the 120-point witness has
+`W=361,646,732=1.74405...k^4` and `W/(119T)=1.086001...`.  A constant-factor
+bound `W=O(kT)` would suffice, but the exponent-critical theorem is only
+`W<=k^(4+o(1))`; that remains fully compatible with every test.  The new
+`TRANSVERSE_PARALLELOGRAM_GATE.md` identifies `W` exactly as decorated
+parallelograms in the direct-sum set `B=A+JA`.  Even after this moment theorem,
+the separate intermediate line-rich/transverse coupling is still needed for
+a full solution.
+
+The latest spectral audit removes two more tempting shortcuts.  The operator
+bound `||B||_op<=k^(1+o(1))` is sufficient, but its pointwise Schur
+strengthening is strongly threatened: the fixed heavy row has exact two-step
+mass `276,604=19.209...k^2=1.753...k^(5/2)` at `k=120`, with the
+`k^(5/2)` normalization stabilizing along the closure chain.  Dropping the
+condition that the common sum lies back in `D` gives the mixed energy
+`sum_q R_D(q)R_D(Jq)`, which grows on the `k^5` scale in exact tests.  The
+restricted identity in `TRANSVERSE_SPECTRAL_AUDIT.md` shows that the final
+`1_D` incidence is load-bearing.  Continue to target the global fourth
+moment/decorated-parallelogram estimate; do not pursue a local two-step or
+unrestricted Fourier-energy proof.
 
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
@@ -1057,19 +1098,21 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   `E_trans(A) <= k^(3+o(1))`.  Elekes controls the parallel collisions in the
   wide regime.  A pre-registered kill is a distance-Sidon family with maximum
   line occupancy `k^(o(1))` but `E_trans >= k^(3+epsilon)`.
-- [ ] Prefer the sharper sufficient local gate
-  `max_d #{e in D\{0}:d-Je in D, d dot e != 0} <= k^(1+o(1))` from
-  `TRANSVERSE_LOCAL_GATE.md`.  Its exact sum is `2E_trans`.  A family with a
-  fixed power excess kills this route; alternatively prove the sufficient
-  four-cycle bound `Q_trans <= k^(4+o(1))`.
-- [ ] Use the corrected hereditary target from
-  `TRANSVERSE_RELATION_CLOSURE.md`: prove or falsify that every fixed-`d`
-  relation subfamily has `|F|<=|V_d(F)|^(1+o(1))`.  Do not assume
-  `m_d<=2k+O(1)` or partitionability into the two `e/f` graphic forests; the
-  exact 47-point closure witness kills both.  The current viability signal is
-  that this adversary is only 8-degenerate.  The next true kill condition is
-  a sequence with hereditary degeneracy `k^epsilon`, not a growing constant
-  in the global ratio.
+- [x] Stress-test the sharper sufficient local gate
+  `max_d #{e in D\{0}:d-Je in D, d dot e != 0} <= k^(1+o(1))` and its
+  hereditary formulation.  The exact 90-point closure chain has
+  `m_d=0.7191...k^(3/2)` and degeneracy 11, with stable square-root
+  normalization from `k=70` onward.  This is not an infinite counterexample,
+  but it kills fixed degeneracy and makes the maximum-fibre theorem the wrong
+  lead.  Promote the chain to an asymptotic family or prove it must terminate;
+  do not assume `m_d<=2k+O(1)` or a two-forest charge.
+- [ ] Attack the corrected **global** gate
+  `sum_d m_tr(d)<=k^(3+o(1))` through a tail/moment estimate.  The 90-point
+  adversary has a `k^(3/2)` maximum but total `0.6921...k^3`, so any proof must
+  allow heavy fibres.  The equivalent decorated-midpoint form is in
+  `TRANSVERSE_GLOBAL_MIDPOINT_GATE.md`: after the `O(k^3)` intersecting-edge
+  term, count disjoint cross-pairings of unique midpoints satisfying
+  `x-y=2J(m_R-m_L)`.  The deltoid theorem does not cover this object.
 
 **Erdős #669 candidate-result obligations.**
 
@@ -1229,8 +1272,9 @@ Read `phase2/loop/erdos1208/HANDOFF_20260817.md`, then
 `TRANSVERSE_LOCAL_GATE.md`, `ADVERSARIAL_ROTATED_SUPPORT_SEARCH.md`, and
 `COLLISION_PATTERN_AUDIT.md`.  Then read
 `WELCH_TRANSVERSE_SUBSET_AUDIT.md` and
-`TRANSVERSE_RELATION_CLOSURE.md`; they contain the newest corrections to the
-local proof strategy.
+`TRANSVERSE_RELATION_CLOSURE.md`, followed by
+`TRANSVERSE_GLOBAL_MIDPOINT_GATE.md`; they contain the newest correction from
+the local maximum to the global overlap distribution.
 Reproduce the new finite checks with
 
 ```bash
@@ -1243,6 +1287,9 @@ python3 phase2/loop/erdos1208/verify_welch_transverse_subsets.py
 python3 phase2/loop/erdos1208/verify_welch_relation_rigidity.py
 python3 phase2/loop/erdos1208/search_welch_relation_hyperplanes.py
 python3 phase2/loop/erdos1208/verify_transverse_closure_witness.py
+python3 phase2/loop/erdos1208/verify_transverse_closure_global.py
+python3 phase2/loop/erdos1208/verify_transverse_color_closure.py
+python3 phase2/loop/erdos1208/verify_transverse_dual_closure.py
 ```
 
 The proof-level target is
@@ -1264,19 +1311,34 @@ short-cycle exclusion are already falsified or quantitatively exhausted.  The
 old four-row `q=5` calculation is killed: its diagonal/off-diagonal collision
 premise cannot occur in a distance-Sidon set.
 
-Start with the sharper exact local identity in `TRANSVERSE_LOCAL_GATE.md`:
-`2E_trans=sum_d m_tr(d)`.  The local theorem `max_d m_tr(d)<=k^(1+o(1))`
-would imply the global target at once.  The correct equivalent form is the
-hereditary endpoint-density statement
-`|F|<=|V_d(F)|^(1+o(1))`.  Full Welch arrays show that vector uniqueness alone
-allows quadratic reuse, while exact radially unique selections restore linear
-scale.  The relation-closure adversary raises the exact global ratio to
-`237/47`, killing the guesses `m_d<=2k+O(1)` and the two-forest charge, but its
-relation hypergraph remains exactly 8-degenerate.  Thus attack hereditary
-degeneracy directly; a sequence with core degeneracy `k^epsilon` is the honest
-kill condition.  The proof must use endpoint reuse plus Euclidean length
-uniqueness; affine rank, a small constant, and the two projected graphic
-matroids are all insufficient.
+Use the exact identity in `TRANSVERSE_LOCAL_GATE.md`,
+`2E_trans=sum_d m_tr(d)`, but **do not** start by bounding the maximum fibre.
+The deterministic closure chain now has
+`m_(0,-1)=614=0.7191...k^(3/2)` at `k=90`, with nearly constant normalized
+values from `k=70` onward; its degeneracy rises to 11.  This is not yet an
+asymptotic counterexample, but it overturns the earlier finite evidence and
+kills every fixed-degeneracy strategy.
+
+The same witness has total transverse energy only `0.6921...k^3` and rotated
+support `0.6127...k^3`.  Attack the **distributional** theorem
+`sum_d m_tr(d)<=k^(3+o(1))`, allowing square-root-heavy exceptional fibres.
+The clean equivalent incidence object is the decorated midpoint equation
+`x-y=2J(m_R-m_L)` in `TRANSVERSE_GLOBAL_MIDPOINT_GATE.md`.  Intersecting first
+edges cost only `O(k^3)`; the disjoint decorated midpoint term is the live
+six-point problem.  The deltoid theorem, affine rank, a small degeneracy
+constant, and the two projected graphic matroids do not control it.  In
+parallel, determine whether the observed `k^(3/2)` closure law can be promoted
+to an infinite family; that would rigorously retire the local-max lane.
+
+The sharper current target is in `TRANSVERSE_SECOND_MOMENT_GATE.md`: prove
+`sum_d m_tr(d)^2<=k^(4+o(1))`, or its row--colour dual.  Do not replace this
+with a maximum-column bound: the exact 65-point closure already has a
+quadratic-sized column.  Do not invoke BSG as a black box: at density
+`N^(-1/2+delta)` it returns only a tiny subset with polynomially large
+doubling.  Any viable proof must retain that `D` is the complete difference
+set of one distance-Sidon configuration.  The fourth-power moment theorem
+would close the transverse gate, after which the still-missing job is to
+splice it to the exact line-support lemma through polynomial line richness.
 
 In parallel, harden and externally audit the rank-715 `0.494586` proof stack;
 do not tune another decimal place.  No proof or search process is currently

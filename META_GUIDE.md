@@ -449,6 +449,126 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 spectral shortcuts audited and killed (Sihao + Codex)
+
+Continued the full-resolution attack from the row--colour fourth-moment gate.
+The exact heavy-row closure witness was extended and calibrated through 120
+points.  It remains distance-Sidon with maximum collinearity three, has
+`T=2,798,384`, row moment `726,091,848=3.502k^4`, column moment
+`718,246,448=3.464k^4`, wedge count `361,646,732=1.744k^4`, and rotated
+support `1,011,786=0.586k^3`.  Thus the global exponent target survives while
+the local maximum, fixed degeneracy, and coefficient-one wedge injection do
+not.
+
+Identified the exact direct-sum interpretation `B=A+JA`: distance-Sidonicity
+makes `A x A -> B` injective, and the wedge moment counts decorated
+parallelograms in `B` whose translation side lies in `A-A`.  This isolates the
+live theorem as an average-multiplicity bound `W<=k^(4+o(1))` rather than a
+pointwise statement.
+
+Audited a spectral strengthening.  Although `||B||_op<=k^(1+o(1))` would
+suffice, its Schur row-sum version is strongly threatened.  The fixed heavy
+row's exact two-step mass grows from `36,740=10.206k^2` at `k=60` to
+`276,604=19.209k^2=1.753k^(5/2)` at `k=120`.  Numerical operator norms rise
+from `1.689k` to `2.268k` over the same range.  Also derived the exact
+restricted five-incidence energy identity; deleting its final `1_D` factor
+gives `sum_qR_D(q)R_D(Jq)`, which exact tests show on a `k^5` rather than
+`k^4` scale.  Consequently local two-step and unrestricted Fourier/BSG
+proofs are retired.  New durable artifacts:
+`TRANSVERSE_SPECTRAL_AUDIT.md` and
+`verify_transverse_spectral_audit.py`.  No full proof is claimed; the two
+remaining theorem-level obligations are the global fourth-moment bound and
+the intermediate line-rich splice.  Approximate external spend: none.
+
+### 2026-08-17 (latest) — ERDŐS #1208 sharp wedge inequality killed; parallelogram gate isolated (Sihao + Codex)
+
+- **Closure extended and re-certified.**  The deterministic heavy-row chain
+  now has 120 exact integer points, all pairwise distances unique.  Its global
+  profile is `T=2,798,384`, maximum row 948, row moment `726,091,848`, column
+  moment `718,246,448`, support `1,011,786=0.5855...k^3`, and maximum
+  collinearity three.  The relation-hypergraph degeneracy reaches 13.
+- **Sharp coefficient falsified.**  For `W=sum_d binom(r(d),2)`, the proposed
+  inequality `W<=(k-1)T` was nearly tight at `k=100` (ratio `0.997743...`) but
+  fails at `k=120`: `W=361,646,732=1.74405...k^4`, with
+  `W/(119T)=1.086001...`.
+  This is an exact counterexample, not floating-point evidence.
+- **Surviving theorem.**  An absolute-constant estimate `W<=CkT` would
+  suffice, but the exponent-critical target is only `W<=k^(4+o(1))`.  The
+  exact direct-sum model `B=A+JA` identifies `W` with decorated parallelograms
+  in `B` whose translation side belongs to `D=A-A`.  This is now the most
+  concrete transverse lemma.  It is unproved,
+  and a separate intermediate line-rich/transverse coupling would still be
+  required for a complete solution.
+- **Artifacts/state.**  Added `TRANSVERSE_PARALLELOGRAM_GATE.md`, extended
+  both closure verifiers, and updated
+  `TRANSVERSE_SECOND_MOMENT_GATE.md`, `TRANSVERSE_RELATION_CLOSURE.md`, and the
+  handoffs.  Exact verifiers pass; direct API spend `$0`; no process running.
+
+### 2026-08-17 (latest) — ERDŐS #1208 row--colour moment gate and dual closure adversaries (Sihao + Codex)
+
+- **Exact variance reduction.**  Repackaged transverse relations as the
+  `D x D` incidence matrix `B(d,e)=1_D(d-Je)1_(d dot e !=0)`.  Its row degrees
+  are `m_tr(d)` and its column degrees fix the perpendicular edge.  Since
+  `|D|<k^2`, either fourth-power second-moment bound
+  `sum row^2<=k^(4+o(1))` or `sum column^2<=k^(4+o(1))` implies the desired
+  cubic transverse count by Cauchy--Schwarz.  This is a rigorous reduction,
+  not a proof of the moment conjecture.
+- **Dual pointwise route killed at finite scale.**  A deterministic exact
+  closure for `a-b-c+e=(1,0)` reaches a 65-point distance-Sidon set with one
+  fixed column of size `1010=0.239...k^2`.  Nevertheless its maximum row is
+  only 43, its row/column moments are `660,000` and `12,509,352`, and rotated
+  support is `251,195=0.9147...k^3`.  Maximum collinearity is four.
+- **Hybrid kill test passed.**  A second deterministic search pooled the
+  fixed-row and fixed-colour closures.  At `k=45` it simultaneously realizes
+  row 147 and column 292, but both moments remain on the critical scale
+  (`0.683 k^4`, `0.809 k^4`) and support remains `0.727 k^3`.  The 90-point
+  heavy-row witness likewise has both moments about `2.5 k^4`.
+- **BSG route quantitatively parked.**  At `N=|D|`, an excess
+  `T=N^(3/2+delta)` yields ordinary additive energy only `N^(2+2delta)`, so
+  standard BSG has parameter `N^(1-2delta)` and guarantees a structured
+  subset only on the `N^(2delta)` scale with polynomially large doubling.
+  This cannot exclude allowed line pieces.  The next theorem must be a
+  realizability-sensitive moment/tail estimate, followed by the still-open
+  line-rich/transverse coupling.
+- **Artifacts.**  Added `TRANSVERSE_SECOND_MOMENT_GATE.md`, two closure
+  searches, and two exact verifiers; strengthened the 90-point verifier with
+  the dual moment profile.  All three verifiers pass; direct API spend `$0`.
+  #1208 remains unresolved; no process is running.
+
+### 2026-08-17 (latest) — ERDŐS #1208 local-max reversal and global midpoint gate (Sihao + Codex)
+
+- **Exact closure extension.**  Added a deterministic exhaustive
+  relation-forcing search and extended the certified distance-Sidon chain from
+  47 to 90 integer points.  The selected fibre reaches
+  `m_(0,-1)=614=0.7191...k^(3/2)`; the normalized values remain in
+  `[0.718,0.722]` from `k=70` through `90`.  Relation-hypergraph degeneracy
+  rises from 8 to 9, 10, and 11 at `k=63,76,81`, so every fixed-degeneracy
+  formulation is false.  This is finite evidence, not an infinite
+  counterexample to the `k^(1+o(1))` local bound.
+- **Global target survives.**  On the same 90-point witness,
+  `sum_d m_tr(d)=1,009,116`, hence
+  `E_trans=504,558=0.6921...k^3`, while
+  `|A+JA-JA|=446,638=0.6127...k^3`.  Thus the maximum-fibre sufficient
+  condition is likely the wrong theorem, but the global cubic energy/support
+  conjecture remains perfectly calibrated.  The next target is a tail or
+  moment bound for the full overlap distribution.
+- **Exact midpoint reformulation.**  If `d=a-b`, `d'=c-e`, and
+  `J(d'-d)=x-y`, then for the unique midpoints
+  `m_L=(a+e)/2`, `m_R=(b+c)/2` one has
+  `x-y=2J(m_R-m_L)`.  This gives an equivalent decorated-midpoint incidence
+  formulation; pairs whose first two edges meet already cost `O(k^3)`.  The
+  disjoint cross-pairing term is the true global incidence problem.
+- **Prior-art/shortcut audit.**  Elekes's deltoid theorem does not apply: a
+  distance-Sidon set contains no genuine deltoid, while the relation compares
+  an edge with a segment between midpoints.  Midpoint-growth results likewise
+  do not control the endpoint decoration or transverse determinant.  No
+  direct prior theorem was found.
+- **Artifacts and state.**  Added `search_transverse_closure.py`,
+  `verify_transverse_closure_global.py`, and
+  `TRANSVERSE_GLOBAL_MIDPOINT_GATE.md`; extended the original closure
+  certificate and corrected all #1208 handoffs.  Both exact verifiers pass.
+  #1208 remains unresolved; no process is running; direct API spend `$0`.
+
 ### 2026-08-17 (latest) — ERDŐS #1208 Welch rigidity and relation-closure stress test (Sihao + Codex)
 
 - **Hereditary gate classified.**  For fixed `d=p-q`, local solutions
