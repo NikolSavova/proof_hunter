@@ -67,6 +67,166 @@ The choice of the *other* representation in (1.2) matters.  Recording the
 sum of the representation containing `delta` merely ranks representations
 of one element of `D+JD`; it cannot exploit the full `D x (D+D)` target.
 
+There is an even cleaner fixed-component version, which is now the preferred
+gate.  Do not select a longest vector; simply put
+
+\[
+ \Psi(x,y,u,v)=(u,x+y)\in D\times(D+D),           \tag{1.5}
+\]
+
+and let
+
+\[
+ g(u,s)=|\Psi^{-1}(u,s)|.
+\]
+
+Then
+
+\[
+ \boxed{\mathcal M_{\rm fix}(D):=\sum_{u,s}g(u,s)^2
+        \le N^{1+o(1)}S}                         \tag{1.6}
+\]
+
+also implies the energy--support gate, now without the factor two:
+
+\[
+ \mathcal E_\perp(D)^2
+ \le NS\,\mathcal M_{\rm fix}(D).
+\]
+
+Unlike (1.2), (1.5) has no tie convention and its fibres admit the exact
+formula
+
+\[
+ g(u,s)=\sum_x1_D(x)1_D(s-x)1_D(s+Ju-(I+J)x).    \tag{1.7}
+\]
+
+Thus (1.6) is a seven-incidence theorem.  After writing `x'=x+r`, a pair of
+preimages contributes the seven conditions
+
+\[
+ x,x+r,y,y-r,v,v-(I+J)r,
+ \quad u=x+Jy-Jv\in D.                           \tag{1.8}
+\]
+
+Dropping the last incidence reduces (1.8) to the raw dilation moment
+`sum_r R_D(r)^2 R_D((I+J)r)`, which is far too large (already more than
+`88 N S` on the transformed 31-point parabola).  The final membership
+`u in D` is load-bearing and must not be relaxed.
+
+The exact fixed-component profiles `(energy,image,max,moment)` are
+
+\[
+\begin{array}{c|r|r|r|r}
+\text{closure }k=20&1,735,609&1,301,863&22&2,975,097\\
+\text{parabola }k=31&866,761&866,761&1&866,761\\
+\text{quadratic instance }k=18&101,801&99,129&25&112,689.
+\end{array}                                      \tag{1.9}
+\]
+
+For the closure witness the last entry is `0.48509... N S`, substantially
+smaller than the longest-selected moment in (1.3).  Formula (1.6), or a
+summable tail for `g`, is therefore the preferred restart point.  The
+longest-selected map remains useful as the route by which the endpoint
+structure and the quadratic obstruction were discovered.
+
+### 1.1 The diagonal is absorbable
+
+There is no need to prove all of (1.6) directly.  Since every fibre is a set
+of distinct `x` values,
+
+\[
+ \mathcal M_{\rm fix}=\mathcal E_\perp+\mathcal O,\qquad
+ \mathcal O=\sum_{u,s}g(u,s)(g(u,s)-1).           \tag{1.10}
+\]
+
+The first term is the original energy, not a new error.  If
+
+\[
+ \boxed{\mathcal O\le N^{1+o(1)}S,}               \tag{1.11}
+\]
+
+then Cauchy gives
+
+\[
+ \mathcal E_\perp^2
+ \le NS(\mathcal E_\perp+N^{1+o(1)}S),
+\]
+
+and solving this quadratic yields
+`mathcal E_perp<=N^(1+o(1))S`.  Thus only genuinely distinct preimages must
+be charged.  The exact off-diagonal values are `1,239,488` on closure-20,
+zero on parabola-31, `12,604` on the perpendicular-ruler-40 witness, and
+`10,888` on the 18-point quadratic instance.  Their respective ratios to
+`NS` are `0.20210...`, zero, `1.88*10^(-5)`, and `0.001486...`.
+
+More generally, fix `H=N^(o(1))`.  Fibres with `g(u,s)<H` contribute at most
+`H mathcal E_perp` to (1.10), and this term is absorbed by the same quadratic
+argument.  It is enough to charge pairs from the **heavy fibres**
+
+\[
+ \{(u,s):g(u,s)\ge H\}.                           \tag{1.12}
+\]
+
+This removes the misleading finite obstruction in which many unrelated
+two-element fibres hit the same later key.
+
+### 1.2 The endpoint midpoint charge
+
+For a nonzero `d=a-b in D`, let
+
+\[
+ m(d)=a+b\in C:=A+A.                              \tag{1.13}
+\]
+
+The ordered endpoints are unique, so `m(d)` is canonical and
+`m(-d)=m(d)`.  Give zero any fixed diagonal decoration `m(0)=2a_0`.
+For two distinct preimages `x,x'` of one fixed-component key `(u,s)`, put
+
+\[
+ \Theta(u,s,x,x')=(u,m(x)-m(x'))
+       \in D\times(C-C)=D\times(D+D).             \tag{1.14}
+\]
+
+Hence the following would be an exact sufficient endpoint theorem:
+
+> For some `H=N^(o(1))`, the restriction of `Theta` to fibres of size at
+> least `H` has average multiplicity `N^(o(1))`.
+
+It implies (1.11), then (1.6), and finally the cube-root solution.  It uses
+the unique endpoint decoration which the radial transversal lacks, retains
+the original fibre label until small fibres are removed, and has exactly the
+`D x (D+D)` target budget.  Section 1.3 records why the assertion is false
+without also charging the ordinary support it creates.
+
+On closure-20, threshold `H=6` leaves 2,399 heavy fibres and 120,056 ordered
+off-diagonal pairs.  Their midpoint charge has 103,909 images, average load
+`1.1554...`, and maximum load 12.  At `H=8` the corresponding figures are
+483 fibres, 57,608 pairs, 53,749 images, average `1.0718...`, and maximum
+12.  These are exact finite checks, not a proof of the asymptotic endpoint
+theorem.
+
+### 1.3 The unrestricted endpoint theorem is false
+
+`ENDPOINT_MIDPOINT_SIDON_RULER_BARRIER.md` inserts a dense integer Sidon
+ruler into the quadratic fibre from Section 3.  For every `h`, the resulting
+distance-Sidon set has a fixed fibre of size `h^2=Theta(N)`.  The `Theta(h^4)`
+ordered distinct pairs in that fibre occupy only `O(h^2)` endpoint-midpoint
+charges, so their average charge multiplicity is `Omega(N)`.  The failure
+persists after every subpolynomial heavy-fibre cutoff.
+
+The same family has
+
+\[
+ |D+D|=\Omega(N^2),                               \tag{1.15}
+\]
+
+certified by a Cartesian product of two Sidon-ruler pair-sum sets.  It is
+therefore already covered by the Ruzsa high-support branch.  The corrected
+restart target is not a bare subpolynomial charge bound.  It is a summable
+dichotomy: high midpoint-charge multiplicity must either be dispersed, or
+must pay for enough new ordinary sums to force `|D+D|>=N^(5/3-o(1))`.
+
 ## 2. Exact fibre equation
 
 Suppose the largest vector is the unrotated member `u` of the second
@@ -170,6 +330,9 @@ rational parameters and then scale to the integer lattice.
 The same verifier contains an 18-point integral instance (`h=4`) with
 `N=307`.  It checks all 153 pairwise squared distances, the 16 physical
 solutions, and the resulting 32 ordered preimages of one switching key.
+For the fixed-component map (1.5), the same intended family gives `h^2`
+preimages of `(u,0)`, still `Omega(N)`.  Thus its maximum-fibre version is
+equally false.
 
 ## 4. What the barrier does and does not kill
 

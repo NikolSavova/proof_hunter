@@ -291,3 +291,18 @@ gives a distance-Sidon set with one switching fibre of size `Omega(N)`.
 The exact 18-point certificate has a fibre of 32 ordered collisions.  Thus
 resume with an averaged rich-tail or multi-corner load-balancing theorem,
 not a pointwise switching injection.
+
+The same note derives a cleaner preferred map with no selector:
+`(x,y,u,v)->(u,x+y)`.  Its second moment has the exact seven-incidence
+expansion (1.8) there and is only `0.48509... N|D+D|` on the 20-point
+closure.  Do not discard the seventh condition `u in D`; the resulting raw
+`(I+J)`-dilation moment already fails by a factor greater than 88 on the
+transformed parabola.
+
+The selector-free moment's diagonal and all subpolynomial fibres can be
+absorbed.  Its canonical endpoint-midpoint charge is nevertheless false
+without a support hypothesis: `ENDPOINT_MIDPOINT_SIDON_RULER_BARRIER.md`
+constructs a heavy fibre with average charge load `Omega(N)`.  The same
+family forces `|D+D|=Omega(N^2)`, so it is already in the Ruzsa high-support
+branch.  Any continuation must prove a support-compensated rich-tail
+dichotomy in the live low-support regime.

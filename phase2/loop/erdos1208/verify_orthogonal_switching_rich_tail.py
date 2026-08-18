@@ -79,6 +79,83 @@ def switching_profile(points: list[Point]) -> tuple[int, int, int, int]:
     )
 
 
+def fixed_component_profile(points: list[Point]) -> tuple[int, int, int, int]:
+    """Profile the selector-free map (x,y,u,v) -> (u,x+y)."""
+    assert is_distance_sidon(points)
+    differences = difference_set(points)
+    representations: dict[Point, list[tuple[Point, Point]]] = defaultdict(list)
+    for first in differences:
+        for second in differences:
+            representations[add(first, rotate(second))].append((first, second))
+
+    fibres: Counter[tuple[Point, Point]] = Counter()
+    energy = 0
+    for pairs in representations.values():
+        energy += len(pairs) * len(pairs)
+        for first, second in pairs:
+            ordinary = add(first, second)
+            for third, _ in pairs:
+                fibres[third, ordinary] += 1
+
+    return energy, len(fibres), max(fibres.values()), sum(
+        value * value for value in fibres.values()
+    )
+
+
+def heavy_midpoint_profile(
+    points: list[Point], threshold: int
+) -> tuple[int, int, int, int]:
+    """Charge distinct pairs in heavy fixed fibres by midpoint difference."""
+    assert is_distance_sidon(points)
+    differences = difference_set(points)
+    decoration: dict[Point, tuple[Point, Point]] = {
+        (0, 0): (points[0], points[0])
+    }
+    for first in points:
+        for second in points:
+            delta = subtract(first, second)
+            if delta == (0, 0):
+                continue
+            assert delta not in decoration
+            decoration[delta] = first, second
+
+    representations: dict[Point, list[tuple[Point, Point]]] = defaultdict(list)
+    for first in differences:
+        for second in differences:
+            representations[add(first, rotate(second))].append((first, second))
+
+    fibres: dict[tuple[Point, Point], list[Point]] = defaultdict(list)
+    for pairs in representations.values():
+        for first, second in pairs:
+            ordinary = add(first, second)
+            for third, _ in pairs:
+                fibres[third, ordinary].append(first)
+
+    charges: Counter[tuple[Point, Point]] = Counter()
+    heavy_fibres = 0
+    pair_count = 0
+    for (selected, _), values in fibres.items():
+        assert len(values) == len(set(values))
+        if len(values) < threshold:
+            continue
+        heavy_fibres += 1
+        for first in values:
+            head, tail = decoration[first]
+            for second in values:
+                if first == second:
+                    continue
+                other_head, other_tail = decoration[second]
+                first_cross = subtract(head, other_head)
+                second_cross = subtract(tail, other_tail)
+                assert first_cross in differences
+                assert second_cross in differences
+                midpoint_difference = add(first_cross, second_cross)
+                charges[selected, midpoint_difference] += 1
+                pair_count += 1
+
+    return heavy_fibres, pair_count, len(charges), max(charges.values(), default=0)
+
+
 def verify_small_profiles() -> None:
     families = (
         ("closure-20", POINTS[:20], (1_735_609, 777_087, 25, 4_826_721)),
@@ -100,6 +177,25 @@ def verify_small_profiles() -> None:
             "maximum", maximum,
             "moment/energy", moment / energy,
         )
+
+    fixed_families = (
+        ("fixed closure-20", POINTS[:20],
+         (1_735_609, 1_301_863, 22, 2_975_097)),
+        ("fixed parabola-31", transform(parabola(31)),
+         (866_761, 866_761, 1, 866_761)),
+    )
+    for name, points, expected in fixed_families:
+        actual = fixed_component_profile(points)
+        assert actual == expected
+        print(name, actual)
+
+    assert heavy_midpoint_profile(POINTS[:20], 6) == (
+        2_399, 120_056, 103_909, 12
+    )
+    assert heavy_midpoint_profile(POINTS[:20], 8) == (
+        483, 57_608, 53_749, 12
+    )
+    print("heavy midpoint closure", heavy_midpoint_profile(POINTS[:20], 6))
 
 
 def concrete_quadratic_instance() -> tuple[list[Point], Point]:
@@ -159,6 +255,7 @@ def verify_quadratic_instance() -> None:
 
     assert len(physical) == 16
     assert 2 * len(physical) == 32
+    assert fixed_component_profile(points) == (101_801, 99_129, 25, 112_689)
     print(
         "quadratic fibre",
         "points", len(points),

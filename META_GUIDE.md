@@ -449,6 +449,32 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 Sidon-ruler barrier to the midpoint charge (Sihao + Codex)
+
+- Split the selector-free switching moment exactly as
+  `sum g^2=E_perp+sum g(g-1)`.  The original energy term and every fibre below
+  `H=N^(o(1))` are absorbed by the same quadratic inequality, so only
+  genuinely distinct pairs in heavy fibres require a new charge.
+- Tested the canonical endpoint charge `(u,m(x)-m(x'))`.  On closure-20 its
+  heavy threshold-6 profile is 120,056 pairs, 103,909 images, average load
+  `1.1554...`, maximum 12; threshold 8 has average `1.0718...`.
+- Killed the unrestricted asymptotic assertion.  Inserted the dense
+  Erdos--Turan integer Sidon ruler into the quadratic switching gadget.  One
+  fibre has `h^2=Theta(N)` elements, while its `Theta(h^4)` ordered pairs use
+  only `O(h^2)` midpoint charges, giving average multiplicity `Omega(N)` even
+  after every subpolynomial heavy cutoff.
+- Proved the exact compensation: the same construction puts a Cartesian
+  product of two ruler pair-sum sets inside `D+D`, yielding
+  `|D+D|=Omega(h^4)=Omega(N^2)`.  It is therefore already in the proved Ruzsa
+  high-support branch.  The corrected target is a summable dichotomy between
+  low midpoint-charge load and enough generated ordinary support to cross
+  `N^(5/3-o(1))`.
+- Added `ENDPOINT_MIDPOINT_SIDON_RULER_BARRIER.md` and
+  `verify_endpoint_midpoint_sidon_ruler_barrier.py`.  The verifier checks five
+  exact integral distance-Sidon instances, the intended heavy fibres,
+  compressed charges, and Cartesian support witnesses.  Local compute only;
+  direct API spend `$0`.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 switching rich-tail gate and quadratic barrier (Sihao + Codex)
 
 - Reorganized every common-energy collision `x+Jy=u+Jv` by its longest
@@ -457,6 +483,13 @@ prior-art kill-search**; has a writeable-down win condition.
   `sum f^2 <= N^(1+o(1))|D+D|` implies the live energy--support inequality by
   Cauchy.  This is the first gate to retain both the endpoint decoration and
   the full ordinary-support budget.
+- Simplified the preferred map further to `(x,y,u,v)->(u,x+y)`, with no
+  selector or tie convention.  Its exact closure moment is 2,975,097, only
+  `0.48509... N|D+D|`; the parabola remains injective.  Two preimages sharing
+  a key expand to the seven incidences
+  `x,x+r,y,y-r,v,v-(I+J)r,u in D`.  The last incidence is essential: dropping
+  it gives `sum_r R_D(r)^2R_D((I+J)r)`, which exceeds `88 N|D+D|` on the
+  transformed parabola.
 - Exact finite stress tests pass.  The 20-point closure has energy
   1,735,609, image 777,087, maximum load 25, and switching moment 4,826,721,
   or `0.78698... N|D+D|`.  The transformed 31-point parabola is injective.

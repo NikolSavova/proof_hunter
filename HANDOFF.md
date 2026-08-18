@@ -76,6 +76,29 @@ scale.  The 20-point closure profile is `(energy,image,max,moment) =
 (1735609,777087,25,4826721)`, so the moment is only
 `0.78698... N|D+D|`; the transformed parabola is injective.
 
+The preferred version is even simpler: use the selector-free map
+`(x,y,u,v) -> (u,x+y)`.  If its loads are `g(u,s)`, then
+`sum g(u,s)^2 <= N^(1+o(1))|D+D|` also resolves the problem.  Its closure
+moment is only 2,975,097, or `0.48509... N|D+D|`.  Expanding a collision of
+two preimages gives seven incidences in `D`; dropping the final condition
+`u in D` produces a raw `(I+J)`-dilation moment which is already too large by
+a factor 88 on the parabola.  That seventh complete-difference incidence is
+load-bearing.
+
+The selector-free moment splits as `sum g^2=E_perp+O`, where
+`O=sum g(g-1)`.  The diagonal `E_perp` is absorbed by the same quadratic
+inequality, and fibres below any `H=N^(o(1))` are harmless.  This reduces the
+proof to genuinely distinct pairs in heavy fibres.  Charging such a pair by
+`(u,m(x)-m(x'))`, with `m(a-b)=a+b`, is almost injective on the low-support
+closure witnesses (average `1.1554` at threshold 6), but is **not** a valid
+unrestricted theorem.  `ENDPOINT_MIDPOINT_SIDON_RULER_BARRIER.md` inserts a
+dense integer Sidon ruler into the quadratic fibre and gets average charge
+load `Omega(N)`.  The same construction necessarily exhibits
+`Omega(N^2)` distinct ordinary sums, so it belongs to the already-solved
+Ruzsa high-support branch.  The current target is therefore a
+support-compensated rich-tail dichotomy in the live regime
+`|D+D|<N^(5/3-o(1))`, not a bare midpoint injection.
+
 The corresponding maximum-load theorem is false at the largest possible
 scale.  A new generic complete-bipartite construction gives, for every `h`,
 a `k=4h+2` point distance-Sidon set with one switching fibre of size
@@ -1454,6 +1477,13 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   `TRANSVERSE_GLOBAL_MIDPOINT_GATE.md`: after the `O(k^3)` intersecting-edge
   term, count disjoint cross-pairings of unique midpoints satisfying
   `x-y=2J(m_R-m_L)`.  The deltoid theorem does not cover this object.
+- [ ] Prove the support-compensated switching dichotomy from
+  `ORTHOGONAL_SWITCHING_RICH_TAIL_GATE.md`: after absorbing the diagonal and
+  all fibres below `H=N^(o(1))`, either charge the heavy off-diagonal pairs
+  within `N^(1+o(1))|D+D|`, or show that their midpoint multiplicity creates
+  `|D+D|>=N^(5/3-o(1))`.  The dense Sidon-ruler quadratic fibre proves that
+  an unrestricted subpolynomial midpoint-charge theorem is false, but pays
+  maximally with `|D+D|=Omega(N^2)`.
 
 **Erdős #669 candidate-result obligations.**
 
@@ -1684,6 +1714,15 @@ splice it to the exact line-support lemma through polynomial line richness.
 In parallel, harden and externally audit the rank-715 `0.494586` proof stack;
 do not tune another decimal place.  No proof or search process is currently
 running, and #1208 is not resolved.
+
+**Newest correction (18 August).**  The selector-free switching moment is
+the preferred route.  Its diagonal and every subpolynomial fibre are
+absorbable, leaving only heavy off-diagonal pairs.  The naive endpoint
+midpoint charge is false globally: a dense Sidon-ruler quadratic fibre has
+average load `Omega(N)`.  But it simultaneously forces
+`|D+D|=Omega(N^2)`, so the counterexample is excluded by the proved Ruzsa
+branch.  Read `ENDPOINT_MIDPOINT_SIDON_RULER_BARRIER.md`; attack only the
+support-compensated version in the low-support, many-layer regime.
 
 ### ⭐ 2026-08-17 — ERDŐS #838: GATE NARROWED TO A SELECTED ENDPOINT RESET; RUN THE EMPIRICAL MINIMIZER PROGRAM BEFORE MORE BARRIERS
 
