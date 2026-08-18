@@ -178,6 +178,25 @@ small third sumset.  Any proof must use that the two summands are rotations
 of the *same* set and that every radial fibre of `A-A` contains only the
 antipodal pair belonging to one edge.
 
+This limitation is now exact.  `TWO_SIDED_ROTATED_SUPPORT_AUDIT.md` proves
+that co-Sidonicity gives
+
+\[
+ |X+Y-Y||Y+X-X|\ge |X|^2|Y|^2,
+\]
+
+and constructs Golomb-ruler pairs for which both factors are `O(k^2)`.
+Since `J(A+JA-JA)=JA+A-A`, taking a square root recovers only the quadratic
+floor.  The same audit expands the full Fourier energy as
+
+\[
+ \mathcal E_J(A)=2k^3-k^2+
+ \#\{(d,u,v)\in(D^*)^3:u+v=Jd\},
+\]
+
+so the surviving task is a positive centered cubic correlation, not an
+ordinary covariance or two-sided Ruzsa-distance estimate.
+
 Finally, the entropy theorem of Tardos on pair sums of matrix rows does not
 close this gap.  The pinned-distance rows of `A` do have the attractive
 property that two rows meet in exactly one entry, but there are only `k`

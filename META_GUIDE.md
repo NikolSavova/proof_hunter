@@ -449,6 +449,30 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 two-sided-product audit (Sihao + Codex)
+
+- Closed the proposed two-sided sumset route at its exact abstract limit.
+  For every co-Sidon pair `X,Y`, the map
+  `(x1,x2,y1,y2) -> (x1+y1-y2, y2+x2-x1)` is injective, proving
+  `|X+Y-Y||Y+X-X|>=|X|^2|Y|^2`.
+- Proved exponent sharpness with the classical Erdos--Turan Golomb ruler
+  `2pi+(i^2 mod p)`: splitting it into two equal parts gives a direct pair
+  for which both third sumsets have only quadratic size.  Therefore the
+  congruence of the two actual rotated sumsets cannot upgrade the direct-sum
+  floor from `k^2` to `k^3`.
+- Derived the exact centered Fourier identity
+  `E_J(A)=2k^3-k^2+#{(d,u,v) in (D*)^3:u+v=Jd}`.  The residual is a positive
+  integer count; all second-moment covariance information has already been
+  exhausted by `A+JA` being direct.
+- Added `phase2/loop/erdos1208/TWO_SIDED_ROTATED_SUPPORT_AUDIT.md` and the
+  exact verifier `verify_two_sided_rotated_support_audit.py`.  The verifier
+  passes the Golomb construction, injection, directness, distance-Sidon
+  seed, and centered collision identity.
+- Decision: do not reopen a Shannon/Ruzsa/product proof using only co-Sidon
+  data.  Return to the centered residual/global transverse
+  decorated-parallelogram moment, retaining radial uniqueness and complete
+  difference-set realizability.  Approximate spend: local compute only.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 third-additive-energy barrier (Sihao + Codex)
 
 - Closed the tempting Fourier/Hölder surrogate for rotated triple energy.

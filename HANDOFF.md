@@ -108,6 +108,18 @@ same exact set the off-diagonal rotated energy is only 2,032,998, or
 `0.9925...k^3`, with maximum fibre two.  The discarded quarter-turn
 correlation accounts for essentially the entire factor-`k` gap.
 
+The two-sided sumset symmetry has also been audited to completion.
+`TWO_SIDED_ROTATED_SUPPORT_AUDIT.md` proves the exact injection
+`|X+Y-Y||Y+X-X|>=|X|^2|Y|^2` for every co-Sidon pair and gives an
+Erdos--Turan Golomb-ruler family attaining the quadratic scale on both sides.
+For `Y=JX` the two sumsets have equal size, so this gives only `k^2`, not the
+needed `k^3`.  Its centered Fourier expansion identifies the remaining
+positive term exactly as
+`#{(d,u,v) in (D*)^3 : u+v=Jd}`.  Direct-sum entropy and covariance are now
+exhausted; the next proof must control this cubic residual using radial
+uniqueness and the fact that `D=A-A` is a complete realized difference set.
+Run `verify_two_sided_rotated_support_audit.py` for the exact certificate.
+
 **⭐ 2026-08-18 — ERDŐS #1208: THIRD-MOMENT ROUTE KILLED IN GENERAL POSITION.**
 The fixed-quarter-turn support problem has the exact common-correlation
 identity
