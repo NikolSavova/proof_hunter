@@ -449,6 +449,28 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 radial two-support barrier (Sihao + Codex)
+
+- **The two-support theorem needs endpoint decoration.**  The canonical
+  lattice radial transversals give centrally symmetric sets `D_m` with one
+  antipodal pair on every occupied circle and `D_m intersect JD_m={0}`, but
+  both `|D_m+D_m|` and `|D_m+JD_m|` are only `|D_m|^(1+o(1))`.
+  Landau--Ramanujan gives `|D_m|=m^(2-o(1))`, while both supports lie in a
+  square of `O(m^2)` lattice points.  Hence their product is
+  `|D_m|^(2+o(1))`, a full power below the cube-root gate.
+- **Exact certificate.**  `verify_radial_orthogonal_product_barrier.py`
+  checks symmetry, norm-fibre uniqueness, quarter-turn disjointness, and
+  both supports.  The normalized product falls from `1.16008...` at radius
+  3 to `0.09403...` at radius 30.  The asymptotic proof is in
+  `RADIAL_ORTHOGONAL_PRODUCT_BARRIER.md`.
+- **Search consequence.**  Radial uniqueness, central symmetry, and Fourier
+  support-disjointness are now closed even for the final product statement.
+  Continue only with an argument that uses the complete-difference data:
+  unique ordered endpoint decorations, the translated-star partition
+  `D*=disjoint union_b ((A-b) minus {0})`, or the exact zero--one
+  autocorrelation `|A| delta_0+1_(D minus {0})`.  This is a barrier, not a
+  solution; no API spend and no background process.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 Ruzsa high-support branch (Sihao + Codex)
 
 - Applied Ruzsa's triangle inequality with `X=D`, `Y=JD`, `Z=-D` to prove

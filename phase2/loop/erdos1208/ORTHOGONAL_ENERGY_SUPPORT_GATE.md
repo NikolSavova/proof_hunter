@@ -103,10 +103,17 @@ ordinary support is exactly the needed change of scale.
 ## 3. What structure (1.3) must use
 
 The inequality is false for an arbitrary centrally symmetric radially unique
-set `D`.  Choosing one representative of every sum-of-two-squares norm in a
-large square and adjoining its negatives gives `D cap JD={0}`, small
-`D+D`, and common energy close to the cubic scale.  Such a set is not a
-complete difference set.
+set `D`.  In fact `RADIAL_ORTHOGONAL_PRODUCT_BARRIER.md` proves the stronger
+statement that the final product theorem itself is false in that class.
+Choosing one representative of every sum-of-two-squares norm in a large
+square and adjoining its negative gives `D cap JD={0}` and
+
+\[
+ |D+D|\,|D+JD|=|D|^{2+o(1)}.
+\]
+
+Thus neither radial uniqueness nor the two-support formulation can replace
+the complete-difference hypothesis.
 
 The load-bearing additional fact is
 

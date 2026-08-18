@@ -135,6 +135,17 @@ useful direction.  This removes the generic independent-segment barriers
 from the hard branch because their ordinary support is essentially
 quadratic.
 
+The two-support gate itself is now known to require the full endpoint
+decoration.  `RADIAL_ORTHOGONAL_PRODUCT_BARRIER.md` constructs centrally
+symmetric lattice sets with exactly one antipodal pair per occupied circle
+and `D intersect JD={0}`, yet with both `|D+D|` and `|D+JD|` only
+`|D|^(1+o(1))`.  Their product is `|D|^(2+o(1))`, a full power below the
+target.  The exact verifier reaches normalized product `0.0940...` at box
+radius 30.  Do not attempt to prove the product theorem from radial
+uniqueness, Fourier support-disjointness, or central symmetry alone: the next
+argument must use the unique ordered endpoint decorations / translated-star
+partition / exact zero--one autocorrelation of `D=A-A`.
+
 **⭐ 2026-08-18 — ERDŐS #1208: ADAPTIVE EIGHT-CORNER GATE KILLED ASYMPTOTICALLY.**
 The eight-corner charging reduction is correct, but its proposed
 subpolynomial local hypothesis is false at linear scale.  Starting from one
