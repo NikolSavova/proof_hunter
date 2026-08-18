@@ -65,6 +65,21 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: PRIME-GAUSSIAN COSET PATCHES PAY THE CUBE-ROOT-CRITICAL HEIGHT.**
+The exact quarter-turn-stable rank-two model left by the adaptive inverse
+route is now identified and partly closed.  A `J`-stable sublattice of
+`Z^2` is a Gaussian ideal, not an arbitrary oblique lattice.  If `z` has
+odd prime norm, `t in Z[i] \ zZ[i]` is a nonzero coset modulo `z`, and the translated
+`r x r` patch `t+z([r]+i[r])` is radially unique inside `[-M,M]^2`, then
+`M>>r^(3/2)` and hence the patch has `O(M^(4/3))` points.  The proof balances
+the physical diameter `r sqrt(q)` against a new denominator-sensitive CRT
+collision for rational shifted squares.  For an `r x s` rich-fibre patch it
+combines with the line theorem to give `|Q|<<M^(2/3)sqrt(S)`.  Twenty-one
+exact prime-ideal/coset certificates pass.  This reaches the correct local
+height exponent but does not yet extract the patch from general rich-fibre
+mass or handle composite/approximate modules and aggregation.  Read
+`GAUSSIAN_PRIME_COSET_HEIGHT.md`.
+
 **⭐ 2026-08-18 — ERDŐS #1208: SHARP ASPECT-RATIO DICHOTOMY FOR RECTANGULAR LATTICE FIBRES.**
 The attempted extension of the square-patch height theorem to an
 `Omega(rs)` bound for an `r x s` rectangle is false.  For `r>=s`, the patch

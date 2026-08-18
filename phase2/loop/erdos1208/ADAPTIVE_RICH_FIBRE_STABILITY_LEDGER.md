@@ -161,3 +161,24 @@ height `Theta(min(r,s)^2)`, not `Omega(rs)`: translating the long coordinate
 by `s^2` separates every radius for arbitrary `r`.  The thin escape is a
 union of `s` parallel lines, so the next aggregate theorem must couple the
 height and curve-cover branches.
+
+`GAUSSIAN_PRIME_COSET_HEIGHT.md` treats the exact quarter-turn-stable
+rank-two model beyond the unit lattice.  Such a lattice is a Gaussian ideal.
+For every nonzero coset of an odd prime-norm ideal, a radially unique
+`r`-by-`r` patch in `[-M,M]^2` satisfies
+
+\[
+ r\ll M^{2/3},\qquad |Q|=r^2\ll M^{4/3}.         \tag{4.1}
+\]
+
+The proof balances physical diameter against a denominator-sensitive CRT
+collision.  For an `r`-by-`s` rectangle, `r>=s`, it gives
+
+\[
+ |Q|\ll M^{2/3}\sqrt S,                          \tag{4.2}
+\]
+
+by combining `s<<M^(2/3)` with the parallel-line bound `r<=sqrt(S)`.
+This closes the exact prime-Gaussian patch branch at the cube-root-critical
+height.  Composite-index, approximate-module, and aggregate-fibre control
+remain open.

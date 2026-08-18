@@ -449,6 +449,32 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 Gaussian-prime coset critical-height theorem (Sihao + Codex)
+
+- Corrected the model for the remaining “oblique lattice” branch.  Exact
+  quarter-turn-stable sublattices of `Z^2` are principal Gaussian ideals;
+  the new arithmetic datum is the denominator of the translated ideal coset.
+- Proved a denominator-sensitive shifted-square lemma.  For a rational unit
+  grid translated by `(P/q,Q/q)`, with odd prime `q` and the Gaussian norm
+  congruence, small normalized height lets one choose coprime odd gaps whose
+  centres align modulo `q`.  The two difference progressions overlap by more
+  than their CRT period and force equal radii.
+- Combined the lemma with physical diameter.  A radially unique nonzero coset
+  patch `t+z([r]+i[r])`, where `t in Z[i] \ zZ[i]` and `N(z)=q` is an odd
+  prime, inside a box of
+  radius `M` satisfies `M>>r^(3/2)`, hence has `O(M^(4/3))` points.  For a
+  rectangular rich fibre, the line-cover theorem gives the coupled estimate
+  `|Q|<<M^(2/3)sqrt(|D+D|)`.
+- Added `GAUSSIAN_PRIME_COSET_HEIGHT.md` and its exact verifier.  Twenty-one
+  regimes across seven Gaussian primes and three translation aspect ratios
+  recover the grid indices and equal-norm Gaussian-integer points exactly.
+  Targeted prior-art searches found lattice-distance and Gaussian-ideal
+  background, but no statement matching this coset-height theorem.
+- This is a critical-scale local theorem, not the full solution.  Composite
+  ideals, approximate `J`-modules, extraction from supercritical adaptive
+  mass, and the aggregate off-diagonal `Z_K` estimate remain open.  No paid
+  API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 sharp rectangular-lattice dichotomy (Sihao + Codex)
 
 - Tested the natural conjecture that a radially unique translated unit

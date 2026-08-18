@@ -87,6 +87,13 @@ This identifies the precise shape of the remaining obstruction:
 3. sparse or oblique approximate progressions can still interpolate between
    these two regimes and are not yet controlled in aggregate.
 
+The exact quarter-turn-stable version of the third item is treated in
+`GAUSSIAN_PRIME_COSET_HEIGHT.md`.  Such a lattice is a Gaussian ideal rather
+than an arbitrary oblique lattice.  A nonzero coset of an odd prime-norm
+ideal pays the weaker but cube-root-critical height `Omega(s^(3/2))` on an
+`s`-by-`s` subpatch.  Composite-index and approximate-module versions remain
+open.
+
 ## 4. Verification
 
 `verify_rectangular_lattice_height_dichotomy.py` checks the explicit family
