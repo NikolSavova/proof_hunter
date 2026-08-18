@@ -65,6 +65,31 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: GLOBAL ORTHOGONAL ENERGY-PRODUCT GATE ISOLATED.**
+For `D=A-A`, `N=|D|`, define
+`E_+(D)=sum_q R_D(q)^2` and
+`E_perp(D)=sum_q R_D(q)R_D(Jq)`.  The single uncertainty inequality
+
+`E_+(D) E_perp(D) <= N^(5+o(1))`
+
+would resolve the full cube-root problem.  Indeed Cauchy gives
+`E_+(D)>=N^4/|D+D|`, so the product inequality implies the already-isolated
+energy--support gate `E_perp<=N^(1+o(1))|D+D|`.
+
+This formulation retains the exact complete-difference positivity:
+`1_A circle 1_A=1_D+(k-1)delta_0`, hence
+`hat(1_D)=|hat(1_A)|^2-(k-1)`.  Also `D intersect JD={0}`, so `A+JA` is a
+direct sum of size `k^2`; the target becomes a rotated fourth-moment
+uncertainty principle for a shifted nonnegative spectrum.  The exact
+constant one is false (a five-point grid set gives normalized product
+`1.3084...`), but every stored complete-difference family remains bounded:
+closure-30 gives `0.6601...`, parabola-31 `0.2367...`, and the quadratic
+gadget `0.0284...`.  Abstract radial transversals grow from `4.409` at side 8
+to `27.631` at side 30, proving that endpoint positivity is essential.  Read
+`ORTHOGONAL_ENERGY_PRODUCT_GATE.md` and run its exact verifier.  This is now
+the primary global target; the support-compensated switching charge is the
+physical-space fallback.
+
 **⭐ 2026-08-18 — ERDŐS #1208: ENDPOINT SWITCHING GATE ISOLATED; MAXIMUM-FIBRE ROUTE KILLED SHARPLY.**
 The live common energy now has an endpoint-aware second-moment organization.
 For every collision `x+Jy=u+Jv`, select its longest decorated edge and pair
@@ -1484,6 +1509,12 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
   `|D+D|>=N^(5/3-o(1))`.  The dense Sidon-ruler quadratic fibre proves that
   an unrestricted subpolynomial midpoint-charge theorem is false, but pays
   maximally with `|D+D|=Omega(N^2)`.
+- [ ] Attack the cleaner energy uncertainty gate
+  `E_+(D)E_perp(D)<=N^(5+o(1))`.  In Fourier space use
+  `hat(1_D)=|hat(1_A)|^2-(k-1)` together with the direct sum
+  `|A+JA|=k^2`; do not weaken to radial uniqueness, which violates the gate
+  polynomially.  A valid kill must be an infinite complete-difference family
+  with normalized product `N^epsilon`, not a finite constant above one.
 
 **Erdős #669 candidate-result obligations.**
 
@@ -1723,6 +1754,13 @@ average load `Omega(N)`.  But it simultaneously forces
 `|D+D|=Omega(N^2)`, so the counterexample is excluded by the proved Ruzsa
 branch.  Read `ENDPOINT_MIDPOINT_SIDON_RULER_BARRIER.md`; attack only the
 support-compensated version in the low-support, many-layer regime.
+
+**New primary target (18 August).**  The same full theorem follows from the
+global uncertainty inequality `E_+(D)E_perp(D)<=N^(5+o(1))`.  It survives all
+stored complete-difference families, has an exact shifted-positive Fourier
+form, and sharply rejects the abstract radial transversals.  Read
+`ORTHOGONAL_ENERGY_PRODUCT_GATE.md`; pursue a spectral dyadic/inverse proof
+before returning to another local switching charge.
 
 ### ⭐ 2026-08-17 — ERDŐS #838: GATE NARROWED TO A SELECTED ENDPOINT RESET; RUN THE EMPIRICAL MINIMIZER PROGRAM BEFORE MORE BARRIERS
 

@@ -449,6 +449,32 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 orthogonal energy-product uncertainty gate (Sihao + Codex)
+
+- Eliminated the support variable from the global gate.  With
+  `E_+=sum R_D^2` and `E_perp=sum R_D(q)R_D(Jq)`, the inequality
+  `E_+ E_perp<=N^(5+o(1))` implies `E_perp<=N^(1+o(1))|D+D|` because
+  `E_+>=N^4/|D+D|`; it therefore resolves the cube-root exponent.
+- Derived the exact Fourier input specific to complete differences:
+  `1_A circle 1_A=1_D+(k-1)delta_0`, so
+  `hat(1_D)=|hat(1_A)|^2-(k-1)`.  Distance-Sidonicity also gives
+  `D intersect JD={0}` and the direct sum `|A+JA|=k^2`.  The target is a
+  rotated fourth-moment uncertainty principle for a shifted nonnegative
+  spectrum, with no local fibre selector.
+- The sharp constant one is false: exhaustive small-grid search found a
+  five-point distance-Sidon set with normalized product `1.308438...`.
+  Exponent-level evidence survives: closure prefixes peak at `0.679967...`,
+  parabola-31 gives `0.236731...`, and the quadratic gadget `0.028431...`.
+- The canonical radial transversals fail polynomially in the correct
+  direction: normalized products grow through `4.409,7.727,15.190,27.631`
+  at sides `8,12,20,30`.  Thus any proof must use the autocorrelation/direct-
+  sum input, not one point per radius.
+- Added `ORTHOGONAL_ENERGY_PRODUCT_GATE.md` and
+  `verify_orthogonal_energy_product_gate.py`; the exact verifier passes.
+  Primary next route: shifted-positive spectral dyadic decomposition or a
+  common-energy inverse theorem retaining endpoint decorations.  Local
+  compute plus primary-source search; direct API spend `$0`.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 Sidon-ruler barrier to the midpoint charge (Sihao + Codex)
 
 - Split the selector-free switching moment exactly as

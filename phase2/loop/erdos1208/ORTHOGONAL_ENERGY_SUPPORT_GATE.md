@@ -306,3 +306,16 @@ constructs a heavy fibre with average charge load `Omega(N)`.  The same
 family forces `|D+D|=Omega(N^2)`, so it is already in the Ruzsa high-support
 branch.  Any continuation must prove a support-compensated rich-tail
 dichotomy in the live low-support regime.
+
+There is now a cleaner global sufficient condition.  If
+
+\[
+ \mathcal E_+(D)\mathcal E_\perp(D)\le N^{5+o(1)},
+\]
+
+then Cauchy's lower bound
+`E_+(D)>=N^4/|D+D|` gives the present energy--support gate immediately.
+`ORTHOGONAL_ENERGY_PRODUCT_GATE.md` records the shifted-positive Fourier
+form, exact profiles, and the polynomial radial-only failure.  Treat that
+uncertainty inequality as the primary target and the switching expansion as
+its physical-space fallback.
