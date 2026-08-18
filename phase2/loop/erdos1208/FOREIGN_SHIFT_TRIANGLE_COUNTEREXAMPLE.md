@@ -383,27 +383,23 @@ benchmark for the missing line/transverse coupling.  It also demonstrates
 that many popular triangles can coexist; the single-triangle obstruction is
 not an isolated local gadget.
 
-## 7. Correct restart target
+## 7. Updated verdict: the rich tail is also false
 
-Do not pursue a uniform upper bound for
-`C_3(D;J(b-a),J(c-a))`; even `k^(2-epsilon)` is false.
-
-For an ordered non-collinear triangle `tau=(a,b,c)`, put
-
-\[
- q(\tau)=C_3(D;J(b-a),J(c-a)).
-\]
-
-The clean live statement is the rich-triangle tail estimate
+Do not pursue either a uniform upper bound for
+`C_3(D;J(b-a),J(c-a))` or the formerly proposed averaged tail.  The stronger
+compact-anchor theorem in `FOREIGN_SHIFT_AVERAGING_BARRIER.md` constructs
+arbitrarily large distance-Sidon sets with maximum collinearity two for which
 
 \[
- |\{\tau:q(\tau)\ge\lambda\}|
- \le \frac{k^{3+o(1)}}{\lambda},                \tag{7.1}
+ \sum_{\tau\ {m ordered,noncollinear}}
+ C_3(D;J(b-a),J(c-a))\gg k^{7/2}.               \tag{7.1}
 \]
 
-uniformly over dyadic `1<=lambda<=k^2`, first for sets with
-`L=k^o(1)`.  Dyadic summation gives `T_nc(A)<=k^(3+o(1))`.  The many-anchor
-construction is sharp for (6.1) at `lambda` of order `k^2`: it supplies
-`Theta(k)` such triangles.  A full solution must then couple this tail bound
-to the existing line-support theorem through the intermediate-collinearity
-range.
+At `lambda` of order `k^2` it supplies `Omega(k^(3/2))` popular triangles,
+not merely the `Theta(k)` family obtained here.  This disproves the proposed
+right side `k^(3+o(1))/lambda` by a factor `k^(1/2-o(1))`, even in general
+position.
+
+The third-moment route is therefore closed.  Return to the transverse
+**second-moment** theorem in `TRANSVERSE_SECOND_MOMENT_GATE.md`; the compact
+anchor family has exactly the sharp cubic scale for that statistic.

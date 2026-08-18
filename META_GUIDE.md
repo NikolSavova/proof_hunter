@@ -449,6 +449,40 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 compact-anchor averaging barrier (Sihao + Codex)
+
+- Proved the exact identity
+  `sum_(u0,u1,u2 in U) C3(D;u1-u0,u2-u0)=sum_y |D intersect (y+U)|^3`.
+  Hölder forces an `Omega(p^(7/2))` moment for a `Theta(p^2)` difference core
+  against `Theta(sqrt(p))` compact anchors.
+- Used the finite-field parabola sets `P_r={(x,x^2 mod r)}`: each is
+  vector-Sidon and has no three collinear.  Deleting one endpoint for every
+  common core/anchor difference preserves a linear core and makes the two
+  spectra disjoint.  The anchor-lifting lemma then gives arbitrarily large
+  distance-Sidon sets in general position with `T_nc=Omega(k^(7/2))`.
+- Consequently `Omega(k^(3/2))` ordered non-collinear anchor triangles can
+  each have `Omega(k^2)` codegree.  This kills the proposed rich-triangle
+  tail by `k^(1/2-o(1))`, not merely its pointwise strengthening.
+- Added `FOREIGN_SHIFT_AVERAGING_BARRIER.md` and an exact certificate.  Its
+  `p=127,q=7` instance has 117 points, all 6,786 distances distinct, maximum
+  collinearity two, moment identity `880874`, and distinct-anchor
+  contribution `317592`.
+- The construction remains exactly cubic at second-moment scale.  The
+  correct primary route is again the transverse second-moment/decorated-
+  parallelogram theorem; an ambient third-moment bound is secondary.  No API
+  spend.
+- Isolated an adaptive eight-corner sufficient gate for the returning
+  transverse theorem.  Every relation `d=f+Je` has eight projections obtained
+  by choosing one endpoint from each uniquely oriented edge.  A
+  subpolynomial minimum projection degree for every relation implies the
+  cubic transverse bound by an eight-way charging argument.  Complete exact
+  profiles have maximum adaptive degrees `5,6,8` on heavy closures
+  `k=30,45,60` and `6` on the 117-point compact-anchor lift.  Added
+  `TRANSVERSE_EIGHT_CORNER_GATE.md` and its verifier.
+- **Next:** attack `E_trans<=k^(3+o(1))` through its restricted fifth
+  incidence, adaptive eight-sign inverse lemma, or global rich-tail
+  formulation; do not return to any global non-collinear third-moment bound.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 anchor-lifting lemma and simultaneous rich-triangle benchmark (Sihao + Codex)
 
 - Proved a general transfer lemma: if integer sets `B,U` are vector-Sidon and

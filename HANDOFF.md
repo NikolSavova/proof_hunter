@@ -65,29 +65,31 @@
 
 ## 3. WHAT WE'VE DONE
 
-**⭐ 2026-08-18 — ERDŐS #1208: THIRD-MOMENT GATE ISOLATED; POINTWISE VERSION KILLED.**
-The fixed-quarter-turn support problem now has the exact common-correlation
+**⭐ 2026-08-18 — ERDŐS #1208: THIRD-MOMENT ROUTE KILLED IN GENERAL POSITION.**
+The fixed-quarter-turn support problem has the exact common-correlation
 identity
 `sum_z r(z)^3 = sum_(u,v) C_3(JA;u,v) C_3(A-A;u,v)`.  Its unrestricted cubic
 upper bound is false because of the perpendicular-ruler obstruction.  The
-viable statistic is the ordered, pairwise-distinct, non-collinear part
-`T_nc`, for which `sum r(z)^3 <= 4T_nc+9L^2 sum r(z)` when maximum
-collinearity is `L`.  A sharp `T_nc<=k^(3+o(1))` handles the genuinely wide
-regime, but still needs a new coupling to the line theorem.  Direct reading
-of Shkredov's common-energy papers found no theorem covering this
-foreign-shift three-point upper bound.
+ordered, pairwise-distinct, non-collinear part `T_nc` obeys
+`sum r(z)^3 <= 4T_nc+9L^2 sum r(z)`, but the hoped-for
+`T_nc<=k^(3+o(1))` is now also false, even when no three points are
+collinear.
 
-The obvious local route is false.  A new Welch--Costas plus anchor-triangle
-construction gives arbitrarily large distance-Sidon sets with one fixed
-non-collinear triangle in `Omega(k^2)` rotated fibres.  The exact 129-point
-integer certificate has all 8,256 distances distinct and codegree 3,610.
-Linearly many popular anchors can be planted, so the desired cubic
-non-collinear total is sharp and must be proved by a rich-triangle tail
-estimate, not a maximum.  The precise sharp target is
-`#{tau:q(tau)>=lambda}<=k^(3+o(1))/lambda` for ordered non-collinear
-triangles, followed by the unresolved line/transverse coupling.
-Read `phase2/loop/erdos1208/FOREIGN_SHIFT_TRIANGLE_COUNTEREXAMPLE.md` and run
-`phase2/loop/erdos1208/verify_foreign_shift_triangle_counterexample.py`.
+A new exact averaging identity
+`sum_(u0,u1,u2 in U) C3(D;u1-u0,u2-u0)=sum_y |D intersect (y+U)|^3`, followed
+by Hölder, forces `Omega(p^(7/2))` total correlation whenever a dense
+`p^2`-difference core is tested against `sqrt(p)` compact anchors.  Taking
+both pieces from finite-field parabolas, deleting at most `p/32` core points
+to make the difference spectra disjoint, and applying the anchor-lifting
+lemma gives arbitrarily large distance-Sidon sets in general position with
+`T_nc=Omega(k^(7/2))`.  In fact `Omega(k^(3/2))` anchor triangles each have
+quadratic codegree, disproving the proposed rich tail by a factor
+`k^(1/2-o(1))`.
+
+The exact new `p=127,q=7` certificate has 117 points, all 6,786 distances
+distinct, maximum collinearity two, and exact distinct-anchor contribution
+317,592.  Read `phase2/loop/erdos1208/FOREIGN_SHIFT_AVERAGING_BARRIER.md` and
+run `phase2/loop/erdos1208/verify_foreign_shift_averaging_barrier.py`.
 
 The same note now proves a general anchor-lifting lemma: any vector-Sidon core
 and a vector-Sidon shift set with disjoint difference spectra can be converted
@@ -99,6 +101,26 @@ witnesses; their ordered contribution is `1.459...k^3`.  This proves that
 qualitative radial uniqueness alone is insufficient and calibrates the
 missing ambient-height/line-tail theorem.  Run
 `phase2/loop/erdos1208/verify_foreign_shift_anchor_constellation.py`.
+
+**Restart priority:** the compact-anchor family is supercubic only in the
+third moment; its second moment remains on the sharp cubic scale.  Return to
+the transverse second-moment/decorated-parallelogram target
+`E_trans<=k^(3+o(1))` in `TRANSVERSE_SECOND_MOMENT_GATE.md`.  Together with
+Elekes's trapezoid theorem this still proves cubic support in the wide case;
+the intermediate line-rich splice remains separate.  An ambient third-moment
+bound such as `T_nc<=k^(3+o(1))+m k^(3/2+o(1))` is a secondary option.
+
+The newest local form of the transverse theorem is the adaptive eight-corner
+gate.  Write a relation `d=f+Je` using the unique ordered endpoints of its
+three edges.  Choosing one endpoint from each edge gives eight projections to
+`A^3`.  If every relation has subpolynomial degree in at least one of these
+eight projections, chosen separately for that relation, then assigning to a
+light corner gives `E_trans<=k^(3+o(1))` immediately.  Exact full enumeration
+gives maximum adaptive degrees `5,6,8` on the 30/45/60-point heavy closures
+and `6` on the new 117-point compact-anchor obstruction.  Read
+`phase2/loop/erdos1208/TRANSVERSE_EIGHT_CORNER_GATE.md` and run
+`phase2/loop/erdos1208/verify_transverse_eight_corner_gate.py`.  The missing
+input is an eight-sign inverse lemma; this is a sufficient gate, not a proof.
 
 **⭐ 2026-08-17 — ERDŐS #1208: EXPLICIT PARTIAL UPPER BOUND IMPROVED; FULL ATTACK REDUCED TO ROTATED SUPPORT.**
 The published/preprint window remains
