@@ -53,7 +53,7 @@ bijection.
 There are at most `NS` labels `(u,s)`.  Hence either one of
 
 \[
- \max_{u,s}g_K(u,s)le N^{o(1)}                  \tag{1.4}
+ \max_{u,s}g_K(u,s)\le N^{o(1)}                 \tag{1.4}
 \]
 
 or
@@ -184,3 +184,8 @@ contains two non-antipodal vectors of the same norm.
 
 Run `verify_support_adaptive_popular_overlap_gate.py` for (1.2) and the
 profiles in (3.1).
+
+`ADAPTIVE_RICH_FIBRE_STABILITY_LEDGER.md` proves the collinear branch
+`S>=ell^2`, derives the exact off-diagonal seven-incidence identity for
+`sum g_K^2`, and records why the five-copy pigeonhole alone only reaches
+fibres above the `N^2/K^2` scale.

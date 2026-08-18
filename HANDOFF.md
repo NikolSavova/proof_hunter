@@ -65,6 +65,21 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: COLLINEAR RICH FIBRES CLOSED; EXACT SEVEN-INCIDENCE TARGET DERIVED.**
+For an adaptive rich fibre `Q`, the defining incidences place both `u+Q`
+and `w-(I+J)Q` inside `D`.  If `Q` contains `ell` collinear points, adding
+these two copies gives `ell^2` distinct elements of `D+D`, because the line
+directions `v` and `(I+J)v` are independent.  Thus every rich fibre has at
+most `sqrt(S)` points on a line and a fibre covered by `r` parallel lines
+has size at most `r sqrt(S)`.  The unresolved wide case is now expressed by
+the exact identity `sum g_K^2=sum_r Z_K(r)`, where `Z_K(r)` counts seven
+simultaneous complete-difference incidences.  Its diagonal is precisely the
+adaptive tail; proving the off-diagonal bound
+`sum_{r!=0}Z_K(r)<=N^(1+o(1))S` would close the current full-resolution gate.
+The exact verifier passes on the closure-30 witness.  Read
+`ADAPTIVE_RICH_FIBRE_STABILITY_LEDGER.md`.  This is a real structured branch
+and a sharper localization, not a resolution of #1208.
+
 **⭐ 2026-08-18 — ERDŐS #1208: FULL ENERGY GATE LOCALIZED TO A SUPPORT-ADAPTIVE POPULAR TAIL.**
 Let `D=A-A`, `N=|D|`, `S=|D+D|`, `K=S/N`, and
 `R(q)=|D intersect (D+q)|`.  Splitting the common orthogonal energy at the

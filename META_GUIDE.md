@@ -449,6 +449,28 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 collinear rich-fibre theorem and seven-incidence localization (Sihao + Codex)
+
+- Proved a full structured branch of the adaptive rich-fibre problem.  If a
+  fibre `Q` contains `ell` points on an affine line, two of its forced affine
+  copies in `D` generate `ell^2` distinct sums because
+  `det(v,(I+J)v)=|v|^2`.  Hence `ell<=sqrt(|D+D|)`, and an `r`-parallel-line
+  cover gives `|Q|<=r sqrt(|D+D|)`.
+- Derived the exact aggregate identity `sum g_K(u,s)^2=sum_r Z_K(r)`.  Here
+  `Z_K(r)` retains seven simultaneous incidences in the complete difference
+  set, including the load-bearing recovered endpoint `u in D`; the diagonal
+  `Z_K(0)` is exactly the adaptive rich tail.  The remaining sufficient
+  estimate is `sum_{r!=0}Z_K(r)<=N^(1+o(1))|D+D|`.
+- Recorded the quantitative limitation of the existing five-copy
+  pigeonhole: it only guarantees a nonempty amplified subset once
+  `|Q|>N^2/K^2`, which is about `N^(2/3-o(1))` at the live cutoff, whereas a
+  counterexample to the desired average-load theorem could use much smaller
+  polynomial fibres.
+- Added `ADAPTIVE_RICH_FIBRE_STABILITY_LEDGER.md` and an exact verifier.  The
+  Cartesian injection and seven-incidence bijection pass; on closure-30 the
+  adaptive mass is 58,800, second moment 60,220, and off-diagonal mass 1,420.
+  This narrows the full problem but does not resolve it.  No paid API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 support-adaptive popular-overlap gate (Sihao + Codex)
 
 - Replaced the false support-free energy uncertainty shortcut with an exact
