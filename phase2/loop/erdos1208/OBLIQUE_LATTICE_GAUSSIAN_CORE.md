@@ -163,7 +163,7 @@ coefficient points remain in the box.  The issue is simultaneous angular
 approximation and the divisibility condition
 
 \[
- \gcd((Gn)_1,(Gn)_2)mid n^TL^Tt+n^TGn.          \tag{4.2}
+ \gcd((Gn)_1,(Gn)_2)\mid n^TL^Tt+n^TGn.         \tag{4.2}
 \]
 
 The two forced copies in (1.1) may supply the extra congruence or averaging
@@ -177,3 +177,55 @@ of primitive, nonprimitive, anisotropic, and highly sheared integer bases.
 It also checks the collision identity (4.1) on exact random coefficient
 pairs and confirms the exponent optimization in (2.12) using rational
 inequalities.
+
+## 6. The critical exponent `3/2` is sharp
+
+The desired improvement of Theorem 2.1 cannot go beyond `3/2`.  For every
+integer `B>=2`, set `r=B^2` and consider the unimodular shear patch
+
+\[
+ \mathcal S_B=
+ \{(B(a+b)+b,a+b):0\le a,b<r\}.                 \tag{6.1}
+\]
+
+It has `r^2` pairwise distinct squared norms.  To prove this, put
+
+\[
+ s=a+b,\qquad x=Bs+b.
+\]
+
+Suppose `(x,s)` and `(x',s')` have the same norm.  If `s=s'`, then
+`x=x'`, hence `b=b'` and `a=a'`.  Otherwise orient the pair so that
+`s'>s`.  Equality of norms forces `x'<x`.  Write
+
+\[
+ k=s'-s>0,
+ \qquad h=x-x'=b-b'-Bk>0.                       \tag{6.2}
+\]
+
+Factoring the equality of squares gives
+
+\[
+ h(x+x')=k(s+s').                                \tag{6.3}
+\]
+
+Because `x+x'>=B(s+s')`, equation (6.3) gives `hB<=k`, so `k>=B`.
+On the other hand, (6.2) and `b-b'<=r-1=B^2-1` give
+
+\[
+ Bk+1\le B^2-1,
+\]
+
+so `k<=B-1`, a contradiction.  Thus (6.1) is radially unique.
+
+The basis vectors are `(B,1)` and `(B+1,1)`, with determinant `-1`, and
+
+\[
+ \mathcal S_B\subset
+ [0,(2B+1)(r-1)]\times[0,2(r-1)].                \tag{6.4}
+\]
+
+Hence its containing height is `O(Br)=O(r^(3/2))`.  This proves that the
+critical oblique theorem isolated in Section 4, if true, has the best
+possible exponent.  It also supplies a necessary extremal model for any
+attempt to solve the inhomogeneous gate (4.1).

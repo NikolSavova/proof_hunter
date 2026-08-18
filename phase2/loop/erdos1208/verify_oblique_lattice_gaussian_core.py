@@ -123,6 +123,25 @@ def verify_exponent_balance() -> None:
             assert diameter >= target or core_dominates
 
 
+def verify_critical_shear_family() -> None:
+    for basis_size in range(2, 31):
+        side = basis_size * basis_size
+        norms: set[int] = set()
+        for first in range(side):
+            for second in range(side):
+                diagonal = first + second
+                point = (
+                    basis_size * diagonal + second,
+                    diagonal,
+                )
+                value = norm_square(point)
+                assert value not in norms
+                norms.add(value)
+        assert len(norms) == side * side
+        height = (2 * basis_size + 1) * (side - 1)
+        assert height <= 3 * side * basis_size
+
+
 def main() -> None:
     matrices: list[Matrix] = [
         ((1, 0), (0, 1)),
@@ -139,8 +158,10 @@ def main() -> None:
         verify_core(matrix, 4_000)
         verify_collision_identity(matrix, (12345, -6789), rng)
     verify_exponent_balance()
+    verify_critical_shear_family()
     print("oblique Gaussian-core matrices", len(matrices), "PASS")
     print("linear collision identities", 100 * len(matrices), "PASS")
+    print("critical shear family through B=30: PASS")
     print("universal oblique height exponent 6/5: PASS")
 
 

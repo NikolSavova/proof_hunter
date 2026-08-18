@@ -74,7 +74,10 @@ branch.  For an arbitrary integral basis matrix `L`, the adjugate identity
 critical `R^(3/2)` Gaussian height with the original patch diameter gives
 `M>>max(r||L||,(r/||L||)^(3/2))>>r^(6/5)`.  For an `r x s` adaptive patch,
 this yields `|Q|<<M^(5/6)sqrt(S)`.  Seven exact matrix families and 700
-linear collision identities pass.  The remaining `6/5`-to-`3/2` loss is now
+linear collision identities pass.  The target exponent `3/2` is sharp:
+the unimodular shear `(a,b)->(B(a+b)+b,a+b)` is radially injective on the
+full `B^2 x B^2` coefficient box and has height `O(B^3)=O(r^(3/2))`.
+The remaining `6/5`-to-`3/2` loss is now
 the explicit inhomogeneous divisibility/short-vector equation (4.1) in
 `OBLIQUE_LATTICE_GAUSSIAN_CORE.md`, plus extraction and aggregation.
 

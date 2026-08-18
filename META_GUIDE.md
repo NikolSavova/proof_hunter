@@ -463,9 +463,13 @@ prior-art kill-search**; has a writeable-down win condition.
   `(L^T L n).x=-n^T L^T t-n^T L^T L n`.  Reaching `r^(3/2)` amounts to
   finding a short inhomogeneous solution satisfying its gcd divisibility
   condition without restricting to the adjugate core.
+- Proved sharpness of the hoped-for `3/2` exponent.  For `r=B^2`, the full
+  unimodular shear patch `(B(a+b)+b,a+b)` has `r^2` distinct radii and height
+  `O(B^3)=O(r^(3/2))`; a factorization forces any hypothetical collision to
+  satisfy simultaneously `k>=B` and `k<=B-1`.
 - Added `OBLIQUE_LATTICE_GAUSSIAN_CORE.md` and an exact verifier covering
   seven primitive, nonprimitive, anisotropic, and sheared bases plus 700
-  collision identities.  No paid API spend.
+  collision identities and the sharp family through `B=30`.  No paid API spend.
 
 ### 2026-08-18 (latest) — ERDŐS #1208 arbitrary Gaussian-ideal critical height (Sihao + Codex)
 
