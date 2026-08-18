@@ -203,6 +203,25 @@ longest-edge load.  Exact details and the passing verifier are in
 `TRANSVERSE_LONGEST_EDGE_CHARGE_AUDIT.md` and
 `verify_transverse_longest_charge.py`.
 
+A new fixed-row intermediate gate now survives both square-root-heavy
+witnesses.  For fixed `d`, write every relation as `(u,v,x,y)` with
+`d=(u-v)+J(x-y)`.  Every two coordinate roles determine the other two, so the
+six projections `uv,ux,uy,vx,vy,xy` are simple bipartite graphs on two copies
+of `A`, each with `r(d)` edges.  If one projection has only `k^(2+o(1))`
+four-cycles, exact Cauchy/convexity gives `r(d)<=k^(3/2+o(1))`.  Uniformly this
+would yield `T<=k^(7/2+o(1))` and, in the Elekes-wide branch, the conditional
+square-grid exponent `F_2(n)<=n^(2/5+o(1))`.  It is an intermediate conjecture,
+not a proof.  Exact heavy-row and strict-diameter tests sharply support it:
+all six projection counts are `O(k^2)` through `k=120` and `k=90`, with
+maximum pair-codegree at most nine.  Coordinate-degenerate row differences do
+not explain the global row--source gate: generic differences already account
+for `67.7%` of its four-cycles at `k=60`.  Read
+`TRANSVERSE_FIXED_ROW_C4_GATE.md`; its exact verifier is
+`verify_transverse_fixed_row_c4.py`.  The next theorem is an inverse statement:
+superquadratically many fixed-row rectangles must reuse their auxiliary
+endpoints efficiently enough to force two non-antipodal edge vectors of equal
+norm.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier

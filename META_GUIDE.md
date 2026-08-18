@@ -449,6 +449,34 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 fixed-row six-projection `C_4` gate (Sihao + Codex)
+- Reorganized one fixed transverse row `d=(u-v)+J(x-y)` as a four-partite
+  pair-linear relation system.  Every two coordinate roles determine the
+  entire relation, so all six two-coordinate projections are simple
+  bipartite graphs on `k+k` vertices with exactly `r(d)` edges.
+- Proved the exact conditional implication: if one projection has
+  `C_4<=k^(2+o(1))`, then `r(d)<=k^(3/2+o(1))`.  Uniformly over rows this gives
+  `T<=k^(7/2+o(1))`; combined with Elekes in the wide regime and the exact
+  translate-union thinning inequality, it yields the conditional grid bound
+  `k<=m^(4/5+o(1))`, i.e. exponent `2/5` for `n=m^2`.  The `C_4` input is not
+  proved, so this is an intermediate gate rather than a new upper theorem.
+- Exact adversarial profiles sharply support the gate.  The heavy fixed row
+  reaches 948 relations at `k=120`, while its six projection cycle counts are
+  only 1,869--2,071 and maximum pair-codegree is eight.  The strict global
+  diameter row has 266 relations at `k=90`, cycle counts 230--473, and maximum
+  pair-codegree nine.  Of the 11,852 distinct heavy-row projection cycles,
+  11,850 occur in only one projection, so the six small counts are not one
+  duplicated family.
+- Classified row--source cycles by the row difference
+  `delta=g+Jh`.  Although `delta in D union JD` carries the largest pair
+  codegrees, the generic class already contributes 19,883,439/29,370,111 =
+  67.7% of the exact count at `k=60`.  A coordinate-degeneracy cleanup cannot
+  prove the global gate.
+- Added `TRANSVERSE_FIXED_ROW_C4_GATE.md` and
+  `verify_transverse_fixed_row_c4.py`; the exact verifier passes.  The next
+  inverse target is superquadratic rectangle mass forcing endpoint reuse and
+  then a forbidden radial equality.  No full proof yet; no paid API batch.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 row--source `C_4` gate and longest-diameter obstruction (Sihao + Codex)
 - Recast the transverse row fourth moment as a bipartite row--source graph on
   `D` and `B=A+JA`.  If its unlabelled `C_4` count is `k^(4+o(1))`, an exact
