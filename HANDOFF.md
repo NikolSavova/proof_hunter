@@ -120,6 +120,20 @@ exhausted; the next proof must control this cubic residual using radial
 uniqueness and the fact that `D=A-A` is a complete realized difference set.
 Run `verify_two_sided_rotated_support_audit.py` for the exact certificate.
 
+The centered residual now has a second exact formulation and a rigorous
+low-codegree branch.  With `Q=A\oplus A` weighted by ordered-pair
+multiplicity,
+`C(A)=sum_(p-q in JD*) w(p)w(q)`.  Endpoint-overlap relations cost at most
+`12k^3`.  For the remaining six-distinct transverse rows, the six-role
+Gaussian coefficient matrix and the Dvir--Saraf--Wigderson theorem give
+`C_(6,tr)<=864t k^2`, where `t` is the largest fixed two-role codegree.
+Exact 20- and 60-point matrices have maximal possible rank `6k-7`, so rank
+alone is exhausted.  The compact-anchor witness has one constituent-edge
+codegree 3,880 at `k=117`; the high-codegree branch is exactly the surviving
+fourth-moment/radial gate.  Read
+`phase2/loop/erdos1208/CENTERED_RESIDUAL_DESIGN_DICHOTOMY.md` and run its
+verifier.
+
 **⭐ 2026-08-18 — ERDŐS #1208: THIRD-MOMENT ROUTE KILLED IN GENERAL POSITION.**
 The fixed-quarter-turn support problem has the exact common-correlation
 identity

@@ -197,6 +197,22 @@ floor.  The same audit expands the full Fourier energy as
 so the surviving task is a positive centered cubic correlation, not an
 ordinary covariance or two-sided Ruzsa-distance estimate.
 
+`CENTERED_RESIDUAL_DESIGN_DICHOTOMY.md` now sharpens this residual further.
+It identifies it exactly as a weighted edge count in the unordered pair-sum
+set `A\oplus A`, proves that relations using at most five point labels cost
+only `O(k^3)`, and applies the Dvir--Saraf--Wigderson design theorem to the
+six-distinct transverse rows.  If `t` is their largest fixed two-role
+codegree, then
+
+\[
+ C_{6,\mathrm{tr}}(A)\le864t k^2.
+\]
+
+The compact-anchor witness has one constituent-edge codegree `3880` at
+`k=117`, so a uniform `t=k^(1+o(1))` theorem is false.  This independently
+recovers the surviving fourth-moment gate: the missing input must control
+the distribution of heavy constituent edges, rather than their maximum.
+
 Finally, the entropy theorem of Tardos on pair sums of matrix rows does not
 close this gap.  The pinned-distance rows of `A` do have the attractive
 property that two rows meet in exactly one entry, but there are only `k`

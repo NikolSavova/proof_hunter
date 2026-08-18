@@ -449,6 +449,37 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 centered-residual design dichotomy (Sihao + Codex)
+
+- Reorganized the exact positive residual
+  `C(A)=#{(d,u,v) in (D*)^3:u+v=Jd}` as a weighted edge count in the
+  unordered pair-sum set `Q=A\oplus A`:
+  `C(A)=sum_(p-q in JD*)w(p)w(q)`.  The weight is one for a double and two
+  for a sum of distinct points.  The identity also proves that the two
+  underlying pair-sums cannot share an endpoint.
+- Proved the endpoint cleanup `C_<=5(A)<=12k^3`.  On the certified 60-point
+  closure witness the full residual is 259,724; 218,640 relations have six
+  distinct labels and 218,516 are also transverse.  Thus the dominant term
+  is genuinely six-point and transverse.
+- Built the six-role Gaussian matrix
+  `a0+i b0-i c0-a1-i b1+i c1=0`.  Dense-core pruning and the improved
+  Dvir--Saraf--Wigderson rank theorem prove the unconditional dichotomy
+  `C_(6,tr)(A)<=864t k^2`, where `t` is maximum two-role codegree.  Hence the
+  nearly-linear-codegree branch is cubic.
+- The exact obstruction is now calibrated.  The compact-anchor witness has
+  one constituent-edge role-pair codegree 3,880 at `k=117`; the fixed-colour
+  witness has 802 at `k=65`.  Their totals remain subcubic.  Conversely the
+  closure matrices at `k=20,60` have exact ranks `6k-7`, saturating the five
+  role-constant plus two coordinate kernel directions.  Support rank and a
+  uniform codegree bound cannot finish.
+- Added `CENTERED_RESIDUAL_DESIGN_DICHOTOMY.md` and
+  `verify_centered_residual_design_dichotomy.py`; the verifier passes the
+  weighted identity, four endpoint profiles, four adversarial role-pair
+  profiles, and both rank certificates in about five seconds.  Decision:
+  the next theorem must treat the three exceptional realized-edge incidence
+  blocks spectrally/radially, equivalently prove the existing fourth-moment
+  bound.  Local compute and primary-source reading only; no API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 two-sided-product audit (Sihao + Codex)
 
 - Closed the proposed two-sided sumset route at its exact abstract limit.
