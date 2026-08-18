@@ -89,10 +89,11 @@ two-support product does not make radial uniqueness sufficient.  The
 canonical transversals simultaneously compress the ordinary and
 quarter-turned supports.
 
-They cannot be complete difference sets of distance-Sidon point sets in the
-range relevant to the problem.  That failure is now the load-bearing datum.
-Any proof of the orthogonal energy--support gate must invoke at least one of
-the following equivalent pieces of extra structure:
+The construction supplies no point set `A` for which `D_m=A-A`.  Ruling out
+all comparable complete-difference realizations is essentially the live
+problem, so no such non-realizability is asserted here.  What the example
+does prove is that any proof of the orthogonal energy--support gate must
+invoke at least one of the following pieces of extra structure:
 
 * every nonzero `d in D` has a unique ordered endpoint decoration
   `d=a-b`;
