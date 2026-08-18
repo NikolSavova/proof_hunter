@@ -131,6 +131,20 @@ close to the universal energy bound `E_perp<=N^3`.  A proof must formalize
 this compensation: high common energy is allowed, but only when it creates
 enough ordinary support.
 
+There is now one rigorous structured branch of this compensation.
+`ORTHOGONAL_PRODUCT_PARALLEL_COVER.md` proves directly that if `A` is covered
+by `r` parallel lines, then
+
+\[
+ |D+D|\,|D+JD|\gg {N^3\over r^2}.               \tag{3.2}
+\]
+
+Thus the full product theorem holds whenever `r=N^{o(1)}`.  Its proof uses
+the complete difference set essentially: all within-line differences form a
+set `H subset D`, and translating **all of `D`** by `JH` gives
+`|D+JD|>=|H|^2`.  This is the model for the global charging still missing in
+the wide case.
+
 ## 4. A pointwise strengthening is false by a full power
 
 It is tempting to prove (1.3) termwise from

@@ -449,6 +449,25 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 product theorem for parallel covers (Sihao + Codex)
+
+- Proved an exact structured branch of the full orthogonal product gate.  If
+  a distance-Sidon `k`-set lies on `r` parallel lines, its within-line
+  difference set has `h>=1+k^2/r-k` elements and lies in `D`.  Fibrewise
+  one-dimensional sumset growth after adding its quarter-turn gives
+  `|D+JD|>=h^2`.
+- Since `|D+D|>=2|D|-1`, this yields
+  `|D+D||D+JD|>=(2N-1)(1+k^2/r-k)^2 >> N^3/r^2`.
+  Therefore the full `N^(3-o(1))` product and cube-root grid conclusion hold
+  whenever `r=k^(o(1))`.  This uses all of `D` and gains a factor `k/r` over
+  the older `A+J(A-A)` line-support bound.
+- Added `ORTHOGONAL_PRODUCT_PARALLEL_COVER.md` and its exact verifier.  The
+  ten-point one-line Golomb ruler has `N=h=91` and orthogonal support `91^2`;
+  the dense perpendicular 40-point witness has `N=1561`, `h=381`, and
+  orthogonal support 1,413,381.  Both pass.  Remaining case: polynomially
+  many parallel layers in every useful direction.  Local compute only;
+  direct API spend `$0`.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 orthogonal energy--support gate (Sihao + Codex)
 
 - Derived the exact common energy

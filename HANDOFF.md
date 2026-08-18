@@ -112,6 +112,17 @@ popular-sum tail/charging theorem that makes those isolated peaks pay through
 ordinary support, or exploit the positive-definite autocorrelation
 representation of the complete difference set.
 
+The first full branch of that global compensation is now proved.
+`ORTHOGONAL_PRODUCT_PARALLEL_COVER.md` shows that if `A` is covered by `r`
+parallel lines, then
+`|D+D||D+JD| >= (2N-1)(1+k^2/r-k)^2`, hence
+`>>N^3/r^2`.  In particular the conjectural product theorem holds for every
+`r=k^(o(1))` cover.  The key improvement over the older line lemma is to
+translate the entire complete difference set `D` by the rotated within-line
+difference set, giving `|D+JD|>=|H|^2`.  The one-line and perpendicular-ruler
+certificates pass exactly.  The unresolved branch now has polynomially many
+parallel layers in every useful direction.
+
 **⭐ 2026-08-18 — ERDŐS #1208: ADAPTIVE EIGHT-CORNER GATE KILLED ASYMPTOTICALLY.**
 The eight-corner charging reduction is correct, but its proposed
 subpolynomial local hypothesis is false at linear scale.  Starting from one
