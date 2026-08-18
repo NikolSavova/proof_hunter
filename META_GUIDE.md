@@ -449,6 +449,28 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 dense-core and orthogonal-array inverse gate (Sihao + Codex)
+- Proved an exact pruning lemma for the corrected dense-row branch.  A fixed
+  row with `r` relations contains at least `r/2` relations in a four-partite
+  pair-linear core of minimum active role-degree `r/(8k)`.  Hence a row of
+  size `k^(1+epsilon)` has a genuinely growing-degree core, while the six
+  fresh-endpoint biclique obstruction stays in the already-harmless linear
+  branch.
+- Proved that no nontrivial full transversal design can occur in a fixed row.
+  Under its uniform edge distribution every pair of roles is independent;
+  centering `U-V+JX-JY=d` and averaging its squared norm makes all mixed terms
+  vanish and forces the sum of the four role variances to be zero.
+- Quantified the obstruction: every noncollapsed fixed row has some pair
+  projection with maximal correlation—equivalently degree-normalized second
+  singular value—at least `1/6`.  Thus dense rows are hereditarily
+  non-quasirandom in at least one projection.  Turning this certificate into
+  a power-scale density increment or radial collision is the remaining step;
+  no new final exponent is claimed.
+- Added `DENSE_CORE_ORTHOGONAL_ARRAY_GATE.md` and the pure-stdlib exact verifier
+  `verify_dense_core_orthogonal_array.py`.  The verifier checks pruning,
+  pairwise orthogonality, and rational ranks for cyclic arrays of orders
+  `3,5,7`; all tests pass.  No paid API batch; #1208 remains open.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 six-biclique kill of the longest-book moment (Sihao + Codex)
 - Corrected the immediately preceding checkpoint: the variable-longest book
   hypothesis is false, even after taking the minimum over all six fixed-row

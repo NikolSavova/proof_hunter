@@ -239,6 +239,18 @@ corrected `FIXED_ROW_LONGEST_BOOK_GATE.md` and run
 `min C_4<=k^(2+o(1))` gate itself, now known to be exponent-sharp.  A proof
 must separate sparse/fresh-endpoint bicliques from dense endpoint reuse.
 
+The dense branch now has a first exact inverse certificate.  Any fixed row of
+size `r` contains a subhypergraph with at least `r/2` relations and minimum
+degree `r/(8k)` in every active role.  A full four-role transversal design is
+impossible: under its uniform edge distribution every pair of roles is
+independent, while centering the row equation and averaging its squared norm
+forces all four role variances to vanish.  Quantitatively, every noncollapsed
+fixed row has some pair projection whose degree-normalized second singular
+value is at least `1/6`.  This does not yet give the needed power bound; the
+next task is to turn that hereditary non-quasirandomness into a density
+increment or radial collision.  Read `DENSE_CORE_ORTHOGONAL_ARRAY_GATE.md`
+and run `verify_dense_core_orthogonal_array.py`.
+
 **⭐ 2026-08-16 — ERDŐS #838: PROGRESS BAR FROZEN; CYCLIC-STEM DETOUR AUDITED WITHOUT A NEW GAIN.**
 The apples-to-apples component bar is now preserved in
 `phase2/loop/erdos838/PROGRESS_BAR_20260816.md`.  Relative to the earlier

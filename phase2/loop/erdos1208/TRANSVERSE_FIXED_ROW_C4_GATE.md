@@ -305,3 +305,15 @@ superlinear rows: prove that dense endpoint reuse either gives the fixed-row
 `k^(2+o(1))` cycle bound (for the intermediate `2/5` theorem) or, preferably,
 that its total mass over all dense rows is `k^(3+o(1))`.  Uniform
 longest-charge and Hall-matching statements are false.
+
+There is now one exact structural foothold in this dense branch.  Iterative
+deletion gives any row of size `r` a subhypergraph with at least `r/2` edges
+and minimum role-degree `r/(8k)`.  A full transversal design is impossible:
+under its uniform edge measure all six pairs of roles are independent, while
+centering (0.1) and averaging its squared norm forces the sum of the four role
+variances to be zero.  More generally, every nontrivial fixed row has a large
+coordinate covariance in at least one pair projection.  The proof and exact
+finite-field rank checks are in `DENSE_CORE_ORTHOGONAL_ARRAY_GATE.md` and
+`verify_dense_core_orthogonal_array.py`.  The missing quantitative step is to
+turn that covariance into a density increment or a radial collision at the
+required power scale.
