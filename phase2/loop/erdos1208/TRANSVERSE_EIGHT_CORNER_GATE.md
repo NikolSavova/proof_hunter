@@ -1,6 +1,18 @@
 # Adaptive eight-corner gate for the transverse theorem
 
-## 1. Status
+## 1. Status — killed by a linear-degree product construction
+
+The reduction in this note is correct, but its proposed hypothesis is false.
+`TRANSVERSE_EIGHT_CORNER_PRODUCT_BARRIER.md` proves that there are arbitrarily
+large integer distance-Sidon sets with
+
+\[
+ K(A)\ge (|A|+18)/24.
+\]
+
+Thus the hoped-for `K(A)<=|A|^{o(1)}` fails at essentially the largest
+possible power scale.  The original formulation and early stress data are
+retained below as a record of the route and its falsification.
 
 The compact-anchor construction kills every global non-collinear
 third-moment estimate, but it remains exactly on the conjectured cubic scale
@@ -9,13 +21,14 @@ formulation of that surviving theorem.
 
 Every transverse relation has three uniquely oriented edges of `A`.  Choosing
 one endpoint from each edge gives eight three-coordinate projections.  A
-relation need not be light in any fixed projection, but it is enough that
-each relation be light in **one projection chosen adaptively**.  All exact
-stress families tested satisfy this with adaptive degree at most eight.
+relation need not be light in any fixed projection, but it would have been
+enough that each relation be light in **one projection chosen adaptively**.
+The first exact stress families had adaptive degree at most eight; the later
+closure reached minimum degree 43 at 120 points, and the product argument
+makes the growth linear asymptotically.
 
-This is an exact reduction and falsification target, not a proof.  The missing
-lemma is that simultaneous richness in all eight corners forces a repeated
-Euclidean distance.
+This remains an exact sufficient reduction, not a proof.  Its missing lemma
+is now disproved.
 
 ## 2. The relation hypergraph
 
@@ -149,15 +162,13 @@ is the familiar diagonal family.  In particular every fibre has size at most
 `k`.  This explains the universal bound `deg_epsilon<=k`, but not the
 required subpolynomial adaptive minimum.
 
-The exact missing statement is an eight-sign inverse theorem:
+The proposed missing statement was the following eight-sign inverse theorem:
 
 > If one relation lies in polynomially large fibres for every one of the
 > eight signed triple maps, then two non-antipodal differences of `A` have
 > the same Euclidean norm.
 
-This statement is now the most local surviving route to the transverse
-theorem.  It retains every metric constraint, permits a square-root-heavy
-fibre in any fixed sign pattern, and asks only that one of eight complementary
-views be sparse.  A kill family would be distance-Sidon sets `A_k` and
-relations `rho_k` for which `delta(rho_k)>=k^epsilon` for some fixed
-`epsilon>0`; none is currently known.
+The product construction supplies exactly such a kill family, with
+`delta(rho_k)>=k/24+O(1)`.  Consequently this is no longer a live route to the
+transverse theorem.  The surviving target is global: the transverse second
+moment, equivalently the decorated-parallelogram / row-moment estimate.

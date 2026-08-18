@@ -449,6 +449,32 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 eight-corner product barrier (Sihao + Codex)
+
+- Disproved the adaptive eight-corner hypothesis asymptotically, not just by
+  finite search.  One exact transverse base relation has a rational affine
+  four-dimensional completion family at every corner.  Taking `t`
+  independent generic copies of all eight families gives integer
+  distance-Sidon sets with `|A|=6+24t` and
+  `K(A)>=(|A|+18)/24`.
+- Proved the generic product is legitimate.  Different block supports are
+  separated by independent variables.  For two edges joining the same two
+  blocks, the nine mixed quadratic matrices `L_r^T L'_s` are pairwise
+  distinct for every pair of corner types.  Equalities contained in one
+  block are nonidentities because each of eight exact seed completions lies
+  inside the certified 60-point distance-Sidon witness.  Rational Zariski
+  density and common-denominator scaling produce lattice examples.
+- The deterministic closure independently extended to 120 exact points with
+  corner degrees `(43,56,54,43,43,54,56,43)`.  More than eleven thousand
+  valid forced candidates remained near the endpoint, but further search is
+  unnecessary after the product theorem.
+- Added `TRANSVERSE_EIGHT_CORNER_PRODUCT_BARRIER.md`, its pure-integer
+  verifier, and the reproducible closure search.  Updated the earlier gate
+  note to mark the route closed.  No API spend.
+- **Next:** return to the global transverse second-moment/decorated-
+  parallelogram estimate.  Any new pointwise/projection gate must first
+  survive the product construction.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 compact-anchor averaging barrier (Sihao + Codex)
 
 - Proved the exact identity

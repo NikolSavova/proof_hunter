@@ -65,6 +65,34 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: ADAPTIVE EIGHT-CORNER GATE KILLED ASYMPTOTICALLY.**
+The eight-corner charging reduction is correct, but its proposed
+subpolynomial local hypothesis is false at linear scale.  Starting from one
+exact six-point transverse relation in the certified 60-point distance-Sidon
+witness, every corner has a clean rational four-dimensional affine
+completion family.  Taking `t` independent generic copies of each of the
+eight families gives an integer distance-Sidon set of size `6+24t` in which
+the base relation has degree at least `t+1` in every corner.  Hence
+`K(A)>=(|A|+18)/24` for arbitrarily large lattice sets.
+
+The generic-product proof is finite and exact.  Distances with different
+block supports depend on independent variables; distances joining the same
+two blocks are distinguished by nine pairwise-distinct mixed matrices
+`L_r^T L'_s`; and all identities confined to the base plus one block are
+excluded by eight exact seed completions already inside the 60-point
+witness.  Rational Zariski density gives rational configurations, which scale
+to integers.  Read
+`phase2/loop/erdos1208/TRANSVERSE_EIGHT_CORNER_PRODUCT_BARRIER.md` and run
+`verify_transverse_eight_corner_product_barrier.py`.
+
+The exploratory closure independently reached 120 exact integer points with
+corner degrees `(43,56,54,43,43,54,56,43)`, minimum 43, before the asymptotic
+argument made further search unnecessary.  The adaptive gate is closed; do
+not replace the global moment problem by another pointwise projection bound
+without first testing it against this product construction.  The primary
+target is again the global transverse second moment/decorated-parallelogram
+estimate, followed by the intermediate line-rich splice.
+
 **⭐ 2026-08-18 — ERDŐS #1208: THIRD-MOMENT ROUTE KILLED IN GENERAL POSITION.**
 The fixed-quarter-turn support problem has the exact common-correlation
 identity
@@ -110,17 +138,10 @@ Elekes's trapezoid theorem this still proves cubic support in the wide case;
 the intermediate line-rich splice remains separate.  An ambient third-moment
 bound such as `T_nc<=k^(3+o(1))+m k^(3/2+o(1))` is a secondary option.
 
-The newest local form of the transverse theorem is the adaptive eight-corner
-gate.  Write a relation `d=f+Je` using the unique ordered endpoints of its
-three edges.  Choosing one endpoint from each edge gives eight projections to
-`A^3`.  If every relation has subpolynomial degree in at least one of these
-eight projections, chosen separately for that relation, then assigning to a
-light corner gives `E_trans<=k^(3+o(1))` immediately.  Exact full enumeration
-gives maximum adaptive degrees `5,6,8` on the 30/45/60-point heavy closures
-and `6` on the new 117-point compact-anchor obstruction.  Read
-`phase2/loop/erdos1208/TRANSVERSE_EIGHT_CORNER_GATE.md` and run
-`phase2/loop/erdos1208/verify_transverse_eight_corner_gate.py`.  The missing
-input is an eight-sign inverse lemma; this is a sufficient gate, not a proof.
+The subsequently proposed adaptive eight-corner gate is now closed by the
+linear-degree product construction recorded above.  Its eight-way charging
+argument remains valid, but the required subpolynomial minimum projection
+degree is false.
 
 **⭐ 2026-08-17 — ERDŐS #1208: EXPLICIT PARTIAL UPPER BOUND IMPROVED; FULL ATTACK REDUCED TO ROTATED SUPPORT.**
 The published/preprint window remains
