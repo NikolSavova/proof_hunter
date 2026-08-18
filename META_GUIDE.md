@@ -449,6 +449,31 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 anchor-lifting lemma and simultaneous rich-triangle benchmark (Sihao + Codex)
+
+- Proved a general transfer lemma: if integer sets `B,U` are vector-Sidon and
+  their nonzero difference sets are disjoint, an integral linear map and one
+  translate make `T(B) union (t-JT(U))` distance-Sidon while transferring
+  every three-point correlation of `B-B` into an anchor-triangle fibre
+  codegree.  This is a finite algebraic-avoidance proof.
+- Consequence: qualitative radial uniqueness alone cannot control any
+  prescribed finite family of foreign-shift correlations.  A successful
+  theorem must retain ambient height or a global rich-tail/line tradeoff.
+- Built and exactly certified a 139-point integer stress test: all 9,591
+  distances distinct, maximum collinearity seven, and 231 non-collinear
+  anchor triangles simultaneously having 2,281--3,464 core witnesses.  Their
+  ordered `T_nc` contribution is 3,918,648, or `1.459...k^3`.
+- The anchors principally lie on two lines, so the example calibrates the
+  unresolved intermediate-collinearity branch rather than refuting the wide
+  conjecture.  It shows the sharp cubic total can be spread across many
+  popular triangles, not just one exceptional gadget.
+- Files: expanded `FOREIGN_SHIFT_TRIANGLE_COUNTEREXAMPLE.md` and new exact
+  verifier `verify_foreign_shift_anchor_constellation.py`.  No API spend.
+- **Next:** formulate an ambient-sensitive or line-sensitive tail inequality
+  that permits this anchor lift, and prove it first above the high-richness
+  threshold.  Generic common-energy and qualitative radial arguments are now
+  definitively too weak.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 foreign-shift third moment and quadratic triangle obstruction (Sihao + Codex)
 
 - Derived the exact identity

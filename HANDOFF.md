@@ -89,6 +89,17 @@ triangles, followed by the unresolved line/transverse coupling.
 Read `phase2/loop/erdos1208/FOREIGN_SHIFT_TRIANGLE_COUNTEREXAMPLE.md` and run
 `phase2/loop/erdos1208/verify_foreign_shift_triangle_counterexample.py`.
 
+The same note now proves a general anchor-lifting lemma: any vector-Sidon core
+and a vector-Sidon shift set with disjoint difference spectra can be converted
+by an integral linear map and translate into a genuine distance-Sidon set,
+while preserving all prescribed foreign-shift correlations as anchor fibres.
+The new 139-point exact benchmark has maximum collinearity seven and 231
+simultaneously popular non-collinear anchor triangles, each with 2,281--3,464
+witnesses; their ordered contribution is `1.459...k^3`.  This proves that
+qualitative radial uniqueness alone is insufficient and calibrates the
+missing ambient-height/line-tail theorem.  Run
+`phase2/loop/erdos1208/verify_foreign_shift_anchor_constellation.py`.
+
 **⭐ 2026-08-17 — ERDŐS #1208: EXPLICIT PARTIAL UPPER BOUND IMPROVED; FULL ATTACK REDUCED TO ROTATED SUPPORT.**
 The published/preprint window remains
 `n^(1/3) << F_2(n) << n^(1/2-epsilon)`.  The local prime-power/

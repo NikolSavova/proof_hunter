@@ -315,7 +315,75 @@ Run:
 python3 phase2/loop/erdos1208/verify_foreign_shift_triangle_counterexample.py
 ```
 
-## 6. Correct restart target
+## 6. General anchor-lifting lemma
+
+The single triangle is an instance of a reusable transfer principle.
+
+**Anchor-lifting lemma.**  Let `B,U subset Z^2` be finite vector-Sidon sets
+such that
+
+\[
+ ((B-B)\setminus\{0\})\cap
+ ((U-U)\setminus\{0\})=\varnothing.             \tag{6.1}
+\]
+
+There are an integral nonsingular linear map `T` and an integer translate
+`t` for which
+
+\[
+ A=T(B)\ \cup\ \{t-JT(u):u\in U\}              \tag{6.2}
+\]
+
+is distance-Sidon.  Moreover, for every ordered triple `u_0,u_1,u_2 in U`,
+the corresponding anchor triangle has at least
+
+\[
+ C_3(D_B;u_1-u_0,u_2-u_0),\qquad
+ D_B=(B-B)\setminus\{0\},                      \tag{6.3}
+\]
+
+fibres in `A+J(A-A)`.
+
+To prove the metric assertion, choose `T` outside the finitely many proper
+quadratic hypersurfaces that equate the norms of two vectors in
+`(B-B) union (U-U)` not equal up to sign.  Condition (6.1) and the two
+vector-Sidon hypotheses ensure that all these vectors are distinct up to
+sign.  Then choose `t` outside the finitely many lines and circles that cause
+a cross-distance collision.  Both choices can be integral.  Finally,
+
+\[
+ J((t-JT(u_j))-(t-JT(u_i)))=T(u_j-u_i),
+\]
+
+so applying `T` to every witness counted in (6.3) proves the fibre claim.
+
+This lemma is an important limitation on purely qualitative uses of radial
+uniqueness: any vector-Sidon core and disjoint vector-Sidon shift model can be
+converted into a genuine Euclidean distance-Sidon example.  A successful
+upper theorem must use quantitative ambient height or a global tail/line
+tradeoff; radial uniqueness alone cannot suppress a prescribed finite family
+of foreign-shift correlations.
+
+### A 139-point simultaneous stress test
+
+The file `verify_foreign_shift_anchor_constellation.py` applies the lemma to
+the same `p=127` Welch core and a 13-point shift set.  The resulting integer
+set has:
+
+* 139 points and all 9,591 unordered distances distinct;
+* maximum collinearity seven;
+* 231 non-collinear anchor triangles;
+* between 2,281 and 3,464 core witnesses for every one of those triangles;
+* total ordered non-collinear moment contribution 3,918,648, which is
+  `1.459... times 139^3`.
+
+The anchors lie principally on two lines.  The example therefore does not
+falsify a `k^(3+o(1))` wide-regime moment bound, but it is a sharp finite
+benchmark for the missing line/transverse coupling.  It also demonstrates
+that many popular triangles can coexist; the single-triangle obstruction is
+not an isolated local gadget.
+
+## 7. Correct restart target
 
 Do not pursue a uniform upper bound for
 `C_3(D;J(b-a),J(c-a))`; even `k^(2-epsilon)` is false.
@@ -330,7 +398,7 @@ The clean live statement is the rich-triangle tail estimate
 
 \[
  |\{\tau:q(\tau)\ge\lambda\}|
- \le \frac{k^{3+o(1)}}{\lambda},                \tag{6.1}
+ \le \frac{k^{3+o(1)}}{\lambda},                \tag{7.1}
 \]
 
 uniformly over dyadic `1<=lambda<=k^2`, first for sets with
