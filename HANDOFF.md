@@ -65,6 +65,20 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: BOUNDED-DEGREE ALGEBRAIC RICH FIBRES CLOSED.**
+If `Q_0` is contained in a real algebraic curve of degree `d` inside one
+adaptive rich fibre, then the two forced copies `u+Q_0` and
+`w-(I+J)Q_0` give
+`|D+D|>=|Q_0|^2/d^2`.  The proof is a direct Bezout count: a fibre of the
+map `(q,q')->q-(I+J)q'` is the intersection of the curve with a translated
+`(I+J)`-image, and no one-dimensional real irreducible component is invariant
+under that expanding quarter-turn similarity.  Hence a cover by `r`
+degree-`d` curves gives `|Q|<=rd sqrt(S)`.  This extends the collinear branch
+to every bounded-degree curve model.  The unresolved fibres must have
+growing algebraic complexity, as a rank-two Gaussian-lattice patch does.
+Read `ALGEBRAIC_CURVE_RICH_FIBRE_BRANCH.md`; its exact regression verifier
+passes.  This narrows, but does not solve, the seven-incidence remainder.
+
 **⭐ 2026-08-18 — ERDŐS #1208: COLLINEAR RICH FIBRES CLOSED; EXACT SEVEN-INCIDENCE TARGET DERIVED.**
 For an adaptive rich fibre `Q`, the defining incidences place both `u+Q`
 and `w-(I+J)Q` inside `D`.  If `Q` contains `ell` collinear points, adding

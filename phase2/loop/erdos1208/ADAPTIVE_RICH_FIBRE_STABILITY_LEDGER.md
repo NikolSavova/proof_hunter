@@ -142,3 +142,9 @@ weighted stability theorem for all seven incidences simultaneously.
    adaptive rich fibre; and
 4. the raw majorant (2.6), while retaining the warning that it is too weak
    for a proof.
+
+`ALGEBRAIC_CURVE_RICH_FIBRE_BRANCH.md` extends Proposition 1.1: if `h`
+fibre points lie on a real degree-`d` algebraic curve, then Bezout gives
+`S>=h^2/d^2`.  Hence a cover by `r` bounded-degree curves gives
+`|Q|<=rd sqrt(S)`.  The remaining wide fibres must have genuinely growing
+algebraic complexity, as a rank-two lattice model does.

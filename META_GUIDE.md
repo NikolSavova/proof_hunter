@@ -449,6 +449,28 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 algebraic-curve rich-fibre branch (Sihao + Codex)
+
+- Extended the collinear rich-fibre injection to all real algebraic curves.
+  If `h` fibre shifts lie on a degree-`d` curve, the forced sum map
+  `(q,q')->q-(I+J)q'` has fibres of size at most `d^2` by Bezout, so
+  `|D+D|>=h^2/d^2` and `h<=d sqrt(|D+D|)`.
+- Checked the only possible common-component issue.  An irreducible curve
+  invariant under a translated `I+J` would, after centering, have a
+  homogeneous defining polynomial.  Over the complex numbers this factors
+  into lines; `I+J` has no real eigenline.  Real-irreducible exceptional
+  cones have zero-dimensional real locus and satisfy the same numerical
+  bound trivially.  Factoring a general degree-`d` curve and summing component
+  bounds proves the stated theorem.
+- Added `ALGEBRAIC_CURVE_RICH_FIBRE_BRANCH.md` and its exact regression
+  verifier.  Line, parabola, and cubic samples all pass the predicted `d^2`
+  multiplicity bound.
+- **Consequence and limit.**  Every bounded-degree curve model is now closed;
+  a hard rich fibre must have growing algebraic complexity.  This isolates
+  the remaining rank-two approximate-lattice branch but does not control the
+  small-polynomial fibres needed for the full seven-incidence estimate.
+  No paid API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 collinear rich-fibre theorem and seven-incidence localization (Sihao + Codex)
 
 - Proved a full structured branch of the adaptive rich-fibre problem.  If a
