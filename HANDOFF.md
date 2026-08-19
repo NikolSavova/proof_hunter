@@ -65,6 +65,35 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-19 — ERDŐS #1208: ADAPTIVE CROSS-PAIR `D^2` CHARGE IS THE NEW LEAD.**
+For each rich-fibre incidence put
+`X_F(q)=(u+q,w-q,w-(I+J)q) in D^3`.  Every one of the nine cross pairs
+`(X_F(q)_i,X_F(p)_j)` is a fibre-injective charge into `D^2`.  In
+particular the fixed route `(u+q,w-(I+J)p)` resolves the full adaptive tail
+if its load satisfies
+
+`sum lambda^2 <= K N^o(1) O_K`, where `K=S/N`.
+
+Cauchy then gives `O_K<=N^2 K N^o(1)=NSN^o(1)` and the full cube-root grid
+upper bound.  This route covers normal and common-endpoint configurations
+uniformly and permits average load `K`, rather than the subpolynomial load
+required by the six-anchor route.  The estimate is **not proved**.
+
+The triple has the exact common factor
+`Phi(X)=(x0+x1,x2+(I+J)x0)=(s,s+Ju)`, which recovers its fibre.  Hence a
+full nine-projection orthogonal array is impossible; the remaining task is a
+sparse `K`-scale density increment using the canonical endpoint realization
+of `D=A-A`.  This qualification is essential: radial transversals violate
+the same estimate by growing factors.
+
+The exact extended verifier passes through the special low-support Costas
+`p=47` row.  Its profile is
+`(N,S,mass,moment,max)=(2071,23427,25194336,361029280,71)`;
+`moment/(K mass)=1.266785`, so constant one is false but the required
+`N^o(1)` target survives.  Read
+`phase2/loop/erdos1208/ADAPTIVE_CROSS_PAIR_D2_CHARGE_GATE.md` and run
+`verify_adaptive_cross_pair_d2_charge.py --extended`.
+
 **⭐ 2026-08-19 — ERDŐS #1208: SWAP-COUPLED SIX-ANCHOR CHARGE IS THE NEW EXACT LEAD.**
 Every ordered normal seven-incidence configuration `(q,p)` has its swapped
 partner `(p,q)` in the same rich fibre.  Keeping both endpoint labels gives

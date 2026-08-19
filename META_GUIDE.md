@@ -449,6 +449,36 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-19 — #1208 adaptive cross-pair `D^2` charge
+
+- Re-encoded every rich-fibre incidence as
+  `X_F(q)=(u+q,w-q,w-(I+J)q) in D^3`.  Each of the nine ordered cross pairs
+  between `X_F(q)` and `X_F(p)` is a fibre-injective charge into `D^2`, with
+  no endpoint-degeneracy split.
+- Isolated the fixed route `(u+q,w-(I+J)p)`.  Its size-biased estimate
+  `sum lambda^2<=K N^o(1) O_K`, `K=S/N`, implies the full adaptive-tail bound
+  by Cauchy in the `N^2` target.  This permits a power-sized average load `K`
+  and is therefore a weaker-scale target than the preceding six-anchor
+  theorem.
+- Derived the exact common-factor identity
+  `Phi(X)=(x0+x1,x2+(I+J)x0)=(s,s+Ju)`, which recovers the fibre, and the
+  fixed-key displacement system
+  `delta,0,delta+pi,delta+(I+J)pi,Jpi,(I+J)(delta+pi),0`.
+  Full nine-projection pairwise independence would force `Phi` constant;
+  the missing bridge is a sparse quantitative density increment.
+- The exact extended verifier passes through the deliberately low-support
+  Costas `p=47` transform.  Its fixed-route profile is
+  `(2071,23427,25194336,361029280,71)`, with moment/(K mass) `1.266785` and
+  moment/`S^2` `0.657823`.  Thus a constant-one claim is false, while the
+  required subpolynomial-loss target remains viable.
+- Radial transversals sharply disprove any endpoint-free version: the fixed
+  route has moment/(K mass) `20.59` at side 8 and `72.34` at side 12; the
+  minimum-nine envelope also grows.  Complete-difference endpoints remain
+  load-bearing.
+- Added `ADAPTIVE_CROSS_PAIR_D2_CHARGE_GATE.md`, its exact verifier, and a
+  nine-route analyzer.  The full problem remains open; local computation
+  only, with no paid API spend.
+
 ### 2026-08-19 — #1208 swap-coupled six-anchor charge
 
 - Used the involution swapping the two ordered popular shifts in every rich

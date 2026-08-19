@@ -1,5 +1,10 @@
 # The swap-coupled six-anchor charge
 
+> **Update (2026-08-19).**  This remains the strongest endpoint-normal
+> fallback.  `ADAPTIVE_CROSS_PAIR_D2_CHARGE_GATE.md` gives a newer uniform
+> charge of all configurations into `D^2`, with the larger permissible load
+> `K=S/N`; it is now the preferred direct gate.
+
 ## 1. Outcome
 
 This note strengthens the normal part of
