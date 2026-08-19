@@ -21,6 +21,7 @@ def verify_prime(prime: int) -> None:
         (i, j)
         for i in range(1, prime)
         for j in range(1, prime)
+        if i != j
     ]
     lines = [
         (slope, intercept)
@@ -38,18 +39,32 @@ def verify_prime(prime: int) -> None:
     }
     assert all(len(block) == block_size for block in blocks.values())
 
-    pencils: dict[Line, set[Cell]] = {
+    all_pencils: dict[Line, set[Cell]] = {
         (slope, intercept): {
             (i, (slope * i + intercept) % prime)
             for i in range(1, prime)
-            if (slope * i + intercept) % prime != 0
+            if (i, (slope * i + intercept) % prime) in cells
         }
         for slope, intercept in lines
     }
-    assert Counter(map(len, pencils.values())) == {
-        block_size: block_size,
-        block_size - 1: block_size**2,
+    assert Counter(map(len, all_pencils.values())) == {
+        0: 1,
+        block_size: block_size - 1,
+        block_size - 1: block_size,
+        block_size - 2: block_size * (block_size - 1),
     }
+    pencils = {line: pencil for line, pencil in all_pencils.items() if pencil}
+
+    full_diagonal_pencils = 0
+    for (slope, intercept), pencil in pencils.items():
+        if intercept != 0 or slope == 1:
+            continue
+        assert len(pencil) == block_size
+        for i, j in pencil:
+            incidence_label = (i * slope) % prime
+            assert incidence_label == j
+        full_diagonal_pencils += 1
+    assert full_diagonal_pencils == block_size - 1
 
     edge_centre: dict[tuple[Cell, Cell], Line] = {}
     for line, pencil in pencils.items():
@@ -82,7 +97,15 @@ def verify_prime(prime: int) -> None:
             )
 
     intersection_count = len(edge_centre)
-    expected_edges = block_size**2 * (block_size - 1) ** 2 // 2
+    expected_edges = (
+        (block_size - 1) * block_size * (block_size - 1) // 2
+        + block_size * (block_size - 1) * (block_size - 2) // 2
+        + block_size
+        * (block_size - 1)
+        * (block_size - 2)
+        * (block_size - 3)
+        // 2
+    )
     assert intersection_count == expected_edges
 
     # Lexicographically orient every edge and compute its outgoing pencil
@@ -104,12 +127,16 @@ def verify_prime(prime: int) -> None:
     total = sum(pencil_outcut.values())
     assert total == (block_size - 1) * intersection_count
     cost = sum(value * value for value in pencil_outcut.values())
-    cauchy_lower = Fraction(total * total, len(lines))
+    # The isolated zero block contributes k further support points, all with
+    # pencil load zero.
+    support_size = len(pencils) + block_size
+    assert support_size == block_size**2 + 2 * block_size - 1
+    cauchy_lower = Fraction(total * total, support_size)
     assert cost >= cauchy_lower
 
     normalized_universal_lower = Fraction(
-        (block_size - 1) ** 2,
-        block_size + 1,
+        block_size * (block_size - 1) ** 2,
+        support_size,
     )
     assert (
         Fraction(block_size, intersection_count**2) * cauchy_lower
@@ -120,8 +147,8 @@ def verify_prime(prime: int) -> None:
         "affine double-endpoint profile",
         (
             block_size,
-            len(cells),
-            len(lines),
+            len(cells) + 1,
+            support_size,
             intersection_count,
             cost,
             normalized_universal_lower,
