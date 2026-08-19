@@ -449,6 +449,25 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 adaptive eight-form fractional-basis gate (Sihao + Codex)
+
+The fixed-key opposite-endpoint collision system was rewritten using four
+free `D`-forms `a,b,c,d` and dependent forms `e=d+b-c` and
+`f=e+J(a-c)`.  Exact rank enumeration shows that thirteen of the fifteen
+four-form projections are bases; a rational fractional cover gives exponent
+`2/3` on all six overlap counts.  Adding the two popular forms
+`q=b-a,q'=c-a` gives a stronger basis graph: the valid pairs among the six
+`D`-forms are exactly `K_(3,3)` between `{a,b,c}` and `{d,e,f}`.  Uniform
+edge weighting yields the rigorous pointwise bound
+`C_P(delta,epsilon)<=R_P(epsilon-delta)R_P(2delta)prod_jR_D(s_j)^(1/3)`.
+The exact verifier reconstructs all `104,596` closure-40 and `759,844`
+determinant-23 Costas ordered collisions, checks every offset against both
+minimum-basis and cubed certificates, and passes.  This preserves all six
+`D` incidences and all four adaptive-popularity conditions, but its aggregate
+sum is not yet bounded at the required scale.  Added
+`SIX_OVERLAP_FRACTIONAL_BASIS_GATE.md` and verifier.  Approximate spend:
+local compute only; no API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 determinant-prime resonance localization (Sihao + Codex)
 
 The generic-affine vanishing branch was stress-tested against integral

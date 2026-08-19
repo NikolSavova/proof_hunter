@@ -65,6 +65,24 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: CHARGE COLLISIONS SATISFY AN EIGHT-FORM ADAPTIVE FRACTIONAL-BASIS BOUND.**
+Two preimages of one opposite-endpoint key give six `D`-forms in four
+vector variables.  Thirteen of the fifteen four-form projections are
+invertible, yielding the symmetric six-overlap bound
+`C(delta,epsilon)<=prod_j R_D(s_j)^(2/3)`.  Retaining the two popular shifts
+`q=b-a,q'=c-a` is substantially stronger: together with one form from each
+of `{a,b,c}` and `{d,e,f}`, they form exactly the nine bases of `K_(3,3)`.
+Uniform fractional weighting proves
+`C_P<=R_P(epsilon-delta)R_P(2delta)prod_j R_D(s_j)^(1/3)`.  This is the first
+collision majorant that simultaneously keeps all six complete-difference
+incidences and all four adaptive-popularity memberships.  Exact closure-40
+and determinant-23 Costas audits cover `864,440` ordered collisions; the
+worst ratios to the refined minimum-basis bound are `7/517` and `6/480`.
+The remaining gate is to sum this adaptive eight-form expression at
+`N^o(1) O_K` scale using endpoint factorization; generic Holder still loses
+fixed powers.  Read `SIX_OVERLAP_FRACTIONAL_BASIS_GATE.md` and run its
+verifier.
+
 **⭐ 2026-08-18 — ERDŐS #1208: DETERMINANT-PRIME AFFINE RESONANCE IS CODIMENSION ONE.**
 Let `T` be an integral two-by-two matrix with prime determinant `p`, write
 `T^T T=(w,u;u,v)`, and suppose its Gram matrix is nonzero modulo `p`.
