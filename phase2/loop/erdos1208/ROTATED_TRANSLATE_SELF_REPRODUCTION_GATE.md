@@ -173,9 +173,122 @@ opposite-endpoint charges.  A size-biased bound on intersections of the
 sets in (1.1), after deleting the common block contribution, would close the
 same adaptive tail.
 
-## 5. Verification
+## 5. Exact transverse common-neighborhood normal form
 
-`verify_rotated_translate_self_reproduction.py` checks (1.1)--(4.3)
+The overlap between two self-reproducing neighborhoods splits exactly into
+the unavoidable common block and one shifted endpoint-difference count.
+
+Take distinct `x,y in U`, put `delta=y-x`, and retain the endpoint sets
+`A_x,A_y` from Section 1.  For `p in A_x` and `q in A_y`, set
+
+\[
+ w=\delta+p-q.                                   \tag{5.1}
+\]
+
+If `w in D minus {0}`, let `(a_w,b_w)` be its unique ordered endpoint pair:
+
+\[
+ w=a_w-b_w.
+\]
+
+Define `T_(x,y)` to be the set of pairs `(p,q) in A_x times A_y` for which
+
+\[
+ w\in D\setminus\{0\},\qquad a_w\ne p,\qquad b_w\ne q.       \tag{5.2}
+\]
+
+Let `x sim y` mean adjacency in `G_A`, equivalently that `x,y` lie in one
+common block.  Then
+
+\[
+ \boxed{
+ |N[x]\cap N[y]|=k\,1_{x\sim y}+|\mathcal T_{x,y}|.}          \tag{5.3}
+\]
+
+The two terms in (5.3) have disjoint geometric meanings.  The first is the
+entire unique common `K_k`; the second counts common neighbors obtained from
+two different blocks.
+
+### Proof
+
+First suppose `w=0`.  Since `p in A_x` and `q in A_y`, there are blocks
+`B_d,B_e` such that
+
+\[
+ x=p+Jd,\qquad y=q+Je.
+\]
+
+The equality `delta=q-p` is then equivalent to `J(e-d)=0`, so `d=e`.
+Thus a zero value in (5.1) exists exactly when `x sim y`; by block
+linearity it comes from the unique common block.  That block contributes
+all `k` of its vertices to `N[x] cap N[y]`.
+
+Now take a pair in `T_(x,y)` and define
+
+\[
+ z=x+a_w-p.                                      \tag{5.4}
+\]
+
+Equation (5.1) rearranges to
+
+\[
+ a_w-p-\delta=b_w-q,
+\]
+
+so also
+
+\[
+ z=y+b_w-q.                                      \tag{5.5}
+\]
+
+The difference `a_w-p` shows that `z in N[x]`, and `b_w-q` shows that
+`z in N[y]`.  The last two conditions in (5.2) ensure `z notin {x,y}`.
+Moreover `z` cannot be another point of a common block: uniqueness of the
+two nonzero endpoint differences in (5.4)--(5.5) would then force the
+canonical common-block endpoints and hence `w=0`.
+
+The map `(p,q) -> z` is injective.  If two pairs give the same `z`, then
+
+\[
+ a_w-p=a_{w'}-p'.
+\]
+
+This is nonzero, so oriented-difference uniqueness recovers both `a_w` and
+`p`.  Applying the same argument to (5.5) recovers `b_w` and `q`.
+
+Conversely, let `z` be a common neighbor outside the common block.  Choose
+the block through `x,z` and the different block through `y,z`, and write
+
+\[
+ x=p+Jd,\quad z=a+Jd,
+ \qquad y=q+Je,\quad z=b+Je.
+\]
+
+Then
+
+\[
+ \delta+p-q=a-b\in D\setminus\{0\},
+\]
+
+and `z notin {x,y}` gives the two inequalities in (5.2).  This reverses
+(5.4)--(5.5) and proves (5.3).
+
+Formula (5.3) is the local overlap gate in its smallest endpoint form.  A
+general projective plane pays only the first term.  Any excess must now be
+realized by the concrete six-endpoint condition
+
+\[
+ p\in A_x,\quad q\in A_y,quad
+ (y-x)+p-q=a-b\in A-A.                           \tag{5.6}
+\]
+
+A size-biased aggregate bound for (5.6), after the common-block term is
+removed, is equivalent to the transverse part of the existing
+seven-incidence charge.
+
+## 6. Verification
+
+`verify_rotated_translate_self_reproduction.py` checks (1.1)--(5.3)
 exactly on the determinant-prime affine Costas distance-Sidon families for
 primes 11, 17, and 23.  It constructs every block, fibre, closed
 neighborhood, and shadow edge using integer arithmetic.

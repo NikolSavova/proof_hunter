@@ -47,6 +47,13 @@ def verify_row(prime: int) -> tuple[int, int, int, int, int]:
         subtract(left, right) for left in points for right in points
     }
     assert len(differences) == k * (k - 1) + 1
+    endpoint_of_difference = {
+        subtract(left, right): (left, right)
+        for left in points
+        for right in points
+        if left != right
+    }
+    assert len(endpoint_of_difference) == k * (k - 1)
 
     blocks: dict[Point, set[Point]] = {}
     fibres: dict[Point, list[tuple[Point, Point]]] = defaultdict(list)
@@ -76,6 +83,9 @@ def verify_row(prime: int) -> tuple[int, int, int, int, int]:
         degrees[left] += 1
         degrees[right] += 1
 
+    neighborhoods: dict[Point, set[Point]] = {}
+    endpoint_sets: dict[Point, set[Point]] = {}
+    incident_blocks: dict[Point, set[Point]] = {}
     for output, representations in fibres.items():
         endpoints = {endpoint for endpoint, _ in representations}
         incident_differences = {
@@ -96,6 +106,9 @@ def verify_row(prime: int) -> tuple[int, int, int, int, int]:
         assert block_neighborhood == star_neighborhood
         assert len(block_neighborhood) == expected_size
         assert degrees[output] == expected_size - 1
+        neighborhoods[output] = block_neighborhood
+        endpoint_sets[output] = endpoints
+        incident_blocks[output] = incident_differences
 
     assert sum(degrees.values()) == 2 * len(shadow_edges)
     assert sum(
@@ -109,6 +122,70 @@ def verify_row(prime: int) -> tuple[int, int, int, int, int]:
         for other_difference, other_block in block_items[index + 1 :]:
             assert difference != other_difference
             assert len(block.intersection(other_block)) <= 1
+
+    # Check every adjacent pair, and either every or a deterministic sample
+    # of nonadjacent pairs, against the transverse endpoint normal form.
+    outputs = sorted(support)
+    pairs_to_check = set(shadow_edges)
+    if len(outputs) <= 1_000:
+        pairs_to_check.update(combinations(outputs, 2))
+    else:
+        target_nonadjacent = 20_000
+        for left_index, left in enumerate(outputs):
+            if not target_nonadjacent:
+                break
+            for right in outputs[left_index + 1 :]:
+                pair = (left, right)
+                if pair in pairs_to_check:
+                    continue
+                pairs_to_check.add(pair)
+                target_nonadjacent -= 1
+                if not target_nonadjacent:
+                    break
+
+    for left, right in pairs_to_check:
+        delta = subtract(right, left)
+        common_blocks = incident_blocks[left].intersection(
+            incident_blocks[right]
+        )
+        assert len(common_blocks) <= 1
+        baseline = (
+            blocks[next(iter(common_blocks))] if common_blocks else set()
+        )
+
+        transverse_points: set[Point] = set()
+        transverse_count = 0
+        for first_endpoint in endpoint_sets[left]:
+            for second_endpoint in endpoint_sets[right]:
+                shifted = add(
+                    delta,
+                    subtract(first_endpoint, second_endpoint),
+                )
+                endpoint_pair = endpoint_of_difference.get(shifted)
+                if endpoint_pair is None:
+                    continue
+                first, second = endpoint_pair
+                if first == first_endpoint or second == second_endpoint:
+                    continue
+                common = add(left, subtract(first, first_endpoint))
+                assert common == add(
+                    right, subtract(second, second_endpoint)
+                )
+                assert common not in (left, right)
+                assert common not in baseline
+                assert common in neighborhoods[left]
+                assert common in neighborhoods[right]
+                transverse_count += 1
+                transverse_points.add(common)
+
+        assert len(transverse_points) == transverse_count
+        actual_intersection = neighborhoods[left].intersection(
+            neighborhoods[right]
+        )
+        assert actual_intersection == baseline.union(transverse_points)
+        assert len(actual_intersection) == (
+            (k if common_blocks else 0) + transverse_count
+        )
 
     return (
         k,
