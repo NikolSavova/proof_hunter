@@ -125,34 +125,10 @@ def verify_row(prime: int) -> tuple[int, int, int, int, int]:
 
     # Check every adjacent pair, and either every or a deterministic sample
     # of nonadjacent pairs, against the transverse endpoint normal form.
-    outputs = sorted(support)
-    pairs_to_check = set(shadow_edges)
-    if len(outputs) <= 1_000:
-        pairs_to_check.update(combinations(outputs, 2))
-    else:
-        target_nonadjacent = 20_000
-        for left_index, left in enumerate(outputs):
-            if not target_nonadjacent:
-                break
-            for right in outputs[left_index + 1 :]:
-                pair = (left, right)
-                if pair in pairs_to_check:
-                    continue
-                pairs_to_check.add(pair)
-                target_nonadjacent -= 1
-                if not target_nonadjacent:
-                    break
-
-    for left, right in pairs_to_check:
+    def transverse_points_for_pair(
+        left: Point, right: Point, baseline: set[Point]
+    ) -> set[Point]:
         delta = subtract(right, left)
-        common_blocks = incident_blocks[left].intersection(
-            incident_blocks[right]
-        )
-        assert len(common_blocks) <= 1
-        baseline = (
-            blocks[next(iter(common_blocks))] if common_blocks else set()
-        )
-
         transverse_points: set[Point] = set()
         transverse_count = 0
         for first_endpoint in endpoint_sets[left]:
@@ -177,15 +153,95 @@ def verify_row(prime: int) -> tuple[int, int, int, int, int]:
                 assert common in neighborhoods[right]
                 transverse_count += 1
                 transverse_points.add(common)
-
         assert len(transverse_points) == transverse_count
+        return transverse_points
+
+    outputs = sorted(support)
+    pairs_to_check = set(shadow_edges)
+    if len(outputs) <= 1_000:
+        pairs_to_check.update(combinations(outputs, 2))
+    else:
+        target_nonadjacent = 20_000
+        for left_index, left in enumerate(outputs):
+            if not target_nonadjacent:
+                break
+            for right in outputs[left_index + 1 :]:
+                pair = (left, right)
+                if pair in pairs_to_check:
+                    continue
+                pairs_to_check.add(pair)
+                target_nonadjacent -= 1
+                if not target_nonadjacent:
+                    break
+
+    for left, right in pairs_to_check:
+        common_blocks = incident_blocks[left].intersection(
+            incident_blocks[right]
+        )
+        assert len(common_blocks) <= 1
+        baseline = (
+            blocks[next(iter(common_blocks))] if common_blocks else set()
+        )
+        transverse_points = transverse_points_for_pair(left, right, baseline)
         actual_intersection = neighborhoods[left].intersection(
             neighborhoods[right]
         )
         assert actual_intersection == baseline.union(transverse_points)
         assert len(actual_intersection) == (
-            (k if common_blocks else 0) + transverse_count
+            (k if common_blocks else 0) + len(transverse_points)
         )
+
+    # Build every transverse wedge from its centre, its two incident blocks,
+    # and the two noncentral endpoint switches.  Linearity makes this global
+    # parametrization injective and proves the aggregate self-duality count.
+    transverse_wedges: set[tuple[tuple[Point, Point], Point]] = set()
+    expected_transverse_wedges = 0
+    for centre, representations in fibres.items():
+        expected_transverse_wedges += (
+            len(representations)
+            * (len(representations) - 1)
+            // 2
+            * (k - 1) ** 2
+        )
+        for (first_centre_endpoint, first_difference), (
+            second_centre_endpoint,
+            second_difference,
+        ) in combinations(representations, 2):
+            for first_endpoint in points:
+                if first_endpoint == first_centre_endpoint:
+                    continue
+                left = add(first_endpoint, quarter_turn(first_difference))
+                for second_endpoint in points:
+                    if second_endpoint == second_centre_endpoint:
+                        continue
+                    right = add(
+                        second_endpoint,
+                        quarter_turn(second_difference),
+                    )
+                    assert left != right
+                    wedge = (ordered_edge(left, right), centre)
+                    assert wedge not in transverse_wedges
+                    transverse_wedges.add(wedge)
+    assert len(transverse_wedges) == expected_transverse_wedges
+
+    transverse_by_pair: dict[tuple[Point, Point], int] = defaultdict(int)
+    for pair, _ in transverse_wedges:
+        transverse_by_pair[pair] += 1
+    for (left, right), multiplicity in transverse_by_pair.items():
+        common_blocks = incident_blocks[left].intersection(
+            incident_blocks[right]
+        )
+        baseline = (
+            blocks[next(iter(common_blocks))] if common_blocks else set()
+        )
+        assert len(transverse_points_for_pair(left, right, baseline)) == multiplicity
+    assert sum(transverse_by_pair.values()) == (
+        (k - 1) ** 2
+        * sum(
+            len(representations) * (len(representations) - 1) // 2
+            for representations in fibres.values()
+        )
+    )
 
     return (
         k,

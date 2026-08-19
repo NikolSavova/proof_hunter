@@ -286,9 +286,65 @@ A size-biased aggregate bound for (5.6), after the common-block term is
 removed, is equivalent to the transverse part of the existing
 seven-incidence charge.
 
-## 6. Verification
+## 6. Exact self-duality of the aggregate transverse overlap
 
-`verify_rotated_translate_self_reproduction.py` checks (1.1)--(5.3)
+The local normal form does not, by itself, improve the global second
+moment.  Its unweighted aggregate is exactly the old collision count at the
+dual scale:
+
+\[
+ \boxed{
+ \sum_{\{x,y\}\in\binom U2}|\mathcal T_{x,y}|
+ =(k-1)^2\sum_{z\in U}{r_z\choose2}.}            \tag{6.1}
+\]
+
+To prove (6.1), fix a point `z` and two distinct representations
+
+\[
+ z=a+Jd=b+Je.
+\]
+
+The blocks `B_d,B_e` meet only at `z`.  Choose independently
+
+\[
+ p\in A\setminus\{a\},\qquad q\in A\setminus\{b\},
+\]
+
+and put
+
+\[
+ x=p+Jd,qquad y=q+Je.                            \tag{6.2}
+\]
+
+Then `x!=y`, while `z` is a transverse common neighbor of `x,y`.  The
+unique blocks through `x,z` and through `y,z` recover `d,e`; their endpoint
+decorations recover `p,q`.  Thus different choices in (6.2), and different
+unordered pairs of representations of `z`, give different transverse
+wedges `({x,y},z)`.  Conversely every member counted by some
+`T_(x,y)` recovers exactly this data through the proof of (5.3).
+
+There are `(k-1)^2` endpoint switches for every unordered pair of
+representations at `z`, proving (6.1).
+
+Equation (6.1) is a useful no-go theorem.  Summing the exact neighborhood
+expansion (1.1) and controlling overlaps only by their total multiplicity
+is circular: it reproduces `sum binom(r_z,2)` multiplied by the same
+endpoint-switch factor that created the expansion.  A successful use of
+self-reproduction must therefore do at least one of the following:
+
+1. orient the transverse wedges and control a convex size-biased load;
+2. discard a structured family and charge it to a genuinely new support;
+   or
+3. use the Gaussian-core scale/index to make repeated switching shrink the
+   ambient lattice.
+
+This explains, in the simpler block graph, why the preferred swap gate is
+the oriented energy `2 sum_v d^+(v)^2` rather than an unweighted common-
+neighborhood total.
+
+## 7. Verification
+
+`verify_rotated_translate_self_reproduction.py` checks (1.1)--(6.1)
 exactly on the determinant-prime affine Costas distance-Sidon families for
 primes 11, 17, and 23.  It constructs every block, fibre, closed
 neighborhood, and shadow edge using integer arithmetic.
