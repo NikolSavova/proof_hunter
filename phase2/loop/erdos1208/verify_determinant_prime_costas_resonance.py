@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from math import gcd
+from collections import Counter
 
 from analyze_affine_costas_energy import is_distance_sidon, welch
 from verify_orthogonal_two_support_gate import difference_set
@@ -113,11 +114,38 @@ def verify_row(prime: int, matrix: Matrix) -> tuple[int, int, int, int, int]:
     }
     assert len(kernel) == prime
 
+    # Pick a nonzero row of B as a quotient map Z^2/Gamma_T -> F_p.
+    quotient_row = (-u % prime, -v % prime)
+    if quotient_row == (0, 0):
+        quotient_row = (w % prime, u % prime)
+    assert quotient_row != (0, 0)
+
     base = welch(prime)
     transformed = [apply(matrix, point) for point in base]
     assert is_distance_sidon(transformed)
 
     base_differences = difference_set(base)
+
+    point_cosets = Counter(
+        (quotient_row[0] * x + quotient_row[1] * y) % prime
+        for x, y in base
+    )
+    difference_cosets = Counter(
+        (quotient_row[0] * x + quotient_row[1] * y) % prime
+        for x, y in base_differences
+    )
+    for residue in range(prime):
+        predicted = sum(
+            point_cosets[(source + residue) % prime]
+            * point_cosets[source]
+            for source in range(prime)
+        )
+        if residue == 0:
+            # The k diagonal endpoint pairs all collapse to the single zero
+            # element of the support D.
+            predicted -= len(base) - 1
+        assert difference_cosets[residue] == predicted
+
     overlaps = overlap_table(base_differences)
     number = len(base_differences)
     support = len(overlaps)

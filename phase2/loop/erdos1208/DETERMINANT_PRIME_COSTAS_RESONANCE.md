@@ -208,5 +208,61 @@ argument, while a small index should feed the oblique-lattice height theorem.
 The sparse shear examples show that this dichotomy is still false without
 the endpoint realization `D=A-A`; that hypothesis remains load-bearing.
 
+## 5. Exact coset-energy reduction and the remaining loss
+
+There is a general identity showing both how the resonance index can help
+and why shift counting alone does not prove the target.  Let `Lambda` be a
+lattice containing `D`, and put
+
+\[
+ \Lambda_0=\Lambda\cap J\Lambda.
+\]
+
+This is `J`-stable.  Every `q` with `R_D(q)R_D(Jq)>0` lies in `Lambda_0`.
+Decompose
+
+\[
+ D=\bigsqcup_{c\in\Lambda/\Lambda_0}D_c,
+ \qquad n_c=|D_c|.                                  \tag{5.1}
+\]
+
+For `q in Lambda_0`, translation by `q` preserves every coset, so
+
+\[
+ R_D(q)=\sum_c R_{D_c}(q),qquad
+ \sum_{q\in\Lambda_0}R_D(q)=\sum_c n_c^2.           \tag{5.2}
+\]
+
+Since `J` permutes `Lambda_0` and `R_D(q)<=N`, one obtains the exact easy
+bound
+
+\[
+ \boxed{
+ E_\perp(D)
+ \le N\sum_c n_c^2.}                               \tag{5.3}
+\]
+
+Thus a sufficiently flat coset distribution proves an easy branch.  But it
+does not close the determinant-prime Costas examples: there the quotient
+has order `p`, `N=Theta(p^2)`, and typical `n_c=Theta(p)`, so the right side
+of (5.3) is `Theta(p^5)`, one factor `p` above the observed and desired
+`Theta(p^4)` scale.
+
+Endpoint realization gives an additional exact description of these
+occupancies.  After translating `A` into `Lambda`, let
+`k_g=|A cap (g+Lambda_0)|`.  Oriented difference uniqueness gives
+
+\[
+ n_h=\sum_g k_{g+h}k_g\quad(h\ne0),
+ \qquad
+ n_0=1+\sum_g k_g(k_g-1).                         \tag{5.4}
+\]
+
+The final affine-resonant theorem must therefore do more than count
+resonant shifts or cosets.  It must control the **paired within-coset
+autocorrelations** under `J`, using (5.4), radial uniqueness, and the
+complete endpoint labels.  This is the precise small-index continuation of
+the opposite-endpoint gate.
+
 Run `verify_determinant_prime_costas_resonance.py` for all arithmetic,
 distance, support, and charge checks in (3.2)--(3.3).

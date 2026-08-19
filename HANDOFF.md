@@ -83,6 +83,12 @@ small matrices.  It suggests a resonance-index inverse dichotomy: large
 index sparsifies the tail, while small index should feed the sharp oblique
 height theorem.  Endpoint realization is still needed because the sparse
 shear barrier kills the corresponding statement for arbitrary radial sets.
+An exact coset decomposition makes the residual loss explicit: if
+`Lambda_0=Lambda cap JLambda` and `n_c=|D cap(c+Lambda_0)|`, then
+`E_perp(D)<=N sum_c n_c^2`, while the `n_c` are precisely the quotient
+difference multiplicities of the endpoint occupancies of `A`.  The easy
+bound is one factor `p` too weak on the Costas stress family, so the next
+gate is paired within-coset autocorrelation under `J`, not shift counting.
 Read `DETERMINANT_PRIME_COSTAS_RESONANCE.md` and run its exact verifier.
 
 **⭐ 2026-08-18 — ERDŐS #1208: GENERIC AFFINE IMAGES HAVE EMPTY ORTHOGONAL RICH TAIL.**

@@ -468,9 +468,12 @@ an exact Smith-normal-form identity: for arbitrary determinant `Delta`, the
 resonance-lattice index is `|Delta|/gcd(w,u,v)`, and an index-`I` lattice has
 only `O(M^2/I+M)` points in an `M`-box.  Added
 `DETERMINANT_PRIME_COSTAS_RESONANCE.md` and its verifier.  The full
-cross-fibre estimate remains open; the new suggested inverse parameter is
-the index of the `J`-resonance lattice.  Approximate spend: local compute
-only; no API spend.
+cross-fibre estimate remains open.  The exact coset reduction
+`E_perp(D)<=N sum_c |D_c|^2` shows why resonance index alone is insufficient:
+it loses one factor `p` on the stress family.  Endpoint occupancies give an
+exact quotient autocorrelation formula for `|D_c|`, making paired
+within-coset `J`-correlation the next irreducible gate.  Approximate spend:
+local compute only; no API spend.
 
 ### 2026-08-18 (latest) — ERDŐS #1208 generic-affine vanishing branch (Sihao + Codex)
 
