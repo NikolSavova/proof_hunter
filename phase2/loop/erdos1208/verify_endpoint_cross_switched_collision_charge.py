@@ -83,13 +83,13 @@ def charge_profile(points: list[Point]) -> Profile:
         groups[first_stage_key].append(row)
         off_diagonal_mass += 1
 
-    loads: Counter[tuple[Point, tuple[int, Point]]] = Counter()
+    loads: Counter[tuple[object, ...]] = Counter()
     collision_mass = 0
     within_excess = 0
     within_maximum = 0
 
     for (fixed_head, fixed_opposite), records in groups.items():
-        local: Counter[tuple[Point, tuple[int, Point]]] = Counter()
+        local: Counter[tuple[object, ...]] = Counter()
         for first in records:
             for second in records:
                 first_midpoint = midpoint(decorations[first[0]])
@@ -107,7 +107,15 @@ def charge_profile(points: list[Point]) -> Profile:
                     decorations[second[2]][0],
                 )
 
-                key = midpoint_difference, head_code
+                if midpoint_difference != (0, 0):
+                    key = ("nonzero", midpoint_difference, head_code)
+                else:
+                    if second[3] == first[0]:
+                        sign = 1
+                    else:
+                        assert second[3] == (-first[0][0], -first[0][1])
+                        sign = -1
+                    key = ("zero", first[0], sign, head_code)
                 loads[key] += 1
                 local[key] += 1
                 collision_mass += 1
@@ -136,7 +144,13 @@ def charge_profile(points: list[Point]) -> Profile:
 
     assert collision_mass == sum(len(records) ** 2 for records in groups.values())
     assert off_diagonal_mass ** 2 <= len(differences) ** 2 * collision_mass
-    assert len(loads) <= len(sums) * (len(differences) - 1 + len(points))
+    head_target = len(differences) - 1 + len(points)
+    target_bound = (
+        (len(sums) - 1) * head_target
+        + 2 * len(differences) * head_target
+    )
+    assert len(loads) <= target_bound
+    assert target_bound <= 6 * len(differences) * len(sums)
 
     return (
         len(differences),
@@ -161,12 +175,12 @@ def main() -> None:
         (
             "Costas-11",
             transformed_costas(11),
-            (91, 707, 2_264, 4_348, 3_411, 7_146, 8, 64, 3),
+            (91, 707, 2_264, 4_348, 3_537, 6_502, 7, 58, 2),
         ),
         (
             "Costas-13",
             transformed_costas(13),
-            (133, 969, 3_450, 5_530, 4_680, 7_934, 9, 108, 3),
+            (133, 969, 3_450, 5_530, 4_767, 7_444, 6, 103, 3),
         ),
     ]
     if "--extended" in sys.argv:
@@ -180,11 +194,11 @@ def main() -> None:
                         156_057,
                         370_516,
                         1_139_274,
-                        982_126,
-                        1_854_278,
-                        83,
-                        11_660,
-                        7,
+                        991_814,
+                        1_556_038,
+                        17,
+                        11_205,
+                        4,
                     ),
                 ),
                 (
@@ -195,11 +209,11 @@ def main() -> None:
                         2_299,
                         20_014,
                         46_212,
-                        33_670,
-                        97_938,
-                        25,
-                        803,
-                        4,
+                        34_196,
+                        88_352,
+                        20,
+                        727,
+                        3,
                     ),
                 ),
                 (
@@ -210,10 +224,10 @@ def main() -> None:
                         4_513,
                         498_674,
                         3_020_644,
-                        970_328,
-                        18_156_836,
-                        148,
-                        75_757,
+                        984_142,
+                        16_789_428,
+                        44,
+                        73_697,
                         6,
                     ),
                 ),
@@ -225,11 +239,26 @@ def main() -> None:
                         9_495,
                         765_102,
                         3_872_958,
-                        1_736_150,
-                        19_427_362,
-                        256,
-                        79_730,
-                        12,
+                        1_750_891,
+                        16_688_816,
+                        63,
+                        73_539,
+                        6,
+                    ),
+                ),
+                (
+                    "Costas-37",
+                    transformed_costas(37),
+                    (
+                        1_261,
+                        13_917,
+                        2_939_312,
+                        18_630_176,
+                        6_564_482,
+                        95_381_176,
+                        51,
+                        137_362,
+                        4,
                     ),
                 ),
             ]

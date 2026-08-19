@@ -32,28 +32,30 @@ This note gives a second charge
 
 \[
 \Theta:\{\omega:\Psi(\gamma)=\Psi(\gamma')\}
-\longrightarrow (D+D)\times\mathcal H,          \tag{1.1}
+\longrightarrow \mathcal Y,                    \tag{1.1}
 \]
 
 where
 
 \[
-|\mathcal H|=N-1+|A|\le2N.                       \tag{1.2}
+|\mathcal Y|\le6NS.                              \tag{1.2}
 \]
 
 It mixes a midpoint difference from one pair of moving forms with an
-endpoint-head switch from a different pair.  The following size-biased
-load estimate is sufficient for the cube-root order:
+endpoint-head switch from a different pair.  When the midpoint difference
+is zero, the two decorated vectors are equal up to sign; a separate route
+stores that literal vector and the sign.  The following size-biased load
+estimate is sufficient for the cube-root order:
 
 \[
 \boxed{
-\sum_{c,h}\mu(c,h)^2\le N^{o(1)}M_K,}            \tag{1.3}
+\sum_{\eta\in\mathcal Y}\mu(\eta)^2\le N^{o(1)}M_K,} \tag{1.3}
 \]
 
 where \(\mu=|\Theta^{-1}|\).  Indeed, Cauchy--Schwarz on (1.1) gives
 
 \[
-M_K^2\le2NS\sum\mu^2,
+M_K^2\le6NS\sum\mu^2,
 \]
 
 so (1.3) implies \(M_K\le N^{1+o(1)}S\).  The first charge then gives
@@ -119,6 +121,31 @@ Also
 m(d)-m(e)\in(A+A)-(A+A)=D+D.                    \tag{2.2}
 \]
 
+The full second-stage target is the labelled disjoint union
+
+\[
+\mathcal Y=
+\bigl((D+D)^*\times\mathcal H\bigr)
+\sqcup
+\bigl(D\times\{+,-\}\times\mathcal H\bigr).      \tag{2.3}
+\]
+
+Since
+
+\[
+|\mathcal H|=|A|^2=N-1+|A|\le2N
+\]
+
+and \(N\le S\), equation (2.3) gives
+
+\[
+|\mathcal Y|
+\le S|A|^2+2N|A|^2
+\le6NS,
+\]
+
+as claimed in (1.2).
+
 ## 3. The seven roles in a fixed first-stage cell
 
 For a record \(\gamma=(u,s,q,p)\), put \(w=s-u\) and \(L=I+J\).  Arrange
@@ -164,35 +191,50 @@ For an ordered collision
 \qquad \Psi(\gamma)=\Psi(\gamma'),
 \]
 
-define
+put
+
+\[
+c=m(R_0(\gamma))-m(R_3(\gamma')),
+\qquad
+h=\chi(R_4(\gamma),R_2(\gamma')).                \tag{4.1}
+\]
+
+If \(c\ne0\), define \(\Theta(\omega)=(0,c,h)\).
+If \(c=0\), equality of the two endpoint sums implies
+
+\[
+R_3(\gamma')=\sigma R_0(\gamma)
+\]
+
+for a sign \(\sigma\in\{+,-\}\); when both vectors are zero, choose
+\(\sigma=+\).  Define the zero-midpoint route by
 
 \[
 \boxed{
-\Theta(\omega)=
-\left(
-m(R_0(\gamma))-m(R_3(\gamma')),
-\ \chi(R_4(\gamma),R_2(\gamma'))
-\right).
-}                                                 \tag{4.1}
+\Theta(\omega)=(1,R_0(\gamma),\sigma,h).
+}                                                 \tag{4.2}
 \]
 
-Equations (2.1)--(2.2) prove the target claim (1.1).  In the fixed-cell
-coordinates (3.2), if the two records have parameters \((t,e)\) and
-\((T,E)\), then
+Thus the exceptional route recovers both decorated vectors literally,
+instead of collapsing all of them at the single midpoint value zero.
+Equations (2.1)--(2.3) prove the target claim (1.1).
+
+In the fixed-cell coordinates (3.2), if the two records have parameters
+\((t,e)\) and \((T,E)\), then the unrefined pair \((c,h)\) is
 
 \[
-\Theta=
 \left(
 m(b+t+Je)-m(\ell+E+T),
 \ \chi(\ell+e,b+T)
-\right).                                         \tag{4.2}
+\right).                                         \tag{4.3}
 \]
 
 Consequently a fixed charge key gives all of the following simultaneously:
 
 1. the ordered heads of \(\ell+e\) and \(b+T\);
-2. one fixed difference of the endpoint sums decorating
-   \(b+t+Je\) and \(\ell+E+T\);
+2. either one nonzero difference of the endpoint sums decorating
+   \(b+t+Je\) and \(\ell+E+T\), or both literal decorated vectors on the
+   zero-midpoint route;
 3. all fourteen \(D\)-members belonging to the two original records;
 4. both adaptive-popular shift pairs.
 
@@ -204,18 +246,15 @@ target at the exact \(NS\) scale.
 
 ## 5. Precise remaining theorem
 
-Let
-
-\[
-\mu(c,h)=|\{\omega:\Theta(\omega)=(c,h)\}|.
-\]
+Let \(\mu(\eta)=|\Theta^{-1}(\eta)|\) for \(\eta\in\mathcal Y\).
 
 The new sufficient statement is the following.
 
 > **Endpoint cross-switched collision theorem.**  For every planar
 > lattice distance-Sidon set, with the support-adaptive popular set,
 > \[
-> \sum_{c,h}\mu(c,h)^2\le N^{o(1)}\sum_{c,h}\mu(c,h).
+> \sum_{\eta\in\mathcal Y}\mu(\eta)^2
+> \le N^{o(1)}\sum_{\eta\in\mathcal Y}\mu(\eta).
 > \]
 
 Unlike a raw affine or radial-transversal statement, this theorem cannot
@@ -242,24 +281,28 @@ The exact rows are:
 \text{family}&N&S&\mathcal O_K&M_K&|\operatorname{supp}\mu|
 &\sum\mu^2&\max\mu&\text{excess}&\text{max}\\ \hline
 \text{closure }30&871&62273&1420&1496&1491&1506&2&0&1\\
-\text{Costas }11&91&707&2264&4348&3411&7146&8&64&3\\
-\text{Costas }13&133&969&3450&5530&4680&7934&9&108&3\\
+\text{Costas }11&91&707&2264&4348&3537&6502&7&58&2\\
+\text{Costas }13&133&969&3450&5530&4767&7444&6&103&3\\
 \text{closure }40&1561&156057&370516&1139274&
-982126&1854278&83&11660&7\\
-\text{Costas }17&241&2299&20014&46212&33670&97938&25&803&4\\
+991814&1556038&17&11205&4\\
+\text{Costas }17&241&2299&20014&46212&34196&88352&20&727&3\\
 \text{Costas }23&463&4513&498674&3020644&
-970328&18156836&148&75757&6\\
+984142&16789428&44&73697&6\\
 \text{Costas }31&871&9495&765102&3872958&
-1736150&19427362&256&79730&12
+1750891&16688816&63&73539&6\\
+\text{Costas }37&1261&13917&2939312&18630176&
+6564482&95381176&51&137362&4
 \end{array}
 \]
 
 Thus the size-biased load \((\sum\mu^2)/M_K\) ranges from
-\(1.0066\ldots\) to \(6.0109\ldots\) on the displayed rows; it is
-\(5.0166\ldots\) at Costas 31.  The maximum global load grows, so a
-pointwise theorem is the wrong target.  The within-cell maximum remains at
-most twelve, and all larger multiplicity is cross-cell reuse of the
-endpoint key.  These are finite diagnostics, not a proof of (1.3).
+\(1.0066\ldots\) to \(5.5582\ldots\) on the displayed rows; it is
+\(4.3090\ldots\) at Costas 31 and \(5.1197\ldots\) at Costas 37.  The
+zero-midpoint refinement cuts the largest global load from 256 to 63 at
+Costas 31.  The maximum global load still grows, so a pointwise theorem is
+the wrong target.  The within-cell maximum is at most six on every displayed
+row, and all larger multiplicity is cross-cell reuse of the endpoint key.
+These are finite diagnostics, not a proof of (1.3).
 
 Run
 
@@ -300,16 +343,22 @@ This makes the Fourier content of the new charge completely explicit.  Let
 \end{aligned}                                    \tag{7.2}
 \]
 
-After identifying a head code with its recovered ordered pair
-\((\alpha,\beta)\), equation (4.1) becomes the exact convolution
+Before applying the literal zero-midpoint refinement, let
+\(\widetilde\mu_{\alpha,\beta}(c)\) denote the load of the pair \((c,h)\),
+after identifying the head code with its recovered ordered pair
+\((\alpha,\beta)\).  Equation (4.1) becomes the exact convolution
 
 \[
 \boxed{
-\mu_{\alpha,\beta}(c)
+\widetilde\mu_{\alpha,\beta}(c)
 =\sum_{z\in\mathcal Z}
   \sum_{x-y=c}F_{z,\alpha}(x)G_{z,\beta}(y).
 }                                                 \tag{7.3}
 \]
+
+For \(c\ne0\), this is exactly the actual normal-route load.  For \(c=0\),
+the charge in (4.2) refines the coefficient by the recovered literal vector
+and sign, so it can only decrease its second-moment contribution.
 
 For \(\theta\in\mathbb T^2\), let
 \(\mathbf F(\theta)\) and \(\mathbf G(\theta)\) be the
@@ -318,7 +367,7 @@ For \(\theta\in\mathbb T^2\), let
 \(\widehat G_{z,\beta}(\theta)\).  Fourier transformation of (7.3) gives
 
 \[
-\widehat\mu(\theta)
+\widehat{\widetilde\mu}(\theta)
 =\mathbf F(\theta)^T\overline{\mathbf G(\theta)}
 =\overline{\mathbf F(\theta)^*\mathbf G(\theta)}.
 \]
@@ -327,7 +376,7 @@ Parseval therefore yields the exact spectral identity
 
 \[
 \boxed{
-\sum_{c,\alpha,\beta}\mu_{\alpha,\beta}(c)^2
+\sum_{c,\alpha,\beta}\widetilde\mu_{\alpha,\beta}(c)^2
 =\int_{\mathbb T^2}
  \|\mathbf F(\theta)^*\mathbf G(\theta)\|_{\mathrm{HS}}^2
  \,d\theta.
