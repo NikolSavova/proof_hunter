@@ -136,12 +136,32 @@ def hybrid_profile(
         tuple[int, int, Point, Point],
         list[tuple[Point, Point, Point, Point]],
     ] = defaultdict(list)
+    normal_edges: list[
+        tuple[
+            tuple[Point, Point],
+            Point,
+            Point,
+            Point,
+            Point,
+            Point,
+            Point,
+            Point,
+            Point,
+        ]
+    ] = []
+    normal_degrees: Counter[tuple[int, int, Point, Point]] = Counter()
+    fibre_local_keys: dict[
+        tuple[Point, Point], set[tuple[int, int, Point, Point]]
+    ] = defaultdict(set)
+    fibre_expected_counts: dict[tuple[Point, Point], int] = {}
     mass = 0
     resonance_fallback_mass = 0
 
     for (base, ordinary_sum), fibre in fibres.items():
+        fibre_label = base, ordinary_sum
         w_value = subtract(ordinary_sum, base)
-        local_keys: set[tuple[int, int, Point, Point]] = set()
+        local_keys = fibre_local_keys[fibre_label]
+        fibre_expected_counts[fibre_label] = len(fibre) * (len(fibre) - 1)
         configurations = []
         degenerate_midpoint_counts: Counter[
             tuple[int, int, Point, Point]
@@ -171,7 +191,7 @@ def hybrid_profile(
                         midpoints[other_endpoint], midpoints[other_opposite]
                     )
                     midpoint_charge = (
-                        1,
+                        2,
                         2 * int(shared_endpoint_bit)
                         + int(antipodal_sign(other_opposite)),
                         fixed_x,
@@ -286,23 +306,39 @@ def hybrid_profile(
                     # literal anchors.  This retains fibrewise injectivity
                     # and records an internal affine-resonance witness.
                     charge = (
-                        2,
+                        3,
                         int(shared_endpoint_bit),
                         add(base, shift),
                         subtract(w_value, linear(other_shift)),
                     )
                     resonance_fallback_mass += 1
             else:
-                charge = (
-                    0,
+                fixed_right = subtract(w_value, shift)
+                normal_key = (
                     int(antipodal_sign(other_endpoint)),
-                    fixed_v,
                     midpoint_difference,
                 )
+                normal_edges.append(
+                    (
+                        fibre_label,
+                        base,
+                        w_value,
+                        shift,
+                        other_shift,
+                        other_endpoint,
+                        midpoint_difference,
+                        fixed_v,
+                        fixed_right,
+                    )
+                )
+                normal_degrees[(0, *normal_key, fixed_v)] += 1
+                normal_degrees[(1, *normal_key, fixed_right)] += 1
+                charge = None
 
-            # Proposition 3.1: no collision inside one fibre.
-            assert charge not in local_keys
-            local_keys.add(charge)
+            if charge is not None:
+                # Proposition 3.1: no collision inside one fibre.
+                assert charge not in local_keys
+                local_keys.add(charge)
 
             if not degenerate:
                 assert all(
@@ -341,20 +377,62 @@ def hybrid_profile(
             assert all(value in differences for value in six_values)
             assert shift in popular and other_shift in popular
 
-            loads[charge] += 1
-            if len(first_preimages[charge]) < 2:
-                first_preimages[charge].append(
-                    (base, w_value, shift, other_shift)
-                )
+            if charge is not None:
+                loads[charge] += 1
+                if len(first_preimages[charge]) < 2:
+                    first_preimages[charge].append(
+                        (base, w_value, shift, other_shift)
+                    )
             mass += 1
 
-        assert len(local_keys) == len(fibre) * (len(fibre) - 1)
+    balanced_degree_moment = 0
+    for (
+        fibre_label,
+        base,
+        w_value,
+        shift,
+        other_shift,
+        other_endpoint,
+        midpoint_difference,
+        fixed_left,
+        fixed_right,
+    ) in normal_edges:
+        normal_key = (
+            int(antipodal_sign(other_endpoint)),
+            midpoint_difference,
+        )
+        left_degree = normal_degrees[(0, *normal_key, fixed_left)]
+        right_degree = normal_degrees[(1, *normal_key, fixed_right)]
+        balanced_degree_moment += min(left_degree, right_degree)
+        if left_degree <= right_degree:
+            charge = (0, normal_key[0], fixed_left, normal_key[1])
+        else:
+            charge = (1, normal_key[0], fixed_right, normal_key[1])
+
+        local_keys = fibre_local_keys[fibre_label]
+        assert charge not in local_keys
+        local_keys.add(charge)
+        loads[charge] += 1
+        if len(first_preimages[charge]) < 2:
+            first_preimages[charge].append(
+                (base, w_value, shift, other_shift)
+            )
+
+    for fibre_label, expected_count in fibre_expected_counts.items():
+        assert len(fibre_local_keys[fibre_label]) == expected_count
 
     assert mass == sum(
         len(fibre) * (len(fibre) - 1) for fibre in fibres.values()
     )
     if expect_no_fallback:
         assert resonance_fallback_mass == 0
+
+    normal_charge_second_moment = sum(
+        value * value
+        for charge, value in loads.items()
+        if charge[0] in (0, 1)
+    )
+    assert normal_charge_second_moment <= balanced_degree_moment
 
     # Check the normal collision displacement list (5.5), and the sharper
     # common-endpoint list from Section 6.
@@ -365,7 +443,7 @@ def hybrid_profile(
             (base, w_value, shift, other_shift),
             (second_base, second_w, second_shift, second_other),
         ) = preimages
-        if charge[0] == 2:
+        if charge[0] == 3:
             first_p = other_shift
             first_r = subtract(shift, other_shift)
             second_p = second_other
@@ -405,7 +483,7 @@ def hybrid_profile(
             assert all(value in differences for value in second_forms)
             continue
 
-        if charge[0] == 1:
+        if charge[0] == 2:
             first_p = other_shift
             first_r = subtract(shift, other_shift)
             first_y = subtract(w_value, linear(first_p))
@@ -444,6 +522,48 @@ def hybrid_profile(
                 add(kappa, rotate(pi)),
                 subtract(kappa, linear(tau)),
                 kappa,
+            )
+            actual = tuple(
+                subtract(second, first)
+                for first, second in zip(first_forms, second_forms)
+            )
+            assert actual == expected
+            assert all(value in differences for value in first_forms)
+            assert all(value in differences for value in second_forms)
+            continue
+
+        if charge[0] == 1:
+            fixed_right = charge[2]
+
+            def right_forms(
+                a_value: Point, q_value: Point, p_value: Point
+            ):
+                r_value = subtract(q_value, p_value)
+                return (
+                    a_value,
+                    add(a_value, q_value),
+                    add(a_value, p_value),
+                    fixed_right,
+                    add(fixed_right, r_value),
+                    subtract(fixed_right, rotate(q_value)),
+                    subtract(add(fixed_right, r_value), rotate(p_value)),
+                )
+
+            first_forms = right_forms(base, shift, other_shift)
+            second_forms = right_forms(
+                second_base, second_shift, second_other
+            )
+            eta = subtract(second_base, base)
+            rho = subtract(second_shift, shift)
+            pi = subtract(second_other, other_shift)
+            expected = (
+                eta,
+                add(eta, rho),
+                add(eta, pi),
+                (0, 0),
+                subtract(rho, pi),
+                negate(rotate(rho)),
+                subtract(rho, linear(pi)),
             )
             actual = tuple(
                 subtract(second, first)
@@ -501,11 +621,11 @@ def main() -> None:
     verify_resonance_affine_copies()
     expected: dict[str, Profile] = {
         "closure-30": (1_420, 1_420, 1_420, 1),
-        "closure-40": (370_516, 351_178, 413_258, 6),
-        "Costas-11": (2_264, 2_130, 2_536, 3),
-        "Costas-17": (20_014, 18_544, 23_180, 4),
-        "Costas-23": (498_674, 395_006, 760_732, 7),
-        "Costas-31": (765_102, 619_320, 1_142_994, 8),
+        "closure-40": (370_516, 367_809, 376_018, 4),
+        "Costas-11": (2_264, 2_254, 2_284, 2),
+        "Costas-17": (20_014, 19_710, 20_622, 2),
+        "Costas-23": (498_674, 469_697, 558_688, 4),
+        "Costas-31": (765_102, 712_180, 883_150, 5),
     }
     families: list[tuple[str, list[Point]]] = [
         ("closure-30", POINTS[:30]),
@@ -514,13 +634,13 @@ def main() -> None:
     primes = [11, 17, 23, 31]
     if "--extended" in sys.argv:
         families.append(("closure-80", POINTS[:80]))
-        expected["closure-80"] = (357_094, 352_340, 366_832, 4)
+        expected["closure-80"] = (357_094, 356_860, 357_566, 3)
         primes += [37, 41, 43]
         expected.update(
             {
-                "Costas-37": (2_939_312, 2_261_592, 4_738_040, 9),
-                "Costas-41": (4_629_690, 3_497_414, 7_698_540, 12),
-                "Costas-43": (8_451_318, 6_145_754, 14_911_698, 12),
+                "Costas-37": (2_939_312, 2_716_744, 3_415_740, 5),
+                "Costas-41": (4_629_690, 4_197_631, 5_604_596, 7),
+                "Costas-43": (8_451_318, 7_606_952, 10_330_054, 7),
             }
         )
     for prime in primes:

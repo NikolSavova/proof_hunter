@@ -472,6 +472,36 @@ prior-art kill-search**; has a writeable-down win condition.
   immediate new subproblem is to combine the three-copy resonance with the
   adaptive popularity of `p` and the common `q`.
 
+### 2026-08-19 — #1208 degree-oriented two-anchor endpoint gate
+
+- Replaced the normal one-anchor charge by a bipartite degree-oriented
+  charge.  For each endpoint-midpoint label `omega`, every normal
+  configuration is an edge `(ell,z)` of a multigraph `G_omega`, where
+  `ell=w-(I+J)q` and `z=w-q`; charge the edge toward its lower-degree
+  endpoint.
+- Proved the exact inequality
+  `sum lambda_N^2 <= B_N := sum_e min(d_L(e),d_R(e))`.  This removes all
+  one-sided star obstructions.  The precise missing normal theorem is now
+  `B_N<=N^o(1)|C_N|`; any counterexample must contain a two-sided dense
+  anchor core inside one `G_omega`.
+- Derived and verifier-checked both fixed-anchor collision systems.  The
+  left displacements are
+  `eta,eta+rho,eta+pi,0,Jrho,(I+J)rho-pi,(I+J)(rho-pi)`; the right ones are
+  `eta,eta+rho,eta+pi,0,rho-pi,-Jrho,rho-(I+J)pi`.  The endpoint data force
+  `eta`, so this is not a free affine-overlap model.
+- The complete charge, including both common-endpoint routes, remains
+  fibrewise injective and has target size at most `10NS`.  The exact
+  extended verifier passed closure sizes 30, 40, 80 and all stored Costas
+  rows through `p=43`, plus the deliberately bad literal control.
+- Numerically, Costas `p=43` improves from size-biased load `1.7644` and
+  maximum `12` to `1.22230095` and maximum `7`; closure-40 is `1.01485` and
+  closure-80 is `1.00132`.  These are diagnostics, not a proof of the
+  balanced-anchor theorem.
+- Artifact updated:
+  `phase2/loop/erdos1208/HYBRID_ENDPOINT_OPPOSITE_CHARGE_GATE.md` and its
+  verifier.  Local verification took about four minutes; no paid external
+  compute was used.  Problem #1208 remains open.
+
 ### 2026-08-19 — #1208 direct hybrid endpoint charge
 
 - Replaced the two-factor moment interface by one charge on the original

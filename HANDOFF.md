@@ -65,39 +65,49 @@
 
 ## 3. WHAT WE'VE DONE
 
-**⭐ 2026-08-19 — ERDŐS #1208: ONE FIBRE-INJECTIVE ENDPOINT CHARGE NOW ISOLATES THE FULL MISSING THEOREM.**
+**⭐ 2026-08-19 — ERDŐS #1208: DEGREE-ORIENTED TWO-ANCHOR CHARGE IS THE NEW EXACT LEAD.**
 Let `D=A-A`, `N=|D|`, `S=|D+D|`, and let `O_K` be the adaptive off-diagonal
-seven-incidence mass.  For a rich-fibre configuration `(u,s,q,q')`, put
-`w=s-u`, `v=w-(I+J)q`, `c=u+q'`, and `h=m(u)-m(c)`, where `m` is the
-canonical endpoint midpoint decoration.  The new charge is `(sign(c),v,h)`
-in `D x (D+D)` on the normal route.  When one endpoint switch vanishes, a
-singleton local midpoint key is charged to another copy of `D x (D+D)`;
-only repeated local midpoint keys fall back to two literal anchors in
-`D^2`.  The three labelled targets have size at most `8NS`, and the map is
-exactly injective inside every fixed rich fibre.
+seven-incidence mass.  For each normal configuration, the endpoint data
+`omega=(sign(c),m(u)-m(c))` determine two anchors
+`ell=w-(I+J)q` and `z=w-q` in `D`.  For every fixed `omega`, form the
+bipartite multigraph `G_omega` of these anchor pairs and orient every edge
+toward its lower-degree endpoint.  The resulting charge, together with the
+two common-endpoint routes, is fibrewise injective and lands in a universe
+of size at most `10NS`.
 
-If `lambda` is the cross-fibre load, the single theorem
-`sum lambda^2 <= N^o(1) sum lambda` gives by Cauchy
-`O_K<=N^(1+o(1))S`, closes the adaptive tail, and proves
-`|A|<=m^(2/3+o(1))` for every distance-Sidon `A subset [m]^2`.  A normal
-fixed key is now an endpoint-forced six-affine-copy system; collisions have
-the exact six displacements
-`eta, eta+rho, eta+pi, Jrho, (I+J)rho-pi, (I+J)(rho-pi)`.
-The theorem is not proved.
+If `lambda_N` is the normal charge load, there is now an exact pre-estimate
 
-All exact identities and the full stress suite pass.  Through the Costas
-row `p=43`, 8,451,318 configurations have size-biased load `1.7644` and
-maximum load `12`; closure-40 has load `1.1154`.  No stored stress activates
-the literal fallback.  If it does activate, its internal resonance class
-forces three exact affine copies in `A`, with linear parts
-`I,-J/2,(2I+J)/2` up to the shared-head variant, and squared-distance ratio
-`1:1/4:5/4`.  A fixed fibre pair can
-share 32 charges, so constant pairwise intersection is false and the proof
-must be genuinely aggregate.  The dense perpendicular-ruler tail is empty,
-while radial impostors lack the endpoint map.  Read
-`HYBRID_ENDPOINT_OPPOSITE_CHARGE_GATE.md` and run its verifier, optionally
-with `--extended`.  The older two-moment endpoint gate remains a verified
-fallback, with corrected constant `6720`, but is no longer the lead.
+`sum lambda_N^2 <= B_N := sum_(omega,e=(ell,z)) min(d_L(ell),d_R(z))`.
+
+Thus one-sided stars are no longer an obstruction: a failure must create a
+two-sided dense anchor core inside one endpoint-midpoint graph.  Proving
+`B_N<=N^o(1)|C_N|`, plus the analogous size-biased estimate on the two
+common-endpoint routes, gives `O_K<=N^(1+o(1))S`, closes the adaptive tail,
+and proves `|A|<=m^(2/3+o(1))` for every distance-Sidon
+`A subset [m]^2`.  This balanced-anchor theorem is the precise current
+missing step; it is **not proved**.
+
+Both fixed-anchor systems are explicit.  Left-anchor collisions have the
+seven displacements
+`eta,eta+rho,eta+pi,0,Jrho,(I+J)rho-pi,(I+J)(rho-pi)`; right-anchor
+collisions have
+`eta,eta+rho,eta+pi,0,rho-pi,-Jrho,rho-(I+J)pi`.
+The endpoint decoration forces `eta`, and both adaptive-popular shifts
+remain present.  If the common-endpoint fallback activates, its internal
+resonance class still forces three exact affine copies in `A` and the rigid
+squared-distance ratio `1:1/4:5/4`.
+
+The full exact stress suite passes through closure-80 and determinant-prime
+Costas `p=43`.  On the largest row, 8,451,318 configurations have
+size-biased load `1.22230095` and maximum load `7`, improved from `1.7644`
+and `12`; closure-40 has load `1.01485`, and closure-80 has `1.00132`.
+No stored stress activates the resonance fallback.  Read
+`HYBRID_ENDPOINT_OPPOSITE_CHARGE_GATE.md` and run
+`verify_hybrid_endpoint_opposite_charge.py --extended --literal-max`.
+The older rectangle, fractional-basis, and two-moment gates remain verified
+fallbacks, but the balanced two-anchor moment is now the shortest live
+route.  For a compact #1208-only restart brief, read
+`phase2/loop/erdos1208/HANDOFF_20260819.md`.
 
 **⭐ 2026-08-18 — ERDŐS #1208: OPPOSITE-ENDPOINT LOAD FACTORS INTO CORRECTED POPULAR-PAIR RECTANGLES.**
 Regrouping by the ordered popular pair `z=(q,q')` gives exact full rectangles

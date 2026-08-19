@@ -16,7 +16,7 @@ off-diagonal mass
 \]
 
 from `SUPPORT_ADAPTIVE_RICH_FIBRE_GATE.md`.  This note gives every ordered
-off-diagonal configuration one charge in a universe of size at most `8NS`.
+off-diagonal configuration one charge in a universe of size at most `10NS`.
 The charge is injective inside every individual rich fibre.  Unlike the
 older opposite-endpoint map, it also uses the canonical endpoint decoration
 of the complete difference set.
@@ -74,34 +74,48 @@ Set
  \qquad h=m(a)-m(c),\qquad t=a-c=-q'.           \tag{3.2}
 \]
 
-If `h!=t` and `h!=-t`, define the normal charge
+Suppose first that `h!=t` and `h!=-t`.  Put
 
 \[
- \boxed{\Psi(F,q,q')=(0,\epsilon(c),v,h)}
- \in\{0\}\times\{0,1\}\times D\times(D+D).     \tag{3.3}
+ \omega=(\epsilon(c),h),\qquad
+ \ell=w-Lq=v,\qquad z=w-q=v+Jq.                \tag{3.3}
+\]
+
+For every fixed `omega`, make a bipartite multigraph `G_omega` with left
+and right vertex sets two labelled copies of `D`; every normal configuration
+is an edge `(ell,z)`.  Let `d_L(ell)` and `d_R(z)` be its global multigraph
+degrees.  Orient the edge toward its endpoint of smaller degree, breaking
+ties to the left, and charge it to
+
+\[
+ \Psi(F,q,q')=
+ \begin{cases}
+ (0,\epsilon(c),\ell,h),&d_L(\ell)\le d_R(z),\\
+ (1,\epsilon(c),z,h),&d_R(z)<d_L(\ell).
+ \end{cases}                                    \tag{3.4}
 \]
 
 If `h=t` or `h=-t`, one switch in (2.1) is zero.  Put
 
 \[
  x=a+q\in D,\quad y=w-Lq'\in D,\quad
- H=m(c)-m(y)\in D+D.                            \tag{3.4}
+ H=m(c)-m(y)\in D+D.                            \tag{3.5}
 \]
 
 Let
 
 \[
- \Theta_F(q,q')=(\delta(a,c),\epsilon(y),x,H).  \tag{3.5}
+ \Theta_F(q,q')=(\delta(a,c),\epsilon(y),x,H).  \tag{3.6}
 \]
 
 Here `delta(a,c)` records which switch vanishes.  If this candidate key has
 multiplicity one inside `F`, charge the configuration to
-`(1,Theta_F(q,q'))`.  If its local multiplicity is greater than one, route
+`(2,Theta_F(q,q'))`.  If its local multiplicity is greater than one, route
 it instead to the resonance charge
 
 \[
- \boxed{\Psi(F,q,q')=(2,\delta(a,c),x,y)}
- \in\{2\}\times\{0,1\}\times D^2.              \tag{3.6}
+ \boxed{\Psi(F,q,q')=(3,\delta(a,c),x,y)}
+ \in\{3\}\times\{0,1\}\times D^2.              \tag{3.7}
 \]
 
 Thus every fallback configuration carries a distinct same-fibre midpoint
@@ -110,7 +124,7 @@ mate as an additional affine-resonance witness.
 The three labelled targets have total size at most
 
 \[
- 2NS+4NS+2N^2\le8NS.                            \tag{3.7}
+ 4NS+4NS+2N^2\le10NS.                           \tag{3.8}
 \]
 
 ### Proposition 3.1: fibrewise injectivity
@@ -120,9 +134,9 @@ in `Q_K(u,s)^2`.
 
 ### Proof
 
-On the normal route, the first geometric coordinate gives `v=w-Lq`, hence
-recovers `q`; the last coordinate gives `m(c)=m(u)-h`, and the sign bit and
-(2.2) recover `c` and then `q'=c-u`.  The singleton candidate route is
+On either normal side, the charged anchor (`ell=w-Lq` or `z=w-q`) recovers
+`q`; the last coordinate gives `m(c)=m(u)-h`, and the sign bit and (2.2)
+recover `c` and then `q'=c-u`.  The singleton candidate route is
 injective by its definition.  On the resonance route, `x=u+q` recovers
 `q`, while `y=w-Lq'` recovers `q'` because `L` is injective.  The route
 labels are disjoint.  QED.
@@ -133,32 +147,62 @@ Let `lambda` be the charge load.  Proposition 3.1 gives
  \mathcal O_K=\sum\lambda,
  \qquad
  \sum\lambda^2
- =\mathcal O_K+\sum_{F\ne G}|\Psi(F)\cap\Psi(G)|.              \tag{3.8}
+ =\mathcal O_K+\sum_{F\ne G}|\Psi(F)\cap\Psi(G)|.              \tag{3.9}
 \]
 
 Every residual collision is therefore purely cross-fibre.
 
 ## 4. The one sufficient theorem
 
-The following statement resolves the adaptive tail:
+Let `C_N` be the multiset of normal configurations and let `lambda_N` be
+the load of the oriented normal charge.  The degree orientation gives the
+following exact inequality before any estimate is used:
 
-> **Hybrid cross-fibre theorem.**  For the charge (3.3)--(3.6),
+\[
+ \sum\lambda_N^2\le
+ \mathcal B_N:=
+ \sum_\omega\sum_{e=(\ell,z)\in G_\omega}
+       \min\{d_L(\ell),d_R(z)\}.                \tag{4.1}
+\]
+
+Indeed, if an edge is charged to an anchor `r`, its charge load is at most
+the full degree of `r`, which by the orientation is the smaller endpoint
+degree.  Summing this inequality over the charged edges gives (4.1).
+
+Consequently the following balanced-anchor estimate, together with the
+same size-biased estimate on the two common-endpoint routes, is enough:
+
+> **Balanced-anchor theorem.**
 > \[
->  \sum\lambda^2\le N^{o(1)}\sum\lambda.         \tag{4.1}
+>  \mathcal B_N\le N^{o(1)}|C_N|.               \tag{4.2}
 > \]
 
-Indeed, Cauchy--Schwarz and (3.7) give
+This is stronger information than the previous one-anchor charge.  A large
+normal second moment can no longer be caused by a star: it must contain
+many edges whose left and right anchors are both popular inside the same
+endpoint-midpoint graph `G_omega`.  This two-sided dense-anchor core is the
+current exact missing normal theorem.
+
+Alternatively, the following single statement for all three routes resolves
+the adaptive tail:
+
+> **Hybrid cross-fibre theorem.**  For the charge (3.3)--(3.7),
+> \[
+>  \sum\lambda^2\le N^{o(1)}\sum\lambda.         \tag{4.3}
+> \]
+
+Indeed, Cauchy--Schwarz and (3.8) give
 
 \[
  \mathcal O_K^2
- \le8NS\sum\lambda^2
+ \le10NS\sum\lambda^2
  \le N^{1+o(1)}S\mathcal O_K,
 \]
 
 and hence
 
 \[
- \mathcal O_K\le N^{1+o(1)}S.                  \tag{4.2}
+ \mathcal O_K\le N^{1+o(1)}S.                  \tag{4.4}
 \]
 
 This is exactly the missing off-diagonal estimate in
@@ -168,13 +212,13 @@ This is exactly the missing off-diagonal estimate in
 
 The pointwise strengthening `max lambda=N^o(1)` is sufficient as well, but
 it is deliberately **not** the working conjecture.  The largest loads in
-the Costas stresses grow from `3` to `12`, and present data do not distinguish
-slow unbounded growth from a fixed bound.  Only the averaged form (4.1) is
+the Costas stresses grow from `2` to `7`, and present data do not distinguish
+slow unbounded growth from a fixed bound.  Only the averaged form (4.3) is
 the essential target.
 
 ## 5. Exact fixed-key system
 
-Fix a normal key `(epsilon,v,h)`.  For a preimage, let `p=q'`.  Equation
+For either normal side, let `p=q'`.  Equation
 (2.1) gives the two nonzero switches
 
 \[
@@ -188,12 +232,16 @@ Their endpoint decorations, together with the recorded sign, recover
 \]
 
 where `T` denotes the inverse endpoint switch on its nonzero domain.  The
-second popular shift `q` is the remaining vector variable.  The six variable
-members of (3.1) are exactly
+second popular shift `q` is the remaining vector variable.
+
+### 5.1 Left-anchor key
+
+Fix a key `(0,epsilon,ell,h)`.  The seven members of (3.1) are
 
 \[
  a,\quad a+q,\quad c,\quad
- v+Jq,\quad v+a+Lq-c,\quad v+L(q-p).            \tag{5.3}
+ \ell,\quad \ell+Jq,\quad
+ \ell+a+Lq-c,\quad \ell+L(q-p).                \tag{5.3}
 \]
 
 Both `p,q` must lie in `P` and be distinct.  Thus a normal fixed-key load is
@@ -207,18 +255,40 @@ For two preimages put
  \qquad \eta=a_2-a_1,                           \tag{5.4}
 \]
 
-where `eta` is forced by the common `h` through (5.1)--(5.2).  The six form
+where `eta` is forced by the common `h` through (5.1)--(5.2).  The seven form
 displacements are
 
 \[
  \boxed{
  \eta,\quad\eta+\rho,\quad\eta+\pi,\quad
- J\rho,\quad L\rho-\pi,\quad L(\rho-\pi).}      \tag{5.5}
+  0,\quad J\rho,\quad L\rho-\pi,\quad
+  L(\rho-\pi).}                                 \tag{5.5}
 \]
 
-Equations (5.1)--(5.5) are the exact restart point for proving (4.1).  The
-endpoint-forced `eta`, both adaptive popular shifts, and all six `D`
-memberships must remain present.
+### 5.2 Right-anchor key
+
+Fix a key `(1,epsilon,z,h)`.  The seven members are instead
+
+\[
+ a,\quad a+q,\quad c,\quad z,\quad z+q-p,
+ \quad z-Jq,\quad z+q-p-Jp.                    \tag{5.6}
+\]
+
+For two preimages with the parameters (5.4), their displacements are
+
+\[
+ \boxed{
+ \eta,\quad\eta+\rho,\quad\eta+\pi,\quad
+ 0,\quad\rho-\pi,\quad-J\rho,\quad
+ \rho-L\pi.}                                   \tag{5.7}
+\]
+
+Equations (5.1)--(5.7) are the exact restart point for proving (4.2).  The
+endpoint-forced `eta`, both adaptive popular shifts, and all seven `D`
+memberships (one of them the fixed charged anchor) must remain present.  A
+dyadic decomposition of (4.1) may now
+assume simultaneous lower bounds on both anchor degrees; this is the
+specific advantage of retaining both systems (5.3) and (5.6).
 
 ## 6. The common-endpoint route is an endpoint-forced corner system
 
@@ -319,31 +389,31 @@ main profiles `(mass,image,second moment,max load)` are
 \begin{array}{c|r|r|r|r}
 \text{family}&\text{mass}&\text{image}&\sum\lambda^2&\max\lambda\\ \hline
 \text{closure }30&1,420&1,420&1,420&1\\
-\text{closure }40&370,516&351,178&413,258&6\\
-\text{Costas }23&498,674&395,006&760,732&7\\
-\text{Costas }31&765,102&619,320&1,142,994&8\\
-\text{Costas }41&4,629,690&3,497,414&7,698,540&12\\
-\text{Costas }43&8,451,318&6,145,754&14,911,698&12
+\text{closure }40&370,516&367,809&376,018&4\\
+\text{closure }80&357,094&356,860&357,566&3\\
+\text{Costas }23&498,674&469,697&558,688&4\\
+\text{Costas }31&765,102&712,180&883,150&5\\
+\text{Costas }41&4,629,690&4,197,631&5,604,596&7\\
+\text{Costas }43&8,451,318&7,606,952&10,330,054&7
 \end{array}                                      \tag{7.1}
 \]
 
-The corresponding size-biased loads are `1.0000,1.1154,1.5255,1.4939,
-1.6629,1.7644`.  The optional extended verifier checks the rows through
+The corresponding size-biased loads are `1.0000,1.01485,1.00132,1.12035,
+1.15429,1.21058,1.22230`.  The optional extended verifier checks the rows through
 `p=43`.
 The dense perpendicular-ruler family has empty adaptive tail.  Abstract
 radial transversals have no canonical endpoint map and are outside the
 charge's domain.
 
-There is also a useful negative diagnostic.  A fixed pair of fibres can
-share more normal charges than any one charge has preimages: the largest
-observed pairwise intersections for Costas sizes `22,30,36,40` are respectively
-`11,18,32,25`.  For the size-36 extremizer, 32 collisions arise from one
-fixed base `u`, one fixed translation between the two `w` labels, and many
-unchanged second shifts `q'`.  Consequently a proof of (4.1) cannot bound
-each fibre-pair intersection by an absolute constant.  It must average the
-overlaps over the charge or fibre-pair distribution.
+The verifier also computes the two global endpoint degrees before orienting
+and checks the exact inequality (4.1).  The improvement over the old
+one-anchor charge is substantial: on Costas `p=43`, the size-biased load
+drops from `1.7644` to `1.2223`, and the maximum load drops from `12` to `7`.
+This does not prove (4.2), but it confirms that the orientation removes the
+observed one-sided overlap concentrations without enlarging the target
+beyond a constant multiple of `NS`.
 
-These profiles do not prove (4.1), but the hybrid map has removed all known
+These profiles do not prove (4.2), but the hybrid map has removed all known
 polynomial-load mechanisms while retaining the exact target budget.
 
 No stored stress activates the resonance fallback: every local degenerate
