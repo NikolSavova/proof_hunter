@@ -449,6 +449,26 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 determinant-prime resonance localization (Sihao + Codex)
+
+The generic-affine vanishing branch was stress-tested against integral
+affine maps specially aligned with the finite-field arithmetic of Welch
+Costas arrays.  If `det T=p` is prime and `T^T T=(w,u;u,v)` is nonzero
+modulo `p`, the exact identity
+`T^(-1)JT=p^(-1)(-u,-v;w,u)` shows that every jointly supported `q,Jq`
+shift pulls back to the kernel of a rank-one matrix modulo `p`.  A base set
+in a `p`-box therefore has at most `16p` such shifts, versus `Theta(p^2)`
+available shifts.  Ten determinant-`p` transforms through `p=43` were found
+and checked to be distance-Sidon.  They retain nontrivial adaptive tails;
+the fully computed opposite-endpoint ratios through `p=23` are
+`1.4098,1.3455,1.5674,1.9076,2.5237`.  Thus distance separation need not
+make the charge injective, but exact affine resonance is localized on a
+codimension-one lattice.  Added
+`DETERMINANT_PRIME_COSTAS_RESONANCE.md` and its verifier.  The full
+cross-fibre estimate remains open; the new suggested inverse parameter is
+the index of the `J`-resonance lattice.  Approximate spend: local compute
+only; no API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 generic-affine vanishing branch (Sihao + Codex)
 
 - Proved that every finite rational vector-Sidon set has an integral affine

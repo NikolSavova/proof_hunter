@@ -65,6 +65,24 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: DETERMINANT-PRIME AFFINE RESONANCE IS CODIMENSION ONE.**
+Let `T` be an integral two-by-two matrix with prime determinant `p`, write
+`T^T T=(w,u;u,v)`, and suppose its Gram matrix is nonzero modulo `p`.
+Then
+`T^(-1)JT=p^(-1)(-u,-v;w,u)`, whose numerator has rank one modulo `p`.
+Thus every shift with `R_D(q)R_D(Jq)>0` pulls back to one congruence line;
+for a base set in a `p`-box there are at most `16p` such shifts.  Ten exact
+Welch--Costas transforms of determinant `p`, through `p=43`, remain
+distance-Sidon while retaining a nonempty adaptive orthogonal tail.  Their
+size-biased charge ratios grow above one but remain between `1.34` and
+`2.53` in the five fully profiled rows.  This is the first rigorous
+intermediate branch between generic vanishing and a fully `J`-stable
+rank-two model.  It suggests a resonance-index inverse dichotomy: large
+index sparsifies the tail, while small index should feed the sharp oblique
+height theorem.  Endpoint realization is still needed because the sparse
+shear barrier kills the corresponding statement for arbitrary radial sets.
+Read `DETERMINANT_PRIME_COSTAS_RESONANCE.md` and run its exact verifier.
+
 **⭐ 2026-08-18 — ERDŐS #1208: GENERIC AFFINE IMAGES HAVE EMPTY ORTHOGONAL RICH TAIL.**
 For every finite vector-Sidon rational set `A_0`, a rational invertible map
 `T` can simultaneously separate all Euclidean edge norms and avoid every
