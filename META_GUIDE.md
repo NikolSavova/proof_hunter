@@ -449,6 +449,25 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 — #1208 endpoint-switched two-moment charge gate
+
+- Gave the alpha moment a crossed canonical-midpoint charge into
+  `(D+D)^2`.  Corrected an exploratory hidden assumption: adaptive shifts
+  `q,q'` lie in `D-D`, not necessarily in `D`, so they cannot be endpoint
+  decorated.  The final charge uses only the six genuine grid differences.
+- Gave the beta moment a maximal-role charge into sixteen labelled copies
+  of `D^2`.  It is injective for a fixed popular pair, and the canonical
+  `(x0,y2)` key has an exact two-variable six-copy parametrization and six
+  collision displacements.
+- Proved the formal interface
+  `(sum alpha^2)(sum beta^2)<=16N^2S^2 L_alpha L_beta`.  Thus the product of
+  the two size-biased loads being subpolynomial is sufficient for the full
+  cube-root order; separate pointwise bounds are unnecessary.
+- Added a self-contained exact verifier.  Closure and Costas loads remain
+  constant-scale through `p=31`; the radial beta control has load `39.26` at
+  side eight, while the prior Sidon-ruler obstruction has empty adaptive
+  tail.  The load-product theorem itself is still open.
+
 ### 2026-08-18 — #1208 corrected popular-pair rectangle moment gate
 
 - Corrected the tentative pair-indexed rectangle factorization: the

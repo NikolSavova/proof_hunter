@@ -65,6 +65,25 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: BOTH POPULAR-PAIR MOMENTS NOW HAVE CORRECT-SIZE ENDPOINT-SWITCHED CHARGES.**
+The corrected rectangle gate has been sharpened into two size-biased load
+problems.  The alpha-square configurations carry the crossed midpoint charge
+`(m(d0)-m(d4),m(d1)-m(d5))` into `(D+D)^2`; crucially, only the six grid
+differences are decorated, since the popular shifts need not lie in `D`.
+The beta-square configurations carry the two maximal-radius roles into one
+of sixteen labelled copies of `D^2`; for a fixed popular pair this charge is
+injective, so every load is cross-pair.  If the two size-biased loads are
+`L_alpha,L_beta`, exact Cauchy gives
+`(sum alpha^2)(sum beta^2)<=16N^2S^2 L_alpha L_beta`.  Hence the single
+endpoint theorem `L_alpha L_beta=N^o(1)` proves the cube-root order.  On
+closure-40 and every determinant-prime Costas row through `p=31`, both loads
+stay between `1.8` and `3.4`; the radial side-eight beta impostor is already
+`39.26`.  The old dense Sidon-ruler midpoint obstruction has empty adaptive
+tail.  All exact identities, fixed-key formulas, collision displacements,
+and profiles pass.  The load-product theorem remains unproved.  Read
+`ENDPOINT_SWITCHED_TWO_MOMENT_CHARGE_GATE.md` and run its verifier.
+
+
 **⭐ 2026-08-18 — ERDŐS #1208: OPPOSITE-ENDPOINT LOAD FACTORS INTO CORRECTED POPULAR-PAIR RECTANGLES.**
 Regrouping by the ordered popular pair `z=(q,q')` gives exact full rectangles
 `E_z=V_z x T_z`, with `|T_z|=alpha_z` a triple correlation and `|V_z|=beta_z`
