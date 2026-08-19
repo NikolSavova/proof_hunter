@@ -1,9 +1,22 @@
 #!/usr/bin/env python3
-"""Exact finite check for the adjacent-corner quadratic-fibre barrier."""
+"""Exact checks for the unfiltered adjacent-corner fibre barrier.
+
+The perpendicular witness has a quadratic unfiltered overlap mechanism but
+no transverse corner relation.  A separate 45-point source certificate
+shows that a filtered cell can nevertheless have load 250.
+"""
 
 from __future__ import annotations
 
 from collections import Counter
+
+from verify_transverse_row_source_c4 import (
+    FIXED_V,
+    FIXED_Y,
+    SOURCE_POINTS,
+    row_sources,
+    source_degree,
+)
 
 
 S = [0, 1, 4, 9, 15, 22, 32, 34]
@@ -71,6 +84,18 @@ intersection = D & {
 assert len(intersection) == full_profile[t]
 assert len(intersection) >= restricted_peak
 
+# The perpendicular construction only obstructs the relaxation which drops
+# transversality.  In K_A, right degrees are exactly the filtered cells.
+perpendicular_rows = row_sources(A)
+right_degrees = Counter(
+    source for sources in perpendicular_rows.values() for source in sources
+)
+assert max(right_degrees.values(), default=0) == 0
+
+# Independent exact stress: a genuinely transverse fixed source has load 250.
+assert len(SOURCE_POINTS) == 45
+assert source_degree(SOURCE_POINTS, FIXED_V, FIXED_Y) == 250
+
 print(
     "marks",
     len(A),
@@ -80,5 +105,8 @@ print(
     restricted_peak,
     "full-intersection",
     len(intersection),
+    "transverse-peak",
+    0,
 )
+print("transverse source certificate", len(SOURCE_POINTS), 250)
 print("adjacent-corner fibre barrier: PASS")

@@ -1,4 +1,4 @@
-# Quadratic adjacent-corner fibres in distance-Sidon sets
+# The unfiltered adjacent-corner fibre barrier
 
 ## 1. The tempting commutator charge
 
@@ -19,15 +19,17 @@ for a fixed translation `t` (signs can be changed by replacing `A` with
 \]
 
 both the representation of `d` and the representation of `b+Jc` are
-unique.  It is therefore tempting to bound every adjacent-corner fibre by
+unique.  It is therefore tempting to discard the transversality indicator
+and bound the larger ambient intersection
 
 \[
  \max_t |(A-A)\cap(t-(A+JA))|\ll |A|^{1+o(1)}.  \tag{1.2}
 \]
 
 That would charge a commutator witness using the two common endpoints and
-one additional point.  The theorem below shows that (1.2) is false by a
-full power.
+one additional point.  The theorem below shows that this *unfiltered*
+relaxation is false by a full power.  It does not, by itself, disprove the
+same estimate after retaining the transverse condition.
 
 ## 2. Sharp barrier
 
@@ -97,20 +99,50 @@ side of `d=t+(b+Jc)` therefore recovers the other.  Hence the number in
 (2.5) is exactly a lower bound for the set intersection in (2.1).  This
 proves the theorem.
 
-## 3. Strategic consequence
+## 3. Transversality correction
+
+The large fibre in Theorem 2.1 is entirely non-transverse in the corner
+relation which produced (1.1).  In the exact eight-point witness, the
+unfiltered intersection has size `12`, while every transversality-filtered
+adjacent cell is empty.  Thus the perpendicular-ruler family is a sharp
+barrier to dropping the indicator, not an asymptotic counterexample to a
+filtered pointwise theorem.
+
+There is nevertheless a strong exact warning against a small filtered
+maximum.  In the row--source graph `K_A` of
+`TRANSVERSE_ROW_SOURCE_C4_GATE.md`, the degree of a right vertex is exactly
+the transversality-filtered adjacent-corner load with the two shared
+endpoints fixed.  The certified 45-point integral distance-Sidon set in
+that note has
+
+\[
+ \deg_{K_A}\bigl((46,1)+J(24,29)\bigr)
+ =250=0.82817\ldots\,45^{3/2}.                 \tag{3.1}
+\]
+
+This finite certificate is not an asymptotic counterfamily, so it does not
+formally disprove a `k^(1+o(1))` maximum theorem.  It does show that the
+filtered local load can already be strongly superlinear and that the
+linear-looking behaviour of the perpendicular family was misleading.
+
+## 4. Strategic consequence
 
 The commutator stability theorem reduces a nonabelian corner core to failed
 alternating squares.  For adjacent colours, the two corner keys share two
 actual points, so (1.1) is the most economical pointwise endpoint charge.
-Theorem 2.1 shows that this charge can have quadratic load.
+Theorem 2.1 shows that its unfiltered relaxation can have quadratic load;
+the exact source certificate (3.1) shows that restoring transversality does
+not make every local cell small in the tested regime.
 
 The barrier does not produce a counterexample to the desired cubic
 size-biased tail.  As with every earlier perpendicular-ruler obstruction,
-the quadratic fibre comes from two transverse one-dimensional arms and is
-accompanied by cubic image support.  A successful curvature argument must
-therefore aggregate over the shared endpoint pair and charge heavy fibres
-to transverse support growth.  Bounding each defect cell separately cannot
-work.
+the quadratic fibre comes from two perpendicular one-dimensional arms and
+is accompanied by cubic image support.  A successful curvature argument
+should therefore aggregate over the shared endpoint pair and charge heavy
+fibres to transverse support growth.  The rigorous surviving target is the
+row--source four-cycle or second-moment bound, not the unfiltered maximum.
+No asymptotic filtered maximum theorem or counterexample is currently
+known.
 
 Run
 
@@ -118,5 +150,5 @@ Run
 python3 phase2/loop/erdos1208/verify_adjacent_corner_fibre_barrier.py
 ```
 
-for the exact eight-point distance-Sidon witness and its complete overlap
-profile.
+for the exact eight-point distance-Sidon witness, the vanishing filtered
+profile, and the independent 45-point transverse source certificate.
