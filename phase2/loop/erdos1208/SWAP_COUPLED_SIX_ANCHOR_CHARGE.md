@@ -25,8 +25,9 @@ The theorem
  \boxed{\mathcal B_6\le N^{o(1)}|C_N|}                         \tag{1.2}
 \]
 
-together with the existing common-endpoint estimates would prove the
-cube-root upper bound.  The theorem is not proved.
+together with analogous size-biased bounds for the existing common-endpoint
+routes would prove the cube-root upper bound.  Neither remaining bound is
+proved.
 
 ## 2. Six anchors from the swap involution
 
