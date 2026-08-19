@@ -48,6 +48,8 @@ def main() -> None:
     floor = k - 1
     assert floor * floor <= n
     assert (floor * n) ** 2 <= n**3
+    # floor < N^(3/4), checked without floating point.
+    assert floor**4 < n**3
 
     overlap = correlation(differences)
     energy = sum(

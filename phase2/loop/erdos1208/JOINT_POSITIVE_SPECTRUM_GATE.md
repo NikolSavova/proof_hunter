@@ -32,10 +32,9 @@ The orthogonal difference energy is
 Put
 
 \[
- \mathcal H=
- \{\theta:\lambda(\theta)>\sqrt N,\quad
-             \mu(\theta)>\sqrt N,\quad
-             \lambda(\theta)\mu(\theta)>N^{3/2}\}. \tag{1.3}
+ \mathcal H_*=
+ \{\theta:\lambda(\theta)>N^{3/4},\quad
+             \mu(\theta)>N^{3/4}\}.             \tag{1.3}
 \]
 
 Then the whole complement of this simultaneous large positive spectrum is
@@ -44,22 +43,24 @@ already at the critical fifth-power scale:
 \[
  \boxed{
  E_\perp(D)
- \le N^{5/2}+\int_{\mathcal H}\lambda^2\mu^2.} \tag{1.4}
+ \le 2N^{5/2}+\int_{\mathcal H_*}\lambda^2\mu^2.} \tag{1.4}
 \]
 
 Thus the ambient-energy theorem needed for Erdős 1208 is reduced to
 
 \[
  \boxed{
- \int_{\mathcal H}\lambda^2\mu^2
+ \int_{\mathcal H_*}\lambda^2\mu^2
  \le N^{5/2+o(1)}+m^{2+o(1)}N.}                \tag{1.5}
 \]
 
 This is a reduction, not a proof of (1.5).  Its value is that the remaining
 mass is now localized simultaneously in sign, size, and two perpendicular
-frequencies.  Generic high additive energy, negative spectrum, and every
-Fourier layer whose product is at most `N^(3/2)` are no longer part of the
-problem.
+frequencies.  Generic high additive energy, negative spectrum, every
+one-sided-large layer, and even the unbalanced positive layers are no longer
+part of the problem.  In terms of the original exponential sum, (1.3) says
+that both `|hat 1_A(theta)|` and `|hat 1_A(J theta)|` are larger than
+`N^(3/8)=k^(3/4+o(1))`.
 
 ## 2. Exact proof
 
@@ -70,7 +71,8 @@ Parseval gives
  \qquad \int\mu^2=N.                            \tag{2.1}
 \]
 
-Therefore Cauchy--Schwarz gives the exact `L^1` product estimate
+There are two useful truncations.  First, Cauchy--Schwarz gives the exact
+`L^1` product estimate
 
 \[
  \int|\lambda\mu|
@@ -106,13 +108,32 @@ If either factor is nonpositive, then
 \]
 
 The same upper bound holds if either positive factor is at most `sqrt(N)`.
-Consequently `|lambda mu|>N^(3/2)` is exactly contained in the set
-`mathcal H` from (1.3).  This proves (1.4).
+Consequently `|lambda mu|>N^(3/2)` can occur only when both factors are
+positive and larger than `sqrt(N)`.  This already removes the wrong-sign
+and low-product regimes.
+
+The balanced truncation is stronger.  Put `T=N^(3/4)`.  On the set
+`|lambda|<=T`,
+
+\[
+ \lambda^2\mu^2\le T^2\mu^2.
+\]
+
+By (2.1), its integral is at most
+
+\[
+ T^2N=N^{5/2}.                                  \tag{2.5}
+\]
+
+The symmetric set `|mu|<=T` has the same bound.  Outside their union both
+absolute values exceed `T`.  Since `T>sqrt(N)` and the negative floor is
+`-sqrt(N)`, both factors must then be positive.  The remaining set is
+exactly `mathcal H_*`, proving (1.4).
 
 There is also the orthogonality identity
 
 \[
- \int\lambda\mu=|D\cap JD|=1,                 \tag{2.5}
+ \int\lambda\mu=|D\cap JD|=1,                 \tag{2.6}
 \]
 
 because radial uniqueness gives `D cap JD={0}`.  It is not needed for
@@ -122,7 +143,7 @@ by opposite-sign spectrum elsewhere.  This is the precise interface with
 
 ## 3. Dyadic form
 
-For dyadic `L,M>sqrt(N)` with `LM>N^(3/2)`, put
+For dyadic `L,M>N^(3/4)`, put
 
 \[
  \mathcal H_{L,M}
@@ -142,22 +163,15 @@ and hence
  \le16NLM.                                     \tag{3.2}
 \]
 
-At the boundary `LM=N^(3/2)`, (3.2) is already `O(N^(5/2))`.
-Accordingly, after absorbing the `O(log^2 N)` dyadic choices, a fixed-power
-failure of (1.5) must place mass on dyadic layers with
-
-\[
- LM>N^{3/2+\varepsilon'}                       \tag{3.3}
-\]
-
-for some fixed `epsilon'>0` (possibly smaller than the exponent in the
-failure).
+The new information is not merely `LM>N^(3/2)`: each factor separately
+exceeds `N^(3/4)`.  This deletes the highly unbalanced layers that survived
+the first product truncation.
 
 In terms of the original exponential sum, these layers satisfy
 
 \[
  |\widehat{1_A}(\theta)|^2=L+O(\sqrt N),\qquad
- |\widehat{1_A}(J\theta)|^2=M+O(\sqrt N).       \tag{3.4}
+ |\widehat{1_A}(J\theta)|^2=M+O(\sqrt N).       \tag{3.3}
 \]
 
 Thus a counterexample forces genuinely simultaneous large spectrum of `A`
@@ -169,7 +183,7 @@ ordinary higher-energy inverse theorem discards precisely this correlation.
 The most direct next statement is now the following.
 
 > **Perpendicular large-spectrum theorem.**  For a distance-Sidon
-> `A subset [0,m]^2`, the dyadic layers in (3.3) satisfy
+> `A subset [0,m]^2`, the dyadic layers with `L,M>N^(3/4)` satisfy
 > \[
 > \sum_{L,M}\int_{\mathcal H_{L,M}}\lambda^2\mu^2
 > \le N^{5/2+o(1)}+m^{2+o(1)}N.
@@ -179,13 +193,13 @@ The endpoint Fourier floor in (1.1) must remain load-bearing.  The sparse
 oblique radial transversals from `SPARSE_OBLIQUE_MIDPOINT_BARRIER.md` can
 have large mixed energy but do not satisfy this floor.  Conversely, a large
 joint positive layer must create enough opposite-sign compensation through
-(2.5).  The missing step is to localize that compensation to a structured
+(2.6).  The missing step is to localize that compensation to a structured
 piece of `D`; once such a piece is found,
 `ENDPOINT_FOURIER_COMPENSATION_LEMMA.md` quantifies the required complement.
 
 This formulation is preferable to trying to bound the whole mixed fourth
-moment at once: the low product, wrong-sign, and one-sided-large regimes have
-now been removed with the sharp critical exponent.
+moment at once: the low product, wrong-sign, one-sided-large, and unbalanced
+positive regimes have now been removed with the sharp critical exponent.
 
 Run
 
