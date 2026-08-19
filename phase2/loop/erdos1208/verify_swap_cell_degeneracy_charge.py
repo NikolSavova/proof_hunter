@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 import heapq
+import sys
 
 from analyze_affine_costas_energy import is_distance_sidon, welch
 from analyze_cross_endpoint_pair_charge import iter_records
@@ -32,6 +33,51 @@ def build_swap_multigraph(
         first_cell = q_forms[0], p_forms[2]
         second_cell = p_forms[0], q_forms[2]
         assert first_cell != second_cell
+
+        # Symmetric endpoint-core form from Section 7 of the note.
+        base, ordinary_sum = fibre
+        first_head, second_head = q_forms[0], p_forms[0]
+        first_opposite = p_forms[2]
+        linear_first = (
+            first_head[0] - first_head[1],
+            first_head[0] + first_head[1],
+        )
+        component = (
+            first_opposite[0] - linear_first[0],
+            first_opposite[1] - linear_first[1],
+        )
+        joined = (
+            first_head[0] + second_head[0] - base[0],
+            first_head[1] + second_head[1] - base[1],
+        )
+        rotated_joined = (-joined[1], joined[0])
+        translation = (
+            component[0] + rotated_joined[0],
+            component[1] + rotated_joined[1],
+        )
+        assert (
+            first_head[0] + translation[0],
+            first_head[1] + translation[1],
+        ) == p_forms[1]
+        assert (
+            second_head[0] + translation[0],
+            second_head[1] + translation[1],
+        ) == q_forms[1]
+        assert component == (
+            q_forms[2][0]
+            - (second_head[0] - second_head[1]),
+            q_forms[2][1]
+            - (second_head[0] + second_head[1]),
+        )
+        assert base in differences
+        assert ordinary_sum == (
+            base[0] + first_opposite[0]
+            + (second_head[0] - base[0])
+            - (second_head[1] - base[1]),
+            base[1] + first_opposite[1]
+            + (second_head[0] - base[0])
+            + (second_head[1] - base[1]),
+        )
         edge = tuple(sorted((first_cell, second_cell)))
         if first_cell < second_cell:
             edge_multiplicity[edge] += 1
@@ -132,8 +178,12 @@ def charge_profile(differences: set[Point]) -> Profile:
     )
 
 
-def transformed_costas(prime: int) -> set[Point]:
-    matrix, _ = ROWS[prime]
+def transformed_costas(
+    prime: int,
+    matrix: tuple[int, int, int, int] | None = None,
+) -> set[Point]:
+    if matrix is None:
+        matrix, _ = ROWS[prime]
     points = [apply(matrix, point) for point in welch(prime)]
     assert is_distance_sidon(points)
     return difference_set(points)
@@ -192,6 +242,76 @@ def main() -> None:
             (83, 431, 555_948, 6_769, 33_522, 121, 33_414_416),
         ),
     ]
+    if "--extended" in sys.argv:
+        families.extend(
+            [
+                (
+                    "Costas-29",
+                    transformed_costas(29),
+                    (
+                        757,
+                        7_205,
+                        1_522_546,
+                        347_231,
+                        409_109,
+                        19,
+                        7_241_154,
+                    ),
+                ),
+                (
+                    "Costas-37",
+                    transformed_costas(37),
+                    (
+                        1_261,
+                        13_917,
+                        2_939_312,
+                        837_964,
+                        897_816,
+                        18,
+                        11_431_164,
+                    ),
+                ),
+                (
+                    "Costas-41",
+                    transformed_costas(41),
+                    (
+                        1_561,
+                        17_875,
+                        4_629_690,
+                        1_287_325,
+                        1_366_981,
+                        27,
+                        19_155_158,
+                    ),
+                ),
+                (
+                    "Costas-43",
+                    transformed_costas(43),
+                    (
+                        1_723,
+                        19_819,
+                        8_451_318,
+                        1_910_376,
+                        2_367_303,
+                        31,
+                        42_793_510,
+                    ),
+                ),
+                (
+                    "Costas-47-low-support",
+                    transformed_costas(47, (-10, 11, 3, -8)),
+                    (
+                        2_071,
+                        23_427,
+                        25_194_336,
+                        3_179_031,
+                        5_430_646,
+                        41,
+                        210_516_264,
+                    ),
+                ),
+            ]
+        )
 
     for name, differences, expected in families:
         actual = charge_profile(differences)

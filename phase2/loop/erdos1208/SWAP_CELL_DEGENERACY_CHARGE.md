@@ -2,9 +2,12 @@
 
 ## 1. Outcome
 
-This note gives the cleanest current sufficient theorem for the adaptive
-off-diagonal tail in Erdős problem 1208.  It is an exact charge reduction,
-not a proof of its final density estimate.
+This note gives an exact charge reduction for the adaptive off-diagonal tail
+in Erdős problem 1208, not a proof of its final density estimate.  The
+pointwise degeneracy condition first isolated here remains sufficient, but
+larger determinant-prime Costas stresses now make it an unnecessarily strong
+lead target.  The preferred swap formulation is the size-biased orientation
+energy in Section 4.1 below.
 
 Let `G_sw` be the swap multigraph from `SWAP_CELL_COMPONENT_GATE.md`.  Its
 vertices are fixed `D^2` charge cells, and every unordered pair `{p,q}` in
@@ -36,16 +39,20 @@ implies
 
 and hence proves the cube-root upper bound for Erdős 1208.
 
-The new gate has two advantages over the fixed-route moment:
+The pointwise gate has two formal advantages over the fixed-route moment:
 
 1. stars are harmless, because all their edges can be oriented away from
    distinct leaves; and
 2. a failure of (1.2) is exactly a genuinely dense endpoint-realizable
    multigraph core, not a large fibre or a one-sided charge concentration.
 
-The normalized weighted degeneracy is between `0.028` and `1.743` on the
+The normalized weighted degeneracy is between `0.028` and `3.624` on the
 stored genuine stresses, while it grows from `3.835` to `23.302` on radial
-controls of sides 4 through 8.  This is evidence only; (1.2) is not proved.
+controls of sides 4 through 8.  More importantly, the Costas ratio grows
+from `0.515` at prime 11 to `3.624` at the low-support prime-47 stress, while
+the size-biased orientation energy stays below `0.739` of its allowed
+budget.  This is evidence that the maximum-core statement may be false by a
+power even though the averaged orientation theorem is true.
 
 ## 2. Definitions and the swap involution
 
@@ -180,6 +187,61 @@ The factor two and the orientation bit are immaterial.  They are kept to
 make the charge literally injective within each fibre and the verification
 identity exact.
 
+### 4.1 Preferred size-biased orientation theorem
+
+The proof of (4.4) never requires a uniform bound on the maximum outdegree.
+For any orientation of the edge copies, define
+
+\[
+ \mathcal Q_{\rm or}:=2\sum_v d^+(v)^2.                         \tag{4.6}
+\]
+
+The same two-bit charge has second moment exactly `Q_or`.  Consequently the
+strictly weaker averaged estimate
+
+\[
+ \boxed{\mathcal Q_{\rm or}\le K N^{o(1)}\mathcal O_K}          \tag{4.7}
+\]
+
+for some orientation proves the adaptive tail directly.  The peeling
+orientation from Section 3 supplies a canonical candidate, but an
+orientation minimizing the convex cost in (4.6) is also allowed.  Condition
+(1.2) implies (4.7) through (4.3), while the converse is false: a small dense
+core can have large degeneracy and negligible size-biased mass.
+
+There is an unconditional comparison with the original fixed-cell moment
+
+\[
+ M=\sum_v d(v)^2.
+\]
+
+Orient every edge copy independently and uniformly.  At a vertex of degree
+`d`, the outdegree has second moment `(d^2+d)/4`.  Since
+`sum_v d(v)=O_K`, linearity of expectation gives
+
+\[
+ \mathbb E\,\mathcal Q_{\rm or}
+ ={M+\mathcal O_K\over2}.                         \tag{4.8}
+\]
+
+Hence some deterministic orientation satisfies the same upper bound.  This
+recovers the fixed-route theorem with a factor-two gain and can be strictly
+better on one-sided stars.  It does not by itself prove the required scale,
+because `M` is still the unproved moment from the fixed `D^2` charge.
+
+This distinction is load-bearing on the largest exact stress.  For the
+low-support Costas prime 47, `d_sw/K=3.62449...`, whereas the peeling
+orientation satisfies
+
+\[
+ {\mathcal Q_{\rm or}\over K\mathcal O_K}=0.738662\ldots .     \tag{4.9}
+\]
+
+The random-orientation expectation in (4.8) has the still smaller normalized
+value `0.677593...` on this row.
+
+Thus (4.7), not the maximum in (1.2), is the current preferred swap gate.
+
 ## 5. Relation to the component-product gate
 
 Let component `z` have `h_z` active vertices and maximum parallel
@@ -227,6 +289,11 @@ Selected exact profiles are:
 | Costas 17 | `(241,2299,20014,12397,8089,6,34234)` | `0.6290` | `0.1793` |
 | Costas 23 | `(463,4513,498674,133927,145055,12,1873578)` | `1.2311` | `0.3855` |
 | Costas 31 | `(871,9495,765102,286810,249531,19,2509386)` | `1.7429` | `0.3009` |
+| Costas 29 | `(757,7205,1522546,347231,409109,19,7241154)` | `1.9963` | `0.4997` |
+| Costas 37 | `(1261,13917,2939312,837964,897816,18,11431164)` | `1.6310` | `0.3524` |
+| Costas 41 | `(1561,17875,4629690,1287325,1366981,27,19155158)` | `2.3579` | `0.3613` |
+| Costas 43 | `(1723,19819,8451318,1910376,2367303,31,42793510)` | `2.6950` | `0.4402` |
+| Costas 47 low support | `(2071,23427,25194336,3179031,5430646,41,210516264)` | `3.6245` | `0.7387` |
 | radial 4 | `(29,121,8330,773,1417,16,67646)` | `3.8347` | `1.9463` |
 | radial 5 | `(39,181,24716,1437,3416,26,329356)` | `5.6022` | `2.8713` |
 | radial 6 | `(53,253,93290,2715,8881,51,2377470)` | `10.6838` | `5.3387` |
@@ -236,15 +303,50 @@ Run
 
 ```bash
 python3 phase2/loop/erdos1208/verify_swap_cell_degeneracy_charge.py
+python3 phase2/loop/erdos1208/verify_swap_cell_degeneracy_charge.py --extended
 ```
 
 The script checks the multigraph multiplicities, peeling orientation,
 outdegrees, two-bit fibrewise injectivity, exact charge loads, second-moment
 identity, and every profile above.
 
-## 7. Remaining theorem
+## 7. Symmetric endpoint-core normal form
 
-The live statement is now a dense-core prohibition:
+There is a simpler description of every component and edge copy.  Fix the
+component invariant `z`.  Identify its cell `(b,z+Lb)` with `b`, and write
+the other endpoint as `b'`.  If the underlying fibre has base `a=u`, then
+
+\[
+ q=b-a,\qquad p=b'-a,
+ \qquad r=z+J(b+b'-a).                            \tag{7.1}
+\]
+
+The seven original memberships are exactly
+
+\[
+ \boxed{
+ a,\ b,\ b',\ b+r,\ b'+r,\ z+Lb,\ z+Lb'\in D,} \tag{7.2}
+\]
+
+and the two adaptive conditions are `b-a,b'-a in P_K`.  Conversely,
+(7.1)--(7.2) reconstruct the fibre and the edge copy uniquely.  Therefore
+the parallel multiplicity between `b` and `b'` is
+
+\[
+ \#\{a\in D:b-a,b'-a\in\mathcal P_K,
+        b+r,b'+r\in D\},                         \tag{7.3}
+\]
+
+with `r` as in (7.1), provided both endpoint cells in (7.2) are active.
+This form exposes two coupled translated pairs in `D` and retains the
+complete-difference endpoint label `a`; it is the preferred analytic form
+for a size-biased proof of (4.7).
+
+## 8. Remaining theorem
+
+The preferred live theorem is (4.7), equivalently a `K N^(o(1))` bound for
+the edge-size-biased squared outdegree of a suitable orientation.  The older
+pointwise sufficient strengthening says:
 
 > Every nonempty submultigraph of `G_sw` has a vertex of weighted degree at
 > most `K N^(o(1))`.
@@ -274,7 +376,8 @@ incompatible with
  \widehat{1_D}=|\widehat{1_A}|^2-(|A|-1).
 \]
 
-Unlike a maximum-fibre statement, minimum degree guarantees that this
-structure persists after arbitrary vertex deletions.  That robustness is
-the main reason the degeneracy gate is a plausible density-increment entry
-point.
+The Costas-47 profile shows why the size-biased form must be attempted
+first: the maximum dense core can grow while carrying too little mass to
+threaten (4.7).  A successful proof should use (7.1)--(7.3) to charge the
+whole peeling profile to ordinary support or to the canonical endpoints of
+`D=A-A`, rather than bounding its largest core.
