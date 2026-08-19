@@ -145,10 +145,15 @@ labels forced equal in every solution are canonically coalesced.  Exactly
 has a character certificate forcing an identical directed displacement on
 two distinct pairs.  There is no generic survivor.
 
-This is an exact branch theorem, but its scope matters.  It closes the
-component-faithful generic geometry of commuting translation matchings.  A
-nongeneric specialization with additional accidental point identifications
-is not covered, and arbitrary full cores have noncommuting matchings.
+The subsequent exact partition closure in
+`NONGENERIC_TRANSLATION_CORE_OBSTRUCTION.md` removes the nongeneric caveat:
+no commuting translation core survives any endpoint identification. The
+generalized-dihedral product family in
+`DIHEDRAL_CRT_FULL_CORE_OBSTRUCTION.md` also gives an infinite genuinely
+noncommuting linear full core whose relation equations force every endpoint
+role to be constant. This includes the ordinary dihedral CRT family when the
+three cyclic moduli are pairwise coprime. Arbitrary noncommuting full cores
+remain open.
 
 ## 4. Consequence for the proof search
 
@@ -159,9 +164,9 @@ There are now three distinct statements which must not be conflated:
 2. Full eight-corner peelability is false as a bare stopping-set theorem, by
    the 32-record non-linear core above.
 3. Full eight-corner peelability for **distance-Sidon realizations** remains
-   open; the canonical edge-disjoint linear model forces distance
-   equalities, the entire generic abelian translation branch has now been
-   exhaustively eliminated, and the smaller model fails linearity already.
+   open; the complete generic and nongeneric abelian branch is eliminated,
+   the nonabelian generalized-dihedral branch collapses to one record, and the
+   smaller model fails linearity already.
 
 Even statement 3 would only close the transverse/wide branch.  The safer
 aggregate target remains the size-biased tail
