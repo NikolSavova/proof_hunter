@@ -357,6 +357,35 @@ This endpoint refinement supplies the most explicit current route to the
 \(K\)-scaled gate: prove local completion (6.4), then use the ordinary
 sumset to pay for head diversity in (6.5).
 
+## 7. Four-literal refinement of local completion
+
+`FOUR_LITERAL_ENDPOINT_COMPLETION_GATE.md` now refines a joint key once
+more by the literal pair
+
+\[
+ (d,f)=(R_4(\gamma),R_2(\gamma')).
+\]
+
+Its load \(\tau(x,y,d,f)\) has an exact two-popular-shift
+parametrization, and both literal projections are injective inside one
+first-stage cell.  If \(T_{x,y,\alpha,\beta}\) counts the occupied literal
+pairs below one head key, then
+
+\[
+ \sum\sigma^2
+ \le
+ \sum_{x,y,\alpha,\beta}T_{x,y,\alpha,\beta}
+      \sum_{d,f}\tau(x,y,d,f)^2.
+\]
+
+Thus (6.4) itself is reduced to a four-literal cross-cell moment and a
+size-biased tail-diversity bound.  Their normalized factors stay below
+`1.81` and `1.42`, respectively, on the complete-difference Costas stresses
+through size 36, while the four-literal moment ratio on radial transversals
+grows from `2.94` to `21.19`.  This is now the preferred local route to
+(6.4).  Estimate (6.5), or a combined population estimate paying for both
+heads and tails, remains separately necessary.
+
 Run
 
     python3 phase2/loop/erdos1208/verify_same_midpoint_literal_d2_collision_gate.py
