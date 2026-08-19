@@ -65,6 +65,23 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: OPPOSITE-ENDPOINT LOAD FACTORS INTO CORRECTED POPULAR-PAIR RECTANGLES.**
+Regrouping by the ordered popular pair `z=(q,q')` gives exact full rectangles
+`E_z=V_z x T_z`, with `|T_z|=alpha_z` a triple correlation and `|V_z|=beta_z`
+a fourfold intersection.  The fourth membership `d-Jq in D` is the fixed
+charge coordinate and is the previously easy-to-miss seventh incidence; a
+triple model is incorrect.  Thus
+`O_K=sum_z alpha_z beta_z` and
+`sum nu^2=sum_(z,z') |T_z cap T_z'||V_z cap V_z'|`.  Squaring the two sides
+gives exact nested-overlap identities, and Cauchy reduces the full theorem to
+`(sum alpha_z^2)(sum beta_z^2)<=N^(2+o(1))S^2`.  The convenient stronger
+pair is `sum alpha_z^2<=N^o S^2` and `sum beta_z^2<=N^(2+o(1))`.  Through all
+determinant-prime Costas rows to `p=43`, the two largest normalized factors
+are `0.12162` and `2.10836`, with product below one; on the radial side-12
+impostor they are `25.38` and `192.13`.  The exact decomposition and stress
+profiles pass.  The moment product is still unproved and remains the live
+endpoint-sensitive gate.  Read `POPULAR_PAIR_RECTANGLE_MOMENT_GATE.md`.
+
 **⭐ 2026-08-18 — ERDŐS #1208: CHARGE COLLISIONS SATISFY AN EIGHT-FORM ADAPTIVE FRACTIONAL-BASIS BOUND.**
 Two preimages of one opposite-endpoint key give six `D`-forms in four
 vector variables.  Thirteen of the fifteen four-form projections are

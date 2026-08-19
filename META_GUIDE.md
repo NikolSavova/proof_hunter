@@ -449,6 +449,22 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 — #1208 corrected popular-pair rectangle moment gate
+
+- Corrected the tentative pair-indexed rectangle factorization: the
+  opposite side is a fourfold translate intersection, because the fixed
+  charge coordinate `v=d-Jq` is itself the seventh required member of `D`.
+- Proved the exact full-rectangle decomposition, load Gram formula, and two
+  nested second-moment identities.  Cauchy reduces the off-diagonal theorem
+  to `(sum alpha^2)(sum beta^2)<=N^(2+o(1))S^2`.
+- Added an exact verifier covering closure-40, ten determinant-prime Costas
+  rows, and the radial negative control.  All checks pass.  The corrected
+  moments separate genuine complete differences from the radial impostor
+  much more strongly than the earlier generic six-form majorant.
+- Remaining question: prove the moment product using endpoint
+  factorization, or derive a large-coherence inverse theorem.  This is a
+  sharper gate, not a completed proof of #1208.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 adaptive eight-form fractional-basis gate (Sihao + Codex)
 
 The fixed-key opposite-endpoint collision system was rewritten using four
