@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from math import gcd
+
 from analyze_affine_costas_energy import is_distance_sidon, welch
 from verify_orthogonal_two_support_gate import difference_set
 from verify_seven_incidence_opposite_endpoint_charge import (
@@ -63,6 +65,36 @@ def resonance_image(
     return first // prime, second // prime
 
 
+def verify_general_resonance_index() -> None:
+    """Enumerate small matrices and check the exact Smith-index formula."""
+
+    for a in range(-4, 5):
+        for b in range(-4, 5):
+            for c in range(-4, 5):
+                for d in range(-4, 5):
+                    determinant = a * d - b * c
+                    modulus = abs(determinant)
+                    if modulus < 2 or modulus > 20:
+                        continue
+                    w, u, v = gram((a, b, c, d))
+                    common = gcd(gcd(w, abs(u)), v)
+                    assert modulus % common == 0
+                    predicted = modulus // common
+                    kernel = {
+                        (x, y)
+                        for x in range(modulus)
+                        for y in range(modulus)
+                        if (-u * x - v * y) % modulus == 0
+                        and (w * x + u * y) % modulus == 0
+                    }
+                    actual_index = modulus * modulus // len(kernel)
+                    assert actual_index == predicted, (
+                        (a, b, c, d),
+                        predicted,
+                        actual_index,
+                    )
+
+
 def verify_row(prime: int, matrix: Matrix) -> tuple[int, int, int, int, int]:
     a, b, c, d = matrix
     assert a * d - b * c == prime
@@ -116,6 +148,8 @@ def verify_row(prime: int, matrix: Matrix) -> tuple[int, int, int, int, int]:
 
 
 def main() -> None:
+    verify_general_resonance_index()
+    print("general resonance-index formula: PASS")
     for prime, (matrix, expected) in ROWS.items():
         actual = verify_row(prime, matrix)
         assert actual == expected, (prime, actual, expected)

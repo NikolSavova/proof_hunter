@@ -8,8 +8,9 @@ overlap.  That conclusion is deliberately nonuniform: a specially chosen
 distance-separating affine map can retain exact quarter-turn resonance.
 
 This note gives a rigorous localization theorem for the first such stress
-family found in the search.  Let `T` be an integral matrix of prime
-determinant `p`, let `A_0` be an integral point set in a `p`-box, and put
+family found in the search.  It first computes the resonance index for an
+arbitrary integral matrix, then specializes to prime determinant.  Let `T`
+be integral, let `A_0` be an integral point set, and put
 
 \[
  A=T A_0,\qquad D=A-A.
@@ -64,6 +65,35 @@ is a nonzero singular two-by-two matrix, hence has rank one.  The subgroup
 
 therefore has index exactly `p` in `Z^2`.
 
+There is an exact composite version.  For an arbitrary nonzero determinant
+`Delta`, retain the definitions of `w,u,v,B` and put
+
+\[
+ g=\gcd(w,u,v),\qquad I_T={|\Delta|\over g}.          \tag{2.3a}
+\]
+
+Here `g` divides `|Delta|`: since `g^2` divides
+`wv-u^2=Delta^2`, this follows prime by prime.  The Smith invariants of `B`
+are `g` and `Delta^2/g`.  Reduction modulo `|Delta|` therefore gives
+
+\[
+ \boxed{[\mathbb Z^2:\Gamma_T]=I_T.}                \tag{2.3b}
+\]
+
+Thus `I_T` is the exact **quarter-turn resonance index** of `T Z^2`.  It is
+one in the maximally resonant case and equals `|Delta|` when the Gram matrix
+is primitive.
+
+If `Gamma` is any index-`I` sublattice of `Z^2`, Hermite normal form gives
+
+\[
+ |\Gamma\cap[-M,M]^2|\ll {M^2\over I}+M+1.          \tag{2.3c}
+\]
+
+Indeed a basis `(a,0),(b,c)` has `ac=I`; there are `O(M/c+1)` choices for
+the second coefficient and, for each, `O(M/a+1)` choices for the first.
+This is the general lattice-counting form of the prime localization below.
+
 ### Proposition 2.1: codimension-one joint support
 
 Let `D_0=A_0-A_0`.  If
@@ -78,7 +108,8 @@ then there is a `z in (D_0-D_0) cap Gamma_T` with `q=Tz`.
 
 The first positive overlap implies `q in D-D=T(D_0-D_0)`, so write
 `q=Tz`.  The second implies `Jq in D-D`, in particular `Jq in T Z^2`.
-By (2.1), this is equivalent to `Bz/p in Z^2`, or `z in Gamma_T`.  QED.
+By (2.1), this is equivalent to `Bz/p in Z^2`, or `z in Gamma_T`.  The same
+argument with `p` replaced by `|Delta|` proves the composite version.  QED.
 
 If `A_0 subset [0,p)^2`, then
 

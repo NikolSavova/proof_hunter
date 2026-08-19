@@ -463,7 +463,10 @@ and checked to be distance-Sidon.  They retain nontrivial adaptive tails;
 the fully computed opposite-endpoint ratios through `p=23` are
 `1.4098,1.3455,1.5674,1.9076,2.5237`.  Thus distance separation need not
 make the charge injective, but exact affine resonance is localized on a
-codimension-one lattice.  Added
+codimension-one lattice.  The computation was then upgraded from primes to
+an exact Smith-normal-form identity: for arbitrary determinant `Delta`, the
+resonance-lattice index is `|Delta|/gcd(w,u,v)`, and an index-`I` lattice has
+only `O(M^2/I+M)` points in an `M`-box.  Added
 `DETERMINANT_PRIME_COSTAS_RESONANCE.md` and its verifier.  The full
 cross-fibre estimate remains open; the new suggested inverse parameter is
 the index of the `J`-resonance lattice.  Approximate spend: local compute

@@ -77,7 +77,9 @@ distance-Sidon while retaining a nonempty adaptive orthogonal tail.  Their
 size-biased charge ratios grow above one but remain between `1.34` and
 `2.53` in the five fully profiled rows.  This is the first rigorous
 intermediate branch between generic vanishing and a fully `J`-stable
-rank-two model.  It suggests a resonance-index inverse dichotomy: large
+rank-two model.  More generally, for arbitrary determinant `Delta`, the
+exact resonance index is `|Delta|/gcd(w,u,v)`, verified exhaustively on
+small matrices.  It suggests a resonance-index inverse dichotomy: large
 index sparsifies the tail, while small index should feed the sharp oblique
 height theorem.  Endpoint realization is still needed because the sparse
 shear barrier kills the corresponding statement for arbitrary radial sets.
