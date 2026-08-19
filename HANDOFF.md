@@ -70,10 +70,11 @@ Let `D=A-A`, `N=|D|`, `S=|D+D|`, and let `O_K` be the adaptive off-diagonal
 seven-incidence mass.  For a rich-fibre configuration `(u,s,q,q')`, put
 `w=s-u`, `v=w-(I+J)q`, `c=u+q'`, and `h=m(u)-m(c)`, where `m` is the
 canonical endpoint midpoint decoration.  The new charge is `(sign(c),v,h)`
-in `D x (D+D)` unless one endpoint switch vanishes, in which case it is
-routed to `(shared-endpoint-role,v,c)` in `D^2`.  Its entire labelled
-universe has size at most `4NS`, and it is exactly injective inside every
-fixed rich fibre.
+in `D x (D+D)` on the normal route.  When one endpoint switch vanishes, a
+singleton local midpoint key is charged to another copy of `D x (D+D)`;
+only repeated local midpoint keys fall back to two literal anchors in
+`D^2`.  The three labelled targets have size at most `8NS`, and the map is
+exactly injective inside every fixed rich fibre.
 
 If `lambda` is the cross-fibre load, the single theorem
 `sum lambda^2 <= N^o(1) sum lambda` gives by Cauchy
@@ -85,8 +86,12 @@ the exact six displacements
 The theorem is not proved.
 
 All exact identities and the full stress suite pass.  Through the Costas
-row `p=43`, 8,451,318 configurations have size-biased load `1.7730` and
-maximum load `12`; closure-40 has load `1.1534`.  A fixed fibre pair can
+row `p=43`, 8,451,318 configurations have size-biased load `1.7644` and
+maximum load `12`; closure-40 has load `1.1154`.  No stored stress activates
+the literal fallback.  If it does activate, its internal resonance class
+forces three exact affine copies in `A`, with linear parts
+`I,-J/2,(2I+J)/2` up to the shared-head variant, and squared-distance ratio
+`1:1/4:5/4`.  A fixed fibre pair can
 share 32 charges, so constant pairwise intersection is false and the proof
 must be genuinely aggregate.  The dense perpendicular-ruler tail is empty,
 while radial impostors lack the endpoint map.  Read

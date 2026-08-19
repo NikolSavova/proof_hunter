@@ -34,6 +34,55 @@ def squared_norm(point: Point) -> int:
     return point[0] * point[0] + point[1] * point[1]
 
 
+def half(point: Point) -> Point:
+    assert point[0] % 2 == 0 and point[1] % 2 == 0
+    return point[0] // 2, point[1] // 2
+
+
+def verify_resonance_affine_copies() -> None:
+    """Check the shared-tail/head affine formulas (6.6)--(6.8)."""
+    x_zero = (4, 2)
+    y_zero = (0, 0)
+    w_value = (0, 0)
+    fixed_midpoint_difference = (0, 0)
+    parameter = (2, 4)
+    common_midpoint = add(x_zero, y_zero)
+
+    # Shared tail: c=(X_0+p)-Y_0, so m(c)=X_0+Y_0+p.
+    tail_midpoint = subtract(
+        add(common_midpoint, parameter), fixed_midpoint_difference
+    )
+    opposite = subtract(w_value, linear(parameter))
+    tail_first = half(add(tail_midpoint, opposite))
+    tail_second = half(subtract(tail_midpoint, opposite))
+    tail_first_zero = half(
+        add(subtract(common_midpoint, fixed_midpoint_difference), w_value)
+    )
+    tail_second_zero = half(
+        subtract(subtract(common_midpoint, fixed_midpoint_difference), w_value)
+    )
+    assert tail_first == subtract(tail_first_zero, half(rotate(parameter)))
+    assert tail_second == add(
+        tail_second_zero, half(add(parameter, linear(parameter)))
+    )
+
+    # Shared head: c=X_0-(Y_0-p), so m(c)=X_0+Y_0-p.
+    head_midpoint = subtract(
+        subtract(common_midpoint, parameter), fixed_midpoint_difference
+    )
+    head_first = half(add(head_midpoint, opposite))
+    head_second = half(subtract(head_midpoint, opposite))
+    assert head_first == subtract(
+        tail_first_zero, half(add(parameter, linear(parameter)))
+    )
+    assert head_second == add(tail_second_zero, half(rotate(parameter)))
+
+    small = half(rotate(parameter))
+    large = half(add(parameter, linear(parameter)))
+    assert 4 * squared_norm(small) == squared_norm(parameter)
+    assert 4 * squared_norm(large) == 5 * squared_norm(parameter)
+
+
 def maximal_literal_profile(points: list[Point]) -> Profile:
     """Stress the failed replacement of the midpoint by a largest literal."""
     differences = difference_set(points)
@@ -76,20 +125,28 @@ def maximal_literal_profile(points: list[Point]) -> Profile:
     )
 
 
-def hybrid_profile(points: list[Point]) -> Profile:
+def hybrid_profile(
+    points: list[Point], expect_no_fallback: bool = False
+) -> Profile:
     differences = difference_set(points)
     midpoints = midpoint_table(points)
     fibres, _, popular = rich_fibres(differences, adaptive=True)
-    loads: Counter[tuple[bool, bool, Point, Point]] = Counter()
+    loads: Counter[tuple[int, int, Point, Point]] = Counter()
     first_preimages: dict[
-        tuple[bool, bool, Point, Point],
-        list[tuple[Point, Point, Point]],
+        tuple[int, int, Point, Point],
+        list[tuple[Point, Point, Point, Point]],
     ] = defaultdict(list)
     mass = 0
+    resonance_fallback_mass = 0
 
     for (base, ordinary_sum), fibre in fibres.items():
         w_value = subtract(ordinary_sum, base)
-        local_keys: set[tuple[bool, bool, Point, Point]] = set()
+        local_keys: set[tuple[int, int, Point, Point]] = set()
+        configurations = []
+        degenerate_midpoint_counts: Counter[
+            tuple[int, int, Point, Point]
+        ] = Counter()
+
         for shift in fibre:
             fixed_v = subtract(w_value, linear(shift))
             for other_shift in fibre:
@@ -104,82 +161,299 @@ def hybrid_profile(points: list[Point]) -> Profile:
                     displacement,
                     negate(displacement),
                 )
-                route_bit = (
-                    midpoint_difference == displacement
-                    if degenerate
-                    else antipodal_sign(other_endpoint)
-                )
-                last_value = (
-                    other_endpoint if degenerate else midpoint_difference
-                )
-                charge = (
-                    degenerate,
-                    route_bit,
-                    fixed_v,
-                    last_value,
-                )
-
-                # Proposition 3.1: no collision inside one fibre.
-                assert charge not in local_keys
-                local_keys.add(charge)
-
-                if not degenerate:
-                    assert all(
-                        value % 2 == 0
-                        for value in (
-                            midpoint_difference[0] + displacement[0],
-                            midpoint_difference[1] + displacement[1],
-                            midpoint_difference[0] - displacement[0],
-                            midpoint_difference[1] - displacement[1],
-                        )
+                if degenerate:
+                    shared_endpoint_bit = midpoint_difference == displacement
+                    fixed_x = add(base, shift)
+                    other_opposite = subtract(
+                        w_value, linear(other_shift)
                     )
-                    switch_plus = (
-                        (midpoint_difference[0] + displacement[0]) // 2,
-                        (midpoint_difference[1] + displacement[1]) // 2,
+                    opposite_midpoint = subtract(
+                        midpoints[other_endpoint], midpoints[other_opposite]
                     )
-                    switch_minus = (
-                        (midpoint_difference[0] - displacement[0]) // 2,
-                        (midpoint_difference[1] - displacement[1]) // 2,
+                    midpoint_charge = (
+                        1,
+                        2 * int(shared_endpoint_bit)
+                        + int(antipodal_sign(other_opposite)),
+                        fixed_x,
+                        opposite_midpoint,
                     )
-                    assert switch_plus in differences
-                    assert switch_minus in differences
-                    assert switch_plus != (0, 0) and switch_minus != (0, 0)
+                    degenerate_midpoint_counts[midpoint_charge] += 1
+                else:
+                    shared_endpoint_bit = False
+                    fixed_x = (0, 0)
+                    other_opposite = (0, 0)
+                    midpoint_charge = None
 
-                # Verify the six-form fixed-key system (5.3).
-                six_values = (
-                    base,
-                    add(base, shift),
-                    other_endpoint,
-                    add(fixed_v, rotate(shift)),
-                    subtract(
-                        add(fixed_v, add(base, linear(shift))),
+                configurations.append(
+                    (
+                        shift,
+                        other_shift,
                         other_endpoint,
-                    ),
-                    add(fixed_v, linear(subtract(shift, other_shift))),
-                )
-                assert all(value in differences for value in six_values)
-                assert shift in popular and other_shift in popular
-
-                loads[charge] += 1
-                if len(first_preimages[charge]) < 2:
-                    first_preimages[charge].append(
-                        (base, shift, other_shift)
+                        midpoint_difference,
+                        displacement,
+                        degenerate,
+                        shared_endpoint_bit,
+                        fixed_v,
+                        fixed_x,
+                        other_opposite,
+                        midpoint_charge,
                     )
-                mass += 1
+                )
+
+        local_resonances: dict[
+            tuple[int, int, Point, Point],
+            list[tuple[Point, Point, Point]],
+        ] = defaultdict(list)
+        for configuration in configurations:
+            shift = configuration[0]
+            other_shift = configuration[1]
+            other_opposite = configuration[9]
+            midpoint_charge = configuration[10]
+            if midpoint_charge is not None:
+                local_resonances[midpoint_charge].append(
+                    (shift, other_shift, other_opposite)
+                )
+        for midpoint_charge, resonant in local_resonances.items():
+            if len(resonant) < 2:
+                continue
+            first_q, first_p, first_y = resonant[0]
+            for second_q, second_p, second_y in resonant[1:]:
+                # The common fibre and fixed x force q to agree.  Hence the
+                # changes in r=q-p and y=w-Lp are -pi and -Lpi.
+                assert second_q == first_q
+                pi = subtract(second_p, first_p)
+                assert pi != (0, 0)
+                assert pi in differences
+                first_r = subtract(first_q, first_p)
+                second_r = subtract(second_q, second_p)
+                assert subtract(second_r, first_r) == negate(pi)
+                assert subtract(second_y, first_y) == negate(linear(pi))
+
+                first_c = add(base, first_p)
+                second_c = add(base, second_p)
+                midpoint_change = subtract(
+                    midpoints[second_c], midpoints[first_c]
+                )
+                shared_endpoint_bit = bool(midpoint_charge[1] // 2)
+                assert midpoint_change == (
+                    pi if shared_endpoint_bit else negate(pi)
+                )
+                y_change = subtract(second_y, first_y)
+                assert all(
+                    value % 2 == 0
+                    for value in (
+                        midpoint_change[0] + y_change[0],
+                        midpoint_change[1] + y_change[1],
+                        midpoint_change[0] - y_change[0],
+                        midpoint_change[1] - y_change[1],
+                    )
+                )
+                y_switches = (
+                    (
+                        (midpoint_change[0] + y_change[0]) // 2,
+                        (midpoint_change[1] + y_change[1]) // 2,
+                    ),
+                    (
+                        (midpoint_change[0] - y_change[0]) // 2,
+                        (midpoint_change[1] - y_change[1]) // 2,
+                    ),
+                )
+                assert all(value in differences for value in y_switches)
+                switch_norms = sorted(squared_norm(value) for value in y_switches)
+                pi_norm = squared_norm(pi)
+                assert 4 * switch_norms[0] == pi_norm
+                assert 4 * switch_norms[1] == 5 * pi_norm
+
+        for (
+            shift,
+            other_shift,
+            other_endpoint,
+            midpoint_difference,
+            displacement,
+            degenerate,
+            shared_endpoint_bit,
+            fixed_v,
+            fixed_x,
+            other_opposite,
+            midpoint_charge,
+        ) in configurations:
+            if degenerate:
+                assert midpoint_charge is not None
+                if degenerate_midpoint_counts[midpoint_charge] == 1:
+                    charge = midpoint_charge
+                else:
+                    # A repeated local midpoint key is routed to the two
+                    # literal anchors.  This retains fibrewise injectivity
+                    # and records an internal affine-resonance witness.
+                    charge = (
+                        2,
+                        int(shared_endpoint_bit),
+                        add(base, shift),
+                        subtract(w_value, linear(other_shift)),
+                    )
+                    resonance_fallback_mass += 1
+            else:
+                charge = (
+                    0,
+                    int(antipodal_sign(other_endpoint)),
+                    fixed_v,
+                    midpoint_difference,
+                )
+
+            # Proposition 3.1: no collision inside one fibre.
+            assert charge not in local_keys
+            local_keys.add(charge)
+
+            if not degenerate:
+                assert all(
+                    value % 2 == 0
+                    for value in (
+                        midpoint_difference[0] + displacement[0],
+                        midpoint_difference[1] + displacement[1],
+                        midpoint_difference[0] - displacement[0],
+                        midpoint_difference[1] - displacement[1],
+                    )
+                )
+                switch_plus = (
+                    (midpoint_difference[0] + displacement[0]) // 2,
+                    (midpoint_difference[1] + displacement[1]) // 2,
+                )
+                switch_minus = (
+                    (midpoint_difference[0] - displacement[0]) // 2,
+                    (midpoint_difference[1] - displacement[1]) // 2,
+                )
+                assert switch_plus in differences
+                assert switch_minus in differences
+                assert switch_plus != (0, 0) and switch_minus != (0, 0)
+
+            # Verify the six-form fixed-key system (5.3).
+            six_values = (
+                base,
+                add(base, shift),
+                other_endpoint,
+                add(fixed_v, rotate(shift)),
+                subtract(
+                    add(fixed_v, add(base, linear(shift))),
+                    other_endpoint,
+                ),
+                add(fixed_v, linear(subtract(shift, other_shift))),
+            )
+            assert all(value in differences for value in six_values)
+            assert shift in popular and other_shift in popular
+
+            loads[charge] += 1
+            if len(first_preimages[charge]) < 2:
+                first_preimages[charge].append(
+                    (base, w_value, shift, other_shift)
+                )
+            mass += 1
 
         assert len(local_keys) == len(fibre) * (len(fibre) - 1)
 
     assert mass == sum(
         len(fibre) * (len(fibre) - 1) for fibre in fibres.values()
     )
+    if expect_no_fallback:
+        assert resonance_fallback_mass == 0
 
-    # Check the collision displacement list (5.5).
+    # Check the normal collision displacement list (5.5), and the sharper
+    # common-endpoint list from Section 6.
     for charge, preimages in first_preimages.items():
         if len(preimages) < 2:
             continue
-        (base, shift, other_shift), (second_base, second_shift, second_other) = (
-            preimages
-        )
+        (
+            (base, w_value, shift, other_shift),
+            (second_base, second_w, second_shift, second_other),
+        ) = preimages
+        if charge[0] == 2:
+            first_p = other_shift
+            first_r = subtract(shift, other_shift)
+            second_p = second_other
+            second_r = subtract(second_shift, second_other)
+            pi = subtract(second_p, first_p)
+            tau = subtract(second_r, first_r)
+
+            def degenerate_forms(p_value: Point, r_value: Point):
+                fixed_x, fixed_y = charge[2], charge[3]
+                return (
+                    subtract(subtract(fixed_x, p_value), r_value),
+                    subtract(fixed_x, r_value),
+                    fixed_x,
+                    subtract(add(fixed_y, rotate(p_value)), r_value),
+                    add(fixed_y, rotate(p_value)),
+                    subtract(fixed_y, linear(r_value)),
+                    fixed_y,
+                )
+
+            first_forms = degenerate_forms(first_p, first_r)
+            second_forms = degenerate_forms(second_p, second_r)
+            expected = (
+                negate(add(pi, tau)),
+                negate(tau),
+                (0, 0),
+                subtract(rotate(pi), tau),
+                rotate(pi),
+                negate(linear(tau)),
+                (0, 0),
+            )
+            actual = tuple(
+                subtract(second, first)
+                for first, second in zip(first_forms, second_forms)
+            )
+            assert actual == expected
+            assert all(value in differences for value in first_forms)
+            assert all(value in differences for value in second_forms)
+            continue
+
+        if charge[0] == 1:
+            first_p = other_shift
+            first_r = subtract(shift, other_shift)
+            first_y = subtract(w_value, linear(first_p))
+            second_p = second_other
+            second_r = subtract(second_shift, second_other)
+            second_y = subtract(second_w, linear(second_p))
+            pi = subtract(second_p, first_p)
+            tau = subtract(second_r, first_r)
+            kappa = subtract(second_y, first_y)
+
+            def midpoint_degenerate_forms(
+                p_value: Point, r_value: Point, y_value: Point
+            ):
+                fixed_x = charge[2]
+                return (
+                    subtract(subtract(fixed_x, p_value), r_value),
+                    subtract(fixed_x, r_value),
+                    fixed_x,
+                    subtract(add(y_value, rotate(p_value)), r_value),
+                    add(y_value, rotate(p_value)),
+                    subtract(y_value, linear(r_value)),
+                    y_value,
+                )
+
+            first_forms = midpoint_degenerate_forms(
+                first_p, first_r, first_y
+            )
+            second_forms = midpoint_degenerate_forms(
+                second_p, second_r, second_y
+            )
+            expected = (
+                negate(add(pi, tau)),
+                negate(tau),
+                (0, 0),
+                subtract(add(kappa, rotate(pi)), tau),
+                add(kappa, rotate(pi)),
+                subtract(kappa, linear(tau)),
+                kappa,
+            )
+            actual = tuple(
+                subtract(second, first)
+                for first, second in zip(first_forms, second_forms)
+            )
+            assert actual == expected
+            assert all(value in differences for value in first_forms)
+            assert all(value in differences for value in second_forms)
+            continue
+
         fixed_v = charge[2]
 
         def forms(a_value: Point, q_value: Point, p_value: Point):
@@ -224,13 +498,14 @@ def hybrid_profile(points: list[Point]) -> Profile:
 
 
 def main() -> None:
+    verify_resonance_affine_copies()
     expected: dict[str, Profile] = {
-        "closure-30": (1_420, 1_418, 1_424, 2),
-        "closure-40": (370_516, 345_170, 427_350, 7),
+        "closure-30": (1_420, 1_420, 1_420, 1),
+        "closure-40": (370_516, 351_178, 413_258, 6),
         "Costas-11": (2_264, 2_130, 2_536, 3),
-        "Costas-17": (20_014, 18_102, 24_280, 4),
-        "Costas-23": (498_674, 389_232, 774_012, 7),
-        "Costas-31": (765_102, 614_528, 1_153_986, 8),
+        "Costas-17": (20_014, 18_544, 23_180, 4),
+        "Costas-23": (498_674, 395_006, 760_732, 7),
+        "Costas-31": (765_102, 619_320, 1_142_994, 8),
     }
     families: list[tuple[str, list[Point]]] = [
         ("closure-30", POINTS[:30]),
@@ -238,12 +513,14 @@ def main() -> None:
     ]
     primes = [11, 17, 23, 31]
     if "--extended" in sys.argv:
+        families.append(("closure-80", POINTS[:80]))
+        expected["closure-80"] = (357_094, 352_340, 366_832, 4)
         primes += [37, 41, 43]
         expected.update(
             {
-                "Costas-37": (2_939_312, 2_252_512, 4_758_468, 9),
-                "Costas-41": (4_629_690, 3_473_144, 7_754_472, 12),
-                "Costas-43": (8_451_318, 6_115_394, 14_984_178, 12),
+                "Costas-37": (2_939_312, 2_261_592, 4_738_040, 9),
+                "Costas-41": (4_629_690, 3_497_414, 7_698_540, 12),
+                "Costas-43": (8_451_318, 6_145_754, 14_911_698, 12),
             }
         )
     for prime in primes:
@@ -252,7 +529,7 @@ def main() -> None:
         families.append((f"Costas-{prime}", points))
 
     for name, points in families:
-        profile = hybrid_profile(points)
+        profile = hybrid_profile(points, expect_no_fallback=True)
         assert profile == expected[name]
         print(name, profile, "size-biased load", profile[2] / profile[0])
 

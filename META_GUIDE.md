@@ -449,6 +449,29 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-19 — #1208 common-endpoint resonance split
+
+- Replaced the common-endpoint literal route by an adaptive two-tier charge.
+  Locally unique midpoint keys use `D x (D+D)`; only repeated midpoint keys
+  fall back to the two literal `D` anchors.  This is unconditionally
+  fibrewise injective and has total universe at most `8NS` together with the
+  normal route.
+- Derived the exact endpoint-forced corner system for the singleton route.
+  The fallback carries a same-fibre resonance witness, not merely a large
+  literal load.
+- Proved algebraically that every local resonance class forces three exact
+  affine copies inside `A`, with linear parts `I,-J/2,(2I+J)/2` up to the
+  shared-head variant.  Parameter differences produce the squared-distance
+  pattern `1:1/4:5/4` and are even lattice vectors.
+- The exact verifier now checks the singleton and fallback displacement
+  systems, the internal resonance identities, and the affine-copy formulas.
+  No stored stress through closure size 80 or Costas `p=43` activates the
+  fallback.  The full `p=43` size-biased load improves to `1.7644`;
+  closure-40 is `1.1154`.
+- The remaining theorem is still the aggregate cross-fibre load bound.  The
+  immediate new subproblem is to combine the three-copy resonance with the
+  adaptive popularity of `p` and the common `q`.
+
 ### 2026-08-19 — #1208 direct hybrid endpoint charge
 
 - Replaced the two-factor moment interface by one charge on the original
