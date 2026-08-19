@@ -58,8 +58,21 @@ Consequently
 \[
  \boxed{T_q\le h k^{o(1)}
  \quad\Longrightarrow\quad
- \mathcal E_q\le Nh k^{o(1)}.}                 \tag{1.5}
+\mathcal E_q\le Nh k^{o(1)}.}                 \tag{1.5}
 \]
+
+For the global problem one may weaken the hypothesis further:
+
+\[
+ \boxed{T_q\le (|H_q|+k)k^{o(1)}
+ \quad\hbox{for every }q}                       \tag{1.6}
+\]
+
+already resolves #1208.  Indeed, fibres with `|H_q|<=k` contribute at most
+`O(k^3)` clean records in total and require no charge estimate.  On every
+remaining fibre, (1.6) is the hypothesis of (1.5) up to a factor two.  The
+charged fibres contribute `m^(2+o(1))`, so the exact centroid identity gives
+third energy `k^(3+o(1))+m^(2+o(1))`.
 
 Thus this branch proves the missing dilated resonance estimate.  Conversely,
 any fixed-power failure of that estimate forces a single equality pattern,
@@ -176,9 +189,15 @@ Classify the 28 pairs of original roles in (1.2), modulo the four pair
 symmetries and swapping the two charge records.  For each surviving type,
 prove a dichotomy:
 
-1. its codegree is at most `h k^(o(1))`; or
+1. its codegree is at most `(h+k) k^(o(1))`; or
 2. its endpoint-rich rows create a fixed-power number of nontrivial equal
    norms among differences of `A`.
+
+In view of (1.6), the sharp local target is the endpoint-codegree inequality
+
+\[
+ T_q\le (|H_q|+k)k^{o(1)}.                      \tag{5.1}
+\]
 
 Case 2 is impossible for a distance-Sidon set.  A proof must keep the clean
 end-pair condition `s+q in Sigma`; the metric-free parabola shows that the
