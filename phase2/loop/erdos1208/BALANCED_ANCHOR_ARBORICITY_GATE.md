@@ -1,5 +1,10 @@
 # The balanced-anchor arboricity gate
 
+> **Update (2026-08-19).**  This remains a valid sufficient fallback, but
+> `SWAP_COUPLED_SIX_ANCHOR_CHARGE.md` gives the stronger exact envelope
+> `B_6<=B_N` by coupling both ordered shifts and two head anchors.  The
+> analyzer now reports both four-anchor and six-anchor degree diagnostics.
+
 ## 1. Outcome
 
 Keep the endpoint graphs `G_omega` and the balanced moment

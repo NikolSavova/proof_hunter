@@ -80,6 +80,16 @@ def profile(points: list[Point], cores: bool = False) -> tuple[int, ...]:
     ] = {}
     left_degrees: Counter[tuple[Omega, Point]] = Counter()
     right_degrees: Counter[tuple[Omega, Point]] = Counter()
+    head_degrees: Counter[tuple[Omega, Point]] = Counter()
+    normal_records: list[
+        tuple[
+            Omega,
+            Point,
+            Point,
+            Point,
+            tuple[Omega, Point, Point, Point] | None,
+        ]
+    ] = []
     normal_mass = 0
 
     for (base, ordinary_sum), fibre in fibres.items():
@@ -106,6 +116,29 @@ def profile(points: list[Point], cores: bool = False) -> tuple[int, ...]:
                     )[(left, right)] += 1
                 left_degrees[(omega, left)] += 1
                 right_degrees[(omega, right)] += 1
+                swapped_c = add(base, q_value)
+                head_degrees[(omega, swapped_c)] += 1
+                swapped_h = subtract(midpoints[base], midpoints[swapped_c])
+                swapped_displacement = subtract(base, swapped_c)
+                if swapped_h in (
+                    swapped_displacement,
+                    negate(swapped_displacement),
+                ):
+                    swapped = None
+                else:
+                    swapped_omega = (
+                        int(antipodal_sign(swapped_c)),
+                        swapped_h,
+                    )
+                    swapped = (
+                        swapped_omega,
+                        subtract(w_value, linear(p_value)),
+                        subtract(w_value, p_value),
+                        c_value,
+                    )
+                normal_records.append(
+                    (omega, left, right, swapped_c, swapped)
+                )
                 normal_mass += 1
 
     parallel_second = sum(value * value for value in edges.values())
@@ -114,6 +147,37 @@ def profile(points: list[Point], cores: bool = False) -> tuple[int, ...]:
         * min(left_degrees[(omega, left)], right_degrees[(omega, right)])
         for (omega, left, right), multiplicity in edges.items()
     )
+    four_anchor_moment = 0
+    six_anchor_moment = 0
+    for omega, left, right, head, swapped in normal_records:
+        candidates = [
+            left_degrees[(omega, left)],
+            right_degrees[(omega, right)],
+        ]
+        six_candidates = candidates + [head_degrees[(omega, head)]]
+        if swapped is not None:
+            swapped_omega, swapped_left, swapped_right, swapped_head = swapped
+            swapped_left_degree = left_degrees[
+                (swapped_omega, swapped_left)
+            ]
+            swapped_right_degree = right_degrees[
+                (swapped_omega, swapped_right)
+            ]
+            # These are exactly the primary degrees of the swapped ordered
+            # configuration, which is also present in the input.
+            assert swapped_left_degree and swapped_right_degree
+            candidates += [swapped_left_degree, swapped_right_degree]
+            swapped_head_degree = head_degrees[
+                (swapped_omega, swapped_head)
+            ]
+            assert swapped_head_degree
+            six_candidates += [
+                swapped_left_degree,
+                swapped_right_degree,
+                swapped_head_degree,
+            ]
+        four_anchor_moment += min(candidates)
+        six_anchor_moment += min(six_candidates)
     parallel_excess = parallel_second - normal_mass
     transverse_excess = balanced_moment - parallel_second
     multiplicity_histogram = Counter(edges.values())
@@ -162,6 +226,8 @@ def profile(points: list[Point], cores: bool = False) -> tuple[int, ...]:
         balanced_moment,
         parallel_excess,
         transverse_excess,
+        four_anchor_moment,
+        six_anchor_moment,
         max_simple_degeneracy,
         max_weighted_degeneracy,
         max_layer_simple_degeneracy,
@@ -214,7 +280,7 @@ def main() -> None:
         values = profile(points, cores=compute_cores)
         assert values[:7] == expected_prefix[name]
         if compute_cores:
-            assert values[7:] == expected_cores[name]
+            assert values[9:] == expected_cores[name]
         print(
             name,
             values,
@@ -222,6 +288,10 @@ def main() -> None:
             values[2] / values[0] if values[0] else 0.0,
             "balanced-load",
             values[4] / values[0] if values[0] else 0.0,
+            "four-anchor-load",
+            values[7] / values[0] if values[0] else 0.0,
+            "six-anchor-load",
+            values[8] / values[0] if values[0] else 0.0,
         )
 
     print("BALANCED ANCHOR PARALLEL/CORE DIAGNOSTICS: PASS")

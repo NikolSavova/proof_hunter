@@ -1,5 +1,11 @@
 # A hybrid endpoint charge for the adaptive seven-incidence tail
 
+> **Update (2026-08-19).**  The two-anchor normal route in this note is
+> strengthened by the swap-coupled six-anchor route in
+> `SWAP_COUPLED_SIX_ANCHOR_CHARGE.md`.  The common-endpoint routes below are
+> unchanged.  The verifier implements the six-anchor version; the formulas
+> here remain the exact two-anchor fallback and collision interface.
+
 ## 1. Outcome
 
 Let `A` be distance-Sidon, put

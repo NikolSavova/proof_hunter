@@ -449,6 +449,30 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-19 — #1208 swap-coupled six-anchor charge
+
+- Used the involution swapping the two ordered popular shifts in every rich
+  fibre.  Both endpoint labels provide four paired `w`-anchor cells, and the
+  two moving heads provide two more.  Charging each normal configuration to
+  its least-popular available cell is exactly fibrewise injective.
+- Proved the unconditional envelope
+  `sum lambda_6^2<=B_6<=B_N`; hence the new normal target
+  `B_6<=N^o(1)|C_N|` is strictly no stronger than the previous balanced
+  two-anchor target.  The complete charge uses at most `18NS` labelled keys,
+  so the target still closes the adaptive tail and gives the cube-root grid
+  upper bound.
+- Derived and verifier-checked the fixed-head seven-displacement system
+  `-rho,0,pi-rho,kappa-rho,kappa-pi,kappa-(I+J)rho,kappa-(I+J)pi`, as well
+  as the two original and two swapped fixed-anchor systems.
+- The exact suite passes through closure-80 and determinant-prime Costas
+  `p=43`.  The Costas-43 normalized second moment/max load improve from
+  `1.22230095/7` for the two-anchor charge to `1.04305033/4`; the prior
+  one-anchor values were about `1.7644/12`.  These are finite diagnostics,
+  not a proof of the coupled endpoint theorem.
+- Added `SWAP_COUPLED_SIX_ANCHOR_CHARGE.md`, strengthened the hybrid verifier
+  and balanced-anchor analyzer, and refreshed the #1208 handoff.  The full
+  problem remains open.  Local computation only; no paid API spend.
+
 ### 2026-08-19 — #1208 common-endpoint resonance split
 
 - Replaced the common-endpoint literal route by an adaptive two-tier charge.

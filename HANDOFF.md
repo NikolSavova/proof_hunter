@@ -65,6 +65,30 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-19 — ERDŐS #1208: SWAP-COUPLED SIX-ANCHOR CHARGE IS THE NEW EXACT LEAD.**
+Every ordered normal seven-incidence configuration `(q,p)` has its swapped
+partner `(p,q)` in the same rich fibre.  Keeping both endpoint labels gives
+four paired `w`-anchor cells; adding the two moving heads gives six candidate
+charges.  Charging to the least-popular candidate is fibrewise injective and
+satisfies the exact unconditional envelope
+
+`sum lambda_6^2 <= B_6 <= B_N`,
+
+where `B_N` is the prior balanced two-anchor moment.  Together with the
+unchanged common-endpoint routes, the charge lands in at most `18NS` keys.
+Thus proving `B_6<=N^o(1)|C_N|` plus the common-route analogue gives the
+adaptive tail bound and the full grid upper order
+`|A|<=m^(2/3+o(1))`.  This coupled endpoint theorem is **not proved**.
+
+The full exact suite now checks original, swapped, and fixed-head collision
+systems through closure-80 and determinant-prime Costas `p=43`.  On the
+largest row, 8,451,318 configurations have normalized second moment
+`1.04305033` and maximum load `4`, improved from `1.22230095` and `7` for
+the two-anchor charge and about `1.7644` and `12` for the one-anchor charge.
+This is strong finite evidence, not an asymptotic theorem.  Read
+`phase2/loop/erdos1208/SWAP_COUPLED_SIX_ANCHOR_CHARGE.md` and the refreshed
+`HANDOFF_20260819.md`; run the hybrid verifier with `--extended --literal-max`.
+
 **⭐ 2026-08-19 — ERDŐS #1208: DEGREE-ORIENTED TWO-ANCHOR CHARGE IS THE NEW EXACT LEAD.**
 Let `D=A-A`, `N=|D|`, `S=|D+D|`, and let `O_K` be the adaptive off-diagonal
 seven-incidence mass.  For each normal configuration, the endpoint data
