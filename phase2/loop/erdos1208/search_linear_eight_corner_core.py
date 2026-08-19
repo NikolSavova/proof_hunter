@@ -151,6 +151,8 @@ def search(m: int, dimension: int, trials: int, seed: int) -> None:
     print("subspaces", len(candidates))
     best: tuple[int, tuple[tuple[tuple[int, ...], frozenset[int]], ...]] | None = None
     accepted = 0
+    corner_valid = 0
+    relation_injective = 0
     for trial in range(trials):
         choices = tuple(rng.choice(candidates) for _ in range(6))
         good = True
@@ -161,6 +163,13 @@ def search(m: int, dimension: int, trials: int, seed: int) -> None:
                 break
         if not good:
             continue
+        corner_valid += 1
+        # The six endpoint labels must jointly recover the record.  Without
+        # this check two F_2 records can encode the same relation; then the
+        # apparent degree-two corner fibres disappear after deduplication.
+        if gf2_rank([vector for choice in choices for vector in choice[0]]) != m:
+            continue
+        relation_injective += 1
         points, labels = build_point_forms(m, choices)
         if len(set(points)) != len(points):
             continue
@@ -173,7 +182,17 @@ def search(m: int, dimension: int, trials: int, seed: int) -> None:
         if not repeats:
             print("GENERIC FULL-CORE COUNTEREXAMPLE")
             return
-    print("complete", "accepted", accepted, "best", None if best is None else best[0])
+    print(
+        "complete",
+        "corner-valid",
+        corner_valid,
+        "relation-injective",
+        relation_injective,
+        "accepted",
+        accepted,
+        "best",
+        None if best is None else best[0],
+    )
 
 
 def main() -> None:
