@@ -22,6 +22,7 @@ from verify_transverse_closure_witness import POINTS
 
 Point = tuple[int, int]
 Profile = tuple[int, int, int, int, int, int, int]
+EndpointProfile = tuple[int, int, int, int, int, int]
 
 
 def profile(differences: set[Point]) -> Profile:
@@ -181,6 +182,58 @@ def verify_displacements() -> None:
     assert actual_three == expected_three
 
 
+def endpoint_refinement(points: list[Point]) -> EndpointProfile:
+    """Check the joint endpoint load and weighted head-diversity majorant."""
+    differences = difference_set(points)
+    decorations = endpoint_decorations(points)
+    groups: dict[tuple[Point, Point], list[tuple[Point, ...]]] = defaultdict(list)
+    for (u_value, _), q_forms, p_forms in iter_records(differences):
+        row = (
+            u_value,
+            q_forms[0],
+            p_forms[0],
+            q_forms[1],
+            p_forms[1],
+            q_forms[2],
+            p_forms[2],
+        )
+        groups[(row[1], row[6])].append(row)
+
+    joint: Counter[tuple[Point, Point, Point, Point]] = Counter()
+    literal: Counter[tuple[Point, Point]] = Counter()
+    heads: dict[tuple[Point, Point], set[tuple[Point, Point]]] = defaultdict(set)
+    collision_mass = 0
+    for records in groups.values():
+        collision_mass += len(records) ** 2
+        for first in records:
+            for second in records:
+                literal_key = first[0], second[3]
+                head_pair = (
+                    decorations[first[4]][0],
+                    decorations[second[2]][0],
+                )
+                joint[(literal_key[0], literal_key[1], head_pair[0], head_pair[1])] += 1
+                literal[literal_key] += 1
+                heads[literal_key].add(head_pair)
+
+    joint_moment = sum(value * value for value in joint.values())
+    literal_moment = sum(value * value for value in literal.values())
+    weighted_diversity = sum(
+        len(heads[(x_value, y_value)]) * value * value
+        for (x_value, y_value, _, _), value in joint.items()
+    )
+    assert literal_moment <= weighted_diversity
+
+    return (
+        collision_mass,
+        joint_moment,
+        literal_moment,
+        weighted_diversity,
+        max(joint.values(), default=0),
+        max((len(value) for value in heads.values()), default=0),
+    )
+
+
 def main() -> None:
     verify_endpoint_recovery(transformed_costas(13))
     verify_displacements()
@@ -255,6 +308,55 @@ def main() -> None:
         number, support, _, collision_mass, _, second_moment, maximum = actual
         ratio = second_moment / ((support / number) * collision_mass) if collision_mass else 0.0
         print(name, actual, "moment/(K M)", ratio, "max", maximum)
+
+    endpoint_families: list[tuple[str, list[Point], EndpointProfile]] = [
+        (
+            "closure-30",
+            POINTS[:30],
+            (1_496, 1_496, 1_620, 1_620, 1, 3),
+        ),
+        (
+            "Costas-11",
+            transformed_costas(11),
+            (4_348, 4_958, 21_656, 23_377, 5, 17),
+        ),
+        (
+            "Costas-13",
+            transformed_costas(13),
+            (5_530, 6_554, 21_922, 24_416, 5, 15),
+        ),
+    ]
+    if "--extended" in sys.argv:
+        endpoint_families.extend(
+            [
+                (
+                    "Costas-17",
+                    transformed_costas(17),
+                    (46_212, 63_376, 405_768, 492_532, 9, 28),
+                ),
+                (
+                    "Costas-19",
+                    transformed_costas(19),
+                    (468_768, 633_808, 6_956_264, 8_145_468, 8, 45),
+                ),
+                (
+                    "Costas-23",
+                    transformed_costas(23),
+                    (
+                        3_020_644,
+                        5_599_944,
+                        139_264_360,
+                        188_179_732,
+                        18,
+                        91,
+                    ),
+                ),
+            ]
+        )
+    for name, points, expected in endpoint_families:
+        actual = endpoint_refinement(points)
+        assert actual == expected, (name, actual, expected)
+        print(name, "endpoint refinement", actual)
 
     print("SAME-MIDPOINT LITERAL D2 COLLISION GATE: PASS")
 

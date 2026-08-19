@@ -263,6 +263,100 @@ radial uniqueness and the affine record identities alone.  Complete
 difference endpoint realization must control the coupled product (3.4),
 even though the charge itself is written using literal elements of \(D\).
 
+## 6. Exact endpoint refinement of the literal gate
+
+There is a useful factorization of the missing estimate (1.2).  For a
+collision pair \(\omega=(\gamma,\gamma')\), put
+
+\[
+ x=R_0(\gamma),\qquad y=R_3(\gamma'),
+ \qquad
+ \alpha=x_{R_4(\gamma)},\qquad
+ \beta=x_{R_2(\gamma')}.
+\]
+
+Define the joint load
+
+\[
+ \sigma(x,y,\alpha,\beta)
+ =|\{\omega:\text{the four displayed values are fixed}\}|. \tag{6.1}
+\]
+
+For a literal key \((x,y)\), let
+
+\[
+ H_{x,y}
+ =|\{(\alpha,\beta):\sigma(x,y,\alpha,\beta)>0\}|. \tag{6.2}
+\]
+
+Then
+
+\[
+ \nu(x,y)=\sum_{\alpha,\beta}\sigma(x,y,\alpha,\beta),
+\]
+
+so Cauchy--Schwarz inside each literal key gives the exact majorant
+
+\[
+\begin{split}
+ \sum_{x,y}\nu(x,y)^2
+ &\le
+ \sum_{x,y}H_{x,y}
+       \sum_{\alpha,\beta}\sigma(x,y,\alpha,\beta)^2\\
+ &=:\mathcal W.                                  \tag{6.3}
+\end{split}
+\]
+
+Consequently (1.2) follows from the pair of statements
+
+\[
+ \boxed{
+ \sum_{x,y,\alpha,\beta}\sigma^2
+ \le N^{o(1)}M_K,}                              \tag{6.4}
+\]
+
+and
+
+\[
+ \boxed{
+ \mathcal W
+ \le K N^{o(1)}
+       \sum_{x,y,\alpha,\beta}\sigma^2.}        \tag{6.5}
+\]
+
+The first is a local endpoint-completion theorem.  The second is a
+size-biased head-diversity theorem at exactly the ordinary-doubling scale.
+For \(\alpha\ne\beta\), vector-Sidonicity identifies the ordered head pair
+with \(\alpha-\beta\in D^*\); the common-head route stores \(\alpha\)
+literally.  Thus the head set over a fixed literal key is canonically a
+labelled subset of \(D\).  Equation (6.5) asks its size-biased population
+to be at most the average expansion \(K=|D+D|/|D|\), up to a
+subpolynomial factor.
+
+The exact genuine profiles are
+
+\[
+\begin{array}{c|r|r|r|r|c|c}
+\text{family}&M_K&\sum\sigma^2&\sum\nu^2&\mathcal W&
+ (\sum\sigma^2)/M_K&\mathcal W/(K\sum\sigma^2)\\ \hline
+\text{closure }30&1496&1496&1620&1620&1.0000&0.01515\\
+\text{Costas }11&4348&4958&21656&23377&1.1403&0.60688\\
+\text{Costas }13&5530&6554&21922&24416&1.1852&0.51132\\
+\text{Costas }17&46212&63376&405768&492532&1.3714&0.81468\\
+\text{Costas }19&468768&633808&6956264&8145468&1.3521&1.34795\\
+\text{Costas }23&3020644&5599944&139264360&188179732&1.8539&3.44750
+\end{array}                                      \tag{6.6}
+\]
+
+The maximum joint loads \(\max\sigma\) on these rows are respectively
+\(1,5,5,9,8,18\).  The maximum head diversities \(\max H_{x,y}\) are
+\(3,17,15,28,45,91\).  Pointwise boundedness is therefore the wrong
+claim, but both size-biased factors in (6.4)--(6.5) remain small.
+
+This endpoint refinement supplies the most explicit current route to the
+\(K\)-scaled gate: prove local completion (6.4), then use the ordinary
+sumset to pay for head diversity in (6.5).
+
 Run
 
     python3 phase2/loop/erdos1208/verify_same_midpoint_literal_d2_collision_gate.py
