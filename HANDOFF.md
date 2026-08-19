@@ -87,6 +87,15 @@ and proves `|A|<=m^(2/3+o(1))` for every distance-Sidon
 `A subset [m]^2`.  This balanced-anchor theorem is the precise current
 missing step; it is **not proved**.
 
+A forest-orientation lemma now sharpens this once more:
+`B_N<=2 sum_omega a(G_omega)|E(G_omega)|`, where `a` is multigraph
+arboricity.  Parallel bundles split exactly as `sum r_(ell,z)^2`; all
+remaining balanced mass is a selectable family of genuine three-edge paths
+with distinct anchors.  Therefore the normal route is reduced to
+subpolynomial size-biased endpoint-graph arboricity.  This theorem is also
+unproved, but it removes both one-sided stars and parallel repetition from
+the conceptual core.
+
 Both fixed-anchor systems are explicit.  Left-anchor collisions have the
 seven displacements
 `eta,eta+rho,eta+pi,0,Jrho,(I+J)rho-pi,(I+J)(rho-pi)`; right-anchor

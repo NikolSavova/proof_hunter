@@ -183,6 +183,19 @@ many edges whose left and right anchors are both popular inside the same
 endpoint-midpoint graph `G_omega`.  This two-sided dense-anchor core is the
 current exact missing normal theorem.
 
+`BALANCED_ANCHOR_ARBORICITY_GATE.md` gives a further exact reduction.  If
+`a(G_omega)` denotes multigraph arboricity, forest orientation proves
+
+\[
+ \mathcal B_N\le
+ 2\sum_\omega a(G_\omega)|E(G_\omega)|.         \tag{4.2a}
+\]
+
+Thus it is enough to show that these endpoint-realizable graphs have
+subpolynomial size-biased arboricity.  Parallel bundles split off as an
+exact square moment; the rest is a matched family of genuine three-edge
+paths with distinct anchors.
+
 Alternatively, the following single statement for all three routes resolves
 the adaptive tail:
 

@@ -472,6 +472,28 @@ prior-art kill-search**; has a writeable-down win condition.
   immediate new subproblem is to combine the three-copy resonance with the
   adaptive popularity of `p` and the common `q`.
 
+### 2026-08-19 — #1208 balanced-anchor arboricity reduction
+
+- Applied a forest decomposition to each endpoint multigraph `G_omega` and
+  proved the exact normal-route estimate
+  `B_N<=2 sum_omega a(G_omega)|E(G_omega)|`.  Thus subpolynomial
+  size-biased multigraph arboricity is a single sufficient theorem.
+- Split the balanced moment exactly into the parallel square moment
+  `sum r_(ell,z)^2` and a matched family of genuine three-edge paths, one
+  nonparallel continuation at each end of the central edge.  This removes
+  both star and parallel-bundle ambiguity from the remaining core.
+- Derived the paired left/right path offsets while retaining all endpoint
+  forcing and adaptive popularity.  The missing fourth anchor colour is
+  `q_*=q_0+rho_L+rho_R`; its edge is not assumed to exist.
+- Exact diagnostics show maximum parallel multiplicity at most `4` through
+  Costas `p=43`; the parallel square load is at most `1.0205` on the stored
+  large families.  Maximum weighted degeneracy through Costas `p=41` is
+  `5`.  These are finite diagnostics, not the arboricity theorem.
+- New artifacts:
+  `phase2/loop/erdos1208/BALANCED_ANCHOR_ARBORICITY_GATE.md` and
+  `analyze_balanced_anchor_parallel.py`.  The direct problem remains open;
+  the next step is endpoint-sensitive control of the extracted dense core.
+
 ### 2026-08-19 — #1208 degree-oriented two-anchor endpoint gate
 
 - Replaced the normal one-anchor charge by a bipartite degree-oriented
