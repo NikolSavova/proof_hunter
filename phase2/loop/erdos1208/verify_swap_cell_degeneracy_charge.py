@@ -23,6 +23,13 @@ Fibre = tuple[Point, Point]
 Profile = tuple[int, int, int, int, int, int, int]
 
 
+COARSE_CORRELATION_ROWS = {
+    "Costas-11": 47_670_488,
+    "Costas-17": 611_696_068,
+    "Costas-23": 106_320_314_718,
+}
+
+
 def build_swap_multigraph(
     differences: set[Point],
 ) -> tuple[Counter[Edge], dict[Edge, list[Fibre]], int]:
@@ -136,6 +143,7 @@ def charge_profile(differences: set[Point]) -> Profile:
     edge_multiplicity, occurrences, ordered_mass = build_swap_multigraph(
         differences
     )
+
     degeneracy, removal_rank, outdegree = degeneracy_orientation(
         edge_multiplicity
     )
@@ -144,7 +152,11 @@ def charge_profile(differences: set[Point]) -> Profile:
     local_keys: dict[Fibre, set[tuple[int, Cell]]] = defaultdict(set)
     for edge, multiplicity in edge_multiplicity.items():
         first, second = edge
-        tail = first if removal_rank[first] < removal_rank[second] else second
+        tail = (
+            first
+            if removal_rank[first] < removal_rank[second]
+            else second
+        )
         assert outdegree[tail] >= multiplicity
         for fibre in occurrences[edge]:
             # The two orientation bits distinguish the two ordered records
@@ -176,6 +188,53 @@ def charge_profile(differences: set[Point]) -> Profile:
         degeneracy,
         charge_moment,
     )
+
+
+def coarse_popular_correlation_bound(differences: set[Point]) -> int:
+    """Return the exact relaxation in (7.4) of the accompanying note."""
+
+    _, _, popular = rich_fibres(differences, adaptive=True)
+    difference_overlap = Counter(
+        (first[0] - second[0], first[1] - second[1])
+        for first in differences
+        for second in differences
+    )
+    popular_overlap = Counter(
+        (first[0] - second[0], first[1] - second[1])
+        for first in popular
+        for second in popular
+    )
+    overlap_correlation: Counter[Point] = Counter()
+    for first, first_count in popular_overlap.items():
+        for second, second_count in popular_overlap.items():
+            displacement = (
+                second[0] - first[0],
+                second[1] - first[1],
+            )
+            overlap_correlation[displacement] += (
+                first_count * second_count
+            )
+
+    answer = 0
+    for displacement, correlation in overlap_correlation.items():
+        linear_displacement = (
+            displacement[0] - displacement[1],
+            displacement[0] + displacement[1],
+        )
+        answer += (
+            correlation
+            * difference_overlap[displacement]
+            * difference_overlap[linear_displacement]
+        )
+
+    edge_multiplicity, _, _ = build_swap_multigraph(differences)
+    degrees: Counter[Cell] = Counter()
+    for (first, second), multiplicity in edge_multiplicity.items():
+        degrees[first] += multiplicity
+        degrees[second] += multiplicity
+    fixed_moment = sum(degree * degree for degree in degrees.values())
+    assert fixed_moment <= answer
+    return answer
 
 
 def transformed_costas(
@@ -326,6 +385,14 @@ def main() -> None:
             "charge-moment/(K mass)",
             moment / (adaptive_k * mass) if mass else 0.0,
         )
+        if name in COARSE_CORRELATION_ROWS:
+            coarse_bound = coarse_popular_correlation_bound(differences)
+            assert coarse_bound == COARSE_CORRELATION_ROWS[name]
+            print(
+                name,
+                "coarse-correlation/(K mass)",
+                coarse_bound / (adaptive_k * mass),
+            )
 
     print("SWAP-CELL DEGENERACY CHARGE: PASS")
 

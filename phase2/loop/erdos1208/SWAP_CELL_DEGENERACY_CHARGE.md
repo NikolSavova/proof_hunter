@@ -342,6 +342,59 @@ This form exposes two coupled translated pairs in `D` and retains the
 complete-difference endpoint label `a`; it is the preferred analytic form
 for a size-biased proof of (4.7).
 
+### 7.1 The popular-correlation relaxation loses a power
+
+Put
+
+\[
+ B_z=\{b\in D:z+Lb\in D\}.
+\]
+
+For an edge between `b` and `b'=b+t`, the map `a -> q=b-a` in (7.3) is
+injective and has `q,q+t in P_K`.  Hence its multiplicity is at most
+`R_P(t)`, where
+
+\[
+ R_P(t)=|\mathcal P_K\cap(\mathcal P_K-t)|.
+\]
+
+If one now discards the two translated-pair memberships `b+r,b'+r in D`,
+then the degree at `b` is bounded by
+
+\[
+ \sum_t1_{B_z}(b+t)R_P(t).
+\]
+
+Squaring, summing in `(z,b)`, and using
+
+\[
+ \sum_z1_{B_z}(x)1_{B_z}(y)
+ =1_D(x)1_D(y)R_D(L(y-x))
+\]
+
+gives the exact coarse majorant
+
+\[
+ M\le
+ \sum_u R_D(u)R_D(Lu)C_P(u),
+ \qquad
+ C_P(u)=\sum_tR_P(t)R_P(t+u).                    \tag{7.4}
+\]
+
+Although (7.4) retains adaptive popularity, it is far too large.  The exact
+values of its right side on Costas primes 11, 17, and 23 are
+
+\[
+ 47{,}670{,}488,\qquad
+ 611{,}696{,}068,\qquad
+ 106{,}320{,}314{,}718,
+\]
+
+or respectively `2710.16`, `3203.91`, and `21873.34` times the target
+normalization `K O_K`.  Thus neither a black-box energy estimate for the
+popular set nor the component overlap `B_z` alone can prove (4.7).  The
+coupled memberships `b+r,b'+r in D` in (7.2) are quantitatively essential.
+
 ## 8. Remaining theorem
 
 The preferred live theorem is (4.7), equivalently a `K N^(o(1))` bound for
