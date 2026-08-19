@@ -132,8 +132,11 @@ The finite initial range is absorbed into the implied constant.
 ## 4. Scope
 
 This is a further explicit upper-bound improvement, not a resolution of the
-order of magnitude.  It depends on the same declared external arithmetic
-presentation theorem and the same symbolic master inequality as the preceding
-certificates.  Integer arithmetic in the verifier is exact; logarithms and
-exponentials are evaluated with 80-digit `Decimal` arithmetic.  The smallest
-endpoint margin exceeds three, far above the stated numerical allowance.
+order of magnitude.  `RANK715_ARITHMETIC_INPUT_AUDIT.md` maps the tame
+totally-real presentation theorem to this quotient, proves the existence of
+Galois layers of every sufficiently large dyadic degree with kernels inside
+the Frattini subgroup, and checks the residue-degree interface with the
+symbolic master inequality.  Integer arithmetic in the verifier is exact;
+logarithms and exponentials are evaluated with 80-digit `Decimal` arithmetic.
+The smallest endpoint margin exceeds three, far above the stated numerical
+allowance.
