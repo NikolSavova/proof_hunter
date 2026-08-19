@@ -1,6 +1,22 @@
-# A balanced Fourier gate that suppresses the ruler obstruction
+# The balanced Fourier harmonic gate is killed by perpendicular rulers
 
-## 1. The new sufficient moment
+## Status: disproved
+
+The harmonic symmetrization below looked promising on every finite stress,
+but the scalable perpendicular-ruler construction disproves it by a full
+power:
+
+\[
+ \mathfrak B(A_s)\ge |A_s|^{4-o(1)}.
+\]
+
+The finite computations were misleading because the bad mass lies on
+Fourier strips of width `s^(-2-o(1))`; their normalized contribution grows
+only after the asymptotic ruler scale is taken seriously.  The valid line
+and parallel-cover lemmas remain useful, but the proposed global gate must
+not be used as a route to Erdős 1208.
+
+## 1. The tempting sufficient moment
 
 Let `A subset [0,m]^2`, `|A|=k`, be distance-Sidon, and write
 
@@ -20,9 +36,7 @@ on the two-dimensional torus.  Define the balanced harmonic moment
 
 with value zero when both terms vanish.
 
-This is not one of the polynomial moments killed in
-`POSITIVE_DEFINITE_BESSEL_AUDIT.md`.  If one of `H,H_J` is much larger than
-the other, the denominator removes the large one.  Pointwise,
+The denominator removes a large imbalance between `H,H_J`.  Pointwise,
 
 \[
  {1\over2}HH_J\min(H,H_J)
@@ -66,7 +80,7 @@ on a square of area `1/(64m^2)`.  Therefore
 
 Combining (1.3) and (1.5) proves (1.4).  QED.
 
-The claim (1.3) is a new gate, not a proved theorem.
+The implication is valid, but Section 4 disproves its hypothesis.
 
 ## 2. Exact balanced-tail formulation
 
@@ -125,9 +139,10 @@ Fourier theorem is therefore confined to the balanced cone
 \]
 
 where both `A` and its quarter-turn have comparably large Fourier bias.
-This is the spectral form of the Gaussian-core density increment: one large
-coefficient can describe a ruler or a strip, while two balanced orthogonal
-biases should force a genuinely two-dimensional resonant core.
+This initially looked like the spectral form of the Gaussian-core density
+increment.  Section 4 shows the flaw: two perpendicular ruler arms create
+balanced orthogonal biases while remaining one-dimensional in separate
+endpoint pieces.
 
 ## 3. A rigorous line branch
 
@@ -217,12 +232,92 @@ would have the same Euclidean length.  Splitting into `U>=U_J` and its
 complement as before bounds the last integral in (3.5) by
 `2(E U)(E U^2)<4k^3`.  This proves (3.4).  QED.
 
-Thus (1.3) is already rigorous for every subpolynomial parallel-line cover.
-This also helps explain why perpendicular Golomb rulers can have maximal
-ordinary mixed energy while remaining harmless for (1.1): their large
-Fourier mass lives primarily on imbalanced strips.
+Thus (1.3) is rigorous for every subpolynomial *parallel*-line cover.  It
+does not handle a union of two perpendicular structured arms: that is the
+counterexample below.
 
-## 4. Stress tests and scope
+## 4. Perpendicular rulers disprove the gate
+
+Use the integral distance-Sidon family from
+`PERPENDICULAR_RULER_OBSTRUCTION.md`.  Split a `2s`-mark Golomb ruler of
+length `L=O(s^2)` into two `s`-sets `R_1,R_2` and put
+
+\[
+ A_C=\{(u,0):u\in R_1\}
+ \cup\{(0,C+v):v\in R_2\}.                     \tag{4.1}
+\]
+
+The offset theorem in that note chooses `C=s^(2+o(1))` so that `A_C` is
+distance-Sidon and lies in a square of side
+
+\[
+ M=s^{2+o(1)}.                                  \tag{4.2}
+\]
+
+Write
+
+\[
+ P(t)=\sum_{u\in R_1}e(tu),\qquad
+ Q(t)=\sum_{v\in R_2}e(tv).
+\]
+
+Then
+
+\[
+ \widehat{1_{A_C}}(\xi,\eta)
+ =P(\xi)+e(C\eta)Q(\eta).                      \tag{4.3}
+\]
+
+If `|xi|<=1/(16M)`, both `P(xi)` and `e(Cxi)Q(xi)` have magnitude at least
+`s/sqrt(2)`.  Parseval gives
+
+\[
+ \int|P|^2=\int|Q|^2=s.
+\]
+
+Hence, outside a set of `eta`-measure at most `32/s`, both
+
+\[
+ |P(-\eta)|\le s/4,
+ \qquad |Q(\eta)|\le s/4.                      \tag{4.4}
+\]
+
+For all sufficiently large `s`, this good set has measure at least `1/2`.
+Equations (4.3)--(4.4) then give simultaneously
+
+\[
+ H(\xi,\eta)\ge{s^2\over9},
+ \qquad
+ H_J(\xi,\eta)\ge{s^2\over9}.                 \tag{4.5}
+\]
+
+Since `|A_C|=2s`, the denominator in (1.1) is at most `8s^2`.  The
+integrand is therefore at least
+
+\[
+ {s^6\over8\cdot9^4}                           \tag{4.6}
+\]
+
+on a set of measure at least `1/(16M)`.  Consequently
+
+\[
+ \boxed{
+ \mathfrak B(A_C)
+ \ge {s^6\over128\cdot9^4 M}
+ =s^{4-o(1)}=|A_C|^{4-o(1)}.}                  \tag{4.7}
+\]
+
+The trivial estimate from (1.2) and (2.1) is
+
+\[
+ \mathfrak B(A)\le k^2\int HH_J=k^4,           \tag{4.8}
+\]
+
+so (4.7) is exponent-sharp.  The harmonic denominator removes imbalanced
+strips, but perpendicular arms create *balanced* strips and restore the
+entire lost power.
+
+## 5. Why the finite stresses were misleading
 
 High-resolution torus evaluations give the following ratios.  These are
 numerical diagnostics, not proof of (1.3).
@@ -238,21 +333,18 @@ numerical diagnostics, not proof of (1.3).
 \end{array}
 \]
 
-In particular, the dense perpendicular-ruler family that makes
-`int H^2 H_J^2` as large as `Omega(k^6)` does not inflate the balanced
-moment.  The closure chain is the strongest stored stress and grows slowly
-enough to remain compatible with a subpolynomial factor.
+The ruler ratios above are pre-asymptotic.  The lower bound (4.7) has a small
+absolute constant and is supported on strips of width `1/M`; a coarse
+finite torus sees only one or two sample rows.  Its ratio to `k^3` grows as
+`s^(1-o(1))` despite the initially flat table.
 
-The next proof task is now precise: prove (2.4) in the balanced cone using
-the complete-difference identity
+The correct lesson is that balancing `H` against `H_J` is still not
+endpoint-sensitive.  It cannot tell whether the two orthogonal biases come
+from the same two-dimensional core or from two different one-dimensional
+arms.  Any spectral successor must couple the contributing endpoint pieces,
+not only the magnitudes of the two full exponential sums.
 
-\[
- \widehat{(k-1)\delta_0+1_{A-A}}=|\widehat{1_A}|^2
-\]
-
-and ambient-height control of the resulting two-dimensional resonance
-core.  Ordinary second moments supply every imbalanced level for free.
-
-`verify_balanced_fourier_harmonic_gate.py` checks (1.2), both exact moments
-in (2.1), the line and parallel-cover moment identities, and finite-torus
-regression profiles on three exact distance-Sidon witnesses.
+`verify_balanced_fourier_harmonic_gate.py` still checks the valid identities,
+the line and parallel-cover lemmas, and the misleading finite profiles.
+`verify_balanced_fourier_ruler_barrier.py` checks the exact ruler inputs and
+the finite inequalities used in the asymptotic lower bound.
