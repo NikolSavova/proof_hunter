@@ -15,6 +15,7 @@ from verify_determinant_prime_costas_resonance import (
 from verify_dilated_pair_sum_heavy_fibre_barrier import (
     dilated_pair_sum_support,
 )
+from verify_orthogonal_energy_product_ruler_barrier import erdos_turan
 
 
 Point = tuple[int, int]
@@ -109,7 +110,27 @@ def verify_row(prime: int) -> tuple[int, int, int, int, int]:
     return k, h, actual_energy, len(output), max(output.values())
 
 
+def verify_line_branch() -> None:
+    for prime, side, translation, direction in [
+        (11, 8, (7, -3), (1, 0)),
+        (13, 12, (-5, 9), (2, 3)),
+        (23, 20, (11, 4), (-3, 5)),
+    ]:
+        ruler = erdos_turan(prime, side)
+        points = [
+            (
+                translation[0] + mark * direction[0],
+                translation[1] + mark * direction[1],
+            )
+            for mark in ruler
+        ]
+        expected = side * side * (side + 1) // 2
+        assert len(dilated_pair_sum_support(points)) == expected
+
+
 def main() -> None:
+    verify_line_branch()
+    print("line-covered support branch: PASS")
     for prime in ROWS:
         actual = verify_row(prime)
         assert actual == EXPECTED[prime], (prime, actual, EXPECTED[prime])

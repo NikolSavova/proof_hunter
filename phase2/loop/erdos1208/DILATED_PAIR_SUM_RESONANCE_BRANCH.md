@@ -195,3 +195,32 @@ must have a dense, low-index quarter-turn resonance model.  That is exactly
 the regime where the sharp oblique-lattice height theorem applies to a
 complete patch, and where the remaining difficulty is upgrading sparse
 endpoint-realizable structure to sufficient aggregate support.
+
+## 6. The line-covered branch is also closed
+
+There is a second elementary branch which is useful after an inverse
+theorem.  Suppose `B subset A` has `h` points on one affine line.  Write
+
+\[
+ B=\{t+r v:r\in R\},\qquad v\ne0.
+\]
+
+Because `A` is distance-Sidon, it is vector-Sidon, so the unordered pair
+sums from `B` are all distinct.  For three members of `B`,
+
+\[
+ (t+r_1v)+(t+r_2v)-L(t+r_3v)
+ =2t-Lt+(r_1+r_2)v-r_3Lv.                       \tag{6.1}
+\]
+
+The vectors `v` and `Lv=v+Jv` are linearly independent.  Hence (6.1)
+recovers both `r_1+r_2` and `r_3`, and therefore
+
+\[
+ \boxed{|2A-LA|\ge {h^2(h+1)\over2}.}            \tag{6.2}
+\]
+
+In particular, if `A` is covered by `t=k^(o(1))` affine lines, one line
+contains `h>=k/t` points and (6.2) proves (1.1).  Thus the unresolved
+low-index inverse branch must be genuinely two-dimensional: it cannot end
+in a subpolynomial collection of lines.
