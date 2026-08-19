@@ -96,6 +96,24 @@ def corner_profile(relations: list[tuple[int, ...]]) -> tuple[int, ...]:
     return tuple(profile)
 
 
+def corner_kernel_shifts(m: int, bases: tuple[Basis, ...]) -> tuple[int, ...]:
+    """Return the unique nonzero translation in each degree-two corner fibre."""
+    shifts = []
+    for mask in range(8):
+        i = mask & 1
+        j = (mask >> 1) & 1
+        k = (mask >> 2) & 1
+        rows = bases[i] + bases[2 + j] + bases[4 + k]
+        kernel = tuple(
+            vector
+            for vector in range(1, 1 << m)
+            if all((row & vector).bit_count() % 2 == 0 for row in rows)
+        )
+        assert len(kernel) == 1
+        shifts.append(kernel[0])
+    return tuple(shifts)
+
+
 def verify_valid_core() -> None:
     choices = choices_from_bases(VALID_BASES)
     mixed_ranks = tuple(
@@ -110,9 +128,18 @@ def verify_valid_core() -> None:
     assert len(set(relations)) == len(relations) == 32
     assert len(forms) == len(set(forms)) == 24
     assert corner_profile(relations) == (16,) * 8
+    shifts = corner_kernel_shifts(5, VALID_BASES)
+    assert shifts == (28, 2, 28, 2, 21, 21, 22, 22)
+    assert len(set(shifts)) == 4
     verify_relation_equations(forms, relations)
     assert repeated_norm_count(forms) == 16
-    print("valid linear core", len(relations), len(forms), repeated_norm_count(forms))
+    print(
+        "nonlinear full core",
+        len(relations),
+        len(forms),
+        len(set(shifts)),
+        repeated_norm_count(forms),
+    )
 
 
 def verify_canonical_cube() -> None:
@@ -133,6 +160,9 @@ def verify_canonical_cube() -> None:
     assert len(set(relations)) == len(relations) == 256
     assert len(forms) == len(set(forms)) == 96
     assert corner_profile(relations) == (128,) * 8
+    shifts = corner_kernel_shifts(8, bases_tuple)
+    assert shifts == tuple(1 << mask for mask in range(8))
+    assert len(set(shifts)) == 8
     verify_relation_equations(forms, relations)
     assert repeated_norm_count(forms) == 96
     print("canonical cube", len(relations), len(forms), repeated_norm_count(forms))
