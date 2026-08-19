@@ -141,7 +141,10 @@ Indeed Cauchy--Schwarz, (3.2), and (3.6) give
 \]
 
 which is (3.5).  Estimate (3.5) is exactly the off-diagonal theorem needed
-in `ADAPTIVE_RICH_FIBRE_STABILITY_LEDGER.md`.
+in `ADAPTIVE_RICH_FIBRE_STABILITY_LEDGER.md`.  A briefly proposed tensor
+counterexample to (3.6) was invalid: Cartesian digit tensors have repeated
+nonzero differences whenever one digit difference is zero.  See
+`TENSOR_ZERO_DIGIT_OBSTRUCTION.md`.  Thus (3.6) remains open.
 
 There is also an exact set-system form.  For a fibre label
 `F=(u,s)`, let
@@ -379,7 +382,7 @@ remaining form is:
 > in (3.3) satisfies (3.6), or at least its first-moment consequence (3.5).
 
 This theorem would finish the adaptive tail and hence the cube-root order in
-Erdos problem 1208.  It is now the cleanest direct aggregate gate.  The next
-proof should attack the fixed-key affine system (4.3)--(4.5), not return to
-the midpoint charge or to the raw majorant
+Erdos problem 1208.  It is again the cleanest direct aggregate gate.  The
+next proof should attack the coupled fixed-key affine system
+(4.3)--(4.5), not return to the midpoint charge or to the raw majorant
 `R_D(r)^2 R_D((I+J)r)`.

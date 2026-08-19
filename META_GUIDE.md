@@ -449,6 +449,80 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-18 (latest) — ERDŐS #1208 generic-affine vanishing branch (Sihao + Codex)
+
+- Proved that every finite rational vector-Sidon set has an integral affine
+  image which is distance-Sidon and has no nonzero translation `q` for which
+  both `R_D(q)` and `R_D(Jq)` are positive.  The proof avoids finitely many
+  proper algebraic conditions `||Td||^2=||Te||^2` and `JTx=Ty`.
+- Consequently the support-adaptive rich tail is empty on a Zariski-generic
+  metric and `E_perp(D)=|D|^2`.  The unresolved theorem is therefore an
+  affine-resonance problem tied to the fixed square-lattice quarter-turn.
+- Added `GENERIC_AFFINE_OPPOSITE_ENDPOINT_VANISHING.md` and an exact control
+  verifier.  For raw Welch arrays at primes `7,11`, the size-biased charge
+  loads are `2.5725...` and `21.453...`; their smallest stored
+  distance-separating integral transforms have load exactly one.  The
+  verifier passes.  No paid API spend.
+
+### 2026-08-18 (latest) — ERDŐS #1208 tensor retraction and zero-digit audit (Sihao + Codex)
+
+- Retracted the purported Cartesian-tensor counterexample to the size-biased
+  opposite-endpoint load estimate.  If two global digit pairs differ in one
+  coordinate but use two different equal digits in another, their complete
+  displacement vectors are identical.  Generic complex weights cannot
+  separate an equality that is already identical coordinatewise.
+- The same flaw is visible numerically: the proposed two-fold six-point
+  tensor has `36` points and only `31^2=961` difference values, whereas a
+  distance-Sidon set of `36` points must have `36*35+1=1261`.  The former
+  verifier checked only local base arithmetic and never instantiated the
+  claimed tensor set.
+- Replaced the invalid tensor artifact with
+  `TENSOR_ZERO_DIGIT_OBSTRUCTION.md` and an exact verifier that constructs an
+  injective integral two-fold image, exhibits two distinct pairs with the
+  same displacement, and checks `961<1261`.  The verifier passes.
+- Restored the size-biased cross-fibre estimate
+  `sum nu^2<=N^o(1)sum nu` as a live sufficient route.  The full-direction
+  PSD and Bessel barriers from the superseded entry below remain valid and
+  independently verified.  No paid API spend.
+
+### 2026-08-18 (superseded in part) — ERDŐS #1208 tensor kill of charge near-injectivity and full-PSD barrier (Sihao + Codex)
+
+> **Correction:** the tensor claim and its consequences for charge
+> near-injectivity are false for the zero-digit reason recorded above.  The
+> positive-definite/Bessel and full-direction PSD audits in this entry remain
+> valid.
+
+- Disproved the proposed size-biased opposite-endpoint load estimate for
+  genuine integral distance-Sidon sets.  The six-point sheared Welch set has
+  `N_0=31`, `S_0=167`, `2169` unrestricted diagonal-inclusive local charge
+  configurations, and `3587` ordered equal-charge pairs.  Generic complex
+  digit weights preserve distance-Sidonicity and tensorize every `J`-linear
+  incidence.  Balanced tensor types pass all four bidirectional adaptive
+  popularity conditions and give
+  `sum nu^2/sum nu >= N^(0.1464915...-o(1))`.
+- Added `OPPOSITE_ENDPOINT_TENSOR_BARRIER.md` and an exact verifier.  The
+  verifier checks the base set, all counts, eight exact geometric-mean
+  popularity inequalities, the global off-diagonal condition, and the
+  exponent.  Corrected `SEVEN_INCIDENCE_OPPOSITE_ENDPOINT_CHARGE.md`: its
+  exact charge and six-copy identities survive, but only the direct
+  support-compensated first moment remains a valid target.
+- Completed the positive-definite/Bessel audit.  The first mixed `J`-moment
+  gives only the linear grid bound; the next moment is killed at `k^6` by
+  perpendicular rulers; universal radial kernels and generic packing duals
+  are too weak; and a rigorous scalar Bessel pseudoconfiguration has
+  `K=Theta(m)` with `Theta(K^2)` distinct integral shells.
+- Strengthened this to the full directional linear PSD relaxation.  A
+  rescaled autocorrelation of the complete square grid satisfies
+  `h>=0`, `hat h>=0`, `h(0)=k`, `sum h=k^2`, and every shell cap for
+  `k=m^(1-o(1))`.  Therefore direction-resolved Delsarte/SDP constraints
+  still cannot prove `m^(2/3)` unless they use zero-one integrality or the
+  nonlinear indicator-autocorrelation factorization.
+- Added `POSITIVE_DEFINITE_BESSEL_AUDIT.md`,
+  `FULL_DIRECTION_PSD_RELAXATION_BARRIER.md`, and their exact verifiers.
+  All new and cited regression checks pass.  Full #1208 remains open; the
+  live direct theorem is `E_perp(D)<=N^(1+o(1))|D+D|` or its adaptive
+  first-moment form.  No paid API spend.
+
 ### 2026-08-18 (latest) — ERDŐS #1208 opposite-endpoint aggregate gate and sparse-stability barrier (Sihao + Codex)
 
 - Reorganized every ordered off-diagonal pair in an adaptive rich fibre by

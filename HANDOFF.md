@@ -65,6 +65,36 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-18 — ERDŐS #1208: GENERIC AFFINE IMAGES HAVE EMPTY ORTHOGONAL RICH TAIL.**
+For every finite vector-Sidon rational set `A_0`, a rational invertible map
+`T` can simultaneously separate all Euclidean edge norms and avoid every
+relation `JT x=T y` with nonzero `x,y in (A_0-A_0)-(A_0-A_0)`.  Hence
+`A=T A_0` is integral after scaling, distance-Sidon, and satisfies
+`R_D(q)R_D(Jq)=0` for every nonzero `q`.  The adaptive popular set is empty
+and `E_perp(D)=|D|^2`.  Exact Welch--Costas controls show the size-biased
+charge load falling from `2.57` and `21.45` in the raw norm-repeating arrays
+to exactly one after the smallest tested distance-separating transforms.
+This proves that the remaining obstruction is affine-resonant, not generic.
+Read `GENERIC_AFFINE_OPPOSITE_ENDPOINT_VANISHING.md` and run its verifier.
+
+**⭐ 2026-08-18 — ERDŐS #1208: TENSOR CHARGE BARRIER RETRACTED; ALL LINEAR PSD RELAXATIONS ARE KILLED.**
+The briefly proposed tensor counterexample to
+`sum nu^2 <= N^o(1) sum nu` was invalid.  In a Cartesian digit tensor, a
+zero coordinate difference has many endpoint representations, so two
+different global pairs have exactly the same displacement regardless of the
+generic complex weights.  The claimed tensor family was therefore not
+distance-Sidon; `31^2` claimed differences for `36` points also contradicts
+the required `36*35+1`.  The size-biased opposite-endpoint estimate is live
+again.  Read `TENSOR_ZERO_DIGIT_OBSTRUCTION.md` and run its exact verifier.
+Independently, a rescaled full-grid autocorrelation gives a
+fractional `h` with `h>=0`, `hat h>=0`, exact mass `sum h=k^2`, and at most
+two units on every squared-radius shell for `k=m^(1-o(1))`.  Hence even the
+full directional PSD/Delsarte relaxation cannot see the cube-root exponent;
+zero-one coefficients or the nonlinear factorization
+`h=1_A circ 1_A` are indispensable.  Read
+`FULL_DIRECTION_PSD_RELAXATION_BARRIER.md`, and
+`POSITIVE_DEFINITE_BESSEL_AUDIT.md`.
+
 **⭐ 2026-08-18 — ERDŐS #1208: OFF-DIAGONAL ENERGY REDUCED TO A CROSS-FIBRE OPPOSITE-ENDPOINT LOAD.**
 For an ordered pair `q!=q'` in one adaptive rich fibre, the charge
 `Xi(u,s,q,q')=(v_q,u+x_(q'))` lies in the correct-size universe
@@ -72,11 +102,12 @@ For an ordered pair `q!=q'` in one adaptive rich fibre, the charge
 fixed.  Hence the old within-fibre midpoint multiplicity has been eliminated:
 all remaining loss is cross-fibre.  For a fixed key `(v,t)`, its preimages
 are exactly a two-variable six-affine-copy system, with both popular shifts
-retained.  A subpolynomial size-biased load estimate for this system would
-give `sum_(r!=0) Z_K(r)<=N^(1+o(1))S`, close the adaptive tail, and prove the
+retained.  Either the direct first-moment bound
+`sum nu<=N^(1+o(1))S` or the sufficient size-biased estimate
+`sum nu^2<=N^o(1)sum nu` would close the adaptive tail and prove the
 cube-root order of #1208.  Exact tests pass on closure, Costas, quadratic,
 Sidon-ruler, and radial-control families.  The cross-fibre estimate itself
-is still open.  Read `SEVEN_INCIDENCE_OPPOSITE_ENDPOINT_CHARGE.md`.
+is open.  Read `SEVEN_INCIDENCE_OPPOSITE_ENDPOINT_CHARGE.md`.
 
 **⭐ 2026-08-18 — ERDŐS #1208: DENSE/APPROXIMATE LATTICE STABILITY IS FALSE; ENDPOINT REALIZABILITY IS LOAD-BEARING.**
 The sharp complete-patch theorem below does not admit the hoped-for dense
