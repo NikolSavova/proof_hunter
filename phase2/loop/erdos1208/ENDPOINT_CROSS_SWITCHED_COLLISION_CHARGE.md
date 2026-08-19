@@ -267,3 +267,104 @@ Run
     python3 phase2/loop/erdos1208/verify_endpoint_cross_switched_collision_charge.py --extended
 
 for the exact identities and profiles.
+
+## 7. Exact Fourier matrix form
+
+The endpoint-head code is actually a bijection
+
+\[
+ A^2\longrightarrow\mathcal H.
+\]
+
+For unequal heads this is directed-difference uniqueness, and for equal
+heads it is the literal common-head route.  Hence
+
+\[
+|\mathcal H|=|A|^2=N-1+|A|.                    \tag{7.1}
+\]
+
+This makes the Fourier content of the new charge completely explicit.  Let
+\(\mathcal Z\subseteq D^2\) be the first-stage charge cells.  For
+\(z\in\mathcal Z\), \(\alpha,\beta\in A\), and \(x,y\in A+A\), define
+
+\[
+\begin{aligned}
+ F_{z,\alpha}(x)
+ &=|\{\gamma:\Psi(\gamma)=z,\,
+       x_{R_4(\gamma)}=\alpha,\,
+       m(R_0(\gamma))=x\}|,\\
+ G_{z,\beta}(y)
+ &=|\{\gamma:\Psi(\gamma)=z,\,
+       x_{R_2(\gamma)}=\beta,\,
+       m(R_3(\gamma))=y\}|.
+\end{aligned}                                    \tag{7.2}
+\]
+
+After identifying a head code with its recovered ordered pair
+\((\alpha,\beta)\), equation (4.1) becomes the exact convolution
+
+\[
+\boxed{
+\mu_{\alpha,\beta}(c)
+=\sum_{z\in\mathcal Z}
+  \sum_{x-y=c}F_{z,\alpha}(x)G_{z,\beta}(y).
+}                                                 \tag{7.3}
+\]
+
+For \(\theta\in\mathbb T^2\), let
+\(\mathbf F(\theta)\) and \(\mathbf G(\theta)\) be the
+\(\mathcal Z\times A\) matrices with entries
+\(\widehat F_{z,\alpha}(\theta)\) and
+\(\widehat G_{z,\beta}(\theta)\).  Fourier transformation of (7.3) gives
+
+\[
+\widehat\mu(\theta)
+=\mathbf F(\theta)^T\overline{\mathbf G(\theta)}
+=\overline{\mathbf F(\theta)^*\mathbf G(\theta)}.
+\]
+
+Parseval therefore yields the exact spectral identity
+
+\[
+\boxed{
+\sum_{c,\alpha,\beta}\mu_{\alpha,\beta}(c)^2
+=\int_{\mathbb T^2}
+ \|\mathbf F(\theta)^*\mathbf G(\theta)\|_{\mathrm{HS}}^2
+ \,d\theta.
+}                                                 \tag{7.4}
+\]
+
+Equivalently, the integrand is
+
+\[
+\operatorname{tr}\!\left(
+\mathbf F\mathbf F^*
+\mathbf G\mathbf G^*
+\right).                                         \tag{7.5}
+\]
+
+Thus a fixed-power failure of the size-biased theorem produces a frequency
+at which the two endpoint-incidence matrices share a large singular mode
+on the first-stage cell space.  This is sharper than merely saying that a
+rich affine core exists.  The remaining density increment can be stated
+precisely:
+
+> Convert a common nontrivial cell singular mode in (7.4) into a weight
+> \(0\le g\le1_D\) whose negative endpoint Fourier deficit pays, through
+> ENDPOINT_FOURIER_COMPENSATION_LEMMA.md, for the same contribution to
+> (7.4).
+
+The trivial operator inequalities
+
+\[
+\|\mathbf F^*\mathbf G\|_{\mathrm{HS}}^2
+\le
+\min\{
+\|\mathbf F\|_{\mathrm{op}}^2\|\mathbf G\|_{\mathrm{HS}}^2,\,
+\|\mathbf G\|_{\mathrm{op}}^2\|\mathbf F\|_{\mathrm{HS}}^2
+\}
+\]
+
+show that a size-biased spectral bound for either endpoint-incidence matrix
+would suffice.  No such bound is asserted here; (7.4) identifies the exact
+operator that must be controlled.
