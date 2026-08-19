@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import random
+from collections import Counter, deque
 from fractions import Fraction
 from itertools import combinations
 
@@ -227,6 +228,108 @@ def analyze_mod(matchings: tuple[Matching, ...]) -> tuple[int, int, int, int] | 
     return variables, len(plus_basis), repeats, len(tuples)
 
 
+def peel_full_corner_core(relations: list[tuple[int, ...]]) -> int:
+    """Return the size of the simultaneous eight-projection two-core."""
+    relation_keys = [
+        tuple(
+            (
+                relation[mask & 1],
+                relation[2 + ((mask >> 1) & 1)],
+                relation[4 + ((mask >> 2) & 1)],
+            )
+            for mask in range(8)
+        )
+        for relation in relations
+    ]
+    fibres: list[dict[tuple[int, int, int], set[int]]] = [dict() for _ in range(8)]
+    for index, keys in enumerate(relation_keys):
+        for mask, key in enumerate(keys):
+            fibres[mask].setdefault(key, set()).add(index)
+    alive = [True] * len(relations)
+    queue = deque(
+        (mask, key)
+        for mask in range(8)
+        for key, members in fibres[mask].items()
+        if len(members) < 2
+    )
+    while queue:
+        mask, key = queue.popleft()
+        members = fibres[mask][key]
+        if len(members) >= 2:
+            continue
+        for index in tuple(members):
+            if not alive[index]:
+                continue
+            alive[index] = False
+            for other_mask, other_key in enumerate(relation_keys[index]):
+                other_members = fibres[other_mask][other_key]
+                other_members.discard(index)
+                if len(other_members) < 2:
+                    queue.append((other_mask, other_key))
+    return sum(alive)
+
+
+def analyze_mod_coalesced(
+    matchings: tuple[Matching, ...]
+) -> tuple[int, int, int, int, int, int] | None:
+    """Analyze after identifying point variables forced equal by the equations.
+
+    Returns (formal variables, geometric points, nullity, norm repetitions,
+    distinct relation records, full-core size).
+    """
+    data = relation_tuples(matchings)
+    if data is None:
+        return None
+    tuples, variables = data
+
+    def matrix_for(root: int) -> list[list[int]]:
+        coefficients = (1, -1, -1, 1, -root, root)
+        matrix = []
+        for relation in tuples:
+            row = [0] * variables
+            for variable, coefficient in zip(relation, coefficients):
+                row[variable] = (row[variable] + coefficient) % MODULUS
+            matrix.append(row)
+        return matrix
+
+    plus_basis, plus_pivots = modular_nullspace(matrix_for(I_MOD))
+    minus_basis, minus_pivots = modular_nullspace(matrix_for((-I_MOD) % MODULUS))
+    if plus_pivots != minus_pivots or not plus_basis:
+        return None
+    plus_forms = [tuple(vector[variable] for vector in plus_basis) for variable in range(variables)]
+    minus_forms = [tuple(vector[variable] for vector in minus_basis) for variable in range(variables)]
+    form_keys = [(plus_forms[index], minus_forms[index]) for index in range(variables)]
+    unique_keys = {key: index for index, key in enumerate(dict.fromkeys(form_keys))}
+    classes = [unique_keys[key] for key in form_keys]
+    coalesced_relations = sorted(
+        set(tuple(classes[variable] for variable in relation) for relation in tuples)
+    )
+    unique_variables = tuple(dict.fromkeys(classes))
+    representatives = [classes.index(variable) for variable in unique_variables]
+    seen: set[tuple[int, ...]] = set()
+    repeats = 0
+    for first, second in combinations(representatives, 2):
+        plus = tuple((a - b) % MODULUS for a, b in zip(plus_forms[first], plus_forms[second]))
+        minus = tuple((a - b) % MODULUS for a, b in zip(minus_forms[first], minus_forms[second]))
+        signature = tuple(
+            (minus[row] * plus[column]) % MODULUS
+            for row in range(len(plus))
+            for column in range(row, len(plus))
+        )
+        if signature in seen:
+            repeats += 1
+        else:
+            seen.add(signature)
+    return (
+        variables,
+        len(representatives),
+        len(plus_basis),
+        repeats,
+        len(coalesced_relations),
+        peel_full_corner_core(coalesced_relations),
+    )
+
+
 def analyze(matchings: tuple[Matching, ...]) -> tuple[int, int, int, int] | None:
     assert len(matchings) == 8
     data = relation_tuples(matchings)
@@ -302,7 +405,8 @@ def search(trials: int, seed: int) -> None:
     accepted = 0
     for trial in range(trials):
         permutations = random_permutations(16, rng)
-        profile = analyze(doubled_matchings(permutations))
+        matchings = doubled_matchings(permutations)
+        profile = analyze_mod(matchings)
         if profile is None:
             continue
         accepted += 1
@@ -312,7 +416,8 @@ def search(trials: int, seed: int) -> None:
             print("best", trial, "accepted", accepted, "profile", profile)
             print("permutations", permutations)
         if repeats == 0:
-            print("GENERIC FULL EIGHT-CORNER COUNTEREXAMPLE")
+            exact_profile = analyze(matchings)
+            print("GENERIC FULL EIGHT-CORNER COUNTEREXAMPLE", exact_profile)
             return
     print("complete", accepted, None if best is None else best[2])
 

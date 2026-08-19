@@ -129,6 +129,27 @@ not seven.  Hence 128 records collapse to 64 relations.  Each apparent
 degree-two corner fibre consists of two copies of the same relation and
 vanishes after deduplication.
 
+### 3.4 Exhaustive abelian translation audit
+
+`EDGE_DISJOINT_TRANSLATION_CORE_OBSTRUCTION.md` replaces the few stored
+translation examples by a complete finite classification.  Up to a change
+of basis, eight labelled shifts are the columns of the RREF generator of a
+subspace of `F_2^8`.  The exact verifier enumerates all 417,198 nonzero
+subspaces.
+
+There are 50,864 simple systems with eight distinct nonzero shifts.  Of
+these, 22,894 already fail to distinguish relation records.  The remaining
+27,970 are passed through the universal Gaussian solution and all point
+labels forced equal in every solution are canonically coalesced.  Exactly
+27,389 then lose their simultaneous full core.  Each of the remaining 581
+has a character certificate forcing an identical directed displacement on
+two distinct pairs.  There is no generic survivor.
+
+This is an exact branch theorem, but its scope matters.  It closes the
+component-faithful generic geometry of commuting translation matchings.  A
+nongeneric specialization with additional accidental point identifications
+is not covered, and arbitrary full cores have noncommuting matchings.
+
 ## 4. Consequence for the proof search
 
 There are now three distinct statements which must not be conflated:
@@ -139,7 +160,8 @@ There are now three distinct statements which must not be conflated:
    the 32-record non-linear core above.
 3. Full eight-corner peelability for **distance-Sidon realizations** remains
    open; the canonical edge-disjoint linear model forces distance
-   equalities, while the smaller model fails linearity already.
+   equalities, the entire generic abelian translation branch has now been
+   exhaustively eliminated, and the smaller model fails linearity already.
 
 Even statement 3 would only close the transverse/wide branch.  The safer
 aggregate target remains the size-biased tail
