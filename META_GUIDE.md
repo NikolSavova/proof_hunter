@@ -449,6 +449,47 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-19 — #1208 direct hybrid endpoint charge
+
+- Replaced the two-factor moment interface by one charge on the original
+  adaptive seven-incidence configurations.  It lands in two labelled pieces
+  of `D x (D+D)` and `D^2`, with total universe at most `4NS`, and is exactly
+  injective within every rich fibre.
+- Reduced the full cube-root upper bound to the single cross-fibre estimate
+  `sum lambda^2 <= N^o(1) sum lambda`.  A normal fixed key is an
+  endpoint-forced six-affine-copy system, with all six collision
+  displacements written explicitly.
+- Verified the reduction through determinant-prime Costas `p=43`.  The
+  largest run has 8,451,318 configurations, size-biased load `1.7730`, and
+  maximum load `12`; closure-40 has load `1.1534`.
+- Found a necessary aggregation warning: a fixed pair of fibres can share
+  32 charges even though individual charge loads stay small.  Therefore an
+  absolute pairwise-intersection lemma is false; the proof must exploit the
+  global load distribution.
+- The cross-fibre theorem remains unproved, so Erdős #1208 is not resolved.
+  The older two-moment gate was retained as a corrected fallback with
+  constant `6720` and refreshed extended stress values.
+
+### 2026-08-18 — #1208 hybrid `D x (D+D)` endpoint repair
+
+- Replaced both preliminary moment charges by hybrid charges into a constant
+  number of copies of `D x (D+D)`.  The exact switch
+  `(m(d)-m(e)±(d-e))/2 in D` retains a literal complete endpoint
+  while paying only the ordinary-support budget.
+- Routed the unique zero-switch/common-endpoint strata separately to literal
+  `D` members.  Every normal beta key has two nonzero switches and is
+  injective after fixing the popular pair.  Its canonical fixed-key system
+  now contains the endpoint-forced map `V_c(p)`, not a free translation.
+- Proved the formal interface
+  `(sum alpha^2)(sum beta^2)<=2016N^2S^2 L_alpha L_beta`.  Thus the same
+  subpolynomial load-product theorem still resolves the cube-root order, but
+  both charge universes now have the exact common size `O(NS)`.
+- Exact stress loads are near one: closure-40 gives `1.2192,1.2691`; Costas
+  `p=41` gives `1.2734,1.3215` with maximum keys `8,9`; closure sizes through
+  60 remain near one.  The dense perpendicular ruler has empty adaptive
+  tail.  The load theorem, and the now-plausible stronger maximum-load
+  theorem, remain unproved.
+
 ### 2026-08-18 — #1208 endpoint-switched two-moment charge gate
 
 - Gave the alpha moment a crossed canonical-midpoint charge into

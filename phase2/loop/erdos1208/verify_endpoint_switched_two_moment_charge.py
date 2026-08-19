@@ -4,13 +4,14 @@
 from __future__ import annotations
 
 from collections import Counter, defaultdict
+import sys
 
 from analyze_affine_costas_energy import welch
 from verify_determinant_prime_costas_resonance import ROWS, apply
 from verify_endpoint_midpoint_sidon_ruler_barrier import construction
 from verify_orthogonal_two_support_gate import difference_set
+from verify_orthogonal_energy_product_ruler_barrier import erdos_turan
 from verify_popular_pair_rectangle_moment_gate import rectangle_data
-from verify_radial_orthogonal_product_barrier import radial_set
 from verify_seven_incidence_opposite_endpoint_charge import (
     POINTS,
     add,
@@ -31,6 +32,15 @@ def norm(point: Point) -> int:
 
 def scale(value: int, point: Point) -> Point:
     return value * point[0], value * point[1]
+
+
+def half(point: Point) -> Point:
+    assert point[0] % 2 == 0 and point[1] % 2 == 0
+    return point[0] // 2, point[1] // 2
+
+
+def negate(point: Point) -> Point:
+    return -point[0], -point[1]
 
 
 def midpoint_table(points: list[Point]) -> dict[Point, Point]:
@@ -71,11 +81,93 @@ def alpha_profile(points: list[Point]) -> AlphaProfile:
                 # The crossed four entries reconstruct the two omitted forms.
                 assert forms[2] == add(forms[1], subtract(forms[5], forms[4]))
                 assert forms[3] == add(forms[0], subtract(forms[4], forms[1]))
-                charge = (
+                assert forms[1] == add(forms[0], subtract(forms[4], forms[3]))
+                assert forms[5] == add(forms[3], subtract(forms[2], forms[0]))
+                assert forms[0] == add(forms[2], subtract(forms[3], forms[5]))
+                assert forms[4] == add(forms[1], subtract(forms[5], forms[2]))
+                cyclic = (
                     subtract(midpoints[forms[0]], midpoints[forms[4]]),
                     subtract(midpoints[forms[1]], midpoints[forms[5]]),
+                    subtract(midpoints[forms[2]], midpoints[forms[3]]),
                 )
-                assert charge[0] in support and charge[1] in support
+                order = sorted(
+                    range(3), key=lambda index: (-norm(cyclic[index]), index)
+                )
+                first_role, second_role = order[:2]
+                cyclic_pairs = ((0, 4), (1, 5), (2, 3))
+                switches = []
+                switch_roles = []
+                for cyclic_role in (first_role, second_role):
+                    left, right = cyclic_pairs[cyclic_role]
+                    displacement = subtract(forms[left], forms[right])
+                    values = (
+                        half(add(cyclic[cyclic_role], displacement)),
+                        half(subtract(cyclic[cyclic_role], displacement)),
+                    )
+                    switches.append(values)
+                    switch_roles.append(
+                        max(
+                            range(2),
+                            key=lambda index: (norm(values[index]), -index),
+                        )
+                    )
+                first_switch_role, second_switch_role = switch_roles
+                first_degenerate = (
+                    switches[0][1 - first_switch_role] == (0, 0)
+                )
+                second_degenerate = (
+                    switches[1][1 - second_switch_role] == (0, 0)
+                )
+                if second_degenerate:
+                    left, right = cyclic_pairs[second_role]
+                    literal_role = max(
+                        range(2),
+                        key=lambda index: (
+                            norm(forms[(left, right)[index]]),
+                            -index,
+                        ),
+                    )
+                    charge = (
+                        2,
+                        first_role,
+                        second_role,
+                        first_switch_role,
+                        second_switch_role,
+                        literal_role,
+                        cyclic[first_role],
+                        forms[(left, right)[literal_role]],
+                    )
+                elif first_degenerate:
+                    left, right = cyclic_pairs[first_role]
+                    literal_role = max(
+                        range(2),
+                        key=lambda index: (
+                            norm(forms[(left, right)[index]]),
+                            -index,
+                        ),
+                    )
+                    charge = (
+                        1,
+                        first_role,
+                        second_role,
+                        first_switch_role,
+                        second_switch_role,
+                        literal_role,
+                        switches[1][second_switch_role],
+                        forms[(left, right)[literal_role]],
+                    )
+                else:
+                    charge = (
+                        0,
+                        first_role,
+                        second_role,
+                        first_switch_role,
+                        second_switch_role,
+                        0,
+                        cyclic[first_role],
+                        switches[1][second_switch_role],
+                    )
+                assert charge[6] in support and charge[7] in differences
                 loads[charge] += 1
                 mass += 1
 
@@ -113,18 +205,59 @@ def maximal_role(values: tuple[Point, ...]) -> int:
     return max(range(4), key=lambda index: (norm(values[index]), -index))
 
 
-def beta_profile(points_or_differences: list[Point] | set[Point]) -> BetaProfile:
-    differences = (
-        points_or_differences
-        if isinstance(points_or_differences, set)
-        else difference_set(points_or_differences)
+def beta_charge(
+    base: Point,
+    translated: Point,
+    first: tuple[Point, ...],
+    second: tuple[Point, ...],
+    midpoints: dict[Point, Point],
+) -> tuple[bool, bool, int, int, Point, Point]:
+    """Hybrid endpoint charge, with literal routing for a zero switch."""
+    first_order = sorted(
+        range(4), key=lambda index: (-norm(first[index]), index)
     )
-    loads: Counter[tuple[int, int, Point, Point]] = Counter()
-    mass = 0
-    for _, _, _, _, first, second in beta_configurations(differences):
-        first_role = maximal_role(first)
+    diagonal = base == translated
+    if base == translated:
+        first_role, second_role = first_order[:2]
+        first_value = first[first_role]
+        second_value = first[second_role]
+        neighbor = first[(3, 2, 1, 0)[second_role]]
+    else:
+        first_role = first_order[0]
         second_role = maximal_role(second)
-        loads[first_role, second_role, first[first_role], second[second_role]] += 1
+        first_value = first[first_role]
+        second_value = second[second_role]
+        neighbor = second[(3, 2, 1, 0)[second_role]]
+
+    midpoint_difference = subtract(
+        midpoints[second_value], midpoints[neighbor]
+    )
+    displacement = subtract(second_value, neighbor)
+    degenerate = midpoint_difference in (displacement, negate(displacement))
+    if not degenerate:
+        switched = (
+            half(add(midpoint_difference, displacement)),
+            half(subtract(midpoint_difference, displacement)),
+        )
+        assert switched[0] != (0, 0) and switched[1] != (0, 0)
+    last_value = second_value if degenerate else midpoint_difference
+    return (
+        diagonal,
+        degenerate,
+        first_role,
+        second_role,
+        first_value,
+        last_value,
+    )
+
+
+def beta_profile(points: list[Point]) -> BetaProfile:
+    differences = difference_set(points)
+    midpoints = midpoint_table(points)
+    loads: Counter[tuple[bool, bool, int, int, Point, Point]] = Counter()
+    mass = 0
+    for _, _, base, translated, first, second in beta_configurations(differences):
+        loads[beta_charge(base, translated, first, second, midpoints)] += 1
         mass += 1
     return mass, len(loads), sum(value * value for value in loads.values()), max(
         loads.values(), default=0
@@ -134,6 +267,7 @@ def beta_profile(points_or_differences: list[Point] | set[Point]) -> BetaProfile
 def verify_fixed_key_form(points: list[Point]) -> None:
     """Check (4.8), fixed-z injectivity, and the collision offsets."""
     differences = difference_set(points)
+    midpoints = midpoint_table(points)
     by_fixed_key: dict[
         tuple[Point, Point], list[tuple[Point, Point, tuple[Point, ...]]]
     ] = defaultdict(list)
@@ -162,13 +296,22 @@ def verify_fixed_key_form(points: list[Point]) -> None:
         assert actual == expected
         by_fixed_key[u, v].append((r, p, actual))
 
-        # For fixed z and roles, the charged pair recovers (base, translated).
+        # For fixed z and roles, every off-diagonal charged pair recovers
+        # (base, translated).
         for first_role in range(4):
             for second_role in range(4):
                 key = shift, other, first_role, second_role
                 charged = first[first_role], second[second_role]
                 assert charged not in by_shift_pair_role[key]
                 by_shift_pair_role[key].add(charged)
+
+        # The actual switched charge is also injective at fixed z.  In the
+        # diagonal case its first charged vertex alone already recovers base.
+        switched = beta_charge(base, translated, first, second, midpoints)
+        key = shift, other, switched[0], switched[1], switched[2], switched[3]
+        charged = switched[4], switched[5]
+        assert charged not in by_shift_pair_role[key]
+        by_shift_pair_role[key].add(charged)
 
     for entries in by_fixed_key.values():
         for first_index, (r, p, forms) in enumerate(entries):
@@ -194,22 +337,35 @@ def verify_fixed_key_form(points: list[Point]) -> None:
 def main() -> None:
     closure_alpha = alpha_profile(POINTS[:40])
     closure_beta = beta_profile(POINTS[:40])
-    assert closure_alpha == (2_744_348, 1_290_420, 8_846_328, 254)
-    assert closure_beta == (104_948, 82_756, 320_912, 41)
+    assert closure_alpha == (2_744_348, 2_524_398, 3_303_104, 16)
+    assert closure_beta == (104_948, 96_590, 133_192, 11)
     print("closure-40 alpha", closure_alpha, "beta", closure_beta)
 
     expected = {
-        11: ((6_686, 3_092, 15_988, 14), (1_208, 956, 2_368, 10)),
-        17: ((81_264, 36_904, 237_056, 74), (12_290, 9_544, 22_102, 13)),
+        11: ((6_686, 6_526, 7_022, 3), (1_208, 1_172, 1_288, 3)),
+        17: ((81_264, 76_669, 91_210, 4), (12_290, 11_582, 13_882, 4)),
         23: (
-            (2_294_322, 954_020, 7_596_972, 242),
-            (250_722, 147_832, 834_482, 45),
+            (2_294_322, 2_085_894, 2_763_502, 7),
+            (250_722, 225_272, 310_190, 7),
         ),
         31: (
-            (3_212_542, 1_452_994, 8_240_740, 196),
-            (464_578, 302_968, 1_213_686, 42),
+            (3_212_542, 3_031_587, 3_602_908, 6),
+            (464_578, 417_066, 574_322, 7),
         ),
     }
+    if "--extended" in sys.argv:
+        expected.update(
+            {
+                37: (
+                    (14_052_896, 12_866_893, 16_686_550, 7),
+                    (2_015_584, 1_768_528, 2_599_728, 9),
+                ),
+                41: (
+                    (21_034_648, 19_094_875, 25_402_326, 8),
+                    (3_239_030, 2_802_672, 4_280_434, 9),
+                ),
+            }
+        )
     for prime, target in expected.items():
         matrix, _ = ROWS[prime]
         points = [apply(matrix, point) for point in welch(prime)]
@@ -224,10 +380,13 @@ def main() -> None:
     _, _, _, ruler_rectangles = rectangle_data(difference_set(ruler_points))
     assert not ruler_rectangles
 
-    radial = beta_profile(radial_set(8))
-    assert radial == (336_612, 30_152, 13_215_740, 225)
-    assert radial[2] * closure_beta[0] > 12 * radial[0] * closure_beta[2]
-    print("radial-8 beta negative control", radial)
+    dense_ruler = erdos_turan(41, 40)
+    perpendicular_ruler = [(value, 0) for value in dense_ruler[:20]] + [
+        (0, value) for value in dense_ruler[20:]
+    ]
+    assert alpha_profile(perpendicular_ruler) == (0, 0, 0, 0)
+    assert beta_profile(perpendicular_ruler) == (0, 0, 0, 0)
+
     print("ENDPOINT-SWITCHED TWO-MOMENT CHARGE GATE: PASS")
 
 

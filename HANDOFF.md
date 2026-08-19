@@ -65,24 +65,34 @@
 
 ## 3. WHAT WE'VE DONE
 
-**⭐ 2026-08-18 — ERDŐS #1208: BOTH POPULAR-PAIR MOMENTS NOW HAVE CORRECT-SIZE ENDPOINT-SWITCHED CHARGES.**
-The corrected rectangle gate has been sharpened into two size-biased load
-problems.  The alpha-square configurations carry the crossed midpoint charge
-`(m(d0)-m(d4),m(d1)-m(d5))` into `(D+D)^2`; crucially, only the six grid
-differences are decorated, since the popular shifts need not lie in `D`.
-The beta-square configurations carry the two maximal-radius roles into one
-of sixteen labelled copies of `D^2`; for a fixed popular pair this charge is
-injective, so every load is cross-pair.  If the two size-biased loads are
-`L_alpha,L_beta`, exact Cauchy gives
-`(sum alpha^2)(sum beta^2)<=16N^2S^2 L_alpha L_beta`.  Hence the single
-endpoint theorem `L_alpha L_beta=N^o(1)` proves the cube-root order.  On
-closure-40 and every determinant-prime Costas row through `p=31`, both loads
-stay between `1.8` and `3.4`; the radial side-eight beta impostor is already
-`39.26`.  The old dense Sidon-ruler midpoint obstruction has empty adaptive
-tail.  All exact identities, fixed-key formulas, collision displacements,
-and profiles pass.  The load-product theorem remains unproved.  Read
-`ENDPOINT_SWITCHED_TWO_MOMENT_CHARGE_GATE.md` and run its verifier.
+**⭐ 2026-08-19 — ERDŐS #1208: ONE FIBRE-INJECTIVE ENDPOINT CHARGE NOW ISOLATES THE FULL MISSING THEOREM.**
+Let `D=A-A`, `N=|D|`, `S=|D+D|`, and let `O_K` be the adaptive off-diagonal
+seven-incidence mass.  For a rich-fibre configuration `(u,s,q,q')`, put
+`w=s-u`, `v=w-(I+J)q`, `c=u+q'`, and `h=m(u)-m(c)`, where `m` is the
+canonical endpoint midpoint decoration.  The new charge is `(sign(c),v,h)`
+in `D x (D+D)` unless one endpoint switch vanishes, in which case it is
+routed to `(shared-endpoint-role,v,c)` in `D^2`.  Its entire labelled
+universe has size at most `4NS`, and it is exactly injective inside every
+fixed rich fibre.
 
+If `lambda` is the cross-fibre load, the single theorem
+`sum lambda^2 <= N^o(1) sum lambda` gives by Cauchy
+`O_K<=N^(1+o(1))S`, closes the adaptive tail, and proves
+`|A|<=m^(2/3+o(1))` for every distance-Sidon `A subset [m]^2`.  A normal
+fixed key is now an endpoint-forced six-affine-copy system; collisions have
+the exact six displacements
+`eta, eta+rho, eta+pi, Jrho, (I+J)rho-pi, (I+J)(rho-pi)`.
+The theorem is not proved.
+
+All exact identities and the full stress suite pass.  Through the Costas
+row `p=43`, 8,451,318 configurations have size-biased load `1.7730` and
+maximum load `12`; closure-40 has load `1.1534`.  A fixed fibre pair can
+share 32 charges, so constant pairwise intersection is false and the proof
+must be genuinely aggregate.  The dense perpendicular-ruler tail is empty,
+while radial impostors lack the endpoint map.  Read
+`HYBRID_ENDPOINT_OPPOSITE_CHARGE_GATE.md` and run its verifier, optionally
+with `--extended`.  The older two-moment endpoint gate remains a verified
+fallback, with corrected constant `6720`, but is no longer the lead.
 
 **⭐ 2026-08-18 — ERDŐS #1208: OPPOSITE-ENDPOINT LOAD FACTORS INTO CORRECTED POPULAR-PAIR RECTANGLES.**
 Regrouping by the ordered popular pair `z=(q,q')` gives exact full rectangles
