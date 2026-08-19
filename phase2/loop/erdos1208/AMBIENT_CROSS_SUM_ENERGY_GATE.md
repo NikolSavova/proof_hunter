@@ -170,8 +170,11 @@ that the ambient box directly pays for sparse line-like peaks, while the
 ## 5. Exact stress profiles
 
 `verify_ambient_cross_sum_energy_gate.py` checks directness, (1.1) in
-coefficient form, (1.2), and the following exact profiles.  Here `m` is the
-larger coordinate range and the energy ratio is
+coefficient form, (1.2), and the first five exact profiles below.  The
+separate integer-array verifier
+`verify_ambient_cross_sum_full_closure.cpp` checks the complete 120-point
+closure profile without a floating-point transform.  Here `m` is the larger
+coordinate range and the energy ratio is
 
 \[
  {E^+(B)\over k^5+m^2k^2}.
@@ -184,18 +187,33 @@ larger coordinate range and the energy ratio is
 \text{closure }40&40&223&95{,}040{,}912&231&0.522299\ldots\\
 \text{source }45&45&324&107{,}918{,}569&137&0.271763\ldots\\
 \text{perpendicular ruler }40&40&3202&30{,}866{,}544&110&0.001869\ldots\\
-\text{Costas }22&22&131&1{,}565{,}772&28&0.116331\ldots
+\text{Costas }22&22&131&1{,}565{,}772&28&0.116331\ldots\\
+\text{closure }120&120&1514&24{,}957{,}897{,}968&1071&0.431120\ldots
 \end{array}                                                        \tag{5.1}
 \]
 
 The stronger pointwise normalization in (4.2) requires an absolute constant
-larger than one on the closure stresses: the maximum displayed ratio
-`max r_B/(k+m^2/k^2)` is `3.2498...` at closure 40.  Thus neither live
-statement should be formulated with a sharp constant one.
+larger than one on the closure stresses.  The ratio
+`max r_B/(k+m^2/k^2)` is `3.2498...` at closure 40 and `3.8362...` at
+closure 120.  Thus neither live statement should be formulated with a sharp
+constant one.  More importantly, the aggregate ratio in (5.1) remains
+bounded away from one on the much larger stress even though its worst fibre
+has grown from 231 to 1071.  This is finite evidence that (1.3) is more
+stable than its pointwise sufficient strengthening (4.2), not a proof of
+either estimate.
 
 These finite rows are evidence and calibration only.  The new mathematical
 target is the aggregate estimate (1.3), or a counterexample to it inside a
 genuine bounded-height distance-Sidon set.
+
+Compile and run the full stress from the repository root with
+
+```text
+clang++ -O3 -std=c++17 \
+  phase2/loop/erdos1208/verify_ambient_cross_sum_full_closure.cpp \
+  -o /tmp/verify_ambient_cross_sum_full_closure
+/tmp/verify_ambient_cross_sum_full_closure
+```
 
 ## 6. Relation to the endpoint programme
 
