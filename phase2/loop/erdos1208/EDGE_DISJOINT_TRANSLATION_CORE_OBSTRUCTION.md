@@ -4,6 +4,8 @@
 
 This note closes the canonical component-faithful, generic part of the
 abelian translation-invariant branch of the full eight-corner problem.
+`NONGENERIC_TRANSLATION_CORE_OBSTRUCTION.md` now extends the exhaustion to
+every additional endpoint identification and removes the genericity caveat.
 
 Let the relation records be a finite elementary abelian group
 
@@ -47,10 +49,9 @@ Then one of the following holds:
 
 Consequently there is no generic, component-faithful distance-Sidon
 realization of a connected edge-disjoint translation-invariant full core.
-The result does **not** rule out a further nongeneric specialization with
-additional accidental point identifications; nor does it cover
-noncommuting corner matchings or prove the full size-biased eight-corner
-tail.
+The theorem proved in this note alone does **not** rule out a further
+nongeneric specialization.  The subsequent exact partition closure does;
+noncommuting corner matchings and the full size-biased tail remain open.
 
 ## 2. Fourier reduction
 

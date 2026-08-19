@@ -43,19 +43,21 @@ Thus a full corner core has the exact structural alternative
 
 where every record counted by `G` lies in a bounded abelian orbit.
 
-Combining this with `EDGE_DISJOINT_TRANSLATION_CORE_OBSTRUCTION.md` sharpens
-the alternative for a distance-Sidon realization: each stable orbit must be
-supported by additional nongeneric endpoint identifications.  Otherwise
-the canonical coalescing either exposes a degree-one corner or the Fourier
-certificate forces two distinct point-pairs to have identical displacement.
+The exact partition closure in
+`NONGENERIC_TRANSLATION_CORE_OBSTRUCTION.md` now rules out every stable
+orbit in a distance-Sidon realization, including arbitrary additional
+endpoint identifications.  Consequently the alternative sharpens to
 
-This does not yet bound either term in (1.3) by the required cubic
-size-biased budget.  It turns the remaining full-core problem into two
-specific charges:
+\[
+ \boxed{|X|\le256|B|}                           \tag{1.4}
+\]
 
-1. charge commutator defects `B` to endpoint/support data; and
-2. charge the extra endpoint identifications required on stable abelian
-   orbits.
+whenever the eight involutions are fixed-point-free, edge-disjoint corner
+matchings on genuine distinct transverse relations.
+
+This does not yet bound `B` by the required cubic size-biased budget.  It
+does remove the second, nongeneric stable-orbit charge entirely: the
+remaining full-core problem is to charge commutator defects alone.
 
 ## 2. Proof of the stability theorem
 
@@ -137,32 +139,54 @@ For a dyadic rich relation layer, every corner fibre has degree at least
 each fibre for every corner colour.  The distance-Sidon linearity lemma makes
 the eight matching edge sets disjoint, so Theorem 1.1 applies.
 
-Odd fibres can be paired with at most one unmatched record per fibre, but a
-simultaneous partial-matching version requires bookkeeping: deleting the
-unmatched records for one colour changes the other seven fibres.  This is a
-real remaining step, not hidden in the theorem.
+Odd fibres can be paired with at most one fixed record per fibre.  The
+simultaneous bookkeeping is now supplied in Section 4.1 below for an
+internally rich layer; the distinction between internal richness and
+popularity measured in the ambient relation set remains essential.
 
-For even regularized layers, a sufficient continuation would be
+For even regularized layers, a sufficient continuation is now simply
 
 \[
- |B|+|G_{\rm nongeneric}|\ll k^{3+o(1)}/t.      \tag{4.1}
+ |B|\ll k^{3+o(1)}/t.                           \tag{4.1}
 \]
 
-Here `G_nongeneric` is the union of stable abelian orbits whose actual
-endpoint labels make additional identifications beyond the canonical
-universal coalescing.  Equation (4.1), together with (1.3), is exactly the
-size-biased eight-corner bound for that layer.
+Equation (4.1), together with (1.4), is exactly the size-biased
+eight-corner bound for that layer.
 
-The advantage of (4.1) over the original core statement is that both terms
-have explicit witnesses: a failed commutator square, or an equality between
-two endpoint occurrences in a bounded orbit.  The next attack should seek a
-bounded-load charge of those witnesses into `A^3`, `D x (D+D)`, or the
-opposite-endpoint cells already isolated in the seven-incidence route.
+The advantage of (4.1) over the original core statement is that its only
+witness is explicit: a failed commutator square.  The next attack should
+seek a size-biased charge of those witnesses into `A^3`, `D x (D+D)`, or
+the opposite-endpoint cells already isolated in the seven-incidence route.
 
-The first pointwise charge has already been ruled out sharply.  For two
-adjacent corner colours, fixing their two common selected endpoints leaves
-an intersection of `A-A` with a translate of `A+JA`.  The perpendicular
-ruler construction in `ADJACENT_CORNER_FIBRE_BARRIER.md` makes one such
-intersection `Omega(|A|^2)`.  Thus commutator defects cannot be bounded one
-cell at a time; heavy adjacent cells must be compensated by aggregate
-transverse support growth.
+The first unfiltered pointwise relaxation has already been ruled out
+sharply.  For two adjacent corner colours, fixing their two common selected
+endpoints leaves an intersection of `A-A` with a translate of `A+JA`; the
+perpendicular-ruler construction makes one such ambient intersection
+`Omega(|A|^2)`, although that large cell is non-transverse.  The independent
+45-point source certificate has genuine transverse load `250`.  Thus the
+safe continuation is an aggregate defect/support charge, not the
+unfiltered maximum; see `ADJACENT_CORNER_FIBRE_BARRIER.md`.
+
+### 4.1 Near-perfect matchings in internally rich cores
+
+There is now an exact cleanup for odd fibre sizes.  Suppose every internal
+corner fibre on `X` has size at least `t`.  Pair each fibre arbitrarily and
+fix its possible leftover record.  If `F` is the union of all fixed records,
+then
+
+\[
+ |F|\le 8|X|/t.
+\]
+
+Run the canonical-word proof with `B union F` in place of `B`.  Outside its
+256 word-preimages, all generators commute and are fixed-point-free, so the
+new complete abelian-core obstruction rules out every remaining orbit.
+Therefore
+
+\[
+ \boxed{|X|\le256|B|+{2048\over t}|X|.}         \tag{4.2}
+\]
+
+For `t>=4096` this gives `|B|>=|X|/512`.  What remains is to extract an
+internally rich core from the externally popular tail without losing the
+critical power, or to charge boundary expansion directly.
