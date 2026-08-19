@@ -342,9 +342,109 @@ This explains, in the simpler block graph, why the preferred swap gate is
 the oriented energy `2 sum_v d^+(v)^2` rather than an unweighted common-
 neighborhood total.
 
-## 7. Verification
+## 7. Pencil-cut orientation of the transverse wedges
 
-`verify_rotated_translate_self_reproduction.py` checks (1.1)--(6.1)
+There is a smaller oriented form of the remaining problem.  Let `H_A` be
+the block-intersection graph: its vertices are `d in D`, and `{d,e}` is an
+edge when `B_d cap B_e` is nonempty.  Block linearity labels every base edge
+by its unique centre `z`.
+
+For `x in U`, define its block pencil
+
+\[
+ S_x=\{d\in D:x\in B_d\}.                        \tag{7.1}
+\]
+
+Thus `|S_x|=r_x`, and `H_A[S_x]` is the complete graph on the blocks
+through `x`.  Every edge of `H_A` belongs to exactly one such internal
+clique.
+
+Choose an orientation of `H_A`.  Orient all `(k-1)^2` transverse wedges
+arising from a base edge `d -> e` from the noncentral points of `B_d` to
+the noncentral points of `B_e`.  Put
+
+\[
+ c_x=|\{d\mathbin{\to}e:
+          d\in S_x,\ e\notin S_x\}|.             \tag{7.2}
+\]
+
+Then the outgoing transverse-wedge load at `x` is exactly
+
+\[
+ \boxed{\ell_x=(k-1)c_x.}                        \tag{7.3}
+\]
+
+Indeed a base edge leaving `S_x` has its centre somewhere other than `x`,
+so `x` is one of the `k-1` eligible points on its tail block and has one
+outgoing wedge to every noncentral point of the head block.  An edge
+internal to `S_x` is centred at `x`, which is deleted from both sides of its
+biclique and contributes nothing at `x`.
+
+If `o(d)` is the outdegree of the base vertex `d`, (7.2) also gives the
+exact algebraic formula
+
+\[
+ \boxed{
+ c_x=\sum_{d\in S_x}o(d)-{r_x\choose2}.}          \tag{7.4}
+\]
+
+Write
+
+\[
+ I=|E(H_A)|=\sum_x{r_x\choose2}.
+\]
+
+Every base edge crosses exactly `2(k-1)` pencils: all noncentral points of
+its two blocks.  One half see its tail, so for every orientation
+
+\[
+ \sum_xc_x=(k-1)I.                               \tag{7.5}
+\]
+
+The oriented charge has mass `(k-1)^2 I` and second moment
+
+\[
+ Q=(k-1)^2\sum_xc_x^2.                           \tag{7.6}
+\]
+
+Cauchy--Schwarz in the target `U` therefore gives
+
+\[
+ |U|\ge{(k-1)^2I^2\over\sum_xc_x^2}.             \tag{7.7}
+\]
+
+Consequently the exact pencil-orientation theorem
+
+\[
+ \boxed{
+ \text{some orientation satisfies}\qquad
+ \sum_xc_x^2\le {I^2\over k^{1-o(1)}}}           \tag{7.8}
+\]
+
+would prove `|U|>=k^(3-o(1))` whenever the transverse collision term is
+the dominant branch.  Low `I` is already handled by the ordinary first
+Bonferroni estimate.
+
+For comparison, if the base edges are oriented independently at random and
+`b_x` is the number of base edges crossing the pencil `S_x`, then
+
+\[
+ \mathbb E c_x^2={b_x^2+b_x\over4}.              \tag{7.9}
+\]
+
+Thus a random orientation only balances each fixed cut.  The needed gain in
+(7.8) must use a correlated orientation of all endpoint pencils, or a
+structural decomposition before orienting.  This is the translate-block
+counterpart of the preferred size-biased swap orientation.
+
+The formulation is narrower than orienting every transverse wedge
+independently: one decision is made per intersecting pair of blocks and is
+then propagated to all endpoint switches.  Its advantage is that every
+load in (7.2) retains the full canonical endpoint pencil.
+
+## 8. Verification
+
+`verify_rotated_translate_self_reproduction.py` checks (1.1)--(7.9)
 exactly on the determinant-prime affine Costas distance-Sidon families for
 primes 11, 17, and 23.  It constructs every block, fibre, closed
 neighborhood, and shadow edge using integer arithmetic.

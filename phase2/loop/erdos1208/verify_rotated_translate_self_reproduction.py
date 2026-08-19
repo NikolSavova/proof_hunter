@@ -243,6 +243,81 @@ def verify_row(prime: int) -> tuple[int, int, int, int, int]:
         )
     )
 
+    # Orient the block-intersection graph lexicographically.  Its outgoing
+    # cut load on every block pencil is exactly the propagated wedge load
+    # divided by k-1.
+    base_edge_centre: dict[tuple[Point, Point], Point] = {}
+    for centre, representations in fibres.items():
+        for (_, first_difference), (_, second_difference) in combinations(
+            representations, 2
+        ):
+            edge = ordered_edge(first_difference, second_difference)
+            assert edge not in base_edge_centre
+            base_edge_centre[edge] = centre
+    intersection_count = sum(
+        len(representations) * (len(representations) - 1) // 2
+        for representations in fibres.values()
+    )
+    assert len(base_edge_centre) == intersection_count
+
+    base_outdegree: dict[Point, int] = defaultdict(int)
+    for tail, _ in base_edge_centre:
+        base_outdegree[tail] += 1
+
+    pencil_outcut: dict[Point, int] = {}
+    pencil_boundary: dict[Point, int] = {}
+    for output, pencil in incident_blocks.items():
+        outcut = sum(
+            1
+            for tail, head in base_edge_centre
+            if tail in pencil and head not in pencil
+        )
+        boundary = sum(
+            1
+            for first, second in base_edge_centre
+            if (first in pencil) != (second in pencil)
+        )
+        predicted = sum(base_outdegree[difference] for difference in pencil)
+        predicted -= len(pencil) * (len(pencil) - 1) // 2
+        assert outcut == predicted
+        pencil_outcut[output] = outcut
+        pencil_boundary[output] = boundary
+
+    assert sum(pencil_outcut.values()) == (k - 1) * intersection_count
+    assert sum(pencil_boundary.values()) == 2 * (k - 1) * intersection_count
+
+    # Propagate each oriented base edge to its complete endpoint-switch
+    # biclique and check the point loads directly.
+    propagated_load: dict[Point, int] = defaultdict(int)
+    for (tail, head), centre in base_edge_centre.items():
+        for point in blocks[tail]:
+            if point == centre:
+                continue
+            propagated_load[point] += k - 1
+        assert blocks[tail].intersection(blocks[head]) == {centre}
+    for output in support:
+        assert propagated_load[output] == (k - 1) * pencil_outcut[output]
+    assert sum(propagated_load.values()) == (k - 1) ** 2 * intersection_count
+
+    lexicographic_orientation_cost = sum(
+        load * load for load in pencil_outcut.values()
+    )
+    random_orientation_numerator = sum(
+        boundary * boundary + boundary
+        for boundary in pencil_boundary.values()
+    )
+    # The random expected cost is random_orientation_numerator / 4.
+    assert random_orientation_numerator % 2 == 0
+    print(
+        prime,
+        "pencil orientation profile",
+        (
+            intersection_count,
+            lexicographic_orientation_cost,
+            random_orientation_numerator,
+        ),
+    )
+
     return (
         k,
         len(differences),
