@@ -252,6 +252,57 @@ Thus the four-literal moment still sharply separates genuine complete
 differences from the radial impostors.  The separation is evidence for
 (1.2), not a proof.
 
+## 6. Why a direct support-sized endpoint sum loses the literals
+
+There is an attractive but misleading further compression.  For one
+collision put
+
+\[
+ \Omega(\omega)=\bigl(d+f,\chi(d,f)\bigr)
+ \in(D+D)\times\mathcal H,                     \tag{6.1}
+\]
+
+where \(\chi\) is the ordered-head code.  This target has size at most
+\(2NS\).  More strongly, one key recovers \((d,f)\) with ambiguity at most
+two.  Indeed, if
+
+\[
+ d=\alpha-a,\qquad f=\beta-c,
+\]
+
+then the head code recovers \((\alpha,\beta)\), while
+
+\[
+ a+c=\alpha+\beta-(d+f).                       \tag{6.2}
+\]
+
+Additive Sidonicity of \(A\) recovers the unordered pair \(\{a,c\}\),
+leaving only its two assignments.
+
+Nevertheless (6.1) forgets how the recovered literals attach to the outer
+roles \((x,y)\).  Its exact size-biased loads already grow sharply:
+
+\[
+\begin{array}{c|r|r|c|r}
+\text{family}&M_K&\sum\mu_\Omega^2&
+ (\sum\mu_\Omega^2)/M_K&\max\mu_\Omega\\ \hline
+\text{Costas }11&4{,}348&24{,}000&5.5198&18\\
+\text{Costas }13&5{,}530&24{,}898&4.5024&32\\
+\text{Costas }17&46{,}212&560{,}340&12.1254&81\\
+\text{Costas }19&468{,}768&10{,}654{,}342&22.7284&105\\
+\text{Costas }23&3{,}020{,}644&210{,}710{,}060&69.7567&360\\
+\text{Costas }29&11{,}791{,}516&1{,}551{,}503{,}942&131.5780&775\\
+\text{Costas }31&3{,}872{,}958&362{,}144{,}254&93.5059&1{,}124
+\end{array}                                     \tag{6.3}
+\]
+
+These finite rows do not disprove an \(N^{o(1)}\) theorem, but they
+decisively rule out the hoped-for bounded-load or near-injective proof of
+(6.1).  Bounded ambiguity in recovering \((d,f)\) is not bounded ambiguity
+in recovering the collision.  The outer literals in (1.1), or the
+cross-switched midpoint information of the earlier charge, must remain
+load-bearing.
+
 Run
 
 ```bash

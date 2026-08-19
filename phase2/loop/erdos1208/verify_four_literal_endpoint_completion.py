@@ -15,7 +15,7 @@ from verify_seven_incidence_opposite_endpoint_charge import add, linear, subtrac
 
 
 Point = tuple[int, int]
-GenuineProfile = tuple[int, int, int, int, int]
+GenuineProfile = tuple[int, int, int, int, int, int, int]
 RadialProfile = tuple[int, int, int]
 
 
@@ -197,12 +197,29 @@ def genuine_profile(points: list[Point]) -> GenuineProfile:
         for (x_value, y_value, d_value, f_value), value in literal.items()
     )
     assert head_moment <= tail_weighted
+
+    support_load: Counter[tuple[Point, Point, Point]] = Counter()
+    literal_ambiguity: dict[tuple[Point, Point, Point], set[tuple[Point, Point]]] = (
+        defaultdict(set)
+    )
+    for (x_value, y_value, d_value, f_value), multiplicity in literal.items():
+        del x_value, y_value
+        support_key = (
+            add(d_value, f_value),
+            decorations[d_value][0],
+            decorations[f_value][0],
+        )
+        support_load[support_key] += multiplicity
+        literal_ambiguity[support_key].add((d_value, f_value))
+    assert max((len(values) for values in literal_ambiguity.values()), default=0) <= 2
     return (
         collision_mass,
         literal_moment,
         tail_weighted,
         max(literal.values(), default=0),
         max((len(values) for values in tails.values()), default=0),
+        sum(value * value for value in support_load.values()),
+        max(support_load.values(), default=0),
     )
 
 
@@ -221,25 +238,61 @@ def main() -> None:
     verify_parametrization()
 
     families: list[tuple[str, int, GenuineProfile]] = [
-        ("Costas-11", 11, (4_348, 4_528, 4_987, 3, 3)),
-        ("Costas-13", 13, (5_530, 5_770, 6_600, 3, 3)),
-        ("Costas-17", 17, (46_212, 51_896, 64_670, 4, 7)),
-        ("Costas-19", 19, (468_768, 554_424, 643_385, 6, 5)),
-        ("Costas-23", 23, (3_020_644, 4_188_520, 5_881_823, 9, 8)),
+        ("Costas-11", 11, (4_348, 4_528, 4_987, 3, 3, 24_000, 18)),
+        ("Costas-13", 13, (5_530, 5_770, 6_600, 3, 3, 24_898, 32)),
+        ("Costas-17", 17, (46_212, 51_896, 64_670, 4, 7, 560_340, 81)),
+        (
+            "Costas-19",
+            19,
+            (468_768, 554_424, 643_385, 6, 5, 10_654_342, 105),
+        ),
+        (
+            "Costas-23",
+            23,
+            (3_020_644, 4_188_520, 5_881_823, 9, 8, 210_710_060, 360),
+        ),
     ]
     if "--extended" in sys.argv:
         families.extend(
             [
-                ("Costas-29", 29, (11_791_516, 20_407_716, 28_848_423, 14, 8)),
-                ("Costas-31", 31, (3_872_958, 6_992_486, 8_944_592, 17, 8)),
-                ("Costas-37", 37, (18_630_176, 28_102_892, 33_355_193, 12, 5)),
+                (
+                    "Costas-29",
+                    29,
+                    (
+                        11_791_516,
+                        20_407_716,
+                        28_848_423,
+                        14,
+                        8,
+                        1_551_503_942,
+                        775,
+                    ),
+                ),
+                (
+                    "Costas-31",
+                    31,
+                    (3_872_958, 6_992_486, 8_944_592, 17, 8, 362_144_254, 1_124),
+                ),
+                (
+                    "Costas-37",
+                    37,
+                    (18_630_176, 28_102_892, 33_355_193, 12, 5, 1_822_383_048, 774),
+                ),
             ]
         )
 
     for name, prime, expected in families:
         actual = genuine_profile(transformed_costas(prime))
         assert actual == expected, (name, actual, expected)
-        collision_mass, literal_moment, tail_weighted, maximum, diversity = actual
+        (
+            collision_mass,
+            literal_moment,
+            tail_weighted,
+            maximum,
+            diversity,
+            support_moment,
+            support_maximum,
+        ) = actual
         print(
             name,
             actual,
@@ -250,6 +303,10 @@ def main() -> None:
             "max",
             maximum,
             diversity,
+            "support/M",
+            support_moment / collision_mass,
+            "support max",
+            support_maximum,
         )
 
     radial_families: list[tuple[str, int, RadialProfile]] = [
