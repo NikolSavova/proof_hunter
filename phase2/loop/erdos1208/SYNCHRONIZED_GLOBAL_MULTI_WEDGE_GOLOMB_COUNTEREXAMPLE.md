@@ -33,7 +33,8 @@ transverse pool of size `Omega(n^2)`, and `Theta(n)` distinct physical
 wedges carry its scalar label.
 
 This has a deliberately narrow consequence.  It disproves the pooled
-sufficient theorem (1.1), **not** the original scalar aggregate
+sufficient theorem (1.1), but does **not furnish a counterexample** to the
+original scalar aggregate
 
 \[
  \sum_q\mathcal X_q\le m^{o(1)}Nk^3.                  \tag{1.4}
@@ -51,7 +52,8 @@ source pair the unamplified one-role contribution is only
 below the original `Nk^3=Theta(n^5)` scale.  Its once-amplified transverse
 mass is `Theta(n^6)`, exactly the allowed `Nk^4=Theta(n^6)` scale.  Only
 the additional binomial pooling produces the false `n^8` demand.  Thus
-the original problem and its scalar aggregate remain open.
+the original problem and its scalar aggregate remain open; no claim is
+made here that the total scalar mass of this family has been bounded.
 
 ## 2. The Golomb core supplies one quadratic codegree
 
@@ -113,6 +115,11 @@ Thus
 \[
  \boxed{O(p)=\Omega(n^3).}                            \tag{2.7}
 \]
+
+This is also the correct order.  In a simple graph on `n` vertices each
+edge meets at most `2(n-2)` other edges, so the sum of the wedge counts in
+the two target roles is `O(nc_0)=O(n^3)`.  Hence
+`O(p)=Theta(n^3)`.
 
 For every such base, at most `15n-36` core translations fail the literal
 anchor-and-two-target-role transversality predicate.  Therefore every old
@@ -224,7 +231,11 @@ It remains to impose global squared-distance and pair-sum injectivity.
 This can be done at polynomial height without disturbing any displayed
 identity.
 
-For a convenient one-parameter choice, take `w=2v+1`.  The five distance
+First fix `z=n^C`, with an absolute exponent `C` large enough that the
+resulting nonzero `|r|` dominates the square of the polynomial parameter
+range below, all core labels lie below the four forced long-edge labels,
+and (3.5) exceeds `N`.  For a convenient one-parameter choice, take
+`w=2v+1`.  The five distance
 labels forced before the three free translations of a gadget are
 
 \[
@@ -251,9 +262,11 @@ lemma---a nonzero degree-`d` polynomial vanishes on at most
 `d|S|^(D-1)` points of `S^D`---gives an integral choice on a grid of
 polynomial side length avoiding their union.
 
-Finally choose `z` from a polynomial interval avoiding the finitely many
-remaining forced-label coincidences and large enough for (3.5).  All
-coordinates then have size `n^(O(1))`.  Hence the final union is a genuine
+Include among the avoided quadratics every unintended equality
+`delta(e)-delta(f)=r`.  Consequently the only distance-gap records at
+this scalar are the two installed records per gadget; in particular
+`R_D(r)=R_D(-r)=2L` and `W_(r,N)=L`.  All coordinates have size
+`n^(O(1))`.  Hence the final union is a genuine
 integral distance-Sidon set, has globally unique unordered pair sums, and
 has height
 
@@ -266,8 +279,8 @@ In particular `m^(o(1))=n^(o(1))`, so it cannot absorb any fixed power of
 
 ## 6. Failure of every fixed pooling order
 
-Let `mathcal C_p` be the `Omega(n^3)` surviving old one-role bases.  For
-each `b in mathcal C_p`, (4.3) gives `T_p(b)=Omega(n^2)`, while (3.6) gives
+Let `\mathcal C_p` be the `Omega(n^3)` surviving old one-role bases.  For
+each `b\in\mathcal C_p`, (4.3) gives `T_p(b)=Omega(n^2)`, while (3.6) gives
 the scalar weight
 
 \[
@@ -300,7 +313,7 @@ For comparison, without binomial pooling the same selected pair supplies
 \[
 \begin{array}{c|c|c}
 \text{mass}&\text{construction size}&\text{required scale}\\ \hline
-D_{\rm one}(W)&\Theta(n^4)&Nk^3=\Theta(n^5)\\
+D_{\rm one}(W)\text{ at }p&\Theta(n^4)&Nk^3=\Theta(n^5)\\
 \mathfrak T_{\rm rich}(W)&\Theta(n^6)&Nk^4=\Theta(n^6)\\
 \mathfrak P_2(W)&\Theta(n^8)&Nk^5=\Theta(n^7).
 \end{array}                                            \tag{6.4}
@@ -328,6 +341,7 @@ B_2(p)&139,373,896\\
 \#\text{ determinant-qualified first edges at }r&12\\
 W_{r,N}&6\\
 R_D(r),R_D(-r)&12,\ 12\\
+c(p)R_D(r)&3,840\\
 B_2(p)W_{r,N}&836,243,376\\
 Nk^5&56,871,202,172,832\\
 \max |\text{coordinate}|&903,272,942,369.

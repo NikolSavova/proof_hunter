@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finite shadow of the global multi-wedge Golomb counterexample."""
+"""Finite shadow of the pooled P_2 multi-wedge Golomb counterexample."""
 
 from __future__ import annotations
 
@@ -277,7 +277,7 @@ def main() -> None:
     )
     assert actual == expected, (actual, expected)
     print("global synchronized multi-wedge profile", actual)
-    print("global synchronized Nk^5 gate: ASYMPTOTIC COUNTEREXAMPLE SHADOW PASS")
+    print("pooled P_2/Nk^5 gate: ASYMPTOTIC COUNTEREXAMPLE SHADOW PASS")
 
 
 if __name__ == "__main__":
