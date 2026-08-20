@@ -221,6 +221,51 @@ parabola fibres saturate the signed design-matrix rank bound.  Read
 `COMMON_TRANSLATION_DESIGN_MATRIX_MATCHING_DEFECT_AUDIT.md` before trying a
 generic wedge, matching, or sparse-rank argument.
 
+### 2026-08-20 lossless high/low checkpoint
+
+The common-translation decomposition has now been sharpened to remove all
+polynomial bookkeeping losses in the high-codegree band.  For a source
+pair `p` with common-fibre codegree `c(p)>=k`, let `rho(p)` count rigid
+endpoint replacements and let `O(p)` be its total one-role target-wedge
+count.  `HIGH_CODEGREE_REPLACEMENT_COMPLETION.md` proves
+
+\[
+ O(p)\ge c(p)-\rho(p),
+ \qquad
+ c(p)V(p)\le\rho(p)V(p)+O(p)V(p)                 \tag{1.9}
+\]
+
+for every nonnegative weight `V`.  Hence the high band is reduced with
+constant one to the exact replacement and one-role masses.  The reverse
+switch in `TARGET_STAR_REVERSE_EXTENSION_SWITCH.md` rewrites both masses,
+while preserving `q`, as scalar-weighted interactions between a canonical
+`(k-2)`-point star `P_g` and `H_g` or an explicit boundary of size at most
+`2(k-2)`.  The missing high-band theorem is precisely a bound for the
+backward metric correlation `delta(v-q)-delta(w-q)` in these switched
+systems.
+
+For `c(p)<k`, `LOW_CODEGREE_ANCHOR_MATCHING_TWO_SCALE_BARRIER.md` proves the
+sharp reduction `C_<k(r)<=(k-1)R_D(-18r)`.  With `U_L(r)` the surviving
+high-determinant target multiplicity, `W_(r,L)` its endpoint wedges, and
+
+\[
+ B_L=\sum_rR_D(-18r)U_L(r),\qquad
+ J_L=\sum_rR_D(-18r)W_{r,L},
+\]
+
+`LOW_BAND_TWO_SCALE_ENDPOINT_INCIDENCE_AUDIT.md` gives, for `T>=k`,
+
+\[
+ \sum_{U_L(r)\ge T}R_D(-18r)
+ \le\min\{B_L/T,kJ_L/T^2\}.                     \tag{1.10}
+\]
+
+Thus either `B_L` or `J_L` at scale `m^(o(1))Nk^2` closes the low band.
+Their circle/line incidence realizations are exact, but unweighted incidence
+bounds discard precisely the multiplicity being estimated.  A genuine
+determinant-rich pencil attains the proposed `J_L` scale, so the remaining
+estimate must be sharp and endpoint-weighted.
+
 ### Proof of the implication
 
 Equation (1.3) is obtained by expanding equality of two values in (1.2):
@@ -430,6 +475,10 @@ must use simultaneously that
 2. every label in `D` has one endpoint edge; and
 3. all labels are norms of integral planar differences.
 
-The next inverse step is to show that polynomial cross-additive energy
-between `B_q` and `C D` forces two distinct endpoint differences to have the
-same norm.  That conclusion is forbidden by distance-Sidonicity.
+The remaining scalar proof is now more precise than a generic inverse step:
+establish the star-to-clean backward metric correlation bound in the
+high-codegree switch (1.9), and one of the two sharp weighted moment bounds
+behind (1.10) in the low-codegree band.  Either estimate must preserve the
+clean translation and endpoint decorations; the verified counterexamples
+rule out replacing them by marginal distance-gap, source-moment, degree, or
+ordinary incidence information.
