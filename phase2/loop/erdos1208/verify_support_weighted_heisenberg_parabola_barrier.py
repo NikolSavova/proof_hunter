@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from fractions import Fraction
-from itertools import combinations
+from itertools import combinations, product
 from math import comb
 
 
@@ -149,8 +149,156 @@ def pell_gap_identity_checks(limit: int = 200) -> None:
                     assert left < 1  # This branch is mathematically impossible.
 
 
+def difference_counts(
+    points: list[tuple[int, Fraction]],
+) -> dict[tuple[int, Fraction], int]:
+    counts: dict[tuple[int, Fraction], int] = {}
+    for first in points:
+        for second in points:
+            difference = (first[0] - second[0], first[1] - second[1])
+            counts[difference] = counts.get(difference, 0) + 1
+    return counts
+
+
+def coherent_block_height_checks() -> None:
+    # Exhaust all four-point integer graphs in a 5-by-5 box, for several
+    # rational nonzero curvatures.  Here w=(0,1), z_w=(1,0), so q_w=1.
+    size = 4
+    side_length = 5
+    for values in product(range(side_length), repeat=size):
+        for theta in (Fraction(1, 2), Fraction(2), Fraction(-3, 2)):
+            transformed = [
+                (index, Fraction(value) - theta * index * index / 2)
+                for index, value in enumerate(values)
+            ]
+            counts = difference_counts(transformed)
+            energy = sum(multiplicity**2 for multiplicity in counts.values())
+
+            curvature_budget = int(
+                Fraction(2 * (side_length - 1), 1) / abs(theta)
+            )
+            divisor_sum = sum(
+                curvature_budget // value
+                for value in range(1, curvature_budget + 1)
+            )
+            assert energy <= 2 * size**2 + 4 * size * divisor_sum
+            factorial_energy = sum(
+                multiplicity * (multiplicity - 1)
+                for difference, multiplicity in counts.items()
+                if difference != (0, 0)
+            )
+            assert energy == 2 * size**2 - size + factorial_energy
+            assert factorial_energy <= 4 * size * divisor_sum
+            child_triples = sum(
+                comb(multiplicity, 3)
+                for difference, multiplicity in counts.items()
+                if difference != (0, 0)
+            )
+            assert 6 * child_triples <= size * factorial_energy
+
+            # In a through-origin parameter block, every parent parameter
+            # is an L-popular difference of B.  Test the exact
+            # autocorrelation and resulting weighted estimate.
+            for richness in (2, 3):
+                popular = sorted(
+                    difference
+                    for difference, multiplicity in counts.items()
+                    if difference[0] > 0 and multiplicity >= richness
+                )
+                parameter_differences: dict[tuple[int, Fraction], int] = {}
+                popular_weight = 0
+                for first in popular:
+                    for second in popular:
+                        difference = (
+                            first[0] - second[0],
+                            first[1] - second[1],
+                        )
+                        parameter_differences[difference] = (
+                            parameter_differences.get(difference, 0) + 1
+                        )
+                for first_index, second_index in combinations(
+                    range(len(popular)), 2
+                ):
+                    first = popular[first_index]
+                    second = popular[second_index]
+                    difference = (
+                        first[0] - second[0],
+                        first[1] - second[1],
+                    )
+                    popular_weight += comb(counts.get(difference, 0), 3)
+                for difference, multiplicity in parameter_differences.items():
+                    correlation = sum(
+                        count * counts.get(
+                            (
+                                point[0] - difference[0],
+                                point[1] - difference[1],
+                            ),
+                            0,
+                        )
+                        for point, count in counts.items()
+                    )
+                    assert richness**2 * multiplicity <= correlation
+                    assert correlation <= energy
+                assert popular_weight * richness**2 <= energy * child_triples
+                assert (
+                    3 * popular_weight * richness**2
+                    <= 4
+                    * size**3
+                    * divisor_sum
+                    * (size + 2 * divisor_sum)
+                )
+
+            # Check the exact four-index factorization behind the height
+            # bound, including signs and the ambient coordinate identity.
+            for a, d, b, c in product(range(size), repeat=4):
+                if transformed[a][0] + transformed[d][0] != (
+                    transformed[b][0] + transformed[c][0]
+                ):
+                    continue
+                if transformed[a][1] + transformed[d][1] != (
+                    transformed[b][1] + transformed[c][1]
+                ):
+                    continue
+                u = a - b
+                v = a - c
+                assert d == a - u - v
+                value_combo = values[a] + values[d] - values[b] - values[c]
+                assert value_combo == theta * u * v
+                assert abs(theta * u * v) <= 2 * (side_length - 1)
+
+    # The weighted step is purely additive: any oriented parameter-pair
+    # multiset is bounded by its largest difference multiplicity times the
+    # full child-triple mass.
+    theta = Fraction(3, 2)
+    values = (0, 4, 1, 3, 2)
+    transformed = [
+        (index, Fraction(value) - theta * index * index / 2)
+        for index, value in enumerate(values)
+    ]
+    child_counts = difference_counts(transformed)
+    parameters = [
+        (1, Fraction(0)),
+        (2, Fraction(1)),
+        (4, Fraction(-1)),
+        (5, Fraction(3)),
+        (7, Fraction(0)),
+    ]
+    oriented_counts: dict[tuple[int, Fraction], int] = {}
+    weighted_mass = 0
+    for second_index, first_index in combinations(range(len(parameters)), 2):
+        first = parameters[first_index]
+        second = parameters[second_index]
+        difference = (first[0] - second[0], first[1] - second[1])
+        oriented_counts[difference] = oriented_counts.get(difference, 0) + 1
+        weighted_mass += comb(child_counts.get(difference, 0), 3)
+    reverse_multiplicity = max(oriented_counts.values())
+    child_triples = sum(comb(value, 3) for value in child_counts.values())
+    assert weighted_mass <= reverse_multiplicity * child_triples
+
+
 def main() -> None:
     pell_gap_identity_checks()
+    coherent_block_height_checks()
     profiles = []
     for half_size in (4, 8, 16, 32, 64, 100):
         assert distance_sidon_parabola(2 * half_size)

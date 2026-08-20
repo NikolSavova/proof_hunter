@@ -29,26 +29,24 @@ On the transverse-rich branch,
         \le2\mathfrak N_{\rm tr}(V).}                 \tag{1.2}
 \]
 
-Higher synchronized pools can likewise be normalized by the actual
-codegree.  The correct fixed-`ell` mass is
+There are two different actual-codegree normalizations for higher pools,
+and they must not be conflated.  The coefficient `c(p)^(1-ell)` normalizes
+an `ell`-pool only back to the **pre-normalized, once-amplified** mass
+`sum_C T(C)w(C)`.  The lossless outer `1/c(p)` in (1.1) requires one
+additional reciprocal factor.  The terminal fixed-`ell` mass is
 
 \[
  \boxed{
- \mathfrak P_\ell^{\rm norm}(V)
- =\sum_C c(p_C)^{1-\ell}{T(C)\choose\ell}w(C),}       \tag{1.3}
+ \mathfrak P_\ell^{\rm out}(V)
+ =\sum_C c(p_C)^{-\ell}{T(C)\choose\ell}w(C).}        \tag{1.3}
 \]
 
-not the unnormalized `mathfrak P_ell`.  On `T(C)>=c(p_C)/2`, (1.3) is
-within constants depending only on `ell` of the once-amplified mass
-`sum_C T(C)w(C)`.  Its sufficient global scale is always `Nk^4`, rather
-than `Nk^(ell+3)`.
-
-The Golomb multi-wedge family exactly validates this correction: its
-unnormalized pools exceed the proposed targets by powers of `k`, whereas
-every actual-codegree-normalized pool has the sharp `Theta(Nk^4)` scale.
-This is a structural reset, not yet the missing upper bound.  The live
-problem is now to exploit the reciprocal weight after switching the third
-translation to the outside.
+On `T(C)>=c(p_C)/2`, (1.3) is within constants depending only on `ell` of
+the outer-normalized mass `sum_C(T(C)/c(p_C))w(C)`.  Its live global scale
+is `Nk^3`.  The large-star construction in
+`ACTUAL_CODEGREE_NORMALIZED_LARGE_STAR_BARRIER.md` proves that the
+pre-normalized `c^(1-ell)` mass can be `Theta(k^7)>Nk^4`, while (1.3)
+remains sharply `Theta(Nk^3)`.
 
 ## 2. Canonical local-channel partition
 
@@ -158,14 +156,21 @@ One may now attack each chosen endpoint channel after the outer switch
 only from choosing one possibly overlapping heavy channel before
 normalizing.
 
-## 4. Correctly normalized synchronized pools
+## 4. Pre-normalized versus outer-normalized synchronized pools
 
-For a fixed `ell>=2`, define (1.3) on the transverse-rich bases.  Since
+For a fixed `ell>=2`, first define the pre-normalized mass
+
+\[
+ \mathfrak P_\ell^{\rm pre}(V)
+ =\sum_Cc(p_C)^{1-\ell}{T(C)\choose\ell}w(C).         \tag{4.1}
+\]
+
+Since
 `T(C)<=c(p_C)`, one always has
 
 \[
  c(p_C)^{1-\ell}{T(C)\choose\ell}
- \le {T(C)\over\ell!}.                                \tag{4.1}
+ \le {T(C)\over\ell!}.                                \tag{4.2}
 \]
 
 Conversely, if `c(p_C)>=4ell` and `T(C)>=c(p_C)/2`, then
@@ -177,44 +182,52 @@ Conversely, if `c(p_C)>=4ell` and `T(C)>=c(p_C)/2`, then
  &\ge {T(C)\over\ell!}
        \left({c(p_C)\over4}\right)^{\ell-1},\\
  T(C)&\le \ell!4^{\ell-1}
- c(p_C)^{1-\ell}{T(C)\choose\ell}.                   \tag{4.2}
+ c(p_C)^{1-\ell}{T(C)\choose\ell}.                   \tag{4.3}
 \end{aligned}
 \]
 
 Therefore
 
 \[
- \ell!\,\mathfrak P_\ell^{\rm norm}(V)
+ \ell!\,\mathfrak P_\ell^{\rm pre}(V)
  \le\sum_CT(C)w(C)
- \le\ell!4^{\ell-1}\mathfrak P_\ell^{\rm norm}(V). \tag{4.3}
+ \le\ell!4^{\ell-1}\mathfrak P_\ell^{\rm pre}(V).  \tag{4.4}
+\]
+
+Dividing the pointwise inequalities by `c(p_C)` gives the lossless outer
+version (1.3):
+
+\[
+ \ell!\,\mathfrak P_\ell^{\rm out}(V)
+ \le\sum_C{T(C)\over c(p_C)}w(C)
+ \le\ell!4^{\ell-1}\mathfrak P_\ell^{\rm out}(V).  \tag{4.5}
 \]
 
 For `ell=2`, the sharper exact comparison is
 
 \[
- T(C)\le {4c(p_C)\over c(p_C)-2}
- {1\over c(p_C)}{T(C)\choose2}.                       \tag{4.4}
+ {T(C)\over c(p_C)}
+ \le {4c(p_C)\over c(p_C)-2}
+ {1\over c(p_C)^2}{T(C)\choose2}.                    \tag{4.6}
 \]
 
-Thus normalized pooling retains all synchronized four-sum identities but
-does not increase the analytic target.  A bound
+Thus outer-normalized pooling retains the synchronized four-sum identities
+without increasing the analytic target.  The live sufficient estimate is
 
 \[
- \mathfrak P_\ell^{\rm norm}(W_{\cdot,L})
- \le m^{o(1)}Nk^4                                    \tag{4.5}
+ \mathfrak P_\ell^{\rm out}(W_{\cdot,L})
+ \le m^{o(1)}Nk^3.                                    \tag{4.7}
 \]
 
-for any fixed `ell` is equivalent up to constants to the once-amplified
-transverse target.  After (1.2) and the high-codegree cutoff `c(p)>=k`, it
-returns the desired unamplified `Nk^3` scale.
+The analogous `Nk^4` estimate for `mathfrak P_ell^pre` is false.
 
 ## 5. Equality-model audit and exact remaining barrier
 
-In the Golomb multi-wedge construction,
+In the sharpened Golomb large-star construction,
 
 \[
  c(p)=\Theta(n^2),\quad O(p)=\Theta(n^3),\quad
- T(C)=\Theta(n^2),\quad W_{r,N}=\Theta(n).             \tag{5.1}
+ T(C)=\Theta(n^2),\quad W_{r,N}=\Theta(n^2).          \tag{5.1}
 \]
 
 Consequently the three relevant selected-p masses are
@@ -222,19 +235,22 @@ Consequently the three relevant selected-p masses are
 \[
 \begin{aligned}
  \mathfrak N_{\rm tr}(W)
-  &\asymp n^3{n^2\over n^2}n=\Theta(n^4),\\
- \mathfrak P_\ell^{\rm norm}(W)
-  &\asymp n^3(n^2)^{1-\ell}(n^2)^\ell n
-    =\Theta(n^6),                                     \tag{5.2}
+  &\asymp n^3{n^2\over n^2}n^2=\Theta(n^5),\\
+ \mathfrak P_\ell^{\rm pre}(W)
+  &\asymp n^3(n^2)^{1-\ell}(n^2)^\ell n^2
+    =\Theta(n^7),\\
+ \mathfrak P_\ell^{\rm out}(W)
+  &\asymp n^3(n^2)^{-\ell}(n^2)^\ell n^2
+    =\Theta(n^5).                                     \tag{5.2}
 \end{aligned}
 \]
 
-for every fixed `ell`.  The first is below `Nk^3=Theta(n^5)` and the
-second is exactly the once-amplified `Nk^4=Theta(n^6)` scale.  This removes
-the `n^(ell-1)` false excess proved in
-`SYNCHRONIZED_GLOBAL_MULTI_WEDGE_GOLOMB_COUNTEREXAMPLE.md`.
+for every fixed `ell`.  The first and third exactly match
+`Nk^3=Theta(n^5)`, while the second exceeds `Nk^4=Theta(n^6)` by a factor
+`n`.  This is why the outer reciprocal factor cannot be postponed until
+after a pre-normalized pool.
 
-Normalization alone does not prove (4.5).  After the switch (2.5), a
+Normalization alone does not prove (4.7).  After the switch (2.5), a
 crude estimate inside each `q_0` can still discard the common source pair
 and the scalar weight, while a crude sum over source pairs simply uses
 (2.6) and returns the original unpooled problem.  The exact survivor is:
@@ -263,13 +279,13 @@ D_{\rm one}(w)&37,014\\
 \sum_j\mathfrak N_j(w)&396,447/32\\
 \sum_C{T(C)\choose2}&139,373,896\\
 \sum_CT(C)w(C)&7,880,010\\
-\mathfrak P_2^{\rm norm}(w)&52,265,211/20.
+\mathfrak P_2^{\rm pre}(w)&52,265,211/20.
 \end{array}                                            \tag{6.1}
 \]
 
 The two normalized terms add exactly to `37,014`; all 660,745 local
 records are assigned once among the fifteen channels.  The verifier also
-checks the rich comparison (3.2), the sharp pair comparison (4.4), and the
+checks the rich comparison (3.2), the pre-normalized pair comparison, and the
 global distance/pair-sum-Sidon construction inherited from the multi-wedge
 certificate.
 

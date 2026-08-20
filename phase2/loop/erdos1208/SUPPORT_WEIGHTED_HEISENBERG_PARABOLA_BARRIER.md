@@ -86,7 +86,59 @@ popular-difference correlation, with the parabola degenerating to a
 one-dimensional arithmetic progression.  This is the right framework for
 a support-sensitive incidence theorem.
 
+There is a quantitative result in this framework.  If \(R\) is the
+largest normalized parameter-difference multiplicity in the block and
+
+\[
+ H=\left\lfloor {2(m-1)\over \|w\|_\infty|\theta|}\right\rfloor,
+\qquad
+ D(H)=\sum_{n=1}^H\left\lfloor {H\over n}\right\rfloor,
+\]
+
+then for \(\theta\ne0\)
+
+\[
+ \boxed{
+ E_+(B_\theta)\le 2k^2+4kD(H),\qquad
+ W(P_\theta,B_\theta)
+ \le {Rk\over6}\bigl(2k^2+4kD(H)\bigr).}             \tag{1.9}
+\]
+
+For \(\theta=0\), instead \(W(P_\theta,B_\theta)=0\).  Thus every single
+coherent affine block is controlled by the product of its parameter-path
+multiplicity and its available curvature height.  The parabola has
+\(R=\Theta(k)\) and \(H=\Theta(k^2)\), so (1.9) recovers its
+\(k^5\) mass up to one logarithm.
+
+When the affine parameter line passes through the origin
+(\(\eta=0\)) and every selected parent patch has at least \(L\) tails,
+the popular-difference information gives the stronger estimate
+
+\[
+ \boxed{
+ W(P_\theta,B_\theta)
+ \le {4\over3}{k^3D(H)(k+2D(H))\over L^2}.}          \tag{1.10}
+\]
+
+This proves (1.7) for the full parabola block up to powers of
+\(\log m\).  It also gives an explicit residual condition for every
+through-origin coherent block, with no Freiman theorem needed.
+
 ## 2. Quadratic normalization of an affine parameter block
+
+Fix a primitive graph-like direction \(w\), choose
+\(z_w\in\mathbb Z^2\) with \(\det(w,z_w)=1\), and suppose the
+distance-Sidon set has one point on each occupied \(w\)-fibre.  If the
+occupied transverse levels form \(R\), write
+
+\[
+ x_r=r z_w+f(r)w\in[1,m]^2\qquad(r\in R),            \tag{2.0}
+\]
+
+so \(|R|\le k\).  Its fixed-shift derivatives are
+\(d_q(r)=f(r+q)-f(r)\).  A rich derivative-line patch is encoded by
+\((q,\lambda_q,\alpha_q)\), meaning
+\(d_q(r)=\alpha_q+\lambda_qr\) on its tail support.
 
 Let a patch have parameters \((q,\lambda_q,\alpha_q)\), and suppose the
 chosen parameter block satisfies (1.8).  Define
@@ -271,7 +323,197 @@ This argument is a short negative-Pell gap principle: two solutions of
 \(x^2-ny^2=-1\) cannot both satisfy the endpoint constraint needed by
 distinct parabola edges.
 
-## 5. Consequence for the residual strategy
+## 5. A height bound for one coherent affine block
+
+Let
+
+\[
+ r_B(x)=r_{B_\theta-B_\theta}(x),\qquad
+ R=\max_x r^+_{P_\theta-P_\theta}(x),                 \tag{5.1}
+\]
+
+where the second multiplicity retains the chosen orientation of parent
+pairs.  Put \(n_B=|B_\theta|\le k\) and write
+\(q_w=\|w\|_\infty\).  Suppose first that
+\(\theta\ne0\), and put
+
+\[
+ H=\left\lfloor{2(m-1)\over q_w|\theta|}\right\rfloor,
+\qquad
+ D(H)=\sum_{n=1}^H\left\lfloor{H\over n}\right\rfloor,
+                                                               \tag{5.2}
+\]
+
+with \(D(0)=0\).  Then
+
+\[
+ \boxed{
+ E_+(B_\theta):=\sum_x r_B(x)^2
+ \le 2k^2+4kD(H).}                                   \tag{5.3}
+\]
+
+Indeed, an additive quadruple in \(B_\theta\) has indices
+
+\[
+ a+d=b+c.
+\]
+
+Set \(u=a-b\) and \(v=a-c\), so \(d=a-u-v\).  Equality in the second
+coordinate, using \(F(r)=f(r)-\theta r^2/2\), gives the exact identity
+
+\[
+ f(a)+f(d)-f(b)-f(c)=\theta uv.                      \tag{5.4}
+\]
+
+The \(z_w\)-components cancel from
+\(x_a+x_d-x_b-x_c\), and hence
+
+\[
+ x_a+x_d-x_b-x_c=\theta uv\,w.                       \tag{5.5}
+\]
+
+A coordinate attaining \(\|w\|_\infty\), together with
+\(x_r\in[1,m]^2\), now yields
+
+\[
+ |\theta uv|q_w\le2(m-1).                            \tag{5.6}
+\]
+
+The solutions with \(u=0\) or \(v=0\) contribute at most \(2k^2\).
+For each \(a\), the number of nonzero signed pairs \((u,v)\) with
+\(|uv|\le H\) is at most \(4D(H)\).  This proves (5.3), including all
+boundary effects.
+
+The total child-triple mass of \(B_\theta\) obeys
+
+\[
+ \sum_x {r_B(x)\choose3}
+ \le {k\over6}\sum_xr_B(x)^2
+ ={k\over6}E_+(B_\theta),                            \tag{5.7}
+\]
+
+because \(r_B(x)\le k\).  Combining (2.5), (5.1), (5.3), and (5.7)
+proves
+
+\[
+ \boxed{
+ W(P_\theta,B_\theta)
+ \le {Rk\over6}\bigl(2k^2+4kD(H)\bigr)
+ \ll R\bigl(k^3+k^2H\log(2+H)\bigr).}                \tag{5.8}
+\]
+
+If \(\theta=0\), every child line has slope zero.  Injectivity of the
+fixed-shift derivative implies that each such line has occupancy at most
+one, so its triple weight vanishes and \(W(P_\theta,B_\theta)=0\).
+
+Let \(S=k^3+m^2\).  Since
+
+\[
+ {S^2\over k^3}
+ =k^3\left(1+{m^2\over k^3}\right)^2,                \tag{5.9}
+\]
+
+(5.8) proves the corrected target (1.7) for every coherent block
+satisfying
+
+\[
+ R\left(1+{H\log(2+H)\over k}\right)
+ \le m^{o(1)}
+ \left(1+{m^2\over k^3}\right)^2.                   \tag{5.10}
+\]
+
+This is a genuine short-path/height dichotomy.  A block can remain
+uncontrolled by (5.8) only when it has simultaneously large normalized
+parameter-difference multiplicity \(R\) and large curvature budget
+\(H\).  On the parabola, \(q_w=1,\theta=2\),
+\(H=(k-1)^2\), and \(R=k/2-1\), so (5.10) is sharp apart from the
+divisor logarithm.
+
+There is a stronger conclusion when \(\eta=0\).  Suppose every selected
+parent patch has between \(L\) and \(2L\) tails.  By (2.6),
+
+\[
+ r_B(p)\ge L\qquad(p\in P_\theta).                   \tag{5.11}
+\]
+
+Define the nontrivial factorial energy
+
+\[
+ E^\#(B_\theta)
+ =\sum_{x\ne0}r_B(x)(r_B(x)-1).                      \tag{5.12}
+\]
+
+Every term in (5.12) is an ordered pair of distinct representations
+
+\[
+ B_a-B_b=B_c-B_d\ne0.
+\]
+
+With \(u=a-b\) and \(v=a-c\), both \(u\) and \(v\) are nonzero:
+\(u=0\) would make the represented difference zero, while \(v=0\)
+would make the two representations identical.  The proof of
+(5.3) therefore has no degenerate contribution and gives
+
+\[
+ \boxed{E^\#(B_\theta)\le4kD(H).}                    \tag{5.13}
+\]
+
+Moreover,
+
+\[
+\begin{aligned}
+ E_+(B_\theta)
+ &=2n_B^2-n_B+E^\#(B_\theta)
+ \le2k^2+E^\#(B_\theta),\\
+ \sum_{x\ne0}{r_B(x)\choose3}
+ &\le {k\over6}E^\#(B_\theta).
+                                                               \tag{5.14}
+\end{aligned}
+\]
+
+The first identity separates the zero difference and the diagonal
+representation pairs exactly.
+
+For every \(x\), (5.11) implies the popular-difference autocorrelation
+bound
+
+\[
+\begin{aligned}
+ r_{P_\theta-P_\theta}(x)
+ &\le {1\over L^2}
+ \sum_y r_B(y)r_B(y-x)\\
+ &\le {E_+(B_\theta)\over L^2}.                      \tag{5.15}
+\end{aligned}
+\]
+
+The last line is Cauchy--Schwarz.  Since distinct parent parameters have
+nonzero difference, (2.5), (5.13)--(5.15) prove
+
+\[
+\begin{aligned}
+ W(P_\theta,B_\theta)
+ &\le {E_+(B_\theta)\over L^2}
+       \sum_{x\ne0}{r_B(x)\choose3}\\
+ &\le {4\over3}
+       {k^3D(H)(k+2D(H))\over L^2}.                 \tag{5.16}
+\end{aligned}
+\]
+
+Thus the corrected target follows for a through-origin coherent block
+whenever
+
+\[
+ D(H)\bigl(k+2D(H)\bigr)
+ \le m^{o(1)}\,{L^2(k^3+m^2)^2\over k^6}.           \tag{5.17}
+\]
+
+For the parabola, \(L\asymp k\), \(H\asymp k^2\), and
+\(D(H)\ll k^2\log k\).  The two sides of (5.17) are respectively
+\(O(k^4\log^2k)\) and \(\Theta(k^4)\), so the logarithmic loss is
+absorbed by \(m^{o(1)}\).  This rigorously pays the entire coherent
+parabola block at the sharp scale (1.7).
+
+## 6. Consequence for the residual strategy
 
 The isolated-preimage stress showed that local reverse multiplicity need
 not create a long parameter path.  The parabola now shows the complementary
@@ -290,9 +532,29 @@ An unqualified estimate of \(W\) at the record scale is false.  The next
 viable target is either the sharp global bound (1.7), or a dichotomy saying
 that every contribution above \(m^{o(1)}(k^3+m^2)\) in (1.1) lies in a
 quadratically normalized additive block whose height pays the extra
-factor.
+factor.  The bound (5.8) proves precisely this statement for one affine
+parameter block, while (5.16) retains the full \(L\)-popular-difference
+gain for a block through the origin.
 
-## 6. Verification
+The exact remaining gap is now global rather than local: affine parameter
+blocks can overlap, and one must sum (5.8) without repeatedly charging the
+same endpoints.  Equivalently, one needs a decomposition theorem showing
+that the blocks with large product
+
+\[
+ R\left(1+{H\log(2+H)\over k}\right)
+\]
+
+either have bounded total overlap, or merge into a larger coherent
+quadratic block whose ambient height pays their combined mass.  Distributed
+short parameter paths already have small \(R\); the difficult residual is
+the simultaneous large-\(R\), large-\(H\) family.  In the
+through-origin branch, the smaller exact residual is the failure range of
+(5.17).  For affine blocks with \(\eta\ne0\), the parent patches are not
+popular differences of the single normalized graph \(B_\theta\), so only
+(5.8) is presently available.
+
+## 7. Verification
 
 Run
 
@@ -300,5 +562,9 @@ Run
 
 The verifier checks the exact Heisenberg quotient, child occupancies,
 formulae (1.3)--(1.5), the quadratic normalization, reverse multiplicity,
-the Pell-gap identities, and every squared distance for
-\(2L=8,16,32,64,128,200\).
+the Pell-gap identities, the additive-energy height estimate (5.3), the
+triple-energy inequality (5.7), the weighted estimate (5.8), and every
+squared distance for \(2L=8,16,32,64,128,200\).  It also exhausts all
+four-point integer graphs in a \(5\)-square for three nonzero rational
+curvatures, checking (5.4)--(5.6), (5.13), the autocorrelation inequality
+(5.15), and the popular-difference estimate (5.16).

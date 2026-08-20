@@ -110,12 +110,12 @@ def profile() -> tuple[object, ...]:
     assert direct_mass <= 2 * normalized_transverse_mass
 
     once_amplified_mass = transverse_records * symmetric_scalar_weight
-    normalized_pair_mass = Fraction(
+    pre_normalized_pair_mass = Fraction(
         synchronized_pair_numerator * symmetric_scalar_weight, codegree
     )
     assert once_amplified_mass <= Fraction(
         4 * codegree, codegree - 2
-    ) * normalized_pair_mass
+    ) * pre_normalized_pair_mass
 
     return (
         len(points),
@@ -129,7 +129,7 @@ def profile() -> tuple[object, ...]:
         normalized_local_mass,
         synchronized_pair_numerator,
         once_amplified_mass,
-        normalized_pair_mass,
+        pre_normalized_pair_mass,
     )
 
 
