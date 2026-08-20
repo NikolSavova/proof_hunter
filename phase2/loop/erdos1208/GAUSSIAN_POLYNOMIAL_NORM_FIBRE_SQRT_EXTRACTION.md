@@ -285,4 +285,3 @@ program:
    theorem hypothesis: it needs a high-energy or growing alphabet, a
    non-product digit restriction, or arithmetic carries used as structure
    rather than avoided.
-
