@@ -90,7 +90,7 @@ placewise rounding lemma.  Consequently the resulting cost--gain function
 Take
 
 \[
-  \alpha=0.494586,qquad w_0=1040100.
+  \alpha=0.494586,\qquad w_0=1040100.
 \]
 
 As in the earlier proofs, it suffices at scale (w) to have
