@@ -483,8 +483,19 @@ def main() -> None:
 
     primes = elementary.prime_sieve(250_000)
     assert D == 467 * 1_759
+    assert 467 in primes and 1_759 in primes
     assert D % 8 == 5 and D % 3 == 2
     assert all(D % (p * p) for p in primes if p * p <= D)
+    sqrt_three_upper = Fraction(1_351, 780)
+    assert sqrt_three_upper * sqrt_three_upper > 3
+    fifth = Fraction(1, 5)
+    atan_fifth_lower = sum(
+        (-1) ** index * fifth ** (2 * index + 1) / (2 * index + 1)
+        for index in range(4)
+    )
+    pi_lower = 16 * atan_fifth_lower - 4 * Fraction(1, 239)
+    assert pi_lower > Fraction(333, 106)
+    assert 2 * sqrt_three_upper / Fraction(333, 106) == SAFE_C
     assert elementary.norm(FUNDAMENTAL_UNIT) == 1
     assert elementary.negative_at_embedding(FUNDAMENTAL_UNIT, False) == 0
     assert elementary.negative_at_embedding(FUNDAMENTAL_UNIT, True) == 0
