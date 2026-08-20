@@ -124,6 +124,49 @@ endpoint-difference and clean-fibre constraints retained.  Neither result
 proves (1.6), but together they sharply localize what a proof or genuine
 counterexample must address.
 
+Two aggregate follow-ups sharpen this further.
+`METRIC_SCALAR_LARGE_AREA_GAUSSIAN_RESIDUAL_AUDIT.md` proves that the branch
+
+\[
+ |d_s+18d_t|\le N/h
+\]
+
+also costs only `m^(o(1))hN`, even when both individual signed areas are
+large.  Its cleanly dressed sums-of-two-squares construction shows this is
+the end of the determinant-only route: the remaining large-area and
+large-residual core can genuinely have `k^(3-o(1))` collisions when
+`h=Theta(k)`, exactly the allowed `N(h+k)` scale.
+
+`METRIC_SCALAR_AGGREGATE_MANY_FIBRE_AUDIT.md` gives the exact identity
+
+\[
+ \sum_q\mathcal M_{q,18}
+ =\sum_{s,s'}c(s,s')
+ R_D\!\left({\delta(s')-\delta(s)\over18}\right)
+\]
+
+and reduces all summed easy branches without losing a factor equal to the
+number of fibres.  The surviving sufficient aggregate conjecture is
+
+\[
+ \sum_q(\mathcal M_{q,18}-Nh_q)\le m^{o(1)}Nk^3.          \tag{1.7}
+\]
+
+Fibrewise Cauchy and Cauchy over the at most `k(k-1)` realized differences
+show directly that (1.7) implies
+`sum_q h_q<=m^(2+o(1))+k^(3+o(1))`, hence the cube-root theorem.
+
+The endpoint incidence does have exact extra structure, but the immediate
+forms are insufficient.  A source star maps to pairwise disjoint target
+edges.  For a source matching, the target-degree defect obeys
+`||z||_2^2=2(W+O)`, where `W` counts target wedges and `O` incidences outside
+the source support.  Nevertheless a genuine collinear distance-Sidon family
+has linear-size source and target matchings with zero wedges, while genuine
+parabola fibres saturate the signed design-matrix rank bound.  Read
+`MATCHING_BLOCK_TRANSLATION_LEVERAGE.md` and
+`COMMON_TRANSLATION_DESIGN_MATRIX_MATCHING_DEFECT_AUDIT.md` before trying a
+generic wedge, matching, or sparse-rank argument.
+
 ### Proof of the implication
 
 Equation (1.3) is obtained by expanding equality of two values in (1.2):
@@ -317,11 +360,11 @@ python3 phase2/loop/erdos1208/verify_metric_scalar_pair_sum_charge.py
 
 ## 7. Exact remaining theorem
 
-The live target is the weaker sharp form (1.6), or just its aggregate
-consequence
+The live pointwise target is the weaker sharp form (1.6).  The more robust
+aggregate target is (1.7); either would imply the required consequence
 
 \[
- \sum_q|H_q|\le m^{o(1)}(k^2+m^2).
+ \sum_q|H_q|\le m^{o(1)}(k^3+m^2).
 \]
 
 One cannot replace `B_q` by the whole squared-distance set and appeal only
