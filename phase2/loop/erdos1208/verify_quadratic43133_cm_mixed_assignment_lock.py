@@ -28,6 +28,7 @@ GENERATOR_RANK = 221
 BASE_RELATIONS = 222
 USEFUL_COUNT = 11_765
 MAXIMUM_QUADRATIC_RELATIONS = 12_210
+EXPECTED_RANK_USEFUL_COUNTS = (11_765, 11_874, 11_985)
 
 
 def exact_ray_colors() -> list[tuple[int, int, int | None, int]]:
@@ -556,7 +557,7 @@ def rank_aware_all_assignment_lock(
             - (generator_rank + 1)
             - RAMIFIED_COUNT
         )
-        assert useful_base in (11_765, 11_874, 11_985)
+        assert useful_base in EXPECTED_RANK_USEFUL_COUNTS
         gs_point = Fraction(2, generator_rank)
         assert generator_rank**2 - 4 * (maximum_quadratic + 1) in (-3, 0)
         for fourth_count in range(RAMIFIED_COUNT + 1):
