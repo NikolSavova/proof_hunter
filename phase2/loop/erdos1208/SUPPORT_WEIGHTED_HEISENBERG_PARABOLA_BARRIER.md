@@ -123,6 +123,9 @@ the popular-difference information gives the stronger estimate
 This proves (1.7) for the full parabola block up to powers of
 \(\log m\).  It also gives an explicit residual condition for every
 through-origin coherent block, with no Freiman theorem needed.
+The two-layer shear in
+\`AFFINE_OFFSET_TWO_LAYER_POPULARITY_GLOBAL_PARTITION.md\` subsequently
+extends the same estimate to every \(\eta\).
 
 ## 2. Quadratic normalization of an affine parameter block
 
@@ -550,9 +553,9 @@ quadratic block whose ambient height pays their combined mass.  Distributed
 short parameter paths already have small \(R\); the difficult residual is
 the simultaneous large-\(R\), large-\(H\) family.  In the
 through-origin branch, the smaller exact residual is the failure range of
-(5.17).  For affine blocks with \(\eta\ne0\), the parent patches are not
-popular differences of the single normalized graph \(B_\theta\), so only
-(5.8) is presently available.
+(5.17).  For affine blocks with \(\eta\ne0\), parent popularity is restored
+by using the cross-difference of \(B_\theta\) with its additive shear;
+see \`AFFINE_OFFSET_TWO_LAYER_POPULARITY_GLOBAL_PARTITION.md\`.
 
 ## 7. Verification
 
