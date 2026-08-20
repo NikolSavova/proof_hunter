@@ -156,6 +156,60 @@ Fibrewise Cauchy and Cauchy over the at most `k(k-1)` realized differences
 show directly that (1.7) implies
 `sum_q h_q<=m^(2+o(1))+k^(3+o(1))`, hence the cube-root theorem.
 
+The newest equivalent formulation is a reciprocal weighted tail.  Define
+
+\[
+ C(r)=\sum_q R_{B_q}(-18r),\qquad
+ S_2=\sum_qh_q(h_q-1),\qquad
+ L_*={Nk^3\over S_2}.
+\]
+
+All gaps with `R_D(r)<=L_*` already cost at most `Nk^3`.  It is therefore
+enough to establish, uniformly on dyadic levels,
+
+\[
+ \sum_{\lambda<R_D(r)\le2\lambda}C(r)
+ \le m^{o(1)}{Nk^3\over\lambda}.               \tag{1.8}
+\]
+
+This coupling is essential.  `METRIC_SCALAR_GAP_CODEGREE_BARRIER.md`
+constructs genuine integral distance-Sidon sets with a fixed nonzero gap of
+quadratic multiplicity but no clean fibres, while
+`FIXED_DISTANCE_GAP_WEIGHTED_TAIL_AUDIT.md` constructs polynomial-height
+examples with both a quadratic clean fibre and a nearly linear rich gap.
+Neither marginal estimate can replace (1.8).
+
+Determinant decoration removes the low-area part of every rich gap.  For
+oriented edge vectors `u,v`, the identity
+
+\[
+ (u-v)\overline{(u+v)}
+ =(|u|^2-|v|^2)-2i\det(u,v)
+\]
+
+and Gaussian divisor counting give subpolynomial multiplicity after fixing
+both the norm gap and signed doubled area.  Hence all target pairs with
+`|2 det(u,v)|<=N/h_q` contribute only `m^(o(1))Nh_q`.  The surviving
+weighted tail is simultaneously rich, high-determinant, four-edge, and
+squareclass-transverse.  See
+`METRIC_SCALAR_DETERMINANT_WEIGHTED_TAIL.md`.
+
+Finally, `METRIC_SCALAR_TARGET_C4_BARRIER.md` proves the exact bucket split
+`L(L-1)=2W_S+2W_T+B_bi` and gives a genuine load-12 bucket with all 132
+off-diagonal collisions in the bi-disjoint term.  Thus wedges, target C4s,
+and their induced endpoint parallelograms cannot control the final core
+collision by collision.
+
+`TRACE_AREA_BIMATCHING_BLOCK_GATE.md` gives a positive balanced-degree
+branch.  After coloring a fibre into source/clean-target bi-matchings, the
+block-indexed adaptive trace--area charge proves the cube-root bound when
+the number of blocks is `O(h/k)` and the blockwise envelopes are
+diagonal-scale.  Greedy coloring supplies this block count whenever the
+maximum role endpoint degree is `O(h/k)`.  Genuine source-star and `K_(3,3)`
+examples show that neither the block count nor a sparse support theorem is
+automatic; the remaining star-heavy branch must use the exact endpoint
+translation rather than role combinatorics alone.
+
 The endpoint incidence does have exact extra structure, but the immediate
 forms are insufficient.  A source star maps to pairwise disjoint target
 edges.  For a source matching, the target-degree defect obeys
