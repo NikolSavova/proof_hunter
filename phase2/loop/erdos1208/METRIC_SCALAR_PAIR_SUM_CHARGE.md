@@ -73,6 +73,19 @@ gives the ambient equal-centroid bound and hence
 Thus (1.4) would resolve the square-grid order and Erdős problem 1208.  It
 is currently unproved.
 
+For the global problem, the sharp local target can be weakened to
+
+\[
+ \boxed{
+ \mathcal M_{q,C}
+ \le m^{o(1)}N\bigl(|H_q|+k\bigr).}             \tag{1.6}
+\]
+
+Indeed, fibres with `|H_q|<=k` contribute at most `O(k^3)` clean starts in
+total and need no amplification.  On every remaining fibre, (1.6) is (1.4)
+up to a factor two.  This `+k` correction is important when testing small
+or deliberately planted clean gadgets.
+
 ### Proof of the implication
 
 Equation (1.3) is obtained by expanding equality of two values in (1.2):
@@ -94,7 +107,50 @@ Cancel `hN` and use `N asymp k^2` to obtain (1.5).  The standard origin
 localization of third additive energy completes the displayed cube-root
 deduction.
 
-## 2. Why this retains information missing from the vector charge
+## 2. Repeated edge labels are already diagonal-scale
+
+Write a collision as four canonical unordered edge labels
+
+\[
+ (E_1,F_1;E_2,F_2),
+ \qquad E_1,E_2\in H_q,\quad F_1,F_2\in\Sigma,
+\]
+
+where the two records have equal charge.  Assume `C!=1`.
+
+**Proposition 2.1.**  Apart from the identical-record diagonal, collisions
+using at most three distinct edge labels contribute at most `4h^2`, and
+hence at most `4hN`.
+
+If `E_1=E_2`, injectivity of `delta` forces `F_1=F_2`, giving the diagonal;
+the same holds if `F_1=F_2`.  If the two records swap their edge labels,
+then
+
+\[
+ \delta(E_1)+C\delta(F_1)
+ =\delta(F_1)+C\delta(E_1)
+\]
+
+forces the labels equal because `C!=1`, again giving the diagonal.  Thus an
+off-diagonal collision with fewer than four edge labels has exactly three,
+and its repeated edge is one of
+
+\[
+ E_1=F_1,\quad E_2=F_2,\quad
+ E_1=F_2,\quad E_2=F_1.                         \tag{2.1}
+\]
+
+For each case, choose the ordered pair `(E_1,E_2)` in at most `h^2` ways.
+The charge equation determines the metric label of the remaining edge, and
+global distance uniqueness supplies at most one such edge.  Summing the
+four cases proves the proposition.
+
+Consequently the scalar theorem has no repeated-distance-label obstruction:
+after an `O(hN)` term, all four edge distances in a collision are distinct.
+Endpoint labels may still overlap between these four edges, and the
+eight-distinct endpoint pattern dominates the finite closure data.
+
+## 3. Why this retains information missing from the vector charge
 
 The earlier charge `s+3(I+J)t` sees the endpoint sums but not their
 Euclidean separation.  In contrast, (1.1) is precisely the globally unique
@@ -108,9 +164,9 @@ works for every fixed positive integer `C`.  Larger fixed coefficients look
 slightly more injective in finite data, but no asymptotic claim follows from
 that observation.
 
-## 3. A rigorous collinear branch
+## 4. A rigorous collinear branch
 
-**Proposition 3.1.**  Estimate (1.4) holds when `A` is collinear.
+**Proposition 4.1.**  Estimate (1.4) holds when `A` is collinear.
 
 After translation, write the points as `r v`, where `v` is a fixed primitive
 integral vector and the integers `r` form a Golomb ruler.  Every metric label
@@ -124,7 +180,7 @@ where the positive ruler differences `d` are all distinct.  A fibre of
 (1.2) is therefore contained in the set of positive integer solutions of
 
 \[
- x^2+C y^2=n.                                    \tag{3.1}
+ x^2+C y^2=n.                                    \tag{4.1}
 \]
 
 For fixed `C`, the representation number of the positive-definite binary
@@ -138,12 +194,12 @@ This branch is already covered by the stronger projection theorem, but it
 is useful evidence that the scalar charge interacts correctly with the
 classical Golomb-ruler obstruction.
 
-## 4. A scalable exact stress: the integer parabola
+## 5. A scalable exact stress: the integer parabola
 
 The family
 
 \[
- P_r=\{(j,j^2):0\le j<r\}                       \tag{4.1}
+ P_r=\{(j,j^2):0\le j<r\}                       \tag{5.1}
 \]
 
 is itself distance-Sidon.  Indeed, for `i>j` put
@@ -155,7 +211,7 @@ is itself distance-Sidon.  Indeed, for `i>j` put
 The squared distance is
 
 \[
- d=u^2(1+v^2)=(uv)^2+u^2.                      \tag{4.2}
+ d=u^2(1+v^2)=(uv)^2+u^2.                      \tag{5.2}
 \]
 
 Because `1<=u<=v`,
@@ -180,7 +236,7 @@ The maximum loads are at most three.  This is a scalable falsification test,
 not a proof of (1.4); the parabola lies in a box of side `Theta(r^2)` and is
 well below the cube-root-critical density.
 
-## 5. Exact finite profiles
+## 6. Exact finite profiles
 
 For the largest clean fibre of each stored family, the verifier reports
 
@@ -207,15 +263,24 @@ The largest normalized energy in the table is `1.147826...` on closure 40;
 closure 120 is `1.129036...`.  These profiles are substantially less rigid
 than the vector charge but remain at constant scale on every present stress.
 
+The verifier also separates the off-diagonal patterns.  On closures
+`30,40,80,120`, the numbers with exactly three distinct edge labels are
+`0,4,30,70`, while the numbers whose four edges have eight distinct
+endpoints are `70,1276,15930,91308`.  In particular, `91308` of the
+`117008` off-diagonal closure-120 collisions already lie in the fully
+eight-endpoint core.  Proposition 2.1 removes the repeated-edge cases, but
+ordinary endpoint-overlap cleanup cannot by itself close the scalar gate.
+
 Run
 
 ```text
 python3 phase2/loop/erdos1208/verify_metric_scalar_pair_sum_charge.py
 ```
 
-## 6. Exact remaining theorem
+## 7. Exact remaining theorem
 
-The live target is (1.4), or just its aggregate consequence
+The live target is the weaker sharp form (1.6), or just its aggregate
+consequence
 
 \[
  \sum_q|H_q|\le m^{o(1)}(k^2+m^2).

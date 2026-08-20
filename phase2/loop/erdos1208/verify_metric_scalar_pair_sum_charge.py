@@ -20,6 +20,18 @@ from verify_transverse_row_source_c4 import SOURCE_POINTS
 Point = tuple[int, int]
 Profile = tuple[int, int, Point, int, int, int, int, int, int]
 
+PATTERN_EXPECTED: dict[tuple[int, int], tuple[int, int]] = {
+    # (three distinct edge labels, eight distinct endpoint labels)
+    (30, 150): (0, 70),
+    (40, 223): (4, 1_276),
+    (80, 719): (30, 15_930),
+    (120, 1_514): (70, 91_308),
+    (45, 324): (2, 394),
+    (40, 3_202): (0, 4),
+    (22, 131): (14, 148),
+    (43, 2_586): (12, 1_420),
+}
+
 
 def pair_labels(points: list[Point]) -> dict[Point, int]:
     output: dict[Point, int] = {}
@@ -48,6 +60,57 @@ def profile(points: list[Point], coefficient: int = 18) -> Profile:
     )
     mass = len(first_labels) * len(all_labels)
     energy = sum(load * load for load in loads.values())
+
+    # Every off-diagonal collision with only three distinct unordered edge
+    # labels is one of the four repetitions in Proposition 2.1.
+    records_by_value: dict[int, list[tuple[Point, Point]]] = {}
+    endpoint_pair = {
+        pair_sum: endpoints
+        for pair_sum, endpoints in (
+            (
+                (points[first][0] + points[second][0],
+                 points[first][1] + points[second][1]),
+                (first, second),
+            )
+            for first, second in combinations(range(len(points)), 2)
+        )
+    }
+    for start in fibres[difference]:
+        first_edge = endpoint_pair[start]
+        for pair_sum, second_edge in endpoint_pair.items():
+            value = labels[start] + coefficient * labels[pair_sum]
+            records_by_value.setdefault(value, []).append((first_edge, second_edge))
+    three_edge_collisions = 0
+    eight_endpoint_collisions = 0
+    for records in records_by_value.values():
+        for first_index, first_record in enumerate(records):
+            for second_index, second_record in enumerate(records):
+                if first_index == second_index:
+                    continue
+                edge_labels = {
+                    frozenset(first_record[0]),
+                    frozenset(first_record[1]),
+                    frozenset(second_record[0]),
+                    frozenset(second_record[1]),
+                }
+                assert len(edge_labels) >= 3
+                if len(edge_labels) == 3:
+                    three_edge_collisions += 1
+                endpoints = {
+                    *first_record[0],
+                    *first_record[1],
+                    *second_record[0],
+                    *second_record[1],
+                }
+                if len(endpoints) == 8:
+                    eight_endpoint_collisions += 1
+    assert three_edge_collisions <= 4 * len(first_labels) ** 2
+    pattern_key = len(points), side_length(points)
+    if pattern_key in PATTERN_EXPECTED:
+        assert (
+            three_edge_collisions,
+            eight_endpoint_collisions,
+        ) == PATTERN_EXPECTED[pattern_key]
 
     # Direct check of the exact difference-correlation formula (1.3).
     if len(points) <= 50:
@@ -125,7 +188,14 @@ def main() -> None:
     for name, points, expected in families:
         actual = profile(points)
         assert actual == expected, (name, actual, expected)
-        print(name, actual, "normalized", actual[7] / actual[5])
+        print(
+            name,
+            actual,
+            "normalized",
+            actual[7] / actual[5],
+            "patterns",
+            PATTERN_EXPECTED[(actual[0], actual[1])],
+        )
 
     parabola_expected: dict[int, Profile] = {
         10: (10, 81, (-2, -20), 3, 45, 135, 135, 135, 1),
