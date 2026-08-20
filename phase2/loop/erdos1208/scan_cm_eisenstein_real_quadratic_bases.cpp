@@ -17,10 +17,41 @@
 
 namespace {
 
-constexpr int kDiscriminantLimit = 100000;
+#ifndef SCREEN_D_MIN
+#define SCREEN_D_MIN 5
+#endif
+#ifndef SCREEN_D_LIMIT
+#define SCREEN_D_LIMIT 100000
+#endif
+#ifndef SCREEN_ALPHA
+#define SCREEN_ALPHA 0.49371148
+#endif
+#ifndef SCREEN_BROAD_T_MIN
+#define SCREEN_BROAD_T_MIN 227
+#endif
+#ifndef SCREEN_BROAD_T_MAX
+#define SCREEN_BROAD_T_MAX 227
+#endif
+#ifndef SCREEN_BROAD_T_STEP
+#define SCREEN_BROAD_T_STEP 1
+#endif
+#ifndef SCREEN_FINALISTS
+#define SCREEN_FINALISTS 100
+#endif
+#ifndef SCREEN_GRANT_GENUS_BONUS
+#define SCREEN_GRANT_GENUS_BONUS 0
+#endif
+
+constexpr int kDiscriminantMin = SCREEN_D_MIN;
+constexpr int kDiscriminantLimit = SCREEN_D_LIMIT;
 constexpr int kNormLimit = 250000;
-constexpr double kAlpha = 0.49371148;
+constexpr double kAlpha = SCREEN_ALPHA;
 constexpr double kPackingConstant = 1.1026577908435840990;  // 2 sqrt(3) / pi
+constexpr int kBroadTMin = SCREEN_BROAD_T_MIN;
+constexpr int kBroadTMax = SCREEN_BROAD_T_MAX;
+constexpr int kBroadTStep = SCREEN_BROAD_T_STEP;
+constexpr int kFinalistCount = SCREEN_FINALISTS;
+constexpr bool kGrantGenusBonus = SCREEN_GRANT_GENUS_BONUS;
 
 std::vector<int> primes_up_to(int limit) {
   std::vector<bool> is_prime(limit + 1, true);
@@ -50,6 +81,18 @@ bool positive_fundamental_discriminant(int D,
   if (D % 4 != 0) return false;
   const int d = D / 4;
   return (d % 4 == 2 || d % 4 == 3) && squarefree(d, primes);
+}
+
+int distinct_prime_factors(int n, const std::vector<int>& primes) {
+  int count = 0;
+  for (int p : primes) {
+    if (1LL * p * p > n) break;
+    if (n % p != 0) continue;
+    ++count;
+    while (n % p == 0) n /= p;
+  }
+  if (n > 1) ++count;
+  return count;
 }
 
 int legendre(int D, int p) {
@@ -163,10 +206,11 @@ struct Score {
   int useful_count;
 };
 
-Score score_configuration(int D, const std::vector<int>& ideals, int t) {
+Score score_configuration(int D, const std::vector<int>& ideals, int t,
+                          int genus_bonus) {
   // Honest-loss screen: two unit generators, four independent sign/dyadic
   // conditions, relation excess one, and every eligible ideal declared useful.
-  const int d = t - 2;
+  const int d = t - 2 + genus_bonus;
   const int base_relations = d + 1;
   const int useful = (d * d - 1) / 4 - base_relations - t;
   if (useful <= 0 || t + useful > static_cast<int>(ideals.size())) {
@@ -247,14 +291,21 @@ int main() {
   std::vector<std::tuple<double, int, Score>> leaders;
   int discriminant_count = 0;
   int capable_count = 0;
-  for (int D = 5; D <= kDiscriminantLimit; ++D) {
+  for (int D = kDiscriminantMin; D <= kDiscriminantLimit; ++D) {
     if (!positive_fundamental_discriminant(D, primes)) continue;
     ++discriminant_count;
     const std::vector<int> ideals = odd_prime_ideal_norms(D, primes);
+    const int genus_bonus =
+        kGrantGenusBonus
+            ? std::max(0, distinct_prime_factors(D, primes) - 1)
+            : 0;
     Score best{-std::numeric_limits<double>::infinity(), 0.0, 0, 0, 0};
-    // Broad fixed-rank filter.  A second pass below rescans the leaders at
-    // every nearby integer count.
-    best = score_configuration(D, ideals, 227);
+    // Broad nearby-count grid.  A second pass below rescans the leaders at
+    // every integer count in the full local window.
+    for (int t = kBroadTMin; t <= kBroadTMax; t += kBroadTStep) {
+      const Score score = score_configuration(D, ideals, t, genus_bonus);
+      if (score.margin > best.margin) best = score;
+    }
     if (best.margin >= -1e-7) ++capable_count;
     leaders.emplace_back(best.margin, D, best);
   }
@@ -263,13 +314,17 @@ int main() {
               return std::get<0>(left) > std::get<0>(right);
             });
   // Reconstruct and honestly rescan the 100 strongest broad-filter fields.
-  const int finalist_count = std::min<int>(100, leaders.size());
+  const int finalist_count = std::min<int>(kFinalistCount, leaders.size());
   for (int index = 0; index < finalist_count; ++index) {
     const int D = std::get<1>(leaders[index]);
     const std::vector<int> ideals = odd_prime_ideal_norms(D, primes);
+    const int genus_bonus =
+        kGrantGenusBonus
+            ? std::max(0, distinct_prime_factors(D, primes) - 1)
+            : 0;
     Score best{-std::numeric_limits<double>::infinity(), 0.0, 0, 0, 0};
     for (int t = 205; t <= 250; ++t) {
-      const Score score = score_configuration(D, ideals, t);
+      const Score score = score_configuration(D, ideals, t, genus_bonus);
       if (score.margin > best.margin) best = score;
     }
     std::get<0>(leaders[index]) = best.margin;
@@ -282,7 +337,12 @@ int main() {
   std::cout << std::setprecision(12);
   std::cout << "fundamental discriminants scanned: " << discriminant_count
             << "\n";
-  std::cout << "fixed-t=227 all-useful candidates at alpha=" << kAlpha
+  std::cout << "discriminant interval: [" << kDiscriminantMin << ","
+            << kDiscriminantLimit << "]\n";
+  std::cout << "broad T grid: " << kBroadTMin << ".." << kBroadTMax
+            << " step " << kBroadTStep << "\n";
+  std::cout << "optimistic genus bonus: " << kGrantGenusBonus << "\n";
+  std::cout << "broad-grid all-useful candidates at alpha=" << kAlpha
             << ": " << capable_count << "\n";
   const int output_count = std::min<int>(30, leaders.size());
   for (int index = 0; index < output_count; ++index) {

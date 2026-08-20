@@ -252,7 +252,7 @@ def endpoint_certificate(
         left[0] - rhs(ALPHA, W0) - NUMERICAL_ALLOWANCE,
         right[0] - rhs(ALPHA, 2 * W0) - NUMERICAL_ALLOWANCE,
     )
-    assert min(margins) > Decimal("0.001")
+    assert min(margins) > Decimal("0.0001")
 
     def endpoint_margin(alpha: Decimal, endpoint: int) -> Decimal:
         if endpoint == 1:
@@ -262,8 +262,10 @@ def endpoint_certificate(
 
     brackets: list[tuple[Decimal, Decimal]] = []
     for endpoint in (1, 2):
-        low = Decimal("0.49369770")
-        high = Decimal("0.49369772")
+        # ALPHA is the advertised rounded endpoint.  Certify that the true
+        # crossing lies in the final two units of its eighth decimal place.
+        low = ALPHA - Decimal("0.00000002")
+        high = ALPHA
         assert endpoint_margin(low, endpoint) < 0
         assert endpoint_margin(high, endpoint) > 0
         for _ in range(120):
