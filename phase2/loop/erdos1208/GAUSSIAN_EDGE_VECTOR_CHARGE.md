@@ -1,5 +1,13 @@
 # A Gaussian charge on canonically oriented edge vectors
 
+> **Status (2026-08-19): disproved.**  The sufficient estimate (1.4) is
+> false, even for genuine integral distance-Sidon sets of polynomial height.
+> The resonant two-arm construction in
+> `GAUSSIAN_EDGE_VECTOR_TWO_ARM_BARRIER.md` gives a clean fibre of size
+> `Omega(s^2)` with Gaussian energy `Omega(s^6)`, versus the proposed
+> `s^(4+o(1))` bound.  The exact identities below remain valid, but this is
+> no longer a live route to the cube-root theorem.
+
 ## 1. Exact reduction
 
 Let `A subset Z^2` be distance-Sidon, let `|A|=k`, and suppose both

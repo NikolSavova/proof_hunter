@@ -73,6 +73,22 @@ gives the ambient equal-centroid bound and hence
 Thus (1.4) would resolve the square-grid order and Erdős problem 1208.  It
 is currently unproved.
 
+### Status after the resonant two-arm test
+
+The construction in `GAUSSIAN_EDGE_VECTOR_TWO_ARM_BARRIER.md` disproves the
+adjacent pair-sum and Gaussian vector charges, but it does **not** disprove
+this scalar charge.  On its compressed two-arm subsystem, (1.2) becomes
+
+\[
+ 2a^2+18b^2=2(a^2+9b^2).
+\]
+
+For a fixed value this positive-definite binary quadratic form has only
+divisor-many integral representations.  Thus the exact resonance that makes
+the vector charges polynomially large is near-diagonal for the scalar
+charge.  This is evidence, not a proof: an actual counterexample to (1.4)
+could use more complicated four-distance additive structure.
+
 For the global problem, the sharp local target can be weakened to
 
 \[

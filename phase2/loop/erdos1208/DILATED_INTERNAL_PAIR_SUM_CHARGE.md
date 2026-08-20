@@ -1,5 +1,12 @@
 # A dilated internal pair-sum charge
 
+> **Status (2026-08-19): disproved.**  Estimate (1.5) is false for genuine
+> integral distance-Sidon sets of polynomial height.  The two resonant
+> Golomb-ruler arms in `GAUSSIAN_EDGE_VECTOR_TWO_ARM_BARRIER.md` compress
+> `Omega(s^4)` records into `O(s^2)` vector keys and force energy
+> `Omega(s^6)`.  The identities and projection-sparse branch below remain
+> correct, but the global charge is closed as a solution route.
+
 ## 1. Outcome
 
 Let `A subset Z^2` be distance-Sidon, `|A|=k`, and suppose that both

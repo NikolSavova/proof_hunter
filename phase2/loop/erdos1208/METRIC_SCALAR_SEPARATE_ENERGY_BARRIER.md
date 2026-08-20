@@ -69,13 +69,15 @@ throws away exactly the transversality needed for a cube-root proof.
 
 ## 3. Research consequence
 
-The surviving options are therefore endpoint-sensitive coupled charges:
-
-1. the scalar difference correlation (1.1) itself;
-2. the pair-sum dilation charge `s+3(I+J)t`; or
-3. the canonically oriented edge-vector charge
-   `u(s)+3(I+J)u(t)` in `GAUSSIAN_EDGE_VECTOR_CHARGE.md`.
+The surviving option among these charges is therefore the endpoint-sensitive
+scalar difference correlation (1.1) itself.  The pair-sum dilation charge
+`s+3(I+J)t` and the canonically oriented edge-vector charge
+`u(s)+3(I+J)u(t)` are both disproved by the genuine distance-Sidon two-arm
+family in `GAUSSIAN_EDGE_VECTOR_TWO_ARM_BARRIER.md`.  That family does not
+disprove (1.1): on the resonant subsystem the scalar labels become values of
+the positive form `2(a^2+9b^2)`, whose individual representation counts are
+only divisor-sized.
 
 Ordinary additive energy of all distance labels, bounded-rank distance
 matrices, and a black-box Fourier Cauchy step are closed lanes unless they
-retain one of these couplings.
+retain the dilation-specific scalar coupling and the clean endpoint data.
