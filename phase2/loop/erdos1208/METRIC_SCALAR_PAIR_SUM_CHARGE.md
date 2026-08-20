@@ -102,6 +102,28 @@ total and need no amplification.  On every remaining fibre, (1.6) is (1.4)
 up to a factor two.  This `+k` correction is important when testing small
 or deliberately planted clean gadgets.
 
+### Latest proved reductions of the scalar gate
+
+Two later notes now remove substantial parts of the four-label core.
+`METRIC_SCALAR_SQUARECLASS_TRANSVERSE_GATE.md` proves that collisions which
+stay in one squarefree norm class on each side contribute only
+`m^(o(1))hN`; after the three-label cleanup, only four-distinct-edge
+squareclass-transverse collisions remain.  This contains every
+parallel--parallel collision.
+
+`METRIC_SCALAR_CROSS_EDGE_DETERMINANT_BRANCH.md` then proves that the part
+with target doubled area
+
+\[
+ |2\det(v,v')|\le\lfloor N/h\rfloor
+\]
+
+also contributes only `m^(o(1))hN`.  Hence the unresolved core is
+four-edge, squareclass-transverse, and large-area, with the complete
+endpoint-difference and clean-fibre constraints retained.  Neither result
+proves (1.6), but together they sharply localize what a proof or genuine
+counterexample must address.
+
 ### Proof of the implication
 
 Equation (1.3) is obtained by expanding equality of two values in (1.2):
