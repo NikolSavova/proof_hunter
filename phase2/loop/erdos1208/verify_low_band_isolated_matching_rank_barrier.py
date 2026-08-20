@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict, deque
 from itertools import combinations
+from math import ceil
 
 from verify_dilated_internal_pair_sum_charge import clean_start_fibres
 from verify_metric_scalar_endpoint_rich_tail import determinant, edge_data
@@ -26,7 +27,7 @@ def endpoint_sum(points: list[Point], endpoints: tuple[int, int]) -> Point:
     return add(points[endpoints[0]], points[endpoints[1]])
 
 
-def profile(points: list[Point]) -> tuple[int, ...]:
+def profile(points: list[Point], detailed: bool = False) -> tuple[int, ...]:
     k = len(points)
     edges = edge_data(points)
     edge_count = len(edges)
@@ -104,6 +105,8 @@ def profile(points: list[Point]) -> tuple[int, ...]:
     disjoint_target_checks = 0
     affine_row_checks = 0
     rich_lift = 0
+    isolated_by_translation: Counter[Point] = Counter()
+    rich_loads_by_translation: dict[Point, list[int]] = defaultdict(list)
 
     for gap in selected_gaps:
         assert target_load[gap] >= k
@@ -119,6 +122,9 @@ def profile(points: list[Point]) -> tuple[int, ...]:
             }
             isolated_mass += len(isolated)
             rich_lift += len(isolated) * target_load[gap]
+            isolated_by_translation.update(isolated.keys())
+            for q in isolated:
+                rich_loads_by_translation[q].append(target_load[gap])
 
             # The isolated-anchor subgraph has indegree and outdegree at most
             # one, hence every weak component is a directed path or cycle.
@@ -200,8 +206,33 @@ def profile(points: list[Point]) -> tuple[int, ...]:
     assert disjoint_target_checks == isolated_mass
     assert affine_row_checks == isolated_mass
     assert rich_lift >= k * isolated_mass
+    active_fibre_mass = sum(len(indexed_fibres[q]) for q in isolated_by_translation)
+    pointwise_excess_violations = sum(
+        k * (multiplicity - 1) > len(indexed_fibres[q])
+        for q, multiplicity in isolated_by_translation.items()
+    )
+    maximum_scaled_excess = max(
+        (
+            k * (multiplicity - 1) / len(indexed_fibres[q])
+            for q, multiplicity in isolated_by_translation.items()
+        ),
+        default=0,
+    )
+    excess_rich_lift = sum(
+        sum(loads) - max(loads) for loads in rich_loads_by_translation.values()
+    )
+    adaptive_quota_total = 0
+    adaptive_tail_count = 0
+    adaptive_tail_lift = 0
+    for q, loads in rich_loads_by_translation.items():
+        quota = ceil(k * k * len(indexed_fibres[q]) / fibre_mass)
+        adaptive_quota_total += quota
+        ordered_loads = sorted(loads, reverse=True)
+        adaptive_tail_count += max(0, len(loads) - quota)
+        adaptive_tail_lift += sum(ordered_loads[quota:])
+    assert adaptive_quota_total <= 2 * k * k
 
-    return (
+    base_profile = (
         k,
         fibre_mass,
         fixed_weight,
@@ -214,6 +245,20 @@ def profile(points: list[Point]) -> tuple[int, ...]:
         disjoint_target_checks,
         rich_lift,
         *maximizing_wedge,
+    )
+    if not detailed:
+        return base_profile
+    return base_profile + (
+        len(isolated_by_translation),
+        isolated_mass - len(isolated_by_translation),
+        max(isolated_by_translation.values(), default=0),
+        active_fibre_mass,
+        pointwise_excess_violations,
+        round(maximum_scaled_excess * 1_000_000),
+        excess_rich_lift,
+        adaptive_quota_total,
+        adaptive_tail_count,
+        adaptive_tail_lift,
     )
 
 
