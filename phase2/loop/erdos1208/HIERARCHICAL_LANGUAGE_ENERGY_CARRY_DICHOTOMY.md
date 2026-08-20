@@ -287,8 +287,9 @@ For a coefficient-difference polynomial `h(z)=sum h_jz^j`, equality
  \qquad h_L+c_L=0.                                  \tag{5.4}
 \]
 
-where `L=deg h`.  Consequently (5.3) can be checked by counting admissible paths in a finite
-carry graph.  Positive topological entropy is necessary for escape.
+where `L=deg h`.  Consequently (5.3) can be checked by counting admissible
+paths in a finite carry graph.  Positive topological entropy is necessary
+for escape.
 
 ## 6. The complete-digit carry model is exactly the square grid
 
