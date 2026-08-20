@@ -44,7 +44,10 @@ namespace {
 
 constexpr int kDiscriminantMin = SCREEN_D_MIN;
 constexpr int kDiscriminantLimit = SCREEN_D_LIMIT;
-constexpr int kNormLimit = 250000;
+#ifndef SCREEN_NORM_LIMIT
+#define SCREEN_NORM_LIMIT 250000
+#endif
+constexpr int kNormLimit = SCREEN_NORM_LIMIT;
 constexpr double kAlpha = SCREEN_ALPHA;
 constexpr double kPackingConstant = 1.1026577908435840990;  // 2 sqrt(3) / pi
 constexpr int kBroadTMin = SCREEN_BROAD_T_MIN;
@@ -312,6 +315,7 @@ int main() {
     if (!positive_fundamental_discriminant(D, primes)) continue;
     ++discriminant_count;
     const std::vector<int> ideals = odd_prime_ideal_norms(D, primes);
+    assert(ideals.size() >= kLocalPrecomputeLimit);
     const std::size_t local_count =
         std::min(ideals.size(), kLocalPrecomputeLimit);
     std::vector<double> prefix_cost(local_count + 1, 0.0);
