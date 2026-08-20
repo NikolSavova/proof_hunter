@@ -101,9 +101,19 @@ def fibre_band_statistics(
     determinant_profile = centroid_matching_determinant_profile(points)
     N = len(by_vector)
 
+    # Include bands that contribute only to the relaxed fibre functional.
+    # Stopping at the largest clean determinant omitted a terminal Q-only
+    # band in the p=43 stress.
+    maximum_scale = max(
+        content * abs(residue)
+        for direction, direction_contents in contents.items()
+        for residue in fibres[direction]
+        if residue
+        for content in direction_contents
+    )
     cutoffs: list[int] = []
     cutoff = 1
-    while cutoff <= max(determinant_profile):
+    while cutoff <= maximum_scale:
         cutoffs.append(cutoff)
         cutoff *= 2
 
@@ -189,6 +199,7 @@ def main() -> None:
         2: (6, 18, 72, 124),
         4: (6, 18, 96, 158),
         8: (12, 36, 102, 138),
+        16: (0, 0, 12, 14),
     }
 
     stress, N = fibre_band_statistics(shear(residue_parabola(43), 28))
@@ -205,6 +216,7 @@ def main() -> None:
         256: (27_520, 82_560, 107_742, 222_504),
         512: (10_236, 30_708, 42_708, 94_340),
         1_024: (364, 1_092, 2_796, 8_564),
+        2_048: (0, 0, 0, 8),
     }
 
     print("large determinant closed fibre energy gate: PASS")

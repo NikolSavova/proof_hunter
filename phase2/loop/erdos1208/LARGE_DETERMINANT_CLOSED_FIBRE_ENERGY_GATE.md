@@ -122,7 +122,7 @@ The closing-vector condition is therefore already almost exact on the
 principal stress.  On the other hand,
 
 \[
- \sum_{D\ge1}\mathcal Q_D=988320<1175^2,               \tag{0.9}
+ \sum_{D\ge1}\mathcal Q_D=988328<1175^2,               \tag{0.9}
 \]
 
 so the proposed ambient estimate (0.7) survives this stress.  The result
@@ -356,7 +356,8 @@ D&|\mathcal H_D|&\mathcal K_D&\mathcal Q_D\\ \hline
 128&31370&121980&250432\\
 256&27520&107742&222504\\
 512&10236&42708&94340\\
-1024&364&2796&8564
+1024&364&2796&8564\\
+2048&0&0&8
 \end{array}                                           \tag{6.1}
 \]
 
@@ -370,7 +371,7 @@ bands,
  \quad
  \sum_D\mathcal K_D=495414,
  \quad
- \sum_D\mathcal Q_D=988320.                           \tag{6.2}
+ \sum_D\mathcal Q_D=988328.                           \tag{6.2}
 \]
 
 The last number is below (m^2=1380625).  Therefore the finite-field
@@ -378,6 +379,10 @@ stress does not disprove (0.7), but it demonstrates that the third-vector
 closure itself has already spent essentially all available combinatorial
 gain.  The missing step must be a global, height-sensitive packing of the
 positive-gap fibres in (0.6).
+
+The final (D=2048) row has no clean or closed configuration; it is a
+relaxation-only contribution.  An earlier audit stopped at the largest
+clean determinant band and therefore omitted these eight units.
 
 ## 7. Verification
 
