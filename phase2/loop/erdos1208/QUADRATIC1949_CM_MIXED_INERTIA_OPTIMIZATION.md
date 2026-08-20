@@ -13,7 +13,7 @@ optimization audit behind the current certificate:
 The winning arithmetic data are
 
 \[
- |T|=227,qquad d=225,qquad N=12203,                   \tag{1.2}
+ |T|=227,\qquad d=225,\qquad N=12203,                 \tag{1.2}
 \]
 
 with a square cap on every inertia generator.  An earlier exploratory
@@ -26,7 +26,7 @@ cannot improve its two certified endpoint margins.
 The exact endpoint anchor is
 
 \[
- \alpha=0.493711480,qquad w_0=43932.44.                \tag{1.3}
+ \alpha=0.493711480,\qquad w_0=43932.44.               \tag{1.3}
 \]
 
 Run `verify_quadratic1949_cm_mixed_inertia_rank225.py`.
@@ -144,7 +144,7 @@ This trade can be compared exactly at either endpoint using the
 fractional-knapsack dual.  For a useful ideal of norm `Q`, put
 
 \[
- c(Q)={1\over2}\log Q,qquad
+ c(Q)={1\over2}\log Q,\qquad
  g_k(Q)={1\over4}\log A_k(Q^{-2}),                     \tag{4.1}
 \]
 
@@ -259,7 +259,7 @@ cause equality in an exchange but no improvement.
 At the two exact endpoints the verifier obtains
 
 \[
- \lambda_L=0.0304037230\ldots,qquad
+ \lambda_L=0.0304037230\ldots,\qquad
  \lambda_R=0.0189913278\ldots,                         \tag{6.6}
 \]
 
@@ -275,14 +275,14 @@ At (1.3), with the safe rational CM constant (2.4), the dyadic endpoint
 margins after subtracting `10^-25` are
 
 \[
- 0.00013638258076\ldots,qquad
+ 0.00013638258076\ldots,\qquad
  0.00033611498498\ldots.                               \tag{7.1}
 \]
 
 The fixed-anchor endpoint zeros are
 
 \[
- 0.49371147923552870467\ldots,qquad
+ 0.49371147923552870467\ldots,\qquad
  0.49371147905265513461\ldots.                         \tag{7.2}
 \]
 
