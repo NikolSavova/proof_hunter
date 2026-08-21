@@ -235,4 +235,3 @@ including stars and parallel bundles, recomputes the exact optimum, checks
 (2.2), (1.4), and the dyadic extraction, and then repeats the audit on
 seeded random multigraphs.  The proof above is exact and independent of the
 finite checks.
-
