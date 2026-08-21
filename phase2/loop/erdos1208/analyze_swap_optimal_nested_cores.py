@@ -467,6 +467,15 @@ def profile(
     matching_endpoint_switch_class_lambda: Counter[str] = Counter()
     matching_endpoint_switch_class_residual: Counter[str] = Counter()
     matching_endpoint_switch_class_residual_product: Counter[str] = Counter()
+    matching_endpoint_switch_role_pair_mass: Counter[tuple[int, int]] = Counter()
+    matching_endpoint_switch_type_pair_mass: Counter[str] = Counter()
+    matching_projected_key_pair_codegrees: Counter[
+        tuple[tuple[object, ...], tuple[object, ...]]
+    ] = Counter()
+    matching_projected_key_pair_owner: dict[
+        tuple[tuple[object, ...], tuple[object, ...]],
+        tuple[Cell, Point, Point],
+    ] = {}
     matching_endpoint_metric_product_mass: Counter[int] = Counter()
     matching_endpoint_metric_product_reciprocal = Fraction(0)
     matching_endpoint_metric_product_minimum: int | None = None
@@ -602,6 +611,10 @@ def profile(
                         )
                     )
                 assert len(copies) == load
+                neighbour_roles: dict[Cell, int] = {}
+                for copy in copies:
+                    previous_role = neighbour_roles.setdefault(copy[0], copy[4])
+                    assert previous_role == copy[4]
                 q_loads = Counter(row[3] for row in copies)
                 p_loads = Counter(row[2] for row in copies)
                 key_loads = Counter()
@@ -675,7 +688,66 @@ def profile(
                         for neighbour, internal in fibre_internal_differences.items()
                         if internal[switch]
                     ]
+                    projected_keys: dict[Cell, tuple[tuple[object, ...], ...]] = {}
+                    for neighbour, weight in active_neighbours:
+                        role = neighbour_roles[neighbour]
+                        displacement = subtract(neighbour[0], centre[0])
+                        keys = []
+                        for q_value in q_fibres[neighbour]:
+                            if subtract(q_value, switch) not in q_fibres[neighbour]:
+                                continue
+                            if role < 2:
+                                p_value = add(q_value, displacement)
+                                key = (
+                                    "V",
+                                    role,
+                                    subtract(p_value, switch),
+                                    add(subtract(centre[0], q_value), switch),
+                                )
+                            else:
+                                key = (
+                                    "W",
+                                    role,
+                                    subtract(q_value, switch),
+                                    neighbour[1],
+                                )
+                            keys.append(key)
+                        assert len(keys) == weight
+                        assert len(set(keys)) == weight
+                        projected_keys[neighbour] = tuple(keys)
+
+                    local_projected_pairs: set[
+                        tuple[tuple[object, ...], tuple[object, ...]]
+                    ] = set()
+                    for first_index, (first_neighbour, first_weight) in enumerate(
+                        active_neighbours
+                    ):
+                        for second_neighbour, second_weight in active_neighbours[
+                            first_index + 1 :
+                        ]:
+                            for first_key in projected_keys[first_neighbour]:
+                                for second_key in projected_keys[second_neighbour]:
+                                    key_pair = tuple(sorted((first_key, second_key)))
+                                    assert len(key_pair) == 2
+                                    assert key_pair not in local_projected_pairs
+                                    local_projected_pairs.add(key_pair)
+                                    matching_projected_key_pair_codegrees[key_pair] += 1
+                                    owner = centre, endpoint, switch
+                                    previous_owner = matching_projected_key_pair_owner.get(
+                                        key_pair
+                                    )
+                                    if previous_owner is None or owner < previous_owner:
+                                        matching_projected_key_pair_owner[key_pair] = owner
+                            assert (
+                                len(projected_keys[first_neighbour])
+                                * len(projected_keys[second_neighbour])
+                                == first_weight * second_weight
+                            )
+                    assert len(local_projected_pairs) == switch_pair
+
                     metric_edge_mass = 0
+                    role_pair_mass: Counter[tuple[int, int]] = Counter()
+                    type_pair_mass: Counter[str] = Counter()
                     for (
                         (first_neighbour, first_weight),
                         (second_neighbour, second_weight),
@@ -693,6 +765,25 @@ def profile(
                         assert metric_product > 0
                         weight = first_weight * second_weight
                         metric_edge_mass += weight
+                        role_pair = tuple(
+                            sorted(
+                                (
+                                    neighbour_roles[first_neighbour],
+                                    neighbour_roles[second_neighbour],
+                                )
+                            )
+                        )
+                        assert len(role_pair) == 2
+                        role_pair_mass[role_pair] += weight
+                        first_type = (
+                            "V" if neighbour_roles[first_neighbour] < 2 else "W"
+                        )
+                        second_type = (
+                            "V" if neighbour_roles[second_neighbour] < 2 else "W"
+                        )
+                        type_pair_mass["".join(sorted((first_type, second_type)))] += (
+                            weight
+                        )
                         matching_endpoint_metric_product_mass[
                             metric_product.bit_length() - 1
                         ] += weight
@@ -707,6 +798,10 @@ def profile(
                                 metric_product,
                             )
                     assert metric_edge_mass == switch_pair
+                    assert sum(role_pair_mass.values()) == switch_pair
+                    assert sum(type_pair_mass.values()) == switch_pair
+                    matching_endpoint_switch_role_pair_mass.update(role_pair_mass)
+                    matching_endpoint_switch_type_pair_mass.update(type_pair_mass)
 
                     # Resolve each internal representation so that the
                     # three exact global-Jacobian resonances retain s.
@@ -1215,6 +1310,79 @@ def profile(
             ] += 1
 
     assert matching_endpoint_switch_lambda <= 8 * matching_wedges["parallel"]
+
+    def projected_pair_profile(role_types: str) -> tuple[object, ...]:
+        items = [
+            (key_pair, codegree)
+            for key_pair, codegree in matching_projected_key_pair_codegrees.items()
+            if "".join(sorted((key_pair[0][0], key_pair[1][0]))) == role_types
+        ]
+        degrees: Counter[tuple[object, ...]] = Counter()
+        for (first_key, second_key), _ in items:
+            degrees[first_key] += 1
+            degrees[second_key] += 1
+        pair_common_neighbours: Counter[
+            tuple[tuple[object, ...], tuple[object, ...]]
+        ] = Counter()
+        rectangle_owner_types: Counter[int] = Counter()
+        if role_types == "VW":
+            adjacency: dict[
+                tuple[object, ...], set[tuple[object, ...]]
+            ] = defaultdict(set)
+            for (first_key, second_key), _ in items:
+                assert first_key[0] == "V" and second_key[0] == "W"
+                adjacency[first_key].add(second_key)
+            common_vertices: dict[
+                tuple[tuple[object, ...], tuple[object, ...]],
+                list[tuple[object, ...]],
+            ] = defaultdict(list)
+            for vertex, neighbours in adjacency.items():
+                for first_key, second_key in combinations(sorted(neighbours), 2):
+                    pair_common_neighbours[first_key, second_key] += 1
+                    common_vertices[first_key, second_key].append(vertex)
+            for (first_w, second_w), vertices in common_vertices.items():
+                for first_v, second_v in combinations(sorted(vertices), 2):
+                    edge_pairs = (
+                        tuple(sorted((first_v, first_w))),
+                        tuple(sorted((first_v, second_w))),
+                        tuple(sorted((second_v, first_w))),
+                        tuple(sorted((second_v, second_w))),
+                    )
+                    owners = tuple(
+                        matching_projected_key_pair_owner[edge_pair]
+                        for edge_pair in edge_pairs
+                    )
+                    cross_colour_vertices = sum(
+                        owners[first_index] != owners[second_index]
+                        for first_index, second_index in (
+                            (0, 1),
+                            (2, 3),
+                            (0, 2),
+                            (1, 3),
+                        )
+                    )
+                    assert (len(set(owners)) == 1) == (
+                        cross_colour_vertices == 0
+                    )
+                    rectangle_owner_types[cross_colour_vertices] += 1
+        return (
+            role_types,
+            sum(codegree for _, codegree in items),
+            len(items),
+            len(degrees),
+            max(degrees.values(), default=0),
+            sum(value * value for value in degrees.values()),
+            max((codegree for _, codegree in items), default=0),
+            sum(codegree * (codegree - 1) // 2 for _, codegree in items),
+            max(pair_common_neighbours.values(), default=0),
+            sum(
+                value * (value - 1) // 2
+                for value in pair_common_neighbours.values()
+            ),
+            tuple(sorted(rectangle_owner_types.items())),
+            tuple(sorted(Counter(codegree for _, codegree in items).items())),
+        )
+
     summary = {
         "components": tuple(component_mass.most_common(8)),
         "shifts": tuple(shift_mass.most_common(8)),
@@ -1483,6 +1651,45 @@ def profile(
             ),
             ("parallel_wedges", matching_wedges["parallel"]),
         ),
+        "matching_endpoint_collision_role_pairs": (
+            (
+                "exact_roles",
+                tuple(sorted(matching_endpoint_switch_role_pair_mass.items())),
+            ),
+            (
+                "role_types",
+                tuple(sorted(matching_endpoint_switch_type_pair_mass.items())),
+            ),
+            (
+                "same_oriented_role",
+                sum(
+                    value
+                    for (first_role, second_role), value in (
+                        matching_endpoint_switch_role_pair_mass.items()
+                    )
+                    if first_role == second_role
+                ),
+            ),
+            (
+                "same_type_opposite_orientation",
+                sum(
+                    value
+                    for (first_role, second_role), value in (
+                        matching_endpoint_switch_role_pair_mass.items()
+                    )
+                    if first_role != second_role
+                    and (first_role < 2) == (second_role < 2)
+                ),
+            ),
+            (
+                "mixed_VW",
+                matching_endpoint_switch_type_pair_mass["VW"],
+            ),
+        ),
+        "matching_projected_key_pair_codegrees": tuple(
+            projected_pair_profile(role_types)
+            for role_types in ("VV", "VW", "WW")
+        ),
         "matching_endpoint_collision_switch_cutoff": tuple(
             (
                 switch_class,
@@ -1615,16 +1822,21 @@ def transformed_costas(prime: int) -> tuple[list[Point], set[Point]]:
 
 
 def main() -> None:
-    costas_11 = transformed_costas(11)
-    costas_17 = transformed_costas(17)
-    families: list[tuple[str, set[Point], list[Point] | None]] = [
-        ("closure-30", difference_set(POINTS[:30]), POINTS[:30]),
-        ("Costas-11", costas_11[1], costas_11[0]),
-        ("Costas-17", costas_17[1], costas_17[0]),
-        ("radial-4", radial_set(4), None),
-        ("radial-5", radial_set(5), None),
-        ("radial-6", radial_set(6), None),
-    ]
+    large_costas_only = "--large-costas-only" in sys.argv
+    families: list[tuple[str, set[Point], list[Point] | None]] = []
+    if not large_costas_only:
+        costas_11 = transformed_costas(11)
+        costas_17 = transformed_costas(17)
+        families.extend(
+            [
+                ("closure-30", difference_set(POINTS[:30]), POINTS[:30]),
+                ("Costas-11", costas_11[1], costas_11[0]),
+                ("Costas-17", costas_17[1], costas_17[0]),
+                ("radial-4", radial_set(4), None),
+                ("radial-5", radial_set(5), None),
+                ("radial-6", radial_set(6), None),
+            ]
+        )
     if "--extended" in sys.argv:
         costas_23 = transformed_costas(23)
         families.extend(
@@ -1634,7 +1846,7 @@ def main() -> None:
                 ("radial-8", radial_set(8), None),
             ]
         )
-    if "--larger" in sys.argv:
+    if "--larger" in sys.argv or large_costas_only:
         for prime in (29, 31, 37):
             points, differences = transformed_costas(prime)
             families.append((f"Costas-{prime}", differences, points))
