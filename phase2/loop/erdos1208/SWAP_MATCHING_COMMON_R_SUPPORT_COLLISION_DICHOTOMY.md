@@ -252,6 +252,15 @@ ordered fibre pair.  This is exactly parallel to (3.4): the direct target
 is a joint linear packing bound for decorated support and decorated
 repeated triples across both populations.
 
+The endpoint repeated term is now recursively normalized as well.  If
+`a_t(u)=R_{Q_{C,t}}(u)`, then twice its collision mass is the sum of the
+second-generation pencil moments `sum_{t<t'}a_t(u)a_{t'}(u)`.  Comparing the
+two copies internally gives simultaneous `D-D` shifts `-u` and `Ju`, so
+`a_t(u)<=min(R_D(u),R_D(Ju))`; summing the new loads costs at most eight
+times the already-separated parallel-wedge mass.  Hence the repeated
+endpoint population should be attacked by an adaptive-cutoff recursion,
+not by an independent fourth-moment estimate.
+
 A useful theorem must combine these two counts before dropping endpoint
 labels.  Independent pointwise bounds on component size, parallel
 multiplicity, fixed-`r` load, or raw `D-D` representation count are not

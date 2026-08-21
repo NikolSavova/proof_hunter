@@ -453,6 +453,10 @@ def profile(
     matching_endpoint_key_pair_mass = 0
     matching_endpoint_key_support = 0
     matching_endpoint_key_collisions = 0
+    matching_endpoint_switch_lambda = 0
+    matching_endpoint_switch_pencil = 0
+    matching_endpoint_switch_theta = Fraction(0)
+    matching_endpoint_switch_residual = 0
     for component, vertices in sorted(
         matching_component_vertices.items(),
         key=lambda item: (len(item[1]), item[0]),
@@ -593,6 +597,43 @@ def profile(
                     value * (value - 1) // 2
                     for value in key_loads.values()
                 )
+
+                q_fibres: dict[Cell, set[Point]] = defaultdict(set)
+                for copy in copies:
+                    assert copy[3] not in q_fibres[copy[0]]
+                    q_fibres[copy[0]].add(copy[3])
+                fibre_internal_differences: dict[Cell, Counter[Point]] = {}
+                active_switches: set[Point] = set()
+                for neighbour, q_values in q_fibres.items():
+                    internal = Counter(
+                        subtract(first, second)
+                        for first in q_values
+                        for second in q_values
+                        if first != second
+                    )
+                    fibre_internal_differences[neighbour] = internal
+                    active_switches.update(internal)
+                for switch in active_switches:
+                    switch_weights = [
+                        internal[switch]
+                        for internal in fibre_internal_differences.values()
+                        if internal[switch]
+                    ]
+                    switch_load = sum(switch_weights)
+                    switch_pair = (
+                        switch_load * switch_load
+                        - sum(weight * weight for weight in switch_weights)
+                    ) // 2
+                    matching_endpoint_switch_lambda += switch_load
+                    matching_endpoint_switch_pencil += switch_pair
+                    matching_endpoint_switch_theta = max(
+                        matching_endpoint_switch_theta,
+                        Fraction(switch_pair, switch_load),
+                    )
+                    matching_endpoint_switch_residual = max(
+                        matching_endpoint_switch_residual,
+                        switch_load - max(switch_weights),
+                    )
                 matching_endpoint_pencil_copy_rows.append(
                     (
                         load,
@@ -635,6 +676,10 @@ def profile(
                 matching_endpoint_key_pair_mass
                 + 2 * matching_endpoint_key_collisions
             )
+        )
+        assert (
+            matching_endpoint_switch_pencil
+            == 2 * matching_endpoint_key_collisions
         )
         assert all(
             matching_component_contact_wedges[component]
@@ -800,6 +845,7 @@ def profile(
                 any(shared_r for _, shared_r in clean_rows),
             ] += 1
 
+    assert matching_endpoint_switch_lambda <= 8 * matching_wedges["parallel"]
     summary = {
         "components": tuple(component_mass.most_common(8)),
         "shifts": tuple(shift_mass.most_common(8)),
@@ -1050,6 +1096,19 @@ def profile(
             ("pair_mass", matching_endpoint_key_pair_mass),
             ("support", matching_endpoint_key_support),
             ("collisions", matching_endpoint_key_collisions),
+        ),
+        "matching_endpoint_collision_switch": (
+            ("switch_pencil", matching_endpoint_switch_pencil),
+            ("switch_lambda", matching_endpoint_switch_lambda),
+            (
+                "maximum_switch_ratio",
+                (
+                    matching_endpoint_switch_theta.numerator,
+                    matching_endpoint_switch_theta.denominator,
+                ),
+            ),
+            ("maximum_switch_residual", matching_endpoint_switch_residual),
+            ("parallel_wedges", matching_wedges["parallel"]),
         ),
         "matching_translate_profiles": tuple(
             (row, 1) for row in matching_translate_profiles

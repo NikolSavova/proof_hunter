@@ -3,17 +3,20 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from fractions import Fraction
 from itertools import combinations, product
 import sys
 
 from analyze_swap_optimal_nested_cores import profile, transformed_costas
+from verify_orthogonal_two_support_gate import difference_set
 from verify_seven_incidence_opposite_endpoint_charge import (
     add,
     linear,
     rotate,
     subtract,
 )
+from verify_transverse_closure_witness import POINTS
 
 
 Point = tuple[int, int]
@@ -323,20 +326,73 @@ def verify_collision_orthogonal_switch() -> None:
     )
 
 
+def verify_second_generation_pencil_identity() -> None:
+    universe = tuple((index, index * index + 1) for index in range(4))
+    subsets = [
+        frozenset(
+            universe[index]
+            for index in range(len(universe))
+            if mask >> index & 1
+        )
+        for mask in range(1, 1 << len(universe))
+    ]
+    for fibres in product(subsets, repeat=3):
+        key_collisions = 0
+        for first_index, second_index in combinations(range(3), 2):
+            cross = Counter(
+                subtract(first, second)
+                for first in fibres[first_index]
+                for second in fibres[second_index]
+            )
+            key_collisions += sum(
+                load * (load - 1) // 2
+                for load in cross.values()
+            )
+
+        internal = [
+            Counter(
+                subtract(first, second)
+                for first in fibre
+                for second in fibre
+                if first != second
+            )
+            for fibre in fibres
+        ]
+        switches = set().union(*(set(row) for row in internal))
+        switch_pencil = 0
+        switch_lambda = 0
+        for switch in switches:
+            weights = [row[switch] for row in internal if row[switch]]
+            load = sum(weights)
+            switch_lambda += load
+            pair_mass = (
+                load * load - sum(weight * weight for weight in weights)
+            ) // 2
+            switch_pencil += pair_mass
+            assert pair_mass <= (load - max(weights)) * load
+        assert switch_pencil == 2 * key_collisions
+        assert switch_lambda == sum(
+            len(fibre) * (len(fibre) - 1)
+            for fibre in fibres
+        )
+
+
 def verify_genuine_profiles() -> None:
     expected = {
         17: (
             (5, 129, 202, (6, 5)),
             (5, 2, 3, 4, 2, 4, 2, 6, 1),
             (202, 200, 2),
+            (4, 3_320, (1, 2), 1, 428),
         ),
         23: (
             (12, 53_281, 70_261, (53, 12)),
             (12, 4, 4, 10, 3, 9, 3, 50, 2),
             (70_261, 67_245, 3_140),
+            (6_280, 542_212, (5, 4), 2, 67_882),
         ),
     }
-    for prime, (target, copy_target, key_target) in expected.items():
+    for prime, (target, copy_target, key_target, switch_target) in expected.items():
         points, differences = transformed_costas(prime)
         _, summary, _ = profile(differences, points)
         actual = dict(summary["matching_weighted_endpoint_pencil_profile"])
@@ -359,6 +415,16 @@ def verify_genuine_profiles() -> None:
         assert key_row["pair_mass"] ** 2 <= key_row["support"] * (
             key_row["pair_mass"] + 2 * key_row["collisions"]
         )
+        switch_row = dict(summary["matching_endpoint_collision_switch"])
+        assert (
+            switch_row["switch_pencil"],
+            switch_row["switch_lambda"],
+            switch_row["maximum_switch_ratio"],
+            switch_row["maximum_switch_residual"],
+            switch_row["parallel_wedges"],
+        ) == switch_target
+        assert switch_row["switch_pencil"] == 2 * key_row["collisions"]
+        assert switch_row["switch_lambda"] <= 8 * switch_row["parallel_wedges"]
 
 
 def verify_larger_profile() -> None:
@@ -381,6 +447,38 @@ def verify_larger_profile() -> None:
     assert key_row["pair_mass"] ** 2 <= key_row["support"] * (
         key_row["pair_mass"] + 2 * key_row["collisions"]
     )
+    switch_row = dict(summary["matching_endpoint_collision_switch"])
+    assert (
+        switch_row["switch_pencil"],
+        switch_row["switch_lambda"],
+        switch_row["maximum_switch_ratio"],
+        switch_row["parallel_wedges"],
+    ) == (88_220, 5_293_108, (11, 6), 661_754)
+    assert switch_row["switch_pencil"] == 2 * key_row["collisions"]
+    assert switch_row["switch_lambda"] <= 8 * switch_row["parallel_wedges"]
+
+
+def verify_closure_switch_profiles() -> None:
+    expected = {
+        40: ((212, 72_056, (2, 3), 9_184), (34_776, 34_670, 106)),
+        50: ((12, 7_232, (1, 2), 932), (3_803, 3_797, 6)),
+    }
+    for size, (switch_target, key_target) in expected.items():
+        points = POINTS[:size]
+        _, summary, _ = profile(difference_set(points), points)
+        switch_row = dict(summary["matching_endpoint_collision_switch"])
+        assert (
+            switch_row["switch_pencil"],
+            switch_row["switch_lambda"],
+            switch_row["maximum_switch_ratio"],
+            switch_row["parallel_wedges"],
+        ) == switch_target
+        key_row = dict(summary["matching_endpoint_key_dichotomy"])
+        assert (
+            key_row["pair_mass"],
+            key_row["support"],
+            key_row["collisions"],
+        ) == key_target
 
 
 def main() -> None:
@@ -391,9 +489,11 @@ def main() -> None:
     verify_common_r_unification()
     verify_key_support_collision_fork()
     verify_collision_orthogonal_switch()
+    verify_second_generation_pencil_identity()
     verify_genuine_profiles()
     if "--larger" in sys.argv:
         verify_larger_profile()
+        verify_closure_switch_profiles()
     print("SWAP MATCHING WEIGHTED ENDPOINT-PENCIL GATE: PASS")
 
 

@@ -342,10 +342,79 @@ part is a genuinely recursive rich rectangle.  What is still missing is a
 reverse-multiplicity or density-increment theorem that retains the centre,
 fibre, and endpoint decorations in this switch.
 
+The whole collision mass is itself an exact second-generation endpoint
+pencil.  For fixed `(C,x,u)`, put
+
+\[
+ a_t(u)=R_{Q_{C,t}}(u),\qquad
+ \Lambda_2(C,x,u)=\sum_ta_t(u),\qquad
+ P_2(C,x,u)=\sum_{t<t'}a_t(u)a_{t'}(u),                \tag{6.9}
+\]
+
+where `t` ranges over neighbour fibres whose cell contains `x`.  The usual
+cross-energy identity gives
+
+\[
+ \boxed{2Q_{\rm end}=\sum_{C,x,u\ne0}P_2(C,x,u).}     \tag{6.10}
+\]
+
+Let `W_parallel` be the centred parallel-wedge mass
+`sum_{C,t} binom(|Q_{C,t}|,2)` and define
+
+\[
+ \Theta_2=
+ \max_{\Lambda_2>0}{P_2(C,x,u)\over\Lambda_2(C,x,u)}.
+\]
+
+Since each neighbour cell has at most four physical endpoints,
+
+\[
+ \sum_{C,x,u\ne0}\Lambda_2(C,x,u)
+ \le 8W_{\rm parallel}.
+\]
+
+Consequently
+
+\[
+ \boxed{Q_{\rm end}\le4\Theta_2W_{\rm parallel}.}     \tag{6.11}
+\]
+
+If `a_{t_*}` is the largest weight in one second-generation pencil and
+`B=Lambda_2-a_{t_*}`, then
+
+\[
+ P_2=a_{t_*}B+\sum_{t<t',\ t,t'\ne t_*}a_ta_{t'}
+ \le B\Lambda_2.
+\]
+
+Therefore
+
+\[
+ \boxed{\Theta_2\le
+ \max_{C,x,u}\left(\Lambda_2(C,x,u)-\max_ta_t(u)\right).} \tag{6.12}
+\]
+
+This is another load-bearing cancellation: one arbitrarily heavy parallel
+fibre costs nothing.  The sharp local inverse target is to bound the
+off-largest-fibre internal-difference load, not the full `Lambda_2`.
+
+This couples the collision branch to the already-separated parallel-reuse
+branch.  Moreover (6.7)--(6.8) give the pointwise cutoff
+
+\[
+ a_t(u)\le\min\{R_D(u),R_D(Ju)\}.                     \tag{6.13}
+\]
+
+Thus a subpolynomial bound for `Theta_2`, together with the linear parallel
+wedge estimate, would close `Q_end`.  More generally, (6.10)--(6.13) are
+the correct place to run a popular/nonpopular density increment; treating
+`Q_end` as a free fourth moment loses both the same-neighbour cancellation
+and the adaptive cutoff.
+
 In particular, the two linear estimates
 
 \[
- X_{\rm end},Q_{\rm end}\le K N^{o(1)}M              \tag{6.9}
+ X_{\rm end},Q_{\rm end}\le K N^{o(1)}M              \tag{6.14}
 \]
 
 would imply `P_end<=2KN^{o(1)}M`.  This is the precise support/collision
@@ -475,6 +544,26 @@ Globally, the exact `(P_end,X_end,Q_end)` support/collision rows are
 | Costas 31 | 118,933 | 106,127 | 14,952 |
 | Costas 37 | 713,968 | 672,204 | 44,110 |
 
+The second-generation switch rows `(sum P_2,sum Lambda_2,Theta_2,
+W_parallel)` are
+
+| family | row |
+|---|---:|
+| Costas 17 | `(4,3,320,1/2,428)` |
+| Costas 23 | `(6,280,542,212,5/4,67,882)` |
+| Costas 29 | `(71,486,2,012,372,23/8,251,614)` |
+| Costas 31 | `(29,904,957,776,26/9,119,724)` |
+| Costas 37 | `(88,220,5,293,108,11/6,661,754)` |
+| closure 40 | `(212,72,056,2/3,9,184)` |
+| closure 50 | `(12,7,232,1/2,932)` |
+
+Here `sum P_2=2Q_end` exactly and `sum Lambda_2<=8W_parallel` is nearly
+tight, while the load-bearing cancellation is the small local ratio
+`Theta_2<3`.  This confirms that (6.11), rather than a raw internal-energy
+sum, is the correctly normalized recursive quantity.  The maximum
+off-largest-fibre loads in (6.12) are only `1,2,5,5` on Costas
+`17,23,29,31`, respectively.
+
 Thus 89--99% of the exact pencil upper mass is already supported on
 distinct decorated keys in these rows.  The collision term is not zero,
 but it is much smaller and consists only of the four-copy rectangles
@@ -494,7 +583,7 @@ python3 phase2/loop/erdos1208/verify_swap_matching_weighted_endpoint_pencil.py -
 The verifier checks (1.3)--(2.2) on finite weighted endpoint systems,
 proves (3.3)--(3.4) and (4.2)--(4.4) symbolically, checks (6.2)--(6.4)
 exhaustively on small key-load systems, and reproduces the stored Costas
-profiles.  The optional run checks Costas 37.
+profiles.  The optional run checks Costas 37 and the two closure rows.
 
 The direct endpoint-contact theorem is now exactly (1.6).  A proof should
 dyadically regularize the fibres `Q_{C,t}` in (5.2), use the Sidon rigidity
