@@ -518,6 +518,24 @@ def profile(
     matching_projected_same_centre_transverse_weighted_footprint_depth: Counter[
         Point
     ] = Counter()
+    matching_projected_same_centre_physical_wedge_mass: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_projected_same_centre_physical_wedge_cells: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_projected_same_centre_physical_wedge_rows: dict[
+        tuple[object, ...], list[tuple[object, ...]]
+    ] = defaultdict(list)
+    matching_projected_same_centre_physical_wedge_resonant_mass: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_projected_same_centre_physical_wedge_transverse_mass: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_projected_same_centre_physical_wedge_class_mass: Counter[
+        str
+    ] = Counter()
 
     def projected_physical_edge(key: tuple[object, ...]) -> Point:
         assert key[0] in ("V", "W")
@@ -787,6 +805,54 @@ def profile(
                                 else matching_projected_same_centre_transverse_weighted_footprint_depth
                             )
                             footprint_weight = Fraction(mass, len(footprint))
+                            physical_wedge = (
+                                endpoint,
+                                v_neighbour[0],
+                                w_neighbour[1],
+                                neighbour_roles[v_neighbour],
+                                neighbour_roles[w_neighbour],
+                            )
+                            matching_projected_same_centre_physical_wedge_mass[
+                                physical_wedge
+                            ] += mass
+                            matching_projected_same_centre_physical_wedge_cells[
+                                physical_wedge
+                            ] += 1
+                            matching_projected_same_centre_physical_wedge_rows[
+                                physical_wedge
+                            ].append(
+                                (
+                                    mass,
+                                    load,
+                                    centre,
+                                    t_v,
+                                    t_w,
+                                    eta,
+                                    shifts,
+                                )
+                            )
+                            physical_wedge_branch = (
+                                matching_projected_same_centre_physical_wedge_resonant_mass
+                                if any(shift == (0, 0) for shift in shifts)
+                                else matching_projected_same_centre_physical_wedge_transverse_mass
+                            )
+                            physical_wedge_branch[physical_wedge] += mass
+                            same_physical_edge = (
+                                v_neighbour[0] == w_neighbour[1]
+                                or v_neighbour[0]
+                                == (
+                                    -w_neighbour[1][0],
+                                    -w_neighbour[1][1],
+                                )
+                            )
+                            physical_wedge_class = (
+                                "same_edge"
+                                if same_physical_edge
+                                else "one_endpoint"
+                            )
+                            matching_projected_same_centre_physical_wedge_class_mass[
+                                physical_wedge_class
+                            ] += mass
                             for footprint_value in footprint:
                                 matching_projected_same_centre_footprint_depth[
                                     footprint_value
@@ -1861,6 +1927,29 @@ def profile(
         default=Fraction(0),
     )
 
+    # Every repeated mixed translate cell has one common physical endpoint,
+    # one incident V edge, one incident W edge, and one orientation choice
+    # for each edge.  The physical-wedge aggregation is therefore lossless.
+    assert sum(
+        matching_projected_same_centre_physical_wedge_mass.values()
+    ) == matching_projected_same_centre_cross_third
+    assert all(
+        mass
+        == matching_projected_same_centre_physical_wedge_resonant_mass[wedge]
+        + matching_projected_same_centre_physical_wedge_transverse_mass[wedge]
+        for wedge, mass in (
+            matching_projected_same_centre_physical_wedge_mass.items()
+        )
+    )
+    assert sum(
+        matching_projected_same_centre_physical_wedge_class_mass.values()
+    ) == matching_projected_same_centre_cross_third
+    if points is not None:
+        point_count = len(points)
+        assert len(
+            matching_projected_same_centre_physical_wedge_mass
+        ) <= 4 * point_count * (point_count - 1) ** 2
+
     summary = {
         "components": tuple(component_mass.most_common(8)),
         "shifts": tuple(shift_mass.most_common(8)),
@@ -2280,6 +2369,61 @@ def profile(
                         sorted(
                             matching_projected_same_centre_cross_load_histogram.items()
                         )
+                    ),
+                    (
+                        len(matching_projected_same_centre_physical_wedge_mass),
+                        max(
+                            matching_projected_same_centre_physical_wedge_mass.values(),
+                            default=0,
+                        ),
+                        tuple(
+                            (
+                                wedge,
+                                mass,
+                                matching_projected_same_centre_physical_wedge_cells[
+                                    wedge
+                                ],
+                                matching_projected_same_centre_physical_wedge_resonant_mass[
+                                    wedge
+                                ],
+                                matching_projected_same_centre_physical_wedge_transverse_mass[
+                                    wedge
+                                ],
+                                tuple(
+                                    sorted(
+                                        matching_projected_same_centre_physical_wedge_rows[
+                                            wedge
+                                        ],
+                                        reverse=True,
+                                    )
+                                ),
+                            )
+                            for wedge, mass in matching_projected_same_centre_physical_wedge_mass.most_common(
+                                8
+                            )
+                        ),
+                        tuple(
+                            (
+                                wedge_class,
+                                matching_projected_same_centre_physical_wedge_class_mass[
+                                    wedge_class
+                                ],
+                                max(
+                                    (
+                                        mass
+                                        for wedge, mass in matching_projected_same_centre_physical_wedge_mass.items()
+                                        if (
+                                            wedge[1] == wedge[2]
+                                            or wedge[1]
+                                            == (-wedge[2][0], -wedge[2][1])
+                                        )
+                                        == (wedge_class == "same_edge")
+                                    ),
+                                    default=0,
+                                ),
+                            )
+                            for wedge_class in ("same_edge", "one_endpoint")
+                        ),
                     ),
                     tuple(
                         sorted(
