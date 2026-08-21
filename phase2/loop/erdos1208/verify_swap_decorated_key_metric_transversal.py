@@ -196,6 +196,120 @@ def verify_gap_linearization_and_injectivity() -> None:
             seen[metric_key] = candidate_a
 
 
+def verify_recursive_motion_signature() -> None:
+    rng = random.Random(1729)
+    for _ in range(10000):
+        centre = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        ell = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        neighbour = rng.randrange(-12, 13), rng.randrange(-12, 13)
+        shift = rng.randrange(-10, 11), rng.randrange(-10, 11)
+        if shift == (0, 0):
+            continue
+        q_value = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        h_value = add(ell, rotate(centre))
+        first_a = subtract(centre, q_value)
+        first_b = add(h_value, subtract(rotate(neighbour), rotate(first_a)))
+        first_c = add(first_b, neighbour)
+        second_a = add(first_a, shift)
+        second_b = subtract(first_b, rotate(shift))
+        second_c = subtract(first_c, rotate(shift))
+        gaps = (
+            norm(second_a) - norm(first_a),
+            norm(second_b) - norm(first_b),
+            norm(second_c) - norm(first_c),
+        )
+        assert gaps[0] - gaps[1] == (
+            2 * dot(h_value, rotate(shift))
+            + 2 * dot(neighbour, shift)
+        )
+        assert gaps[1] - gaps[2] == 2 * dot(
+            neighbour, rotate(shift)
+        )
+
+        recovered_dot = (
+            gaps[0] - gaps[1] - 2 * dot(h_value, rotate(shift))
+        ) // 2
+        recovered_rotated_dot = (gaps[1] - gaps[2]) // 2
+        square = norm(shift)
+        recovered_numerator = add(
+            scale(recovered_dot, shift),
+            scale(recovered_rotated_dot, rotate(shift)),
+        )
+        assert recovered_numerator == scale(square, neighbour)
+        assert 4 * abs(determinant(shift, rotate(shift))) == 4 * square
+
+
+def combined_metric_key(
+    centre: Point,
+    ell: Point,
+    key_shift: Point,
+    difference: Point,
+    recursive_shift: Point,
+    first_a: Point,
+    first_t: Point,
+) -> tuple[int, int, int, int]:
+    first_q = subtract(centre, first_a)
+    second_q = subtract(first_q, key_shift)
+    second_t = subtract(first_t, difference)
+    _, original_gaps = metric_cell(
+        centre, ell, first_t, second_t, first_q, second_q
+    )
+    pair = canonical_pair(key_shift, difference)
+
+    h_value = add(ell, rotate(centre))
+    first_b = add(h_value, subtract(rotate(first_t), rotate(first_a)))
+    first_c = add(first_b, first_t)
+    recursive_gaps = (
+        norm(add(first_a, recursive_shift)) - norm(first_a),
+        norm(subtract(first_b, rotate(recursive_shift))) - norm(first_b),
+        norm(subtract(first_c, rotate(recursive_shift))) - norm(first_c),
+    )
+    return (
+        original_gaps[pair[0]],
+        original_gaps[pair[1]],
+        recursive_gaps[0] - recursive_gaps[1],
+        recursive_gaps[1] - recursive_gaps[2],
+    )
+
+
+def verify_product_transversality() -> None:
+    rng = random.Random(271828)
+    for _ in range(80):
+        centre = rng.randrange(-12, 13), rng.randrange(-12, 13)
+        ell = rng.randrange(-12, 13), rng.randrange(-12, 13)
+        key_shift = rng.randrange(-5, 6), rng.randrange(-5, 6)
+        difference = rng.randrange(-5, 6), rng.randrange(-5, 6)
+        recursive_shift = rng.randrange(-5, 6), rng.randrange(-5, 6)
+        if difference == (0, 0) or recursive_shift == (0, 0):
+            continue
+        directions = gap_directions(key_shift, difference)
+        pair = canonical_pair(key_shift, difference)
+        first_determinant = 4 * abs(
+            determinant(directions[pair[0]], directions[pair[1]])
+        )
+        second_determinant = 4 * norm(recursive_shift)
+        assert 3 * first_determinant >= 4 * norm(difference)
+        assert (
+            3 * first_determinant * second_determinant
+            >= 16 * norm(difference) * norm(recursive_shift)
+        )
+
+        seen: dict[tuple[int, int, int, int], tuple[Point, Point]] = {}
+        for first_a in product(range(-2, 3), repeat=2):
+            for first_t in product(range(-2, 3), repeat=2):
+                key = combined_metric_key(
+                    centre,
+                    ell,
+                    key_shift,
+                    difference,
+                    recursive_shift,
+                    first_a,
+                    first_t,
+                )
+                assert key not in seen
+                seen[key] = first_a, first_t
+
+
 def verify_genuine_costas_collision() -> None:
     points, differences = transformed_costas(23)
     assert is_distance_sidon(points)
@@ -240,6 +354,8 @@ def verify_genuine_costas_collision() -> None:
 def main() -> None:
     verify_symbolic_normal_form()
     verify_gap_linearization_and_injectivity()
+    verify_recursive_motion_signature()
+    verify_product_transversality()
     verify_genuine_costas_collision()
     print("SWAP DECORATED-KEY METRIC TRANSVERSAL GATE: PASS")
 

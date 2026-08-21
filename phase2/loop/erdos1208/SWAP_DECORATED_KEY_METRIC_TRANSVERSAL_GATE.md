@@ -178,7 +178,87 @@ The two directions are independent, so `A=A'`, and then `q=q'`.  The
 linear coefficient matrix has rows `2v_i,2v_j`; its determinant is
 `4 det(v_i,v_j)`, proving (1.9)--(1.10).
 
-## 4. The exact remaining packing gate
+## 4. A second metric transversal recovers the neighbour fibre
+
+The self-switch has an independent transverse metric signature.  Fix one
+second-generation group `(C,x,u)` and one of its reverse records in fibre
+`t`.  With `H=ell+Jc`, write
+
+\[
+ A=c-q,\qquad B=H+Jt-JA,\qquad C_1=B+t.              \tag{4.1}
+\]
+
+The internal pair `q,q-u in Q_{C,t}` moves these vectors as
+
+\[
+ A\longmapsto A+u,\qquad
+ B\longmapsto B-Ju,\qquad
+ C_1\longmapsto C_1-Ju.                             \tag{4.2}
+\]
+
+Let the three squared-norm changes be `h_0,h_1,h_2` in the displayed
+order.  Direct expansion gives
+
+\[
+\boxed{
+ h_0-h_1=2H\mathbin\cdot Ju+2t\mathbin\cdot u,
+ \qquad h_1-h_2=2t\mathbin\cdot Ju.}                \tag{4.3}
+\]
+
+Since `u != 0`, the two scalar products `t dot u` and `t dot Ju` recover
+`t` exactly.  Thus, for fixed `(C,u)`, the pair
+
+\[
+ (h_0-h_1,h_1-h_2)                                  \tag{4.4}
+\]
+
+has at most one neighbour-fibre label `t`.  Its affine Jacobian as a
+function of `t` has absolute determinant
+
+\[
+ \boxed{4|u|^2.}                                     \tag{4.5}
+\]
+
+Therefore the collision graph is metrically transverse at both levels:
+the original decorated-key occurrence cell has determinant
+`at least 4|d|^2/3`, while the recursive motion signature separates its
+neighbour fibres with determinant `4|u|^2`.  An abstract one-factorization
+does not retain either arithmetic lattice constraint.
+
+## 5. Product transversality for one repeated-key collision
+
+Combine the preceding maps.  Fix `(C,x,roles,s,d,u)` and parameterize a
+repeated-key collision by `(A,t)`, where `t=t_1` and `t_2=t-d`.  Choose the
+canonical metric-gap pair `(g_i,g_j)` from Section 3 and the recursive
+signature `(h_0-h_1,h_1-h_2)` from Section 4.  The affine map
+
+\[
+ (A,t)\longmapsto
+ (g_i,g_j,h_0-h_1,h_1-h_2)                         \tag{5.1}
+\]
+
+has block-triangular derivative.  Its lower-left block is zero, its
+upper-left determinant is at least `4|d|^2/3`, and its lower-right
+determinant is `4|u|^2`.  Therefore
+
+\[
+\boxed{
+ |\det D(5.1)|\ge {16\over3}|d|^2|u|^2.}            \tag{5.2}
+\]
+
+In particular, the four metric coordinates recover `(A,t)` uniquely.
+Thus every repeated-key collision becomes a singleton after a four-scalar
+metric refinement, and the occupied refinements lie in a rank-four
+integer-lattice coset whose covolume has the product lower bound (5.2).
+
+This is the first normalization retaining both load-bearing scales at
+once.  Applying a large sieve in `d` and then summing `u`, or vice versa,
+can lose the other determinant.  The natural analytic target is instead a
+joint determinant-weighted packing theorem for these rank-four cells,
+with the endpoint and four popular-corner labels kept until after the
+product weight is used.
+
+## 6. The exact remaining packing gate
 
 Let
 
@@ -197,7 +277,7 @@ bound for
 
 \[
  \sum_{C,x,\mathrm{roles},t_1\ne t_2,s}
- { |\mathscr S_{C,t_1,t_2,s}|\choose2},             \tag{4.1}
+ { |\mathscr S_{C,t_1,t_2,s}|\choose2},             \tag{6.1}
 \]
 
 where every occupied metric point must retain (1.3), (1.4), and the fixed
@@ -214,7 +294,7 @@ points across many endpoint-decorated cells while simultaneously keeping
 all four adaptive-popular corners.  That is the direct height-sensitive
 packing statement required for the `1/3` exponent.
 
-## 5. Verification
+## 7. Verification
 
 Run
 
@@ -225,5 +305,7 @@ python3 phase2/loop/erdos1208/verify_swap_decorated_key_metric_transversal.py
 The verifier checks the six-vector normal form and all three gap formulas
 on exhaustive small integer parameters, proves the determinant inequality
 and its sharp example, checks canonical-pair injectivity on random cells,
-and verifies the theorem on the genuine two-occurrence transformed
-Costas-23 collision from the completion-box note.
+checks the recursive motion signature and its Jacobian, and verifies the
+product-Jacobian injection.  It also verifies the theorem on the genuine
+two-occurrence transformed Costas-23 collision from the completion-box
+note.
