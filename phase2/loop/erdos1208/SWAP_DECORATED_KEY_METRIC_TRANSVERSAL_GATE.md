@@ -258,7 +258,89 @@ joint determinant-weighted packing theorem for these rank-four cells,
 with the endpoint and four popular-corner labels kept until after the
 product weight is used.
 
-## 6. The exact remaining packing gate
+## 6. Global reverse rigidity and the three resonances
+
+The preceding product map fixed the centre invariant `H`.  Retaining all
+six norm gaps removes that restriction except on three explicit resonance
+sets.  Regard
+
+\[
+ (g_0,g_1,g_2,h_0,h_1,h_2)                         \tag{6.1}
+\]
+
+as an affine function of the six real variables `(A,t,H)`, with
+`t=t_1`, `t_2=t-d`, and put
+
+\[
+ \gamma=-Js-Ld.                                     \tag{6.2}
+\]
+
+An exact row reduction gives
+
+\[
+\boxed{
+ \det {\partial(6.1)\over\partial(A,t,H)}
+ =64\det(s,u)\det(s+d,u)(\gamma\mathbin\cdot u).}   \tag{6.3}
+\]
+
+Therefore, outside the three resonances
+
+\[
+ \det(s,u)=0,\qquad \det(s+d,u)=0,
+ \qquad \gamma\mathbin\cdot u=0,                  \tag{6.4}
+\]
+
+the six metric gaps recover `(A,t,H)` uniquely.
+
+To see (6.3), divide all six rows by two and place the `g_0,h_0` rows
+first.  They contribute `det(s,u)` in the `A` block.  In the remaining
+`(t,H)` block, make the determinant-one change of variables
+`X=t-JH`.  The `g_1` and `h_1` rows then depend only on `X`; the differences
+`g_2-g_1` and `h_2-h_1` expose respectively the `gamma` and `u`
+directions.  The resulting determinant is
+`det(s+d,u)(gamma dot u)`.  Restoring the six factors of two proves
+(6.3).
+
+There is a bounded final reconstruction rather than a hidden centre sum.
+Let `R_t` be the directed neighbour label containing the fixed physical
+endpoint: it is either `c+t` or `ell+Lt`, according to the retained
+oriented role.  Adjoin the one absolute metric label
+
+\[
+ \nu=|R_t|^2\in\Lambda.                              \tag{6.5}
+\]
+
+Distance-Sidonicity, the oriented role, and the nonshared endpoint already
+recovered by the raw decorated key determine `R_t` and the shared endpoint.
+If `R_t=c+t`, this gives `c=R_t-t`; if `R_t=ell+Lt`, it gives
+`ell=R_t-Lt` and then `c` from `H=ell+Jc`.  Finally `q=c-A`.
+Thus, in the nonresonant branch, the seven-scalar metric refinement
+
+\[
+ (g_0,g_1,g_2,h_0,h_1,h_2,\nu)                    \tag{6.6}
+\]
+
+recovers the full endpoint collision with bounded multiplicity (indeed
+one after the oriented nonshared endpoint is fixed).
+
+The three resonances have literal collinear meanings, rather than being
+algebraic nuisances:
+
+1. `det(s,u)=0`: the four popular `q` corners
+   `q_1,q_2,q_1-u,q_2-u` are collinear;
+2. `det(s+d,u)=0`: the four popular `p` corners
+   `p_1,p_2,p_1-u,p_2-u` are collinear, since
+   `p_1-p_2=s+d`;
+3. `gamma dot u=0`: the four complete-difference vectors
+   `C_1,C_2,C_1-Ju,C_2-Ju` are collinear, because
+   `C_2-C_1=gamma` and `gamma` is parallel to `Ju`.
+
+Hence the global reverse theorem splits exactly into a metrically rigid
+nonresonant population and three one-dimensional grid populations.  The
+next proof should apply the joint rank-six lattice packing away from
+(6.4), while charging the resonances by line-section/popular-line energy.
+
+## 7. The exact remaining packing gate
 
 Let
 
@@ -277,7 +359,7 @@ bound for
 
 \[
  \sum_{C,x,\mathrm{roles},t_1\ne t_2,s}
- { |\mathscr S_{C,t_1,t_2,s}|\choose2},             \tag{6.1}
+ { |\mathscr S_{C,t_1,t_2,s}|\choose2},             \tag{7.1}
 \]
 
 where every occupied metric point must retain (1.3), (1.4), and the fixed
@@ -314,7 +396,7 @@ dilation, so the final estimate must compare lattice covolume with its
 metric-coordinate ranges; a bare cutoff on `|d|^2|u|^2` would not be
 scale-invariant.
 
-## 7. Verification
+## 8. Verification
 
 Run
 

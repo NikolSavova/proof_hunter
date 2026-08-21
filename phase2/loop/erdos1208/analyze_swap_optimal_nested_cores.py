@@ -470,6 +470,7 @@ def profile(
     matching_endpoint_metric_product_mass: Counter[int] = Counter()
     matching_endpoint_metric_product_reciprocal = Fraction(0)
     matching_endpoint_metric_product_minimum: int | None = None
+    matching_endpoint_metric_resonance_mass: Counter[str] = Counter()
     matching_endpoint_reverse_cross_support_ratio = Fraction(0)
     matching_endpoint_reverse_cross_support_row: tuple[object, ...] = ()
     for component, vertices in sorted(
@@ -691,6 +692,76 @@ def profile(
                                 metric_product,
                             )
                     assert metric_edge_mass == switch_pair
+
+                    # Resolve each internal representation so that the
+                    # three exact global-Jacobian resonances retain s.
+                    resonance_edge_mass = 0
+                    for (
+                        (first_neighbour, _),
+                        (second_neighbour, _),
+                    ) in combinations(active_neighbours, 2):
+                        first_t = subtract(first_neighbour[0], centre[0])
+                        second_t = subtract(second_neighbour[0], centre[0])
+                        physical_difference = subtract(first_t, second_t)
+                        first_starts = [
+                            q_value
+                            for q_value in q_fibres[first_neighbour]
+                            if subtract(q_value, switch)
+                            in q_fibres[first_neighbour]
+                        ]
+                        second_starts = [
+                            q_value
+                            for q_value in q_fibres[second_neighbour]
+                            if subtract(q_value, switch)
+                            in q_fibres[second_neighbour]
+                        ]
+                        for first_q in first_starts:
+                            for second_q in second_starts:
+                                key_shift = subtract(first_q, second_q)
+                                gamma = subtract(
+                                    (
+                                        -rotate(key_shift)[0],
+                                        -rotate(key_shift)[1],
+                                    ),
+                                    linear(physical_difference),
+                                )
+                                mask = "".join(
+                                    name
+                                    for name, active in (
+                                        (
+                                            "q",
+                                            key_shift[0] * switch[1]
+                                            - key_shift[1] * switch[0]
+                                            == 0,
+                                        ),
+                                        (
+                                            "p",
+                                            (
+                                                key_shift[0]
+                                                + physical_difference[0]
+                                            )
+                                            * switch[1]
+                                            - (
+                                                key_shift[1]
+                                                + physical_difference[1]
+                                            )
+                                            * switch[0]
+                                            == 0,
+                                        ),
+                                        (
+                                            "D",
+                                            gamma[0] * switch[0]
+                                            + gamma[1] * switch[1]
+                                            == 0,
+                                        ),
+                                    )
+                                    if active
+                                )
+                                matching_endpoint_metric_resonance_mass[
+                                    mask or "nonresonant"
+                                ] += 1
+                                resonance_edge_mass += 1
+                    assert resonance_edge_mass == switch_pair
 
                     # Reconstruct the literal reverse records, discard one
                     # largest t-fibre exactly as in G_2, and measure the
@@ -1297,6 +1368,10 @@ def profile(
                 matching_endpoint_metric_product_reciprocal,
             ),
             ("dyadic_mass", tuple(sorted(matching_endpoint_metric_product_mass.items()))),
+            (
+                "resonance_mass",
+                tuple(sorted(matching_endpoint_metric_resonance_mass.items())),
+            ),
         ),
         "matching_endpoint_reverse_cross_support": (
             (

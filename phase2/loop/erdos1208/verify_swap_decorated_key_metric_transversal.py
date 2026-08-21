@@ -27,6 +27,37 @@ def determinant(first: Point, second: Point) -> int:
     return first[0] * second[1] - first[1] * second[0]
 
 
+def matrix_determinant(matrix: list[list[int]]) -> int:
+    """Fraction-free Bareiss determinant."""
+    values = [row[:] for row in matrix]
+    size = len(values)
+    sign = 1
+    previous = 1
+    for pivot_index in range(size - 1):
+        if values[pivot_index][pivot_index] == 0:
+            swap = next(
+                (
+                    row
+                    for row in range(pivot_index + 1, size)
+                    if values[row][pivot_index]
+                ),
+                None,
+            )
+            if swap is None:
+                return 0
+            values[pivot_index], values[swap] = values[swap], values[pivot_index]
+            sign *= -1
+        pivot = values[pivot_index][pivot_index]
+        for row in range(pivot_index + 1, size):
+            for column in range(pivot_index + 1, size):
+                values[row][column] = (
+                    values[row][column] * pivot
+                    - values[row][pivot_index] * values[pivot_index][column]
+                ) // previous
+        previous = pivot
+    return sign * values[-1][-1]
+
+
 def norm(value: Point) -> int:
     return dot(value, value)
 
@@ -310,6 +341,81 @@ def verify_product_transversality() -> None:
                 seen[key] = first_a, first_t
 
 
+def verify_global_six_gap_jacobian() -> None:
+    rng = random.Random(3142718)
+    zero = (0, 0)
+    for _ in range(10000):
+        key_shift = rng.randrange(-7, 8), rng.randrange(-7, 8)
+        difference = rng.randrange(-7, 8), rng.randrange(-7, 8)
+        recursive_shift = rng.randrange(-7, 8), rng.randrange(-7, 8)
+        beta = negate(rotate(add(key_shift, difference)))
+        gamma = subtract(
+            negate(rotate(key_shift)), linear(difference)
+        )
+        third_direction = subtract(
+            add(key_shift, difference), rotate(difference)
+        )
+
+        # Rows are ordered as g0,g1,g2,h0,h1,h2 and columns as A,t,H.
+        half_rows = [
+            list(key_shift + zero + zero),
+            list(
+                add(key_shift, difference)
+                + negate(add(key_shift, difference))
+                + beta
+            ),
+            list(
+                third_direction
+                + (
+                    gamma[0] + gamma[1],
+                    -gamma[0] + gamma[1],
+                )
+                + gamma
+            ),
+            list(recursive_shift + zero + zero),
+            list(
+                recursive_shift
+                + negate(recursive_shift)
+                + negate(rotate(recursive_shift))
+            ),
+            list(
+                recursive_shift
+                + negate(add(recursive_shift, rotate(recursive_shift)))
+                + negate(rotate(recursive_shift))
+            ),
+        ]
+        rows = [[2 * value for value in row] for row in half_rows]
+        actual = matrix_determinant(rows)
+        predicted = (
+            64
+            * determinant(key_shift, recursive_shift)
+            * determinant(add(key_shift, difference), recursive_shift)
+            * dot(gamma, recursive_shift)
+        )
+        assert actual == predicted
+
+        # The three zero factors are exactly the three collinear grids.
+        assert (determinant(key_shift, recursive_shift) == 0) == (
+            determinant(
+                subtract((0, 0), key_shift),
+                negate(recursive_shift),
+            )
+            == 0
+        )
+        assert (
+            determinant(add(key_shift, difference), recursive_shift) == 0
+        ) == (
+            determinant(
+                subtract((0, 0), add(key_shift, difference)),
+                negate(recursive_shift),
+            )
+            == 0
+        )
+        assert (dot(gamma, recursive_shift) == 0) == (
+            determinant(gamma, rotate(recursive_shift)) == 0
+        )
+
+
 def verify_genuine_costas_collision() -> None:
     points, differences = transformed_costas(23)
     assert is_distance_sidon(points)
@@ -349,6 +455,9 @@ def verify_genuine_costas_collision() -> None:
     assert 3 * 4 * abs(determinant(directions[pair[0]], directions[pair[1]])) >= (
         4 * norm(difference)
     )
+    # This genuine cell lies in the second, popular-p collinear resonance.
+    assert determinant(key_shift, switch) != 0
+    assert determinant(add(key_shift, difference), switch) == 0
 
 
 def main() -> None:
@@ -356,6 +465,7 @@ def main() -> None:
     verify_gap_linearization_and_injectivity()
     verify_recursive_motion_signature()
     verify_product_transversality()
+    verify_global_six_gap_jacobian()
     verify_genuine_costas_collision()
     print("SWAP DECORATED-KEY METRIC TRANSVERSAL GATE: PASS")
 
