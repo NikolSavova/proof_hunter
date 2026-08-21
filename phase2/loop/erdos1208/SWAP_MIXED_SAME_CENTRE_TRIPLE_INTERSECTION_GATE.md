@@ -132,6 +132,100 @@ Formula (3.6) is deliberately labelled coarse.  Even with subpolynomial
 order `k`.  The live theorem should sum the dot product (1.5), or its
 dyadic large-`Theta` cores, across centres before taking either marginal.
 
+There is a stronger exact reorganization.  For two fibres `X,Y`, put
+
+\[
+ r_{X,Y}(d)=|\{(x,y)\in X\times Y:y-x=d\}|.
+\]
+
+Expanding both triple intersections and setting `d=y-x` gives
+
+\[
+\boxed{
+ \sum_{\{u,v\}}T_X(u,v)T_Y(u,v)
+ =3\sum_d{r_{X,Y}(d)\choose3}.}                  \tag{3.7}
+\]
+
+Indeed an unordered triple in `X\cap(Y-d)` contributes once for each of
+its three choices of base point, and this correspondence is reversible.
+Therefore
+
+\[
+\boxed{
+ C_{\rm centre}
+ =3\sum_{i,j,d}{r_{Q_i^V,Q_j^W}(d)\choose3}.}    \tag{3.8}
+\]
+
+This identifies the branch with a size-biased version of the exact
+cross-difference collision already isolated in
+`SWAP_MATCHING_WEIGHTED_ENDPOINT_PENCIL_GATE.md`.  If
+
+\[
+ Q_2=\sum_{i,j,d}{r_{Q_i^V,Q_j^W}(d)\choose2},
+ \qquad \rho=\max_{i,j,d}r_{Q_i^V,Q_j^W}(d),
+\]
+
+then the identity `3 binom(r,3)=(r-2)binom(r,2)` gives
+
+\[
+\boxed{C_{\rm centre}\le(\rho-2)_+Q_2.}          \tag{3.9}
+\]
+
+The pointwise factor `rho` must not be discarded.  The direct target is
+the size-biased collision in (3.8), with the endpoint, both neighbour
+fibres, and all popular corners retained.  In the endpoint-pencil notation
+each `r_{X,Y}(d)` is already capped by the minimum of the three coupled
+`D-D` loads in equation (7.7) of that note.
+
+There is also a lossless one-switch envelope.  Write
+
+\[
+ a_i(u)=R_{Q_i^V}(u),\quad b_j(u)=R_{Q_j^W}(u),
+\]
+
+\[
+ \Lambda_V(u)=\sum_i a_i(u),\quad
+ \Lambda_W(u)=\sum_j b_j(u),                     \tag{3.10}
+\]
+
+and
+
+\[
+ M_V(u)=\sum_i(|Q_i^V|-2)a_i(u),\quad
+ M_W(u)=\sum_j(|Q_j^W|-2)b_j(u).                 \tag{3.11}
+\]
+
+For one fibre,
+
+\[
+ \sum_{v\ne u}T_Q(u,v)=(|Q|-2)R_Q(u).           \tag{3.12}
+\]
+
+Indeed each start pair `r,r+u` may choose any of the other `|Q|-2`
+points as `r+v`.  Therefore
+
+\[
+\boxed{
+ 2C_{\rm centre}\le
+ \sum_{u\ne0}\min\{\Lambda_W(u)M_V(u),
+                     \Lambda_V(u)M_W(u)\}.}      \tag{3.13}
+\]
+
+This is the size-biased second-generation pencil envelope.  It retains
+which side supplies the third point and is strictly sharper than replacing
+all fibre sizes by their maximum.  If `R=max_i|Q_i|`, it implies
+
+\[
+ 2C_{\rm centre}\le(R-2)_+
+   \sum_{u\ne0}\Lambda_V(u)\Lambda_W(u).         \tag{3.14}
+\]
+
+The last sum is exactly the mixed part of the existing second-generation
+endpoint pencil.  The remaining gain must therefore come from paying the
+size bias in (3.13), or from routing its high-fibre portion to a two-sided
+completion core; merely reproving the unweighted pencil bound is not
+enough.
+
 ## 4. Exact stress and the failed uniform twelve-channel sum
 
 The augmented optimal-core analyzer gives the following repeated mixed
@@ -152,6 +246,81 @@ loads are only four and five.  In contrast the uniform local overlap
 upper sum from the twelve-channel theorem exceeds the true collision by
 factors about `3.76e7` and `3.71e7`.
 
+The sharper cross-difference and one-switch profiles are
+
+\[
+\begin{array}{c|r|r|r|r|r}
+k&Q_2&C_{h=a=0}&\rho&
+ \sum_u\Lambda_V(u)\Lambda_W(u)&\text{envelope (3.13)}\\ \hline
+29&19064&4857&5&38128&47938\\
+31& 9492&5058&6&18984&28072
+\end{array}                                             \tag{4.2}
+\]
+
+The fourth column is exactly the full mixed incidence mass on these rows.
+Thus (3.13) is a realistic constant-scale envelope, unlike the ambient
+twelve-channel products, but it is not itself a saving over the quantity
+being bounded.
+
+There is a second decisive split.  In (3.8), write
+
+\[
+ s=q_1-q_2,qquad d=t_1-t_2.
+\]
+
+The three coupled `D-D` directions are
+
+\[
+ s,qquad J(s+d),qquad Js+Ld.                    \tag{4.3}
+\]
+
+Cells in which one of these directions is zero contribute `3402/4857`
+and `3774/5058`, or `70.04%` and `74.61%`, of the same-centre mass at
+sizes `29,31`.  These are exactly the universal versions of the three
+metric resonances:
+
+* `s=0`, the two copies have the same `q`;
+* `s+d=0`, they have the same `p=q+t`; and
+* `Js+Ld=0`, the complete-difference displacement vanishes.
+
+They should be routed to the quadratic line footprints in
+`SWAP_RESONANT_LINE_FOOTPRINT_PACKING_GATE.md`.  The remaining nonzero
+cells belong to the rank-two/rank-six metric lattice packing in
+`SWAP_DECORATED_KEY_METRIC_TRANSVERSAL_GATE.md`.  The new issue in both
+branches is precisely the extra size bias `(r-2)` in (3.9).
+
+There is an exact low-load/high-load restart.  For any threshold `R>=3`,
+write `C_{\rm centre}^{<R}` for the part of (3.8) supported on cells of
+load below `R`.  Then
+
+\[
+ \boxed{
+ C_{\rm centre}^{<R}
+ \le (R-3)Q_2.}                                  \tag{4.4}
+\]
+
+This is just `3 binom(r,3)=(r-2)binom(r,2)`.  Hence a subpolynomial
+threshold reduces the whole low-load population to the existing
+second-generation endpoint-pencil energy.  The only genuinely new
+population consists of rich cross-fibre translates
+
+\[
+ |Q_i^V\cap(Q_j^W-d)|\ge R,                       \tag{4.5}
+\]
+
+weighted by `(r-2)binom(r,2)`.  It must be split by the three directions
+in (4.3): a zero direction goes to the quadratic line-footprint theorem,
+while three nonzero directions go to the rank-six metric-lattice theorem.
+This is the direct Carleson gate; proving another unweighted second-energy
+bound cannot remove the size bias.
+
+The richest fully nonzero Costas-31 cells have load four and mass twelve.
+Every one of them has all three directions in (4.3) represented in `D-D`
+and all three associated shifts popular; their four `q`-pairs form small
+affine grids in the `31`-lattice.  Thus even the transverse branch is not
+locally sparse.  Its saving, if true, must come from global endpoint reuse
+and determinant-weighted packing, not a pointwise fibre cap.
+
 This is a decisive scale diagnosis.  The twelve-channel normal form is
 lossless and useful for localization, but its unweighted product of three
 `D`-overlaps is not summable.  The same-centre half must use (1.5); the
@@ -169,7 +338,9 @@ python3 phase2/loop/erdos1208/verify_swap_mixed_same_centre_triple_intersection.
 The verifier exhausts all pairs of subsets of a four-point universe and
 tests hundreds of random multi-fibre systems.  It checks the key-set
 intersection identity, (1.5), the exact third-moment identity (3.1), and
-the envelopes (3.4)--(3.6).
+the envelopes (3.4)--(3.6).  It also verifies the cross-third-energy
+identity (3.7)--(3.8), its size-biased second-energy bound (3.9), and the
+one-switch envelope (3.12)--(3.14).
 
 The exact geometric stress rows are reproduced by
 

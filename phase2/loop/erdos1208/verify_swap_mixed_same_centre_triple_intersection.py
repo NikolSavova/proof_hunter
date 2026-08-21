@@ -27,6 +27,16 @@ def triple_load(values: set[Point], first: Point, second: Point) -> int:
     return len(starts(values, first) & starts(values, second))
 
 
+def cross_difference_loads(
+    first: set[Point], second: set[Point]
+) -> Counter[Point]:
+    return Counter(
+        sub(second_value, first_value)
+        for first_value in first
+        for second_value in second
+    )
+
+
 def all_switches(families: list[set[Point]]) -> list[Point]:
     return sorted(
         {
@@ -80,6 +90,46 @@ def audit(v_fibres: list[set[Point]], w_fibres: list[set[Point]]) -> None:
     collision = sum(a_load[pair] * b_load[pair] for pair in a_load)
     assert collision == direct_collision
 
+    directed_switches = switches
+    weighted_envelope = 0
+    mixed_second_pencil = 0
+    for switch in directed_switches:
+        lambda_v = sum(len(starts(values, switch)) for values in v_fibres)
+        lambda_w = sum(len(starts(values, switch)) for values in w_fibres)
+        weighted_v = sum(
+            max(0, len(values) - 2) * len(starts(values, switch))
+            for values in v_fibres
+        )
+        weighted_w = sum(
+            max(0, len(values) - 2) * len(starts(values, switch))
+            for values in w_fibres
+        )
+        mixed_second_pencil += lambda_v * lambda_w
+        weighted_envelope += min(
+            lambda_w * weighted_v,
+            lambda_v * weighted_w,
+        )
+    assert 2 * collision <= weighted_envelope
+
+    cross_third_energy = 0
+    cross_second_energy = 0
+    maximum_cross_load = 0
+    for v_values in v_fibres:
+        for w_values in w_fibres:
+            loads = cross_difference_loads(v_values, w_values)
+            cross_third_energy += 3 * sum(
+                comb(load, 3) for load in loads.values()
+            )
+            cross_second_energy += sum(
+                comb(load, 2) for load in loads.values()
+            )
+            maximum_cross_load = max(
+                maximum_cross_load,
+                max(loads.values(), default=0),
+            )
+    assert collision == cross_third_energy
+    assert collision <= max(0, maximum_cross_load - 2) * cross_second_energy
+
     v_triples = 3 * sum(comb(len(values), 3) for values in v_fibres)
     w_triples = 3 * sum(comb(len(values), 3) for values in w_fibres)
     assert sum(a_load.values()) == v_triples
@@ -96,6 +146,7 @@ def audit(v_fibres: list[set[Point]], w_fibres: list[set[Point]]) -> None:
         (len(values) for values in v_fibres + w_fibres),
         default=0,
     )
+    assert weighted_envelope <= max(0, maximum - 2) * mixed_second_pencil
     v_wedges = sum(comb(len(values), 2) for values in v_fibres)
     w_wedges = sum(comb(len(values), 2) for values in w_fibres)
     assert v_triples <= maximum * v_wedges

@@ -492,6 +492,16 @@ def profile(
     ] = {"V": Counter(), "W": Counter()}
     matching_projected_group_count = 0
     matching_projected_mixed_group_incidence = 0
+    matching_projected_same_centre_cross_second = 0
+    matching_projected_same_centre_cross_third = 0
+    matching_projected_same_centre_cross_maximum = 0
+    matching_projected_same_centre_cross_load_histogram: Counter[int] = Counter()
+    matching_projected_same_centre_mixed_second_pencil = 0
+    matching_projected_same_centre_weighted_envelope = 0
+    matching_projected_same_centre_cross_resonance: Counter[
+        tuple[int, int, int]
+    ] = Counter()
+    matching_projected_same_centre_cross_rich_rows: list[tuple[object, ...]] = []
 
     def projected_physical_edge(key: tuple[object, ...]) -> Point:
         assert key[0] in ("V", "W")
@@ -679,6 +689,109 @@ def profile(
                     )
                     fibre_internal_differences[neighbour] = internal
                     active_switches.update(internal)
+
+                v_neighbours = [
+                    neighbour
+                    for neighbour in q_fibres
+                    if neighbour_roles[neighbour] < 2
+                ]
+                w_neighbours = [
+                    neighbour
+                    for neighbour in q_fibres
+                    if neighbour_roles[neighbour] >= 2
+                ]
+                for v_neighbour in v_neighbours:
+                    for w_neighbour in w_neighbours:
+                        cross_load = Counter(
+                            subtract(w_value, v_value)
+                            for v_value in q_fibres[v_neighbour]
+                            for w_value in q_fibres[w_neighbour]
+                        )
+                        matching_projected_same_centre_cross_second += sum(
+                            load * (load - 1) // 2
+                            for load in cross_load.values()
+                        )
+                        matching_projected_same_centre_cross_third += 3 * sum(
+                            load * (load - 1) * (load - 2) // 6
+                            for load in cross_load.values()
+                        )
+                        matching_projected_same_centre_cross_maximum = max(
+                            matching_projected_same_centre_cross_maximum,
+                            max(cross_load.values(), default=0),
+                        )
+                        matching_projected_same_centre_cross_load_histogram.update(
+                            cross_load.values()
+                        )
+                        t_v = subtract(v_neighbour[0], centre[0])
+                        t_w = subtract(w_neighbour[0], centre[0])
+                        physical_delta = subtract(t_v, t_w)
+                        for raw_difference, load in cross_load.items():
+                            if load < 3:
+                                continue
+                            eta = (-raw_difference[0], -raw_difference[1])
+                            shifts = (
+                                eta,
+                                rotate(add(eta, physical_delta)),
+                                add(rotate(eta), linear(physical_delta)),
+                            )
+                            mass = load * (load - 1) * (load - 2) // 2
+                            matching_projected_same_centre_cross_resonance[
+                                sum(shift == (0, 0) for shift in shifts),
+                                sum(shift in differences for shift in shifts),
+                                sum(shift in adaptive_popular for shift in shifts),
+                            ] += mass
+                            matching_projected_same_centre_cross_rich_rows.append(
+                                (
+                                    load,
+                                    mass,
+                                    sum(shift == (0, 0) for shift in shifts),
+                                    sum(shift in differences for shift in shifts),
+                                    sum(shift in adaptive_popular for shift in shifts),
+                                    centre,
+                                    endpoint,
+                                    t_v,
+                                    t_w,
+                                    eta,
+                                    shifts,
+                                    tuple(
+                                        sorted(
+                                            (
+                                                v_value,
+                                                add(v_value, raw_difference),
+                                            )
+                                            for v_value in q_fibres[v_neighbour]
+                                            if add(v_value, raw_difference)
+                                            in q_fibres[w_neighbour]
+                                        )
+                                    ),
+                                )
+                            )
+                for active_switch in active_switches:
+                    lambda_v = sum(
+                        fibre_internal_differences[neighbour][active_switch]
+                        for neighbour in v_neighbours
+                    )
+                    lambda_w = sum(
+                        fibre_internal_differences[neighbour][active_switch]
+                        for neighbour in w_neighbours
+                    )
+                    weighted_v = sum(
+                        max(0, len(q_fibres[neighbour]) - 2)
+                        * fibre_internal_differences[neighbour][active_switch]
+                        for neighbour in v_neighbours
+                    )
+                    weighted_w = sum(
+                        max(0, len(q_fibres[neighbour]) - 2)
+                        * fibre_internal_differences[neighbour][active_switch]
+                        for neighbour in w_neighbours
+                    )
+                    matching_projected_same_centre_mixed_second_pencil += (
+                        lambda_v * lambda_w
+                    )
+                    matching_projected_same_centre_weighted_envelope += min(
+                        lambda_w * weighted_v,
+                        lambda_v * weighted_w,
+                    )
                 for switch in active_switches:
                     switch_weights = [
                         internal[switch]
@@ -1485,6 +1598,14 @@ def profile(
         )
         mixed_difference_zero_pattern_mass[pattern] += mass
         mixed_difference_zero_pattern_support[pattern] += 1
+    assert (
+        matching_projected_same_centre_cross_third
+        == mixed_difference_zero_pattern_mass["H-A"]
+    )
+    assert (
+        2 * matching_projected_same_centre_cross_third
+        <= matching_projected_same_centre_weighted_envelope
+    )
     assert all(
         load <= mixed_difference_upsilon[difference]
         for (_, difference), load in mixed_key_difference_load.items()
@@ -2076,6 +2197,42 @@ def profile(
             (
                 "difference_zero_pattern_support",
                 tuple(sorted(mixed_difference_zero_pattern_support.items())),
+            ),
+            (
+                "same_centre_cross_difference_energy",
+                (
+                    matching_projected_same_centre_cross_second,
+                    matching_projected_same_centre_cross_third,
+                    matching_projected_same_centre_cross_maximum,
+                    matching_projected_same_centre_mixed_second_pencil,
+                    matching_projected_same_centre_weighted_envelope,
+                    tuple(
+                        sorted(
+                            matching_projected_same_centre_cross_load_histogram.items()
+                        )
+                    ),
+                    tuple(
+                        sorted(
+                            matching_projected_same_centre_cross_resonance.items()
+                        )
+                    ),
+                    tuple(
+                        sorted(
+                            matching_projected_same_centre_cross_rich_rows,
+                            reverse=True,
+                        )[:8]
+                    ),
+                    tuple(
+                        sorted(
+                            (
+                                row
+                                for row in matching_projected_same_centre_cross_rich_rows
+                                if row[2] == 0
+                            ),
+                            reverse=True,
+                        )[:8]
+                    ),
+                ),
             ),
         ),
         "matching_endpoint_collision_switch_cutoff": tuple(
