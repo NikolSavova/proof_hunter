@@ -477,6 +477,27 @@ def profile(
         tuple[tuple[object, ...], tuple[object, ...]],
         tuple[Cell, Point, Point],
     ] = {}
+    matching_projected_mixed_key_pair_groups: dict[
+        tuple[tuple[object, ...], tuple[object, ...]],
+        list[tuple[Cell, Point, Point]],
+    ] = defaultdict(list)
+    matching_projected_key_group_load: Counter[tuple[object, ...]] = Counter()
+    matching_projected_full_same_pair_codegrees: dict[
+        str,
+        Counter[tuple[tuple[object, ...], tuple[object, ...]]],
+    ] = {"V": Counter(), "W": Counter()}
+    matching_projected_bundle_pair_codegrees: dict[
+        str,
+        Counter[tuple[tuple[object, ...], tuple[object, ...]]],
+    ] = {"V": Counter(), "W": Counter()}
+    matching_projected_group_count = 0
+    matching_projected_mixed_group_incidence = 0
+
+    def projected_physical_edge(key: tuple[object, ...]) -> Point:
+        assert key[0] in ("V", "W")
+        if key[0] == "V":
+            return add(key[2], key[3])  # type: ignore[arg-type]
+        return key[3]  # type: ignore[return-value]
     matching_endpoint_metric_product_mass: Counter[int] = Counter()
     matching_endpoint_metric_product_reciprocal = Fraction(0)
     matching_endpoint_metric_product_minimum: int | None = None
@@ -717,6 +738,49 @@ def profile(
                         assert len(set(keys)) == weight
                         projected_keys[neighbour] = tuple(keys)
 
+                    owner = centre, endpoint, switch
+                    matching_projected_group_count += 1
+                    owner_keys = {"V": set(), "W": set()}
+                    owner_parts: dict[
+                        str, dict[tuple[object, ...], Cell]
+                    ] = {"V": {}, "W": {}}
+                    for neighbour, keys in projected_keys.items():
+                        for key in keys:
+                            role_type = key[0]
+                            assert role_type in owner_keys
+                            assert key not in owner_keys[role_type]
+                            owner_keys[role_type].add(key)
+                            owner_parts[role_type][key] = neighbour
+                    for role_type, part_map in owner_parts.items():
+                        physical_parts: dict[Point, Cell] = {}
+                        for key, neighbour in part_map.items():
+                            physical_edge = projected_physical_edge(key)
+                            previous_neighbour = physical_parts.setdefault(
+                                physical_edge, neighbour
+                            )
+                            assert previous_neighbour == neighbour
+                            if role_type == "V":
+                                assert neighbour[0] == physical_edge
+                            else:
+                                assert neighbour[1] == physical_edge
+                    matching_projected_mixed_group_incidence += (
+                        len(owner_keys["V"]) * len(owner_keys["W"])
+                    )
+                    for role_type, keys in owner_keys.items():
+                        matching_projected_key_group_load.update(keys)
+                        for first_key, second_key in combinations(sorted(keys), 2):
+                            key_pair = first_key, second_key
+                            matching_projected_full_same_pair_codegrees[
+                                role_type
+                            ][key_pair] += 1
+                            if (
+                                projected_physical_edge(first_key)
+                                == projected_physical_edge(second_key)
+                            ):
+                                matching_projected_bundle_pair_codegrees[
+                                    role_type
+                                ][key_pair] += 1
+
                     local_projected_pairs: set[
                         tuple[tuple[object, ...], tuple[object, ...]]
                     ] = set()
@@ -733,12 +797,15 @@ def profile(
                                     assert key_pair not in local_projected_pairs
                                     local_projected_pairs.add(key_pair)
                                     matching_projected_key_pair_codegrees[key_pair] += 1
-                                    owner = centre, endpoint, switch
                                     previous_owner = matching_projected_key_pair_owner.get(
                                         key_pair
                                     )
                                     if previous_owner is None or owner < previous_owner:
                                         matching_projected_key_pair_owner[key_pair] = owner
+                                    if key_pair[0][0] != key_pair[1][0]:
+                                        matching_projected_mixed_key_pair_groups[
+                                            key_pair
+                                        ].append(owner)
                             assert (
                                 len(projected_keys[first_neighbour])
                                 * len(projected_keys[second_neighbour])
@@ -1312,6 +1379,186 @@ def profile(
 
     assert matching_endpoint_switch_lambda <= 8 * matching_wedges["parallel"]
 
+    mixed_group_incidence = matching_projected_mixed_group_incidence
+    mixed_pair_items = {
+        key_pair: codegree
+        for key_pair, codegree in matching_projected_key_pair_codegrees.items()
+        if "".join(sorted((key_pair[0][0], key_pair[1][0]))) == "VW"
+    }
+    assert mixed_group_incidence == sum(mixed_pair_items.values())
+    mixed_pair_collision = sum(
+        codegree * (codegree - 1) // 2
+        for codegree in mixed_pair_items.values()
+    )
+    assert {
+        key_pair: len(groups)
+        for key_pair, groups in matching_projected_mixed_key_pair_groups.items()
+    } == mixed_pair_items
+
+    def mixed_owner_difference(
+        first: tuple[Cell, Point, Point],
+        second: tuple[Cell, Point, Point],
+    ) -> tuple[Point, Point, Point]:
+        first_centre, first_endpoint, first_switch = first
+        second_centre, second_endpoint, second_switch = second
+        assert first_endpoint == second_endpoint
+        h = subtract(first_centre[1], second_centre[1])
+        s = rotate(subtract(first_switch, second_switch))
+        a = subtract(first_centre[0], second_centre[0])
+        assert h != (0, 0) or s != (0, 0) or a != (0, 0)
+        return h, s, a
+
+    mixed_group_pair_key_load: Counter[
+        tuple[tuple[Cell, Point, Point], tuple[Cell, Point, Point]]
+    ] = Counter()
+    mixed_key_difference_load: Counter[
+        tuple[
+            tuple[tuple[object, ...], tuple[object, ...]],
+            tuple[Point, Point, Point],
+        ]
+    ] = Counter()
+    mixed_difference_mass: Counter[tuple[Point, Point, Point]] = Counter()
+    mixed_difference_group_pairs: dict[
+        tuple[Point, Point, Point],
+        set[tuple[tuple[Cell, Point, Point], tuple[Cell, Point, Point]]],
+    ] = defaultdict(set)
+    for key_pair, groups in matching_projected_mixed_key_pair_groups.items():
+        assert len(set(groups)) == len(groups)
+        for first_owner, second_owner in combinations(sorted(groups), 2):
+            owner_pair = first_owner, second_owner
+            difference = mixed_owner_difference(first_owner, second_owner)
+            mixed_group_pair_key_load[owner_pair] += 1
+            mixed_key_difference_load[key_pair, difference] += 1
+            mixed_difference_mass[difference] += 1
+            mixed_difference_group_pairs[difference].add(owner_pair)
+    assert sum(mixed_group_pair_key_load.values()) == mixed_pair_collision
+    assert sum(mixed_key_difference_load.values()) == mixed_pair_collision
+    assert sum(mixed_difference_mass.values()) == mixed_pair_collision
+
+    difference_overlap: dict[Point, int] = {}
+
+    def overlap(shift: Point) -> int:
+        if shift not in difference_overlap:
+            difference_overlap[shift] = sum(
+                add(value, shift) in differences for value in differences
+            )
+        return difference_overlap[shift]
+
+    def repeated_pair_upsilon(difference: tuple[Point, Point, Point]) -> int:
+        h, s, a = difference
+        lam = inverse_linear(h)
+        js = rotate(s)
+        products = (
+            overlap(h) * overlap(s) * overlap(a),
+            overlap(lam) * overlap(s) * overlap(a),
+            overlap(h) * overlap(js) * overlap(add(a, js)),
+            overlap(h) * overlap(s) * overlap(subtract(h, a)),
+            overlap(h)
+            * overlap(s)
+            * overlap(subtract(h, linear(a))),
+            overlap(a)
+            * overlap(add(a, js))
+            * overlap(subtract(a, lam)),
+            overlap(subtract(h, a))
+            * overlap(subtract(add(h, s), a))
+            * overlap(a),
+            overlap(subtract(h, a))
+            * overlap(subtract(add(h, s), a))
+            * overlap(subtract(h, linear(a))),
+        )
+        return min(products)
+
+    mixed_difference_key_support: Counter[tuple[Point, Point, Point]] = Counter(
+        difference for _, difference in mixed_key_difference_load
+    )
+    mixed_difference_upsilon = {
+        difference: repeated_pair_upsilon(difference)
+        for difference in mixed_difference_mass
+    }
+    mixed_difference_zero_pattern_mass: Counter[str] = Counter()
+    mixed_difference_zero_pattern_support: Counter[str] = Counter()
+    for (h, s, a), mass in mixed_difference_mass.items():
+        pattern = (
+            ("H" if h == (0, 0) else "-")
+            + ("S" if s == (0, 0) else "-")
+            + ("A" if a == (0, 0) else "-")
+        )
+        mixed_difference_zero_pattern_mass[pattern] += mass
+        mixed_difference_zero_pattern_support[pattern] += 1
+    assert all(
+        load <= mixed_difference_upsilon[difference]
+        for (_, difference), load in mixed_key_difference_load.items()
+    )
+    mixed_occupied_cell_upsilon_upper = sum(
+        mixed_difference_key_support[difference] * upsilon
+        for difference, upsilon in mixed_difference_upsilon.items()
+    )
+    single_key_reuse = {
+        role_type: sum(
+            load * (load - 1) // 2
+            for key, load in matching_projected_key_group_load.items()
+            if key[0] == role_type
+        )
+        for role_type in ("V", "W")
+    }
+    full_same_type_pair_collision = {
+        role_type: sum(
+            codegree * (codegree - 1) // 2
+            for codegree in matching_projected_full_same_pair_codegrees[
+                role_type
+            ].values()
+        )
+        for role_type in ("V", "W")
+    }
+    physical_bundle_collision = {
+        role_type: sum(
+            codegree * (codegree - 1) // 2
+            for codegree in matching_projected_bundle_pair_codegrees[
+                role_type
+            ].values()
+        )
+        for role_type in ("V", "W")
+    }
+    cross_part_pair_collision = {
+        role_type: full_same_type_pair_collision[role_type]
+        - physical_bundle_collision[role_type]
+        for role_type in ("V", "W")
+    }
+
+    recorded_same_type_collision = {
+        role_type * 2: sum(
+            codegree * (codegree - 1) // 2
+            for key_pair, codegree in matching_projected_key_pair_codegrees.items()
+            if key_pair[0][0] == role_type and key_pair[1][0] == role_type
+        )
+        for role_type in ("V", "W")
+    }
+    assert cross_part_pair_collision == {
+        role_type: recorded_same_type_collision[role_type * 2]
+        for role_type in ("V", "W")
+    }
+    assert full_same_type_pair_collision == {
+        role_type: cross_part_pair_collision[role_type]
+        + physical_bundle_collision[role_type]
+        for role_type in ("V", "W")
+    }
+    mixed_collision_upper = (
+        min(single_key_reuse.values())
+        + sum(full_same_type_pair_collision.values())
+    )
+    assert mixed_pair_collision <= mixed_collision_upper
+
+    active_mixed_keys = set()
+    mixed_support_min_owner_load = 0
+    for first_key, second_key in mixed_pair_items:
+        active_mixed_keys.add(first_key)
+        active_mixed_keys.add(second_key)
+        mixed_support_min_owner_load += min(
+            matching_projected_key_group_load[first_key],
+            matching_projected_key_group_load[second_key],
+        )
+    assert mixed_group_incidence <= mixed_support_min_owner_load
+
     def projected_pair_profile(role_types: str) -> tuple[object, ...]:
         items = [
             (key_pair, codegree)
@@ -1729,6 +1976,107 @@ def profile(
         "matching_projected_key_pair_codegrees": tuple(
             projected_pair_profile(role_types)
             for role_types in ("VV", "VW", "WW")
+        ),
+        "matching_projected_mixed_group_overlap": (
+            ("groups", matching_projected_group_count),
+            ("incidence", mixed_group_incidence),
+            ("pair_collision", mixed_pair_collision),
+            (
+                "single_key_reuse",
+                tuple(sorted(single_key_reuse.items())),
+            ),
+            (
+                "full_same_type_pair_collision",
+                tuple(sorted(full_same_type_pair_collision.items())),
+            ),
+            (
+                "cross_part_pair_collision",
+                tuple(sorted(cross_part_pair_collision.items())),
+            ),
+            (
+                "physical_bundle_collision",
+                tuple(sorted(physical_bundle_collision.items())),
+            ),
+            (
+                "maximum_bundle_pair_group_codegree",
+                tuple(
+                    (
+                        role_type,
+                        max(codegrees.values(), default=0),
+                    )
+                    for role_type, codegrees in sorted(
+                        matching_projected_bundle_pair_codegrees.items()
+                    )
+                ),
+            ),
+            ("collision_upper", mixed_collision_upper),
+            ("active_keys", len(active_mixed_keys)),
+            ("support_min_owner_load", mixed_support_min_owner_load),
+        ),
+        "matching_projected_mixed_repeated_pair_cells": (
+            ("collision_mass", mixed_pair_collision),
+            ("group_pairs", len(mixed_group_pair_key_load)),
+            (
+                "maximum_key_pairs_per_group_pair",
+                max(mixed_group_pair_key_load.values(), default=0),
+            ),
+            ("difference_cells", len(mixed_difference_mass)),
+            (
+                "maximum_collision_mass_per_difference",
+                max(mixed_difference_mass.values(), default=0),
+            ),
+            (
+                "maximum_group_pairs_per_difference",
+                max(
+                    (len(value) for value in mixed_difference_group_pairs.values()),
+                    default=0,
+                ),
+            ),
+            (
+                "key_difference_cells",
+                len(mixed_key_difference_load),
+            ),
+            (
+                "maximum_group_pairs_per_key_difference_cell",
+                max(mixed_key_difference_load.values(), default=0),
+            ),
+            (
+                "occupied_cell_upsilon_upper",
+                mixed_occupied_cell_upsilon_upper,
+            ),
+            (
+                "maximum_upsilon_on_occupied_difference",
+                max(mixed_difference_upsilon.values(), default=0),
+            ),
+            (
+                "group_pair_key_load_histogram",
+                tuple(sorted(Counter(mixed_group_pair_key_load.values()).items())),
+            ),
+            (
+                "key_difference_load_histogram",
+                tuple(sorted(Counter(mixed_key_difference_load.values()).items())),
+            ),
+            (
+                "top_difference_cells",
+                tuple(
+                    (
+                        difference,
+                        mass,
+                        mixed_difference_key_support[difference],
+                        len(mixed_difference_group_pairs[difference]),
+                        mixed_difference_upsilon[difference],
+                    )
+                    for difference, mass in mixed_difference_mass.most_common(8)
+                ),
+            ),
+            (
+                "difference_zero_pattern_mass",
+                tuple(sorted(mixed_difference_zero_pattern_mass.items())),
+            ),
+            (
+                "difference_zero_pattern_support",
+                tuple(sorted(mixed_difference_zero_pattern_support.items())),
+            ),
         ),
         "matching_endpoint_collision_switch_cutoff": tuple(
             (
