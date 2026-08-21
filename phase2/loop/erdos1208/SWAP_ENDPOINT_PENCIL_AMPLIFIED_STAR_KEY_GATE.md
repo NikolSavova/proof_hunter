@@ -1,12 +1,19 @@
 # Amplifying the endpoint pencil into two-track star keys
 
+> **Status update (2026-08-21).**  The all-neighbours amplification in this
+> note is valid but unnecessarily strong.  It has been superseded by the
+> cyclic one-partner schedule in
+> `SWAP_CYCLIC_ENDPOINT_DERANGEMENT_GATE.md`, which keeps the same
+> `O(k^3)` key universe while removing the Cartesian endpoint-degree factor.
+> Use `Q_cyc`, not `Q_star`, as the live collision gate.
+
 ## 1. Outcome
 
 The endpoint-reuse dichotomy reduces the physical-wedge obstruction to
 
 \[
  \mathcal P_\Lambda
- =3\sum_{o=(C,q)\ {m high}}{r_C-1\choose2},      \tag{1.1}
+ =3\sum_{o=(C,q)\ {\rm high}}{r_C-1\choose2},      \tag{1.1}
 \]
 
 where every high occurrence `o` has been assigned canonically to one point
@@ -58,7 +65,7 @@ number `mathcal A` of amplified records satisfies
 
 \[
  \boxed{\mathcal A
-   =\sum_{o\ {m high}}w(o)(d(\chi(o))-1)
+   =\sum_{o\ {\rm high}}w(o)(d(\chi(o))-1)
    \ge(\Lambda-1){\mathcal P_\Lambda\over3}.}     \tag{2.2}
 \]
 

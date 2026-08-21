@@ -145,6 +145,15 @@ this situation: here the two parameter values may differ.  The theorem
 above is the correct general replacement and identifies the missing gauge
 explicitly.
 
+The endpoint schedule has since been sharpened.  Pairing every pointed
+record with all endpoint neighbours is unnecessary.  The cyclic
+derangement in `SWAP_CYCLIC_ENDPOINT_DERANGEMENT_GATE.md` schedules every
+decoration exactly once and retains the same `O(k^3)` two-track key
+universe.  Its only off-diagonal collisions still satisfy the anchored
+rank-five theorem above, while its internal collision mass has the exact
+periodic formula (3.2) in that note.  Therefore the live aggregate is
+`Q_cyc`, not the larger all-neighbours `Q_star`.
+
 ## 5. Verification
 
 Run

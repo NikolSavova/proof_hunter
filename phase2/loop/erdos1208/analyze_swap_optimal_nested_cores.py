@@ -2243,6 +2243,21 @@ def profile(
             raise AssertionError("endpoint missing from track edges")
 
         star_key_load: Counter[tuple[object, ...]] = Counter()
+        canonical_star_key_load: Counter[tuple[object, ...]] = Counter()
+        canonical_star_key_records: dict[
+            tuple[object, ...], list[tuple[int, int, int]]
+        ] | None = (
+            defaultdict(list)
+            if threshold == 16 and points is not None and len(points) <= 28
+            else None
+        )
+        star_key_records: dict[
+            tuple[object, ...], list[tuple[int, int, int]]
+        ] | None = (
+            defaultdict(list)
+            if threshold == 16 and points is not None and len(points) == 22
+            else None
+        )
         pointed_records = 0
         amplified_records = 0
         for occurrence_index, (
@@ -2263,9 +2278,44 @@ def profile(
             weight = (load - 1) * (load - 2) // 2
             pointed_records += weight
             first_slot, first_other = first_track_slot(edges, endpoint)
-            for partner_index in endpoint_occurrences[endpoint]:
-                if partner_index == occurrence_index:
-                    continue
+            partner_indices = [
+                partner_index
+                for partner_index in endpoint_occurrences[endpoint]
+                if partner_index != occurrence_index
+            ]
+            assert partner_indices
+            endpoint_indices = endpoint_occurrences[endpoint]
+            endpoint_position = endpoint_indices.index(occurrence_index)
+            for decoration in range(weight):
+                cyclic_shift = 1 + decoration % (len(endpoint_indices) - 1)
+                canonical_partner_index = endpoint_indices[
+                    (endpoint_position + cyclic_shift) % len(endpoint_indices)
+                ]
+                assert canonical_partner_index != occurrence_index
+                canonical_partner_edges = flattened_occurrences[
+                    canonical_partner_index
+                ][3]
+                (
+                    canonical_second_slot,
+                    canonical_second_other,
+                ) = first_track_slot(canonical_partner_edges, endpoint)
+                canonical_key = (
+                    endpoint,
+                    first_slot,
+                    first_other,
+                    canonical_second_slot,
+                    canonical_second_other,
+                )
+                canonical_star_key_load[canonical_key] += 1
+                if canonical_star_key_records is not None:
+                    canonical_star_key_records[canonical_key].append(
+                        (
+                            occurrence_index,
+                            decoration,
+                            canonical_partner_index,
+                        )
+                    )
+            for partner_index in partner_indices:
                 partner_edges = flattened_occurrences[partner_index][3]
                 second_slot, second_other = first_track_slot(
                     partner_edges, endpoint
@@ -2279,6 +2329,19 @@ def profile(
                         second_other,
                     )
                 ] += weight
+                if star_key_records is not None:
+                    star_key_records[
+                        (
+                            endpoint,
+                            first_slot,
+                            first_other,
+                            second_slot,
+                            second_other,
+                        )
+                    ].extend(
+                        (occurrence_index, decoration, partner_index)
+                        for decoration in range(weight)
+                    )
                 amplified_records += weight
         assert amplified_records >= (threshold - 1) * pointed_records
         star_key_collision = sum(
@@ -2287,6 +2350,83 @@ def profile(
         assert amplified_records * amplified_records <= len(
             star_key_load
         ) * (amplified_records + 2 * star_key_collision) if star_key_load else amplified_records == 0
+        star_key_collision_types: Counter[tuple[object, ...]] = Counter()
+        canonical_star_key_collision = sum(
+            load * (load - 1) // 2
+            for load in canonical_star_key_load.values()
+        )
+        canonical_star_key_collision_types: Counter[
+            tuple[object, ...]
+        ] = Counter()
+
+        def classify_star_key_records(
+            record_groups: dict[
+                tuple[object, ...], list[tuple[int, int, int]]
+            ],
+            output: Counter[tuple[object, ...]],
+        ) -> None:
+            for records in record_groups.values():
+                for first_record, second_record in combinations(records, 2):
+                    (
+                        first_occurrence,
+                        first_decoration,
+                        first_partner,
+                    ) = first_record
+                    (
+                        second_occurrence,
+                        second_decoration,
+                        second_partner,
+                    ) = second_record
+                    first_mask: tuple[int, ...] | str
+                    second_mask: tuple[int, ...] | str
+                    if first_occurrence == second_occurrence:
+                        first_mask = "same"
+                    else:
+                        first_edges = flattened_occurrences[first_occurrence][3]
+                        second_edges = flattened_occurrences[second_occurrence][3]
+                        first_mask = tuple(
+                            role
+                            for role, (first_edge, second_edge) in enumerate(
+                                zip(first_edges, second_edges)
+                            )
+                            if first_edge == second_edge
+                        )
+                        assert first_mask
+                    if first_partner == second_partner:
+                        second_mask = "same"
+                    else:
+                        first_edges = flattened_occurrences[first_partner][3]
+                        second_edges = flattened_occurrences[second_partner][3]
+                        second_mask = tuple(
+                            role
+                            for role, (first_edge, second_edge) in enumerate(
+                                zip(first_edges, second_edges)
+                            )
+                            if first_edge == second_edge
+                        )
+                        assert second_mask
+                    internal = (
+                        first_occurrence == second_occurrence
+                        and first_partner == second_partner
+                    )
+                    if internal:
+                        assert first_decoration != second_decoration
+                    output[first_mask, second_mask, internal] += 1
+
+        if star_key_records is not None:
+            classify_star_key_records(
+                star_key_records, star_key_collision_types
+            )
+            assert sum(star_key_collision_types.values()) == star_key_collision
+        if canonical_star_key_records is not None:
+            classify_star_key_records(
+                canonical_star_key_records,
+                canonical_star_key_collision_types,
+            )
+            assert (
+                sum(canonical_star_key_collision_types.values())
+                == canonical_star_key_collision
+            )
         occurrence_star_key_profiles.append(
             (
                 threshold,
@@ -2295,6 +2435,24 @@ def profile(
                 len(star_key_load),
                 max(star_key_load.values(), default=0),
                 star_key_collision,
+                tuple(
+                    sorted(
+                        star_key_collision_types.items(),
+                        key=lambda item: repr(item[0]),
+                    )
+                ),
+                (
+                    pointed_records,
+                    len(canonical_star_key_load),
+                    max(canonical_star_key_load.values(), default=0),
+                    canonical_star_key_collision,
+                    tuple(
+                        sorted(
+                            canonical_star_key_collision_types.items(),
+                            key=lambda item: repr(item[0]),
+                        )
+                    ),
+                ),
             )
         )
 
