@@ -132,6 +132,22 @@ endpoint-labelled track and hence the rank-five transverse quotient plus
 the one-dimensional gauge.  There is no remaining anonymous collision
 class.
 
+For later summation it is useful to keep the exact four-way split.  In a
+collision compare the first occurrence identities and the partner
+occurrence identities.  Write `Q_ab`, `a,b in {0,1}`, where `a=1` means
+the first identities differ and `b=1` means the partner identities differ.
+Then
+
+\[
+ \boxed{Q_{\rm cyc}=Q_{00}+Q_{10}+Q_{01}+Q_{11},}  \tag{3.3a}
+\]
+
+with `Q_00=Q_int`.  The `Q_10` and `Q_01` branches have one anchored
+repeated track, while `Q_11` has two simultaneous anchored repeated tracks
+through the same physical endpoint.  This double-track branch is the
+genuinely transverse main term; it should be attacked before relaxing to
+one unanchored six-direction energy.
+
 Equation (3.2) is also the correct diagnostic for the internal rich-cell
 branch.  If `w(o)<d(chi(o))`, it vanishes exactly.  If it is large, the
 obstruction is not endpoint amplification but a rich owner cell whose
@@ -175,6 +191,56 @@ In the critical range `m^2\asymp k^3`, this means `r_C\gg sqrt(k)`.
 Thus the internal branch has already become a genuinely very-rich-cell
 problem; ordinary and moderately rich owner cells are free.
 
+There is a complementary first-moment theorem for the off-diagonal branch.
+For an endpoint `x` and a track token `u=(slot,opposite endpoint)`, put
+
+\[
+ a_x(u)=|\{o\in O_x:\operatorname{token}_x(o)=u\}|. \tag{3.9}
+\]
+
+For a scheduled first occurrence `o` assigned to `x`, define its cycle
+repetition
+
+\[
+ \rho(o)=\left\lceil{w(o)\over d(x)-1}\right\rceil. \tag{3.10}
+\]
+
+Fix `R,Delta>=1`.  Retain only scheduled records for which
+
+\[
+ \rho(o)\le R,qquad a_x(u)\le\Delta,qquad a_x(v)\le\Delta, \tag{3.11}
+\]
+
+where `u,v` are the first and partner tokens of the key.  For a fixed first
+occurrence, the cyclic schedule visits each partner identity at most `R`
+times.  There are at most `a_x(v)` partners with token `v` and at most
+`a_x(u)` possible first occurrences.  Hence every retained key has load at
+most
+
+\[
+ R a_x(u)a_x(v)\le R\Delta^2.                     \tag{3.12}
+\]
+
+Using (1.3) gives the direct first-moment bound
+
+\[
+ \boxed{M_{\rm low}(R,\Delta)
+ \le144R\Delta^2 k(k-1)^2.}                      \tag{3.13}
+\]
+
+Thus subpolynomial `R,Delta` pay this whole branch from `k^3`, without
+forming `Q_cyc`.  Every surviving record has one of two concrete features:
+
+1. **high cycle repetition**, `rho(o)>R`, which is the very-rich internal
+   regime quantified by (3.2)--(3.8); or
+2. **a high physical-track token**, `a_x(u)>Delta` or `a_x(v)>Delta`, which
+   is exactly an endpoint-labelled repeated-track pencil and feeds the
+   rank-five normal form.
+
+This is the cleanest current direct dichotomy.  The hard off-diagonal
+energy need only be studied inside polynomially rich physical-track
+pencils; low track degree is already free.
+
 ## 4. Exact stresses
 
 The improvement is already large on the first active rows.
@@ -183,10 +249,12 @@ The improvement is already large on the first active rows.
   was `(mass,support,max,Q)=(16244,5380,20,33564)`.  The cyclic profile is
   `(204,192,2,12)`.  Its internal mass is zero.  Seven of the twelve
   collisions are pure gauge on both occurrence pairs; the other five are
-  transverse repeated-track pairs.
+  transverse repeated-track pairs.  All twelve lie in `Q_11`.
 * Transformed Costas `29`, at `Lambda=16`: the cyclic profile is
   `(4857,3095,35,8174)`.  Again `Q_int=0`; all collisions are honest
-  repeated-track collisions.
+  repeated-track collisions, with
+  `(Q_00,Q_10,Q_01,Q_11)=(0,83,146,7945)`.  Thus more than 97% of the
+  collision mass already lies in the double-track branch.
 
 The second row contains cells of load greater than three, so the vanishing
 of the internal term is not merely the load-three tautology.
@@ -198,7 +266,8 @@ all-neighbours `Q_star`.
 
 1. Bound the off-diagonal `Q_track` by summing the four-direction
    transverse quotient and its sharp linear gauge fibre across the two
-   fixed physical tracks.
+   fixed physical tracks.  By (3.13), this is needed only when at least one
+   of those tracks has polynomial occurrence degree.
 2. Handle only the very-rich internal tail (3.8), preferably by charging
    its repeated parameter pairs directly to the metric determinant/height
    budget.  The complementary internal mass is already paid by (3.7).
@@ -218,5 +287,6 @@ python3 phase2/loop/erdos1208/verify_swap_cyclic_endpoint_derangement.py
 The verifier checks the exact schedule, support bound, Cauchy inequality,
 collision trichotomy, and the equality and upper bound in (3.2) on
 exhaustive small and seeded random endpoint systems.  It also checks the
-dyadic inequality (3.5).  The optimal-core
+dyadic inequality (3.5), the per-key estimate (3.12), and its global
+consequence (3.13).  The optimal-core
 analyzer independently produces the two genuine Costas profiles above.

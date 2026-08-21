@@ -64,6 +64,69 @@ class CoreProfile:
     maximum_fibre_multiplicity: int
 
 
+def maximum_bipartite_flow(
+    demands: list[int],
+    neighbours: list[list[int]],
+    capacities: list[int],
+) -> int:
+    """Integral max flow from weighted left vertices to capacitated rows."""
+
+    left_count = len(demands)
+    right_count = len(capacities)
+    source = left_count + right_count
+    sink = source + 1
+    graph: list[list[list[int]]] = [[] for _ in range(sink + 1)]
+
+    def add_edge(start: int, end: int, capacity: int) -> None:
+        forward = [end, capacity, len(graph[end])]
+        backward = [start, 0, len(graph[start])]
+        graph[start].append(forward)
+        graph[end].append(backward)
+
+    for left, demand in enumerate(demands):
+        add_edge(source, left, demand)
+        for right in neighbours[left]:
+            add_edge(left, left_count + right, demand)
+    for right, capacity in enumerate(capacities):
+        add_edge(left_count + right, sink, capacity)
+
+    total = 0
+    while True:
+        level = [-1] * len(graph)
+        level[source] = 0
+        queue = deque([source])
+        while queue:
+            vertex = queue.popleft()
+            for end, capacity, _ in graph[vertex]:
+                if capacity and level[end] < 0:
+                    level[end] = level[vertex] + 1
+                    queue.append(end)
+        if level[sink] < 0:
+            return total
+        cursor = [0] * len(graph)
+
+        def augment(vertex: int, amount: int) -> int:
+            if vertex == sink:
+                return amount
+            while cursor[vertex] < len(graph[vertex]):
+                edge = graph[vertex][cursor[vertex]]
+                end, capacity, reverse = edge
+                if capacity and level[end] == level[vertex] + 1:
+                    pushed = augment(end, min(amount, capacity))
+                    if pushed:
+                        edge[1] -= pushed
+                        graph[end][reverse][1] += pushed
+                        return pushed
+                cursor[vertex] += 1
+            return 0
+
+        while True:
+            pushed = augment(source, sum(demands))
+            if not pushed:
+                break
+            total += pushed
+
+
 def connected_components(edge_multiplicity: Counter[Edge]) -> list[set[Cell]]:
     adjacency: dict[Cell, set[Cell]] = defaultdict(set)
     for first, second in edge_multiplicity:
@@ -2242,8 +2305,122 @@ def profile(
                     return 2 * role + 1, head
             raise AssertionError("endpoint missing from track edges")
 
+        def all_track_tokens(
+            edges: tuple[tuple[Point, Point], ...], endpoint: Point
+        ) -> set[tuple[int, Point]]:
+            tokens: set[tuple[int, Point]] = set()
+            for role, (head, tail) in enumerate(edges):
+                if head == endpoint:
+                    tokens.add((2 * role, tail))
+                if tail == endpoint:
+                    tokens.add((2 * role + 1, head))
+            assert tokens
+            return tokens
+
+        flexible_token_occurrences: Counter[
+            tuple[Point, tuple[int, Point]]
+        ] = Counter()
+        flexible_row_occurrences: dict[
+            tuple[Point, tuple[int, Point]], set[int]
+        ] = defaultdict(set)
+        flexible_token_support: dict[Point, set[tuple[int, Point]]] = defaultdict(set)
+        for occurrence_index, (_, _, footprint, edges) in enumerate(
+            flattened_occurrences
+        ):
+            for endpoint in footprint & high_endpoints:
+                for token in all_track_tokens(edges, endpoint):
+                    flexible_token_occurrences[endpoint, token] += 1
+                    flexible_row_occurrences[endpoint, token].add(
+                        occurrence_index
+                    )
+                    flexible_token_support[endpoint].add(token)
+        flexible_row_capacity = {
+            (endpoint, token): len(flexible_token_support[endpoint])
+            - int(flexible_token_occurrences[endpoint, token] == 1)
+            for endpoint, token in flexible_token_occurrences
+        }
+        assert all(capacity >= 1 for capacity in flexible_row_capacity.values())
+        flexible_rows = sorted(flexible_row_capacity)
+        flexible_row_index = {
+            row: index for index, row in enumerate(flexible_rows)
+        }
+        flexible_demands = []
+        flexible_neighbours = []
+        for cell_index, _, footprint, edges in flattened_occurrences:
+            available = footprint & high_endpoints
+            if not available:
+                continue
+            load = len(
+                matching_projected_same_centre_occurrence_footprints[cell_index]
+            )
+            flexible_demands.append((load - 1) * (load - 2) // 2)
+            flexible_neighbours.append(
+                sorted(
+                    {
+                        flexible_row_index[endpoint, token]
+                        for endpoint in available
+                        for token in all_track_tokens(edges, endpoint)
+                    }
+                )
+            )
+        flexible_total_capacity = sum(flexible_row_capacity.values())
+        if points is not None:
+            assert flexible_total_capacity <= 144 * len(points) * (
+                len(points) - 1
+            ) ** 2
+        flexible_flow_profiles = tuple(
+            (
+                cutoff,
+                sum(flexible_demands)
+                - maximum_bipartite_flow(
+                    flexible_demands,
+                    flexible_neighbours,
+                    [
+                        cutoff * flexible_row_capacity[row]
+                        for row in flexible_rows
+                    ],
+                ),
+                flexible_total_capacity,
+            )
+            for cutoff in (1, 2, 4, 8, 16)
+        )
+        flexible_repeated_pairs: set[tuple[int, int]] = set()
+        for occurrences in flexible_row_occurrences.values():
+            flexible_repeated_pairs.update(combinations(sorted(occurrences), 2))
+        flexible_normalized_repeated_pair_mass = sum(
+            Fraction(
+                len(flexible_row_occurrences[row])
+                * (len(flexible_row_occurrences[row]) - 1),
+                2 * flexible_row_capacity[row],
+            )
+            for row in flexible_rows
+        )
+        flexible_high_weight_profiles = tuple(
+            (
+                cutoff,
+                sum(
+                    demand
+                    for demand in flexible_demands
+                    if demand > cutoff
+                ),
+                sum(demand > cutoff for demand in flexible_demands),
+            )
+            for cutoff in (1, 2, 4, 8, 16, 32, 64)
+        )
+
         star_key_load: Counter[tuple[object, ...]] = Counter()
         canonical_star_key_load: Counter[tuple[object, ...]] = Counter()
+        balanced_star_key_load: Counter[tuple[object, ...]] = Counter()
+        balanced_star_key_records: dict[
+            tuple[object, ...], list[tuple[int, int, int]]
+        ] | None = (
+            defaultdict(list)
+            if threshold == 16 and points is not None and len(points) <= 28
+            else None
+        )
+        balanced_first_rows: dict[
+            tuple[Point, int, Point], list[tuple[int, int]]
+        ] = defaultdict(list)
         canonical_star_key_records: dict[
             tuple[object, ...], list[tuple[int, int, int]]
         ] | None = (
@@ -2278,6 +2455,12 @@ def profile(
             weight = (load - 1) * (load - 2) // 2
             pointed_records += weight
             first_slot, first_other = first_track_slot(edges, endpoint)
+            balanced_first_rows[
+                endpoint, first_slot, first_other
+            ].extend(
+                (occurrence_index, decoration)
+                for decoration in range(weight)
+            )
             partner_indices = [
                 partner_index
                 for partner_index in endpoint_occurrences[endpoint]
@@ -2343,6 +2526,152 @@ def profile(
                         for decoration in range(weight)
                     )
                 amplified_records += weight
+        endpoint_token_occurrences: dict[
+            Point, dict[tuple[int, Point], list[int]]
+        ] = {}
+        for endpoint, occurrences in endpoint_occurrences.items():
+            token_occurrences: dict[tuple[int, Point], list[int]] = defaultdict(list)
+            for occurrence_index in occurrences:
+                token = first_track_slot(
+                    flattened_occurrences[occurrence_index][3], endpoint
+                )
+                token_occurrences[token].append(occurrence_index)
+            endpoint_token_occurrences[endpoint] = token_occurrences
+        balanced_row_profile = []
+        balanced_row_details = []
+        intrinsic_empty_mass = 0
+        intrinsic_pair_occurrence_load: Counter[
+            tuple[Point, tuple[int, Point], tuple[int, Point]]
+        ] = Counter()
+        intrinsic_row_profiles = []
+        for (endpoint, first_slot, first_other), records in sorted(
+            balanced_first_rows.items()
+        ):
+            first_token = first_slot, first_other
+            token_occurrences = endpoint_token_occurrences[endpoint]
+            allowed_tokens = sorted(
+                token
+                for token, occurrences in token_occurrences.items()
+                if token != first_token or len(occurrences) >= 2
+            )
+            assert allowed_tokens
+            quotient, remainder = divmod(len(records), len(allowed_tokens))
+            balanced_row_profile.append(
+                (
+                    len(records),
+                    len(allowed_tokens),
+                    quotient,
+                    remainder,
+                )
+            )
+            row_occurrences = sorted({occurrence for occurrence, _ in records})
+            intrinsic_companions: dict[int, set[tuple[int, Point]]] = {}
+            for occurrence in row_occurrences:
+                companions = all_track_tokens(
+                    flattened_occurrences[occurrence][3], endpoint
+                ) - {first_token}
+                intrinsic_companions[occurrence] = companions
+                if not companions:
+                    cell_index = flattened_occurrences[occurrence][0]
+                    cell_load = len(
+                        matching_projected_same_centre_occurrence_footprints[
+                            cell_index
+                        ]
+                    )
+                    intrinsic_empty_mass += (cell_load - 1) * (cell_load - 2) // 2
+                for companion in companions:
+                    intrinsic_pair_occurrence_load[
+                        endpoint, first_token, companion
+                    ] += 1
+            intrinsic_support = set().union(
+                *(companions for companions in intrinsic_companions.values())
+            )
+            intrinsic_row_profiles.append(
+                (
+                    len(records),
+                    len(row_occurrences),
+                    len(intrinsic_support),
+                    max(
+                        (
+                            sum(companion in companions for companions in intrinsic_companions.values())
+                            for companion in intrinsic_support
+                        ),
+                        default=0,
+                    ),
+                )
+            )
+            row_cells = {
+                flattened_occurrences[occurrence][0]
+                for occurrence in row_occurrences
+            }
+            balanced_row_details.append(
+                (
+                    Fraction(len(records), len(allowed_tokens)),
+                    len(records),
+                    len(allowed_tokens),
+                    len(row_occurrences),
+                    len(row_cells),
+                    max(
+                        (
+                            (
+                                len(
+                                    matching_projected_same_centre_occurrence_footprints[
+                                        flattened_occurrences[occurrence][0]
+                                    ]
+                                )
+                                - 1
+                            )
+                            * (
+                                len(
+                                    matching_projected_same_centre_occurrence_footprints[
+                                        flattened_occurrences[occurrence][0]
+                                    ]
+                                )
+                                - 2
+                            )
+                            // 2
+                            for occurrence in row_occurrences
+                        ),
+                        default=0,
+                    ),
+                    endpoint,
+                    first_slot,
+                    first_other,
+                )
+            )
+            for record_index, (occurrence_index, decoration) in enumerate(records):
+                second_slot, second_other = allowed_tokens[
+                    record_index % len(allowed_tokens)
+                ]
+                partner_candidates = [
+                    partner_index
+                    for partner_index in token_occurrences[
+                        second_slot, second_other
+                    ]
+                    if partner_index != occurrence_index
+                ]
+                assert partner_candidates
+                partner_index = partner_candidates[
+                    (record_index // len(allowed_tokens))
+                    % len(partner_candidates)
+                ]
+                balanced_key = (
+                    endpoint,
+                    first_slot,
+                    first_other,
+                    second_slot,
+                    second_other,
+                )
+                balanced_star_key_load[balanced_key] += 1
+                if balanced_star_key_records is not None:
+                    balanced_star_key_records[balanced_key].append(
+                        (occurrence_index, decoration, partner_index)
+                    )
+        assert sum(balanced_star_key_load.values()) == pointed_records
+        if points is not None:
+            assert len(balanced_star_key_load) <= 144 * len(points) * (
+                len(points) - 1
+            ) ** 2
         assert amplified_records >= (threshold - 1) * pointed_records
         star_key_collision = sum(
             load * (load - 1) // 2 for load in star_key_load.values()
@@ -2358,6 +2687,41 @@ def profile(
         canonical_star_key_collision_types: Counter[
             tuple[object, ...]
         ] = Counter()
+        balanced_star_key_collision = sum(
+            load * (load - 1) // 2
+            for load in balanced_star_key_load.values()
+        )
+        assert balanced_star_key_collision == sum(
+            token_count * (quotient * (quotient - 1) // 2)
+            + remainder * quotient
+            for _, token_count, quotient, remainder in balanced_row_profile
+        )
+        balanced_star_key_collision_types: Counter[
+            tuple[object, ...]
+        ] = Counter()
+        balanced_row_maximum_ratio = max(
+            (
+                Fraction(row_mass, token_count)
+                for row_mass, token_count, _, _ in balanced_row_profile
+            ),
+            default=Fraction(0, 1),
+        )
+        balanced_row_heavy_profiles = tuple(
+            (
+                cutoff,
+                sum(
+                    row_mass
+                    for row_mass, token_count, _, _ in balanced_row_profile
+                    if row_mass > cutoff * token_count
+                ),
+                sum(
+                    1
+                    for row_mass, token_count, _, _ in balanced_row_profile
+                    if row_mass > cutoff * token_count
+                ),
+            )
+            for cutoff in (1, 2, 4, 8, 16, 32, 64)
+        )
 
         def classify_star_key_records(
             record_groups: dict[
@@ -2427,6 +2791,15 @@ def profile(
                 sum(canonical_star_key_collision_types.values())
                 == canonical_star_key_collision
             )
+        if balanced_star_key_records is not None:
+            classify_star_key_records(
+                balanced_star_key_records,
+                balanced_star_key_collision_types,
+            )
+            assert (
+                sum(balanced_star_key_collision_types.values())
+                == balanced_star_key_collision
+            )
         occurrence_star_key_profiles.append(
             (
                 threshold,
@@ -2451,6 +2824,77 @@ def profile(
                             canonical_star_key_collision_types.items(),
                             key=lambda item: repr(item[0]),
                         )
+                    ),
+                ),
+                (
+                    pointed_records,
+                    len(balanced_star_key_load),
+                    max(balanced_star_key_load.values(), default=0),
+                    balanced_star_key_collision,
+                    tuple(
+                        sorted(
+                            balanced_star_key_collision_types.items(),
+                            key=lambda item: repr(item[0]),
+                        )
+                    ),
+                    (
+                        balanced_row_maximum_ratio.numerator,
+                        balanced_row_maximum_ratio.denominator,
+                    ),
+                    balanced_row_heavy_profiles,
+                    tuple(
+                        (
+                            ratio.numerator,
+                            ratio.denominator,
+                            row_mass,
+                            token_count,
+                            occurrence_count,
+                            cell_count,
+                            maximum_weight,
+                            endpoint,
+                            first_slot,
+                            first_other,
+                        )
+                        for (
+                            ratio,
+                            row_mass,
+                            token_count,
+                            occurrence_count,
+                            cell_count,
+                            maximum_weight,
+                            endpoint,
+                            first_slot,
+                            first_other,
+                        ) in sorted(balanced_row_details, reverse=True)[:12]
+                    ),
+                    (
+                        intrinsic_empty_mass,
+                        max(intrinsic_pair_occurrence_load.values(), default=0),
+                        max(
+                            (
+                                Fraction(occurrence_count, companion_support)
+                                for _, occurrence_count, companion_support, _ in intrinsic_row_profiles
+                                if companion_support
+                            ),
+                            default=Fraction(0, 1),
+                        ).numerator,
+                        max(
+                            (
+                                Fraction(occurrence_count, companion_support)
+                                for _, occurrence_count, companion_support, _ in intrinsic_row_profiles
+                                if companion_support
+                            ),
+                            default=Fraction(0, 1),
+                        ).denominator,
+                    ),
+                    flexible_flow_profiles,
+                    (
+                        len(flexible_repeated_pairs),
+                        (
+                            flexible_normalized_repeated_pair_mass.numerator,
+                            flexible_normalized_repeated_pair_mass.denominator,
+                        ),
+                        flexible_high_weight_profiles,
                     ),
                 ),
             )

@@ -74,6 +74,7 @@ def audit_system(
 
     internal = 0
     track_reuse = 0
+    identity_split: Counter[tuple[int, int]] = Counter()
     internal_by_band: Counter[int] = Counter()
     for records in key_records.values():
         for first, second in combinations(records, 2):
@@ -101,8 +102,19 @@ def audit_system(
                     first_occurrence != second_occurrence
                     or first_partner != second_partner
                 )
+            identity_split[
+                int(first_occurrence != second_occurrence),
+                int(first_partner != second_partner),
+            ] += 1
     assert internal == expected_internal
     assert collision == internal + track_reuse
+    assert identity_split[0, 0] == internal
+    assert sum(identity_split.values()) == collision
+    assert all(
+        first_diff or second_diff
+        for first_diff, second_diff in identity_split
+        if (first_diff, second_diff) != (0, 0)
+    )
     assert 2 * internal <= sum(
         weight * weight
         // (len(endpoint_occurrences[endpoint]) - 1)
@@ -112,6 +124,46 @@ def audit_system(
         band_mass <= 4 * k * band * band
         for band, band_mass in internal_by_band.items()
     )
+
+    token_degrees: Counter[tuple[int, Token]] = Counter()
+    for endpoint, occurrences in enumerate(endpoint_occurrences):
+        for occurrence in occurrences:
+            token_degrees[endpoint, tokens[occurrence][endpoint]] += 1
+    for repetition_cutoff in (1, 2, 4, 8, 16):
+        for degree_cutoff in (1, 2, 4, 8, 16):
+            retained_load: Counter[tuple[int, int, int, int, int]] = Counter()
+            for key, records in key_records.items():
+                endpoint = key[0]
+                for occurrence, _, partner in records:
+                    repetition = (
+                        weights[occurrence]
+                        + len(endpoint_occurrences[endpoint])
+                        - 2
+                    ) // (len(endpoint_occurrences[endpoint]) - 1)
+                    if repetition > repetition_cutoff:
+                        continue
+                    first_degree = token_degrees[
+                        endpoint, tokens[occurrence][endpoint]
+                    ]
+                    second_degree = token_degrees[
+                        endpoint, tokens[partner][endpoint]
+                    ]
+                    if (
+                        first_degree <= degree_cutoff
+                        and second_degree <= degree_cutoff
+                    ):
+                        retained_load[key] += 1
+            assert all(
+                load <= repetition_cutoff * degree_cutoff**2
+                for load in retained_load.values()
+            )
+            assert sum(retained_load.values()) <= (
+                144
+                * k
+                * (k - 1) ** 2
+                * repetition_cutoff
+                * degree_cutoff**2
+            )
 
 
 def random_system(rng: Random, k: int, occurrence_count: int) -> None:
