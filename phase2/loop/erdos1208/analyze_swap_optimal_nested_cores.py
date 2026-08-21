@@ -22,7 +22,12 @@ from analyze_affine_costas_energy import is_distance_sidon, welch
 from verify_determinant_prime_costas_resonance import ROWS, apply
 from verify_orthogonal_two_support_gate import difference_set
 from verify_radial_orthogonal_product_barrier import radial_set
-from verify_seven_incidence_opposite_endpoint_charge import linear, subtract
+from verify_seven_incidence_opposite_endpoint_charge import (
+    add,
+    linear,
+    rotate,
+    subtract,
+)
 from verify_swap_cell_component_gate import cell_invariant
 from verify_swap_cell_degeneracy_charge import build_swap_multigraph
 from verify_transverse_closure_witness import POINTS
@@ -412,6 +417,12 @@ def profile(
     matching_common_neighbour_lists: dict[
         tuple[Cell, Cell], list[Cell]
     ] = defaultdict(list)
+    matching_pair_r_copies: Counter[tuple[Cell, Cell, Point]] = Counter()
+    matching_pair_r_centres: Counter[tuple[Cell, Cell, Point]] = Counter()
+    matching_zdr_copies: Counter[tuple[Point, Point, Point]] = Counter()
+    matching_zdr_centres: Counter[tuple[Point, Point, Point]] = Counter()
+    matching_opposite_r_support: Counter[tuple[Cell, Cell]] = Counter()
+    matching_c4_r_overlap: Counter[tuple[int, int]] = Counter()
     matching_component_vertices: dict[Point, set[Cell]] = defaultdict(set)
     matching_component_edges: Counter[Point] = Counter()
     for centre, neighbours in matching_adjacency.items():
@@ -484,8 +495,49 @@ def profile(
         assert sum(matching_wedge_fibres.values()) == sum(matching_wedges.values())
 
     matching_c4_endpoints: Counter[tuple[int, int]] = Counter()
+    matching_c4_data: dict[
+        tuple[Edge, Edge, Edge, Edge], tuple[int, int, list[int]]
+    ] = {}
     if points is not None:
         for (first, second), centres in matching_common_neighbour_lists.items():
+            component = cell_invariant(first)
+            assert component == cell_invariant(second)
+            displacement = subtract(second[0], first[0])
+            linear_displacement = linear(displacement)
+            pair_support: set[Point] = set()
+            centre_supports: dict[Cell, set[Point]] = {}
+            for centre in centres:
+                first_edge = tuple(sorted((first, centre)))
+                second_edge = tuple(sorted((second, centre)))
+                local_support: set[Point] = set()
+                for first_base, first_sum in occurrences[first_edge]:
+                    for second_base, second_sum in occurrences[second_edge]:
+                        sum_difference = subtract(first_sum, second_sum)
+                        local_support.add(sum_difference)
+                        pair_support.add(sum_difference)
+
+                        # The common-neighbour extension simultaneously
+                        # realizes three coupled D-D differences.
+                        assert subtract(first_sum, centre[0]) in differences
+                        assert subtract(second_sum, centre[0]) in differences
+                        assert subtract(first_sum, first[0]) in differences
+                        assert subtract(second_sum, second[0]) in differences
+                        assert subtract(first_base, second_base) == rotate(
+                            add(sum_difference, linear_displacement)
+                        )
+
+                        pair_key = first, second, sum_difference
+                        cell_key = component, displacement, sum_difference
+                        matching_pair_r_copies[pair_key] += 1
+                        matching_zdr_copies[cell_key] += 1
+                for sum_difference in local_support:
+                    pair_key = first, second, sum_difference
+                    cell_key = component, displacement, sum_difference
+                    matching_pair_r_centres[pair_key] += 1
+                    matching_zdr_centres[cell_key] += 1
+                centre_supports[centre] = local_support
+            matching_opposite_r_support[first, second] = len(pair_support)
+
             for index, third in enumerate(centres):
                 for fourth in centres[index + 1 :]:
                     cells = (first, second, third, fourth)
@@ -501,13 +553,41 @@ def profile(
                             complete_potentials = False
                         else:
                             alphas.add(cell_potentials[0])
-                    matching_c4_endpoints[
-                        len(physical), len(alphas) if complete_potentials else -1
-                    ] += 1
-        assert all(value % 2 == 0 for value in matching_c4_endpoints.values())
-        matching_c4_endpoints = Counter(
-            {key: value // 2 for key, value in matching_c4_endpoints.items()}
-        )
+                    cycle_key = tuple(
+                        sorted(
+                            (
+                                tuple(sorted((first, third))),
+                                tuple(sorted((first, fourth))),
+                                tuple(sorted((second, third))),
+                                tuple(sorted((second, fourth))),
+                            )
+                        )
+                    )
+                    endpoint_row = (
+                        len(physical),
+                        len(alphas) if complete_potentials else -1,
+                    )
+                    shared_r = len(
+                        centre_supports[third] & centre_supports[fourth]
+                    )
+                    if cycle_key not in matching_c4_data:
+                        matching_c4_data[cycle_key] = (
+                            endpoint_row[0], endpoint_row[1], [shared_r]
+                        )
+                    else:
+                        old_physical, old_potentials, overlaps = (
+                            matching_c4_data[cycle_key]
+                        )
+                        assert (old_physical, old_potentials) == endpoint_row
+                        overlaps.append(shared_r)
+
+        for physical_count, potential_count, overlaps in matching_c4_data.values():
+            # A simple four-cycle is encountered from each of its two
+            # diagonals.  Keep the maximum common-r overlap, so the zero row
+            # means neither diagonal admits a repeated-r realization.
+            assert len(overlaps) == 2
+            matching_c4_endpoints[physical_count, potential_count] += 1
+            matching_c4_r_overlap[physical_count, max(overlaps)] += 1
 
     summary = {
         "components": tuple(component_mass.most_common(8)),
@@ -540,8 +620,37 @@ def profile(
                 // 2,
             ),
         ),
+        "matching_common_extension_profile": (
+            (
+                "copy_pairs",
+                sum(matching_pair_r_copies.values()),
+            ),
+            (
+                "fixed_opposite_r_copy_load",
+                max(matching_pair_r_copies.values(), default=0),
+            ),
+            (
+                "fixed_opposite_r_centre_load",
+                max(matching_pair_r_centres.values(), default=0),
+            ),
+            (
+                "fixed_zdr_copy_load",
+                max(matching_zdr_copies.values(), default=0),
+            ),
+            (
+                "fixed_zdr_centre_load",
+                max(matching_zdr_centres.values(), default=0),
+            ),
+            (
+                "maximum_opposite_r_support",
+                max(matching_opposite_r_support.values(), default=0),
+            ),
+        ),
         "matching_c4_endpoints": tuple(
             matching_c4_endpoints.most_common()
+        ),
+        "matching_c4_r_overlap": tuple(
+            matching_c4_r_overlap.most_common()
         ),
         "matching_component_profile": (
             ("components", len(matching_component_vertices)),

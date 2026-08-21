@@ -207,6 +207,14 @@ endpoint-contact and high-support branches are removed.  Proving that
 statement, together with the analogous parallel-sum bound, would establish
 (1.3) and directly close the matching core.
 
+This branch is refined in
+`SWAP_MATCHING_COMMON_R_SUPPORT_COLLISION_DICHOTOMY.md`.  A selected pair of
+incident edge copies at one common neighbour carries the three linked
+differences `r,r+d,J(r+Ld)`.  Many common neighbours therefore force either
+large support of these decorated triples or repeated-`r` four-cycles with a
+five-direction affine collision.  That support/collision split, rather than
+a uniform pointwise codegree bound, is the current exact target.
+
 ## 7. Verification
 
 Run
