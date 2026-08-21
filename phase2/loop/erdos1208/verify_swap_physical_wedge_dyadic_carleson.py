@@ -10,6 +10,27 @@ from math import comb
 from random import Random
 
 Wedge = tuple[int, int, int, int, int]
+Point = tuple[int, int]
+
+
+def add(left: Point, right: Point) -> Point:
+    return left[0] + right[0], left[1] + right[1]
+
+
+def sub(left: Point, right: Point) -> Point:
+    return left[0] - right[0], left[1] - right[1]
+
+
+def rotate(value: Point) -> Point:
+    return -value[1], value[0]
+
+
+def linear(value: Point) -> Point:
+    return add(value, rotate(value))
+
+
+def neg(value: Point) -> Point:
+    return -value[0], -value[1]
 
 
 def wedges(k: int) -> list[Wedge]:
@@ -130,6 +151,72 @@ def audit_stored_stress() -> None:
     assert triple_rows[31][1] > 1  # Literal triple rigidity is false.
 
 
+def audit_owner_switch_normal_form() -> None:
+    rng = Random(12082026)
+    for _ in range(1000):
+        c_first = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        ell_first = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        a_first = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        b_first = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        eta_first = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        centre_shift = rng.randrange(-8, 9), rng.randrange(-8, 9)
+        second_shift = rng.randrange(-8, 9), rng.randrange(-8, 9)
+        eta_shift = rng.randrange(-8, 9), rng.randrange(-8, 9)
+
+        c_second = add(c_first, centre_shift)
+        a_second = sub(a_first, centre_shift)
+        b_second = add(b_first, second_shift)
+        ell_second = sub(ell_first, linear(second_shift))
+        eta_second = add(eta_first, eta_shift)
+        assert add(c_first, a_first) == add(c_second, a_second)
+        assert add(ell_first, linear(b_first)) == add(
+            ell_second, linear(b_second)
+        )
+
+        for _ in range(5):
+            q_value = rng.randrange(-20, 21), rng.randrange(-20, 21)
+
+            def tracks(
+                centre: Point,
+                ell: Point,
+                first_displacement: Point,
+                second_displacement: Point,
+                eta: Point,
+            ) -> tuple[Point, ...]:
+                first_x = sub(centre, q_value)
+                first_y = add(ell, rotate(add(q_value, first_displacement)))
+                first_z = add(add(ell, rotate(q_value)), linear(first_displacement))
+                second_q = sub(q_value, eta)
+                second_x = sub(centre, second_q)
+                second_y = add(
+                    ell, rotate(add(second_q, second_displacement))
+                )
+                second_z = add(
+                    add(ell, rotate(second_q)), linear(second_displacement)
+                )
+                return first_x, first_y, first_z, second_x, second_y, second_z
+
+            first_tracks = tracks(
+                c_first, ell_first, a_first, b_first, eta_first
+            )
+            second_tracks = tracks(
+                c_second, ell_second, a_second, b_second, eta_second
+            )
+            actual = tuple(
+                sub(second, first)
+                for first, second in zip(first_tracks, second_tracks)
+            )
+            expected = (
+                centre_shift,
+                neg(add(linear(second_shift), rotate(centre_shift))),
+                neg(linear(add(centre_shift, second_shift))),
+                add(centre_shift, eta_shift),
+                neg(add(second_shift, rotate(eta_shift))),
+                neg(rotate(eta_shift)),
+            )
+            assert actual == expected
+
+
 def audit_genuine_zero_controls() -> None:
     from analyze_swap_optimal_nested_cores import difference_set, profile
     from search_rotated_support import mian_chowla
@@ -171,6 +258,7 @@ def main() -> None:
     audit_counts()
     audit_decomposition()
     audit_stored_stress()
+    audit_owner_switch_normal_form()
     audit_genuine_zero_controls()
     print("SWAP PHYSICAL-WEDGE DYADIC CARLESON GATE: PASS")
 

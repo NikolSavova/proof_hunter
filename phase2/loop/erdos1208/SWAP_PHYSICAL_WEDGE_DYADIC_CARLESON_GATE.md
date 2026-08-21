@@ -189,6 +189,68 @@ inverse theorem must either retain one completion corner or control these
 translation rectangles in aggregate; literal triple rigidity is closed as
 a shortcut.
 
+The replacement is an exact support--collision fork.  Put
+
+\[
+ I=\sum_{w,T}\mu(w,T)={C_{\rm center}\over3},\qquad
+ X=|\{(w,T):\mu(w,T)>0\}|,
+ \qquad Q=\sum_{w,T}{\mu(w,T)\choose2}.           \tag{5.2}
+\]
+
+Cauchy gives
+
+\[
+ \boxed{I^2\le X(I+2Q).}                          \tag{5.3}
+\]
+
+Thus excessive mass either exposes many distinct physical-wedge/parameter-
+triple keys, or creates many pairs of owner cells sharing one such key.
+The latter pairs have a rigid six-direction normal form.
+
+Write one owner cell as `(c,ell,a,b,eta)`, where `a,b` are its first and
+second fibre displacements and the second-fibre parameter paired with `q`
+is `q-eta`.  Its fixed physical wedge contains
+
+\[
+ V=c+a,\qquad W=\ell+Lb.                           \tag{5.4}
+\]
+
+Suppose owners `alpha,beta` have the same `V,W` and contain the same
+parameter set `T`.  Put
+
+\[
+ A=c_\beta-c_\alpha,qquad
+ B=b_\beta-b_\alpha,qquad
+ E=\eta_\beta-\eta_\alpha.                        \tag{5.5}
+\]
+
+Since the wedge is fixed,
+`a_beta-a_alpha=-A` and
+`ell_beta-ell_alpha=-LB`.  Comparing the three `D` tracks of the first
+fibre and the three tracks of the second fibre gives
+
+\[
+ \boxed{
+ A,\quad -LB-JA,\quad -L(A+B),\quad
+ A+E,\quad -B-JE,\quad -JE\in D-D,}               \tag{5.6}
+\]
+
+each with at least `|T|` labelled representations.  More precisely, for
+every `q in T` the six representing pairs are the corresponding owner
+tracks at `q`; no averaging is used.  Formula (5.6) explains the observed
+two-by-two rectangles: `A` changes the centre owner while `E` changes the
+cross shift.
+
+Consequently the remaining high-wedge proof has a sharp second fork:
+
+1. charge the distinct `(w,T)` support in (5.3) to height; or
+2. use the six represented directions (5.6) to build a recursive rich
+   completion core.
+
+This is stronger than merely recording owner codegree.  All six directions,
+the common physical wedge, and the common parameter triple survive the
+switch.
+
 Three major barrier families are benign for this particular term.  Dense
 one-dimensional Golomb rulers through `k=14`, the explicit lifted residue
 parabolas through prime `43`, and the genuine `k=48`, codegree-`49`
@@ -210,7 +272,8 @@ python3 phase2/loop/erdos1208/verify_swap_physical_wedge_dyadic_carleson.py
 The verifier exhausts the oriented-wedge counts, checks the lossless mass
 partition and (3.3)--(3.4) on random cell systems, checks the stored Costas
 stress and triple-owner rows, and reruns small genuine Golomb and
-lifted-parabola controls.
+lifted-parabola controls.  It also checks the six owner-switch directions
+(5.6) directly from the track definitions.
 It also reruns the rank-flat `k=48` certificate.  The main analyzer
 independently asserts physical-wedge mass conservation whenever actual
 endpoints are available.
