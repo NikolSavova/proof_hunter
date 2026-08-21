@@ -143,14 +143,16 @@ def audit_stored_stress() -> None:
     assert (93 + 30, 87 + 21) == (123, 108)
     assert mass(6) == 60
     triple_rows = {
-        23: (68, 1, 0),
-        29: (1583, 2, 36),
-        31: (1386, 4, 366),
-        37: (1604, 2, 28),
+        23: (68, 1, 1, 0),
+        29: (1583, 15, 2, 36),
+        31: (1386, 32, 4, 366),
+        37: (1604, 15, 2, 28),
     }
-    for prime, (support, maximum, collisions) in triple_rows.items():
-        assert support > 0 and maximum >= 1 and collisions >= 0, prime
-    assert triple_rows[31][1] > 1  # Literal triple rigidity is false.
+    for prime, (support, wedge_support, maximum, collisions) in triple_rows.items():
+        assert support > 0 and wedge_support >= 1, prime
+        assert maximum >= 1 and collisions >= 0, prime
+    assert triple_rows[31][2] > 1  # Literal triple rigidity is false.
+    assert triple_rows[31][1] > 1  # Pointwise wedge support is nonconstant.
     zero_masks = {
         29: {(0, 1, 2): 28, (0, 3, 5): 4, (2, 5): 4},
         31: {
@@ -168,7 +170,23 @@ def audit_stored_stress() -> None:
     }
     for prime, profile in zero_masks.items():
         assert () not in profile
-        assert sum(profile.values()) == triple_rows[prime][2]
+        assert sum(profile.values()) == triple_rows[prime][3]
+
+
+def audit_support_collision_gate() -> None:
+    rng = Random(1208202601)
+    for _ in range(1000):
+        multiplicities = [
+            rng.randrange(1, 12) for _ in range(rng.randrange(1, 80))
+        ]
+        incidence = sum(multiplicities)
+        support = len(multiplicities)
+        collisions = sum(comb(value, 2) for value in multiplicities)
+        assert incidence * incidence <= support * (
+            incidence + 2 * collisions
+        )
+        common_budget = max(support, collisions, 1)
+        assert 3 * incidence <= 6 * common_budget
 
 
 def audit_owner_switch_normal_form() -> None:
@@ -409,6 +427,7 @@ def main() -> None:
     audit_counts()
     audit_decomposition()
     audit_stored_stress()
+    audit_support_collision_gate()
     audit_owner_switch_normal_form()
     audit_fractional_basis()
     audit_genuine_zero_controls()

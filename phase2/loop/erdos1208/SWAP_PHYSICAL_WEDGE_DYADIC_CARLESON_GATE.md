@@ -172,13 +172,14 @@ contain `T`.  Then
 The tempting claim `mu<=1` is false.  Exact profiles are
 
 \[
-\begin{array}{c|r|r|r}
-\text{family}&\#\{(w,T):\mu>0\}&\max\mu&
+\begin{array}{c|r|r|r|r}
+\text{family}&\#\{(w,T):\mu>0\}&\max_w\#\{T:\mu(w,T)>0\}
+ &\max\mu&
  \sum_{w,T}{\mu\choose2}\\ \hline
-\text{Costas }23&68&1&0\\
-\text{Costas }29&1583&2&36\\
-\text{Costas }31&1386&4&366\\
-\text{Costas }37&1604&2&28
+\text{Costas }23&68&1&1&0\\
+\text{Costas }29&1583&15&2&36\\
+\text{Costas }31&1386&32&4&366\\
+\text{Costas }37&1604&15&2&28
 \end{array}
 \]
 
@@ -203,6 +204,26 @@ Cauchy gives
  \boxed{I^2\le X(I+2Q).}                          \tag{5.3}
 \]
 
+Put `B_0=k^3+m^2`.  The two aggregate estimates
+
+\[
+ \boxed{X\le N^{o(1)}B_0,\qquad Q\le N^{o(1)}B_0} \tag{5.4}
+\]
+
+are jointly sufficient for the same-centre term.  Indeed, with one common
+subpolynomial factor `L`, (5.3) gives
+
+\[
+ I\le {LB_0+\sqrt{L^2B_0^2+8L^2B_0^2}\over2}
+   =2LB_0,qquad C_{\rm center}=3I\le6LB_0.       \tag{5.5}
+\]
+
+These are the **twin physical-wedge Carleson gates**.  The first is an
+occupied-support packing theorem; the second is an owner-reuse theorem.
+The finite maximum number of supported triples over one wedge is already
+`32`, so the support gate cannot be replaced by a constant pointwise
+fibre bound.
+
 Thus excessive mass either exposes many distinct physical-wedge/parameter-
 triple keys, or creates many pairs of owner cells sharing one such key.
 The latter pairs have a rigid six-direction normal form.
@@ -212,7 +233,7 @@ second fibre displacements and the second-fibre parameter paired with `q`
 is `q-eta`.  Its fixed physical wedge contains
 
 \[
- V=c+a,\qquad W=\ell+Lb.                           \tag{5.4}
+ V=c+a,\qquad W=\ell+Lb.                           \tag{5.6}
 \]
 
 Suppose owners `alpha,beta` have the same `V,W` and contain the same
@@ -221,7 +242,7 @@ parameter set `T`.  Put
 \[
  A=c_\beta-c_\alpha,qquad
  B=b_\beta-b_\alpha,qquad
- E=\eta_\beta-\eta_\alpha.                        \tag{5.5}
+ E=\eta_\beta-\eta_\alpha.                        \tag{5.7}
 \]
 
 Since the wedge is fixed,
@@ -232,12 +253,12 @@ fibre and the three tracks of the second fibre gives
 \[
  \boxed{
  A,\quad -LB-JA,\quad -L(A+B),\quad
- A+E,\quad -B-JE,\quad -JE\in D-D,}               \tag{5.6}
+ A+E,\quad -B-JE,\quad -JE\in D-D,}               \tag{5.8}
 \]
 
-each with at least `|T|` labelled representations.  More precisely, for
+ each with at least `|T|` labelled representations.  More precisely, for
 every `q in T` the six representing pairs are the corresponding owner
-tracks at `q`; no averaging is used.  Formula (5.6) explains the observed
+tracks at `q`; no averaging is used.  Formula (5.8) explains the observed
 two-by-two rectangles: `A` changes the centre owner while `E` changes the
 cross shift.
 
@@ -250,16 +271,16 @@ fixed translations `V,W`, its six `D` tracks are
 \begin{aligned}
  F_0&=-a-q, & F_1&=-Lb+Jq+Ja, & F_2&=-Lb+Jq+La,\\
  F_3&=-a-q+e, & F_4&=-b+Jq-Je, & F_5&=Jq-Je.
-\end{aligned}                                      \tag{5.7}
+\end{aligned}                                      \tag{5.9}
 \]
 
 For the second owner, these become `F_j+d_j`, where `(d_0,...,d_5)` is
-the list in (5.6).  Of the fifteen four-subsets of the six forms, exactly
+the list in (5.8).  Of the fifteen four-subsets of the six forms, exactly
 thirteen give invertible maps from `(a,b,e,q)` over the rationals.  The two
 exceptions are
 
 \[
- \{0,1,4,5\},\qquad \{1,2,3,5\}.                 \tag{5.8}
+ \{0,1,4,5\},\qquad \{1,2,3,5\}.                \tag{5.10}
 \]
 
 Let `G_w(A,B,E)` count ordered owner-pair/common-parameter witnesses at
@@ -268,7 +289,7 @@ so
 
 \[
  G_w(A,B,E)\le\min_{\mathcal B\ {\mathrm{valid}}}
-       \prod_{j\in\mathcal B}R_D(d_j).            \tag{5.9}
+       \prod_{j\in\mathcal B}R_D(d_j).           \tag{5.11}
 \]
 
 Give weight `1/10` to
@@ -279,29 +300,29 @@ Give weight `1/10` to
 
 and weight `1/15` to the other nine valid bases.  The weights sum to one
 and every form has total incident weight `2/3`.  Taking the weighted
-geometric mean in (5.9) proves
+geometric mean in (5.11) proves
 
 \[
  \boxed{\displaystyle
- G_w(A,B,E)^3\le\prod_{j=0}^5R_D(d_j)^2.}          \tag{5.10}
+ G_w(A,B,E)^3\le\prod_{j=0}^5R_D(d_j)^2.}         \tag{5.12}
 \]
 
 This controls the first moment of every owner intersection.  If two owners
 have common-parameter load `h<H`, then
 
 \[
- {h\choose3}\le{(H-1)(H-2)\over6}\,h.            \tag{5.11}
+ {h\choose3}\le{(H-1)(H-2)\over6}\,h.           \tag{5.13}
 \]
 
 Hence the low-`h` owner-collision branch is reduced, without a size bias, to
-the explicit aggregate sum of the right side of (5.10) over the retained
+the explicit aggregate sum of the right side of (5.12) over the retained
 physical wedges and offsets.  That six-overlap aggregate is not yet bounded
 at target scale.  The other exact survivor consists of owner pairs sharing
 at least `H` parameters; those pairs expose all six directions with at least
 `H` representations.
 
 The finite owner-collision population is entirely resonant.  Number the six
-directions in (5.6) from zero to five and record the indices at which they
+directions in (5.8) from zero to five and record the indices at which they
 vanish.  The exact witness-mass profiles are
 
 \[
@@ -311,21 +332,21 @@ vanish.  The exact witness-mass profiles are
 \text{Costas }31&(0):14,\ (012):258,\ (035):20,\ (2):12,\
  (23):10,\ (24):4,\ (25):18,\ (4):2,\ (45):28\\
 \text{Costas }37&(012):24,\ (035):2,\ (25):2.
-\end{array}                                        \tag{5.12}
+\end{array}                                       \tag{5.14}
 \]
 
 In particular the fully transverse mask is absent.  The dominant `(012)`
 case has `A=B=0` and varies only the cross shift `E`; `(035)` has `A=E=0`;
 and `(25)` has `E=0,A+B=0`.  These are literal owner-rectangle axes, not
 small numerical determinants.  They should be routed to the decorated
-resonant completion graphs before applying (5.10).  A future proof must
-still allow a fully transverse owner collision: (5.12) is finite evidence,
+resonant completion graphs before applying (5.12).  A future proof must
+still allow a fully transverse owner collision: (5.14) is finite evidence,
 not a universal zero-direction theorem.
 
 Consequently the remaining high-wedge proof has a sharp second fork:
 
 1. charge the distinct `(w,T)` support in (5.3) to height; or
-2. use the six represented directions (5.6) to build a recursive rich
+2. use the six represented directions (5.8) to build a recursive rich
    completion core.
 
 This is stronger than merely recording owner codegree.  All six directions,
@@ -354,7 +375,7 @@ The verifier exhausts the oriented-wedge counts, checks the lossless mass
 partition and (3.3)--(3.4) on random cell systems, checks the stored Costas
 stress and triple-owner rows, and reruns small genuine Golomb and
 lifted-parabola controls.  It also checks the six owner-switch directions
-(5.6), the complete four-form rank audit, the fractional weights in (5.10),
+(5.8), the complete four-form rank audit, the fractional weights in (5.12),
 finite overlap-count instances, and the stored zero-mask profiles directly
 from the track definitions.
 It also reruns the rank-flat `k=48` certificate.  The main analyzer

@@ -1989,6 +1989,14 @@ def profile(
         matching_projected_same_centre_owner_offset_zero_masks[
             zero_mask
         ] += witness_count
+    matching_projected_same_centre_wedge_triple_support: Counter[
+        tuple[object, ...]
+    ] = Counter(
+        physical_wedge
+        for physical_wedge, _ in (
+            matching_projected_same_centre_physical_wedge_triple_codegree
+        )
+    )
 
     # Every repeated mixed translate cell has one common physical endpoint,
     # one incident V edge, one incident W edge, and one orientation choice
@@ -2501,6 +2509,10 @@ def profile(
                         (
                             len(
                                 matching_projected_same_centre_physical_wedge_triple_codegree
+                            ),
+                            max(
+                                matching_projected_same_centre_wedge_triple_support.values(),
+                                default=0,
                             ),
                             max(
                                 matching_projected_same_centre_physical_wedge_triple_codegree.values(),
