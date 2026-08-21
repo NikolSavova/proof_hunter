@@ -647,6 +647,7 @@ The sharper aggregate values are
 | Costas 23 | 11,748 | 0.173 |
 | Costas 29 | 130,082 | 0.517 |
 | Costas 31 | 53,196 | 0.444 |
+| Costas 37 | 163,592 | 0.247 |
 
 Thus the exact sufficient gate following (6.14) has constant-scale margin
 on every current hard row, even though the cruder total-load estimate is
@@ -660,6 +661,7 @@ Splitting `sum P_2` by the adaptive status of the new shift `u` gives
 | Costas 23 | 0 | 6,280 |
 | Costas 29 | 24 | 71,462 |
 | Costas 31 | 36 | 29,868 |
+| Costas 37 | 72 | 88,148 |
 
 Thus the low-tail part is already absent or negligible on the hard exact
 rows.  The genuine survivor is the popular self-switch, precisely the

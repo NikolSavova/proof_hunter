@@ -495,10 +495,16 @@ def verify_larger_profile() -> None:
         switch_row["switch_pencil"],
         switch_row["switch_lambda"],
         switch_row["maximum_switch_ratio"],
+        switch_row["maximum_switch_residual"],
+        switch_row["switch_residual_product"],
         switch_row["parallel_wedges"],
-    ) == (88_220, 5_293_108, (11, 6), 661_754)
+    ) == (88_220, 5_293_108, (11, 6), 3, 163_592, 661_754)
     assert switch_row["switch_pencil"] == 2 * key_row["collisions"]
     assert switch_row["switch_lambda"] <= 8 * switch_row["parallel_wedges"]
+    assert summary["matching_endpoint_collision_switch_cutoff"] == (
+        ("nonpopular", 72, 15_472, 1, 144),
+        ("popular", 88_148, 5_277_636, 3, 163_448),
+    )
 
 
 def verify_closure_switch_profiles() -> None:

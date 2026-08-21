@@ -165,6 +165,40 @@ def verify_reverse_normal_form() -> None:
         for shift_value, (first_start, second_start) in completions.items()
     }
 
+    def horizontal(vertex: tuple[Point, Point, Point]) -> tuple[Point, Point, Point]:
+        shift_value, first_start, second_start = vertex
+        return (
+            subtract(shift_value, switch),
+            add(first_start, switch),
+            second_start,
+        )
+
+    def vertical(vertex: tuple[Point, Point, Point]) -> tuple[Point, Point, Point]:
+        shift_value, first_start, second_start = vertex
+        assert second_start == ell
+        terminal = add(first_start, shift_value)
+        return (
+            subtract(centre, first_start),
+            first_start,
+            add(ell, linear(subtract(terminal, centre))),
+        )
+
+    initial = p_value, x_value, ell
+    horizontal_initial = horizontal(initial)
+    vertical_initial = vertical(initial)
+    vertical_horizontal = vertical(horizontal_initial)
+    horizontal_vertical = horizontal(vertical_initial)
+    assert vertical_horizontal == horizontal_vertical
+    assert {
+        initial,
+        horizontal_initial,
+        vertical_initial,
+        horizontal_vertical,
+    } == {
+        (shift_value, first_start, second_start)
+        for shift_value, (first_start, second_start) in completions.items()
+    }
+
 
 def directed_differences(points: list[Point]) -> set[Point]:
     return {
