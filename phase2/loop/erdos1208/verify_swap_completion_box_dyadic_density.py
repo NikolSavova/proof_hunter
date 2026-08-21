@@ -311,10 +311,74 @@ def verify_costas_matching_cross_support_barrier() -> None:
     assert len(completion_vertices) == 8
 
 
+def canonical_collision_colour(
+    first_fibre: int,
+    first_value: Point,
+    second_fibre: int,
+    second_value: Point,
+) -> tuple[int, int, Point]:
+    if first_fibre < second_fibre:
+        return first_fibre, second_fibre, subtract(first_value, second_value)
+    return second_fibre, first_fibre, subtract(second_value, first_value)
+
+
+def verify_proper_collision_graph() -> None:
+    rng = random.Random(314159)
+    for fibre_count in range(2, 8):
+        for _ in range(200):
+            fibres: list[set[Point]] = []
+            used: set[Point] = set()
+            for _ in range(fibre_count):
+                size = rng.randint(1, 7)
+                fibre = set()
+                while len(fibre) < size:
+                    value = (rng.randrange(-30, 31), rng.randrange(-30, 31))
+                    if value in used:
+                        continue
+                    used.add(value)
+                    fibre.add(value)
+                fibres.append(fibre)
+
+            loads = [len(fibre) for fibre in fibres]
+            total = sum(loads)
+            largest = max(loads)
+            residual = total - largest
+            edge_count = sum(
+                loads[first] * loads[second]
+                for first in range(fibre_count)
+                for second in range(first + 1, fibre_count)
+            )
+            envelope = total * residual
+            assert edge_count <= envelope <= 2 * edge_count
+
+            incident_colours: dict[tuple[int, Point], set[tuple[int, int, Point]]] = (
+                defaultdict(set)
+            )
+            colour_edges: Counter[tuple[int, int, Point]] = Counter()
+            for first in range(fibre_count):
+                for second in range(first + 1, fibre_count):
+                    for first_value in fibres[first]:
+                        for second_value in fibres[second]:
+                            colour = canonical_collision_colour(
+                                first, first_value, second, second_value
+                            )
+                            for vertex in (
+                                (first, first_value),
+                                (second, second_value),
+                            ):
+                                assert colour not in incident_colours[vertex]
+                                incident_colours[vertex].add(colour)
+                            colour_edges[colour] += 1
+            assert sum(colour_edges.values()) == edge_count
+            # A proper colouring has matching colour classes.
+            assert all(load <= total // 2 for load in colour_edges.values())
+
+
 def main() -> None:
     verify_abstract_completion_charge()
     verify_footprint_energy_and_depth()
     verify_costas_matching_cross_support_barrier()
+    verify_proper_collision_graph()
     print("SWAP COMPLETION-BOX DYADIC DENSITY GATE: PASS")
 
 

@@ -278,6 +278,60 @@ rather than four.  Thus a proof cannot use an unqualified `Y+Z` support
 bound, even in the matching branch.  It must exploit reuse of the complete
 four-corner squares or introduce another coordinate before taking support.
 
+### 4.2 The collision graph is properly key-coloured
+
+There is a useful exact graph model which removes a possible ambiguity
+about the matching survivor.  Make one vertex for every endpoint-oriented
+parallel wedge, equivalently every reverse record in one group
+`g=(C,x,u)`.  Join two vertices precisely when their `t`-fibres are
+different but their group is the same.  Thus the component in group `g` is
+the complete multipartite graph with part sizes `a_t(u)`.
+
+Let `E_col` be the total number of graph edges.  Equations (6.9)--(6.10) of
+the weighted-pencil note give
+
+\[
+ E_{\rm col}=\sum_gP_2(g)=2Q_{\rm end},
+ \qquad |V_{\rm col}|=\sum_g\lambda_g\le8W_\parallel. \tag{4.5}
+\]
+
+Moreover, for `a_* = max_t a_t` and `b=lambda-a_*`,
+
+\[
+ P_2(g)\le\lambda b\le2P_2(g).                    \tag{4.6}
+\]
+
+The first inequality was already used.  For the second, write the residual
+part sizes as `a_i<=a_*`.  Then
+
+\[
+ 2P_2-\lambda b
+ =a_*b-\sum_i a_i^2\ge0.                          \tag{4.7}
+\]
+
+Consequently
+
+\[
+ \boxed{2Q_{\rm end}\le\mathcal G_2\le4Q_{\rm end}.} \tag{4.8}
+\]
+
+Colour a collision edge by its decorated key
+`(roles,sigma,delta,rho)`.  This is a proper edge-colouring.  Indeed, at a
+fixed wedge vertex, changing the neighbouring `t` changes the ordered
+neighbour-cell pair, which the key recovers by endpoint Sidonicity.  With
+`t` fixed, changing the neighbouring `q` changes `q_1-q_2`, which the key
+recovers from `(delta,rho)`.  Thus two incident edges cannot have the same
+colour; every colour class is a matching.
+
+This explains both sides of the remaining difficulty.  Low collision
+degree is immediately paid by the `O(W_parallel)` graph vertices.  High
+degree exposes many distinct decorated keys at one wedge, but an abstract
+properly coloured complete graph can still have quadratic edge mass using
+only linearly many colours.  The required theorem must therefore rule out
+such one-factorization-like behaviour using the six `D` memberships, four
+popular corners, and physical endpoint realization.  A graph-only
+anti-Ramsey argument cannot suffice.
+
 ## 5. Verification
 
 Run
@@ -290,3 +344,5 @@ The verifier exhausts random finite grouped four-corner systems for (1.6),
 (1.6a)--(1.6b), and (2.2)--(2.3), checks the exact residual identity, verifies the footprint
 energy and depth inequalities on vector-Sidon endpoint-role sets, and
 checks every assertion in the genuine Costas-23 barrier (4.2)--(4.4).
+It also exhausts the complete-multipartite collision graph identity
+(4.5)--(4.8) and its proper key-colouring on finite fibre systems.
