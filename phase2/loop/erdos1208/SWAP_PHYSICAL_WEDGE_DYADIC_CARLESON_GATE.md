@@ -73,23 +73,38 @@ gives the exact useful inequality
 \[
  \boxed{\displaystyle
  C_{\rm center}
- \le 4P k(k-1)^2 +(R-3)Q_{\rm phys}+H_{P,R},}       \tag{3.3}
+ \le \min\left\{4P k(k-1)^2,{P\over3}Q_{\rm phys}\right\}
+      +(R-3)Q_{\rm phys}+H_{P,R}.}                  \tag{3.3}
 \]
 
 where `Q_phys=sum_w Q(w)` is precisely the same-centre part of the existing
 second-generation parallel pencil, and in particular is bounded by the
 full `W_parallel` reservoir.
 
+For the second low-wedge bound, observe that every wedge with positive
+third mass contains a cell of load at least three and hence has `Q(w)>=3`.
+There are therefore at most `Q_phys/3` positive low wedges.  In particular,
+
+\[
+ \boxed{\displaystyle
+ C_{\rm center}
+ \le \left({P\over3}+R-3\right)Q_{\rm phys}+H_{P,R}.}
+                                                               \tag{3.4}
+\]
+
+This removes the ambient wedge-count loss altogether.
+
 There are corresponding classwise bounds
 
 \[
  C_{\rm same\ edge}^{\rm low}\le4Pk(k-1),\qquad
- C_{\rm one\ endpoint}^{\rm low}\le4Pk(k-1)(k-2). \tag{3.4}
+ C_{\rm one\ endpoint}^{\rm low}\le4Pk(k-1)(k-2). \tag{3.5}
 \]
 
-Thus for `P,R=N^{o(1)}`, the first term has the required `k^{3+o(1)}`
-scale and the second term is paid by the already isolated parallel pencil.
-Only `H_{P,R}` remains.
+The classwise form is retained because its different `k^2`/`k^3`
+capacities may still help in a refined argument.  But for
+`P,R=N^{o(1)}`, (3.4) already pays *all* non-heavy mass directly by
+`N^{o(1)}W_parallel`.  Only `H_{P,R}` remains.
 
 ## 4. The direct high-wedge theorem
 

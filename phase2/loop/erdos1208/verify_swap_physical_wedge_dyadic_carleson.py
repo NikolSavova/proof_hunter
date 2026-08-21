@@ -78,6 +78,26 @@ def audit_decomposition() -> None:
                     )
                     assert centre_mass <= upper
 
+                    # A positive wedge contains a load-three cell and
+                    # therefore consumes at least three units of Q_phys.
+                    positive_low = sum(
+                        1
+                        for wedge in cells
+                        if 0 < wedge_mass[wedge] <= threshold
+                    )
+                    low_mass = sum(
+                        wedge_mass[wedge]
+                        for wedge in cells
+                        if wedge_mass[wedge] <= threshold
+                    )
+                    assert 3 * positive_low <= physical_second
+                    assert 3 * low_mass <= threshold * physical_second
+                    assert 3 * centre_mass <= (
+                        (threshold + 3 * (rich_load - 3))
+                        * physical_second
+                        + 3 * heavy
+                    )
+
                     same_low = sum(
                         wedge_mass[wedge]
                         for wedge in cells
