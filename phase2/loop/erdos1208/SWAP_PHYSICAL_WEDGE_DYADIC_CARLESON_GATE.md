@@ -263,7 +263,26 @@ points `(P,U,Z)` satisfy
  \qquad \epsilon_1,\epsilon_2\in\{-1,1\}.        \tag{5.5d}
 \]
 
-The `R` fibre is not pointwise bounded.  For every `n`, fix a nonzero
+There is a sharp linear upper bound which should be retained.  For fixed
+`R`, fixed roles, and fixed common endpoint `P`, there is at most one wedge.
+Indeed, two solutions give
+
+\[
+ \epsilon_2(Z_1-Z_2)=-\epsilon_1J(U_1-U_2).
+\]
+
+If `U_1!=U_2`, the two nonzero differences on the two sides have equal
+length and perpendicular vectors.  Distance-Sidonicity forces their
+unordered endpoint pairs to agree, which would make the vectors parallel,
+a contradiction.  Hence both other endpoints agree.  Consequently
+
+\[
+ \boxed{W_{R,\epsilon_1,\epsilon_2}\le k,
+        \qquad W_R\le4k.}                        \tag{5.5d'}
+\]
+
+The linear bound is sharp in power and therefore not subpolynomial.  For
+every `n`, fix a nonzero
 integer vector `R` and choose independent formal points `P_i,U_i`.  Set
 
 \[
@@ -283,7 +302,8 @@ height with
  \max_R W_R\ge n=k/3.                             \tag{5.5f}
 \]
 
-So even the physical half of the invariant must be summed globally.  In
+So even the physical half of the invariant cannot be discarded at
+subpolynomial cost, although its exact worst scale is now known.  In
 the finite Costas stresses the exact profiles are
 
 \[
@@ -450,6 +470,43 @@ twin gate reduces to an endpoint-weighted rich-cell pencil; for
 pencil.  This split pays the fresh-endpoint planting above by `k^3`, while
 retaining precisely the endpoint reuse that the selected core forces.  See
 `SWAP_OCCURRENCE_ENDPOINT_REUSE_DICHOTOMY.md`.
+
+Amplifying every weighted high occurrence against the other occurrences
+through its assigned endpoint makes the support side of that pencil free.
+After choosing one of twelve endpoint slots on each side, the key is two
+endpoint-labelled tracks meeting at one point; there are fewer than
+`144k^3` such keys.  If `A_star` is the amplified mass and `Q_star` its
+collision mass, then
+
+\[
+ A_\star^2\le144k^3(A_\star+2Q_\star).           \tag{5.5s}
+\]
+
+Consequently `Q_star<=N^{o(1)}(k^3+m^2)` closes the support gate.  A
+collision either reuses one of the two fixed physical tracks or varies the
+pointed parameter pair inside one rich cell.  At Costas 23 the profile is
+`(pointed,amplified,support,max load,Q_star)` equal to
+`(204,16244,5380,20,33564)`; since every cell has load three, all collisions
+there are genuine track reuse.  See
+`SWAP_ENDPOINT_PENCIL_AMPLIFIED_STAR_KEY_GATE.md`.
+
+The repeated-track switch has no hidden high-dimensional kernel.  For two
+arbitrary owner occurrences, write the relative variables as
+`(U,C,A,B,E,Q)=(Delta V,Delta W,Delta a,Delta b,Delta e,Delta q)`.
+The map to their six track differences has rank five, with unique gauge
+
+\[
+ (U,C,A,B,E,Q)=(h,-Jh,0,0,0,h).                  \tag{5.5t}
+\]
+
+Its only row relation uses all six tracks with nonzero coefficients.
+Therefore fixing one repeated role and any four other track differences
+determines the transverse quotient; the fifth is forced.  The gauge keeps
+all tracks and `R` fixed, and its moving physical wedges are bounded by the
+sharp `4k` invariant-fibre theorem above.  The remaining collision proof
+must sum this linear gauge cost across six-track templates, rather than seek
+another local equation.  See
+`SWAP_ANCHORED_TRACK_REUSE_RANK_FIVE_GATE.md`.
 
 This is the concrete input for attacking the first twin gate: a physical
 three-point equation correlated with a synchronized six-copy triangle in

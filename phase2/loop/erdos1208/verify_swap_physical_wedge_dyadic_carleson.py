@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from collections import defaultdict
+from collections import Counter, defaultdict
 from contextlib import redirect_stdout
 from fractions import Fraction
 from io import StringIO
@@ -334,6 +334,38 @@ def audit_physical_invariant_barrier() -> None:
         second_edge = sub(z_value, p_value)
         invariants.append(add(rotate(first_edge), second_edge))
     assert invariants == [(17, 11)] * 6
+
+    role_invariant_wedges = Counter()
+    endpoint_role_invariant_wedges = Counter()
+    signs = (-1, 1)
+    for common_endpoint in points:
+        for first_other in points:
+            if first_other == common_endpoint:
+                continue
+            for second_other in points:
+                if second_other == common_endpoint:
+                    continue
+                for first_sign in signs:
+                    for second_sign in signs:
+                        first_edge = sub(first_other, common_endpoint)
+                        second_edge = sub(second_other, common_endpoint)
+                        if first_sign == -1:
+                            first_edge = neg(first_edge)
+                        if second_sign == -1:
+                            second_edge = neg(second_edge)
+                        invariant = add(rotate(first_edge), second_edge)
+                        role_key = invariant, first_sign, second_sign
+                        role_invariant_wedges[role_key] += 1
+                        endpoint_role_invariant_wedges[
+                            role_key, common_endpoint
+                        ] += 1
+    assert max(endpoint_role_invariant_wedges.values()) == 1
+    assert max(role_invariant_wedges.values()) <= len(points)
+    invariant_wedges = Counter()
+    for (invariant, _, _), load in role_invariant_wedges.items():
+        invariant_wedges[invariant] += load
+    assert max(invariant_wedges.values()) <= 4 * len(points)
+    assert role_invariant_wedges[(17, 11), 1, 1] >= 6
 
 
 def audit_owner_switch_normal_form() -> None:

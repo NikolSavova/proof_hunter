@@ -508,6 +508,9 @@ def profile(
     matching_projected_same_centre_occurrence_footprints: list[
         tuple[frozenset[Point], ...]
     ] = []
+    matching_projected_same_centre_occurrence_track_edges: list[
+        tuple[tuple[tuple[Point, Point], ...], ...]
+    ] = []
     matching_projected_same_centre_occurrence_footprint_sizes: Counter[
         int
     ] = Counter()
@@ -799,6 +802,7 @@ def profile(
                             cell_values = {pair[0] for pair in cell_pairs}
                             c_value, ell_value = centre
                             occurrence_footprints = []
+                            occurrence_track_edges = []
                             for q_value in sorted(cell_values):
                                 second_q = subtract(q_value, eta)
                                 tracks = (
@@ -831,8 +835,14 @@ def profile(
                                 footprint = frozenset().union(
                                     *track_endpoints
                                 )
+                                directed_track_edges = tuple(
+                                    endpoint_map[track] for track in tracks
+                                )
                                 assert 2 <= len(footprint) <= 12
                                 occurrence_footprints.append(footprint)
+                                occurrence_track_edges.append(
+                                    directed_track_edges
+                                )
                                 matching_projected_same_centre_occurrence_endpoint_degree.update(
                                     footprint
                                 )
@@ -842,6 +852,9 @@ def profile(
                             assert len(occurrence_footprints) == load
                             matching_projected_same_centre_occurrence_footprints.append(
                                 tuple(occurrence_footprints)
+                            )
+                            matching_projected_same_centre_occurrence_track_edges.append(
+                                tuple(occurrence_track_edges)
                             )
                             footprint_offset = add(
                                 add(c_value, ell_value), rotate(t_v)
@@ -2148,6 +2161,7 @@ def profile(
         ) <= 4 * point_count * (point_count - 1) ** 2
 
     occurrence_endpoint_threshold_profiles = []
+    occurrence_star_key_profiles = []
     occurrence_cubic_mass = 3 * sum(
         len(cell) * (len(cell) - 1) * (len(cell) - 2) // 6
         for cell in matching_projected_same_centre_occurrence_footprints
@@ -2196,6 +2210,91 @@ def profile(
                 occurrence_cubic_mass - low_mass,
                 high_union_envelope,
                 endpoint_envelope,
+            )
+        )
+
+        flattened_occurrences = []
+        endpoint_occurrences: dict[Point, list[int]] = defaultdict(list)
+        for cell_index, (footprints, track_edges) in enumerate(
+            zip(
+                matching_projected_same_centre_occurrence_footprints,
+                matching_projected_same_centre_occurrence_track_edges,
+            )
+        ):
+            assert len(footprints) == len(track_edges)
+            for local_index, (footprint, edges) in enumerate(
+                zip(footprints, track_edges)
+            ):
+                occurrence_index = len(flattened_occurrences)
+                flattened_occurrences.append(
+                    (cell_index, local_index, footprint, edges)
+                )
+                for endpoint in footprint:
+                    endpoint_occurrences[endpoint].append(occurrence_index)
+
+        def first_track_slot(
+            edges: tuple[tuple[Point, Point], ...], endpoint: Point
+        ) -> tuple[int, Point]:
+            for role, (head, tail) in enumerate(edges):
+                if head == endpoint:
+                    return 2 * role, tail
+                if tail == endpoint:
+                    return 2 * role + 1, head
+            raise AssertionError("endpoint missing from track edges")
+
+        star_key_load: Counter[tuple[object, ...]] = Counter()
+        pointed_records = 0
+        amplified_records = 0
+        for occurrence_index, (
+            cell_index,
+            _,
+            footprint,
+            edges,
+        ) in enumerate(flattened_occurrences):
+            available = footprint & high_endpoints
+            if not available:
+                continue
+            endpoint = min(available)
+            load = len(
+                matching_projected_same_centre_occurrence_footprints[
+                    cell_index
+                ]
+            )
+            weight = (load - 1) * (load - 2) // 2
+            pointed_records += weight
+            first_slot, first_other = first_track_slot(edges, endpoint)
+            for partner_index in endpoint_occurrences[endpoint]:
+                if partner_index == occurrence_index:
+                    continue
+                partner_edges = flattened_occurrences[partner_index][3]
+                second_slot, second_other = first_track_slot(
+                    partner_edges, endpoint
+                )
+                star_key_load[
+                    (
+                        endpoint,
+                        first_slot,
+                        first_other,
+                        second_slot,
+                        second_other,
+                    )
+                ] += weight
+                amplified_records += weight
+        assert amplified_records >= (threshold - 1) * pointed_records
+        star_key_collision = sum(
+            load * (load - 1) // 2 for load in star_key_load.values()
+        )
+        assert amplified_records * amplified_records <= len(
+            star_key_load
+        ) * (amplified_records + 2 * star_key_collision) if star_key_load else amplified_records == 0
+        occurrence_star_key_profiles.append(
+            (
+                threshold,
+                pointed_records,
+                amplified_records,
+                len(star_key_load),
+                max(star_key_load.values(), default=0),
+                star_key_collision,
             )
         )
 
@@ -2942,6 +3041,7 @@ def profile(
                 "threshold_profiles",
                 tuple(occurrence_endpoint_threshold_profiles),
             ),
+            ("star_key_profiles", tuple(occurrence_star_key_profiles)),
         ),
         "matching_resonant_decorated_footprint": (
             ("incidences", matching_resonant_footprint_incidences),
