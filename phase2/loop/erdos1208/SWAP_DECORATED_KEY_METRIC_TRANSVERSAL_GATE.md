@@ -294,6 +294,26 @@ points across many endpoint-decorated cells while simultaneously keeping
 all four adaptive-popular corners.  That is the direct height-sensitive
 packing statement required for the `1/3` exponent.
 
+### Exact product-scale stress
+
+The analyzer now records the dyadic distribution of
+`|d|^2|u|^2` on every recursive collision edge.  The genuine transformed
+Costas rows give
+
+| prime | collision mass | minimum product | reciprocal product mass |
+|---:|---:|---:|---:|
+| 17 | 4 | 83,521 | 0.0000478921 |
+| 23 | 6,280 | 279,841 | 0.00724238 |
+| 29 | 71,486 | 707,281 | 0.0357516 |
+| 31 | 29,904 | 923,521 | 0.0161604 |
+
+In every row the minimum is exactly `p^4`, and most mass lies at larger
+products.  This is favorable finite evidence for a product-weighted
+argument, not an asymptotic theorem.  Raw determinant size is changed by a
+dilation, so the final estimate must compare lattice covolume with its
+metric-coordinate ranges; a bare cutoff on `|d|^2|u|^2` would not be
+scale-invariant.
+
 ## 7. Verification
 
 Run
@@ -309,3 +329,7 @@ checks the recursive motion signature and its Jacobian, and verifies the
 product-Jacobian injection.  It also verifies the theorem on the genuine
 two-occurrence transformed Costas-23 collision from the completion-box
 note.
+
+`analyze_swap_optimal_nested_cores.py` additionally verifies that its
+product-band masses sum exactly to the recursive collision pencil and
+reproduces the table above.

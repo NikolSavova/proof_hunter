@@ -467,6 +467,9 @@ def profile(
     matching_endpoint_switch_class_lambda: Counter[str] = Counter()
     matching_endpoint_switch_class_residual: Counter[str] = Counter()
     matching_endpoint_switch_class_residual_product: Counter[str] = Counter()
+    matching_endpoint_metric_product_mass: Counter[int] = Counter()
+    matching_endpoint_metric_product_reciprocal = Fraction(0)
+    matching_endpoint_metric_product_minimum: int | None = None
     matching_endpoint_reverse_cross_support_ratio = Fraction(0)
     matching_endpoint_reverse_cross_support_row: tuple[object, ...] = ()
     for component, vertices in sorted(
@@ -651,6 +654,44 @@ def profile(
                         switch_residual * switch_load
                     )
 
+                    active_neighbours = [
+                        (neighbour, internal[switch])
+                        for neighbour, internal in fibre_internal_differences.items()
+                        if internal[switch]
+                    ]
+                    metric_edge_mass = 0
+                    for (
+                        (first_neighbour, first_weight),
+                        (second_neighbour, second_weight),
+                    ) in combinations(active_neighbours, 2):
+                        first_t = subtract(first_neighbour[0], centre[0])
+                        second_t = subtract(second_neighbour[0], centre[0])
+                        physical_difference = subtract(first_t, second_t)
+                        metric_product = (
+                            (switch[0] * switch[0] + switch[1] * switch[1])
+                            * (
+                                physical_difference[0] * physical_difference[0]
+                                + physical_difference[1] * physical_difference[1]
+                            )
+                        )
+                        assert metric_product > 0
+                        weight = first_weight * second_weight
+                        metric_edge_mass += weight
+                        matching_endpoint_metric_product_mass[
+                            metric_product.bit_length() - 1
+                        ] += weight
+                        matching_endpoint_metric_product_reciprocal += Fraction(
+                            weight, metric_product
+                        )
+                        if matching_endpoint_metric_product_minimum is None:
+                            matching_endpoint_metric_product_minimum = metric_product
+                        else:
+                            matching_endpoint_metric_product_minimum = min(
+                                matching_endpoint_metric_product_minimum,
+                                metric_product,
+                            )
+                    assert metric_edge_mass == switch_pair
+
                     # Reconstruct the literal reverse records, discard one
                     # largest t-fibre exactly as in G_2, and measure the
                     # cross-support Y+Z inside each physical endpoint role.
@@ -799,6 +840,10 @@ def profile(
         assert (
             matching_endpoint_switch_pencil
             == 2 * matching_endpoint_key_collisions
+        )
+        assert (
+            sum(matching_endpoint_metric_product_mass.values())
+            == matching_endpoint_switch_pencil
         )
         assert all(
             matching_component_contact_wedges[component]
@@ -1244,6 +1289,14 @@ def profile(
                 ],
             )
             for switch_class in ("nonpopular", "popular")
+        ),
+        "matching_endpoint_metric_product": (
+            ("minimum", matching_endpoint_metric_product_minimum or 0),
+            (
+                "reciprocal_mass",
+                matching_endpoint_metric_product_reciprocal,
+            ),
+            ("dyadic_mass", tuple(sorted(matching_endpoint_metric_product_mass.items()))),
         ),
         "matching_endpoint_reverse_cross_support": (
             (
