@@ -99,6 +99,43 @@ All three survivors retain their endpoint group, physical role, adaptive
 popular keys, and full completion coordinates.  No unlabelled graph
 relaxation has been introduced.
 
+There is also an exact normalization against the projected-key reservoir.
+Each oriented projected key has one of two moving roles and one of four
+physical endpoint orientations, so
+
+\[
+ |V(H)|\le 8\mathcal W_{\parallel}.                       \tag{2.7}
+\]
+
+If `d(H)` is the degeneracy of the simple support graph, peeling a
+minimum-degree vertex gives
+
+\[
+ |E(H)|\le d(H)|V(H)|\le 8d(H)\mathcal W_{\parallel}.     \tag{2.8}
+\]
+
+Finally, if `c(e)` is the number of endpoint groups witnessing one support
+edge, then the elementary pointwise inequality
+
+\[
+ c(e)\le 1+{c(e)\choose2}                                \tag{2.9}
+\]
+
+gives
+
+\[
+ \sum_{e\in E(H)}c(e)
+ \le |E(H)|+\sum_{e\in E(H)}{c(e)\choose2}.              \tag{2.10}
+\]
+
+Thus subpolynomial support degeneracy together with a target-scale
+same-pair collision bound would close the mixed incidence mass.  This is a
+sufficient criterion, not yet the desired theorem: an `O(K)` degeneracy
+bound may lose exactly the adaptive factor which the projected reservoir is
+supposed to save.  The live target is therefore a weighted version of
+(2.8), coupled losslessly to the factor-`K` reservoir, rather than an
+unweighted maximum-degeneracy estimate.
+
 ## 3. Geometric meaning of the two branches
 
 Every connected component of `H` is localized at one oriented physical
@@ -133,11 +170,11 @@ The augmented optimal-core analyzer reports, for Costas sizes `29,31,37`,
 the mixed support graph rows
 
 \[
-\begin{array}{c|rrrrrr}
- &E&|\operatorname{supp}E|&|V(H)|&d_{\max}&\Delta&Q\\ \hline
-29&38128&31830&12719&57&34&93378\\
-31&18984&13006& 5633&62&38&94333\\
-37&54560&47660&19724&59&21&114090.
+\begin{array}{c|rrrrrrr}
+ &E&|\operatorname{supp}E|&|V(H)|&d_{\max}&d(H)&\Delta&Q\\ \hline
+29&38128&31830&12719&57&9&34&93378\\
+31&18984&13006& 5633&62&10&38&94333\\
+37&54560&47660&19724&59&8&22&114090.
 \end{array}                                               \tag{4.1}
 \]
 
@@ -158,6 +195,11 @@ Thus only `0.46%,0.28%,0.31%` of the rectangles are monochromatic.  More
 than `99.5%` of the genuine stress switches to cross-group same-key reuse,
 usually at three or four vertices.  This is decisive evidence that the
 rectangle switch targets the load-bearing branch.
+
+The exact degeneracies `9,10,8` are much smaller than the maximum degrees,
+but they are finite calibration only.  In the live normalization even a
+degeneracy of order `K` can be one power too large unless the peeling charge
+retains the factor-`K` projected reservoir.
 
 Run
 

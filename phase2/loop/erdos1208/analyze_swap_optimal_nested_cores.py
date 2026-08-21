@@ -18,6 +18,7 @@ from dataclasses import dataclass
 from fractions import Fraction
 from itertools import combinations
 from math import ceil, log2
+import heapq
 import sys
 
 from analyze_affine_costas_energy import is_distance_sidon, welch
@@ -1325,6 +1326,7 @@ def profile(
             tuple[tuple[object, ...], tuple[object, ...]]
         ] = Counter()
         rectangle_owner_types: Counter[int] = Counter()
+        degeneracy = 0
         if role_types == "VW":
             adjacency: dict[
                 tuple[object, ...], set[tuple[object, ...]]
@@ -1332,14 +1334,46 @@ def profile(
             for (first_key, second_key), _ in items:
                 assert first_key[0] == "V" and second_key[0] == "W"
                 adjacency[first_key].add(second_key)
+                adjacency[second_key].add(first_key)
+            live_degrees = {
+                vertex: len(neighbours) for vertex, neighbours in adjacency.items()
+            }
+            heap = [(degree, vertex) for vertex, degree in live_degrees.items()]
+            heapq.heapify(heap)
+            removed: set[tuple[object, ...]] = set()
+            while heap:
+                degree, vertex = heapq.heappop(heap)
+                if vertex in removed or degree != live_degrees[vertex]:
+                    continue
+                degeneracy = max(degeneracy, degree)
+                removed.add(vertex)
+                for neighbour in adjacency[vertex]:
+                    if neighbour in removed:
+                        continue
+                    live_degrees[neighbour] -= 1
+                    heapq.heappush(
+                        heap,
+                        (live_degrees[neighbour], neighbour),
+                    )
+            assert len(removed) == len(adjacency)
+            left_adjacency = {
+                vertex: neighbours
+                for vertex, neighbours in adjacency.items()
+                if vertex[0] == "V"
+            }
             common_vertices: dict[
                 tuple[tuple[object, ...], tuple[object, ...]],
                 list[tuple[object, ...]],
             ] = defaultdict(list)
-            for vertex, neighbours in adjacency.items():
+            for vertex, neighbours in left_adjacency.items():
                 for first_key, second_key in combinations(sorted(neighbours), 2):
                     pair_common_neighbours[first_key, second_key] += 1
                     common_vertices[first_key, second_key].append(vertex)
+            for vertex, neighbours in adjacency.items():
+                if vertex[0] != "W":
+                    continue
+                for first_key, second_key in combinations(sorted(neighbours), 2):
+                    pair_common_neighbours[first_key, second_key] += 1
             for (first_w, second_w), vertices in common_vertices.items():
                 for first_v, second_v in combinations(sorted(vertices), 2):
                     edge_pairs = (
@@ -1365,6 +1399,10 @@ def profile(
                         cross_colour_vertices == 0
                     )
                     rectangle_owner_types[cross_colour_vertices] += 1
+            assert sum(rectangle_owner_types.values()) * 2 == sum(
+                value * (value - 1) // 2
+                for value in pair_common_neighbours.values()
+            )
         return (
             role_types,
             sum(codegree for _, codegree in items),
@@ -1372,13 +1410,15 @@ def profile(
             len(degrees),
             max(degrees.values(), default=0),
             sum(value * value for value in degrees.values()),
+            degeneracy,
             max((codegree for _, codegree in items), default=0),
             sum(codegree * (codegree - 1) // 2 for _, codegree in items),
             max(pair_common_neighbours.values(), default=0),
             sum(
                 value * (value - 1) // 2
                 for value in pair_common_neighbours.values()
-            ),
+            )
+            // 2,
             tuple(sorted(rectangle_owner_types.items())),
             tuple(sorted(Counter(codegree for _, codegree in items).items())),
         )
