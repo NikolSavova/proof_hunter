@@ -90,7 +90,7 @@ starts are used, or one full completion vertex is itself reused many times.
 Use the `W`-moving normal form at a base
 
 \[
- v=(p,X,\ell),\qquad Z_0=\ell+Lp,qquad
+ v=(p,X,\ell),\qquad Z_0=\ell+Lp,\qquad
  W_q=Z_0-Lq.                                      \tag{2.1}
 \]
 
