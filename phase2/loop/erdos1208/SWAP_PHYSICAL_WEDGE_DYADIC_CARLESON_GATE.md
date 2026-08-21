@@ -411,6 +411,27 @@ disappear: the Costas-31 two-by-two owner rectangles amplify to load eight
 inside one `(R,T)` cell.  Conversely, the singleton coarse support remains
 the majority population in every row.  Both halves of (5.5o) are real.
 
+The first pointwise shortcut to the support half is also false.  Fix one
+nonzero `R`.  For each of `n` independent blocks choose a physical wedge,
+owner displacements, and a noncollinear triple `T_i`, and realize all
+eighteen resulting tracks by fresh endpoint pairs.  One block uses `39`
+points.  A four-block formal audit shows that all `12090` squared-distance
+polynomials among `156` formal points are distinct.  Schwartz--Zippel then
+specializes the construction at polynomial height while preserving the
+common invariant and the `n` distinct triples.  Thus the literal local
+owner equations allow
+
+\[
+ \#\{T:\text{a local owner block exists over fixed }R\}\gg k,\tag{5.5q}
+\]
+
+not `N^{o(1)}`.  This does not refute `widehat X`: the selected optimal
+orientation and nested core may discard the planted blocks.  It proves
+that this global selection is load-bearing.  Any proof of the first gate
+in (5.5o) must use the selected-core measure or an aggregate budget across
+`R`; it cannot follow from the pointwise owner equations alone.  See
+`COARSE_INVARIANT_POINTWISE_OWNER_SUPPORT_BARRIER.md`.
+
 This is the concrete input for attacking the first twin gate: a physical
 three-point equation correlated with a synchronized six-copy triangle in
 `D`.  Dropping either the physical equation or the synchronization returns
