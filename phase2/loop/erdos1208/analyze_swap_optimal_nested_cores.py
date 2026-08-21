@@ -502,6 +502,15 @@ def profile(
         tuple[int, int, int]
     ] = Counter()
     matching_projected_same_centre_cross_rich_rows: list[tuple[object, ...]] = []
+    matching_projected_same_centre_occurrence_endpoint_degree: Counter[
+        Point
+    ] = Counter()
+    matching_projected_same_centre_occurrence_footprints: list[
+        tuple[frozenset[Point], ...]
+    ] = []
+    matching_projected_same_centre_occurrence_footprint_sizes: Counter[
+        int
+    ] = Counter()
     matching_projected_same_centre_footprint_depth: Counter[Point] = Counter()
     matching_projected_same_centre_resonant_footprint_depth: Counter[
         Point
@@ -789,6 +798,51 @@ def profile(
                             assert len(cell_pairs) == load
                             cell_values = {pair[0] for pair in cell_pairs}
                             c_value, ell_value = centre
+                            occurrence_footprints = []
+                            for q_value in sorted(cell_values):
+                                second_q = subtract(q_value, eta)
+                                tracks = (
+                                    subtract(c_value, q_value),
+                                    add(
+                                        ell_value,
+                                        rotate(add(q_value, t_v)),
+                                    ),
+                                    add(
+                                        add(ell_value, rotate(q_value)),
+                                        linear(t_v),
+                                    ),
+                                    subtract(c_value, second_q),
+                                    add(
+                                        ell_value,
+                                        rotate(add(second_q, t_w)),
+                                    ),
+                                    add(
+                                        add(ell_value, rotate(second_q)),
+                                        linear(t_w),
+                                    ),
+                                )
+                                track_endpoints = [
+                                    endpoints(track) for track in tracks
+                                ]
+                                assert all(
+                                    len(endpoint_pair) == 2
+                                    for endpoint_pair in track_endpoints
+                                )
+                                footprint = frozenset().union(
+                                    *track_endpoints
+                                )
+                                assert 2 <= len(footprint) <= 12
+                                occurrence_footprints.append(footprint)
+                                matching_projected_same_centre_occurrence_endpoint_degree.update(
+                                    footprint
+                                )
+                                matching_projected_same_centre_occurrence_footprint_sizes[
+                                    len(footprint)
+                                ] += 1
+                            assert len(occurrence_footprints) == load
+                            matching_projected_same_centre_occurrence_footprints.append(
+                                tuple(occurrence_footprints)
+                            )
                             footprint_offset = add(
                                 add(c_value, ell_value), rotate(t_v)
                             )
@@ -2093,6 +2147,58 @@ def profile(
             matching_projected_same_centre_physical_wedge_mass
         ) <= 4 * point_count * (point_count - 1) ** 2
 
+    occurrence_endpoint_threshold_profiles = []
+    occurrence_cubic_mass = 3 * sum(
+        len(cell) * (len(cell) - 1) * (len(cell) - 2) // 6
+        for cell in matching_projected_same_centre_occurrence_footprints
+    )
+    assert occurrence_cubic_mass == matching_projected_same_centre_cross_third
+    for threshold in (2, 4, 8, 16, 32, 64):
+        high_endpoints = {
+            endpoint
+            for endpoint, degree in (
+                matching_projected_same_centre_occurrence_endpoint_degree.items()
+            )
+            if degree >= threshold
+        }
+        low_mass = 0
+        high_union_envelope = 0
+        endpoint_envelope = 0
+        for occurrence_footprints in (
+            matching_projected_same_centre_occurrence_footprints
+        ):
+            load = len(occurrence_footprints)
+            high_occurrences = sum(
+                bool(footprint & high_endpoints)
+                for footprint in occurrence_footprints
+            )
+            low_load = load - high_occurrences
+            low_mass += (
+                3 * low_load * (low_load - 1) * (low_load - 2) // 6
+            )
+            high_union_envelope += (
+                3 * high_occurrences * (load - 1) * (load - 2) // 2
+            )
+            endpoint_envelope += 3 * (load - 1) * (load - 2) // 2 * sum(
+                len(footprint & high_endpoints)
+                for footprint in occurrence_footprints
+            )
+        assert (
+            occurrence_cubic_mass - low_mass
+            <= high_union_envelope
+            <= endpoint_envelope
+        )
+        occurrence_endpoint_threshold_profiles.append(
+            (
+                threshold,
+                len(high_endpoints),
+                low_mass,
+                occurrence_cubic_mass - low_mass,
+                high_union_envelope,
+                endpoint_envelope,
+            )
+        )
+
     summary = {
         "components": tuple(component_mass.most_common(8)),
         "shifts": tuple(shift_mass.most_common(8)),
@@ -2806,6 +2912,36 @@ def profile(
                 ),
             ),
             ("maximizing_row", matching_endpoint_reverse_cross_support_row),
+        ),
+        "matching_same_centre_occurrence_endpoint_reuse": (
+            (
+                "occurrences",
+                sum(
+                    len(cell)
+                    for cell in (
+                        matching_projected_same_centre_occurrence_footprints
+                    )
+                ),
+            ),
+            (
+                "maximum_endpoint_degree",
+                max(
+                    matching_projected_same_centre_occurrence_endpoint_degree.values(),
+                    default=0,
+                ),
+            ),
+            (
+                "footprint_size_histogram",
+                tuple(
+                    sorted(
+                        matching_projected_same_centre_occurrence_footprint_sizes.items()
+                    )
+                ),
+            ),
+            (
+                "threshold_profiles",
+                tuple(occurrence_endpoint_threshold_profiles),
+            ),
         ),
         "matching_resonant_decorated_footprint": (
             ("incidences", matching_resonant_footprint_incidences),

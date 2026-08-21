@@ -432,6 +432,25 @@ in (5.5o) must use the selected-core measure or an aggregate budget across
 `R`; it cannot follow from the pointwise owner equations alone.  See
 `COARSE_INVARIANT_POINTWISE_OWNER_SUPPORT_BARRIER.md`.
 
+There is, however, a global low-reuse theorem at the correct scale.  Lift
+each parameter occurrence in each owner cell to the union of the endpoints
+of its six `D` tracks, a set of size between two and twelve.  If every point
+of `A` occurs in at most `Delta` such footprints, conflict colouring gives
+
+\[
+ C_{\rm center}\le108\Delta^3k^3.                \tag{5.5r}
+\]
+
+More generally, after declaring endpoints of occurrence degree at least
+`Lambda` high, the all-low parameter triples obey (5.5r) with
+`Delta=Lambda-1`.  Every remaining triple can be assigned canonically to a
+high occurrence and then to one high physical endpoint.  Thus the first
+twin gate reduces to an endpoint-weighted rich-cell pencil; for
+`Lambda=N^{o(1)}` its only new target is an `N^{o(1)}m^2` bound on that
+pencil.  This split pays the fresh-endpoint planting above by `k^3`, while
+retaining precisely the endpoint reuse that the selected core forces.  See
+`SWAP_OCCURRENCE_ENDPOINT_REUSE_DICHOTOMY.md`.
+
 This is the concrete input for attacking the first twin gate: a physical
 three-point equation correlated with a synchronized six-copy triangle in
 `D`.  Dropping either the physical equation or the synchronization returns
