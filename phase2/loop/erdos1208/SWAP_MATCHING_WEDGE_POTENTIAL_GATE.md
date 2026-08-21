@@ -243,6 +243,12 @@ high-core extension at each neighbouring cell.  That decorated three-edge
 configuration is the first place where the optimal-core density and the
 Euclidean distance uniqueness are simultaneously present.
 
+This calculation is carried out in
+`SWAP_MATCHING_C4_COMMON_NEIGHBOUR_GATE.md`.  A high-degeneracy extension
+forces two outer branches to meet, so the correct decorated object is a
+matching swap-cell four-cycle.  The resulting codegree--component product is
+now the preferred continuation of (6.2).
+
 ## 7. Verification
 
 Run

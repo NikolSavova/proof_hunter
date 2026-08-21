@@ -247,8 +247,10 @@ def profile(
     fibre_mass: Counter[Fibre] = Counter()
     endpoint_types: Counter[str] = Counter()
     potential_edge_types: Counter[str] = Counter()
+    potential_shift_mass: Counter[Point] = Counter()
     potential_fibres: Counter[tuple[str, Point, Point]] = Counter()
     matching_adjacency: dict[Cell, Counter[Cell]] = defaultdict(Counter)
+    matching_records: dict[Cell, list[tuple[Cell, Fibre]]] = defaultdict(list)
     cell_records: dict[Cell, list[tuple[Point, Point, Point, Point, Point]]] = (
         defaultdict(list)
     )
@@ -352,6 +354,12 @@ def profile(
             if category == "---":
                 matching_adjacency[first][second] += multiplicity
                 matching_adjacency[second][first] += multiplicity
+                matching_records[first].extend(
+                    (second, fibre) for fibre in occurrences[(first, second)]
+                )
+                matching_records[second].extend(
+                    (first, fibre) for fibre in occurrences[(first, second)]
+                )
             first_potentials = mixed_potentials(first)
             second_potentials = mixed_potentials(second)
             if first_potentials is None or second_potentials is None:
@@ -359,6 +367,9 @@ def profile(
             else:
                 same_alpha = first_potentials[0] == second_potentials[0]
                 same_beta = first_potentials[1] == second_potentials[1]
+                potential_shift_mass[
+                    subtract(second_potentials[0], first_potentials[0])
+                ] += multiplicity
                 potential_edge_types[
                     ("A" if same_alpha else "-")
                     + ("B" if same_beta else "-")
@@ -392,9 +403,55 @@ def profile(
     top_cells.sort(key=lambda row: (row[1], row[2], row[0]), reverse=True)
 
     matching_wedges: Counter[str] = Counter()
+    matching_wedge_fibres: Counter[str] = Counter()
+    matching_degrees = {
+        centre: sum(neighbours.values())
+        for centre, neighbours in matching_adjacency.items()
+    }
+    matching_common_neighbours: Counter[tuple[Cell, Cell]] = Counter()
+    matching_common_neighbour_lists: dict[
+        tuple[Cell, Cell], list[Cell]
+    ] = defaultdict(list)
+    matching_component_vertices: dict[Point, set[Cell]] = defaultdict(set)
+    matching_component_edges: Counter[Point] = Counter()
+    for centre, neighbours in matching_adjacency.items():
+        component = cell_invariant(centre)
+        matching_component_vertices[component].add(centre)
+        matching_component_vertices[component].update(neighbours)
+        matching_component_edges[component] += len(neighbours)
+    # Every underlying simple edge was seen once from each endpoint.
+    assert all(value % 2 == 0 for value in matching_component_edges.values())
+    matching_translate_profiles = []
+    for component, vertices in sorted(
+        matching_component_vertices.items(),
+        key=lambda item: (len(item[1]), item[0]),
+        reverse=True,
+    )[:8]:
+        cover = Counter(
+            (
+                vertex[0][0] + difference[0],
+                vertex[0][1] + difference[1],
+            )
+            for vertex in vertices
+            for difference in differences
+        )
+        matching_translate_profiles.append(
+            (
+                component,
+                len(vertices),
+                len(cover),
+                len(vertices) * len(differences) / len(cover),
+                max(cover.values(), default=0),
+            )
+        )
     if points is not None:
         for centre, neighbours in matching_adjacency.items():
             rows = list(neighbours.items())
+            simple_neighbours = sorted(neighbours)
+            for index, first in enumerate(simple_neighbours):
+                for second in simple_neighbours[index + 1 :]:
+                    matching_common_neighbours[first, second] += 1
+                    matching_common_neighbour_lists[first, second].append(centre)
             for index, (first, first_weight) in enumerate(rows):
                 matching_wedges["parallel"] += first_weight * (first_weight - 1) // 2
                 first_potentials = mixed_potentials(first)
@@ -415,6 +472,43 @@ def profile(
                     else:
                         matching_wedges["diffuse-neighbour-contact"] += weight
 
+        for records in matching_records.values():
+            for index, (_, first_fibre) in enumerate(records):
+                first_base, first_sum = first_fibre
+                for _, second_fibre in records[index + 1 :]:
+                    second_base, second_sum = second_fibre
+                    matching_wedge_fibres[
+                        ("S" if first_sum == second_sum else "-")
+                        + ("A" if first_base == second_base else "-")
+                    ] += 1
+        assert sum(matching_wedge_fibres.values()) == sum(matching_wedges.values())
+
+    matching_c4_endpoints: Counter[tuple[int, int]] = Counter()
+    if points is not None:
+        for (first, second), centres in matching_common_neighbour_lists.items():
+            for index, third in enumerate(centres):
+                for fourth in centres[index + 1 :]:
+                    cells = (first, second, third, fourth)
+                    assert len(set(cells)) == 4
+                    physical = set()
+                    alphas = set()
+                    complete_potentials = True
+                    for cell in cells:
+                        physical.update(endpoints(cell[0]))
+                        physical.update(endpoints(cell[1]))
+                        cell_potentials = mixed_potentials(cell)
+                        if cell_potentials is None:
+                            complete_potentials = False
+                        else:
+                            alphas.add(cell_potentials[0])
+                    matching_c4_endpoints[
+                        len(physical), len(alphas) if complete_potentials else -1
+                    ] += 1
+        assert all(value % 2 == 0 for value in matching_c4_endpoints.values())
+        matching_c4_endpoints = Counter(
+            {key: value // 2 for key, value in matching_c4_endpoints.items()}
+        )
+
     summary = {
         "components": tuple(component_mass.most_common(8)),
         "shifts": tuple(shift_mass.most_common(8)),
@@ -422,8 +516,50 @@ def profile(
         "loads": tuple(Counter(loads.values()).most_common()),
         "endpoint_types": tuple(endpoint_types.most_common()),
         "potential_edges": tuple(potential_edge_types.most_common()),
+        "potential_shifts": tuple(potential_shift_mass.most_common(8)),
         "potential_fibres": tuple(potential_fibres.most_common(8)),
         "matching_wedges": tuple(matching_wedges.most_common()),
+        "matching_wedge_fibres": tuple(matching_wedge_fibres.most_common()),
+        "matching_degree_profile": (
+            ("vertices", len(matching_degrees)),
+            ("maximum", max(matching_degrees.values(), default=0)),
+            ("second_moment", sum(value * value for value in matching_degrees.values())),
+        ),
+        "matching_c4_profile": (
+            ("opposite_pairs", len(matching_common_neighbours)),
+            (
+                "maximum_codegree",
+                max(matching_common_neighbours.values(), default=0),
+            ),
+            (
+                "four_cycles",
+                sum(
+                    value * (value - 1) // 2
+                    for value in matching_common_neighbours.values()
+                )
+                // 2,
+            ),
+        ),
+        "matching_c4_endpoints": tuple(
+            matching_c4_endpoints.most_common()
+        ),
+        "matching_component_profile": (
+            ("components", len(matching_component_vertices)),
+            (
+                "maximum_vertices",
+                max(map(len, matching_component_vertices.values()), default=0),
+            ),
+            (
+                "maximum_simple_edges",
+                max(
+                    (value // 2 for value in matching_component_edges.values()),
+                    default=0,
+                ),
+            ),
+        ),
+        "matching_translate_profiles": tuple(
+            (row, 1) for row in matching_translate_profiles
+        ),
         "top_cells": tuple((row, 1) for row in top_cells[:8]),
     }
     core_profile = CoreProfile(
