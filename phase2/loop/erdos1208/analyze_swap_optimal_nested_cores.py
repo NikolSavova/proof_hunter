@@ -2006,8 +2006,11 @@ def profile(
     matching_projected_same_centre_invariant_parameter_wedges: dict[
         tuple[Point, tuple[Point, ...]], set[tuple[object, ...]]
     ] = defaultdict(set)
-    for physical_wedge, triple in (
-        matching_projected_same_centre_physical_wedge_triple_codegree
+    matching_projected_same_centre_invariant_parameter_owner_load: Counter[
+        tuple[Point, tuple[Point, ...]]
+    ] = Counter()
+    for (physical_wedge, triple), owner_load in (
+        matching_projected_same_centre_physical_wedge_triple_codegree.items()
     ):
         _, first_edge, second_edge, _, _ = physical_wedge
         wedge_invariant = add(rotate(first_edge), second_edge)
@@ -2020,6 +2023,9 @@ def profile(
         matching_projected_same_centre_invariant_parameter_wedges[
             wedge_invariant, triple
         ].add(physical_wedge)
+        matching_projected_same_centre_invariant_parameter_owner_load[
+            wedge_invariant, triple
+        ] += owner_load
     matching_projected_same_centre_terminal_unique = 0
     matching_projected_same_centre_terminal_collinear = 0
     matching_projected_same_centre_terminal_noncollinear = 0
@@ -2046,6 +2052,12 @@ def profile(
             matching_projected_same_centre_terminal_collinear += 1
         else:
             matching_projected_same_centre_terminal_noncollinear += 1
+    assert matching_projected_same_centre_terminal_unique == sum(
+        owner_load == 1
+        for owner_load in (
+            matching_projected_same_centre_invariant_parameter_owner_load.values()
+        )
+    )
 
     # Every repeated mixed translate cell has one common physical endpoint,
     # one incident V edge, one incident W edge, and one orientation choice
@@ -2645,6 +2657,27 @@ def profile(
                                 matching_projected_same_centre_terminal_unique,
                                 matching_projected_same_centre_terminal_collinear,
                                 matching_projected_same_centre_terminal_noncollinear,
+                                (
+                                    len(
+                                        matching_projected_same_centre_invariant_parameter_owner_load
+                                    ),
+                                    max(
+                                        matching_projected_same_centre_invariant_parameter_owner_load.values(),
+                                        default=0,
+                                    ),
+                                    sum(
+                                        owner_load * (owner_load - 1) // 2
+                                        for owner_load in (
+                                            matching_projected_same_centre_invariant_parameter_owner_load.values()
+                                        )
+                                    ),
+                                    sum(
+                                        owner_load == 1
+                                        for owner_load in (
+                                            matching_projected_same_centre_invariant_parameter_owner_load.values()
+                                        )
+                                    ),
+                                ),
                                 tuple(
                                     sorted(
                                         matching_projected_same_centre_invariant_triple_support.items(),

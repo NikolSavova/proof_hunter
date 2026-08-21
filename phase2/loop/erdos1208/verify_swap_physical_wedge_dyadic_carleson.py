@@ -134,6 +134,7 @@ def audit_stored_stress() -> None:
         23: (204, 68, 3, 24, 180),
         29: (4857, 945, 48, 774, 4083),
         31: (5058, 418, 123, 1992, 3066),
+        37: (4896, 1102, 45, 936, 3960),
     }
     for prime, (total, support, maximum, same_edge, one_endpoint) in rows.items():
         k = prime - 1
@@ -195,6 +196,21 @@ def audit_stored_stress() -> None:
         assert terminal_unique == terminal_collinear + terminal_noncollinear
         assert terminal_unique <= singleton_edges
         assert 9 * terminal_noncollinear > 8 * terminal_unique
+    coarse_rows = {
+        29: (1448, 4, 193, 1295),
+        31: (1132, 8, 916, 770),
+        37: (1452, 4, 192, 1280),
+    }
+    for prime, (support, maximum, collisions, singleton_cells) in (
+        coarse_rows.items()
+    ):
+        assert support <= triple_rows[prime][0]
+        assert maximum >= 1 and collisions >= 0
+        assert singleton_cells == invariant_rows[prime][6]
+        assert singleton_cells <= support
+        incidence = rows[prime][0] // 3
+        assert 3 * incidence == rows[prime][0]
+        assert incidence * incidence <= support * (incidence + 2 * collisions)
 
 
 def audit_support_collision_gate() -> None:

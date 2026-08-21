@@ -357,6 +357,60 @@ triangle has one physical wedge in its invariant fibre and that key has one
 owner.  Any proof using a second completion before reaching this branch is
 spending structure already available to the six-direction recursion.
 
+In fact the two reuse steps compress into one canonical gate.  Define the
+coarse owner load
+
+\[
+ \widehat\mu(R,T)=
+ \sum_{w:JV(w)+W(w)=R}\mu(w,T),                  \tag{5.5l}
+\]
+
+and put
+
+\[
+ \widehat X=|\{(R,T):\widehat\mu(R,T)>0\}|,
+ \qquad
+ \widehat Q=\sum_{R,T}{\widehat\mu(R,T)\choose2}.\tag{5.5m}
+\]
+
+Then `I=sum widehat_mu`, so the same Cauchy calculation gives
+
+\[
+ \boxed{I^2\le\widehat X(I+2\widehat Q).}         \tag{5.5n}
+\]
+
+Every pair counted by `widehat Q` is covered by (5.5j); the same-wedge
+owner switch is its special case `U=0`.  Consequently the genuinely minimal
+twin theorem is
+
+\[
+ \boxed{\widehat X,\widehat Q
+   \le N^{o(1)}(k^3+m^2).}                       \tag{5.5o}
+\]
+
+It already implies `C_center<=6N^{o(1)}(k^3+m^2)`.  After its collision
+half is paid, the residual condition is simply
+`widehat_mu(R,T)=1`; this simultaneously says that the wedge and owner are
+unique.  The earlier `(w,T)` split remains useful for geometry, but it is
+not the most economical final bookkeeping.
+
+The exact coarse profiles are
+
+\[
+\begin{array}{c|r|r|r|r}
+\text{family}&\widehat X&\max\widehat\mu&\widehat Q
+ &\#\{\widehat\mu=1\}\\ \hline
+29&1448&4&193&1295\\
+31&1132&8&916&770\\
+37&1452&4&192&1280.
+\end{array}                                        \tag{5.5p}
+\]
+
+Thus the coarse compression is material but does not make collisions
+disappear: the Costas-31 two-by-two owner rectangles amplify to load eight
+inside one `(R,T)` cell.  Conversely, the singleton coarse support remains
+the majority population in every row.  Both halves of (5.5o) are real.
+
 This is the concrete input for attacking the first twin gate: a physical
 three-point equation correlated with a synchronized six-copy triangle in
 `D`.  Dropping either the physical equation or the synchronization returns
