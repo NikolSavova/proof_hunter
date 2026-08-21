@@ -160,6 +160,35 @@ The same two wedges have resonant/transverse splits `93+30` and `87+21`.
 The resonant branch is therefore a worthwhile first subproblem, but it does
 not exhaust the obstruction.
 
+There is one further lossless inverse audit.  For an unordered parameter
+triple `T`, let `mu(w,T)` be the number of four-line cells over `w` which
+contain `T`.  Then
+
+\[
+ \boxed{\displaystyle
+ C_{\rm center}=3\sum_{w,T}\mu(w,T).}             \tag{5.1}
+\]
+
+The tempting claim `mu<=1` is false.  Exact profiles are
+
+\[
+\begin{array}{c|r|r|r}
+\text{family}&\#\{(w,T):\mu>0\}&\max\mu&
+ \sum_{w,T}{\mu\choose2}\\ \hline
+\text{Costas }23&68&1&0\\
+\text{Costas }29&1583&2&36\\
+\text{Costas }31&1386&4&366\\
+\text{Costas }37&1604&2&28
+\end{array}
+\]
+
+At the multiplicity-four rows the owners form small two-by-two translation
+rectangles: two centre choices combine with two cross shifts.  Thus a
+physical wedge plus three parameters does not determine the cell.  Any
+inverse theorem must either retain one completion corner or control these
+translation rectangles in aggregate; literal triple rigidity is closed as
+a shortcut.
+
 Three major barrier families are benign for this particular term.  Dense
 one-dimensional Golomb rulers through `k=14`, the explicit lifted residue
 parabolas through prime `43`, and the genuine `k=48`, codegree-`49`
@@ -180,7 +209,8 @@ python3 phase2/loop/erdos1208/verify_swap_physical_wedge_dyadic_carleson.py
 
 The verifier exhausts the oriented-wedge counts, checks the lossless mass
 partition and (3.3)--(3.4) on random cell systems, checks the stored Costas
-stress rows, and reruns small genuine Golomb and lifted-parabola controls.
+stress and triple-owner rows, and reruns small genuine Golomb and
+lifted-parabola controls.
 It also reruns the rank-flat `k=48` certificate.  The main analyzer
 independently asserts physical-wedge mass conservation whenever actual
 endpoints are available.

@@ -536,6 +536,12 @@ def profile(
     matching_projected_same_centre_physical_wedge_class_mass: Counter[
         str
     ] = Counter()
+    matching_projected_same_centre_physical_wedge_triple_codegree: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_projected_same_centre_physical_wedge_triple_owners: dict[
+        tuple[object, ...], list[tuple[object, ...]]
+    ] = defaultdict(list)
 
     def projected_physical_edge(key: tuple[object, ...]) -> Point:
         assert key[0] in ("V", "W")
@@ -853,6 +859,14 @@ def profile(
                             matching_projected_same_centre_physical_wedge_class_mass[
                                 physical_wedge_class
                             ] += mass
+                            for triple in combinations(sorted(cell_values), 3):
+                                wedge_triple = physical_wedge, triple
+                                matching_projected_same_centre_physical_wedge_triple_codegree[
+                                    wedge_triple
+                                ] += 1
+                                matching_projected_same_centre_physical_wedge_triple_owners[
+                                    wedge_triple
+                                ].append((centre, t_v, t_w, eta))
                             for footprint_value in footprint:
                                 matching_projected_same_centre_footprint_depth[
                                     footprint_value
@@ -1944,6 +1958,9 @@ def profile(
     assert sum(
         matching_projected_same_centre_physical_wedge_class_mass.values()
     ) == matching_projected_same_centre_cross_third
+    assert 3 * sum(
+        matching_projected_same_centre_physical_wedge_triple_codegree.values()
+    ) == matching_projected_same_centre_cross_third
     if points is not None:
         point_count = len(points)
         assert len(
@@ -2423,6 +2440,33 @@ def profile(
                                 ),
                             )
                             for wedge_class in ("same_edge", "one_endpoint")
+                        ),
+                        (
+                            len(
+                                matching_projected_same_centre_physical_wedge_triple_codegree
+                            ),
+                            max(
+                                matching_projected_same_centre_physical_wedge_triple_codegree.values(),
+                                default=0,
+                            ),
+                            sum(
+                                value * (value - 1) // 2
+                                for value in matching_projected_same_centre_physical_wedge_triple_codegree.values()
+                            ),
+                            tuple(
+                                (
+                                    wedge_triple,
+                                    codegree,
+                                    tuple(
+                                        matching_projected_same_centre_physical_wedge_triple_owners[
+                                            wedge_triple
+                                        ]
+                                    ),
+                                )
+                                for wedge_triple, codegree in matching_projected_same_centre_physical_wedge_triple_codegree.most_common(
+                                    5
+                                )
+                            ),
                         ),
                     ),
                     tuple(

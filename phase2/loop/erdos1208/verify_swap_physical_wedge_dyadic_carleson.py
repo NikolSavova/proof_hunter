@@ -119,6 +119,15 @@ def audit_stored_stress() -> None:
         assert maximum <= total
     assert (93 + 30, 87 + 21) == (123, 108)
     assert mass(6) == 60
+    triple_rows = {
+        23: (68, 1, 0),
+        29: (1583, 2, 36),
+        31: (1386, 4, 366),
+        37: (1604, 2, 28),
+    }
+    for prime, (support, maximum, collisions) in triple_rows.items():
+        assert support > 0 and maximum >= 1 and collisions >= 0, prime
+    assert triple_rows[31][1] > 1  # Literal triple rigidity is false.
 
 
 def audit_genuine_zero_controls() -> None:
