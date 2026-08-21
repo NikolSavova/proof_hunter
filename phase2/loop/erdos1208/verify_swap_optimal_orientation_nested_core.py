@@ -3,10 +3,13 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass
 from itertools import product
 from math import ceil, log2
 import random
+
+from analyze_swap_optimal_nested_cores import optimize_component
 
 
 Edge = tuple[int, int]
@@ -47,6 +50,11 @@ def optimum_orientation(vertices: int, edges: list[Edge]):
 
 def audit_graph(vertices: int, edges: list[Edge]) -> Audit:
     energy, bits, loads = optimum_orientation(vertices, edges)
+
+    optimized_loads, _, _ = optimize_component(
+        set(range(vertices)), Counter(edges)
+    )
+    assert sum(load * load for load in optimized_loads.values()) == energy
 
     minimum_sum = 0
     balance_edges = 0
