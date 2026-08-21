@@ -473,6 +473,21 @@ def profile(
     matching_endpoint_metric_resonance_mass: Counter[str] = Counter()
     matching_endpoint_reverse_cross_support_ratio = Fraction(0)
     matching_endpoint_reverse_cross_support_row: tuple[object, ...] = ()
+    matching_resonant_footprint_incidences = 0
+    matching_resonant_diagonal_footprint_incidences = 0
+    matching_resonant_footprint_owners: dict[
+        tuple[object, ...], tuple[object, ...]
+    ] = {}
+    matching_resonant_footprint_depth: Counter[tuple[object, ...]] = Counter()
+    matching_resonant_footprint_edge_reuse: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_resonant_footprint_corner_degree: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_resonant_footprint_difference_degree: Counter[
+        tuple[object, ...]
+    ] = Counter()
     for component, vertices in sorted(
         matching_component_vertices.items(),
         key=lambda item: (len(item[1]), item[0]),
@@ -847,6 +862,125 @@ def profile(
                                 switch,
                                 tuple(sorted(reverse_rows)),
                             )
+
+                        # Every resonant quadratic footprint becomes
+                        # injective after retaining its physical difference
+                        # and natural completion corner.  Profile both the
+                        # undecorated depth and the two degree projections.
+                        # A row is (X,t,Y,Z), while q=c-X, p=q+t and
+                        # W=ell+Lt.
+                        c_value, ell_value = centre
+                        branch_groups: dict[
+                            str, dict[Point, list[tuple[Point, Point, Point, Point]]]
+                        ] = {
+                            "q": defaultdict(list),
+                            "p": defaultdict(list),
+                            "D": defaultdict(list),
+                        }
+                        for row in reverse_rows:
+                            x_start, displacement, _, z_start = row
+                            q_value = subtract(c_value, x_start)
+                            p_value = add(q_value, displacement)
+                            branch_groups["q"][q_value].append(row)
+                            branch_groups["p"][p_value].append(row)
+                            branch_groups["D"][z_start].append(row)
+
+                        for branch, groups in branch_groups.items():
+                            for coordinate, star_rows in groups.items():
+                                assert len({row[1] for row in star_rows}) == len(
+                                    star_rows
+                                )
+                                representations: dict[
+                                    Point,
+                                    tuple[
+                                        tuple[Point, Point, Point, Point],
+                                        tuple[Point, Point, Point, Point],
+                                    ],
+                                ] = {}
+                                for first_row in star_rows:
+                                    for second_row in star_rows:
+                                        if branch == "q":
+                                            footprint_value = add(
+                                                first_row[2], second_row[3]
+                                            )
+                                        elif branch == "p":
+                                            footprint_value = add(
+                                                first_row[0], second_row[3]
+                                            )
+                                        else:
+                                            footprint_value = add(
+                                                first_row[0], second_row[2]
+                                            )
+                                        candidate = first_row, second_row
+                                        previous = representations.get(
+                                            footprint_value
+                                        )
+                                        candidate_is_diagonal = (
+                                            first_row[1] == second_row[1]
+                                        )
+                                        previous_is_diagonal = (
+                                            previous is not None
+                                            and previous[0][1] == previous[1][1]
+                                        )
+                                        if previous is None or (
+                                            candidate_is_diagonal,
+                                            candidate,
+                                        ) < (
+                                            previous_is_diagonal,
+                                            previous,
+                                        ):
+                                            representations[footprint_value] = candidate
+
+                                star_identity = (
+                                    centre,
+                                    endpoint,
+                                    switch,
+                                    role,
+                                    branch,
+                                    coordinate,
+                                )
+                                for footprint_value, (
+                                    first_row,
+                                    second_row,
+                                ) in representations.items():
+                                    x_start, first_t, _, _ = first_row
+                                    difference = subtract(first_t, second_row[1])
+                                    if difference == (0, 0):
+                                        matching_resonant_diagonal_footprint_incidences += 1
+                                        continue
+                                    q_value = subtract(c_value, x_start)
+                                    p_value = add(q_value, first_t)
+                                    if branch in ("q", "p"):
+                                        corner = p_value, x_start, ell_value
+                                    else:
+                                        w_value = add(ell_value, linear(first_t))
+                                        corner = q_value, x_start, w_value
+                                    decorated_key = (
+                                        switch,
+                                        role,
+                                        branch,
+                                        footprint_value,
+                                        difference,
+                                        corner,
+                                    )
+                                    previous_owner = (
+                                        matching_resonant_footprint_owners.setdefault(
+                                            decorated_key, star_identity
+                                        )
+                                    )
+                                    assert previous_owner == star_identity
+                                    matching_resonant_footprint_incidences += 1
+                                    prefix = switch, role, branch, footprint_value
+                                    matching_resonant_footprint_depth[prefix] += 1
+                                    matching_resonant_footprint_edge_reuse[
+                                        switch, role, branch, difference, corner
+                                    ] += 1
+                                    matching_resonant_footprint_corner_degree[
+                                        prefix + (corner,)
+                                    ] += 1
+                                    matching_resonant_footprint_difference_degree[
+                                        prefix + (difference,)
+                                    ] += 1
                     switch_class = (
                         "popular" if switch in adaptive_popular else "nonpopular"
                     )
@@ -1382,6 +1516,69 @@ def profile(
                 ),
             ),
             ("maximizing_row", matching_endpoint_reverse_cross_support_row),
+        ),
+        "matching_resonant_decorated_footprint": (
+            ("incidences", matching_resonant_footprint_incidences),
+            (
+                "diagonal_only_incidences",
+                matching_resonant_diagonal_footprint_incidences,
+            ),
+            (
+                "maximum_undecorated_depth",
+                max(matching_resonant_footprint_depth.values(), default=0),
+            ),
+            (
+                "maximum_decorated_load",
+                int(bool(matching_resonant_footprint_owners)),
+            ),
+            (
+                "maximum_completion_edge_reuse",
+                max(
+                    matching_resonant_footprint_edge_reuse.values(), default=0
+                ),
+            ),
+            (
+                "maximum_corner_degree_at_fixed_footprint",
+                max(
+                    matching_resonant_footprint_corner_degree.values(), default=0
+                ),
+            ),
+            (
+                "maximum_difference_degree_at_fixed_footprint",
+                max(
+                    matching_resonant_footprint_difference_degree.values(), default=0
+                ),
+            ),
+            (
+                "top_undecorated_depths",
+                tuple(
+                    sorted(
+                        matching_resonant_footprint_depth.items(),
+                        key=lambda item: (item[1], item[0]),
+                        reverse=True,
+                    )[:5]
+                ),
+            ),
+            (
+                "top_difference_degrees",
+                tuple(
+                    sorted(
+                        matching_resonant_footprint_difference_degree.items(),
+                        key=lambda item: (item[1], item[0]),
+                        reverse=True,
+                    )[:5]
+                ),
+            ),
+            (
+                "top_corner_degrees",
+                tuple(
+                    sorted(
+                        matching_resonant_footprint_corner_degree.items(),
+                        key=lambda item: (item[1], item[0]),
+                        reverse=True,
+                    )[:5]
+                ),
+            ),
         ),
         "matching_translate_profiles": tuple(
             (row, 1) for row in matching_translate_profiles
