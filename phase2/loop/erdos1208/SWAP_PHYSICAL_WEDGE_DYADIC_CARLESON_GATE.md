@@ -224,6 +224,82 @@ The finite maximum number of supported triples over one wedge is already
 `32`, so the support gate cannot be replaced by a constant pointwise
 fibre bound.
 
+The support gate has a further exact normalization.  Choose one owner of
+an occupied key `(w,T)`, and let `G_0(q),...,G_5(q)` be its six actual
+`D`-valued tracks.  If the two directed physical edges of `w` are `V,W`,
+put
+
+\[
+ R=JV+W.                                           \tag{5.5a}
+\]
+
+As `q` runs through `T`, the tracks `G_0,G_3` are translates of `-T`,
+whereas `G_1,G_2,G_4,G_5` are translates of `JT`.  Moreover, for every
+`q` they obey
+
+\[
+\begin{aligned}
+ JG_0+G_1-LG_4+LG_5&=R,\\
+ JG_0+G_2+G_3-LG_4+G_5&=(I-J)R.
+\end{aligned}                                      \tag{5.5b}
+\]
+
+Thus `X` is not an arbitrary wedge--triple incidence count.  Every key
+contains two synchronized copies of its parameter triangle in one
+orientation, four in the quarter-turned orientation, and a common
+two-dimensional invariant `R` determined by its physical wedge.  If
+`W_R` is the number of physical wedges with invariant `R`, then
+
+\[
+ \sum_R W_R\le4k(k-1)^2.                          \tag{5.5c}
+\]
+
+After fixing the two endpoint roles, the corresponding three physical
+points `(P,U,Z)` satisfy
+
+\[
+ \epsilon_1 JU+\epsilon_2 Z
+ - (\epsilon_1J+\epsilon_2I)P=R,
+ \qquad \epsilon_1,\epsilon_2\in\{-1,1\}.        \tag{5.5d}
+\]
+
+The `R` fibre is not pointwise bounded.  For every `n`, fix a nonzero
+integer vector `R` and choose independent formal points `P_i,U_i`.  Set
+
+\[
+ Z_i=P_i-J(U_i-P_i)+R,qquad 1\le i\le n.          \tag{5.5e}
+\]
+
+Then the `n` wedges `(P_i,U_i,Z_i)` all have the same invariant `R`.
+For nonzero `R`, the squared-distance polynomials of the `3n` formal
+points are pairwise different.  This reduces to a finite four-block
+coefficient audit, since two candidate edges involve at most four block
+indices.  There are `O(n^4)` bad equal-distance polynomials, each nonzero
+of degree at most two.  Schwartz--Zippel specialization in a box of side
+`O(n^4)` therefore gives integral distance-Sidon examples of polynomial
+height with
+
+\[
+ \max_R W_R\ge n=k/3.                             \tag{5.5f}
+\]
+
+So even the physical half of the invariant must be summed globally.  In
+the finite Costas 29/31/37 stresses, the triples
+
+\[
+ (\#R,\max_R W_R,\max_R X_R)
+   =(816,4,23),\ (332,4,68),\ (960,4,30),          \tag{5.5g}
+\]
+
+where `X_R` is the number of occupied `(w,T)` keys in the fibre.  The small
+observed value `4` is therefore not a viable theorem; the invariant is a
+Carleson summation coordinate, not a rigidity key.
+
+This is the concrete input for attacking the first twin gate: a physical
+three-point equation correlated with a synchronized six-copy triangle in
+`D`.  Dropping either the physical equation or the synchronization returns
+to ambient centroid/quarter-turn energies already known to be too large.
+
 Thus excessive mass either exposes many distinct physical-wedge/parameter-
 triple keys, or creates many pairs of owner cells sharing one such key.
 The latter pairs have a rigid six-direction normal form.

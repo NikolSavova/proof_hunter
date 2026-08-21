@@ -189,6 +189,113 @@ def audit_support_collision_gate() -> None:
         assert 3 * incidence <= 6 * common_budget
 
 
+def add_linear(
+    left: tuple[int, ...], right: tuple[int, ...]
+) -> tuple[int, ...]:
+    return tuple(first + second for first, second in zip(left, right))
+
+
+def scale_linear(coefficient: int, value: tuple[int, ...]) -> tuple[int, ...]:
+    return tuple(coefficient * entry for entry in value)
+
+
+def symbolic_wedge_points(
+    blocks: int, invariant: Point
+) -> list[tuple[tuple[int, ...], tuple[int, ...]]]:
+    dimension = 4 * blocks + 1
+    constant_x = (0,) * (dimension - 1) + (invariant[0],)
+    constant_y = (0,) * (dimension - 1) + (invariant[1],)
+    points = []
+    for block in range(blocks):
+        basis = []
+        for coordinate in range(4):
+            vector = [0] * dimension
+            vector[4 * block + coordinate] = 1
+            basis.append(tuple(vector))
+        p_x, p_y, u_x, u_y = basis
+        z_x = add_linear(
+            add_linear(add_linear(p_x, scale_linear(-1, p_y)), u_y),
+            constant_x,
+        )
+        z_y = add_linear(
+            add_linear(add_linear(p_x, p_y), scale_linear(-1, u_x)),
+            constant_y,
+        )
+        points.extend(((p_x, p_y), (u_x, u_y), (z_x, z_y)))
+    return points
+
+
+def squared_distance_polynomial(
+    first: tuple[tuple[int, ...], tuple[int, ...]],
+    second: tuple[tuple[int, ...], tuple[int, ...]],
+) -> tuple[tuple[tuple[int, int], int], ...]:
+    coefficients: dict[tuple[int, int], int] = defaultdict(int)
+    for first_coordinate, second_coordinate in zip(first, second):
+        difference = tuple(
+            left - right
+            for left, right in zip(first_coordinate, second_coordinate)
+        )
+        for first_index, first_value in enumerate(difference):
+            if first_value == 0:
+                continue
+            for second_index in range(first_index, len(difference)):
+                second_value = difference[second_index]
+                if second_value == 0:
+                    continue
+                coefficients[first_index, second_index] += (
+                    first_value
+                    * second_value
+                    * (1 if first_index == second_index else 2)
+                )
+    return tuple(
+        sorted((key, value) for key, value in coefficients.items() if value)
+    )
+
+
+def audit_physical_invariant_barrier() -> None:
+    symbolic_points = symbolic_wedge_points(4, (1, 0))
+    squared_polynomials = {
+        squared_distance_polynomial(first, second)
+        for first, second in combinations(symbolic_points, 2)
+    }
+    assert len(squared_polynomials) == comb(len(symbolic_points), 2)
+
+    points = [
+        (2417, 4293),
+        (7, -3784),
+        (-5643, 6714),
+        (-1337, 611),
+        (323, -4677),
+        (-6608, -1038),
+        (4542, -1748),
+        (1938, 1569),
+        (7876, 867),
+        (-1070, 4038),
+        (1021, 4848),
+        (-243, 1958),
+        (2066, 3614),
+        (4405, -2269),
+        (-3800, 1286),
+        (1665, -4692),
+        (4280, -381),
+        (5993, -7296),
+    ]
+    squared_distances = []
+    for first, second in combinations(points, 2):
+        difference = sub(first, second)
+        squared_distances.append(
+            difference[0] * difference[0] + difference[1] * difference[1]
+        )
+    assert len(set(squared_distances)) == comb(len(points), 2)
+    invariants = []
+    for index in range(0, len(points), 3):
+        p_value, u_value, z_value = points[index : index + 3]
+        first_edge = sub(u_value, p_value)
+        second_edge = sub(z_value, p_value)
+        invariants.append(add(rotate(first_edge), second_edge))
+    assert invariants == [(17, 11)] * 6
+
+
 def audit_owner_switch_normal_form() -> None:
     rng = Random(12082026)
     for _ in range(1000):
@@ -211,6 +318,8 @@ def audit_owner_switch_normal_form() -> None:
             ell_second, linear(b_second)
         )
 
+        previous_q: Point | None = None
+        previous_tracks: tuple[Point, ...] | None = None
         for _ in range(5):
             q_value = rng.randrange(-20, 21), rng.randrange(-20, 21)
 
@@ -253,6 +362,46 @@ def audit_owner_switch_normal_form() -> None:
                 neg(rotate(eta_shift)),
             )
             assert actual == expected
+
+            physical_v = add(c_first, a_first)
+            physical_w = add(ell_first, linear(b_first))
+            invariant = add(rotate(physical_v), physical_w)
+            first_relation = add(
+                sub(
+                    add(rotate(first_tracks[0]), first_tracks[1]),
+                    linear(first_tracks[4]),
+                ),
+                linear(first_tracks[5]),
+            )
+            second_relation = add(
+                sub(
+                    add(
+                        add(rotate(first_tracks[0]), first_tracks[2]),
+                        first_tracks[3],
+                    ),
+                    linear(first_tracks[4]),
+                ),
+                first_tracks[5],
+            )
+            assert first_relation == invariant
+            assert second_relation == sub(invariant, rotate(invariant))
+
+            if previous_q is not None and previous_tracks is not None:
+                q_shift = sub(q_value, previous_q)
+                track_shifts = tuple(
+                    sub(current, previous)
+                    for current, previous in zip(first_tracks, previous_tracks)
+                )
+                assert track_shifts == (
+                    neg(q_shift),
+                    rotate(q_shift),
+                    rotate(q_shift),
+                    neg(q_shift),
+                    rotate(q_shift),
+                    rotate(q_shift),
+                )
+            previous_q = q_value
+            previous_tracks = first_tracks
 
 
 def linear_tracks(
@@ -428,6 +577,7 @@ def main() -> None:
     audit_decomposition()
     audit_stored_stress()
     audit_support_collision_gate()
+    audit_physical_invariant_barrier()
     audit_owner_switch_normal_form()
     audit_fractional_basis()
     audit_genuine_zero_controls()

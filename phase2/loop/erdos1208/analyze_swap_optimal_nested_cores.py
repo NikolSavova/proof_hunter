@@ -1997,6 +1997,23 @@ def profile(
             matching_projected_same_centre_physical_wedge_triple_codegree
         )
     )
+    matching_projected_same_centre_invariant_wedges: dict[
+        Point, set[tuple[object, ...]]
+    ] = defaultdict(set)
+    matching_projected_same_centre_invariant_triple_support: Counter[
+        Point
+    ] = Counter()
+    for physical_wedge, _ in (
+        matching_projected_same_centre_physical_wedge_triple_codegree
+    ):
+        _, first_edge, second_edge, _, _ = physical_wedge
+        wedge_invariant = add(rotate(first_edge), second_edge)
+        matching_projected_same_centre_invariant_wedges[
+            wedge_invariant
+        ].add(physical_wedge)
+        matching_projected_same_centre_invariant_triple_support[
+            wedge_invariant
+        ] += 1
 
     # Every repeated mixed translate cell has one common physical endpoint,
     # one incident V edge, one incident W edge, and one orientation choice
@@ -2556,6 +2573,29 @@ def profile(
                                     sorted(
                                         matching_projected_same_centre_owner_offset_zero_masks.items()
                                     )
+                                ),
+                            ),
+                            (
+                                len(
+                                    matching_projected_same_centre_invariant_wedges
+                                ),
+                                max(
+                                    map(
+                                        len,
+                                        matching_projected_same_centre_invariant_wedges.values(),
+                                    ),
+                                    default=0,
+                                ),
+                                max(
+                                    matching_projected_same_centre_invariant_triple_support.values(),
+                                    default=0,
+                                ),
+                                tuple(
+                                    sorted(
+                                        matching_projected_same_centre_invariant_triple_support.items(),
+                                        key=lambda item: (item[1], item[0]),
+                                        reverse=True,
+                                    )[:8]
                                 ),
                             ),
                         ),
