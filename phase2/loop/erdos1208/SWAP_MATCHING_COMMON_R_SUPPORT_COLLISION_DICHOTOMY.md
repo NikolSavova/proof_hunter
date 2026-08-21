@@ -223,6 +223,14 @@ replace a raw graph-codegree attack:
    collisions (4.2), routing endpoint-contact cycles separately and keeping
    the four adaptive-popular shift pairs in the clean branch.
 
+The separate endpoint route is now exact: repeated `r` is invariant under
+switching the four-cycle diagonal, and the weighted endpoint-pencil moment
+dominates every contact wedge without a component-size loss.  See
+`SWAP_MATCHING_ENDPOINT_PENCIL_CLEAN_CODEGREE_GATE.md` and
+`SWAP_MATCHING_WEIGHTED_ENDPOINT_PENCIL_GATE.md`.  Consequently the
+repeated-`r` population left here may be assumed to have sixteen distinct
+physical endpoints.
+
 A useful theorem must combine these two counts before dropping endpoint
 labels.  Independent pointwise bounds on component size, parallel
 multiplicity, fixed-`r` load, or raw `D-D` representation count are not

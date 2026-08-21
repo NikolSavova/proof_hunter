@@ -117,7 +117,9 @@ def verify_costas_profiles() -> None:
              ('fixed_opposite_r_centre_load', 1),
              ('fixed_zdr_copy_load', 2),
              ('fixed_zdr_centre_load', 1),
-             ('maximum_opposite_r_support', 6)),
+             ('maximum_opposite_r_support', 6),
+             ('contact_opposite_r_centre_load', 1),
+             ('clean_opposite_r_centre_load', 1)),
             0,
             0,
             0,
@@ -128,7 +130,9 @@ def verify_costas_profiles() -> None:
              ('fixed_opposite_r_centre_load', 4),
              ('fixed_zdr_copy_load', 10),
              ('fixed_zdr_centre_load', 6),
-             ('maximum_opposite_r_support', 25)),
+             ('maximum_opposite_r_support', 25),
+             ('contact_opposite_r_centre_load', 4),
+             ('clean_opposite_r_centre_load', 3)),
             1_492,
             828,
             50,
@@ -181,6 +185,8 @@ def verify_larger_costas_profile() -> None:
         ('fixed_zdr_copy_load', 25),
         ('fixed_zdr_centre_load', 16),
         ('maximum_opposite_r_support', 27),
+        ('contact_opposite_r_centre_load', 5),
+        ('clean_opposite_r_centre_load', 5),
     )
     assert sum(value for _, value in rows) == 63_119
     assert sum(value for (key, value) in rows if key[1] == 0) == 29_811

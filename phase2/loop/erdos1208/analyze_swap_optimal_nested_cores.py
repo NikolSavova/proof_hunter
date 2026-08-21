@@ -15,6 +15,8 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict, deque
 from dataclasses import dataclass
+from fractions import Fraction
+from itertools import combinations
 from math import ceil, log2
 import sys
 
@@ -423,6 +425,7 @@ def profile(
     matching_zdr_centres: Counter[tuple[Point, Point, Point]] = Counter()
     matching_opposite_r_support: Counter[tuple[Cell, Cell]] = Counter()
     matching_c4_r_overlap: Counter[tuple[int, int]] = Counter()
+    matching_c4_contact_r_routes: Counter[tuple[int, bool, bool]] = Counter()
     matching_component_vertices: dict[Point, set[Cell]] = defaultdict(set)
     matching_component_edges: Counter[Point] = Counter()
     for centre, neighbours in matching_adjacency.items():
@@ -433,6 +436,16 @@ def profile(
     # Every underlying simple edge was seen once from each endpoint.
     assert all(value % 2 == 0 for value in matching_component_edges.values())
     matching_translate_profiles = []
+    matching_component_endpoint_pencils: dict[Point, int] = {}
+    matching_component_weighted_endpoint_pencils: dict[Point, int] = {}
+    matching_component_contact_wedges: Counter[Point] = Counter()
+    matching_component_pencil_wedge_upper: Counter[Point] = Counter()
+    matching_weighted_endpoint_pencil_rows: list[
+        tuple[int, int, int, Point, Cell, Point]
+    ] = []
+    matching_contact_pencil_rows: list[
+        tuple[Fraction, int, int, int, Point, Cell, Point]
+    ] = []
     for component, vertices in sorted(
         matching_component_vertices.items(),
         key=lambda item: (len(item[1]), item[0]),
@@ -454,6 +467,84 @@ def profile(
                 len(vertices) * len(differences) / len(cover),
                 max(cover.values(), default=0),
             )
+        )
+    if points is not None:
+        for component, vertices in matching_component_vertices.items():
+            endpoint_load = Counter(
+                endpoint
+                for vertex in vertices
+                for value in vertex
+                for endpoint in endpoints(value)
+            )
+            matching_component_endpoint_pencils[component] = max(
+                endpoint_load.values(), default=0
+            )
+        for centre, neighbours in matching_adjacency.items():
+            component = cell_invariant(centre)
+            weighted_pencil = Counter()
+            endpoint_neighbour_weights: dict[Point, list[int]] = defaultdict(
+                list
+            )
+            rows = list(neighbours.items())
+            for neighbour, multiplicity in rows:
+                for endpoint in endpoints(neighbour[0]) | endpoints(
+                    neighbour[1]
+                ):
+                    weighted_pencil[endpoint] += multiplicity
+                    endpoint_neighbour_weights[endpoint].append(multiplicity)
+            matching_component_weighted_endpoint_pencils[component] = max(
+                matching_component_weighted_endpoint_pencils.get(component, 0),
+                max(weighted_pencil.values(), default=0),
+            )
+            for endpoint, weights in endpoint_neighbour_weights.items():
+                load = sum(weights)
+                pair_mass = (
+                    load * load - sum(weight * weight for weight in weights)
+                ) // 2
+                matching_weighted_endpoint_pencil_rows.append(
+                    (
+                        load,
+                        len(weights),
+                        max(weights),
+                        component,
+                        centre,
+                        endpoint,
+                    )
+                )
+                matching_contact_pencil_rows.append(
+                    (
+                        Fraction(pair_mass, load),
+                        pair_mass,
+                        load,
+                        len(weights),
+                        component,
+                        centre,
+                        endpoint,
+                    )
+                )
+            matching_component_pencil_wedge_upper[component] += sum(
+                (
+                    sum(weights) ** 2
+                    - sum(weight * weight for weight in weights)
+                )
+                // 2
+                for weights in endpoint_neighbour_weights.values()
+            )
+            matching_component_contact_wedges[component] += sum(
+                first_weight * second_weight
+                for (
+                    (first, first_weight),
+                    (second, second_weight),
+                ) in combinations(rows, 2)
+                if (
+                    (endpoints(first[0]) | endpoints(first[1]))
+                    & (endpoints(second[0]) | endpoints(second[1]))
+                )
+            )
+        assert all(
+            matching_component_contact_wedges[component]
+            <= matching_component_pencil_wedge_upper[component]
+            for component in matching_component_vertices
         )
     if points is not None:
         for centre, neighbours in matching_adjacency.items():
@@ -496,7 +587,8 @@ def profile(
 
     matching_c4_endpoints: Counter[tuple[int, int]] = Counter()
     matching_c4_data: dict[
-        tuple[Edge, Edge, Edge, Edge], tuple[int, int, list[int]]
+        tuple[Edge, Edge, Edge, Edge],
+        tuple[int, int, list[tuple[int, int]]],
     ] = {}
     if points is not None:
         for (first, second), centres in matching_common_neighbour_lists.items():
@@ -570,24 +662,45 @@ def profile(
                     shared_r = len(
                         centre_supports[third] & centre_supports[fourth]
                     )
+                    diagonal_contact = len(
+                        (endpoints(first[0]) | endpoints(first[1]))
+                        & (endpoints(second[0]) | endpoints(second[1]))
+                    )
                     if cycle_key not in matching_c4_data:
                         matching_c4_data[cycle_key] = (
-                            endpoint_row[0], endpoint_row[1], [shared_r]
+                            endpoint_row[0],
+                            endpoint_row[1],
+                            [(diagonal_contact, shared_r)],
                         )
                     else:
-                        old_physical, old_potentials, overlaps = (
+                        old_physical, old_potentials, diagonal_rows = (
                             matching_c4_data[cycle_key]
                         )
                         assert (old_physical, old_potentials) == endpoint_row
-                        overlaps.append(shared_r)
+                        diagonal_rows.append((diagonal_contact, shared_r))
 
-        for physical_count, potential_count, overlaps in matching_c4_data.values():
+        for physical_count, potential_count, diagonal_rows in (
+            matching_c4_data.values()
+        ):
             # A simple four-cycle is encountered from each of its two
             # diagonals.  Keep the maximum common-r overlap, so the zero row
             # means neither diagonal admits a repeated-r realization.
-            assert len(overlaps) == 2
+            assert len(diagonal_rows) == 2
+            if potential_count != -1:
+                assert (
+                    sum(row[0] for row in diagonal_rows)
+                    == 16 - physical_count
+                )
+            overlaps = [row[1] for row in diagonal_rows]
             matching_c4_endpoints[physical_count, potential_count] += 1
             matching_c4_r_overlap[physical_count, max(overlaps)] += 1
+            contact_rows = [row for row in diagonal_rows if row[0]]
+            clean_rows = [row for row in diagonal_rows if not row[0]]
+            matching_c4_contact_r_routes[
+                len(contact_rows),
+                any(shared_r for _, shared_r in contact_rows),
+                any(shared_r for _, shared_r in clean_rows),
+            ] += 1
 
     summary = {
         "components": tuple(component_mass.most_common(8)),
@@ -602,6 +715,7 @@ def profile(
         "matching_wedge_fibres": tuple(matching_wedge_fibres.most_common()),
         "matching_degree_profile": (
             ("vertices", len(matching_degrees)),
+            ("edge_copies", sum(matching_degrees.values()) // 2),
             ("maximum", max(matching_degrees.values(), default=0)),
             ("second_moment", sum(value * value for value in matching_degrees.values())),
         ),
@@ -618,6 +732,64 @@ def profile(
                     for value in matching_common_neighbours.values()
                 )
                 // 2,
+            ),
+            (
+                "contact_pair_maximum_codegree",
+                max(
+                    (
+                        value
+                        for (first, second), value in (
+                            matching_common_neighbours.items()
+                        )
+                        if (
+                            (endpoints(first[0]) | endpoints(first[1]))
+                            & (endpoints(second[0]) | endpoints(second[1]))
+                        )
+                    ),
+                    default=0,
+                ),
+            ),
+            (
+                "clean_pair_maximum_codegree",
+                max(
+                    (
+                        value
+                        for (first, second), value in (
+                            matching_common_neighbours.items()
+                        )
+                        if not (
+                            (endpoints(first[0]) | endpoints(first[1]))
+                            & (endpoints(second[0]) | endpoints(second[1]))
+                        )
+                    ),
+                    default=0,
+                ),
+            ),
+            (
+                "contact_pair_two_paths",
+                sum(
+                    value
+                    for (first, second), value in (
+                        matching_common_neighbours.items()
+                    )
+                    if (
+                        (endpoints(first[0]) | endpoints(first[1]))
+                        & (endpoints(second[0]) | endpoints(second[1]))
+                    )
+                ),
+            ),
+            (
+                "clean_pair_two_paths",
+                sum(
+                    value
+                    for (first, second), value in (
+                        matching_common_neighbours.items()
+                    )
+                    if not (
+                        (endpoints(first[0]) | endpoints(first[1]))
+                        & (endpoints(second[0]) | endpoints(second[1]))
+                    )
+                ),
             ),
         ),
         "matching_common_extension_profile": (
@@ -645,12 +817,47 @@ def profile(
                 "maximum_opposite_r_support",
                 max(matching_opposite_r_support.values(), default=0),
             ),
+            (
+                "contact_opposite_r_centre_load",
+                max(
+                    (
+                        value
+                        for (first, second, _), value in (
+                            matching_pair_r_centres.items()
+                        )
+                        if (
+                            (endpoints(first[0]) | endpoints(first[1]))
+                            & (endpoints(second[0]) | endpoints(second[1]))
+                        )
+                    ),
+                    default=0,
+                ),
+            ),
+            (
+                "clean_opposite_r_centre_load",
+                max(
+                    (
+                        value
+                        for (first, second, _), value in (
+                            matching_pair_r_centres.items()
+                        )
+                        if not (
+                            (endpoints(first[0]) | endpoints(first[1]))
+                            & (endpoints(second[0]) | endpoints(second[1]))
+                        )
+                    ),
+                    default=0,
+                ),
+            ),
         ),
         "matching_c4_endpoints": tuple(
             matching_c4_endpoints.most_common()
         ),
         "matching_c4_r_overlap": tuple(
             matching_c4_r_overlap.most_common()
+        ),
+        "matching_c4_contact_r_routes": tuple(
+            matching_c4_contact_r_routes.most_common()
         ),
         "matching_component_profile": (
             ("components", len(matching_component_vertices)),
@@ -665,6 +872,72 @@ def profile(
                     default=0,
                 ),
             ),
+            (
+                "maximum_endpoint_pencil",
+                max(matching_component_endpoint_pencils.values(), default=0),
+            ),
+            (
+                "maximum_endpoint_pencil_vertex_product",
+                max(
+                    (
+                        matching_component_endpoint_pencils[component]
+                        * len(vertices)
+                        for component, vertices in (
+                            matching_component_vertices.items()
+                        )
+                    ),
+                    default=0,
+                ),
+            ),
+        ),
+        "matching_weighted_endpoint_pencil_profile": (
+            (
+                "maximum_weighted_endpoint_pencil",
+                max(
+                    matching_component_weighted_endpoint_pencils.values(),
+                    default=0,
+                ),
+            ),
+            (
+                "endpoint_contact_weighted_wedges",
+                sum(matching_component_contact_wedges.values()),
+            ),
+            (
+                "endpoint_pencil_wedge_upper",
+                sum(matching_component_pencil_wedge_upper.values()),
+            ),
+            (
+                "maximum_contact_pencil_ratio",
+                (
+                    max(
+                        (row[0] for row in matching_contact_pencil_rows),
+                        default=Fraction(0),
+                    ).numerator,
+                    max(
+                        (row[0] for row in matching_contact_pencil_rows),
+                        default=Fraction(0),
+                    ).denominator,
+                ),
+            ),
+        ),
+        "matching_weighted_endpoint_pencils": tuple(
+            (row, 1)
+            for row in sorted(
+                matching_weighted_endpoint_pencil_rows, reverse=True
+            )[:8]
+        ),
+        "matching_contact_pencils": tuple(
+            (
+                (
+                    row[0].numerator,
+                    row[0].denominator,
+                    *row[1:],
+                ),
+                1,
+            )
+            for row in sorted(
+                matching_contact_pencil_rows, reverse=True
+            )[:8]
         ),
         "matching_translate_profiles": tuple(
             (row, 1) for row in matching_translate_profiles
