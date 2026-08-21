@@ -1941,6 +1941,55 @@ def profile(
         default=Fraction(0),
     )
 
+    matching_projected_same_centre_owner_offset_witnesses: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    for (physical_wedge, _), owners in (
+        matching_projected_same_centre_physical_wedge_triple_owners.items()
+    ):
+        for first_owner, second_owner in combinations(sorted(owners), 2):
+            first_centre, _, first_second_displacement, first_eta = first_owner
+            second_centre, _, second_second_displacement, second_eta = second_owner
+            owner_offset = (
+                subtract(second_centre[0], first_centre[0]),
+                subtract(second_second_displacement, first_second_displacement),
+                subtract(second_eta, first_eta),
+            )
+            matching_projected_same_centre_owner_offset_witnesses[
+                (physical_wedge, *owner_offset)
+            ] += 1
+    matching_projected_same_centre_owner_offset_zero_masks: Counter[
+        tuple[int, ...]
+    ] = Counter()
+    for (_, centre_shift, second_shift, eta_shift), witness_count in (
+        matching_projected_same_centre_owner_offset_witnesses.items()
+    ):
+        owner_directions = (
+            centre_shift,
+            (
+                -linear(second_shift)[0] - rotate(centre_shift)[0],
+                -linear(second_shift)[1] - rotate(centre_shift)[1],
+            ),
+            (
+                -linear(add(centre_shift, second_shift))[0],
+                -linear(add(centre_shift, second_shift))[1],
+            ),
+            add(centre_shift, eta_shift),
+            (
+                -second_shift[0] - rotate(eta_shift)[0],
+                -second_shift[1] - rotate(eta_shift)[1],
+            ),
+            (-rotate(eta_shift)[0], -rotate(eta_shift)[1]),
+        )
+        zero_mask = tuple(
+            index
+            for index, direction in enumerate(owner_directions)
+            if direction == (0, 0)
+        )
+        matching_projected_same_centre_owner_offset_zero_masks[
+            zero_mask
+        ] += witness_count
+
     # Every repeated mixed translate cell has one common physical endpoint,
     # one incident V edge, one incident W edge, and one orientation choice
     # for each edge.  The physical-wedge aggregation is therefore lossless.
@@ -1961,6 +2010,14 @@ def profile(
     assert 3 * sum(
         matching_projected_same_centre_physical_wedge_triple_codegree.values()
     ) == matching_projected_same_centre_cross_third
+    assert sum(
+        matching_projected_same_centre_owner_offset_witnesses.values()
+    ) == sum(
+        value * (value - 1) // 2
+        for value in (
+            matching_projected_same_centre_physical_wedge_triple_codegree.values()
+        )
+    )
     if points is not None:
         point_count = len(points)
         assert len(
@@ -2466,6 +2523,28 @@ def profile(
                                 for wedge_triple, codegree in matching_projected_same_centre_physical_wedge_triple_codegree.most_common(
                                     5
                                 )
+                            ),
+                            (
+                                len(
+                                    matching_projected_same_centre_owner_offset_witnesses
+                                ),
+                                sum(
+                                    matching_projected_same_centre_owner_offset_witnesses.values()
+                                ),
+                                max(
+                                    matching_projected_same_centre_owner_offset_witnesses.values(),
+                                    default=0,
+                                ),
+                                tuple(
+                                    matching_projected_same_centre_owner_offset_witnesses.most_common(
+                                        5
+                                    )
+                                ),
+                                tuple(
+                                    sorted(
+                                        matching_projected_same_centre_owner_offset_zero_masks.items()
+                                    )
+                                ),
                             ),
                         ),
                     ),

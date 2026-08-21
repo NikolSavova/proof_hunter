@@ -5,8 +5,10 @@ from __future__ import annotations
 
 from collections import defaultdict
 from contextlib import redirect_stdout
+from fractions import Fraction
 from io import StringIO
-from math import comb
+from itertools import combinations, product
+from math import comb, prod
 from random import Random
 
 Wedge = tuple[int, int, int, int, int]
@@ -149,6 +151,24 @@ def audit_stored_stress() -> None:
     for prime, (support, maximum, collisions) in triple_rows.items():
         assert support > 0 and maximum >= 1 and collisions >= 0, prime
     assert triple_rows[31][1] > 1  # Literal triple rigidity is false.
+    zero_masks = {
+        29: {(0, 1, 2): 28, (0, 3, 5): 4, (2, 5): 4},
+        31: {
+            (0,): 14,
+            (0, 1, 2): 258,
+            (0, 3, 5): 20,
+            (2,): 12,
+            (2, 3): 10,
+            (2, 4): 4,
+            (2, 5): 18,
+            (4,): 2,
+            (4, 5): 28,
+        },
+        37: {(0, 1, 2): 24, (0, 3, 5): 2, (2, 5): 2},
+    }
+    for prime, profile in zero_masks.items():
+        assert () not in profile
+        assert sum(profile.values()) == triple_rows[prime][2]
 
 
 def audit_owner_switch_normal_form() -> None:
@@ -217,6 +237,137 @@ def audit_owner_switch_normal_form() -> None:
             assert actual == expected
 
 
+def linear_tracks(
+    first_displacement: Point,
+    second_displacement: Point,
+    eta: Point,
+    q_value: Point,
+) -> tuple[Point, ...]:
+    return (
+        neg(add(first_displacement, q_value)),
+        add(neg(linear(second_displacement)), rotate(add(q_value, first_displacement))),
+        add(
+            neg(linear(second_displacement)),
+            add(rotate(q_value), linear(first_displacement)),
+        ),
+        add(neg(add(first_displacement, q_value)), eta),
+        add(neg(second_displacement), rotate(sub(q_value, eta))),
+        rotate(sub(q_value, eta)),
+    )
+
+
+def rational_rank(rows: list[list[int]]) -> int:
+    matrix = [[Fraction(value) for value in row] for row in rows]
+    output = 0
+    for column in range(len(matrix[0])):
+        pivot = next(
+            (
+                row
+                for row in range(output, len(matrix))
+                if matrix[row][column]
+            ),
+            None,
+        )
+        if pivot is None:
+            continue
+        matrix[output], matrix[pivot] = matrix[pivot], matrix[output]
+        scale = matrix[output][column]
+        matrix[output] = [value / scale for value in matrix[output]]
+        for row in range(len(matrix)):
+            if row == output or not matrix[row][column]:
+                continue
+            scale = matrix[row][column]
+            matrix[row] = [
+                value - scale * base
+                for value, base in zip(matrix[row], matrix[output])
+            ]
+        output += 1
+    return output
+
+
+def audit_fractional_basis() -> None:
+    variable_basis: list[tuple[Point, Point, Point, Point]] = []
+    for variable in range(4):
+        for coordinate in range(2):
+            values = [(0, 0)] * 4
+            values[variable] = (1, 0) if coordinate == 0 else (0, 1)
+            variable_basis.append(tuple(values))  # type: ignore[arg-type]
+    coefficient_rows: list[list[int]] = [[] for _ in range(12)]
+    for basis in variable_basis:
+        outputs = linear_tracks(*basis)
+        for form, output in enumerate(outputs):
+            coefficient_rows[2 * form].append(output[0])
+            coefficient_rows[2 * form + 1].append(output[1])
+
+    valid: list[tuple[int, ...]] = []
+    invalid: list[tuple[int, ...]] = []
+    for forms in combinations(range(6), 4):
+        rows = [
+            coefficient_rows[2 * form + coordinate]
+            for form in forms
+            for coordinate in range(2)
+        ]
+        (valid if rational_rank(rows) == 8 else invalid).append(forms)
+    assert invalid == [(0, 1, 4, 5), (1, 2, 3, 5)]
+    assert len(valid) == 13
+
+    heavy = {
+        (0, 1, 2, 5),
+        (0, 1, 3, 5),
+        (1, 2, 4, 5),
+        (1, 3, 4, 5),
+    }
+    weights = {
+        forms: Fraction(1, 10) if forms in heavy else Fraction(1, 15)
+        for forms in valid
+    }
+    assert sum(weights.values()) == 1
+    assert all(
+        sum(weight for forms, weight in weights.items() if form in forms)
+        == Fraction(2, 3)
+        for form in range(6)
+    )
+
+    rng = Random(12081208)
+    values = [
+        (x, y) for x in range(-1, 2) for y in range(-1, 2)
+    ]
+    box = [(x, y) for x in range(-5, 6) for y in range(-5, 6)]
+    for _ in range(12):
+        differences = {value for value in box if rng.randrange(4) == 0}
+        centre_shift = rng.choice(values)
+        second_shift = rng.choice(values)
+        eta_shift = rng.choice(values)
+        directions = (
+            centre_shift,
+            neg(add(linear(second_shift), rotate(centre_shift))),
+            neg(linear(add(centre_shift, second_shift))),
+            add(centre_shift, eta_shift),
+            neg(add(second_shift, rotate(eta_shift))),
+            neg(rotate(eta_shift)),
+        )
+        overlaps = [
+            {
+                start
+                for start in differences
+                if add(start, direction) in differences
+            }
+            for direction in directions
+        ]
+        count = 0
+        for variables in product(values, repeat=4):
+            outputs = linear_tracks(*variables)
+            if all(output in overlap for output, overlap in zip(outputs, overlaps)):
+                count += 1
+        for forms in valid:
+            assert count <= prod(
+                len(overlaps[form]) for form in forms
+            )
+        assert count**3 <= prod(
+            len(overlap) ** 2 for overlap in overlaps
+        )
+
+
 def audit_genuine_zero_controls() -> None:
     from analyze_swap_optimal_nested_cores import difference_set, profile
     from search_rotated_support import mian_chowla
@@ -259,6 +410,7 @@ def main() -> None:
     audit_decomposition()
     audit_stored_stress()
     audit_owner_switch_normal_form()
+    audit_fractional_basis()
     audit_genuine_zero_controls()
     print("SWAP PHYSICAL-WEDGE DYADIC CARLESON GATE: PASS")
 
