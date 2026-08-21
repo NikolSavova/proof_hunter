@@ -284,16 +284,78 @@ height with
 \]
 
 So even the physical half of the invariant must be summed globally.  In
-the finite Costas 29/31/37 stresses, the triples
+the finite Costas stresses the exact profiles are
 
 \[
- (\#R,\max_R W_R,\max_R X_R)
-   =(816,4,23),\ (332,4,68),\ (960,4,30),          \tag{5.5g}
+\begin{array}{c|r|r|r|r|r|r|r|r|r}
+\text{family}&\#R&\max W_R&\max X_R&\max\nu&Q_{\rm inv}
+ &X_{\nu=1}&X_{\mu=\nu=1}&X_{\rm col}&X_{\rm nc}\\ \hline
+29&816&4&23&3&143&1321&1295&115&1180\\
+31&332&4&68&2&254&878&770&60&710\\
+37&960&4&30&2&152&1300&1280&120&1160
+\end{array}                                        \tag{5.5g}
 \]
 
 where `X_R` is the number of occupied `(w,T)` keys in the fibre.  The small
 observed value `4` is therefore not a viable theorem; the invariant is a
-Carleson summation coordinate, not a rigidity key.
+Carleson summation coordinate, not a rigidity key.  Moreover the singleton
+mass `X_{nu=1}` is respectively `83.4%`, `63.3%`, and `81.0%` of `X`.
+The matching-like terminal branch is therefore the dominant finite core,
+not a lower-order cleanup.  After imposing both uniqueness conditions,
+the noncollinear fractions are `91.1%`, `92.2%`, and `90.6%`.  Directional
+line energy can at best pay a small subsidiary branch; the principal height
+theorem must use the full two-dimensional parameter triangle.
+
+There is nevertheless an exact reuse switch inside each `R` fibre.  Let
+
+\[
+ \nu(R,T)=\#\{w:(w,T)\text{ is occupied and }JV(w)+W(w)=R\},
+ \qquad
+ Q_{\rm inv}=\sum_{R,T}{\nu(R,T)\choose2}.        \tag{5.5h}
+\]
+
+Then the nonsingleton part of the support satisfies
+
+\[
+ \sum_{R,T:\nu(R,T)\ge2}\nu(R,T)\le2Q_{\rm inv}.\tag{5.5i}
+\]
+
+More importantly, take two wedges in the same `(R,T)` fibre and choose
+one owner for each.  Write their owner variables as `(V,W,a,b,e)`, so
+`W_beta-W_alpha=-J(V_beta-V_alpha)`.  Put
+
+\[
+ U=V_\beta-V_\alpha,\quad A=a_\beta-a_\alpha,\quad
+ B=b_\beta-b_\alpha,\quad E=e_\beta-e_\alpha.
+\]
+
+The six track differences are
+
+\[
+\begin{aligned}
+d_0&=U-A,&d_1&=-JU-LB+JA,&d_2&=-JU-LB+LA,\\
+d_3&=U-A+E,&d_4&=-JU-B-JE,&d_5&=-JU-JE.
+\end{aligned}                                      \tag{5.5j}
+\]
+
+Every `q in T` gives one labelled representation of every `d_j` in
+`D-D`.  The six forms in `(U,A,B,E)` are exactly the forms in (5.9) after
+the substitution `q=-U`.  Consequently the same thirteen invertible
+four-track projections and the same fractional cover apply.  Reused
+parameter triangles therefore create the same six-direction recursive
+core as repeated owners; a full bipartite rectangle is not needed.
+
+Hence, after paying the two collision quantities `Q` and `Q_inv`, the truly
+new support theorem may assume simultaneously
+
+\[
+ \boxed{\mu(w,T)=1\quad\text{and}\quad\nu(R,T)=1.} \tag{5.5k}
+\]
+
+This is the terminal matching-like height branch: each surviving parameter
+triangle has one physical wedge in its invariant fibre and that key has one
+owner.  Any proof using a second completion before reaching this branch is
+spending structure already available to the six-direction recursion.
 
 This is the concrete input for attacking the first twin gate: a physical
 three-point equation correlated with a synchronized six-copy triangle in

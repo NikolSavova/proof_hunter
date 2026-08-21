@@ -2003,7 +2003,10 @@ def profile(
     matching_projected_same_centre_invariant_triple_support: Counter[
         Point
     ] = Counter()
-    for physical_wedge, _ in (
+    matching_projected_same_centre_invariant_parameter_wedges: dict[
+        tuple[Point, tuple[Point, ...]], set[tuple[object, ...]]
+    ] = defaultdict(set)
+    for physical_wedge, triple in (
         matching_projected_same_centre_physical_wedge_triple_codegree
     ):
         _, first_edge, second_edge, _, _ = physical_wedge
@@ -2014,6 +2017,35 @@ def profile(
         matching_projected_same_centre_invariant_triple_support[
             wedge_invariant
         ] += 1
+        matching_projected_same_centre_invariant_parameter_wedges[
+            wedge_invariant, triple
+        ].add(physical_wedge)
+    matching_projected_same_centre_terminal_unique = 0
+    matching_projected_same_centre_terminal_collinear = 0
+    matching_projected_same_centre_terminal_noncollinear = 0
+    for (physical_wedge, triple), owner_load in (
+        matching_projected_same_centre_physical_wedge_triple_codegree.items()
+    ):
+        _, first_edge, second_edge, _, _ = physical_wedge
+        wedge_invariant = add(rotate(first_edge), second_edge)
+        wedge_load = len(
+            matching_projected_same_centre_invariant_parameter_wedges[
+                wedge_invariant, triple
+            ]
+        )
+        if wedge_load != 1 or owner_load != 1:
+            continue
+        matching_projected_same_centre_terminal_unique += 1
+        first_side = subtract(triple[1], triple[0])
+        second_side = subtract(triple[2], triple[0])
+        doubled_area = (
+            first_side[0] * second_side[1]
+            - first_side[1] * second_side[0]
+        )
+        if doubled_area == 0:
+            matching_projected_same_centre_terminal_collinear += 1
+        else:
+            matching_projected_same_centre_terminal_noncollinear += 1
 
     # Every repeated mixed translate cell has one common physical endpoint,
     # one incident V edge, one incident W edge, and one orientation choice
@@ -2590,6 +2622,29 @@ def profile(
                                     matching_projected_same_centre_invariant_triple_support.values(),
                                     default=0,
                                 ),
+                                max(
+                                    map(
+                                        len,
+                                        matching_projected_same_centre_invariant_parameter_wedges.values(),
+                                    ),
+                                    default=0,
+                                ),
+                                sum(
+                                    len(wedges) * (len(wedges) - 1) // 2
+                                    for wedges in (
+                                        matching_projected_same_centre_invariant_parameter_wedges.values()
+                                    )
+                                ),
+                                sum(
+                                    len(wedges)
+                                    for wedges in (
+                                        matching_projected_same_centre_invariant_parameter_wedges.values()
+                                    )
+                                    if len(wedges) == 1
+                                ),
+                                matching_projected_same_centre_terminal_unique,
+                                matching_projected_same_centre_terminal_collinear,
+                                matching_projected_same_centre_terminal_noncollinear,
                                 tuple(
                                     sorted(
                                         matching_projected_same_centre_invariant_triple_support.items(),

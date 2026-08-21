@@ -171,6 +171,30 @@ def audit_stored_stress() -> None:
     for prime, profile in zero_masks.items():
         assert () not in profile
         assert sum(profile.values()) == triple_rows[prime][3]
+    invariant_rows = {
+        29: (816, 4, 23, 3, 143, 1321, 1295, 115, 1180),
+        31: (332, 4, 68, 2, 254, 878, 770, 60, 710),
+        37: (960, 4, 30, 2, 152, 1300, 1280, 120, 1160),
+    }
+    for prime, (
+        invariant_support,
+        maximum_wedges,
+        maximum_keys,
+        maximum_parameter_codegree,
+        parameter_collisions,
+        singleton_edges,
+        terminal_unique,
+        terminal_collinear,
+        terminal_noncollinear,
+    ) in invariant_rows.items():
+        total_edges = triple_rows[prime][0]
+        assert invariant_support > 0 and maximum_wedges >= 1
+        assert maximum_keys >= 1 and maximum_parameter_codegree >= 1
+        assert singleton_edges <= total_edges
+        assert total_edges - singleton_edges <= 2 * parameter_collisions
+        assert terminal_unique == terminal_collinear + terminal_noncollinear
+        assert terminal_unique <= singleton_edges
+        assert 9 * terminal_noncollinear > 8 * terminal_unique
 
 
 def audit_support_collision_gate() -> None:
@@ -423,6 +447,79 @@ def linear_tracks(
     )
 
 
+def physical_tracks(
+    physical_v: Point,
+    physical_w: Point,
+    first_displacement: Point,
+    second_displacement: Point,
+    eta: Point,
+    q_value: Point,
+) -> tuple[Point, ...]:
+    return tuple(
+        add(translation, value)
+        for translation, value in zip(
+            (
+                physical_v,
+                physical_w,
+                physical_w,
+                physical_v,
+                physical_w,
+                physical_w,
+            ),
+            linear_tracks(
+                first_displacement,
+                second_displacement,
+                eta,
+                q_value,
+            ),
+        )
+    )
+
+
+def audit_same_invariant_wedge_switch() -> None:
+    rng = Random(1208202602)
+    for _ in range(1000):
+        first_v = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        first_w = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        first_a = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        first_b = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        first_e = rng.randrange(-20, 21), rng.randrange(-20, 21)
+        wedge_shift = rng.randrange(-8, 9), rng.randrange(-8, 9)
+        a_shift = rng.randrange(-8, 9), rng.randrange(-8, 9)
+        b_shift = rng.randrange(-8, 9), rng.randrange(-8, 9)
+        e_shift = rng.randrange(-8, 9), rng.randrange(-8, 9)
+
+        second_v = add(first_v, wedge_shift)
+        second_w = sub(first_w, rotate(wedge_shift))
+        second_a = add(first_a, a_shift)
+        second_b = add(first_b, b_shift)
+        second_e = add(first_e, e_shift)
+        assert add(rotate(first_v), first_w) == add(
+            rotate(second_v), second_w
+        )
+
+        expected = linear_tracks(a_shift, b_shift, e_shift, neg(wedge_shift))
+        for _ in range(5):
+            q_value = rng.randrange(-20, 21), rng.randrange(-20, 21)
+            first = physical_tracks(
+                first_v, first_w, first_a, first_b, first_e, q_value
+            )
+            second = physical_tracks(
+                second_v, second_w, second_a, second_b, second_e, q_value
+            )
+            actual = tuple(
+                sub(second_value, first_value)
+                for first_value, second_value in zip(first, second)
+            )
+            assert actual == expected
+
+    for _ in range(1000):
+        codegrees = [rng.randrange(1, 12) for _ in range(rng.randrange(80))]
+        nonsingleton_incidence = sum(value for value in codegrees if value >= 2)
+        collision_mass = sum(comb(value, 2) for value in codegrees)
+        assert nonsingleton_incidence <= 2 * collision_mass
+
+
 def rational_rank(rows: list[list[int]]) -> int:
     matrix = [[Fraction(value) for value in row] for row in rows]
     output = 0
@@ -579,6 +676,7 @@ def main() -> None:
     audit_support_collision_gate()
     audit_physical_invariant_barrier()
     audit_owner_switch_normal_form()
+    audit_same_invariant_wedge_switch()
     audit_fractional_basis()
     audit_genuine_zero_controls()
     print("SWAP PHYSICAL-WEDGE DYADIC CARLESON GATE: PASS")
