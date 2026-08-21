@@ -64,38 +64,30 @@ def audit_decomposition() -> None:
 
             for threshold in (0, 1, 5, 20, 100):
                 for rich_load in (3, 4, 7, 13):
-                    heavy = sum(
-                        mass(load)
+                    rich_wedge_mass = {
+                        wedge: sum(
+                            mass(load) for load in loads if load >= rich_load
+                        )
                         for wedge, loads in cells.items()
-                        if wedge_mass[wedge] > threshold
-                        for load in loads
-                        if load >= rich_load
+                    }
+                    heavy = sum(
+                        value
+                        for value in rich_wedge_mass.values()
+                        if value > threshold
                     )
-                    upper = (
-                        4 * threshold * k * (k - 1) ** 2
-                        + (rich_load - 3) * physical_second
-                        + heavy
-                    )
-                    assert centre_mass <= upper
-
-                    # A positive wedge contains a load-three cell and
-                    # therefore consumes at least three units of Q_phys.
-                    positive_low = sum(
+                    positive_light_rich_wedges = sum(
                         1
-                        for wedge in cells
-                        if 0 < wedge_mass[wedge] <= threshold
+                        for value in rich_wedge_mass.values()
+                        if 0 < value <= threshold
                     )
-                    low_mass = sum(
-                        wedge_mass[wedge]
-                        for wedge in cells
-                        if wedge_mass[wedge] <= threshold
+                    rich_pair_cost = comb(rich_load, 2)
+                    assert (
+                        rich_pair_cost * positive_light_rich_wedges
+                        <= physical_second
                     )
-                    assert 3 * positive_low <= physical_second
-                    assert 3 * low_mass <= threshold * physical_second
-                    assert 3 * centre_mass <= (
-                        (threshold + 3 * (rich_load - 3))
+                    assert rich_pair_cost * (centre_mass - heavy) <= (
+                        (rich_pair_cost * (rich_load - 3) + threshold)
                         * physical_second
-                        + 3 * heavy
                     )
 
                     same_low = sum(

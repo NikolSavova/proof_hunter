@@ -52,12 +52,13 @@ one-common-endpoint subfamily has at most `4k(k-1)(k-2)`.
 
 ## 3. Exact two-threshold decomposition
 
-Fix a wedge threshold `P>=0` and an integer cell threshold `R>=3`.  Let
+Fix a wedge threshold `P>=0` and an integer cell threshold `R>=3`.  Put
 
 \[
- H_{P,R}=
- \sum_{\substack{w:M(w)>P\\S\mapsto w,\ r(S)\ge R}}
- 3{r(S)\choose3}.                                  \tag{3.1}
+ M_R(w)=\sum_{\substack{S\mapsto w\\r(S)\ge R}}
+ 3{r(S)\choose3},
+ \qquad
+ H_{P,R}=\sum_{w:M_R(w)>P}M_R(w).                 \tag{3.1}
 \]
 
 Since
@@ -67,43 +68,35 @@ Since
 \]
 
 every cell with `r<R` has third mass at most
-`(R-3) binom(r,2)`.  Splitting first by wedge mass and then by cell load
-gives the exact useful inequality
+`(R-3) binom(r,2)`.  Moreover, every wedge with `M_R(w)>0` contains a
+cell of load at least `R`, so it consumes at least `binom(R,2)` units of
+`Q_phys`.  Splitting first by cell load and then by the *rich-cell mass* of
+its wedge gives
 
 \[
  \boxed{\displaystyle
  C_{\rm center}
- \le \min\left\{4P k(k-1)^2,{P\over3}Q_{\rm phys}\right\}
-      +(R-3)Q_{\rm phys}+H_{P,R}.}                  \tag{3.3}
+ \le \left(R-3+{P\over {R\choose2}}\right)
+       Q_{\rm phys}+H_{P,R}.}                       \tag{3.3}
 \]
 
 where `Q_phys=sum_w Q(w)` is precisely the same-centre part of the existing
 second-generation parallel pencil, and in particular is bounded by the
-full `W_parallel` reservoir.
+full `W_parallel` reservoir.  This removes the ambient wedge-count loss
+altogether and is stronger than thresholding the total `M(w)`: already-paid
+low-load cells cannot falsely promote a wedge into `H_{P,R}`.
 
-For the second low-wedge bound, observe that every wedge with positive
-third mass contains a cell of load at least three and hence has `Q(w)>=3`.
-There are therefore at most `Q_phys/3` positive low wedges.  In particular,
-
-\[
- \boxed{\displaystyle
- C_{\rm center}
- \le \left({P\over3}+R-3\right)Q_{\rm phys}+H_{P,R}.}
-                                                               \tag{3.4}
-\]
-
-This removes the ambient wedge-count loss altogether.
-
-There are corresponding classwise bounds
+Independently, if `low` means the older total-mass condition `M(w)<=P`,
+there are classwise bounds
 
 \[
  C_{\rm same\ edge}^{\rm low}\le4Pk(k-1),\qquad
- C_{\rm one\ endpoint}^{\rm low}\le4Pk(k-1)(k-2). \tag{3.5}
+ C_{\rm one\ endpoint}^{\rm low}\le4Pk(k-1)(k-2). \tag{3.4}
 \]
 
 The classwise form is retained because its different `k^2`/`k^3`
 capacities may still help in a refined argument.  But for
-`P,R=N^{o(1)}`, (3.4) already pays *all* non-heavy mass directly by
+`P,R=N^{o(1)}`, (3.3) already pays *all* non-heavy mass directly by
 `N^{o(1)}W_parallel`.  Only `H_{P,R}` remains.
 
 ## 4. The direct high-wedge theorem
@@ -115,10 +108,11 @@ The clean theorem to attack is
  H_{P,R}\le N^{o(1)}m^2}                            \tag{4.1}
 \]
 
-for some subpolynomial thresholds `P,R`.  This statement is substantially
-narrower than a pointwise bound on every wedge or every four-line cell.  It
-allows the lifted modular-parabola equality model to spend the entire
-ambient `m^2` allowance.
+for some subpolynomial thresholds `P,R`.  Thus every surviving wedge carries
+more than `P` mass *from cells of load at least `R`*.  The statement is
+substantially narrower than a pointwise bound on every wedge or every
+four-line cell.  It allows the lifted modular-parabola equality model to
+spend the entire ambient `m^2` allowance.
 
 Each cell in (4.1) is simultaneously:
 
