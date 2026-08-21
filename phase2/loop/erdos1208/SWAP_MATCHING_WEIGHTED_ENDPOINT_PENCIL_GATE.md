@@ -398,15 +398,90 @@ This is another load-bearing cancellation: one arbitrarily heavy parallel
 fibre costs nothing.  The sharp local inverse target is to bound the
 off-largest-fibre internal-difference load, not the full `Lambda_2`.
 
+The preferred form is aggregate rather than pointwise.  Define
+
+\[
+ \mathcal G_2=
+ \sum_{C,x,u\ne0}
+ \left(\Lambda_2(C,x,u)-\max_ta_t(u)\right)
+ \Lambda_2(C,x,u).                                    \tag{6.13}
+\]
+
+Equations (6.10) and (6.12) give the exact sufficient bound
+
+\[
+ \boxed{2Q_{\rm end}\le\mathcal G_2.}                 \tag{6.14}
+\]
+
+Thus the sharp collision theorem is
+
+\[
+ \boxed{\mathcal G_2\le N^{o(1)}W_{\rm parallel}.}
+\]
+
+It is weaker and safer than a uniform subpolynomial bound on `Theta_2` and
+preserves the size bias needed by the nested-core argument.
+
 This couples the collision branch to the already-separated parallel-reuse
 branch.  Moreover (6.7)--(6.8) give the pointwise cutoff
 
 \[
- a_t(u)\le\min\{R_D(u),R_D(Ju)\}.                     \tag{6.13}
+ a_t(u)\le\min\{R_D(u),R_D(Ju)\}.                     \tag{6.15}
 \]
 
+There is also a product injection.  Each summand of `a_t(u)` is an ordered
+pair `q,q-u in Q_{C,t}`.  Map it to the two labelled `D`-overlap
+representations
+
+\[
+ (c-q,c-q+u),\qquad
+ (\ell+Jq+Jt,\ell+Jq+Jt-Ju).                         \tag{6.16}
+\]
+
+For fixed `C`, the first pair recovers `q` and the second recovers
+`p=q+t`, so the map is injective even after summing over all neighbour
+fibres.  Hence
+
+\[
+ \boxed{\Lambda_2(C,x,u)\le R_D(u)R_D(Ju).}           \tag{6.17}
+\]
+
+This identifies the recursive pencil as an endpoint-decorated subpopulation
+of the original perpendicular overlap energy.  Summing (6.17) naively over
+centres would reintroduce the fatal core-size factor; the required argument
+must use the nested-core mass or reverse endpoint rigidity before that sum.
+
+That reverse rigidity now has an exact incidence form.  Put `H=ell+Jc`
+and `X=c-q`.  An internal pair `q,q-u in Q_{C,t}` is equivalently
+
+\[
+\begin{gathered}
+ X,X+u,\quad H-JX+Jt,H-JX+Jt-Ju,\\
+ H-JX+Lt,H-JX+Lt-Ju\in D,                       \tag{6.17a}
+\end{gathered}
+\]
+
+with the four popular corners and the condition that `x` is an endpoint of
+`c+t` or `ell+Lt`.  After fixing one of the four oriented endpoint roles,
+the possible `t` form an affine image of a subset of `A`, hence a vector-
+Sidon set.  For fixed `X`, if `T_X` is the set of surviving `t`, then
+
+\[
+ D+D\supseteq \text{a translate of }JT_X+LT_X,
+ \qquad |D+D|\ge {|T_X|^2\over2}.               \tag{6.17b}
+\]
+
+Indeed the energy equation `Jt_1+Lt_2=Jt_3+Lt_4` reduces to
+`t_1-t_3=(I-J)(t_4-t_2)` and has at most `2|T_X|^2-|T_X|` solutions by
+vector-Sidonicity.  Thus a high reverse degree creates a literal quadratic
+support footprint.  It also exposes `|T_X|` distinct popular shifts
+`p=c-X+t`, contributing more than `|T_X|K^2` to the original perpendicular
+tail.  The still-missing step is to pack these footprints or popular
+vertices across different `(C,x,u,X)` anchors.  See
+`SWAP_ENDPOINT_REVERSE_STAR_INCIDENCE_GATE.md`.
+
 Thus a subpolynomial bound for `Theta_2`, together with the linear parallel
-wedge estimate, would close `Q_end`.  More generally, (6.10)--(6.13) are
+wedge estimate, would close `Q_end`.  More generally, (6.10)--(6.17) are
 the correct place to run a popular/nonpopular density increment; treating
 `Q_end` as a free fourth moment loses both the same-neighbour cancellation
 and the adaptive cutoff.
@@ -414,7 +489,7 @@ and the adaptive cutoff.
 In particular, the two linear estimates
 
 \[
- X_{\rm end},Q_{\rm end}\le K N^{o(1)}M              \tag{6.14}
+ X_{\rm end},Q_{\rm end}\le K N^{o(1)}M              \tag{6.18}
 \]
 
 would imply `P_end<=2KN^{o(1)}M`.  This is the precise support/collision
@@ -564,6 +639,57 @@ sum, is the correctly normalized recursive quantity.  The maximum
 off-largest-fibre loads in (6.12) are only `1,2,5,5` on Costas
 `17,23,29,31`, respectively.
 
+The sharper aggregate values are
+
+| family | `G_2` | `G_2/W_parallel` |
+|---|---:|---:|
+| Costas 17 | 8 | 0.019 |
+| Costas 23 | 11,748 | 0.173 |
+| Costas 29 | 130,082 | 0.517 |
+| Costas 31 | 53,196 | 0.444 |
+
+Thus the exact sufficient gate following (6.14) has constant-scale margin
+on every current hard row, even though the cruder total-load estimate is
+nearly saturated.
+
+Splitting `sum P_2` by the adaptive status of the new shift `u` gives
+
+| family | nonpopular `P_2` | popular `P_2` |
+|---|---:|---:|
+| Costas 17 | 0 | 4 |
+| Costas 23 | 0 | 6,280 |
+| Costas 29 | 24 | 71,462 |
+| Costas 31 | 36 | 29,868 |
+
+Thus the low-tail part is already absent or negligible on the hard exact
+rows.  The genuine survivor is the popular self-switch, precisely the
+branch in which (6.13)--(6.15) retain both large orthogonal overlap factors.
+
+The lifted modular-parabola equality model at prime 43 has
+
+\[
+ (P_{\rm end},X_{\rm end},Q_{\rm end})=(87,87,0),
+ \qquad \Theta_2=0.
+\]
+
+So the ambient `m^2`-sharp construction lies entirely in distinct decorated
+support and creates no recursive collision at all.  This is strong evidence
+that the popular self-switch is a genuine obstruction branch rather than a
+repackaging of the equality model that must survive the final theorem.
+
+A small hostile affine-neighbourhood audit also separates the phenomenon
+from accidental norm collisions.  Four additional genuine distance-Sidon
+Welch images near the stored prime-11/17 transforms have exact
+`(G_2,W_parallel,max residual)` rows
+
+\[
+ (0,20,0),\quad(0,0,0),\quad(0,476,0),\quad(0,84,0).
+\]
+
+This is only a finite kill-search, not asymptotic evidence, but it confirms
+that Euclidean distance separation usually destroys the recursive
+collision rather than inflating it.
+
 Thus 89--99% of the exact pencil upper mass is already supported on
 distinct decorated keys in these rows.  The collision term is not zero,
 but it is much smaller and consists only of the four-copy rectangles
@@ -578,12 +704,15 @@ Run
 ```bash
 python3 phase2/loop/erdos1208/verify_swap_matching_weighted_endpoint_pencil.py
 python3 phase2/loop/erdos1208/verify_swap_matching_weighted_endpoint_pencil.py --larger
+python3 phase2/loop/erdos1208/verify_swap_endpoint_reverse_star_incidence.py
 ```
 
 The verifier checks (1.3)--(2.2) on finite weighted endpoint systems,
 proves (3.3)--(3.4) and (4.2)--(4.4) symbolically, checks (6.2)--(6.4)
-exhaustively on small key-load systems, and reproduces the stored Costas
-profiles.  The optional run checks Costas 37 and the two closure rows.
+exhaustively on small key-load systems, verifies the recursive-pencil and
+product-injection identities, and reproduces the stored Costas and lifted-
+parabola profiles.  The optional run checks Costas 37 and the two closure
+rows.
 
 The direct endpoint-contact theorem is now exactly (1.6).  A proof should
 dyadically regularize the fibres `Q_{C,t}` in (5.2), use the Sidon rigidity

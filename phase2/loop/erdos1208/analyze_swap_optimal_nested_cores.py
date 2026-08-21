@@ -27,6 +27,7 @@ from verify_radial_orthogonal_product_barrier import radial_set
 from verify_seven_incidence_opposite_endpoint_charge import (
     add,
     linear,
+    rich_fibres,
     rotate,
     subtract,
 )
@@ -206,6 +207,10 @@ def profile(
     edge_multiplicity, occurrences, ordered_mass = build_swap_multigraph(
         differences
     )
+    _, ordinary_support, adaptive_popular = rich_fibres(
+        differences, adaptive=True
+    )
+    assert ordinary_support >= len(differences)
     loads, energy, reversals = exact_optimum(edge_multiplicity)
     edge_copies = sum(edge_multiplicity.values())
     assert ordered_mass == 2 * edge_copies
@@ -457,6 +462,11 @@ def profile(
     matching_endpoint_switch_pencil = 0
     matching_endpoint_switch_theta = Fraction(0)
     matching_endpoint_switch_residual = 0
+    matching_endpoint_switch_residual_product = 0
+    matching_endpoint_switch_class_pencil: Counter[str] = Counter()
+    matching_endpoint_switch_class_lambda: Counter[str] = Counter()
+    matching_endpoint_switch_class_residual: Counter[str] = Counter()
+    matching_endpoint_switch_class_residual_product: Counter[str] = Counter()
     for component, vertices in sorted(
         matching_component_vertices.items(),
         key=lambda item: (len(item[1]), item[0]),
@@ -634,6 +644,28 @@ def profile(
                         matching_endpoint_switch_residual,
                         switch_load - max(switch_weights),
                     )
+                    switch_residual = switch_load - max(switch_weights)
+                    matching_endpoint_switch_residual_product += (
+                        switch_residual * switch_load
+                    )
+                    switch_class = (
+                        "popular" if switch in adaptive_popular else "nonpopular"
+                    )
+                    matching_endpoint_switch_class_pencil[
+                        switch_class
+                    ] += switch_pair
+                    matching_endpoint_switch_class_lambda[
+                        switch_class
+                    ] += switch_load
+                    matching_endpoint_switch_class_residual[
+                        switch_class
+                    ] = max(
+                        matching_endpoint_switch_class_residual[switch_class],
+                        switch_residual,
+                    )
+                    matching_endpoint_switch_class_residual_product[
+                        switch_class
+                    ] += switch_residual * switch_load
                 matching_endpoint_pencil_copy_rows.append(
                     (
                         load,
@@ -1108,7 +1140,23 @@ def profile(
                 ),
             ),
             ("maximum_switch_residual", matching_endpoint_switch_residual),
+            (
+                "switch_residual_product",
+                matching_endpoint_switch_residual_product,
+            ),
             ("parallel_wedges", matching_wedges["parallel"]),
+        ),
+        "matching_endpoint_collision_switch_cutoff": tuple(
+            (
+                switch_class,
+                matching_endpoint_switch_class_pencil[switch_class],
+                matching_endpoint_switch_class_lambda[switch_class],
+                matching_endpoint_switch_class_residual[switch_class],
+                matching_endpoint_switch_class_residual_product[
+                    switch_class
+                ],
+            )
+            for switch_class in ("nonpopular", "popular")
         ),
         "matching_translate_profiles": tuple(
             (row, 1) for row in matching_translate_profiles

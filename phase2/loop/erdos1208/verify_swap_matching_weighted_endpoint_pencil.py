@@ -8,7 +8,11 @@ from fractions import Fraction
 from itertools import combinations, product
 import sys
 
+from analyze_affine_costas_energy import is_distance_sidon, welch
 from analyze_swap_optimal_nested_cores import profile, transformed_costas
+from verify_closed_fibre_q_height_layered_barrier import (
+    lifted_residue_parabola,
+)
 from verify_orthogonal_two_support_gate import difference_set
 from verify_seven_incidence_opposite_endpoint_charge import (
     add,
@@ -325,6 +329,29 @@ def verify_collision_orthogonal_switch() -> None:
         first_q_prime, second_q
     )
 
+    representation_keys: dict[
+        tuple[Point, Point, Point, Point], tuple[Point, Point]
+    ] = {}
+    for q_value in product(range(-2, 3), repeat=2):
+        for displacement in product(range(-2, 3), repeat=2):
+            p_value = add(q_value, displacement)
+            x_value = subtract(centre, q_value)
+            y_value = add(ell, rotate(p_value))
+            key = (
+                x_value,
+                add(x_value, shift),
+                y_value,
+                subtract(y_value, rotate(shift)),
+            )
+            assert key not in representation_keys
+            representation_keys[key] = q_value, displacement
+            recovered_q = subtract(centre, key[0])
+            rotated_p = subtract(key[2], ell)
+            recovered_p = (rotated_p[1], -rotated_p[0])
+            assert recovered_q == q_value
+            assert recovered_p == p_value
+            assert subtract(recovered_p, recovered_q) == displacement
+
 
 def verify_second_generation_pencil_identity() -> None:
     universe = tuple((index, index * index + 1) for index in range(4))
@@ -383,16 +410,27 @@ def verify_genuine_profiles() -> None:
             (5, 129, 202, (6, 5)),
             (5, 2, 3, 4, 2, 4, 2, 6, 1),
             (202, 200, 2),
-            (4, 3_320, (1, 2), 1, 428),
+            (4, 3_320, (1, 2), 1, 8, 428),
+            (("nonpopular", 0, 160, 0, 0), ("popular", 4, 3_160, 1, 8)),
         ),
         23: (
             (12, 53_281, 70_261, (53, 12)),
             (12, 4, 4, 10, 3, 9, 3, 50, 2),
             (70_261, 67_245, 3_140),
-            (6_280, 542_212, (5, 4), 2, 67_882),
+            (6_280, 542_212, (5, 4), 2, 11_748, 67_882),
+            (
+                ("nonpopular", 0, 2_840, 0, 0),
+                ("popular", 6_280, 539_372, 2, 11_748),
+            ),
         ),
     }
-    for prime, (target, copy_target, key_target, switch_target) in expected.items():
+    for prime, (
+        target,
+        copy_target,
+        key_target,
+        switch_target,
+        cutoff_target,
+    ) in expected.items():
         points, differences = transformed_costas(prime)
         _, summary, _ = profile(differences, points)
         actual = dict(summary["matching_weighted_endpoint_pencil_profile"])
@@ -421,10 +459,15 @@ def verify_genuine_profiles() -> None:
             switch_row["switch_lambda"],
             switch_row["maximum_switch_ratio"],
             switch_row["maximum_switch_residual"],
+            switch_row["switch_residual_product"],
             switch_row["parallel_wedges"],
         ) == switch_target
         assert switch_row["switch_pencil"] == 2 * key_row["collisions"]
         assert switch_row["switch_lambda"] <= 8 * switch_row["parallel_wedges"]
+        assert (
+            summary["matching_endpoint_collision_switch_cutoff"]
+            == cutoff_target
+        )
 
 
 def verify_larger_profile() -> None:
@@ -460,10 +503,24 @@ def verify_larger_profile() -> None:
 
 def verify_closure_switch_profiles() -> None:
     expected = {
-        40: ((212, 72_056, (2, 3), 9_184), (34_776, 34_670, 106)),
-        50: ((12, 7_232, (1, 2), 932), (3_803, 3_797, 6)),
+        40: (
+            (212, 72_056, (2, 3), 9_184),
+            (34_776, 34_670, 106),
+            (
+                ("nonpopular", 32, 44_400, 1, 56),
+                ("popular", 180, 27_656, 1, 344),
+            ),
+        ),
+        50: (
+            (12, 7_232, (1, 2), 932),
+            (3_803, 3_797, 6),
+            (
+                ("nonpopular", 8, 5_856, 1, 16),
+                ("popular", 4, 1_376, 1, 8),
+            ),
+        ),
     }
-    for size, (switch_target, key_target) in expected.items():
+    for size, (switch_target, key_target, cutoff_target) in expected.items():
         points = POINTS[:size]
         _, summary, _ = profile(difference_set(points), points)
         switch_row = dict(summary["matching_endpoint_collision_switch"])
@@ -479,6 +536,58 @@ def verify_closure_switch_profiles() -> None:
             key_row["support"],
             key_row["collisions"],
         ) == key_target
+        assert (
+            summary["matching_endpoint_collision_switch_cutoff"]
+            == cutoff_target
+        )
+
+
+def verify_lifted_parabola_switch_profile() -> None:
+    points = lifted_residue_parabola(43)
+    _, summary, _ = profile(difference_set(points), points)
+    assert summary["matching_endpoint_key_dichotomy"] == (
+        ("pair_mass", 87),
+        ("support", 87),
+        ("collisions", 0),
+    )
+    assert summary["matching_endpoint_collision_switch"] == (
+        ("switch_pencil", 0),
+        ("switch_lambda", 1_728),
+        ("maximum_switch_ratio", (0, 1)),
+        ("maximum_switch_residual", 0),
+        ("switch_residual_product", 0),
+        ("parallel_wedges", 216),
+    )
+    assert summary["matching_endpoint_collision_switch_cutoff"] == (
+        ("nonpopular", 0, 0, 0, 0),
+        ("popular", 0, 1_728, 0, 0),
+    )
+
+
+def verify_affine_neighbourhood_kill_search() -> None:
+    rows = (
+        (11, (-2, -3, -1, -1), (0, 20, 0)),
+        (11, (-2, -3, -1, -2), (0, 0, 0)),
+        (17, (-7, 4, -2, -2), (0, 476, 0)),
+        (17, (-8, 5, -3, -1), (0, 84, 0)),
+    )
+    for prime, matrix, target in rows:
+        a_value, b_value, c_value, d_value = matrix
+        points = [
+            (
+                a_value * x_value + b_value * y_value,
+                c_value * x_value + d_value * y_value,
+            )
+            for x_value, y_value in welch(prime)
+        ]
+        assert is_distance_sidon(points)
+        _, summary, _ = profile(difference_set(points), points)
+        switch_row = dict(summary["matching_endpoint_collision_switch"])
+        assert (
+            switch_row["switch_residual_product"],
+            switch_row["parallel_wedges"],
+            switch_row["maximum_switch_residual"],
+        ) == target
 
 
 def main() -> None:
@@ -491,6 +600,8 @@ def main() -> None:
     verify_collision_orthogonal_switch()
     verify_second_generation_pencil_identity()
     verify_genuine_profiles()
+    verify_lifted_parabola_switch_profile()
+    verify_affine_neighbourhood_kill_search()
     if "--larger" in sys.argv:
         verify_larger_profile()
         verify_closure_switch_profiles()
