@@ -158,6 +158,14 @@ The third step is the missing lemma.  The stress calculation shows that it
 should be sought in the eight-distinct matching branch, not by another
 common-endpoint or radial-energy relaxation.
 
+The subsequent note `SWAP_MATCHING_WEDGE_POTENTIAL_GATE.md` refines this
+target further.  A linear bound for pairs of matching edge copies incident
+to one core cell implies (5.1) by Cauchy.  The exact larger profiles show
+that the dominant residual consists of diffuse twelve-endpoint wedges with
+distinct mixed endpoint potentials; on Costas 37 this is the largest wedge
+class.  Thus the next proof object is a decorated matching wedge, not a
+single edge or a repeated-potential fibre.
+
 ## 6. Verification
 
 Run

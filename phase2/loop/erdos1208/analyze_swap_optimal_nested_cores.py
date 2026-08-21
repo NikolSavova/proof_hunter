@@ -246,6 +246,12 @@ def profile(
     shift_mass: Counter[Point] = Counter()
     fibre_mass: Counter[Fibre] = Counter()
     endpoint_types: Counter[str] = Counter()
+    potential_edge_types: Counter[str] = Counter()
+    potential_fibres: Counter[tuple[str, Point, Point]] = Counter()
+    matching_adjacency: dict[Cell, Counter[Cell]] = defaultdict(Counter)
+    cell_records: dict[Cell, list[tuple[Point, Point, Point, Point, Point]]] = (
+        defaultdict(list)
+    )
     endpoint_map: dict[Point, tuple[Point, Point]] = {}
     if points is not None:
         for head in points:
@@ -270,6 +276,24 @@ def profile(
             return "cross"
         return "none"
 
+    def mixed_potentials(cell: Cell) -> tuple[Point, Point] | None:
+        b_pair = endpoint_map.get(cell[0])
+        ell_pair = endpoint_map.get(cell[1])
+        if b_pair is None or ell_pair is None:
+            return None
+        alpha = subtract(ell_pair[0], linear(b_pair[0]))
+        beta = subtract(ell_pair[1], linear(b_pair[1]))
+        assert subtract(alpha, beta) == cell_invariant(cell)
+        return alpha, beta
+
+    def inverse_linear(value: Point) -> Point:
+        assert (value[0] + value[1]) % 2 == 0
+        assert (value[1] - value[0]) % 2 == 0
+        return (
+            (value[0] + value[1]) // 2,
+            (value[1] - value[0]) // 2,
+        )
+
     for (first, second), multiplicity in core_edges.items():
         invariant = cell_invariant(first)
         assert invariant == cell_invariant(second)
@@ -281,6 +305,24 @@ def profile(
         )
         shift_mass[shift] += multiplicity
         fibre_mass.update(occurrences[(first, second)])
+        for base, ordinary_sum in occurrences[(first, second)]:
+            w_value = subtract(ordinary_sum, base)
+            q_value = subtract(first[0], base)
+            p_value = inverse_linear(subtract(w_value, first[1]))
+            assert second[0] == (
+                base[0] + p_value[0],
+                base[1] + p_value[1],
+            )
+            assert second[1] == subtract(w_value, linear(q_value))
+            q_head = first[0]
+            p_head = second[0]
+            z_q = subtract(w_value, q_value)
+            z_p = subtract(w_value, p_value)
+            l_q = second[1]
+            l_p = first[1]
+            # Five moving roles relative to each fixed endpoint cell.
+            cell_records[first].append((base, p_head, z_q, z_p, l_q))
+            cell_records[second].append((base, q_head, z_p, z_q, l_p))
         if points is not None:
             first_b, first_ell = first
             second_b, second_ell = second
@@ -307,6 +349,71 @@ def profile(
                 + ("X" if cross_shared else "-")
             )
             endpoint_types[category] += multiplicity
+            if category == "---":
+                matching_adjacency[first][second] += multiplicity
+                matching_adjacency[second][first] += multiplicity
+            first_potentials = mixed_potentials(first)
+            second_potentials = mixed_potentials(second)
+            if first_potentials is None or second_potentials is None:
+                potential_edge_types["zero"] += multiplicity
+            else:
+                same_alpha = first_potentials[0] == second_potentials[0]
+                same_beta = first_potentials[1] == second_potentials[1]
+                potential_edge_types[
+                    ("A" if same_alpha else "-")
+                    + ("B" if same_beta else "-")
+                ] += multiplicity
+
+    if points is not None:
+        for cell in core:
+            potentials = mixed_potentials(cell)
+            if potentials is None:
+                continue
+            invariant = cell_invariant(cell)
+            potential_fibres["A", invariant, potentials[0]] += 1
+            potential_fibres["B", invariant, potentials[1]] += 1
+
+    top_cells = []
+    for cell, records in cell_records.items():
+        distinct = tuple(len({record[index] for record in records}) for index in range(5))
+        maxima = tuple(
+            max(Counter(record[index] for record in records).values())
+            for index in range(5)
+        )
+        top_cells.append(
+            (
+                cell,
+                loads[cell],
+                len(records),
+                distinct,
+                maxima,
+            )
+        )
+    top_cells.sort(key=lambda row: (row[1], row[2], row[0]), reverse=True)
+
+    matching_wedges: Counter[str] = Counter()
+    if points is not None:
+        for centre, neighbours in matching_adjacency.items():
+            rows = list(neighbours.items())
+            for index, (first, first_weight) in enumerate(rows):
+                matching_wedges["parallel"] += first_weight * (first_weight - 1) // 2
+                first_potentials = mixed_potentials(first)
+                for second, second_weight in rows[index + 1 :]:
+                    weight = first_weight * second_weight
+                    second_potentials = mixed_potentials(second)
+                    if first_potentials is None or second_potentials is None:
+                        matching_wedges["missing-potential"] += weight
+                        continue
+                    if first_potentials[0] == second_potentials[0]:
+                        assert first_potentials[1] == second_potentials[1]
+                        matching_wedges["repeated-potential"] += weight
+                        continue
+                    first_endpoints = endpoints(first[0]) | endpoints(first[1])
+                    second_endpoints = endpoints(second[0]) | endpoints(second[1])
+                    if first_endpoints.isdisjoint(second_endpoints):
+                        matching_wedges["diffuse-twelve-distinct"] += weight
+                    else:
+                        matching_wedges["diffuse-neighbour-contact"] += weight
 
     summary = {
         "components": tuple(component_mass.most_common(8)),
@@ -314,6 +421,10 @@ def profile(
         "fibres": tuple(fibre_mass.most_common(8)),
         "loads": tuple(Counter(loads.values()).most_common()),
         "endpoint_types": tuple(endpoint_types.most_common()),
+        "potential_edges": tuple(potential_edge_types.most_common()),
+        "potential_fibres": tuple(potential_fibres.most_common(8)),
+        "matching_wedges": tuple(matching_wedges.most_common()),
+        "top_cells": tuple((row, 1) for row in top_cells[:8]),
     }
     core_profile = CoreProfile(
         vertices=len(loads),
