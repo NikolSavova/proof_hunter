@@ -226,6 +226,58 @@ size bias in (3.13), or from routing its high-fibre portion to a two-sided
 completion core; merely reproving the unweighted pencil bound is not
 enough.
 
+Every individual rich translate also has an exact perpendicular
+footprint/density fork.  Let
+
+\[
+ S=Q_i^V\cap(Q_j^W-d),\qquad r=|S|,qquad
+ R_S(u)=|\{(a,b)\in S^2:a-b=u\}|.                \tag{3.15}
+\]
+
+The defining `D` tracks of the first fibre contain translates of `-S` and
+`JS`.  Hence
+
+\[
+ \boxed{JS-S\quad\hbox{has a translate inside }D+D.} \tag{3.16}
+\]
+
+Moreover its additive representation energy is exactly
+
+\[
+ \boxed{
+ E_+(JS,-S)=\sum_u R_S(u)R_S(Ju).}               \tag{3.17}
+\]
+
+Indeed equality between `Jb-a` and `Jd-c` is equivalent to
+`a-c=J(b-d)`.  Consequently
+
+\[
+ |JS-S|\ge {r^4\over\sum_uR_S(u)R_S(Ju)}.        \tag{3.18}
+\]
+
+For a threshold `T>=1`, put
+
+\[
+ H_T(S)=\{u\ne0:R_S(u)\ge T, R_S(Ju)\ge T\}.
+\]
+
+Splitting the sum in (3.17) gives the exact safe envelope
+
+\[
+ \boxed{
+ \sum_uR_S(u)R_S(Ju)
+ \le r^2+2Tr(r-1)
+   +\sum_{u\in H_T(S)}R_S(u)R_S(Ju).}            \tag{3.19}
+\]
+
+If `T>K`, then `H_T(S)\subseteq\mathcal P_K`: the `-S` track gives at
+least `R_S(u)` representations of `u` in `D-D`, and the `JS` track gives
+at least `R_S(Ju)` representations of `Ju`.  Thus a rich cell has only two
+possibilities.  Either it exposes a large literal footprint in `D+D`, or
+its internal difference set creates a new adaptive-popular perpendicular
+core.  This is the label-preserving density increment missing from a bare
+cross-energy estimate.
+
 ## 4. Exact stress and the failed uniform twelve-channel sum
 
 The augmented optimal-core analyzer gives the following repeated mixed
@@ -321,6 +373,41 @@ affine grids in the `31`-lattice.  Thus even the transverse branch is not
 locally sparse.  Its saving, if true, must come from global endpoint reuse
 and determinant-weighted packing, not a pointwise fibre cap.
 
+For a representative richest nonzero cell, the four-point set `S` has
+`|JS-S|=12` and energy `24`, so (3.18) gives `|JS-S|>=32/3`.  The
+footprint is already close to quadratic; the unresolved issue is its depth
+when the cells are summed over centres.
+
+The exact global footprint audit is
+
+\[
+\begin{array}{c|r|r|r|c|c}
+k&\sum|\Phi|&|\bigcup\Phi|&\max\operatorname{depth}&
+ \max\operatorname{depth}_{\rm wt}&
+ \max_z\operatorname{depth}_{\rm wt}(z)/R_{D+D}(z)\\ \hline
+23&540&391&6&18/7&3/28\\
+29&11577&2147&98&22993/462&1/3\\
+31&8618&1171&212&1343/11&40721/118272
+\end{array}                                             \tag{4.6}
+\]
+
+Here a cell distributes its mass `3 binom(r,3)` uniformly over its
+footprint.  The weighted depths are much smaller than the raw depths, and
+their sum is exactly `C_centre`, but they are not subpolynomial on the
+stored rows.  The last-column inequality is encouraging finite evidence,
+not a viable abstract theorem.  Take
+`S={(i,i^2):0<=i<r}` and a symmetric set containing two widely separated
+copies of `-S` and `JS`.  Then the relevant footprint has size `r^2`, its
+uniform weight is `3 binom(r,3)/r^2=Theta(r)`, while every footprint point
+has exactly two representations in the ambient sumset.  Thus pointwise
+domination by `R_{D+D}` fails by a full factor `r` before the adaptive and
+endpoint decorations are imposed.
+
+This sharpens the target once more: the global depth theorem must retain
+the popularity of every member of `S` and the common physical endpoint (or
+the equivalent four completion corners).  Footprint containment alone is
+not enough.
+
 This is a decisive scale diagnosis.  The twelve-channel normal form is
 lossless and useful for localization, but its unweighted product of three
 `D`-overlaps is not summable.  The same-centre half must use (1.5); the
@@ -340,7 +427,10 @@ tests hundreds of random multi-fibre systems.  It checks the key-set
 intersection identity, (1.5), the exact third-moment identity (3.1), and
 the envelopes (3.4)--(3.6).  It also verifies the cross-third-energy
 identity (3.7)--(3.8), its size-biased second-energy bound (3.9), and the
-one-switch envelope (3.12)--(3.14).
+one-switch envelope (3.12)--(3.14).  Finally it checks the perpendicular
+energy identity, footprint containment, and threshold decomposition
+(3.15)--(3.19) exhaustively and on random fibre systems.  It also verifies
+the affine-copy obstruction to ambient pointwise representation domination.
 
 The exact geometric stress rows are reproduced by
 

@@ -502,6 +502,22 @@ def profile(
         tuple[int, int, int]
     ] = Counter()
     matching_projected_same_centre_cross_rich_rows: list[tuple[object, ...]] = []
+    matching_projected_same_centre_footprint_depth: Counter[Point] = Counter()
+    matching_projected_same_centre_resonant_footprint_depth: Counter[
+        Point
+    ] = Counter()
+    matching_projected_same_centre_transverse_footprint_depth: Counter[
+        Point
+    ] = Counter()
+    matching_projected_same_centre_weighted_footprint_depth: Counter[
+        Point
+    ] = Counter()
+    matching_projected_same_centre_resonant_weighted_footprint_depth: Counter[
+        Point
+    ] = Counter()
+    matching_projected_same_centre_transverse_weighted_footprint_depth: Counter[
+        Point
+    ] = Counter()
 
     def projected_physical_edge(key: tuple[object, ...]) -> Point:
         assert key[0] in ("V", "W")
@@ -735,6 +751,53 @@ def profile(
                                 add(rotate(eta), linear(physical_delta)),
                             )
                             mass = load * (load - 1) * (load - 2) // 2
+                            cell_pairs = tuple(
+                                sorted(
+                                    (
+                                        v_value,
+                                        add(v_value, raw_difference),
+                                    )
+                                    for v_value in q_fibres[v_neighbour]
+                                    if add(v_value, raw_difference)
+                                    in q_fibres[w_neighbour]
+                                )
+                            )
+                            assert len(cell_pairs) == load
+                            cell_values = {pair[0] for pair in cell_pairs}
+                            c_value, ell_value = centre
+                            footprint_offset = add(
+                                add(c_value, ell_value), rotate(t_v)
+                            )
+                            footprint = {
+                                add(
+                                    footprint_offset,
+                                    subtract(rotate(second), first),
+                                )
+                                for first in cell_values
+                                for second in cell_values
+                            }
+                            footprint_counter = (
+                                matching_projected_same_centre_resonant_footprint_depth
+                                if any(shift == (0, 0) for shift in shifts)
+                                else matching_projected_same_centre_transverse_footprint_depth
+                            )
+                            weighted_footprint_counter = (
+                                matching_projected_same_centre_resonant_weighted_footprint_depth
+                                if any(shift == (0, 0) for shift in shifts)
+                                else matching_projected_same_centre_transverse_weighted_footprint_depth
+                            )
+                            footprint_weight = Fraction(mass, len(footprint))
+                            for footprint_value in footprint:
+                                matching_projected_same_centre_footprint_depth[
+                                    footprint_value
+                                ] += 1
+                                footprint_counter[footprint_value] += 1
+                                matching_projected_same_centre_weighted_footprint_depth[
+                                    footprint_value
+                                ] += footprint_weight
+                                weighted_footprint_counter[
+                                    footprint_value
+                                ] += footprint_weight
                             matching_projected_same_centre_cross_resonance[
                                 sum(shift == (0, 0) for shift in shifts),
                                 sum(shift in differences for shift in shifts),
@@ -753,17 +816,7 @@ def profile(
                                     t_w,
                                     eta,
                                     shifts,
-                                    tuple(
-                                        sorted(
-                                            (
-                                                v_value,
-                                                add(v_value, raw_difference),
-                                            )
-                                            for v_value in q_fibres[v_neighbour]
-                                            if add(v_value, raw_difference)
-                                            in q_fibres[w_neighbour]
-                                        )
-                                    ),
+                                    cell_pairs,
                                 )
                             )
                 for active_switch in active_switches:
@@ -1791,6 +1844,23 @@ def profile(
             tuple(sorted(Counter(codegree for _, codegree in items).items())),
         )
 
+    difference_sum_loads = Counter(
+        add(first, second) for first in differences for second in differences
+    )
+    assert all(
+        value in difference_sum_loads
+        for value in matching_projected_same_centre_weighted_footprint_depth
+    )
+    matching_projected_same_centre_footprint_representation_ratio = max(
+        (
+            weight / difference_sum_loads[value]
+            for value, weight in (
+                matching_projected_same_centre_weighted_footprint_depth.items()
+            )
+        ),
+        default=Fraction(0),
+    )
+
     summary = {
         "components": tuple(component_mass.most_common(8)),
         "shifts": tuple(shift_mass.most_common(8)),
@@ -2215,6 +2285,67 @@ def profile(
                         sorted(
                             matching_projected_same_centre_cross_resonance.items()
                         )
+                    ),
+                    (
+                        sum(matching_projected_same_centre_footprint_depth.values()),
+                        len(matching_projected_same_centre_footprint_depth),
+                        max(
+                            matching_projected_same_centre_footprint_depth.values(),
+                            default=0,
+                        ),
+                        sum(
+                            matching_projected_same_centre_resonant_footprint_depth.values()
+                        ),
+                        len(
+                            matching_projected_same_centre_resonant_footprint_depth
+                        ),
+                        max(
+                            matching_projected_same_centre_resonant_footprint_depth.values(),
+                            default=0,
+                        ),
+                        sum(
+                            matching_projected_same_centre_transverse_footprint_depth.values()
+                        ),
+                        len(
+                            matching_projected_same_centre_transverse_footprint_depth
+                        ),
+                        max(
+                            matching_projected_same_centre_transverse_footprint_depth.values(),
+                            default=0,
+                        ),
+                        sum(
+                            matching_projected_same_centre_weighted_footprint_depth.values(),
+                            Fraction(0),
+                        ),
+                        max(
+                            matching_projected_same_centre_weighted_footprint_depth.values(),
+                            default=Fraction(0),
+                        ),
+                        max(
+                            matching_projected_same_centre_resonant_weighted_footprint_depth.values(),
+                            default=Fraction(0),
+                        ),
+                        max(
+                            matching_projected_same_centre_transverse_weighted_footprint_depth.values(),
+                            default=Fraction(0),
+                        ),
+                        tuple(
+                            (
+                                value,
+                                weight,
+                                matching_projected_same_centre_resonant_weighted_footprint_depth[
+                                    value
+                                ],
+                                matching_projected_same_centre_transverse_weighted_footprint_depth[
+                                    value
+                                ],
+                                matching_projected_same_centre_footprint_depth[value],
+                            )
+                            for value, weight in matching_projected_same_centre_weighted_footprint_depth.most_common(
+                                8
+                            )
+                        ),
+                        matching_projected_same_centre_footprint_representation_ratio,
                     ),
                     tuple(
                         sorted(

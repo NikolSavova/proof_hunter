@@ -19,6 +19,10 @@ def sub(first: Point, second: Point) -> Point:
     return first[0] - second[0], first[1] - second[1]
 
 
+def rotate(value: Point) -> Point:
+    return -value[1], value[0]
+
+
 def starts(values: set[Point], switch: Point) -> set[Point]:
     return {value for value in values if add(value, switch) in values}
 
@@ -47,6 +51,60 @@ def all_switches(families: list[set[Point]]) -> list[Point]:
             if first != second
         }
     )
+
+
+def perpendicular_footprint_audit(values: set[Point]) -> None:
+    """Check the internal footprint / adaptive-density dichotomy."""
+    load = len(values)
+    differences = Counter(
+        sub(first, second) for first in values for second in values
+    )
+    footprint_loads = Counter(
+        sub(rotate(second), first)
+        for first in values
+        for second in values
+    )
+    energy = sum(value * value for value in footprint_loads.values())
+    perpendicular_energy = sum(
+        differences[shift] * differences[rotate(shift)]
+        for shift in differences
+    )
+    assert energy == perpendicular_energy
+    assert len(footprint_loads) * energy >= load**4
+
+    # The two affine copies -S and J S may be translated independently
+    # into D.  Their cross-sum contains a translate of J S-S.
+    first_offset = (7, -11)
+    second_offset = (-5, 13)
+    difference_set = {
+        add(first_offset, (-value[0], -value[1])) for value in values
+    } | {
+        add(second_offset, rotate(value)) for value in values
+    }
+    translated_footprint = {
+        add(add(second_offset, first_offset), point)
+        for point in footprint_loads
+    }
+    sumset = {add(first, second) for first in difference_set for second in difference_set}
+    assert translated_footprint <= sumset
+
+    for threshold in range(1, load + 2):
+        rich_shifts = {
+            shift
+            for shift in differences
+            if shift != (0, 0)
+            and differences[shift] >= threshold
+            and differences[rotate(shift)] >= threshold
+        }
+        rich_energy = sum(
+            differences[shift] * differences[rotate(shift)]
+            for shift in rich_shifts
+        )
+        assert perpendicular_energy <= (
+            load * load
+            + 2 * threshold * load * max(0, load - 1)
+            + rich_energy
+        )
 
 
 def audit(v_fibres: list[set[Point]], w_fibres: list[set[Point]]) -> None:
@@ -166,6 +224,7 @@ def exhaustive_small() -> None:
         for mask in range(1 << len(universe))
     ]
     for first in subsets:
+        perpendicular_footprint_audit(first)
         for second in subsets:
             audit([first], [second])
 
@@ -182,12 +241,48 @@ def random_systems() -> None:
             {value for value in box if rng.randrange(5) == 0}
             for _ in range(rng.randrange(1, 5))
         ]
+        for values in v_fibres + w_fibres:
+            perpendicular_footprint_audit(values)
         audit(v_fibres, w_fibres)
+
+
+def ambient_representation_domination_barrier() -> None:
+    """A symmetric affine-copy model kills a D+D pointwise shortcut."""
+    for load in (4, 6, 8, 12, 20):
+        values = {(index, index * index) for index in range(load)}
+        scale = 10**7
+        first_copy = {
+            (scale - value[0], -value[1]) for value in values
+        }
+        second_copy = {
+            add((0, scale), rotate(value)) for value in values
+        }
+        difference_model = (
+            first_copy
+            | second_copy
+            | {(-value[0], -value[1]) for value in first_copy | second_copy}
+        )
+        footprint = {
+            add((scale, scale), sub(rotate(second), first))
+            for first in values
+            for second in values
+        }
+        assert len(footprint) == load * load
+        ambient_load = Counter(
+            add(first, second)
+            for first in difference_model
+            for second in difference_model
+        )
+        assert {ambient_load[value] for value in footprint} == {2}
+        uniform_weight = 3 * comb(load, 3) / len(footprint)
+        if load >= 8:
+            assert uniform_weight > 2
 
 
 def main() -> None:
     exhaustive_small()
     random_systems()
+    ambient_representation_domination_barrier()
     print("SWAP MIXED SAME-CENTRE TRIPLE INTERSECTION: PASS")
 
 
