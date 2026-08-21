@@ -229,7 +229,28 @@ dominates every contact wedge without a component-size loss.  See
 `SWAP_MATCHING_ENDPOINT_PENCIL_CLEAN_CODEGREE_GATE.md` and
 `SWAP_MATCHING_WEIGHTED_ENDPOINT_PENCIL_GATE.md`.  Consequently the
 repeated-`r` population left here may be assumed to have sixteen distinct
-physical endpoints.
+physical endpoints after the separate zero-role/missing-potential branch
+is removed.
+
+The weighted endpoint-pencil note further proves that its two-copy
+cross-energy key is literally the same triple (2.5), after the change of
+variables `R=v+d`, `Delta=-d`.  Hence the distinct-support and repeated-key
+counts from the endpoint and clean populations should be aggregated before
+any relaxation; the endpoint population carries one additional raw signed
+member of `D`.
+
+The endpoint population now has its own lossless global fork.  If
+`P_end` is its copy-pair mass, `X_end` its decorated triple support, and
+`Q_end` its equal-key pair count, then
+
+\[
+ P_{\rm end}^2\le X_{\rm end}(P_{\rm end}+2Q_{\rm end}).
+\]
+
+Every member of `Q_end` is a four-copy additive rectangle inside one fixed
+ordered fibre pair.  This is exactly parallel to (3.4): the direct target
+is a joint linear packing bound for decorated support and decorated
+repeated triples across both populations.
 
 A useful theorem must combine these two counts before dropping endpoint
 labels.  Independent pointwise bounds on component size, parallel

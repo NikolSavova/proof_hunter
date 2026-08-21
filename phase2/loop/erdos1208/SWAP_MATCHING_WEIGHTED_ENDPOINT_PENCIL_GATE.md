@@ -5,8 +5,9 @@
 The endpoint-contact branch of the matching wedge problem has a sharper
 exact reduction than the maximum-product estimate
 `mu_z^2 kappa_z h_z`.  Work in one matching component and write `m(C,B)`
-for the multiplicity of the edge between two cells.  Every matching cell
-`B` has a four-element set `E(B)` of physical endpoints.
+for the multiplicity of the edge between two cells.  A matching cell `B`
+has a set `E(B)` of at most four physical endpoints; a zero directed label
+contributes none.
 
 For a centre cell `C` and a physical point `x`, put
 
@@ -78,12 +79,12 @@ can be counted more than once only if the two neighbouring cells share
 more than one physical endpoint; this harmless overcount is why (1.3) is
 an inequality.
 
-Every neighbour cell has exactly four physical endpoints.  Summing (1.1)
+Every neighbour cell has at most four physical endpoints.  Summing (1.1)
 first over `x` and then over the two ends of every matching edge gives
 
 \[
  \sum_{C,x}\lambda(C,x)
- =4\sum_Cd_{\rm wt}(C)=8M.                              \tag{2.2}
+ \le4\sum_Cd_{\rm wt}(C)=8M.                            \tag{2.2}
 \]
 
 Now `P(C,x)<=Theta lambda(C,x)` and (1.5) follows.  Notice that a pencil
@@ -192,7 +193,242 @@ particular, deleting the endpoint identity `delta=y_2-y_1`, or deleting
 the two simultaneous popular-set differences (4.4), returns to the
 generic affine countermodels which already defeat raw `D-D` energy bounds.
 
-## 5. Exact stress
+## 5. Role-refined key rigidity
+
+There is an additional exact compression after retaining the oriented
+endpoint roles and their raw physical difference.
+Write
+
+\[
+ t=p-q=b-c.                                             \tag{5.1}
+\]
+
+For fixed centre `(c,ell)` and fixed neighbour displacement `t`, the
+parallel-copy fibre is exactly
+
+\[
+\boxed{
+ Q_{C,t}=\{q:\ q,q+t\in\mathcal P_K,\quad
+ c-q,\quad \ell+Jq+Jt,\quad \ell+Jq+Lt\in D\}.}         \tag{5.2}
+\]
+
+The two cell labels `c+t` and `ell+Lt` are fixed separately.  In particular
+`m(C,C_z(c+t))=|Q_{C,t}|` after the matching endpoint filter.
+
+Associate to a copy the four-dimensional parameter point
+
+\[
+ g(p,q)=(p-q,Jp)=(t,Jp).                                \tag{5.3}
+\]
+
+For two copies, the difference of their parameter points is precisely
+`(delta,rho)` from (4.2).  Fix `C`, `x`, and the ordered pair of their four
+oriented endpoint roles.  Augment this parameter difference by the raw
+endpoint difference
+
+\[
+ \sigma=y_2-y_1\in D.                                  \tag{5.4}
+\]
+
+If two ordered copy pairs have the same
+`(roles,sigma,delta,rho)`, then they have the same ordered pair of neighbour
+cells.  Indeed, vector-Sidonicity of `A` makes `sigma` recover the ordered
+pair `(y_2,y_1)`.  With `x`, `C`, and the two roles fixed, both directed
+neighbour labels and hence both cells are forced.  In equal first-label
+roles `sigma=+/-delta`; in equal second-label roles
+`sigma=+/-Ldelta`, so the augmentation is redundant there but essential
+for cross-role contacts.
+
+Consequently repeated decorated keys cannot mix different neighbour pairs.
+For one fixed ordered pair `(t_1,t_2)`, their multiplicity is
+exactly a cross-difference multiplicity between the two fibres in (5.2):
+
+\[
+ q_1-q_2=-(\delta+J\rho),\qquad
+ q_i\in Q_{C,t_i}.                                      \tag{5.5}
+\]
+
+Thus the remaining obstruction in (1.6) is no longer an arbitrary contact
+graph.  It is the size-biased cross-energy of the explicit three-`D` fibres
+`Q_{C,t}`, indexed by a Sidon family of neighbour displacements.  Large
+support in (5.5) pays the distinct-key branch; repeated keys are confined
+to additive rectangles between the same two parallel-copy fibres.
+
+## 6. Exact support-versus-collision fork
+
+Fix `(C,x)` and one ordered endpoint-role pair.  Let `Omega` be the set of
+copy pairs on two distinct neighbour fibres in that pencil, canonically
+ordered by the neighbour cells, and map each member of `Omega` to its
+decorated key
+
+\[
+ (\text{roles},\sigma,\delta,\rho).                    \tag{6.1}
+\]
+
+Write `n=|Omega|`, let `X` be the number of keys used, and let `Q` count
+unordered pairs of distinct members of `Omega` with the same key.  If the
+key loads are `n_k`, then
+
+\[
+ \sum_kn_k=n,\qquad \sum_kn_k^2=n+2Q.
+\]
+
+Cauchy gives the lossless local fork
+
+\[
+ \boxed{n^2\le X(n+2Q).}                              \tag{6.2}
+\]
+
+Now sum over all centres, endpoints, and role pairs.  Denote the three
+global sums by `P_end`, `X_end`, and `Q_end`; the first is exactly the pencil
+upper mass in (1.3).  A second Cauchy inequality gives
+
+\[
+ \boxed{P_{\rm end}^2\le
+ X_{\rm end}(P_{\rm end}+2Q_{\rm end}).}              \tag{6.3}
+\]
+
+Hence either `P_end<=2X_end`, or
+
+\[
+ Q_{\rm end}\ge {P_{\rm end}^2\over4X_{\rm end}}.     \tag{6.4}
+\]
+
+By Section 5, two occurrences counted by `Q_end` use the same ordered pair
+of neighbour fibres and satisfy
+
+\[
+ q_1-q_2=q'_1-q'_2,\qquad
+ q_1+q'_2=q'_1+q_2.                                   \tag{6.5}
+\]
+
+No edge copy can be shared by the two occurrences: within a fixed fibre,
+`q` determines the copy.  Thus every collision in (6.5) is a genuine
+four-copy additive rectangle, with all six memberships defining the two
+`Q_{C,t}` fibres, both endpoint roles, and the raw difference `sigma`
+retained.
+
+There is also an exact orthogonal switch back to the original rich-tail
+energy.  Write the two occurrences as `(q_1,q_2)` and `(q'_1,q'_2)` and put
+
+\[
+ u=q_1-q'_1=q_2-q'_2\ne0.                             \tag{6.6}
+\]
+
+For `i=1,2`, define
+
+\[
+\begin{aligned}
+ X_i&=c-q_i,&X'_i&=c-q'_i,\\
+ Y_i&=\ell+Jq_i+Jt_i,&Y'_i&=\ell+Jq'_i+Jt_i,\\
+ Z_i&=\ell+Jq_i+Lt_i,&Z'_i&=\ell+Jq'_i+Lt_i.
+\end{aligned}                                         \tag{6.7}
+\]
+
+All twelve displayed vectors lie in `D`, and
+
+\[
+ X_i-X'_i=-u,\qquad
+ Y_i-Y'_i=Z_i-Z'_i=Ju.                                \tag{6.8}
+\]
+
+Thus every repeated endpoint key canonically creates two labelled
+representations of `-u` and four of `Ju`, while retaining the eight popular
+corners `q_i,q_i+t_i,q'_i,q'_i+t_i`.  The collision branch is therefore a
+self-switch into the perpendicular overlap energy, not an unrelated fourth
+moment.  A proof may split the new shift `u` at the adaptive cutoff: the
+nonpopular part belongs to the already-paid low tail, while the popular
+part is a genuinely recursive rich rectangle.  What is still missing is a
+reverse-multiplicity or density-increment theorem that retains the centre,
+fibre, and endpoint decorations in this switch.
+
+In particular, the two linear estimates
+
+\[
+ X_{\rm end},Q_{\rm end}\le K N^{o(1)}M              \tag{6.9}
+\]
+
+would imply `P_end<=2KN^{o(1)}M`.  This is the precise support/collision
+replacement for the original endpoint-pencil gate.
+
+## 7. Exact unification with the common-`r` triple
+
+The cross-energy cell in Section 5 is exactly the correlated triple from
+`SWAP_MATCHING_COMMON_R_SUPPORT_COLLISION_DICHOTOMY.md`, not merely an
+analogy.  Take
+
+\[
+ q_1\in Q_{C,t_1},\qquad q_2\in Q_{C,t_2},\qquad
+ d=t_1-t_2,\qquad \eta=q_1-q_2.                        \tag{7.1}
+\]
+
+The three moving `D` pairs in (5.2) have differences
+
+\[
+ -\eta,qquad
+ v:=J(\eta+d),qquad
+ v+d=J\eta+Ld.                                         \tag{7.2}
+\]
+
+Set
+
+\[
+ R=v+d,\qquad \Delta=-d.                              \tag{7.3}
+\]
+
+Then a direct calculation gives
+
+\[
+\boxed{
+ R,\qquad R+\Delta,
+ \qquad J(R+L\Delta)=-\eta\in D-D.}                   \tag{7.4}
+\]
+
+Thus every weighted endpoint-pencil copy pair is a fully represented
+common-`r` triple.  Endpoint contact adds the raw signed difference (4.6),
+while the clean codegree branch adds sixteen distinct cell endpoints; the
+underlying affine support/collision key is the same `(R,Delta)`.
+
+Equivalently, put `X=R` and `Y=R+Delta`.  Since `L=I+J`,
+
+\[
+ J(R+L\Delta)=X+(J-I)Y.                               \tag{7.5}
+\]
+
+Thus the shared unlabelled support is the fixed-coefficient Schur form
+
+\[
+ X,\qquad Y,\qquad X+(J-I)Y\in D-D,                   \tag{7.6}
+\]
+
+where `det(J-I)=2`.  This gives a clean Fourier/incidence normalization, but
+the unlabelled count is deliberately not the target: the centre, endpoint,
+popular-corner, and clean-label decorations are what distinguish the live
+population from the affine countermodels.
+
+For a fixed fibre pair, if
+
+\[
+ r_{t_1,t_2}(\eta)=
+ |\{(q_1,q_2)\in Q_{C,t_1}\times Q_{C,t_2}:
+ q_1-q_2=\eta\}|,
+\]
+
+then the three explicit representations in (7.2) give the cellwise cap
+
+\[
+\boxed{
+ r_{t_1,t_2}(\eta)
+ \le\min\{R_D(\eta),R_D(J(\eta+d)),R_D(J\eta+Ld)\}.}   \tag{7.7}
+\]
+
+The preferred remaining theorem is therefore one global, endpoint-decorated
+packing estimate for (7.4).  It must combine distinct triple support with
+repeated-key energy.  Treating endpoint contact and clean codegree by two
+independent unlabelled `D-D` estimates would discard the strongest common
+structure now available.
+
+## 8. Exact stress
 
 The exact optimal matching cores give the following profiles.  The last
 two columns are the exact contact-pencil upper mass divided by `M`, and
@@ -213,7 +449,40 @@ margin on every current genuine stress.  The pointwise load `lambda` can
 exceed `K` (Costas 29), while `Theta` remains below `K`; this confirms that
 subtracting the same-neighbour square term in (2.1) is load-bearing.
 
-## 6. Verification and next theorem
+The exact copy-level profiles `(load, neighbour fibres, largest fibre,
+distinct q, max q reuse, distinct p, max p reuse, difference-key support,
+max key load)` for the largest pencils are
+
+| family | profile |
+|---|---:|
+| Costas 23 | `(12,4,4,10,3,9,3,50,2)` |
+| Costas 29 | `(22,4,6,12,4,12,3,121,4)` |
+| Costas 31 | `(17,3,7,9,3,8,3,47,5)` |
+
+Here the difference key includes the ordered endpoint-role pair and the raw
+nonshared-endpoint difference `sigma`.  The support is already a substantial
+fraction of the total pair mass, while
+the remaining collision load is small and, by Section 5, lies entirely
+inside fixed parallel-fibre pairs.
+
+Globally, the exact `(P_end,X_end,Q_end)` support/collision rows are
+
+| family | `P_end` | `X_end` | `Q_end` |
+|---|---:|---:|---:|
+| Costas 17 | 202 | 200 | 2 |
+| Costas 23 | 70,261 | 67,245 | 3,140 |
+| Costas 29 | 328,426 | 295,731 | 35,743 |
+| Costas 31 | 118,933 | 106,127 | 14,952 |
+| Costas 37 | 713,968 | 672,204 | 44,110 |
+
+Thus 89--99% of the exact pencil upper mass is already supported on
+distinct decorated keys in these rows.  The collision term is not zero,
+but it is much smaller and consists only of the four-copy rectangles
+(6.5).  This is the first stress split that mirrors the common-`r`
+support/collision dichotomy on the endpoint side without discarding copy
+multiplicity.
+
+## 9. Verification and next theorem
 
 Run
 
@@ -223,12 +492,17 @@ python3 phase2/loop/erdos1208/verify_swap_matching_weighted_endpoint_pencil.py -
 ```
 
 The verifier checks (1.3)--(2.2) on finite weighted endpoint systems,
-proves (3.3)--(3.4) and (4.2)--(4.4) symbolically, and reproduces the stored
-Costas profiles.  The optional run checks Costas 37.
+proves (3.3)--(3.4) and (4.2)--(4.4) symbolically, checks (6.2)--(6.4)
+exhaustively on small key-load systems, and reproduces the stored Costas
+profiles.  The optional run checks Costas 37.
 
 The direct endpoint-contact theorem is now exactly (1.6).  A proof should
-dyadically regularize the two popular differences in (4.4), retain the
-physical edge `delta=y_2-y_1`, and show that polynomial excess in (1.6)
-forces two distinct complete-difference vectors of equal Euclidean norm.
-The clean sixteen-endpoint codegree branch remains separate and is governed
-by the common-`r` support/collision dichotomy.
+dyadically regularize the fibres `Q_{C,t}` in (5.2), use the Sidon rigidity
+of their `t` indices, and split into large key support versus excessive
+cross-energy within one fixed fibre pair.  In the latter branch it must
+retain the two popular differences in (4.4) and the physical raw difference
+from (4.6), then force two distinct complete-difference vectors of equal
+Euclidean norm.  By Section 7 this should be combined with the clean
+common-`r` population before any global support bound is applied.  The two
+populations retain different endpoint decorations, but are governed by one
+shared support/collision theorem rather than two unrelated `D-D` estimates.

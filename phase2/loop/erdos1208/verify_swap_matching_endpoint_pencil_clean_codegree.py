@@ -44,7 +44,7 @@ def verify_endpoint_pencil_bound(
 
     endpoint_loads: dict[int, int] = {}
     for endpoints in endpoint_sets.values():
-        assert len(endpoints) == 4
+        assert len(endpoints) <= 4
         for endpoint in endpoints:
             endpoint_loads[endpoint] = endpoint_loads.get(endpoint, 0) + 1
     pencil = max(endpoint_loads.values(), default=0)
@@ -202,6 +202,7 @@ def verify_genuine_profiles() -> None:
              ('contact_pair_two_paths', 85),
              ('clean_pair_two_paths', 8)),
             (),
+            (),
         ),
         23: (
             (('components', 10_496),
@@ -216,12 +217,13 @@ def verify_genuine_profiles() -> None:
              ('clean_pair_maximum_codegree', 3),
              ('contact_pair_two_paths', 14_852),
              ('clean_pair_two_paths', 7_611)),
-            (((2, False, False), 482),
+            (((2, False, False), 477),
              ((2, True, False), 372),
-             ((1, False, False), 294),
+             ((1, False, False), 286),
              ((1, True, True), 264),
-             ((0, False, False), 52),
-             ((0, False, True), 28)),
+             ((0, False, False), 50),
+             ((0, False, True), 26)),
+            ((False, 15), (True, 2)),
         ),
     }
     for prime, target in expected.items():
@@ -231,6 +233,7 @@ def verify_genuine_profiles() -> None:
             summary['matching_component_profile'],
             summary['matching_c4_profile'],
             summary['matching_c4_contact_r_routes'],
+            summary['matching_c4_missing_r_routes'],
         )
         assert actual == target, (prime, actual, target)
         for (contact_diagonals, repeated_contact, repeated_clean), _ in (
@@ -260,12 +263,16 @@ def verify_larger_profile() -> None:
         ('clean_pair_two_paths', 220_808),
     )
     assert summary['matching_c4_contact_r_routes'] == (
-        ((1, True, True), 17_016),
-        ((1, False, False), 15_192),
-        ((0, False, True), 8_796),
-        ((0, False, False), 8_016),
-        ((2, True, False), 7_496),
-        ((2, False, False), 6_603),
+        ((1, True, True), 17_004),
+        ((1, False, False), 15_174),
+        ((0, False, True), 8_782),
+        ((0, False, False), 8_004),
+        ((2, True, False), 7_494),
+        ((2, False, False), 6_593),
+    )
+    assert summary['matching_c4_missing_r_routes'] == (
+        (False, 40),
+        (True, 28),
     )
 
 

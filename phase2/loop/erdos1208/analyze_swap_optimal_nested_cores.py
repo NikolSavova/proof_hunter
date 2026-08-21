@@ -426,6 +426,7 @@ def profile(
     matching_opposite_r_support: Counter[tuple[Cell, Cell]] = Counter()
     matching_c4_r_overlap: Counter[tuple[int, int]] = Counter()
     matching_c4_contact_r_routes: Counter[tuple[int, bool, bool]] = Counter()
+    matching_c4_missing_r_routes: Counter[bool] = Counter()
     matching_component_vertices: dict[Point, set[Cell]] = defaultdict(set)
     matching_component_edges: Counter[Point] = Counter()
     for centre, neighbours in matching_adjacency.items():
@@ -446,6 +447,12 @@ def profile(
     matching_contact_pencil_rows: list[
         tuple[Fraction, int, int, int, Point, Cell, Point]
     ] = []
+    matching_endpoint_pencil_copy_rows: list[
+        tuple[int, int, int, int, int, int, int, int, int, Point, Cell, Point]
+    ] = []
+    matching_endpoint_key_pair_mass = 0
+    matching_endpoint_key_support = 0
+    matching_endpoint_key_collisions = 0
     for component, vertices in sorted(
         matching_component_vertices.items(),
         key=lambda item: (len(item[1]), item[0]),
@@ -522,6 +529,86 @@ def profile(
                         endpoint,
                     )
                 )
+                copies = []
+                for neighbour, fibre in matching_records[centre]:
+                    if endpoint not in (
+                        endpoints(neighbour[0]) | endpoints(neighbour[1])
+                    ):
+                        continue
+                    base, _ = fibre
+                    q_value = subtract(centre[0], base)
+                    p_value = subtract(neighbour[0], base)
+                    first_pair = endpoint_map.get(neighbour[0])
+                    second_pair = endpoint_map.get(neighbour[1])
+                    endpoint_roles = (
+                        first_pair[0] if first_pair else None,
+                        first_pair[1] if first_pair else None,
+                        second_pair[0] if second_pair else None,
+                        second_pair[1] if second_pair else None,
+                    )
+                    assert endpoint_roles.count(endpoint) == 1
+                    role = endpoint_roles.index(endpoint)
+                    other_endpoints = (
+                        first_pair[1] if first_pair else None,
+                        first_pair[0] if first_pair else None,
+                        second_pair[1] if second_pair else None,
+                        second_pair[0] if second_pair else None,
+                    )
+                    other_endpoint = other_endpoints[role]
+                    assert other_endpoint is not None
+                    copies.append(
+                        (
+                            neighbour,
+                            base,
+                            p_value,
+                            q_value,
+                            role,
+                            other_endpoint,
+                        )
+                    )
+                assert len(copies) == load
+                q_loads = Counter(row[3] for row in copies)
+                p_loads = Counter(row[2] for row in copies)
+                key_loads = Counter()
+                for first, second in combinations(copies, 2):
+                    if first[0] == second[0]:
+                        continue
+                    # Canonicalize the unordered copy pair before taking
+                    # its two-coordinate parameter difference.
+                    if (first[0], first[1]) > (second[0], second[1]):
+                        first, second = second, first
+                    first_t = subtract(first[2], first[3])
+                    second_t = subtract(second[2], second[3])
+                    key_loads[
+                        first[4],
+                        second[4],
+                        subtract(second[5], first[5]),
+                        subtract(first_t, second_t),
+                        rotate(subtract(first[2], second[2])),
+                    ] += 1
+                assert sum(key_loads.values()) == pair_mass
+                matching_endpoint_key_pair_mass += pair_mass
+                matching_endpoint_key_support += len(key_loads)
+                matching_endpoint_key_collisions += sum(
+                    value * (value - 1) // 2
+                    for value in key_loads.values()
+                )
+                matching_endpoint_pencil_copy_rows.append(
+                    (
+                        load,
+                        len(weights),
+                        max(weights),
+                        len(q_loads),
+                        max(q_loads.values(), default=0),
+                        len(p_loads),
+                        max(p_loads.values(), default=0),
+                        len(key_loads),
+                        max(key_loads.values(), default=0),
+                        component,
+                        centre,
+                        endpoint,
+                    )
+                )
             matching_component_pencil_wedge_upper[component] += sum(
                 (
                     sum(weights) ** 2
@@ -541,6 +628,14 @@ def profile(
                     & (endpoints(second[0]) | endpoints(second[1]))
                 )
             )
+        assert (
+            matching_endpoint_key_pair_mass**2
+            <= matching_endpoint_key_support
+            * (
+                matching_endpoint_key_pair_mass
+                + 2 * matching_endpoint_key_collisions
+            )
+        )
         assert all(
             matching_component_contact_wedges[component]
             <= matching_component_pencil_wedge_upper[component]
@@ -694,6 +789,9 @@ def profile(
             overlaps = [row[1] for row in diagonal_rows]
             matching_c4_endpoints[physical_count, potential_count] += 1
             matching_c4_r_overlap[physical_count, max(overlaps)] += 1
+            if potential_count == -1:
+                matching_c4_missing_r_routes[bool(max(overlaps))] += 1
+                continue
             contact_rows = [row for row in diagonal_rows if row[0]]
             clean_rows = [row for row in diagonal_rows if not row[0]]
             matching_c4_contact_r_routes[
@@ -859,6 +957,9 @@ def profile(
         "matching_c4_contact_r_routes": tuple(
             matching_c4_contact_r_routes.most_common()
         ),
+        "matching_c4_missing_r_routes": tuple(
+            matching_c4_missing_r_routes.most_common()
+        ),
         "matching_component_profile": (
             ("components", len(matching_component_vertices)),
             (
@@ -938,6 +1039,17 @@ def profile(
             for row in sorted(
                 matching_contact_pencil_rows, reverse=True
             )[:8]
+        ),
+        "matching_endpoint_pencil_copy_profiles": tuple(
+            (row, 1)
+            for row in sorted(
+                matching_endpoint_pencil_copy_rows, reverse=True
+            )[:8]
+        ),
+        "matching_endpoint_key_dichotomy": (
+            ("pair_mass", matching_endpoint_key_pair_mass),
+            ("support", matching_endpoint_key_support),
+            ("collisions", matching_endpoint_key_collisions),
         ),
         "matching_translate_profiles": tuple(
             (row, 1) for row in matching_translate_profiles

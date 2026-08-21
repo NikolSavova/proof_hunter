@@ -12,8 +12,9 @@ from the maximum-codegree parameter.  In one active matching component
  \mu_z=\max_{e\in E(H_z)}m_e.                   \tag{1.1}
 \]
 
-Every cell has four distinct physical endpoints.  Define its endpoint-pencil
-occupancy by
+Every cell has at most four distinct physical endpoints; it has four unless
+one of its two directed labels is zero.  Define its endpoint-pencil occupancy
+by
 
 \[
  \kappa_z=
@@ -21,7 +22,8 @@ occupancy by
 \]
 
 Let `r_z^circ` be the largest common-neighbour codegree of two cells whose
-eight physical endpoints are all distinct.  Then
+physical endpoint sets are disjoint.  In the nonzero branch this means eight
+distinct endpoints.  Then
 
 \[
  \boxed{
@@ -40,8 +42,9 @@ product estimate
 
 This replaces the old raw factor `r_z` by an endpoint-pencil term and a
 clean-pair codegree.  It also makes the preceding common-`r` dichotomy exact:
-after the endpoint-pencil term is paid, every surviving repeated-`r`
-four-cycle has sixteen distinct physical endpoints.
+after the endpoint-pencil term is paid and the separate zero-role branch is
+removed, every surviving repeated-`r` four-cycle has sixteen distinct
+physical endpoints.
 
 The theorem is a real branch reduction, not a proof of (1.4).  A later
 weighted refinement shows that the maximum product in (1.4) is not the
@@ -57,15 +60,17 @@ A cell in component `z` is
  C_z(b)=(b,z+Lb),\qquad L=I+J.                  \tag{2.1}
 \]
 
-Every nonisolated vertex of the matching graph has two nonzero directed
-edge labels in `D=A-A`, and the two edge labels have disjoint physical
-endpoint pairs.  Hence the cell has exactly four physical endpoints.
+The two directed labels of a matching cell have disjoint physical endpoint
+pairs whenever they are nonzero.  Since `0 in D=A-A` has no ordered
+distinct-endpoint representation, a cell has zero, two, or four physical
+endpoints.  The zero-role population is the `missing-potential` branch of
+`SWAP_MATCHING_WEDGE_POTENTIAL_GATE.md` and remains separate below.
 
 For any vertex subset `W` of size `n`, write `f_x` for the number of cells
 in `W` containing `x in A`.  Then
 
 \[
- \sum_xf_x=4n,
+ \sum_xf_x\le4n,
  \qquad f_x\le\kappa_z.                         \tag{2.2}
 \]
 
@@ -153,13 +158,16 @@ every endpoint contact among the four cells lies on a diagonal.  If a
 repeated-`r` four-cycle has any contact, switch to that diagonal; (4.2)--
 (4.3) preserve the repeated-`r` witness, and (3.2) charges it to the
 endpoint-pencil term.  Consequently the repeated-`r` branch left after
-(3.2) consists only of fully sixteen-endpoint cycles.  This rigorously
+(3.2) is endpoint-disjoint; after the separate zero-role population is
+removed, it consists of fully sixteen-endpoint cycles.  This rigorously
 justifies the routing assertion that was only heuristic in the preceding
-four-cycle note.
+four-cycle note without conflating a missing endpoint with an endpoint
+contact.
 
 ## 5. Fixed clean cell: exact eight-corner form
 
-The clean residual has a useful lossless normal form.  Fix opposite cells
+The nonzero endpoint-disjoint residual has a useful lossless normal form.
+Fix opposite cells
 
 \[
  B=C_z(b),\qquad C=C_z(c),\qquad d=c-b,          \tag{5.1}
@@ -223,7 +231,7 @@ decoration and (5.6).
 
 The endpoint-aware component parameters are:
 
-| family | `K` | max `h_z` | max `kappa_z` | max `kappa_z h_z` | max clean codegree |
+| family | `K` | max `h_z` | max `kappa_z` | max `kappa_z h_z` | max endpoint-disjoint codegree |
 |---|---:|---:|---:|---:|---:|
 | Costas 23 | 9.747 | 9 | 5 | 45 | 3 |
 | Costas 29 | 9.518 | 10 | 5 | 45 | 5 |
@@ -237,12 +245,17 @@ On Costas 37, the 63,119 four-cycles split as follows:
 
 | contact diagonals | repeated `r` on a contact diagonal | cycles |
 |---:|:---:|---:|
-| 0 | no | 8,016 |
-| 0 | n/a (clean repeated `r`) | 8,796 |
-| 1 | no | 15,192 |
-| 1 | yes | 17,016 |
-| 2 | no | 6,603 |
-| 2 | yes | 7,496 |
+| 0 | no | 8,004 |
+| 0 | n/a (clean repeated `r`) | 8,782 |
+| 1 | no | 15,174 |
+| 1 | yes | 17,004 |
+| 2 | no | 6,593 |
+| 2 | yes | 7,494 |
+
+The remaining 68 cycles contain a zero directed label and belong to the
+separate missing-potential branch; 28 of them have a repeated `r`.  They
+are deliberately excluded from the contact table rather than misclassified
+as endpoint-disjoint sixteen-endpoint cycles.
 
 Whenever exactly one diagonal has contact, repeated-`r` occurs on that
 diagonal if and only if it occurs on the clean diagonal, exactly as (4.2)--
