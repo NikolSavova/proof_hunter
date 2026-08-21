@@ -107,6 +107,44 @@ def perpendicular_footprint_audit(values: set[Point]) -> None:
         )
 
 
+def translate_partition_audit(first: set[Point], second: set[Point]) -> None:
+    """Check the lossless refinement of the mixed second pencil."""
+    translations = cross_difference_loads(first, second)
+    cells = {
+        difference: {
+            value
+            for value in first
+            if add(value, difference) in second
+        }
+        for difference in translations
+    }
+    switches = {
+        sub(left, right)
+        for values in cells.values()
+        for left in values
+        for right in values
+        if left != right
+    }
+    cross_third = 3 * sum(comb(load, 3) for load in translations.values())
+    refined_third = 0
+    for difference, values in cells.items():
+        load = len(values)
+        refined_third += sum(
+            max(0, load - 2) * len(starts(values, switch))
+            for switch in switches
+        )
+    assert 2 * cross_third == refined_third
+
+    all_internal_switches = all_switches([first, second])
+    for switch in all_internal_switches:
+        cell_first_moment = sum(
+            len(starts(values, switch)) for values in cells.values()
+        )
+        assert cell_first_moment == (
+            len(starts(first, switch)) * len(starts(second, switch))
+        )
+
+
 def audit(v_fibres: list[set[Point]], w_fibres: list[set[Point]]) -> None:
     switches = all_switches(v_fibres + w_fibres)
     a_load = Counter()
@@ -226,6 +264,7 @@ def exhaustive_small() -> None:
     for first in subsets:
         perpendicular_footprint_audit(first)
         for second in subsets:
+            translate_partition_audit(first, second)
             audit([first], [second])
 
 
@@ -243,6 +282,9 @@ def random_systems() -> None:
         ]
         for values in v_fibres + w_fibres:
             perpendicular_footprint_audit(values)
+        for first in v_fibres:
+            for second in w_fibres:
+                translate_partition_audit(first, second)
         audit(v_fibres, w_fibres)
 
 

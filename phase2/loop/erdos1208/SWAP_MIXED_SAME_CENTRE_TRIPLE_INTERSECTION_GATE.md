@@ -278,6 +278,57 @@ its internal difference set creates a new adaptive-popular perpendicular
 core.  This is the label-preserving density increment missing from a bare
 cross-energy estimate.
 
+The recursion is lossless across all translate cells of one fibre pair.
+For `X,Y` put
+
+\[
+ S_d=X\cap(Y-d).
+\]
+
+For every nonzero internal switch `u`, direct double counting gives
+
+\[
+ \boxed{
+ \sum_d R_{S_d}(u)=R_X(u)R_Y(u).}                \tag{3.20}
+\]
+
+Indeed both sides count a start in `X\cap(X+u)`, a start in
+`Y\cap(Y+u)`, and their displacement `d`.  The third energy itself is
+
+\[
+ \boxed{
+ 3\sum_d{|S_d|\choose3}
+ ={1\over2}\sum_{d,u\ne0}
+   (|S_d|-2)R_{S_d}(u).}                         \tag{3.21}
+\]
+
+Thus (3.8) is exactly the mixed second-generation pencil (3.20), refined
+by its translate cell and weighted by the excess cell load.  In geometric
+notation, every occurrence counted by `R_{S_d}(u)` is simultaneously an
+internal `u`-pair in the two neighbour fibres, hence a literal two-sided
+row of the four-corner completion grid.  The missing theorem can therefore
+be stated without any new ambient energy:
+
+\[
+ \boxed{
+ \sum_{\rm endpoint\ fibres}\sum_{d,u\ne0}
+ (|S_d|-2)_+R_{S_d}(u)
+ \le N^{o(1)}W_\parallel.}                       \tag{3.22}
+\]
+
+Low translate load follows from (3.20); high load must yield a density
+increment in the completion grid.  This is the exact size-biased Carleson
+form of the direct `1/3` obstruction.
+
+Equivalently, each `S_d` is a clique on its `q`-records.  An edge
+`{q,q-u}` is simultaneously an internal `u`-pair in `X` and in `Y-d`, so
+it lifts to two synchronized completion squares.  Formula (3.21) counts
+the triangles of these cliques, with the three choices of distinguished
+edge.  The general graph inequality is false by a factor `|S_d|`; the
+metric theorem must prove that a dense family of these synchronized
+cliques either shares a high-reuse completion core or spends its mass on
+the determinant/height reservoir.
+
 ## 4. Exact stress and the failed uniform twelve-channel sum
 
 The augmented optimal-core analyzer gives the following repeated mixed
@@ -430,7 +481,8 @@ identity (3.7)--(3.8), its size-biased second-energy bound (3.9), and the
 one-switch envelope (3.12)--(3.14).  Finally it checks the perpendicular
 energy identity, footprint containment, and threshold decomposition
 (3.15)--(3.19) exhaustively and on random fibre systems.  It also verifies
-the affine-copy obstruction to ambient pointwise representation domination.
+the translate partition identities (3.20)--(3.21) and the affine-copy
+obstruction to ambient pointwise representation domination.
 
 The exact geometric stress rows are reproduced by
 
