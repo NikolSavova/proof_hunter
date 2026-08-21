@@ -467,6 +467,8 @@ def profile(
     matching_endpoint_switch_class_lambda: Counter[str] = Counter()
     matching_endpoint_switch_class_residual: Counter[str] = Counter()
     matching_endpoint_switch_class_residual_product: Counter[str] = Counter()
+    matching_endpoint_reverse_cross_support_ratio = Fraction(0)
+    matching_endpoint_reverse_cross_support_row: tuple[object, ...] = ()
     for component, vertices in sorted(
         matching_component_vertices.items(),
         key=lambda item: (len(item[1]), item[0]),
@@ -648,6 +650,91 @@ def profile(
                     matching_endpoint_switch_residual_product += (
                         switch_residual * switch_load
                     )
+
+                    # Reconstruct the literal reverse records, discard one
+                    # largest t-fibre exactly as in G_2, and measure the
+                    # cross-support Y+Z inside each physical endpoint role.
+                    # This is diagnostic evidence for the matching-heavy
+                    # branch; no support inequality is assumed here.
+                    largest_neighbour = min(
+                        (
+                            neighbour
+                            for neighbour in q_fibres
+                            if fibre_internal_differences[neighbour][switch]
+                            == max(switch_weights)
+                        ),
+                        default=None,
+                    )
+                    reverse_by_role: dict[
+                        int, list[tuple[Point, Point, Point, Point]]
+                    ] = defaultdict(list)
+                    h_value = add(centre[1], rotate(centre[0]))
+                    for neighbour, q_values in q_fibres.items():
+                        if neighbour == largest_neighbour:
+                            continue
+                        first_pair = endpoint_map.get(neighbour[0])
+                        second_pair = endpoint_map.get(neighbour[1])
+                        endpoint_roles = (
+                            first_pair[0] if first_pair else None,
+                            first_pair[1] if first_pair else None,
+                            second_pair[0] if second_pair else None,
+                            second_pair[1] if second_pair else None,
+                        )
+                        assert endpoint_roles.count(endpoint) == 1
+                        role = endpoint_roles.index(endpoint)
+                        displacement = subtract(neighbour[0], centre[0])
+                        for q_value in q_values:
+                            if subtract(q_value, switch) not in q_values:
+                                continue
+                            x_value = subtract(centre[0], q_value)
+                            y_value = add(
+                                h_value,
+                                add(
+                                    rotate((-x_value[0], -x_value[1])),
+                                    rotate(displacement),
+                                ),
+                            )
+                            z_value = add(
+                                h_value,
+                                add(
+                                    rotate((-x_value[0], -x_value[1])),
+                                    linear(displacement),
+                                ),
+                            )
+                            assert y_value in differences
+                            assert z_value in differences
+                            reverse_by_role[role].append(
+                                (x_value, displacement, y_value, z_value)
+                            )
+                    assert sum(map(len, reverse_by_role.values())) == switch_residual
+                    for role, reverse_rows in reverse_by_role.items():
+                        row_count = len(reverse_rows)
+                        if row_count < 2:
+                            continue
+                        y_values = {row[2] for row in reverse_rows}
+                        z_values = {row[3] for row in reverse_rows}
+                        cross_support = {
+                            add(y_value, z_value)
+                            for y_value in y_values
+                            for z_value in z_values
+                        }
+                        ratio = Fraction(row_count * row_count, len(cross_support))
+                        if ratio > matching_endpoint_reverse_cross_support_ratio:
+                            matching_endpoint_reverse_cross_support_ratio = ratio
+                            matching_endpoint_reverse_cross_support_row = (
+                                row_count,
+                                len(y_values),
+                                len(z_values),
+                                len(cross_support),
+                                max(Counter(row[0] for row in reverse_rows).values()),
+                                max(Counter(row[1] for row in reverse_rows).values()),
+                                role,
+                                component,
+                                centre,
+                                endpoint,
+                                switch,
+                                tuple(sorted(reverse_rows)),
+                            )
                     switch_class = (
                         "popular" if switch in adaptive_popular else "nonpopular"
                     )
@@ -1157,6 +1244,16 @@ def profile(
                 ],
             )
             for switch_class in ("nonpopular", "popular")
+        ),
+        "matching_endpoint_reverse_cross_support": (
+            (
+                "maximum_record_square_to_cross_support",
+                (
+                    matching_endpoint_reverse_cross_support_ratio.numerator,
+                    matching_endpoint_reverse_cross_support_ratio.denominator,
+                ),
+            ),
+            ("maximizing_row", matching_endpoint_reverse_cross_support_row),
         ),
         "matching_translate_profiles": tuple(
             (row, 1) for row in matching_translate_profiles
