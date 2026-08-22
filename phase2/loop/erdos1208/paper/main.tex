@@ -1,0 +1,571 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cM}{\mathfrak M}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\rd}{\operatorname{rd}}
+\newcommand{\Nm}{\operatorname N}
+\newcommand{\Cl}{\operatorname{Cl}}
+
+\title{Distance-Sidon subsets from bounded-inertia number-field towers}
+
+\author{}
+\date{\today\thanks{This investigation was carried out with substantial
+assistance from automated systems, and we omit a conventional byline rather
+than overstate the named researchers' personal contributions.
+\emph{Nikol Savova}, University of Oxford,
+\href{mailto:nikol.p.savova@gmail.com}{\texttt{nikol.p.savova@gmail.com}};
+\emph{Sihao Huang}, independent researcher,
+\href{mailto:sihao.c.huang@gmail.com}{\texttt{sihao.c.huang@gmail.com}}.}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite planar point set $P$, let $s(P)$ be the largest size of a
+subset whose pairwise distances are all distinct, and put
+\[
+ F_2(n)=\min_{|P|=n}s(P).
+\]
+Recent work gives the window
+$n^{1/3}\ll F_2(n)\ll n^{1/2-\varepsilon}$ for some absolute
+$\varepsilon>0$.  We make the upper-bound saving explicit:
+\[
+ \boxed{F_2(n)\ll n^{0.49368323}}.
+\]
+The construction combines three ingredients.  We impose bounded tame
+inertia and bounded Frobenius order in a Golod--Shafarevich pro-$2$ tower;
+we place points in a product of disks in the Eisenstein CM extension of a
+totally real layer; and we amplify repeated algebraic norms using
+prime-power valuation patterns.  A one-sided ideal-packing argument gives
+the geometric constant $2\sqrt3/\pi$.  The tower is built over
+$\Q(\sqrt{11235917})$.  Its class, ray, Frobenius, and numerical endpoint
+data are finite and accompanied by independently reproducible certificates.
+\end{abstract}
+
+\section{Introduction}
+
+Call a finite set $A\subset\R^2$ \emph{distance-Sidon} if the map
+\[
+ \{x,y\}\longmapsto |x-y|,
+ \qquad x,y\in A,\quad x\ne y,
+\]
+is injective.  For a finite planar set $P$, write
+\[
+ s(P)=\max\{|A|:A\subseteq P\text{ is distance-Sidon}\},
+ \qquad F_2(n)=\min_{|P|=n}s(P).
+\]
+The problem of estimating $F_2(n)$ is recorded as Erd\H{o}s problem
+1208~\cite{ErdosProblems1208}.  Charalambides proved
+$F_2(n)\gg n^{1/3}/\log n$~\cite{Charalambides2013}; Clemen, F\"uhrer,
+and Roche-Newton recently removed the logarithm~\cite{ClemenEtAl2026}.
+In the other direction, Lee, Pohoata, and Zhu constructed point sets for
+which every sufficiently large subset contains a repeated
+distance~\cite{LeePohoataZhu2026}.  In particular, for some absolute
+$\varepsilon>0$,
+\[
+ n^{1/3}\ll F_2(n)\ll n^{1/2-\varepsilon}.       \tag{1.1}
+\]
+
+Our purpose is to give a compact quantitative version of the upper-bound
+construction.
+
+\begin{theorem}\label{thm:main}
+For every positive integer $n$, there is an $n$-point set
+$P\subset\R^2$ such that every distance-Sidon subset of $P$ has size
+$O(n^{0.49368323})$.  Equivalently,
+\[
+ F_2(n)\ll n^{0.49368323}.
+\]
+\end{theorem}
+
+The proof is an arithmetic amplification of the Minkowski-grid idea.  Its
+architecture is easier to describe than the numerical exponent suggests.
+An infinite totally real pro-$2$ tower supplies fields of dyadic degree and
+bounded root discriminant.  At many unramified primes, Frobenius has order
+at most two.  After adjoining a primitive cube root of unity, those primes
+split, so a difference $z$ admits several prescribed allocations of its
+valuations between the conjugate factors of $z\bar z$.  If a subset had all
+distances distinct, these allocations could not occur too often.  Comparing
+a lower bound from congruence classes with an upper bound for totally
+positive ideal elements yields the master inequality in
+\cref{prop:master}.
+
+Two refinements account for the explicit saving.  First, forcing the square
+of each tame inertia generator to be trivial limits every ramification
+index to two while preserving the Frattini quotient.  Second, a product of
+planar disks in an Eisenstein CM field has a better diameter-to-volume ratio
+than the coordinate boxes used in the initial construction.  The remaining
+optimization is a one-dimensional concave knapsack problem.
+
+The number-field input follows the same tower-cutting framework used by
+Hajir, Maire, and Ramakrishna~\cite{HajirMaireRamakrishna2021} and in the
+recent number-field construction for the unit-distance
+problem~\cite{AlonEtAl2026}.  We quote the standard tame, totally real
+Shafarevich presentation theorem in the precise form needed below.  The
+field-specific calculations use PARI/GP~\cite{PARI2}; the accompanying
+verifier reconstructs the relevant Kummer kernel, checks every selected
+prime, and evaluates the final inequalities at two independent precisions.
+
+All logarithms below are natural.
+
+\section{The Eisenstein norm sieve}
+
+Let $L$ be a totally real field of degree $m$, and put
+\[
+ K=L(\zeta_3),\qquad \zeta_3^2+\zeta_3+1=0.
+\]
+Choose one complex embedding of $K$ above each real embedding of $L$.
+This embeds $\cO_K$ as a lattice in $\C^m$.
+
+\subsection{A product of disks}
+
+For $R>0$, let $\Delta_R\subset\C$ be a disk of area $R^2$, and set
+$\mathcal D_R=\Delta_R^m$.  The complex Minkowski lattice has covolume
+\[
+ \operatorname{covol}(\cO_K)=2^{-m}\sqrt{|\operatorname{disc}K|}.
+\]
+The relative discriminant of $L(\zeta_3)/L$ divides $3\cO_L$, whence
+\[
+ \operatorname{covol}(\cO_K)
+ \le \left(\frac{\sqrt3}{2}\rd(L)\right)^m.       \tag{2.1}
+\]
+Averaging translates over a fundamental domain therefore proves the next
+elementary fact.
+
+\begin{lemma}[disk averaging]\label{lem:disk}
+There is a translate of $\mathcal D_R$ containing at least
+\[
+ \left(\frac{2R^2}{\sqrt3\,\rd(L)}\right)^m
+\]
+elements of $\cO_K$.  If $z$ is the difference of two elements in that
+translate and $\eta=z\bar z\in\cO_L$, then, for every real embedding
+$\sigma:L\hookrightarrow\R$,
+\[
+ 0<\sigma(\eta)\le \frac4\pi R^2.                \tag{2.2}\label{eq:norm-box}
+\]
+\end{lemma}
+
+\begin{proof}
+The first assertion is volume divided by covolume.  A disk of area $R^2$
+has diameter $2R/\sqrt\pi$.  Under the complex embedding above $\sigma$,
+$\sigma(z\bar z)=|z|^2$, which proves \eqref{eq:norm-box}.
+\end{proof}
+
+We shall use
+\[
+ R^2=\frac{\sqrt3}{2}\rd(L)n^{1/m}.              \tag{2.3}\label{eq:R-choice}
+\]
+Then the selected translate contains at least $n$ lattice points.  After
+projection through one distinguished complex embedding, it gives a planar
+point set.  That projection is injective.  Moreover, equality of two
+projected squared distances implies equality of the corresponding elements
+$z\bar z\in L$, because a field embedding is injective.
+
+The following one-sided estimate is the reason that total positivity is
+useful.
+
+\begin{lemma}[one-sided ideal packing]\label{lem:ideal-packing}
+Let $\mathfrak a\subset\cO_L$ be a nonzero integral ideal and $Y>0$.
+Then
+\[
+ \#\{\eta\in\mathfrak a:0<\sigma(\eta)\le Y
+       \text{ for every }\sigma:L\hookrightarrow\R\}
+ \le \left(1+\frac{Y}{\Nm(\mathfrak a)^{1/m}}\right)^m. \tag{2.4}
+\]
+\end{lemma}
+
+\begin{proof}
+Partition $(0,Y]^m$ into half-open cubes of side
+$\delta=\Nm(\mathfrak a)^{1/m}$.  Two embedded ideal elements in one cube
+would have a nonzero difference $\gamma\in\mathfrak a$ with
+$|\Nm_{L/\Q}\gamma|<\delta^m=\Nm\mathfrak a$.  This is impossible because
+$(\gamma)\subseteq\mathfrak a$.  There are at most
+$(1+Y/\delta)^m$ cubes.
+\end{proof}
+
+\subsection{Valuation patterns}
+
+Suppose a prime ideal $\mathfrak q$ of $L$ splits in $K/L$ as
+\[
+ \mathfrak q\cO_K=\mathfrak P\bar{\mathfrak P}.
+\]
+Fix a depth $k\ge0$.  For each $0\le a\le k$, consider the additive
+lattice
+\[
+ I_a=\mathfrak P^a\bar{\mathfrak P}^{,k-a}\subset\cO_K. \tag{2.5}
+\]
+It has index $\Nm(\mathfrak q)^k$.  Products over several prime ideals and
+possibly different depths give pattern lattices $I_{\mathbf a}$.  Write
+\[
+ \cM=\prod_{\mathfrak q}\mathfrak q^{k_{\mathfrak q}},
+ \quad
+ H=\prod_{\mathfrak q}(k_{\mathfrak q}+1),
+ \quad
+ \Lambda=\prod_{\mathfrak q}
+     \left(1+\Nm\mathfrak q^{-1}+\cdots+
+                 \Nm\mathfrak q^{-k_{\mathfrak q}}\right),             \tag{2.6}
+\]
+and $\mu=\Nm(\cM)^{1/m}$.
+
+For a finite set $A\subset\cO_K$, Cauchy--Schwarz over the cosets of every
+pattern lattice gives
+\[
+ \sum_{\mathbf a}\#\{(x,y)\in A^2:x\ne y, x-y\in I_{\mathbf a}\}
+ \ge H\frac{|A|(|A|-\Nm\cM)}{\Nm\cM}.           \tag{2.7}\label{eq:pair-lower}
+\]
+On the other hand, if $z=x-y$ belongs to several patterns at a fixed prime,
+the excess multiplicity forces an extra power of $\mathfrak q$ to divide
+$z\bar z$.  More precisely, the number of patterns containing $z$ is at
+most the number of ideals $\mathfrak b\mid\cM$ for which
+\[
+ \cM\mathfrak b\mid(z\bar z).                    \tag{2.8}\label{eq:divisor-switch}
+\]
+This is the divisor switch: at $\mathfrak P$ and
+$\bar{\mathfrak P}$, the admissible values of $a$ form the interval
+$[k-v_{\bar{\mathfrak P}}(z),v_{\mathfrak P}(z)]\cap[0,k]$.
+
+If the planar projection of $A$ is distance-Sidon, each nonzero value
+$z\bar z$ comes from at most two ordered pairs.  Applying
+\cref{lem:ideal-packing} to \eqref{eq:divisor-switch}, and then summing
+$\Nm(\mathfrak b)^{-1}$ over $\mathfrak b\mid\cM$, yields the master bound.
+
+\begin{proposition}[norm-sieve master inequality]\label{prop:master}
+Let $A$ be a distance-Sidon subset of a translate of $\mathcal D_R$.
+With the notation above,
+\[
+ |A|\le \mu^m+\sqrt2R^m
+ \left[(\Lambda/H)^{1/m}
+       \left(\frac4\pi+\frac{\mu^2}{R^2}\right)
+ \right]^{m/2}.                                  \tag{2.9}\label{eq:master}
+\]
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:norm-box}, every norm $z\bar z$ lies in the positive box with
+$Y=4R^2/\pi$.  For $\mathfrak b\mid\cM$,
+\cref{lem:ideal-packing} gives
+\[
+ \#\{\eta\in\cM\mathfrak b:0<\sigma(\eta)\le Y\}
+ \le\left[
+ \frac{R^2}{\mu\Nm(\mathfrak b)^{1/m}}
+ \left(\frac4\pi+\frac{\mu^2}{R^2}\right)
+ \right]^m,
+\]
+where we used $\Nm(\mathfrak b)^{1/m}\le\mu$.  Sum over
+$\mathfrak b\mid\cM$, use
+$\sum_{\mathfrak b\mid\cM}\Nm(\mathfrak b)^{-1}=\Lambda$, multiply by
+the ordered-pair factor two, and compare with \eqref{eq:pair-lower}.  If
+$|A|\ge\mu^m$, then
+$(|A|-\mu^m)^2\le |A|(|A|-\mu^m)$; taking square roots gives
+\eqref{eq:master}.
+The case $|A|<\mu^m$ is immediate.
+\end{proof}
+
+Combining \eqref{eq:R-choice} with \eqref{eq:master} replaces the real
+two-coordinate
+constant $4/\pi$ by the effective constant
+\[
+ C_{\rm Eis}=\frac{2\sqrt3}{\pi}.                 \tag{2.10}
+\]
+
+\section{A bounded-inertia pro-$2$ tower}
+
+We record the group-theoretic input in a form that separates the standard
+presentation theorem from the two elementary quotient operations used here.
+
+\begin{proposition}[tower criterion]\label{prop:tower}
+Let $E$ be totally real, and let $T$ be a finite set of odd prime ideals of
+$E$.  Suppose the maximal totally real pro-$2$ extension unramified away
+from $T$ has a presentation with generator rank $d$ and relation rank at
+most $r_0$.  Let $U$ be a set of unramified prime ideals with chosen
+Frobenius elements.  Form the quotient obtained by imposing
+\[
+ \tau_{\mathfrak p}^2=1\quad(\mathfrak p\in T),
+ \qquad
+ \operatorname{Frob}_{\mathfrak q}^2=1\quad(\mathfrak q\in U),         \tag{3.1}\label{eq:square-caps}
+\]
+where $\tau_{\mathfrak p}$ generates tame pro-$2$ inertia.  If
+\[
+ 4(r_0+|T|+|U|)<d^2,                              \tag{3.2}\label{eq:gs-condition}
+\]
+then this quotient is infinite.  Its Frattini quotient is unchanged, and
+in every finite layer its ramification index at $\mathfrak p\in T$ is at
+most two.
+\end{proposition}
+
+\begin{proof}
+Tame pro-$2$ inertia at an odd prime is procyclic.  Normal closure of the
+single relation $\tau_{\mathfrak p}^2$ therefore caps all conjugate inertia
+groups above $\mathfrak p$.  Every relation in \eqref{eq:square-caps} is a square and
+hence lies in the Frattini subgroup, so the generator rank remains $d$.
+Adding at most $|T|+|U|$ relations gives the relation bound in
+\eqref{eq:gs-condition}.  The strict Golod--Shafarevich inequality then proves
+infinitude; see, for example, \cite{Ershov2012}.  The ramification assertion
+is immediate from the inertia cap.
+\end{proof}
+
+The standard tame Shafarevich presentation theorem, in the form used in
+\cite{AlonEtAl2026,Koch2002}, computes $d$ from the totally positive
+$T$-unit squareclasses that are squares modulo $4$, and gives
+\[
+ r_0\le d+1                                             \tag{3.3}\label{eq:shaf-bound}
+\]
+for the real quadratic fields used here.  We shall verify the squareclass
+space explicitly rather than invoke a generic rank estimate.
+
+At a tame prime $\mathfrak p$ of $E$, the relative different exponent in a
+finite layer is at most one half of the relative degree.  Thus the tower in
+\cref{prop:tower} has root discriminant bounded by
+\[
+ D_0=\rd(E)\prod_{\mathfrak p\in T}
+              \Nm_E(\mathfrak p)^{1/(2[E:\Q])}.         \tag{3.4}
+\]
+For a real quadratic base, the exponent is $1/4$.
+
+We also need the Frobenius caps to make primes split in the Eisenstein CM
+extension of each layer.  Let $Q=\Nm_E\mathfrak q$.  If $Q\equiv1\pmod3$,
+this is automatic.  If $Q\equiv2\pmod3$, require the Frobenius class of
+$\mathfrak q$ to be nonzero in the Frattini quotient.  It then has exact
+order two after the square cap, and the residue field in the selected
+layers has size $Q^2\equiv1\pmod3$.
+
+For completeness, an infinite finitely generated pro-$2$ group has, for
+every sufficiently large $j$, an open normal subgroup $N_j$ contained in
+its Frattini subgroup and of index $2^j$.  Indeed, take arbitrarily large
+finite $2$-group quotients below the Frattini subgroup and refine a normal
+series by central factors of order two.  The corresponding Galois layers
+have every sufficiently large dyadic degree and preserve every nonzero
+Frattini class.
+
+\section{The local frontier}
+
+Let a prime ideal of the quadratic base have norm $Q$.  Across an orbit in
+a tower layer, one extra unit of valuation depth has absolute-degree
+normalized cost
+\[
+ c_Q=\frac12\log Q.                                \tag{4.1}\label{eq:item-cost}
+\]
+For $0<t<1$ and $k\ge1$, put
+\[
+ A_k(t)=\frac{k+1}{k}\frac{1-t^k}{1-t^{k+1}}.     \tag{4.2}
+\]
+The guaranteed gain of the $k$th depth increment is
+\[
+ g_{Q,k}=\frac14\log A_k(Q^{-2}).                 \tag{4.3}\label{eq:item-gain}
+\]
+This is exact when the residue degree is two and is a lower bound when it
+is one.
+
+\begin{lemma}[all-depth comparison]\label{lem:all-depth}
+For $0<t<1$ and $k\ge1$,
+\[
+ A_k(t)^2\ge A_k(t^2).
+\]
+Moreover $A_k(t)$ decreases with $k$.
+\end{lemma}
+
+\begin{proof}
+After cancelling positive factors, the first assertion is equivalent to
+\[
+ (1-t)\left(\sum_{j=0}^{2k}t^j-(2k+1)t^k\right)\ge0,
+\]
+which is AM--GM.  For the second, write
+\[
+ b_k(t)=\frac{1+t+\cdots+t^k}{k+1}
+       =\frac1{1-t}\int_t^1x^k\,dx.
+\]
+Cauchy--Schwarz makes the moment sequence $b_k(t)$ log-convex, while
+$A_k(t)=b_{k-1}(t)/b_k(t)$.
+\end{proof}
+
+Sort all available items $(c_Q,g_{Q,k})$ by decreasing slope
+$g_{Q,k}/c_Q$, subject to taking the depths at each prime in order.  Let
+$F(x)$ be the fractional-knapsack gain at total cost $x$.  By
+\cref{lem:all-depth}, $F$ is increasing, concave, and realizable in high
+degree up to an error $O(1/m)$: assign the final fractional item to the
+largest collection of prime ideals whose total residue degree remains below
+the desired fraction.
+
+Put
+\[
+ w=\frac{\log n}{2m},\qquad x=\log\mu.
+\]
+Set $x=2\alpha w$, so the first term in \eqref{eq:master} is $n^\alpha$.
+Using \eqref{eq:R-choice}, the second term is at most a constant times
+$n^\alpha$
+provided
+\[
+ F(2\alpha w)\ge
+ \log(C_{\rm Eis}D_0)+(2-4\alpha)w+
+ \log\left(1+
+ \frac{e^{2(2\alpha-1)w}}{C_{\rm Eis}D_0}\right).       \tag{4.4}\label{eq:frontier}
+\]
+The difference between the two sides is concave in $w$: the first term is
+concave, the middle term is affine, and
+$-\log(1+ae^{-cw})$ is concave for $a,c>0$.  Consequently it is enough to
+check \eqref{eq:frontier} at the two endpoints of an interval
+$[w_0,2w_0]$.
+
+\begin{lemma}[phase criterion]\label{lem:phase}
+Suppose the tower has layers of every sufficiently large dyadic degree and
+\eqref{eq:frontier} holds with a fixed positive margin at $w=w_0$ and
+$w=2w_0$.
+Then $F_2(n)\ll n^\alpha$.
+\end{lemma}
+
+\begin{proof}
+For every sufficiently large $n$, choose a tower layer of degree $m$ such
+that $w=(\log n)/(2m)$ lies in $[w_0,2w_0)$.  Concavity gives
+\eqref{eq:frontier}; the fixed endpoint margin absorbs the $O(1/m)$ placewise
+rounding error.  Apply \cref{prop:master} to the $n$ ambient points supplied
+by \cref{lem:disk}.  The finitely many smaller values of $n$ are absorbed
+by the implied constant.
+\end{proof}
+
+\section{The explicit tower and certificate}
+
+We now specialize to
+\[
+ E=\Q(\sqrt D),\qquad D=11235917=7\cdot11\cdot337\cdot433. \tag{5.1}
+\]
+The ring of integers has basis $1,\omega$, where
+\[
+ \omega^2-\omega-2808979=0.
+\]
+Let $T$ be the first $217$ odd prime ideals of $E$, ordered by norm with
+the deterministic tie order used in the certificate.
+
+\begin{proposition}[finite arithmetic certificate]\label{prop:certificate}
+For the field and prime set above, the following statements hold.
+\begin{enumerate}
+\item
+$\Cl(E)\cong C_{14}\times C_2$ and
+$\Cl^+(E)\cong C_{14}\times C_2\times C_2$.
+The $T$-class group is trivial.
+\item
+The $219$ fundamental $T$-unit squareclasses have rank-four image under the
+two sign and modulo-$4$ conditions.  The safe Kummer kernel therefore has
+dimension $d=215$.
+\item
+There are $11123$ useful prime ideals after $T$, with no rejection before
+the cutoff.  The last selected and useful ideals have data
+\[
+ (1063,1063,963),\qquad (121951,121951,70091),      \tag{5.2}
+\]
+where the triples record norm, underlying rational prime, and the residue
+of $\omega$.
+\item
+The tower quotient has relation rank at most
+\[
+ r=216+217+11123=11556,
+ \qquad 4r=46224=215^2-1<215^2.                   \tag{5.3}\label{eq:gs-certificate}
+\]
+Its root discriminant satisfies
+\[
+ \log D_0=\frac12\log D+\frac14\sum_{\mathfrak p\in T}
+                      \log\Nm\mathfrak p
+ =318.9527585916460414427765165\ldots.             \tag{5.4}
+\]
+\end{enumerate}
+\end{proposition}
+
+The class and ray assertions in \cref{prop:certificate} are certified by
+PARI/GP.  They are not used as opaque numerical output: the verifier expands
+the returned $T$-units in the basis $1,\omega$, recomputes both real signs
+and the square classes modulo $4$, and independently obtains the same
+rank-four row space.  For every candidate norm congruent to two modulo
+three, it evaluates the quadratic-character functional on this exact
+$215$-dimensional kernel.  All $11123$ required ideals pass.
+
+The numerical part uses the rigorous rational estimate
+\[
+ C_{\rm Eis}=\frac{2\sqrt3}{\pi}<\frac{71603}{64935}. \tag{5.5}\label{eq:safe-constant}
+\]
+It constructs the sorted frontier from
+\eqref{eq:item-cost}--\eqref{eq:item-gain}.  At
+\[
+ \alpha=0.49368323,\qquad
+ w_0=39928.00429278135001166535408\ldots,          \tag{5.6}
+\]
+the margins in \eqref{eq:frontier} at $w_0$ and $2w_0$ are respectively
+\[
+ 0.001632817036815572250219059\ldots,
+ \qquad
+ 0.003247075212037706995029834\ldots.              \tag{5.7}\label{eq:margins}
+\]
+The active terminal slopes are approximately $0.0306672$ and $0.0191268$.
+The largest omitted fourth-depth slope is
+\[
+ 0.009999973433845534938505168\ldots,               \tag{5.8}\label{eq:omitted-slope}
+\]
+so \cref{lem:all-depth} excludes every omitted later depth.  The two
+fixed-anchor threshold crossings lie below $0.49368323$; equalizing them
+gives
+\[
+ \alpha_*=0.4936832199308881880151091959\ldots.     \tag{5.9}
+\]
+
+\begin{proof}[Proof of \cref{thm:main}]
+By \cref{prop:certificate} and the tame Shafarevich bound
+\eqref{eq:shaf-bound}, the strict inequality \eqref{eq:gs-certificate}
+allows \cref{prop:tower} to produce an
+infinite totally real tower with root discriminant at most $D_0$ and all
+selected useful primes of residue degree at most two.  The Frobenius test
+ensures that those primes split after passing to the Eisenstein CM
+extension.  Equations
+\eqref{eq:safe-constant}--\eqref{eq:omitted-slope} verify the two hypotheses of
+\cref{lem:phase}.  The lemma gives
+$F_2(n)\ll n^{0.49368323}$.
+\end{proof}
+
+\section{Verification and scope}
+
+The proof has a conceptual part and a finite certificate.  The conceptual
+part is contained in the lemmas and propositions of Sections~2--4; none of
+those statements depends on the particular quadratic field.  The certificate
+checks:
+\begin{itemize}
+\item the BNF, ordinary and narrow class groups, and localized class group;
+\item the exact $T$-unit basis and its sign/modulo-$4$ kernel;
+\item every selected prime ideal and every Frobenius usefulness test;
+\item the integer Golod--Shafarevich inequality and root discriminant;
+\item the complete active depth frontier, omitted-depth cutoff, and both
+endpoint inequalities at $100$ and $150$ decimal digits.
+\end{itemize}
+Each endpoint computation is stable on increasing the working precision from
+$100$ to $150$ decimal digits, while the advertised margins exceed $10^{-3}$.
+The repository includes a second hostile verifier which independently
+reconstructs the Kummer row space and repeats the arithmetic and endpoint
+checks; its output agrees far beyond the displayed precision.
+
+This paper does not determine the order of $F_2(n)$.  The gap between
+$1/3$ and $0.49368323$ remains substantial.  Nor do we claim that
+$\Q(\sqrt{11235917})$ is globally optimal for the construction.  The point
+of the explicit field is to make the quantitative theorem finite and
+reproducible.  A significant approach toward the conjectural cube-root
+scale will require a new global mechanism rather than further decimal
+optimization of the same tower.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}
