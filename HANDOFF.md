@@ -65,6 +65,41 @@
 
 ## 3. WHAT WE'VE DONE
 
+**⭐ 2026-08-21 — ERDŐS #1208: THE SWAP ROUTE IS NOW AN ENDPOINT-LABELLED DENSE-CHORD PACKING PROBLEM.**
+The selected same-centre survivor has been rewritten as a lossless `K_{2,4}`
+owner system.  The first row and one track recover the entire six-track
+configuration, while every ambient owner of load `r` lies in the natural
+core level `floor(2r/3)`.  Thus the rich tail no longer carries an opaque
+optimal-core selector.
+
+For an owner parameter set `S`, the literal footprint is `Phi(S)=JS-S`.
+Either this footprint expands, in which case its total mass is paid by its
+actual support plus explicit owner-pair collisions, or `S` has many shifts
+`u` for which both `u` and `Ju` are popular.  A collision between owners
+`(O,S)` and `(O',T)` has the exact orthogonal-correlation identity
+
+`sum_z m_(O,S)(z)m_(O',T)(z) = sum_v R_(S,T)(v)R_(S,T)(O-O'+Jv)`.
+
+Choosing canonical representations splits every collision into a diffuse
+case, with a uniquely oriented cross pair, and a dense case containing a
+literal deep-owner `K_{2,2}`.  In the dense case two common chords
+`alpha,beta` make the two physical squared-norm gaps have Jacobian
+`4 alpha dot beta`.  Hence the dominant branch is either a rank-two metric
+lattice cell, or an exact perpendicular two-line configuration.  Costas
+stresses strongly favour the transverse branch: `90/93` dense collisions at
+`p=23` and all `80/80` at the top `p=31` band are transverse, with minimum
+selected chord dot products `23^2` and `31^2` respectively.
+
+This is substantive narrowing, not a proof.  The exact remaining theorem is
+a **global determinant-plus-physical-owner packing bound** for disjoint-owner
+dense `K_{2,2}` configurations, together with diffuse/nonresonant and
+perpendicular-line residuals.  Generic additive energy, support collision,
+pointwise popularity, and owner-free incidence bounds have verified
+countermodels and must not be restarted.  Full formulas, barriers, stress
+profiles, and commands are in
+`phase2/loop/erdos1208/HANDOFF_20260819.md` and the nine
+`SWAP_K24_*.md` notes added with this checkpoint.
+
 **⭐ 2026-08-19 — ERDŐS #1208: ADAPTIVE CROSS-PAIR `D^2` CHARGE IS THE NEW LEAD.**
 For each rich-fibre incidence put
 `X_F(q)=(u+q,w-q,w-(I+J)q) in D^3`.  Every one of the nine cross pairs
@@ -1833,6 +1868,12 @@ for Engine-B search, i.e. the WRONG rubric for this mode → re-tag everything.
 
 **Erdős #1208 candidate-result obligations.**
 
+- [ ] Prove the new direct swap gate: globally pack the metric-transverse,
+  disjoint-owner dense `K_{2,2}` cells using the determinant
+  `4|alpha dot beta|` while retaining all physical owner labels.  Separately
+  pay the diffuse/nonresonant and exact perpendicular-line residuals.  Read
+  `phase2/loop/erdos1208/HANDOFF_20260819.md` first; do not drop to an
+  owner-free support-energy or pointwise-popularity surrogate.
 - [ ] Obtain a human number-theory audit of the current rank-715 tame
   totally-real Shafarevich/Golod--Shafarevich specialization and a separate
   geometric-combinatorics audit of master inequality (3.5) and its
@@ -2038,6 +2079,31 @@ rubric-prompt change). `rubric.yaml` weights are LOCKED v1; `--recompute` re-der
   "compilation" (the thing the expansion pass fixes); the venv must be recreated post-move.
 
 ## 7. IMMEDIATE NEXT ACTION — ⭐ NIKOL + SIHAO, START HERE
+
+### ⭐ 2026-08-21 — #1208: PROVE OR KILL THE JOINT DETERMINANT/OWNER PACKING GATE
+
+Start with `phase2/loop/erdos1208/HANDOFF_20260819.md`, then read
+`SWAP_K24_CROSS_FOOTPRINT_ORTHOGONAL_CORRELATION_GATE.md` and
+`SWAP_K24_DENSE_COLLISION_METRIC_CHORD_DICHOTOMY.md`.  Reproduce the nine
+new swap verifiers before changing the model.
+
+The proof target is no longer another numerical improvement to the current
+sub-half exponent.  It is a global bound at the conjectural cubic/ambient
+scale for the metric-transverse dense collisions, retaining simultaneously:
+the two physical owner triples, the two common chords, the four synchronized
+tracks, and the determinant `4|alpha dot beta|`.  First attempt a dyadic
+packing by determinant and owner depth.  Pre-register the kill: a
+polynomial-height distance-Sidon family with super-target mass in this exact
+decorated object.  Treat the perpendicular two-line branch separately by a
+one-dimensional divisor/incidence argument, and charge diffuse cells through
+their unique cross-parameter orientation.
+
+Do not weaken the object to a generic `D+D` energy, an owner-free
+orthogonal-correlation estimate, or a uniform popular-shift theorem: the new
+powers-of-two and Costas certificates show those implications are false or
+scale-sharp.  Success on the joint packing gate would be the first plausible
+direct route from the present machinery to the `1/3` exponent; failure should
+produce a genuine decorated counterexample rather than another local no-go.
 
 ### ⭐ 2026-08-17 — ERDŐS #1208: ATTACK THE TRANSVERSE-COLLISION GATE; HARDEN THE 0.494586 RESULT IN PARALLEL
 

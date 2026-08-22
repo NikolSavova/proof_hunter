@@ -43,6 +43,10 @@ Edge = tuple[Cell, Cell]
 Fibre = tuple[Point, Point]
 
 
+def determinant(first: Point, second: Point) -> int:
+    return first[0] * second[1] - first[1] * second[0]
+
+
 @dataclass(frozen=True)
 class CoreProfile:
     vertices: int
@@ -354,6 +358,18 @@ def profile(
             return "cross"
         return "none"
 
+    def is_matching_swap_edge(first: Cell, second: Cell) -> bool:
+        if points is None:
+            return False
+        return (
+            endpoint_relation(first[0], second[0]) == "none"
+            and endpoint_relation(first[1], second[1]) == "none"
+            and not (
+                (endpoints(first[0]) | endpoints(second[0]))
+                & (endpoints(first[1]) | endpoints(second[1]))
+            )
+        )
+
     def mixed_potentials(cell: Cell) -> tuple[Point, Point] | None:
         b_pair = endpoint_map.get(cell[0])
         ell_pair = endpoint_map.get(cell[1])
@@ -593,6 +609,13 @@ def profile(
     matching_projected_same_centre_transverse_weighted_footprint_depth: Counter[
         Point
     ] = Counter()
+    # One row per selected rich translate cell.  The perpendicular
+    # footprint is the literal translate of J S-S used in the closing
+    # density/packing gate; keeping it cellwise lets us measure the gate at
+    # the natural core level forced by the two incident bundles.
+    matching_projected_same_centre_cell_footprint_rows: list[
+        tuple[object, ...]
+    ] = []
     matching_projected_same_centre_physical_wedge_mass: Counter[
         tuple[object, ...]
     ] = Counter()
@@ -617,12 +640,63 @@ def profile(
     matching_projected_same_centre_physical_wedge_triple_owners: dict[
         tuple[object, ...], list[tuple[object, ...]]
     ] = defaultdict(list)
+    matching_selected_k24_bare_occurrence_load: Counter[
+        tuple[Point, Point, Point, Point]
+    ] = Counter()
+    matching_selected_k24_bare_first_tracks: dict[
+        tuple[Point, Point, Point, Point], set[Point]
+    ] = defaultdict(set)
+    matching_selected_k24_bare_cell_first_tracks: dict[
+        tuple[Point, Point, Point, Point], list[frozenset[Point]]
+    ] = defaultdict(list)
+    matching_selected_k24_bare_cell_centres: dict[
+        tuple[Point, Point, Point, Point], list[Point]
+    ] = defaultdict(list)
+    matching_selected_k24_anchored_occurrence_load: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_selected_k24_anchored_owner: dict[
+        tuple[object, ...], tuple[object, ...]
+    ] = {}
+    matching_selected_k24_physical_owner: dict[
+        tuple[object, ...], tuple[object, ...]
+    ] = {}
+    matching_selected_k24_physical_owner_colours: dict[
+        tuple[object, ...], set[Point]
+    ] = defaultdict(set)
+    matching_selected_k24_physical_owner_mass: Counter[
+        tuple[object, ...]
+    ] = Counter()
+    matching_selected_k24_row_representation_depth: Counter[
+        tuple[int, Point, Point]
+    ] = Counter()
 
     def projected_physical_edge(key: tuple[object, ...]) -> Point:
         assert key[0] in ("V", "W")
         if key[0] == "V":
             return add(key[2], key[3])  # type: ignore[arg-type]
         return key[3]  # type: ignore[return-value]
+
+    def selected_k24_key(tracks: tuple[Point, ...]) -> tuple[Point, ...]:
+        assert len(tracks) == 6
+        return tuple(
+            add(tracks[role], rotate(tracks[0]))
+            for role in (1, 2, 4, 5)
+        )
+
+    def recover_selected_k24_key(
+        key: tuple[Point, ...]
+    ) -> tuple[Point, Point, Point, Point]:
+        assert len(key) == 4
+        z_1, z_2, z_4, z_5 = key
+        a_value = subtract(z_2, z_1)
+        b_value = subtract(z_5, z_4)
+        e_value = add(
+            subtract(b_value, a_value),
+            rotate(subtract(z_4, z_1)),
+        )
+        invariant = add(z_1, linear(b_value))
+        return invariant, a_value, b_value, e_value
     matching_endpoint_metric_product_mass: Counter[int] = Counter()
     matching_endpoint_metric_product_reciprocal = Fraction(0)
     matching_endpoint_metric_product_minimum: int | None = None
@@ -866,6 +940,9 @@ def profile(
                             c_value, ell_value = centre
                             occurrence_footprints = []
                             occurrence_track_edges = []
+                            cell_k24_key: tuple[Point, ...] | None = None
+                            cell_k24_first_tracks: set[Point] = set()
+                            cell_k24_representations = [set() for _ in range(4)]
                             for q_value in sorted(cell_values):
                                 second_q = subtract(q_value, eta)
                                 tracks = (
@@ -888,6 +965,13 @@ def profile(
                                         linear(t_w),
                                     ),
                                 )
+                                current_k24_key = selected_k24_key(tracks)
+                                if cell_k24_key is None:
+                                    cell_k24_key = current_k24_key
+                                else:
+                                    assert current_k24_key == cell_k24_key
+                                assert tracks[0] not in cell_k24_first_tracks
+                                cell_k24_first_tracks.add(tracks[0])
                                 track_endpoints = [
                                     endpoints(track) for track in tracks
                                 ]
@@ -901,6 +985,24 @@ def profile(
                                 directed_track_edges = tuple(
                                     endpoint_map[track] for track in tracks
                                 )
+                                for key_index, role in enumerate((1, 2, 4, 5)):
+                                    first_head, first_tail = directed_track_edges[0]
+                                    other_head, other_tail = directed_track_edges[role]
+                                    representation = (
+                                        add(other_head, rotate(first_head)),
+                                        add(other_tail, rotate(first_tail)),
+                                    )
+                                    assert (
+                                        subtract(*representation)
+                                        == current_k24_key[key_index]
+                                    )
+                                    assert (
+                                        representation
+                                        not in cell_k24_representations[key_index]
+                                    )
+                                    cell_k24_representations[key_index].add(
+                                        representation
+                                    )
                                 assert 2 <= len(footprint) <= 12
                                 occurrence_footprints.append(footprint)
                                 occurrence_track_edges.append(
@@ -913,6 +1015,12 @@ def profile(
                                     len(footprint)
                                 ] += 1
                             assert len(occurrence_footprints) == load
+                            assert cell_k24_key is not None
+                            assert len(cell_k24_first_tracks) == load
+                            assert all(
+                                len(representations) == load
+                                for representations in cell_k24_representations
+                            )
                             matching_projected_same_centre_occurrence_footprints.append(
                                 tuple(occurrence_footprints)
                             )
@@ -930,6 +1038,29 @@ def profile(
                                 for first in cell_values
                                 for second in cell_values
                             }
+                            footprint_representations = Counter(
+                                add(
+                                    footprint_offset,
+                                    subtract(rotate(second), first),
+                                )
+                                for first in cell_values
+                                for second in cell_values
+                            )
+                            assert set(footprint_representations) == footprint
+                            assert sum(footprint_representations.values()) == load * load
+                            offdiagonal_footprint = frozenset(
+                                add(
+                                    footprint_offset,
+                                    subtract(rotate(second), first),
+                                )
+                                for first in cell_values
+                                for second in cell_values
+                                if first != second
+                            )
+                            footprint_energy = sum(
+                                multiplicity * multiplicity
+                                for multiplicity in footprint_representations.values()
+                            )
                             footprint_counter = (
                                 matching_projected_same_centre_resonant_footprint_depth
                                 if any(shift == (0, 0) for shift in shifts)
@@ -948,6 +1079,115 @@ def profile(
                                 neighbour_roles[v_neighbour],
                                 neighbour_roles[w_neighbour],
                             )
+                            recovered_r, recovered_a, recovered_b, recovered_e = (
+                                recover_selected_k24_key(cell_k24_key)
+                            )
+                            assert recovered_a == t_v
+                            assert recovered_b == t_w
+                            assert recovered_e == eta
+                            assert recovered_r == add(
+                                rotate(physical_wedge[1]), physical_wedge[2]
+                            )
+                            anchored_k24_key = (
+                                endpoint,
+                                neighbour_roles[v_neighbour],
+                                neighbour_roles[w_neighbour],
+                                *cell_k24_key,
+                            )
+                            owner_minimum_load = min(
+                                loads[centre],
+                                loads[v_neighbour],
+                                loads[w_neighbour],
+                            )
+                            assert owner_minimum_load >= 2 * load // 3
+                            matching_projected_same_centre_cell_footprint_rows.append(
+                                (
+                                    anchored_k24_key,
+                                    physical_wedge,
+                                    centre,
+                                    v_neighbour,
+                                    w_neighbour,
+                                    load,
+                                    mass,
+                                    owner_minimum_load,
+                                    frozenset(footprint),
+                                    offdiagonal_footprint,
+                                    footprint_energy,
+                                    tuple(sorted(cell_values)),
+                                    frozenset().union(*occurrence_footprints),
+                                )
+                            )
+                            owner_identity = (
+                                physical_wedge,
+                                centre,
+                                t_v,
+                                t_w,
+                                eta,
+                            )
+                            previous_owner = (
+                                matching_selected_k24_anchored_owner.setdefault(
+                                    anchored_k24_key, owner_identity
+                                )
+                            )
+                            assert previous_owner == owner_identity
+                            physical_owner_key = (
+                                neighbour_roles[v_neighbour],
+                                neighbour_roles[w_neighbour],
+                                t_v,
+                                t_w,
+                                cell_k24_key[0],
+                                c_value,
+                            )
+                            physical_owner_identity = (
+                                physical_wedge,
+                                centre,
+                                t_v,
+                                t_w,
+                            )
+                            previous_physical_owner = (
+                                matching_selected_k24_physical_owner.setdefault(
+                                    physical_owner_key,
+                                    physical_owner_identity,
+                                )
+                            )
+                            assert (
+                                previous_physical_owner
+                                == physical_owner_identity
+                            )
+                            matching_selected_k24_physical_owner_colours[
+                                physical_owner_key
+                            ].add(eta)
+                            matching_selected_k24_physical_owner_mass[
+                                physical_owner_key
+                            ] += mass
+                            assert (
+                                matching_selected_k24_anchored_occurrence_load[
+                                    anchored_k24_key
+                                ]
+                                == 0
+                            )
+                            matching_selected_k24_anchored_occurrence_load[
+                                anchored_k24_key
+                            ] = load
+                            matching_selected_k24_bare_occurrence_load[
+                                cell_k24_key
+                            ] += load
+                            matching_selected_k24_bare_first_tracks[
+                                cell_k24_key
+                            ].update(cell_k24_first_tracks)
+                            matching_selected_k24_bare_cell_first_tracks[
+                                cell_k24_key
+                            ].append(frozenset(cell_k24_first_tracks))
+                            matching_selected_k24_bare_cell_centres[
+                                cell_k24_key
+                            ].append(c_value)
+                            for key_index, representations in enumerate(
+                                cell_k24_representations
+                            ):
+                                for representation in representations:
+                                    matching_selected_k24_row_representation_depth[
+                                        key_index, *representation
+                                    ] += 1
                             matching_projected_same_centre_physical_wedge_mass[
                                 physical_wedge
                             ] += mass
@@ -2230,6 +2470,1005 @@ def profile(
         for cell in matching_projected_same_centre_occurrence_footprints
     )
     assert occurrence_cubic_mass == matching_projected_same_centre_cross_third
+    matching_selected_k24_anchored_cubic_mass = 3 * sum(
+        load * (load - 1) * (load - 2) // 6
+        for load in matching_selected_k24_anchored_occurrence_load.values()
+    )
+    matching_selected_k24_anchored_colour_mass: Counter[
+        tuple[Point, Point, Point]
+    ] = Counter()
+    for anchored_key, load in (
+        matching_selected_k24_anchored_occurrence_load.items()
+    ):
+        _, a_value, b_value, e_value = recover_selected_k24_key(
+            anchored_key[-4:]  # type: ignore[arg-type]
+        )
+        matching_selected_k24_anchored_colour_mass[
+            a_value, b_value, e_value
+        ] += 3 * load * (load - 1) * (load - 2) // 6
+    matching_selected_k24_bare_cubic_mass = 3 * sum(
+        load * (load - 1) * (load - 2) // 6
+        for load in matching_selected_k24_bare_occurrence_load.values()
+    )
+    matching_selected_k24_unique_track_cubic_mass = 3 * sum(
+        load * (load - 1) * (load - 2) // 6
+        for load in map(len, matching_selected_k24_bare_first_tracks.values())
+    )
+    assert (
+        matching_selected_k24_anchored_cubic_mass
+        == occurrence_cubic_mass
+    )
+    assert (
+        sum(matching_selected_k24_physical_owner_mass.values())
+        == matching_selected_k24_anchored_cubic_mass
+    )
+    assert (
+        matching_selected_k24_bare_cubic_mass
+        >= matching_selected_k24_anchored_cubic_mass
+    )
+    assert (
+        matching_selected_k24_bare_cubic_mass
+        >= matching_selected_k24_unique_track_cubic_mass
+    )
+    assert sum(matching_selected_k24_anchored_occurrence_load.values()) == sum(
+        len(cell)
+        for cell in matching_projected_same_centre_occurrence_footprints
+    )
+    matching_projected_same_centre_cell_footprint_level_profiles = []
+    for threshold in sorted(
+        {
+            int(row[5])
+            for row in matching_projected_same_centre_cell_footprint_rows
+        }
+    ):
+        threshold_rows = [
+            row
+            for row in matching_projected_same_centre_cell_footprint_rows
+            if int(row[5]) >= threshold
+        ]
+        footprint_depth: Counter[Point] = Counter()
+        footprint_representation_depth: Counter[Point] = Counter()
+        offdiagonal_depth: Counter[Point] = Counter()
+        weighted_depth: Counter[Point] = Counter()
+        weighted_pair_depth: Counter[tuple[Point, Point]] = Counter()
+        footprint_pair_depth: Counter[tuple[Point, Point]] = Counter()
+        endpoint_depth: Counter[Point] = Counter()
+        weighted_endpoint_depth: Counter[Point] = Counter()
+        footprint_incidence_tracks: dict[
+            Point, list[tuple[int, Point, Point]]
+        ] = defaultdict(list)
+        footprint_incidence_parameters: dict[
+            Point, list[tuple[int, Point, Point]]
+        ] = defaultdict(list)
+        footprint_representation_cells: dict[
+            Point, list[tuple[int, int]]
+        ] = defaultdict(list)
+        diagonal_footprint_representation_energy = 0
+        active_owner_vertices: set[Cell] = set()
+        centre_cell_counts: Counter[Cell] = Counter()
+        for cell_index, row in enumerate(threshold_rows):
+            _, _, centre, first_neighbour, second_neighbour = row[:5]
+            mass = int(row[6])
+            cell_footprint = row[8]
+            offdiagonal = row[9]
+            cell_endpoints = row[12]
+            assert isinstance(cell_footprint, frozenset)
+            assert isinstance(offdiagonal, frozenset)
+            assert isinstance(cell_endpoints, frozenset)
+            active_owner_vertices.update(
+                (centre, first_neighbour, second_neighbour)
+            )
+            centre_cell_counts[centre] += 1
+            footprint_depth.update(cell_footprint)
+            offdiagonal_depth.update(offdiagonal)
+            footprint_weight = Fraction(mass, len(cell_footprint))
+            for value in cell_footprint:
+                weighted_depth[value] += footprint_weight
+            endpoint_depth.update(cell_endpoints)
+            endpoint_weight = Fraction(mass, len(cell_endpoints))
+            for value in cell_endpoints:
+                weighted_endpoint_depth[value] += endpoint_weight
+            anchored_key = row[0]
+            assert isinstance(anchored_key, tuple)
+            first_colour = anchored_key[-4]
+            assert isinstance(first_colour, tuple)
+            c_value = centre[0]
+            parameter_values = row[11]
+            assert isinstance(parameter_values, tuple)
+            canonical_representations: dict[Point, tuple[Point, Point]] = {}
+            footprint_representations: Counter[Point] = Counter()
+            footprint_offset = add(first_colour, subtract(c_value, rotate(c_value)))
+            for first_parameter in parameter_values:
+                for second_parameter in parameter_values:
+                    footprint_value = add(
+                        footprint_offset,
+                        subtract(rotate(second_parameter), first_parameter),
+                    )
+                    canonical_representations.setdefault(
+                        footprint_value,
+                        (first_parameter, second_parameter),
+                    )
+                    footprint_representations[footprint_value] += 1
+            assert set(canonical_representations) == set(cell_footprint)
+            assert sum(footprint_representations.values()) == int(row[5]) ** 2
+            assert sum(
+                multiplicity * multiplicity
+                for multiplicity in footprint_representations.values()
+            ) == int(row[10])
+            footprint_representation_depth.update(footprint_representations)
+            diagonal_footprint_representation_energy += int(row[10])
+            for footprint_value, multiplicity in footprint_representations.items():
+                footprint_representation_cells[footprint_value].append(
+                    (cell_index, multiplicity)
+                )
+            for footprint_value, (
+                first_parameter,
+                second_parameter,
+            ) in canonical_representations.items():
+                first_track = subtract(c_value, first_parameter)
+                second_track = subtract(
+                    first_colour,
+                    rotate(subtract(c_value, second_parameter)),
+                )
+                assert first_track in differences
+                assert second_track in differences
+                assert add(first_track, second_track) == footprint_value
+                footprint_incidence_tracks[footprint_value].append(
+                    (cell_index, first_track, second_track)
+                )
+                footprint_incidence_parameters[footprint_value].append(
+                    (cell_index, first_parameter, second_parameter)
+                )
+            if len(cell_footprint) >= 2:
+                pair_weight = Fraction(
+                    mass,
+                    len(cell_footprint) * (len(cell_footprint) - 1) // 2,
+                )
+                for pair in combinations(sorted(cell_footprint), 2):
+                    footprint_pair_depth[pair] += 1
+                    weighted_pair_depth[pair] += pair_weight
+        natural_level = 2 * threshold // 3
+        natural_core = {
+            vertex for vertex, vertex_load in loads.items()
+            if vertex_load >= natural_level
+        }
+        assert active_owner_vertices <= natural_core
+        additive_collision_key_depth: Counter[tuple[object, ...]] = Counter()
+        support_collision_same_parameter = 0
+        support_collision_both_parameters_distinct = 0
+        support_collision_cross_load_11 = 0
+        support_collision_cross_load_minimum_one = 0
+        support_collision_cross_load_level_two = 0
+        support_collision_dense_metric_transverse = 0
+        support_collision_dense_two_line = 0
+        support_collision_dense_chord_dot_histogram: Counter[int] = Counter()
+        cross_pair_support_collision: Counter[tuple[int, int]] = Counter()
+        pair_cross_load_cache: dict[tuple[int, int], Counter[Point]] = {}
+        for footprint_value, incidences in footprint_incidence_tracks.items():
+            assert len(incidences) == footprint_depth[footprint_value]
+            parameter_incidences = footprint_incidence_parameters[footprint_value]
+            assert [incidence[0] for incidence in parameter_incidences] == [
+                incidence[0] for incidence in incidences
+            ]
+            for (
+                first_incidence,
+                second_incidence,
+            ), (
+                first_parameter_incidence,
+                second_parameter_incidence,
+            ) in zip(
+                combinations(incidences, 2),
+                combinations(parameter_incidences, 2),
+            ):
+                assert first_incidence[0] != second_incidence[0]
+                first_pair = first_incidence[1:]
+                second_pair = second_incidence[1:]
+                if first_pair > second_pair:
+                    first_pair, second_pair = second_pair, first_pair
+                additive_collision_key_depth[
+                    footprint_value, first_pair, second_pair
+                ] += 1
+                first_index = first_parameter_incidence[0]
+                second_index = second_parameter_incidence[0]
+                if first_index > second_index:
+                    first_parameter_incidence, second_parameter_incidence = (
+                        second_parameter_incidence,
+                        first_parameter_incidence,
+                    )
+                    first_index, second_index = second_index, first_index
+                pair = first_index, second_index
+                cross_pair_support_collision[pair] += 1
+                cross_load = pair_cross_load_cache.get(pair)
+                if cross_load is None:
+                    first_parameters = threshold_rows[first_index][11]
+                    second_parameters = threshold_rows[second_index][11]
+                    assert isinstance(first_parameters, tuple)
+                    assert isinstance(second_parameters, tuple)
+                    cross_load = Counter(
+                        subtract(first_parameter, second_parameter)
+                        for first_parameter in first_parameters
+                        for second_parameter in second_parameters
+                    )
+                    pair_cross_load_cache[pair] = cross_load
+                first_difference = subtract(
+                    first_parameter_incidence[1],
+                    second_parameter_incidence[1],
+                )
+                second_difference = subtract(
+                    first_parameter_incidence[2],
+                    second_parameter_incidence[2],
+                )
+                first_load = cross_load[first_difference]
+                second_load = cross_load[second_difference]
+                assert first_load >= 1 and second_load >= 1
+                if first_difference == (0, 0) or second_difference == (0, 0):
+                    support_collision_same_parameter += 1
+                else:
+                    support_collision_both_parameters_distinct += 1
+                if first_load == 1 and second_load == 1:
+                    support_collision_cross_load_11 += 1
+                if min(first_load, second_load) == 1:
+                    support_collision_cross_load_minimum_one += 1
+                else:
+                    support_collision_cross_load_level_two += 1
+                    first_parameters = threshold_rows[first_index][11]
+                    second_parameters = threshold_rows[second_index][11]
+                    assert isinstance(first_parameters, tuple)
+                    assert isinstance(second_parameters, tuple)
+                    first_representations = [
+                        (first_parameter, second_parameter)
+                        for first_parameter in first_parameters
+                        for second_parameter in second_parameters
+                        if subtract(first_parameter, second_parameter)
+                        == first_difference
+                    ]
+                    second_representations = [
+                        (first_parameter, second_parameter)
+                        for first_parameter in first_parameters
+                        for second_parameter in second_parameters
+                        if subtract(first_parameter, second_parameter)
+                        == second_difference
+                    ]
+                    first_chords = {
+                        subtract(first_pair[0], second_pair[0])
+                        for first_pair, second_pair in combinations(
+                            first_representations, 2
+                        )
+                    }
+                    second_chords = {
+                        subtract(first_pair[0], second_pair[0])
+                        for first_pair, second_pair in combinations(
+                            second_representations, 2
+                        )
+                    }
+                    assert (0, 0) not in first_chords
+                    assert (0, 0) not in second_chords
+                    maximum_dot = max(
+                        abs(
+                            first_chord[0] * second_chord[0]
+                            + first_chord[1] * second_chord[1]
+                        )
+                        for first_chord in first_chords
+                        for second_chord in second_chords
+                    )
+                    support_collision_dense_chord_dot_histogram[
+                        maximum_dot
+                    ] += 1
+                    if maximum_dot:
+                        support_collision_dense_metric_transverse += 1
+                    else:
+                        support_collision_dense_two_line += 1
+        footprint_collision_mass = sum(
+            depth * (depth - 1) // 2
+            for depth in footprint_depth.values()
+        )
+        cross_footprint_representation_energy = (
+            sum(
+                multiplicity * multiplicity
+                for multiplicity in footprint_representation_depth.values()
+            )
+            - diagonal_footprint_representation_energy
+        ) // 2
+        assert cross_footprint_representation_energy >= footprint_collision_mass
+        assert (
+            support_collision_same_parameter
+            + support_collision_both_parameters_distinct
+            == footprint_collision_mass
+        )
+        assert (
+            support_collision_cross_load_minimum_one
+            + support_collision_cross_load_level_two
+            == footprint_collision_mass
+        )
+        assert (
+            support_collision_dense_metric_transverse
+            + support_collision_dense_two_line
+            == support_collision_cross_load_level_two
+        )
+        assert sum(cross_pair_support_collision.values()) == footprint_collision_mass
+
+        def row_resonance_mask(row: tuple[object, ...]) -> tuple[bool, bool, bool]:
+            _, a_value, b_value, e_value = recover_selected_k24_key(
+                row[0][-4:]  # type: ignore[index]
+            )
+            physical_delta = subtract(a_value, b_value)
+            mask = tuple(
+                shift == (0, 0)
+                for shift in (
+                    e_value,
+                    rotate(add(e_value, physical_delta)),
+                    add(rotate(e_value), linear(physical_delta)),
+                )
+            )
+            assert len(mask) == 3
+            return mask  # type: ignore[return-value]
+
+        support_collision_owner_intersection: Counter[int] = Counter()
+        support_collision_resonance: Counter[
+            tuple[tuple[bool, bool, bool], tuple[bool, bool, bool]]
+        ] = Counter()
+        for pair, collision_count in cross_pair_support_collision.items():
+            owner_intersection = len(
+                set(threshold_rows[pair[0]][2:5])
+                & set(threshold_rows[pair[1]][2:5])
+            )
+            support_collision_owner_intersection[
+                owner_intersection
+            ] += collision_count
+            resonance_pair = tuple(
+                sorted(
+                    (
+                        row_resonance_mask(threshold_rows[pair[0]]),
+                        row_resonance_mask(threshold_rows[pair[1]]),
+                    )
+                )
+            )
+            support_collision_resonance[resonance_pair] += collision_count
+        cross_pair_representation_energy: Counter[tuple[int, int]] = Counter()
+        for incidences in footprint_representation_cells.values():
+            for (first_index, first_multiplicity), (
+                second_index,
+                second_multiplicity,
+            ) in combinations(incidences, 2):
+                assert first_index != second_index
+                if first_index > second_index:
+                    first_index, second_index = second_index, first_index
+                cross_pair_representation_energy[
+                    first_index, second_index
+                ] += first_multiplicity * second_multiplicity
+        assert sum(cross_pair_representation_energy.values()) == (
+            cross_footprint_representation_energy
+        )
+        cross_pair_normalized_energy = {
+            pair: Fraction(
+                energy,
+                int(threshold_rows[pair[0]][5])
+                * int(threshold_rows[pair[1]][5]),
+            )
+            for pair, energy in cross_pair_representation_energy.items()
+        }
+        cross_pair_product_baseline = sum(
+            int(threshold_rows[pair[0]][5])
+            * int(threshold_rows[pair[1]][5])
+            for pair in cross_pair_representation_energy
+        )
+        cross_pair_owner_intersection_histogram: Counter[int] = Counter()
+        cross_pair_owner_intersection_energy: Counter[int] = Counter()
+        cross_pair_resonance_histogram: Counter[
+            tuple[tuple[bool, bool, bool], tuple[bool, bool, bool]]
+        ] = Counter()
+        cross_pair_resonance_energy: Counter[
+            tuple[tuple[bool, bool, bool], tuple[bool, bool, bool]]
+        ] = Counter()
+        for pair, pair_representation_energy in (
+            cross_pair_representation_energy.items()
+        ):
+            first_owner_vertices = set(threshold_rows[pair[0]][2:5])
+            second_owner_vertices = set(threshold_rows[pair[1]][2:5])
+            owner_intersection = len(
+                first_owner_vertices & second_owner_vertices
+            )
+            cross_pair_owner_intersection_histogram[owner_intersection] += 1
+            cross_pair_owner_intersection_energy[
+                owner_intersection
+            ] += pair_representation_energy
+            resonance_pair = tuple(
+                sorted(
+                    (
+                        row_resonance_mask(threshold_rows[pair[0]]),
+                        row_resonance_mask(threshold_rows[pair[1]]),
+                    )
+                )
+            )
+            cross_pair_resonance_histogram[resonance_pair] += 1
+            cross_pair_resonance_energy[
+                resonance_pair
+            ] += pair_representation_energy
+        cross_pair_energy_excess = sum(
+            max(
+                0,
+                energy
+                - int(threshold_rows[pair[0]][5])
+                * int(threshold_rows[pair[1]][5]),
+            )
+            for pair, energy in cross_pair_representation_energy.items()
+        )
+        cross_correlation_same_first = 0
+        cross_correlation_same_second = 0
+        cross_correlation_either_same = 0
+        cross_correlation_both_distinct = 0
+        cross_correlation_singleton_product = 0
+        cross_correlation_level_two_product = 0
+        for pair, pair_energy in cross_pair_representation_energy.items():
+            first_row = threshold_rows[pair[0]]
+            second_row = threshold_rows[pair[1]]
+            first_key = first_row[0]
+            second_key = second_row[0]
+            assert isinstance(first_key, tuple)
+            assert isinstance(second_key, tuple)
+            first_colour = first_key[-4]
+            second_colour = second_key[-4]
+            assert isinstance(first_colour, tuple)
+            assert isinstance(second_colour, tuple)
+            first_centre = first_row[2]
+            second_centre = second_row[2]
+            assert isinstance(first_centre, tuple)
+            assert isinstance(second_centre, tuple)
+            first_offset = add(
+                first_colour,
+                subtract(first_centre[0], rotate(first_centre[0])),
+            )
+            second_offset = add(
+                second_colour,
+                subtract(second_centre[0], rotate(second_centre[0])),
+            )
+            offset_difference = subtract(first_offset, second_offset)
+            first_parameters = first_row[11]
+            second_parameters = second_row[11]
+            assert isinstance(first_parameters, tuple)
+            assert isinstance(second_parameters, tuple)
+            cross_load = Counter(
+                subtract(first_parameter, second_parameter)
+                for first_parameter in first_parameters
+                for second_parameter in second_parameters
+            )
+            reconstructed_pair_energy = 0
+            for second_difference, second_load in cross_load.items():
+                first_difference = add(
+                    offset_difference,
+                    rotate(second_difference),
+                )
+                first_load = cross_load[first_difference]
+                product = first_load * second_load
+                reconstructed_pair_energy += product
+                if first_difference == (0, 0):
+                    cross_correlation_same_first += product
+                if second_difference == (0, 0):
+                    cross_correlation_same_second += product
+                if first_difference == (0, 0) or second_difference == (0, 0):
+                    cross_correlation_either_same += product
+                else:
+                    cross_correlation_both_distinct += product
+                if first_load == 1 and second_load == 1:
+                    cross_correlation_singleton_product += product
+                if first_load >= 2 and second_load >= 2:
+                    cross_correlation_level_two_product += product
+            assert reconstructed_pair_energy == pair_energy
+        assert (
+            cross_correlation_either_same + cross_correlation_both_distinct
+            == cross_footprint_representation_energy
+        )
+        resonant_rows = []
+        for row in threshold_rows:
+            _, a_value, b_value, e_value = recover_selected_k24_key(
+                row[0][-4:]
+            )
+            physical_delta = subtract(a_value, b_value)
+            cell_shifts = (
+                e_value,
+                rotate(add(e_value, physical_delta)),
+                add(rotate(e_value), linear(physical_delta)),
+            )
+            if any(shift == (0, 0) for shift in cell_shifts):
+                resonant_rows.append(row)
+        matching_projected_same_centre_cell_footprint_level_profiles.append(
+            (
+                threshold,
+                natural_level,
+                len(threshold_rows),
+                sum(int(row[6]) for row in threshold_rows),
+                sum(len(row[8]) for row in threshold_rows),
+                len(footprint_depth),
+                max(footprint_depth.values(), default=0),
+                max(weighted_depth.values(), default=Fraction(0)),
+                footprint_collision_mass,
+                sum(footprint_representation_depth.values()),
+                cross_footprint_representation_energy,
+                Fraction(
+                    cross_footprint_representation_energy,
+                    footprint_collision_mass,
+                )
+                if footprint_collision_mass
+                else Fraction(0),
+                max(cross_pair_normalized_energy.values(), default=Fraction(0)),
+                len(cross_pair_representation_energy),
+                cross_pair_product_baseline,
+                Fraction(
+                    cross_footprint_representation_energy,
+                    cross_pair_product_baseline,
+                )
+                if cross_pair_product_baseline
+                else Fraction(0),
+                sum(
+                    normalized > 1
+                    for normalized in cross_pair_normalized_energy.values()
+                ),
+                cross_pair_energy_excess,
+                tuple(sorted(cross_pair_owner_intersection_histogram.items())),
+                tuple(sorted(cross_pair_owner_intersection_energy.items())),
+                tuple(sorted(support_collision_owner_intersection.items())),
+                tuple(sorted(cross_pair_resonance_histogram.items())),
+                tuple(sorted(cross_pair_resonance_energy.items())),
+                tuple(sorted(support_collision_resonance.items())),
+                cross_correlation_same_first,
+                cross_correlation_same_second,
+                cross_correlation_either_same,
+                cross_correlation_both_distinct,
+                cross_correlation_singleton_product,
+                cross_correlation_level_two_product,
+                support_collision_same_parameter,
+                support_collision_both_parameters_distinct,
+                support_collision_cross_load_11,
+                support_collision_cross_load_minimum_one,
+                support_collision_cross_load_level_two,
+                support_collision_dense_metric_transverse,
+                support_collision_dense_two_line,
+                tuple(
+                    sorted(support_collision_dense_chord_dot_histogram.items())
+                ),
+                len(additive_collision_key_depth),
+                max(additive_collision_key_depth.values(), default=0),
+                sum(
+                    depth * (depth - 1) // 2
+                    for depth in additive_collision_key_depth.values()
+                ),
+                sum(len(row[9]) for row in threshold_rows),
+                len(offdiagonal_depth),
+                max(offdiagonal_depth.values(), default=0),
+                max(footprint_pair_depth.values(), default=0),
+                sum(
+                    depth * (depth - 1) // 2
+                    for depth in footprint_pair_depth.values()
+                ),
+                max(weighted_pair_depth.values(), default=Fraction(0)),
+                min((len(row[8]) for row in threshold_rows), default=0),
+                max((int(row[10]) for row in threshold_rows), default=0),
+                max(
+                    (
+                        Fraction(int(row[5]) ** 2, len(row[8]))
+                        for row in threshold_rows
+                    ),
+                    default=Fraction(0),
+                ),
+                max(
+                    (
+                        Fraction(int(row[10]), int(row[5]) ** 2)
+                        for row in threshold_rows
+                    ),
+                    default=Fraction(0),
+                ),
+                len(active_owner_vertices),
+                len(natural_core),
+                max(centre_cell_counts.values(), default=0),
+                min((len(row[12]) for row in threshold_rows), default=0),
+                max((len(row[12]) for row in threshold_rows), default=0),
+                max(endpoint_depth.values(), default=0),
+                max(weighted_endpoint_depth.values(), default=Fraction(0)),
+                len(resonant_rows),
+                sum(int(row[6]) for row in resonant_rows),
+            )
+        )
+    matching_selected_k24_rectangle_keys = sum(
+        len(set(cell_first_tracks)) == 1
+        for cell_first_tracks in (
+            matching_selected_k24_bare_cell_first_tracks.values()
+        )
+    )
+    matching_selected_k24_complete_rectangle_defect = sum(
+        len(cell_first_tracks)
+        * len(matching_selected_k24_bare_first_tracks[key])
+        - sum(map(len, cell_first_tracks))
+        for key, cell_first_tracks in (
+            matching_selected_k24_bare_cell_first_tracks.items()
+        )
+    )
+    matching_selected_k24_common_first_track_mass = sum(
+        len(set.intersection(*map(set, cell_first_tracks)))
+        if cell_first_tracks
+        else 0
+        for cell_first_tracks in (
+            matching_selected_k24_bare_cell_first_tracks.values()
+        )
+    )
+    matching_selected_k24_nonrectangle_profiles = Counter(
+        (
+            len(cell_first_tracks),
+            tuple(sorted(map(len, cell_first_tracks))),
+            len(set.intersection(*map(set, cell_first_tracks))),
+            len(set.union(*map(set, cell_first_tracks))),
+        )
+        for cell_first_tracks in (
+            matching_selected_k24_bare_cell_first_tracks.values()
+        )
+        if len(set(cell_first_tracks)) > 1
+    )
+    matching_selected_k24_maximum_cell_first_track_defect = max(
+        (
+            len(matching_selected_k24_bare_first_tracks[key])
+            - len(cell_first_tracks)
+            for key, cell_sets in (
+                matching_selected_k24_bare_cell_first_tracks.items()
+            )
+            for cell_first_tracks in cell_sets
+        ),
+        default=0,
+    )
+    matching_selected_k24_colour_factor_sizes: dict[
+        tuple[Point, Point, Point], tuple[int, int, int]
+    ] = {}
+    for key, cell_first_tracks in (
+        matching_selected_k24_bare_cell_first_tracks.items()
+    ):
+        centres = matching_selected_k24_bare_cell_centres[key]
+        assert len(centres) == len(cell_first_tracks)
+        union = matching_selected_k24_bare_first_tracks[key]
+        _, a_value, b_value, e_value = recover_selected_k24_key(key)
+        for centre_first, actual in zip(centres, cell_first_tracks):
+            selected_by_popular_overlap = {
+                first_track
+                for first_track in union
+                if (
+                    (q_value := subtract(centre_first, first_track))
+                    in adaptive_popular
+                    and add(q_value, a_value) in adaptive_popular
+                    and subtract(q_value, e_value) in adaptive_popular
+                    and add(
+                        subtract(q_value, e_value),
+                        b_value,
+                    )
+                    in adaptive_popular
+                )
+            }
+            assert selected_by_popular_overlap == set(actual)
+        colour = a_value, b_value, e_value
+        if colour not in matching_selected_k24_colour_factor_sizes:
+            d_value = rotate(subtract(b_value, add(a_value, e_value)))
+            first_factor = sum(
+                add(first_track, e_value) in differences
+                for first_track in differences
+            )
+            positive_factor = sum(
+                add(positive_start, a_value) in differences
+                and add(positive_start, d_value) in differences
+                and add(add(positive_start, d_value), b_value)
+                in differences
+                for positive_start in differences
+            )
+            popular_factor = sum(
+                add(popular_start, a_value) in adaptive_popular
+                and subtract(popular_start, e_value) in adaptive_popular
+                and add(
+                    subtract(popular_start, e_value), b_value
+                )
+                in adaptive_popular
+                for popular_start in adaptive_popular
+            )
+            matching_selected_k24_colour_factor_sizes[colour] = (
+                first_factor,
+                positive_factor,
+                popular_factor,
+            )
+    matching_selected_k24_ambient_tensor_cubic_mass = 0
+    matching_selected_k24_ambient_tensor_maximum_load = 0
+    matching_selected_k24_ambient_tensor_colours_evaluated = 0
+    matching_selected_k24_physical_tensor_cubic_mass = 0
+    matching_selected_k24_physical_tensor_high_cubic_mass = 0
+    matching_selected_k24_physical_tensor_maximum_load = 0
+    matching_selected_k24_owner_core_threshold = (
+        3 * dyadic_level + 1
+    ) // 2
+    matching_selected_k24_physical_tensor_colour_mass: Counter[
+        tuple[Point, Point, Point]
+    ] = Counter()
+    physical_tensor_requested = (
+        "--k24-physical-tensor" in sys.argv
+        or "--k24-physical-tensor-top" in sys.argv
+        or "--k24-physical-tensor-fast" in sys.argv
+    )
+    tensor_colours: list[tuple[Point, Point, Point]] = []
+    if (
+        "--k24-tensor" in sys.argv
+        or "--k24-physical-tensor" in sys.argv
+        or "--k24-physical-tensor-fast" in sys.argv
+    ):
+        tensor_colours = list(matching_selected_k24_colour_factor_sizes)
+    elif (
+        "--k24-tensor-top" in sys.argv
+        or "--k24-physical-tensor-top" in sys.argv
+    ):
+        tensor_colours = [
+            colour
+            for colour, _ in sorted(
+                matching_selected_k24_colour_factor_sizes.items(),
+                key=lambda item: (
+                    min(item[1]),
+                    item[1][0] * item[1][1] * item[1][2],
+                    item[0],
+                ),
+                reverse=True,
+            )[:8]
+        ]
+    if tensor_colours:
+        matching_selected_k24_ambient_tensor_colours_evaluated = len(
+            tensor_colours
+        )
+        for a_value, b_value, e_value in tensor_colours:
+            colour = a_value, b_value, e_value
+            d_value = rotate(subtract(b_value, add(a_value, e_value)))
+            first_starts = [
+                first_track
+                for first_track in differences
+                if add(first_track, e_value) in differences
+            ]
+            positive_starts = [
+                positive_start
+                for positive_start in differences
+                if add(positive_start, a_value) in differences
+                and add(positive_start, d_value) in differences
+                and add(add(positive_start, d_value), b_value)
+                in differences
+            ]
+            popular_starts = [
+                popular_start
+                for popular_start in adaptive_popular
+                if add(popular_start, a_value) in adaptive_popular
+                and subtract(popular_start, e_value) in adaptive_popular
+                and add(
+                    subtract(popular_start, e_value), b_value
+                )
+                in adaptive_popular
+            ]
+            tensor_loads: Counter[tuple[Point, Point]] = Counter()
+            if "--k24-physical-tensor-fast" not in sys.argv:
+                tensor_loads = Counter(
+                    (
+                        add(positive_start, rotate(first_track)),
+                        add(first_track, popular_start),
+                    )
+                    for first_track in first_starts
+                    for positive_start in positive_starts
+                    for popular_start in popular_starts
+                )
+                matching_selected_k24_ambient_tensor_cubic_mass += sum(
+                    load * (load - 1) * (load - 2)
+                    for load in tensor_loads.values()
+                )
+                matching_selected_k24_ambient_tensor_maximum_load = max(
+                    matching_selected_k24_ambient_tensor_maximum_load,
+                    max(tensor_loads.values(), default=0),
+                )
+            if physical_tensor_requested:
+                assert points is not None
+                first_start_set = set(first_starts)
+                positive_start_set = set(positive_starts)
+                for v_role in (0, 1):
+                    v_sign = -1 if v_role == 0 else 1
+                    for w_role in (2, 3):
+                        w_sign = -1 if w_role == 2 else 1
+                        owner_loads: Counter[tuple[Point, Point]] = Counter()
+                        owner_endpoints: dict[tuple[Point, Point], Point] = {}
+                        for popular_start in popular_starts:
+                            for endpoint in points:
+                                v_options = []
+                                w_options = []
+                                for other_v in points:
+                                    if other_v == endpoint:
+                                        continue
+                                    v_value = (
+                                        v_sign * (other_v[0] - endpoint[0]),
+                                        v_sign * (other_v[1] - endpoint[1]),
+                                    )
+                                    c_value = subtract(v_value, a_value)
+                                    first_track = subtract(
+                                        c_value, popular_start
+                                    )
+                                    if (
+                                        c_value in differences
+                                        and add(c_value, b_value)
+                                        in differences
+                                        and first_track in first_start_set
+                                    ):
+                                        v_options.append((v_value, c_value))
+                                for other_w in points:
+                                    if other_w == endpoint:
+                                        continue
+                                    w_value = (
+                                        w_sign * (other_w[0] - endpoint[0]),
+                                        w_sign * (other_w[1] - endpoint[1]),
+                                    )
+                                    ell_value = subtract(
+                                        w_value, linear(b_value)
+                                    )
+                                    positive_start = add(
+                                        ell_value,
+                                        add(
+                                            rotate(popular_start),
+                                            rotate(a_value),
+                                        ),
+                                    )
+                                    if (
+                                        ell_value in differences
+                                        and add(ell_value, linear(a_value))
+                                        in differences
+                                        and positive_start in positive_start_set
+                                    ):
+                                        w_options.append((w_value, ell_value))
+                                for v_value, c_value in v_options:
+                                    for _, ell_value in w_options:
+                                        z_value = add(
+                                            ell_value, rotate(v_value)
+                                        )
+                                        support = z_value, c_value
+                                        previous_endpoint = owner_endpoints.setdefault(
+                                            support, endpoint
+                                        )
+                                        assert previous_endpoint == endpoint
+                                        owner_loads[support] += 1
+                        matching_owner_loads: Counter[
+                            tuple[Point, Point]
+                        ] = Counter()
+                        for (z_value, c_value), load in owner_loads.items():
+                            ell_value = subtract(
+                                z_value,
+                                rotate(add(c_value, a_value)),
+                            )
+                            centre = c_value, ell_value
+                            a_neighbour = (
+                                add(c_value, a_value),
+                                add(ell_value, linear(a_value)),
+                            )
+                            b_neighbour = (
+                                add(c_value, b_value),
+                                add(ell_value, linear(b_value)),
+                            )
+                            if is_matching_swap_edge(
+                                centre, a_neighbour
+                            ) and is_matching_swap_edge(centre, b_neighbour):
+                                matching_owner_loads[z_value, c_value] = load
+                        owner_loads = matching_owner_loads
+                        physical_loads = list(owner_loads.values())
+                        if tensor_loads:
+                            assert all(
+                                tensor_loads[support] >= load
+                                for support, load in owner_loads.items()
+                            )
+                        for (z_value, c_value), load in owner_loads.items():
+                            ell_value = subtract(
+                                z_value,
+                                rotate(add(c_value, a_value)),
+                            )
+                            centre = c_value, ell_value
+                            a_neighbour = (
+                                add(c_value, a_value),
+                                add(ell_value, linear(a_value)),
+                            )
+                            b_neighbour = (
+                                add(c_value, b_value),
+                                add(ell_value, linear(b_value)),
+                            )
+                            first_edge = tuple(
+                                sorted((centre, a_neighbour))
+                            )
+                            second_edge = tuple(
+                                sorted((centre, b_neighbour))
+                            )
+                            assert edge_multiplicity[first_edge] >= load, (
+                                "first physical tensor bundle",
+                                colour,
+                                (z_value, c_value),
+                                load,
+                                edge_multiplicity[first_edge],
+                                first_edge,
+                            )
+                            assert edge_multiplicity[second_edge] >= load, (
+                                "second physical tensor bundle",
+                                colour,
+                                (z_value, c_value),
+                                load,
+                                edge_multiplicity[second_edge],
+                                second_edge,
+                            )
+                            natural_level = 2 * load // 3
+                            assert loads[centre] >= natural_level
+                            assert loads[a_neighbour] >= natural_level
+                            assert loads[b_neighbour] >= natural_level
+                            if load >= max(
+                                3, matching_selected_k24_owner_core_threshold
+                            ):
+                                assert centre in core
+                                assert a_neighbour in core
+                                assert b_neighbour in core
+                                d_value = rotate(
+                                    subtract(
+                                        b_value,
+                                        add(a_value, e_value),
+                                    )
+                                )
+                                cell_k24_key = (
+                                    z_value,
+                                    add(z_value, a_value),
+                                    add(z_value, d_value),
+                                    add(add(z_value, d_value), b_value),
+                                )
+                                anchored_key = (
+                                    owner_endpoints[z_value, c_value],
+                                    v_role,
+                                    w_role,
+                                    *cell_k24_key,
+                                )
+                                assert (
+                                    matching_selected_k24_anchored_occurrence_load[
+                                        anchored_key
+                                    ]
+                                    == load
+                                ), (
+                                    "high ambient owner not recovered",
+                                    colour,
+                                    (z_value, c_value),
+                                    load,
+                                    matching_selected_k24_anchored_occurrence_load[
+                                        anchored_key
+                                    ],
+                                    centre,
+                                    a_neighbour,
+                                    b_neighbour,
+                                    owner_endpoints[z_value, c_value],
+                                    v_role,
+                                    w_role,
+                                )
+                        role_mass = sum(
+                            load * (load - 1) * (load - 2)
+                            for load in physical_loads
+                        )
+                        matching_selected_k24_physical_tensor_cubic_mass += (
+                            role_mass
+                        )
+                        matching_selected_k24_physical_tensor_colour_mass[
+                            colour
+                        ] += role_mass
+                        matching_selected_k24_physical_tensor_high_cubic_mass += sum(
+                            load * (load - 1) * (load - 2)
+                            for load in physical_loads
+                            if load
+                            >= matching_selected_k24_owner_core_threshold
+                        )
+                        matching_selected_k24_physical_tensor_maximum_load = max(
+                            matching_selected_k24_physical_tensor_maximum_load,
+                            max(physical_loads, default=0),
+                        )
+    matching_selected_k24_anchored_high_cubic_mass = 3 * sum(
+        load * (load - 1) * (load - 2) // 6
+        for load in matching_selected_k24_anchored_occurrence_load.values()
+        if load >= matching_selected_k24_owner_core_threshold
+    )
+    if (
+        physical_tensor_requested
+        and "--k24-physical-tensor-top" not in sys.argv
+    ):
+        assert (
+            matching_selected_k24_physical_tensor_high_cubic_mass
+            == 2 * matching_selected_k24_anchored_high_cubic_mass
+        )
     for threshold in (2, 4, 8, 16, 32, 64):
         high_endpoints = {
             endpoint
@@ -3614,6 +4853,345 @@ def profile(
             ),
             ("maximizing_row", matching_endpoint_reverse_cross_support_row),
         ),
+        "matching_selected_k24_cross_sum": (
+            (
+                "anchored_keys",
+                len(matching_selected_k24_anchored_occurrence_load),
+            ),
+            (
+                "physical_owner_support",
+                len(matching_selected_k24_physical_owner),
+            ),
+            (
+                "maximum_cross_colours_per_physical_owner",
+                max(
+                    map(
+                        len,
+                        matching_selected_k24_physical_owner_colours.values(),
+                    ),
+                    default=0,
+                ),
+            ),
+            (
+                "multiple_cross_colour_owner_support",
+                sum(
+                    len(colours) > 1
+                    for colours in (
+                        matching_selected_k24_physical_owner_colours.values()
+                    )
+                ),
+            ),
+            (
+                "maximum_physical_owner_cubic_mass",
+                max(
+                    matching_selected_k24_physical_owner_mass.values(),
+                    default=0,
+                ),
+            ),
+            (
+                "bare_keys",
+                len(matching_selected_k24_bare_occurrence_load),
+            ),
+            (
+                "anchored_cubic_mass",
+                matching_selected_k24_anchored_cubic_mass,
+            ),
+            ("bare_cubic_mass", matching_selected_k24_bare_cubic_mass),
+            (
+                "unique_first_track_cubic_mass",
+                matching_selected_k24_unique_track_cubic_mass,
+            ),
+            (
+                "maximum_anchored_load",
+                max(
+                    matching_selected_k24_anchored_occurrence_load.values(),
+                    default=0,
+                ),
+            ),
+            (
+                "maximum_bare_load",
+                max(
+                    matching_selected_k24_bare_occurrence_load.values(),
+                    default=0,
+                ),
+            ),
+            (
+                "maximum_unique_first_track_load",
+                max(
+                    map(len, matching_selected_k24_bare_first_tracks.values()),
+                    default=0,
+                ),
+            ),
+            (
+                "maximum_duplicate_first_track_excess",
+                max(
+                    (
+                        matching_selected_k24_bare_occurrence_load[key]
+                        - len(first_tracks)
+                        for key, first_tracks in (
+                            matching_selected_k24_bare_first_tracks.items()
+                        )
+                    ),
+                    default=0,
+                ),
+            ),
+            (
+                "maximum_gauge_cells_per_key",
+                max(
+                    map(
+                        len,
+                        matching_selected_k24_bare_cell_first_tracks.values(),
+                    ),
+                    default=0,
+                ),
+            ),
+            (
+                "rectangle_keys",
+                matching_selected_k24_rectangle_keys,
+            ),
+            (
+                "complete_rectangle_defect",
+                matching_selected_k24_complete_rectangle_defect,
+            ),
+            (
+                "common_first_track_mass",
+                matching_selected_k24_common_first_track_mass,
+            ),
+            (
+                "nonrectangle_profiles",
+                tuple(sorted(matching_selected_k24_nonrectangle_profiles.items())),
+            ),
+            (
+                "maximum_cell_first_track_defect",
+                matching_selected_k24_maximum_cell_first_track_defect,
+            ),
+            (
+                "distinct_colours",
+                len(matching_selected_k24_colour_factor_sizes),
+            ),
+            (
+                "maximum_colour_factors",
+                tuple(
+                    max(
+                        (
+                            sizes[index]
+                            for sizes in matching_selected_k24_colour_factor_sizes.values()
+                        ),
+                        default=0,
+                    )
+                    for index in range(3)
+                ),
+            ),
+            (
+                "top_minimum_colour_factors",
+                tuple(
+                    sorted(
+                        (
+                            (
+                                min(sizes),
+                                sizes[0] * sizes[1] * sizes[2],
+                                sizes,
+                                colour,
+                            )
+                            for colour, sizes in (
+                                matching_selected_k24_colour_factor_sizes.items()
+                            )
+                        ),
+                        reverse=True,
+                    )[:8]
+                ),
+            ),
+            (
+                "ambient_tensor_cubic_mass",
+                matching_selected_k24_ambient_tensor_cubic_mass,
+            ),
+            (
+                "ambient_tensor_maximum_load",
+                matching_selected_k24_ambient_tensor_maximum_load,
+            ),
+            (
+                "ambient_tensor_colours_evaluated",
+                matching_selected_k24_ambient_tensor_colours_evaluated,
+            ),
+            (
+                "physical_tensor_cubic_mass",
+                matching_selected_k24_physical_tensor_cubic_mass,
+            ),
+            (
+                "physical_tensor_core_threshold",
+                matching_selected_k24_owner_core_threshold,
+            ),
+            (
+                "physical_tensor_high_cubic_mass",
+                matching_selected_k24_physical_tensor_high_cubic_mass,
+            ),
+            (
+                "anchored_high_cubic_mass",
+                matching_selected_k24_anchored_high_cubic_mass,
+            ),
+            (
+                "physical_tensor_maximum_load",
+                matching_selected_k24_physical_tensor_maximum_load,
+            ),
+            (
+                "physical_tensor_positive_colours",
+                sum(
+                    mass > 0
+                    for mass in (
+                        matching_selected_k24_physical_tensor_colour_mass.values()
+                    )
+                ),
+            ),
+            (
+                "top_physical_tensor_colours",
+                tuple(
+                    (
+                        mass,
+                        matching_selected_k24_anchored_colour_mass[colour],
+                        matching_selected_k24_colour_factor_sizes[colour],
+                        colour,
+                    )
+                    for colour, mass in sorted(
+                        matching_selected_k24_physical_tensor_colour_mass.items(),
+                        key=lambda item: (item[1], item[0]),
+                        reverse=True,
+                    )[:8]
+                ),
+            ),
+            (
+                "physical_tensor_colour_resonance_mass",
+                tuple(
+                    sorted(
+                        Counter(
+                            {
+                                profile: sum(
+                                    mass
+                                    for colour, mass in (
+                                        matching_selected_k24_physical_tensor_colour_mass.items()
+                                    )
+                                    if (
+                                        colour[2] == (0, 0),
+                                        determinant(colour[0], colour[1]) == 0,
+                                        determinant(colour[0], colour[2]) == 0,
+                                        determinant(colour[1], colour[2]) == 0,
+                                    )
+                                    == profile
+                                )
+                                for profile in {
+                                    (
+                                        colour[2] == (0, 0),
+                                        determinant(colour[0], colour[1]) == 0,
+                                        determinant(colour[0], colour[2]) == 0,
+                                        determinant(colour[1], colour[2]) == 0,
+                                    )
+                                    for colour in (
+                                        matching_selected_k24_physical_tensor_colour_mass
+                                    )
+                                }
+                            }
+                        ).items()
+                    )
+                ),
+            ),
+            (
+                "anchored_load_histogram",
+                tuple(
+                    sorted(
+                        Counter(
+                            matching_selected_k24_anchored_occurrence_load.values()
+                        ).items()
+                    )
+                ),
+            ),
+            (
+                "bare_load_histogram",
+                tuple(
+                    sorted(
+                        Counter(
+                            matching_selected_k24_bare_occurrence_load.values()
+                        ).items()
+                    )
+                ),
+            ),
+            (
+                "natural_level_footprint_profile_columns",
+                (
+                    "load_threshold",
+                    "forced_core_level",
+                    "cells",
+                    "cubic_mass",
+                    "footprint_incidences",
+                    "footprint_union",
+                    "maximum_footprint_depth",
+                    "maximum_weighted_footprint_depth",
+                    "footprint_collision_mass",
+                    "footprint_representation_incidences",
+                    "cross_footprint_representation_energy",
+                    "cross_energy_per_support_collision",
+                    "maximum_cross_pair_normalized_energy",
+                    "active_cross_pairs",
+                    "cross_pair_product_baseline",
+                    "cross_energy_per_product_baseline",
+                    "cross_pairs_above_product_baseline",
+                    "cross_pair_product_excess",
+                    "cross_pair_owner_intersection_histogram",
+                    "cross_pair_owner_intersection_energy",
+                    "support_collision_owner_intersection_mass",
+                    "cross_pair_resonance_histogram",
+                    "cross_pair_resonance_energy",
+                    "support_collision_resonance_mass",
+                    "cross_correlation_same_first_parameter",
+                    "cross_correlation_same_second_parameter",
+                    "cross_correlation_either_same_parameter",
+                    "cross_correlation_both_parameters_distinct",
+                    "cross_correlation_singleton_product",
+                    "cross_correlation_level_two_product",
+                    "support_collision_same_parameter",
+                    "support_collision_both_parameters_distinct",
+                    "support_collision_cross_load_11",
+                    "support_collision_cross_load_minimum_one",
+                    "support_collision_cross_load_level_two",
+                    "support_collision_dense_metric_transverse",
+                    "support_collision_dense_two_line",
+                    "support_collision_dense_max_chord_dot_histogram",
+                    "additive_collision_keys",
+                    "maximum_additive_collision_key_reuse",
+                    "additive_collision_key_collision_mass",
+                    "offdiagonal_incidences",
+                    "offdiagonal_union",
+                    "maximum_offdiagonal_depth",
+                    "maximum_footprint_pair_codegree",
+                    "footprint_C4_mass",
+                    "maximum_weighted_pair_depth",
+                    "minimum_footprint_size",
+                    "maximum_footprint_energy",
+                    "maximum_compression_ratio",
+                    "maximum_normalized_energy",
+                    "active_owner_vertices",
+                    "forced_core_vertices",
+                    "maximum_cells_per_centre",
+                    "minimum_endpoint_union",
+                    "maximum_endpoint_union",
+                    "maximum_endpoint_depth",
+                    "maximum_weighted_endpoint_depth",
+                    "resonant_cells",
+                    "resonant_cubic_mass",
+                ),
+            ),
+            (
+                "natural_level_footprint_profiles",
+                tuple(
+                    matching_projected_same_centre_cell_footprint_level_profiles
+                ),
+            ),
+            (
+                "maximum_row_representation_reuse",
+                max(
+                    matching_selected_k24_row_representation_depth.values(),
+                    default=0,
+                ),
+            ),
+        ),
         "matching_same_centre_occurrence_endpoint_reuse": (
             (
                 "occurrences",
@@ -3743,6 +5321,26 @@ def transformed_costas(prime: int) -> tuple[list[Point], set[Point]]:
 
 
 def main() -> None:
+    k24_prime_argument = next(
+        (
+            argument.split("=", 1)[1]
+            for argument in sys.argv
+            if argument.startswith("--k24-prime=")
+        ),
+        None,
+    )
+    if k24_prime_argument is not None:
+        prime = int(k24_prime_argument)
+        points, differences = transformed_costas(prime)
+        result, summary, _ = profile(differences, points)
+        print(f"Costas-{prime}", result)
+        print(
+            "  matching_selected_k24_cross_sum",
+            summary["matching_selected_k24_cross_sum"],
+        )
+        print("SWAP OPTIMAL NESTED-CORE ANALYZER: PASS")
+        return
+
     large_costas_only = "--large-costas-only" in sys.argv
     families: list[tuple[str, set[Point], list[Point] | None]] = []
     if not large_costas_only:

@@ -449,6 +449,35 @@ prior-art kill-search**; has a writeable-down win condition.
 
 ## 8. Working log (append-only; newest first)
 
+### 2026-08-21 — #1208 direct swap route reduced to joint determinant/owner packing
+
+- Reconstructed the selected same-centre survivor as a lossless `K_{2,4}`
+  owner system with six synchronized tracks.  The first row plus one track
+  recovers the full configuration, and an ambient owner of load `r` is
+  automatically present at natural core level `floor(2r/3)`.
+- Proved the footprint expansion/popularity fork for `Phi(S)=JS-S`, the
+  exact support/collision inequality, and the translated quarter-turn
+  correlation
+  `sum_z m_(O,S)(z)m_(O',T)(z)=sum_v R_(S,T)(v)R_(S,T)(O-O'+Jv)`.
+- Split canonical footprint collisions into a diffuse uniquely oriented
+  case and a dense deep-owner `K_{2,2}` case.  In the dense case, common
+  chords `alpha,beta` give two physical metric equations with Jacobian
+  `4 alpha dot beta`; failure of transversality is exactly a pair of
+  perpendicular line directions.
+- Verified the dominant transverse behaviour on genuine Costas stresses:
+  `90/93` dense collisions at `p=23` and `80/80` in the top `p=31` band are
+  transverse, with minimum selected chord dot products `23^2` and `31^2`.
+  Also recorded sharp diffuse and same-owner resonance barriers.
+- Added nine theorem/barrier notes, nine independent verifiers, and extended
+  `analyze_swap_optimal_nested_cores.py` with natural owner levels,
+  footprint/correlation energies, owner intersections, resonance, and
+  diffuse/dense chord diagnostics.  All verifiers, compilation checks, byte
+  audits, and diff checks pass.  No paid API spend.
+- Problem #1208 remains open.  The next admissible theorem is a global
+  determinant-plus-physical-owner packing bound for disjoint-owner dense
+  `K_{2,2}` cells, plus diffuse and perpendicular-line residuals.  Generic
+  additive-energy/popularity relaxations are now verified dead ends.
+
 ### 2026-08-19 — #1208 adaptive cross-pair `D^2` charge
 
 - Re-encoded every rich-fibre incidence as
