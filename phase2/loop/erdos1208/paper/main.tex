@@ -25,16 +25,17 @@
 \newcommand{\Nm}{\operatorname N}
 \newcommand{\Cl}{\operatorname{Cl}}
 
-\title{Distance-Sidon subsets from bounded-inertia number-field towers}
-
-\author{}
-\date{\today\thanks{This investigation was carried out with substantial
+\title{Distance-Sidon subsets from bounded-inertia number-field towers%
+\thanks{This investigation was carried out with substantial
 assistance from automated systems, and we omit a conventional byline rather
 than overstate the named researchers' personal contributions.
 \emph{Nikol Savova}, University of Oxford,
 \href{mailto:nikol.p.savova@gmail.com}{\texttt{nikol.p.savova@gmail.com}};
 \emph{Sihao Huang}, independent researcher,
 \href{mailto:sihao.c.huang@gmail.com}{\texttt{sihao.c.huang@gmail.com}}.}}
+
+\author{}
+\date{\today}
 
 \begin{document}
 \maketitle
@@ -58,7 +59,8 @@ totally real layer; and we amplify repeated algebraic norms using
 prime-power valuation patterns.  A one-sided ideal-packing argument gives
 the geometric constant $2\sqrt3/\pi$.  The tower is built over
 $\Q(\sqrt{11235917})$.  Its class, ray, Frobenius, and numerical endpoint
-data are finite and accompanied by independently reproducible certificates.
+data are finite and checked by three executable implementations, including
+an independent reconstruction.
 \end{abstract}
 
 \section{Introduction}
@@ -84,6 +86,9 @@ $\varepsilon>0$,
 \[
  n^{1/3}\ll F_2(n)\ll n^{1/2-\varepsilon}.       \tag{1.1}
 \]
+Before this polynomial saving, Croot, Mao, Pohoata, Sheffer, and Yip obtained
+the first super-polylogarithmic improvement for distance-Sidon subsets of the
+square grid~\cite{CrootEtAl2026}.
 
 Our purpose is to give a compact quantitative version of the upper-bound
 construction.
@@ -116,14 +121,19 @@ planar disks in an Eisenstein CM field has a better diameter-to-volume ratio
 than the coordinate boxes used in the initial construction.  The remaining
 optimization is a one-dimensional concave knapsack problem.
 
-The number-field input follows the same tower-cutting framework used by
-Hajir, Maire, and Ramakrishna~\cite{HajirMaireRamakrishna2021} and in the
-recent number-field construction for the unit-distance
-problem~\cite{AlonEtAl2026}.  We quote the standard tame, totally real
-Shafarevich presentation theorem in the precise form needed below.  The
-field-specific calculations use PARI/GP~\cite{PARI2}; the accompanying
-verifier reconstructs the relevant Kummer kernel, checks every selected
-prime, and evaluates the final inequalities at two independent precisions.
+The bounded-inertia input goes back to Hajir and
+Maire~\cite{HajirMaire2001,HajirMaire2002}, building on Koch's class-tower
+criterion~\cite{Hajir1996,Koch2002}; we use the later tower-cutting framework
+of Hajir, Maire, and Ramakrishna~\cite{HajirMaireRamakrishna2021}.  The recent
+number-field construction for the unit-distance problem and Sawin's explicit
+version are direct methodological precedents~\cite{AlonEtAl2026,Sawin2026}.
+N\"aslund's subsequent ideal-lattice covolume refinement is the closest
+geometric analogue of our product-disk step~\cite{Naslund2026}.  We state the
+tame, totally real Shafarevich presentation theorem in the precise form
+needed below.  The field-specific calculations use PARI/GP~\cite{PARI2}; the
+accompanying verifier reconstructs the relevant Kummer kernel, checks every
+selected prime, and evaluates the final inequalities at two independent
+precisions.
 
 All logarithms below are natural.
 
@@ -211,7 +221,7 @@ Suppose a prime ideal $\mathfrak q$ of $L$ splits in $K/L$ as
 Fix a depth $k\ge0$.  For each $0\le a\le k$, consider the additive
 lattice
 \[
- I_a=\mathfrak P^a\bar{\mathfrak P}^{,k-a}\subset\cO_K. \tag{2.5}
+ I_a=\mathfrak P^a\bar{\mathfrak P}^{k-a}\subset\cO_K. \tag{2.5}
 \]
 It has index $\Nm(\mathfrak q)^k$.  Products over several prime ideals and
 possibly different depths give pattern lattices $I_{\mathbf a}$.  Write
@@ -292,6 +302,48 @@ constant $4/\pi$ by the effective constant
 We record the group-theoretic input in a form that separates the standard
 presentation theorem from the two elementary quotient operations used here.
 
+For a finite set $T$ of odd prime ideals of a number field $E$, put
+\[
+ V_T=\{a\in E^\times:(a)=\mathfrak a^2\text{ for some fractional ideal }
+ \mathfrak a,\ a\in E_{\mathfrak p}^{\times2}\text{ for every }
+ \mathfrak p\in T\}/E^{\times2}.                  \tag{3.1}
+\]
+This is the usual tame Kummer obstruction group.
+
+\begin{theorem}[tame totally real Shafarevich--Koch presentation]
+\label{thm:shafarevich}
+Let $E$ be totally real with $r_1$ real places, let $T$ be a finite set of
+odd prime ideals, and let $G_T^+$ be the Galois group of the maximal pro-$2$
+extension of $E$ unramified away from $T$ in which every real place splits.
+Then $G_T^+$ has a finite minimal presentation with generator and relation
+ranks satisfying
+\[
+ d(G_T^+)=|T|-r_1+\dim_{\F_2}V_T,
+ \qquad
+ r(G_T^+)\le |T|-1+\dim_{\F_2}V_T.               \tag{3.2}
+\]
+In particular, if $E$ is real quadratic and $V_T=0$, then
+\[
+ d(G_T^+)=|T|-2,\qquad r(G_T^+)\le |T|-1=d(G_T^+)+1. \tag{3.3}\label{eq:shaf-bound}
+\]
+\end{theorem}
+
+\begin{proof}
+This is the tame $p=2$ presentation theorem of
+Koch~\cite[Theorems~11.5 and~11.8]{Koch2002}; see also
+\cite[Section~10.7]{NSW2008}.  In the standard formulas,
+\[
+ d=|T|-(r_1+r_2)+1-\delta_2(E)+\dim_{\F_2}V_T,
+ \qquad
+ r\le |T|-\delta_2(E)+\dim_{\F_2}V_T.
+\]
+Here $r_2=0$ and $\delta_2(E)=1$ because $-1\in E$.  The dyadic places lie
+outside $T$, while requiring all real places to split is the totally real
+local condition; this is the archimedean refinement that removes the extra
+$p=2$ relation present for the unrestricted extension.  Substitution gives
+\eqref{eq:shaf-bound}.
+\end{proof}
+
 \begin{proposition}[tower criterion]\label{prop:tower}
 Let $E$ be totally real, and let $T$ be a finite set of odd prime ideals of
 $E$.  Suppose the maximal totally real pro-$2$ extension unramified away
@@ -301,11 +353,11 @@ Frobenius elements.  Form the quotient obtained by imposing
 \[
  \tau_{\mathfrak p}^2=1\quad(\mathfrak p\in T),
  \qquad
- \operatorname{Frob}_{\mathfrak q}^2=1\quad(\mathfrak q\in U),         \tag{3.1}\label{eq:square-caps}
+ \operatorname{Frob}_{\mathfrak q}^2=1\quad(\mathfrak q\in U),         \tag{3.4}\label{eq:square-caps}
 \]
 where $\tau_{\mathfrak p}$ generates tame pro-$2$ inertia.  If
 \[
- 4(r_0+|T|+|U|)<d^2,                              \tag{3.2}\label{eq:gs-condition}
+ 4(r_0+|T|+|U|)<d^2,                              \tag{3.5}\label{eq:gs-condition}
 \]
 then this quotient is infinite.  Its Frattini quotient is unchanged, and
 in every finite layer its ramification index at $\mathfrak p\in T$ is at
@@ -315,38 +367,37 @@ most two.
 \begin{proof}
 Tame pro-$2$ inertia at an odd prime is procyclic.  Normal closure of the
 single relation $\tau_{\mathfrak p}^2$ therefore caps all conjugate inertia
-groups above $\mathfrak p$.  Every relation in \eqref{eq:square-caps} is a square and
-hence lies in the Frattini subgroup, so the generator rank remains $d$.
+groups above $\mathfrak p$; normal closure likewise makes the chosen
+Frobenius representative irrelevant.  Every relation in
+\eqref{eq:square-caps} is a square and hence lies in the Frattini subgroup,
+so the generator rank remains $d$.
 Adding at most $|T|+|U|$ relations gives the relation bound in
 \eqref{eq:gs-condition}.  The strict Golod--Shafarevich inequality then proves
 infinitude; see, for example, \cite{Ershov2012}.  The ramification assertion
 is immediate from the inertia cap.
 \end{proof}
 
-The standard tame Shafarevich presentation theorem, in the form used in
-\cite{AlonEtAl2026,Koch2002}, computes $d$ from the totally positive
-$T$-unit squareclasses that are squares modulo $4$, and gives
-\[
- r_0\le d+1                                             \tag{3.3}\label{eq:shaf-bound}
-\]
-for the real quadratic fields used here.  We shall verify the squareclass
-space explicitly rather than invoke a generic rank estimate.
+In the explicit field below, both $V_T=0$ and the generator space are
+verified exactly.  Thus \cref{thm:shafarevich}, rather than a generic rank
+estimate, supplies the base relation bound.
 
 At a tame prime $\mathfrak p$ of $E$, the relative different exponent in a
 finite layer is at most one half of the relative degree.  Thus the tower in
 \cref{prop:tower} has root discriminant bounded by
 \[
  D_0=\rd(E)\prod_{\mathfrak p\in T}
-              \Nm_E(\mathfrak p)^{1/(2[E:\Q])}.         \tag{3.4}
+              \Nm_E(\mathfrak p)^{1/(2[E:\Q])}.         \tag{3.6}
 \]
 For a real quadratic base, the exponent is $1/4$.
 
 We also need the Frobenius caps to make primes split in the Eisenstein CM
-extension of each layer.  Let $Q=\Nm_E\mathfrak q$.  If $Q\equiv1\pmod3$,
-this is automatic.  If $Q\equiv2\pmod3$, require the Frobenius class of
-$\mathfrak q$ to be nonzero in the Frattini quotient.  It then has exact
-order two after the square cap, and the residue field in the selected
-layers has size $Q^2\equiv1\pmod3$.
+extension of each layer.  Call an unramified prime ideal $\mathfrak q$
+\emph{useful} if it does not lie above $3$ and, writing
+$Q=\Nm_E\mathfrak q$, either $Q\equiv1\pmod3$, or $Q\equiv2\pmod3$ and the
+Frobenius class of $\mathfrak q$ is nonzero in the Frattini quotient.  In the
+second case it has exact order two after the square cap, and the residue
+field in the selected layers has size $Q^2\equiv1\pmod3$; in the first case
+splitting is automatic.
 
 For completeness, an infinite finitely generated pro-$2$ group has, for
 every sufficiently large $j$, an open normal subgroup $N_j$ contained in
@@ -451,8 +502,9 @@ The ring of integers has basis $1,\omega$, where
 \[
  \omega^2-\omega-2808979=0.
 \]
-Let $T$ be the first $217$ odd prime ideals of $E$, ordered by norm with
-the deterministic tie order used in the certificate.
+Let $T$ be the first $217$ odd prime ideals of $E$, ordered first by norm
+and then by the underlying rational prime; ties between the two split ideals
+above one rational prime are broken by the increasing residue of $\omega$.
 
 \begin{proposition}[finite arithmetic certificate]\label{prop:certificate}
 For the field and prime set above, the following statements hold.
@@ -461,6 +513,10 @@ For the field and prime set above, the following statements hold.
 $\Cl(E)\cong C_{14}\times C_2$ and
 $\Cl^+(E)\cong C_{14}\times C_2\times C_2$.
 The $T$-class group is trivial.
+\item
+The space of squareclasses $aE^{\times2}$ with $(a)$ an ideal square has
+dimension four.  Its $4\times217$ matrix of local quadratic characters at
+$T$ has rank four.  Consequently $V_T=0$.
 \item
 The $219$ fundamental $T$-unit squareclasses have rank-four image under the
 two sign and modulo-$4$ conditions.  The safe Kummer kernel therefore has
@@ -489,10 +545,13 @@ Its root discriminant satisfies
 \end{proposition}
 
 The class and ray assertions in \cref{prop:certificate} are certified by
-PARI/GP.  They are not used as opaque numerical output: the verifier expands
+PARI/GP with \texttt{bnfcertify}=1, so they are unconditional and use no
+GRH assumption.  They are not used as opaque numerical output: the verifier expands
 the returned $T$-units in the basis $1,\omega$, recomputes both real signs
 and the square classes modulo $4$, and independently obtains the same
-rank-four row space.  For every candidate norm congruent to two modulo
+rank-four row space.  It also constructs the four global ideal-square
+classes and verifies rank four of their local-character matrix, proving
+$V_T=0$.  For every candidate norm congruent to two modulo
 three, it evaluates the quadratic-character functional on this exact
 $215$-dimensional kernel.  All $11123$ required ideals pass.
 
@@ -504,13 +563,13 @@ It constructs the sorted frontier from
 \eqref{eq:item-cost}--\eqref{eq:item-gain}.  At
 \[
  \alpha=0.49368323,\qquad
- w_0=39928.00429278135001166535408\ldots,          \tag{5.6}
+ w_0=39928.004292781350011665354078\ldots,         \tag{5.6}
 \]
 the margins in \eqref{eq:frontier} at $w_0$ and $2w_0$ are respectively
 \[
  0.001632817036815572250219059\ldots,
  \qquad
- 0.003247075212037706995029834\ldots.              \tag{5.7}\label{eq:margins}
+ 0.003247075212037706995029833\ldots.              \tag{5.7}\label{eq:margins}
 \]
 The active terminal slopes are approximately $0.0306672$ and $0.0191268$.
 The largest omitted fourth-depth slope is
@@ -523,6 +582,19 @@ gives
 \[
  \alpha_*=0.4936832199308881880151091959\ldots.     \tag{5.9}
 \]
+Thus the advertised exponent clears the equalized threshold by only
+$1.0069\ldots\times10^{-8}$.  The relation budget in
+\eqref{eq:gs-certificate} is likewise deliberately saturated at the largest
+integer allowed by the strict quadratic Golod--Shafarevich inequality:
+$4r=d^2-1$.
+
+As insurance against weakening the presentation interface, the verifier
+also recomputes desaturated certificates.  If one assumes only
+$r_0\le d+2$, omitting the final useful prime gives threshold
+$0.4936833032744\ldots$ and hence the safe bound
+$F_2(n)\ll n^{0.4936834}$.  Under $r_0\le d+6$, omitting the final five
+useful primes gives threshold $0.4936836367746\ldots$ and the safe bound
+$F_2(n)\ll n^{0.4936837}$.
 
 \begin{proof}[Proof of \cref{thm:main}]
 By \cref{prop:certificate} and the tame Shafarevich bound
@@ -545,9 +617,11 @@ those statements depends on the particular quadratic field.  The certificate
 checks:
 \begin{itemize}
 \item the BNF, ordinary and narrow class groups, and localized class group;
+\item the four-dimensional ideal-square space and the equality $V_T=0$;
 \item the exact $T$-unit basis and its sign/modulo-$4$ kernel;
 \item every selected prime ideal and every Frobenius usefulness test;
-\item the integer Golod--Shafarevich inequality and root discriminant;
+\item the integer Golod--Shafarevich inequality, both desaturated fallbacks,
+and the root discriminant;
 \item the complete active depth frontier, omitted-depth cutoff, and both
 endpoint inequalities at $100$ and $150$ decimal digits.
 \end{itemize}
@@ -556,6 +630,15 @@ $100$ to $150$ decimal digits, while the advertised margins exceed $10^{-3}$.
 The repository includes a second hostile verifier which independently
 reconstructs the Kummer row space and repeats the arithmetic and endpoint
 checks; its output agrees far beyond the displayed precision.
+
+\paragraph{Data and code availability.}
+The source package accompanying this manuscript contains a dependency-closed,
+single-field verifier, its expected output, and the independent hostile
+reconstruction.  The public repository is
+\url{https://github.com/NikolSavova/proof_hunter}.  The immutable certificate
+snapshot is the
+\href{https://github.com/NikolSavova/proof_hunter/tree/c6f68c4b8dc458242f317f2c5f3d76ce4df36e5f/phase2/loop/erdos1208/paper/certificate}%
+{repository at commit \texttt{c6f68c4}}.
 
 This paper does not determine the order of $F_2(n)$.  The gap between
 $1/3$ and $0.49368323$ remains substantial.  Nor do we claim that
